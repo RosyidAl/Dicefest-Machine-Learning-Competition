@@ -27,7 +27,6 @@ sys.path.insert(0, HERE)
 from common import SEED, SIGMAS, TARGET_COLS, load, load_sample, nrmse  # noqa: E402
 
 CONF = os.path.join(HERE, "..", "configs")
-GPU_BACKENDS = ("xgb", "nn", "nn_multi")
 ELEC = ("epm", "elec", "lepm", "epa", "lepa")
 GAS, EL, EUI = TARGET_COLS[0], TARGET_COLS[1], TARGET_COLS[2]
 METRICS = {"gas": GAS, "eui": EUI, "elec": EL}
@@ -42,8 +41,15 @@ def _wmul(d, code):
             "sqrtM": np.sqrt(d.M)}[code]
 
 
-def lane_of(spec):
-    return "gpu" if spec["backend"] in GPU_BACKENDS else "cpu"
+LANES = ("xgb", "nn", "cpu")  # parallel worker processes: XGBoost (GPU), MLPs (GPU), LightGBM (CPU)
+LANE_THREADS = {"xgb": "2", "nn": "2", "cpu": "12", "gpu": "4"}
+
+
+def lane_of(spec, lane):
+    """does the member belong to `lane`? ('gpu' = xgb + nn, kept for a two-lane run)"""
+    b = spec["backend"]
+    kind = "xgb" if b == "xgb" else ("nn" if b in ("nn", "nn_multi") else "cpu")
+    return kind == lane or (lane == "gpu" and kind in ("xgb", "nn"))
 
 
 def run_members(lane, work, only=None):
@@ -54,10 +60,11 @@ def run_members(lane, work, only=None):
     os.makedirs(f"{work}/oof", exist_ok=True)
     os.makedirs(f"{work}/pred", exist_ok=True)
     d = Data()
+    d.knn_cache_dir = f"{work}/knn_cache"  # FB07 fold encodings shared between members and lanes (same values)
     ex, ext = d.agg_features()
     done_multi = set()
     for name, spec in cfg["members"].items():
-        if lane_of(spec) != lane or (only and name not in only):
+        if not lane_of(spec, lane) or (only and name not in only):
             continue
         if spec["backend"] == "nn_multi":
             g = spec["group"]
@@ -80,7 +87,7 @@ def run_members(lane, work, only=None):
         d.folds = list(KFold(spec["n_folds"], shuffle=True, random_state=SEED).split(d.X))
         agg = dict(extra=ex, extra_t=ext) if spec["agg"] else {}
         te = dict(use_te=spec.get("use_te", False), windows=tuple(spec.get("windows", ())),
-                  cells=spec.get("cells", False))
+                  cells=spec.get("cells", False), knn=spec.get("knn", False))
         if spec["backend"] == "nn":
             p = dict(spec["params"])
             p["hidden"] = tuple(p["hidden"])

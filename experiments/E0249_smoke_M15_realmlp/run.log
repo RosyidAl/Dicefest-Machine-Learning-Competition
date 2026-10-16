@@ -17,3 +17,6 @@ ValueError: NaN values in continuous columns are currently not allowed!
 [2026-10-16 12:35] target_macro_gas_kwh: OOF nrmse 0.27846
 [2026-10-16 12:35] target_eui_gas_kwh_per_sqm (derived gas / A): OOF nrmse 0.70235
 [2026-10-16 12:40] target_macro_elec_kwh fold 0: nrmse 0.33812 it 0 (836s)
+[2026-10-16 12:45] target_macro_elec_kwh fold 1: nrmse 0.33418 it 0 (1127s)
+[2026-10-16 12:45] target_macro_elec_kwh: OOF nrmse 0.33614
+[2026-10-16 12:45] done in 18.8 min

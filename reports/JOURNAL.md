@@ -41,3 +41,29 @@
 - Setup: --stage members --only {xgb_lepm, xgb_eui_d10, xgb_eui_wA_te, n4f_gpm} (GPU) dan lgb_epm_wM_tew (CPU), lalu bandingkan dengan exp/oof dan exp/pred.
 - Hasil: kelima anggota identik byte (oof dan pred). Ukuran model sekitar 100 MB per anggota 5-fold.
 - Kesimpulan: DITERIMA. Pipeline final setara dengan kode pengembangan, dan spesifikasi members.yaml benar untuk keluarga XGB (dengan/tanpa TE), MLP, dan LGB.
+
+### [2026-10-16 13:04 WIB] E0190-E0191 | Fase 4 | FB07 KNN-target OOF
+- Hipotesis: rata-rata target (log EUI, log elec/meter, log gas/meter) dari k baris train paling mirip stok bangunannya dalam window +-W sub_n, cross-fitted, menurunkan error model.
+  Dasar: sinyal ini sudah terbukti lewat koreksi residual kNN (PP0004).
+- Setup:
+  - XGB gpm (x4 params, lr 0,05, d8), FS_legacy + agg + TE, 5-fold primary;
+  - E0191 menambah blok knn_target: W/k = 30/20, 100/20 (spasial 4), 300/50; inner 5-fold untuk baris training;
+  - tes kebocoran LK1 lulus.
+- Hasil:
+
+  | Target | E0190 | E0191 | Delta | Fold membaik | SE |
+  |---|---|---|---|---|---|
+  | gas | 0,25291 | 0,25181 | -0,00111 | 5/5 | 0,00008 |
+  | EUI | 0,66444 | 0,66229 | -0,00215 | 5/5 | 0,00064 |
+
+- Kesimpulan: DITERIMA (memenuhi kriteria 6.2).
+- Tindak lanjut:
+  - anggota baru xk_gpm, xk_lepa (XGB), lk_gpm, lk_lepa (LGB), pk_gpm (PLR MLP), full 10-fold + holdout P70/H30 (src/exp_v16_knn.py);
+  - lalu fit ulang bobot koreksi residual di holdout dan prune blend.
+
+### [2026-10-16 13:04 WIB] Analisis | pruning anggota sadar runtime (exp/analysis/runtime_prune*.log)
+- Hipotesis: sebagian anggota v15nc berbobot hampir nol dan bisa dibuang tanpa kehilangan skor, untuk menghemat waktu tiga run audit.
+- Hasil:
+  - membuang 17 anggota (urutan rasio rugi/jam) menghemat 9,26 jam member-time dengan perubahan honest CV +0,000003 (noise);
+  - langkah berikutnya mulai rugi: t1_lepm +0,00002 per 2,9 jam.
+- Kesimpulan: dipakai saat menyusun daftar anggota final (D005).

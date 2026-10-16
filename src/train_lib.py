@@ -95,6 +95,73 @@ class Data:
             return self.subt, self.zonet, self.subnt, self.cellst
         return self.sub[idx], self.zone[idx], self.subn[idx], [c[idx] for c in self.cells]
 
+    # ---- FB07: kNN target encodings in the building-stock space ------------------------------------------
+    KNN_CONFIGS = ((30, 20, 0.0), (100, 20, 4.0), (300, 50, 0.0))  # (sub_n window W, k, spatial distance weight)
+
+    def knn_space(self):
+        """standardised building-stock space of train rows (self.X) and apply rows (self.Xt); cached"""
+        if getattr(self, "_kz", None) is None:
+            def raw(X):
+                A, M, E = X["bld_dim_06"].values, X["bld_dim_12"].values.astype(float), X["bld_dim_01"].values.astype(float)
+                era = X[[f"bld_era_{i:02d}" for i in range(9, 16)]].values / 100
+                return np.column_stack([np.log(A / M), np.log(E / M), np.log(M), era, X["bld_dim_02"].values / E,
+                                        np.log1p(X["bld_dim_17"].values), np.log(X["bld_dim_03"].values / A)])
+            Z, Zt = raw(self.X), raw(self.Xt)
+            mu, sd = Z.mean(0), Z.std(0)
+            self._kz = ((Z - mu) / sd, (Zt - mu) / sd)
+        return self._kz
+
+    def knn_features(self, fit_idx, apply="oof", inner=5):
+        """apply='oof' -> inner 5-fold cross-fitted features for fit_idx rows; ('train', idx) -> train rows idx;
+        'test' -> apply rows (self.Xt). Values: log EUI, log elec / meter, log gas / meter of fit rows.
+        Results are cached in self.knn_cache_dir (if set), keyed by a hash of the inputs (identical either way)."""
+        import hashlib
+        cdir = getattr(self, "knn_cache_dir", None)
+        if cdir:
+            h = hashlib.sha256()
+            for arr in (np.asarray(fit_idx), self.subn, self.subnt, self.V[:, [1, 3, 5]]):
+                h.update(np.ascontiguousarray(arr).tobytes())
+            h.update(repr((apply if isinstance(apply, str) else ("train",), inner, self.KNN_CONFIGS)).encode())
+            if not isinstance(apply, str):
+                h.update(np.ascontiguousarray(apply[1]).tobytes())
+            path = os.path.join(cdir, h.hexdigest()[:32] + ".parquet")
+            if os.path.exists(path):
+                return pd.read_parquet(path)
+            F = self._knn_features(fit_idx, apply, inner)
+            os.makedirs(cdir, exist_ok=True)
+            tmp = f"{path}.{os.getpid()}.tmp"
+            F.to_parquet(tmp, index=False)
+            os.replace(tmp, path)
+            return F
+        return self._knn_features(fit_idx, apply, inner)
+
+    def _knn_features(self, fit_idx, apply="oof", inner=5):
+        from features_knn import knn_stats
+        Z, Zt = self.knn_space()
+        V = np.c_[np.log(self.V[:, 0]), self.V[:, 3], np.log(self.V[:, 5])]  # leui, lepm, lgpm
+
+        def feats(f, Za, sa):
+            cols = {}
+            for W, k, sp in self.KNN_CONFIGS:
+                v, c, dd = knn_stats(Z[f], self.subn[f], V[f], Za, sa, W, k, sp)
+                tag = f"knn_w{W}_k{k}" + ("s" if sp else "")
+                for j, nm in enumerate(("leui", "lepm", "lgpm")):
+                    cols[f"{tag}_{nm}"] = v[:, j]
+                cols[f"{tag}_cnt"] = c
+                cols[f"{tag}_dist"] = dd
+            return pd.DataFrame(cols).astype("float32")
+
+        if isinstance(apply, str) and apply == "oof":
+            parts, idx = [], []
+            for ia, ib in KFold(inner, shuffle=True, random_state=SEED).split(fit_idx):
+                parts.append(feats(fit_idx[ia], Z[fit_idx[ib]], self.subn[fit_idx[ib]]))
+                idx.append(ib)
+            F = pd.concat(parts, ignore_index=True)
+            return F.iloc[np.argsort(np.concatenate(idx), kind="stable")].reset_index(drop=True)
+        if isinstance(apply, str) and apply == "test":
+            return feats(fit_idx, Zt, self.subnt)
+        return feats(fit_idx, Z[apply[1]], self.subn[apply[1]])
+
     def agg_features(self, cache="cache"):
         """Subzone / zone aggregates over train and test rows: number of rows, log totals and row shares of
         meters, floor area and EPC count, mean log area per meter. Built from features only (no targets).
@@ -207,7 +274,7 @@ def is_gas_kind(kind):
 
 
 def run(d, name, backend, kind, params, use_te=False, windows=(), drop=(), out_dir=".", verbose=True,
-        wmul=None, extra=None, extra_t=None, cells=False, te_full=False):
+        wmul=None, extra=None, extra_t=None, cells=False, te_full=False, knn=False):
     """K-fold CV; saves OOF and fold-averaged test predictions of the modelled physical quantity.
 
     The saved quantity is EUI for gas-family kinds and elec for elec-family kinds.
@@ -242,6 +309,10 @@ def run(d, name, backend, kind, params, use_te=False, windows=(), drop=(), out_d
                 Tt = d.te_features(a, d.te_apply(), windows, cells)
             Xb = pd.concat([Xb.reset_index(drop=True), Tb], axis=1)
             Xt = pd.concat([Xt.reset_index(drop=True), Tt], axis=1)
+        if knn:  # FB07 kNN target encodings, cross-fitted like the target encodings
+            Xa = pd.concat([Xa.reset_index(drop=True), d.knn_features(a, "oof")], axis=1)
+            Xb = pd.concat([Xb.reset_index(drop=True), d.knn_features(a, ("train", b))], axis=1)
+            Xt = pd.concat([Xt.reset_index(drop=True), d.knn_features(a, "test")], axis=1)
         if drop:
             Xa, Xb, Xt = (z.drop(columns=list(drop)) for z in (Xa, Xb, Xt))
         pb, ptk, it = fit(params, Xa, y[a], None if w is None else w[a], Xb, y[b], None if w is None else w[b], Xt)

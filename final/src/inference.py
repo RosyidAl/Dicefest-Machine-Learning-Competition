@@ -44,6 +44,9 @@ def predict_gbm(d, name, spec, model_dir, extra=None, extra_t=None):
         if use_te:
             Xb = pd.concat([Xb.reset_index(drop=True), d.te_features(a, d.te_apply(b), windows, cells)], axis=1)
             Xt = pd.concat([Xt.reset_index(drop=True), d.te_features(a, d.te_apply(), windows, cells)], axis=1)
+        if spec.get("knn"):
+            Xb = pd.concat([Xb.reset_index(drop=True), d.knn_features(a, ("train", b))], axis=1)
+            Xt = pd.concat([Xt.reset_index(drop=True), d.knn_features(a, "test")], axis=1)
         pb, ptk = _gbm_predict(spec["backend"], f"{model_dir}/fold{k}", Xb, Xt)
         if is_log_kind(kind):
             pb, ptk = np.exp(pb), np.exp(ptk)
@@ -83,7 +86,7 @@ def predict_nn(d, name, spec, model_dir, extra=None, extra_t=None, tasks=None):
     for k, (a, b) in enumerate(d.folds):
         Zb, Ztk = Z[b], Zt
         if spec.get("use_te"):
-            _, Tb, Tt = te_block(d, a, b, tuple(spec["windows"]), spec["cells"])
+            _, Tb, Tt = te_block(d, a, b, tuple(spec["windows"]), spec["cells"], spec.get("knn", False))
             Zb, Ztk = np.hstack([Zb, Tb]), np.hstack([Zt, Tt])
         Xb, Xt = torch.tensor(Zb, device="cuda"), torch.tensor(Ztk, device="cuda")
         for s in seeds:
@@ -106,6 +109,7 @@ def predict_all(work_models, out_dir, only=None):
     os.makedirs(f"{out_dir}/oof", exist_ok=True)
     os.makedirs(f"{out_dir}/pred", exist_ok=True)
     d = Data()
+    d.knn_cache_dir = f"{out_dir}/knn_cache"
     ex, ext = d.agg_features()
     done = set()
     for name, spec in cfg["members"].items():

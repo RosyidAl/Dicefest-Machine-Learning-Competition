@@ -162,11 +162,15 @@ def fit_fold(Za, ya, wa, Zb, yb, wb, Zt, epochs=30, bs=4096, lr=2e-3, wd=1e-5, h
     return predict(Xb), predict(Xt), best_ep
 
 
-def te_block(d, a, b, windows, cells=False):
-    """Per-fold spatial encodings, standardised with fitting-part statistics."""
+def te_block(d, a, b, windows, cells=False, knn=False):
+    """Per-fold spatial encodings (+ FB07 kNN target encodings), standardised with fitting-part statistics."""
     Fa = d.te_features(a, "oof", windows, cells)
     Fb = d.te_features(a, d.te_apply(b), windows, cells)
     Ft = d.te_features(a, d.te_apply(), windows, cells)
+    if knn:
+        Fa = pd.concat([Fa, d.knn_features(a, "oof")], axis=1)
+        Fb = pd.concat([Fb, d.knn_features(a, ("train", b))], axis=1)
+        Ft = pd.concat([Ft, d.knn_features(a, "test")], axis=1)
     cnt = [c for c in Fa.columns if c.endswith("_cnt")]
     for F in (Fa, Fb, Ft):
         F[cnt] = np.log1p(F[cnt])
@@ -180,7 +184,7 @@ def te_block(d, a, b, windows, cells=False):
 
 
 def run_nn(d, name, kind, out_dir="exp", wmul=None, use_te=False, windows=(), seeds=(SEED,), cells=False,
-           vary_order=False, extra=None, extra_t=None, **kw):
+           vary_order=False, extra=None, extra_t=None, knn=False, **kw):
     """vary_order: mini-batch order seeded per (seed, fold) instead of one shared order.
     extra / extra_t: additional feature frames for train / test rows (e.g. Data.agg_features())."""
     set_seed()
@@ -200,7 +204,7 @@ def run_nn(d, name, kind, out_dir="exp", wmul=None, use_te=False, windows=(), se
     for k, (a, b) in enumerate(d.folds):
         Za, Zb, Ztk = Z[a], Z[b], Zt
         if use_te:
-            Ta, Tb, Tt = te_block(d, a, b, windows, cells)
+            Ta, Tb, Tt = te_block(d, a, b, windows, cells, knn)
             Za, Zb, Ztk = np.hstack([Za, Ta]), np.hstack([Zb, Tb]), np.hstack([Zt, Tt])
         for s in seeds:
             set_seed(s + k)

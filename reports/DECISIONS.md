@@ -58,3 +58,15 @@
   Biaya membuang CatBoost: CV +0,00001 (v15 0,25001 vs v15nc 0,25002). Di public LB, v15ncrd (0,2499) malah lebih baik dari v15rd (0,25000).
 - Risiko: GPU dipakai bersama container lain. Peringatan OOM sempat muncul saat prediksi TabM (alokasi 1,25 GB gagal lalu
   dicoba ulang), tetapi hasilnya tetap identik. Mitigasi: chunk prediksi TabM 1024 baris; jalur GPU final hanya satu proses.
+
+### D005 [2026-10-16 13:04 WIB] Komposisi kandidat final
+- Konteks: FB07 DITERIMA. Pruning menunjukkan 17 anggota v15nc bisa dibuang tanpa rugi.
+- Opsi:
+  - (a) v15nc apa adanya;
+  - (b) v15nc pruned + anggota FB07, dengan bobot koreksi residual di-fit ulang di holdout yang memuat anggota FB07.
+- Bukti:
+  - E0191 vs E0190: gas -0,0011 dan EUI -0,0022 model tunggal;
+  - runtime_prune2.log: +0,000003 untuk 9,26 jam lebih cepat.
+- Keputusan: (b) jika holdout membuktikan rantai blend + koreksi baru lebih baik. Bila tidak, (a) dengan pruning.
+  Freeze setelah λ baru di-fit (target 17 Okt siang), lalu run #1.
+- Risiko: λ koreksi lama di-fit tanpa fitur kNN di model; dipakai apa adanya bisa over-correct. Mitigasi: fit ulang wajib.

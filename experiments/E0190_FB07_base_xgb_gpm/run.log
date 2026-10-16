@@ -2,3 +2,8 @@
 [2026-10-16 12:37] target_macro_gas_kwh fold 0: nrmse 0.25262 it 1677 (73s)
 [2026-10-16 12:38] target_macro_gas_kwh fold 1: nrmse 0.25458 it 1648 (158s)
 [2026-10-16 12:39] target_macro_gas_kwh fold 2: nrmse 0.25355 it 1466 (215s)
+[2026-10-16 12:40] target_macro_gas_kwh fold 3: nrmse 0.25271 it 1712 (275s)
+[2026-10-16 12:42] target_macro_gas_kwh fold 4: nrmse 0.25109 it 1749 (339s)
+[2026-10-16 12:42] target_macro_gas_kwh: OOF nrmse 0.25291
+[2026-10-16 12:42] target_eui_gas_kwh_per_sqm (derived gas / A): OOF nrmse 0.66444
+[2026-10-16 12:42] done in 5.7 min

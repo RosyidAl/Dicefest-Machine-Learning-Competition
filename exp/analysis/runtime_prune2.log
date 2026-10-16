@@ -1,2 +1,18 @@
 resumed after dropping ['l4_lepa', 'n6_epm_wM', 'p2_gpm', 'p3_epm_wM', 'lgb_epm_wM_tew', 'x4_epm_wM', 'la_elec', 'la_epm_wM', 'x4_lepa', 'x4_epa', 'l4_elec', 'xgb_epm_wM', 'l4_epm_wM', 'p2_lgpm']: honest 0.242885 saved 6.25h
 base honest 0.242886; total member hours 28.51
+drop la_gpm                0.82h  honest 0.242885 (-0.000001)  saved  7.06h
+drop la_epa                0.91h  honest 0.242887 (+0.000001)  saved  7.97h
+drop l4_gpm                1.29h  honest 0.242889 (+0.000003)  saved  9.26h
+drop p3_lepm               1.63h  honest 0.242894 (+0.000008)  saved 10.89h
+drop la_leui_wA            0.69h  honest 0.242897 (+0.000011)  saved 11.58h
+drop xa_lepa               0.41h  honest 0.242898 (+0.000012)  saved 11.99h
+drop la_lgpm               0.71h  honest 0.242902 (+0.000016)  saved 12.70h
+drop t1_lepm               2.94h  honest 0.242921 (+0.000036)  saved 15.64h
+drop lgb_gas               0.32h  honest 0.242924 (+0.000038)  saved 15.96h
+drop l4_epa                0.46h  honest 0.242927 (+0.000041)  saved 16.41h
+drop xgb_gpn_tew           0.55h  honest 0.242931 (+0.000046)  saved 16.96h
+drop la_gas                1.08h  honest 0.242944 (+0.000058)  saved 18.04h
+drop x8_lgpm               0.27h  honest 0.242948 (+0.000062)  saved 18.31h
+drop xgb_epm_wM_tew_k10    0.27h  honest 0.242952 (+0.000066)  saved 18.57h
+drop xa_gpm                1.27h  honest 0.242976 (+0.000090)  saved 19.84h
+drop n4f_gpm               0.19h  honest 0.242979 (+0.000093)  saved 20.03h

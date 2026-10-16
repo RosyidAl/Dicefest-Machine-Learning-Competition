@@ -73,16 +73,16 @@ def full_notebook():
            "`inference_from_artifacts.ipynb`."),
         code(SETUP),
     ] + embed_cells() + [
-        md("## Tahap 1: melatih semua model\nDua proses paralel: jalur `gpu` (XGBoost, MLP) dan jalur `cpu` "
-           "(LightGBM, 12 thread). Output: prediksi OOF dan test per model di `dicefest_nb/work/`."),
+        md("## Tahap 1: melatih semua model\nTiga proses paralel: jalur `xgb` (XGBoost CUDA), `nn` (MLP PyTorch) dan "
+           "`cpu` (LightGBM, 12 thread). Output: prediksi OOF dan test per model di `dicefest_nb/work/`."),
         code('''import shutil
 if os.path.exists(WORK):
     shutil.rmtree(WORK)          # reproduce from a clean state
 os.makedirs(WORK)
 t0 = time.time()
 procs = {}
-for lane in ("gpu", "cpu"):
-    env = dict(os.environ, OMP_NUM_THREADS="4" if lane == "gpu" else "12")
+for lane in pipeline.LANES:   # XGBoost (GPU), MLPs (GPU), LightGBM (CPU) in parallel
+    env = dict(os.environ, OMP_NUM_THREADS=pipeline.LANE_THREADS[lane])
     cmd = [sys.executable, "-u", "-c",
            f"import sys; sys.path.insert(0, {os.path.join(ROOT, 'src')!r}); import pipeline; "
            f"pipeline.run_members({lane!r}, {WORK!r})"]

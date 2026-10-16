@@ -34,7 +34,8 @@ def main():
     ap.add_argument("--out", default=os.path.join(HERE, "output", "submission.csv"))
     ap.add_argument("--clean", action="store_true")
     ap.add_argument("--stage", default="all", choices=["all", "members", "adoption", "assemble"])
-    ap.add_argument("--lane", choices=["gpu", "cpu"])
+    ap.add_argument("--lane", choices=["gpu", "cpu", "xgb", "nn"])
+    ap.add_argument("--lanes", default="xgb,nn,cpu", help="parallel lanes for the members stage")
     ap.add_argument("--only", default="", help="comma-separated member names (members stage, for tests)")
     a = ap.parse_args()
     import pipeline
@@ -49,9 +50,9 @@ def main():
     if a.stage == "all":
         log(f"start, work {a.work}")
         procs = {}
-        for lane in ("gpu", "cpu"):
+        for lane in a.lanes.split(","):
             lf = open(os.path.join(a.work, f"lane_{lane}.log"), "a")
-            env = dict(os.environ, OMP_NUM_THREADS="4" if lane == "gpu" else "12")
+            env = dict(os.environ, OMP_NUM_THREADS=pipeline.LANE_THREADS[lane])
             cmd = [sys.executable, "-u", os.path.abspath(__file__), "--stage", "members", "--lane", lane, "--work", a.work]
             if a.only:
                 cmd += ["--only", a.only]

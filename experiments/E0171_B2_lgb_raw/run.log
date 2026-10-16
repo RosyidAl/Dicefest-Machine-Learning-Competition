@@ -9,3 +9,13 @@
 [2026-10-16 12:38] target_macro_elec_kwh fold 1: nrmse 0.33439 it 188 (527s)
 [2026-10-16 12:38] target_macro_elec_kwh fold 2: nrmse 0.33300 it 156 (575s)
 [2026-10-16 12:39] target_macro_elec_kwh fold 3: nrmse 0.33095 it 178 (626s)
+[2026-10-16 12:40] target_macro_elec_kwh fold 4: nrmse 0.32995 it 193 (686s)
+[2026-10-16 12:40] target_macro_elec_kwh: OOF nrmse 0.33222
+[2026-10-16 12:42] target_eui_gas_kwh_per_sqm fold 0: nrmse 0.69418 it 372 (773s)
+[2026-10-16 12:43] target_eui_gas_kwh_per_sqm fold 1: nrmse 0.69510 it 291 (843s)
+[2026-10-16 12:44] target_eui_gas_kwh_per_sqm fold 2: nrmse 0.69336 it 345 (916s)
+[2026-10-16 12:45] target_eui_gas_kwh_per_sqm fold 3: nrmse 0.69070 it 333 (988s)
+[2026-10-16 12:47] target_eui_gas_kwh_per_sqm fold 4: nrmse 0.69330 it 333 (1056s)
+[2026-10-16 12:47] target_eui_gas_kwh_per_sqm: OOF nrmse 0.69333
+[2026-10-16 12:52] target_clean_building_ratio fold 0: nrmse 0.01658 it 2801 (1382s)
+[2026-10-16 13:05] target_clean_building_ratio fold 1: nrmse 0.01605 it 6373 (2142s)
