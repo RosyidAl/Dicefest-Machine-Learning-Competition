@@ -1,0 +1,53 @@
+{
+ "exp_id": "E0206",
+ "cv_scheme": "primary",
+ "fold_file": "data/folds/folds_primary_k5_s42.parquet",
+ "per_target": {
+  "target_macro_gas_kwh": {
+   "nrmse": 0.2595707191736754,
+   "rmse": 39389.867017434015,
+   "fold_nrmse": [
+    0.2592015961536514,
+    0.2607883129575252,
+    0.25871772867970333
+   ],
+   "best_iteration": [
+    202,
+    226,
+    221
+   ]
+  },
+  "target_macro_elec_kwh": {
+   "nrmse": 0.32978019140442155,
+   "rmse": 13760.20050502031,
+   "fold_nrmse": [
+    0.33025809631451314,
+    0.33008646812884157,
+    0.3289945855255855
+   ],
+   "best_iteration": [
+    146,
+    127,
+    124
+   ]
+  },
+  "target_eui_gas_kwh_per_sqm": {
+   "nrmse": 0.674368167254398,
+   "rmse": 27.413065998891277,
+   "fold_nrmse": [
+    0.6739441870835285,
+    0.6746501108378543,
+    0.6745099967094335
+   ],
+   "best_iteration": [
+    207,
+    250,
+    250
+   ]
+  }
+ },
+ "nrmse_mean": null,
+ "runtime_min": 8.94268085161845,
+ "peak_ram_gb": 5.642982482910156,
+ "peak_vram_gb": 0.0
+}

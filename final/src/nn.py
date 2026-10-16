@@ -241,7 +241,7 @@ def run_nn(d, name, kind, out_dir="exp", wmul=None, use_te=False, windows=(), se
 
 
 def run_nn_multi(d, name, tasks, out_dir="exp", use_te=False, windows=(), seeds=(SEED,), cells=False, extra=None,
-                 extra_t=None, model_dir=None, **kw):
+                 extra_t=None, model_dir=None, knn=False, **kw):
     """Multi-task MLP: one network fits several target formulations at once (shared trunk, one output each).
     tasks: list of (suffix, kind, wmul); each task's weights are normalised to mean 1, so the tasks count equally.
     Saves one OOF / test prediction per task as <name>_<suffix> (same physical scales as run_nn)."""

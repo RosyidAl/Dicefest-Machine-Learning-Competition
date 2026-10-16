@@ -229,7 +229,7 @@ def run_nn(d, name, kind, out_dir="exp", wmul=None, use_te=False, windows=(), se
 
 
 def run_nn_multi(d, name, tasks, out_dir="exp", use_te=False, windows=(), seeds=(SEED,), cells=False, extra=None,
-                 extra_t=None, **kw):
+                 extra_t=None, knn=False, **kw):
     """Multi-task MLP: one network fits several target formulations at once (shared trunk, one output each).
     tasks: list of (suffix, kind, wmul); each task's weights are normalised to mean 1, so the tasks count equally.
     Saves one OOF / test prediction per task as <name>_<suffix> (same physical scales as run_nn)."""
@@ -255,7 +255,7 @@ def run_nn_multi(d, name, tasks, out_dir="exp", use_te=False, windows=(), seeds=
     for k, (a, b) in enumerate(d.folds):
         Za, Zb, Ztk = Z[a], Z[b], Zt
         if use_te:
-            Ta, Tb, Tt = te_block(d, a, b, windows, cells)
+            Ta, Tb, Tt = te_block(d, a, b, windows, cells, knn)
             Za, Zb, Ztk = np.hstack([Za, Ta]), np.hstack([Zb, Tb]), np.hstack([Zt, Tt])
         for s in seeds:
             set_seed(s + k)

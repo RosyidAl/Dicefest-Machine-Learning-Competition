@@ -79,7 +79,7 @@ def run_members(lane, work, only=None):
             tasks = [(s, k, _wmul(d, w)) for s, k, w in m["tasks"]]
             agg = dict(extra=ex, extra_t=ext) if m["agg"] else {}
             run_nn_multi(d, g, tasks, out_dir=work, use_te=m["use_te"], windows=tuple(m["windows"]), cells=m["cells"],
-                         epochs=m["epochs"], fixed_ep=m["fixed_ep"], seeds=tuple(m["seeds"]),
+                         knn=m.get("knn", False), epochs=m["epochs"], fixed_ep=m["fixed_ep"], seeds=tuple(m["seeds"]),
                          model_dir=f"{work}/models/{g}", **agg, **m["params"])
             continue
         if os.path.exists(f"{work}/pred/{name}.npy"):

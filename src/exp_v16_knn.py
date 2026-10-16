@@ -36,6 +36,14 @@ JOBS = {  # name: backend, kind, params, weight code
     # PLR MLPs (p2 settings) with the kNN encodings
     "pk_gpm": ("nn", "gpm", dict(lr=1e-3, wd=1e-4, drop=0.3, hidden=(1024, 512, 256), seeds=(42, 43, 44),
                                  emb=dict(k=24, sigma=0.05, d=24), epochs=12, fixed_ep=11), "iA"),
+    "pk_gpgea": ("nn", "gas_per:bld_dim_03", dict(lr=1e-3, wd=1e-4, drop=0.3, hidden=(1024, 512, 256), seeds=(42, 43, 44),
+                                             emb=dict(k=24, sigma=0.05, d=24), epochs=12, fixed_ep=11), "iA"),
+    "pk_lgpm": ("nn", "lgas_per:bld_dim_12", dict(lr=1e-3, wd=1e-4, drop=0.3, hidden=(1024, 512, 256), seeds=(42, 43, 44),
+                                              emb=dict(k=24, sigma=0.05, d=24), epochs=12, fixed_ep=11), "A"),
+    # multi-task PLR MLP (m1 settings) with the kNN encodings -> mk1_gpm, mk1_epm
+    "mk1": ("nn_multi", [("gpm", "gpm", "iA"), ("epm", "epm", "iM")], dict(lr=1e-3, wd=1e-4, drop=0.3,
+            hidden=(2048, 1024, 512), seeds=(42, 43, 44), emb=dict(k=24, sigma=0.05, d=24), epochs=12, fixed_ep=11),
+            None),
     "pk_lepm": ("nn", "lepm", dict(lr=1e-3, wd=1e-4, drop=0.3, hidden=(1024, 512, 256), seeds=(42, 43, 44),
                                    emb=dict(k=24, sigma=0.02, d=48), epochs=10, fixed_ep=9), "M"),
 }
@@ -60,7 +68,12 @@ else:
 W = {"A": D.A, "iA": 1.0 / D.A, "M": D.M.astype(float), "iM": 1.0 / D.M}
 for name in names:
     backend, kind, params, wk = JOBS[name]
-    if os.path.exists(f"{out}/pred/{name}.npy"):
+    if os.path.exists(f"{out}/pred/{name}.npy") or os.path.exists(f"{out}/pred/{name}_gpm.npy"):
+        continue
+    if backend == "nn_multi":
+        from nn import run_nn_multi
+        run_nn_multi(D, name, [(sfx, k, W[w]) for sfx, k, w in kind], out_dir=out, use_te=True, windows=(2, 10),
+                     cells=True, knn=True, **agg, **params)
         continue
     if backend == "nn":
         from nn import run_nn
