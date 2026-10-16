@@ -1,0 +1,33 @@
+  [n6_lepm] fold 0 best_ep=[23, 23, 23] 79s
+  [n6_lepm] fold 1 best_ep=[23, 23, 23] 153s
+  [n6_lepm] fold 2 best_ep=[23, 23, 23] 236s
+  [n6_lepm] fold 3 best_ep=[23, 23, 23] 306s
+  [n6_lepm] fold 4 best_ep=[23, 23, 23] 384s
+  [n6_lepm] fold 5 best_ep=[23, 23, 23] 463s
+  [n6_lepm] fold 6 best_ep=[23, 23, 23] 536s
+  [n6_lepm] fold 7 best_ep=[23, 23, 23] 616s
+  [n6_lepm] fold 8 best_ep=[23, 23, 23] 688s
+  [n6_lepm] fold 9 best_ep=[23, 23, 23] 766s
+[n6_lepm] elec=0.32138 epochs=[23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23] time=766s
+  [n6_epm_wM] fold 0 best_ep=[22, 22, 22] 83s
+  [n6_epm_wM] fold 1 best_ep=[22, 22, 22] 161s
+  [n6_epm_wM] fold 2 best_ep=[22, 22, 22] 245s
+  [n6_epm_wM] fold 3 best_ep=[22, 22, 22] 321s
+  [n6_epm_wM] fold 4 best_ep=[22, 22, 22] 405s
+  [n6_epm_wM] fold 5 best_ep=[22, 22, 22] 483s
+  [n6_epm_wM] fold 6 best_ep=[22, 22, 22] 564s
+  [n6_epm_wM] fold 7 best_ep=[22, 22, 22] 646s
+  [n6_epm_wM] fold 8 best_ep=[22, 22, 22] 723s
+  [n6_epm_wM] fold 9 best_ep=[22, 22, 22] 805s
+[n6_epm_wM] elec=0.32060 epochs=[22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22] time=805s
+  [n6_epa] fold 0 best_ep=[19, 19, 19] 74s
+  [n6_epa] fold 1 best_ep=[19, 19, 19] 142s
+  [n6_epa] fold 2 best_ep=[19, 19, 19] 217s
+  [n6_epa] fold 3 best_ep=[19, 19, 19] 286s
+  [n6_epa] fold 4 best_ep=[19, 19, 19] 351s
+  [n6_epa] fold 5 best_ep=[19, 19, 19] 425s
+  [n6_epa] fold 6 best_ep=[19, 19, 19] 488s
+  [n6_epa] fold 7 best_ep=[19, 19, 19] 566s
+  [n6_epa] fold 8 best_ep=[19, 19, 19] 640s
+  [n6_epa] fold 9 best_ep=[19, 19, 19] 719s
+[n6_epa] elec=0.32173 epochs=[19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19] time=719s

@@ -1,0 +1,56 @@
+/root/Dicefest/.venv/lib/python3.12/site-packages/xgboost/core.py:569: UserWarning: [16:02:26] WARNING: /__w/xgboost/xgboost/src/common/error_msg.cc:62: Falling back to prediction using DMatrix due to mismatched devices. This might lead to higher memory usage and slower performance. XGBoost is running on: cuda:0, while the input data is on: cpu.
+Potential solutions:
+- Use a data structure that matches the device ordinal in the booster.
+- Set the device for booster before call to inplace_predict.
+
+This warning will only be shown once.
+
+  return func(**kwargs)
+  [xgb_eui_wM] fold 0 it=1856 43s
+  [xgb_eui_wM] fold 1 it=1697 86s
+  [xgb_eui_wM] fold 2 it=1616 127s
+  [xgb_eui_wM] fold 3 it=1714 170s
+  [xgb_eui_wM] fold 4 it=1848 218s
+[xgb_eui_wM] eui=0.66894 gas=0.25559 iters=[1856, 1697, 1616, 1714, 1848] time=218s
+  [xgb_eui_wsM] fold 0 it=1522 42s
+  [xgb_eui_wsM] fold 1 it=1614 86s
+  [xgb_eui_wsM] fold 2 it=1660 128s
+  [xgb_eui_wsM] fold 3 it=1579 170s
+  [xgb_eui_wsM] fold 4 it=1659 201s
+[xgb_eui_wsM] eui=0.66895 gas=0.25553 iters=[1522, 1614, 1660, 1579, 1659] time=201s
+  [xgb_gas] fold 0 it=2612 42s
+  [xgb_gas] fold 1 it=2109 77s
+  [xgb_gas] fold 2 it=2516 117s
+  [xgb_gas] fold 3 it=2692 160s
+  [xgb_gas] fold 4 it=2167 196s
+[xgb_gas] eui=0.67838 gas=0.25737 iters=[2612, 2109, 2516, 2692, 2167] time=196s
+  [xgb_gpm] fold 0 it=1981 35s
+  [xgb_gpm] fold 1 it=2082 73s
+  [xgb_gpm] fold 2 it=1875 109s
+  [xgb_gpm] fold 3 it=1698 142s
+  [xgb_gpm] fold 4 it=2080 179s
+[xgb_gpm] eui=0.67278 gas=0.25664 iters=[1981, 2082, 1875, 1698, 2080] time=179s
+  [xgb_elec] fold 0 it=1001 21s
+  [xgb_elec] fold 1 it=1017 42s
+  [xgb_elec] fold 2 it=943 62s
+  [xgb_elec] fold 3 it=989 83s
+  [xgb_elec] fold 4 it=1152 105s
+[xgb_elec] elec=0.32534 iters=[1001, 1017, 943, 989, 1152] time=105s
+  [xgb_epm] fold 0 it=679 18s
+  [xgb_epm] fold 1 it=749 37s
+  [xgb_epm] fold 2 it=680 55s
+  [xgb_epm] fold 3 it=656 72s
+  [xgb_epm] fold 4 it=589 89s
+[xgb_epm] elec=0.32491 iters=[679, 749, 680, 656, 589] time=89s
+  [cat_eui] fold 0 it=5281 89s
+  [cat_eui] fold 1 it=4572 225s
+  [cat_eui] fold 2 it=4672 444s
+  [cat_eui] fold 3 it=4860 645s
+  [cat_eui] fold 4 it=5179 878s
+[cat_eui] eui=0.67182 gas=0.25675 iters=[5281, 4572, 4672, 4860, 5179] time=878s
+  [cat_epm] fold 0 it=2285 98s
+  [cat_epm] fold 1 it=2134 213s
+  [cat_epm] fold 2 it=2106 309s
+  [cat_epm] fold 3 it=2319 403s
+  [cat_epm] fold 4 it=2456 511s
+[cat_epm] elec=0.32437 iters=[2285, 2134, 2106, 2319, 2456] time=511s

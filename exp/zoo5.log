@@ -1,0 +1,81 @@
+/root/Dicefest/.venv/lib/python3.12/site-packages/xgboost/core.py:569: UserWarning: [17:14:07] WARNING: /__w/xgboost/xgboost/src/common/error_msg.cc:62: Falling back to prediction using DMatrix due to mismatched devices. This might lead to higher memory usage and slower performance. XGBoost is running on: cuda:0, while the input data is on: cpu.
+Potential solutions:
+- Use a data structure that matches the device ordinal in the booster.
+- Set the device for booster before call to inplace_predict.
+
+This warning will only be shown once.
+
+  return func(**kwargs)
+  [xgb_leui_wA_tew] fold 0 it=1848 65s
+  [xgb_leui_wA_tew] fold 1 it=1603 124s
+  [xgb_leui_wA_tew] fold 2 it=1726 174s
+  [xgb_leui_wA_tew] fold 3 it=1623 292s
+  [xgb_leui_wA_tew] fold 4 it=2066 429s
+[xgb_leui_wA_tew] eui=0.67244 gas=0.25372 iters=[1848, 1603, 1726, 1623, 2066] time=429s
+  [xgb_lepm_tew] fold 0 it=858 84s
+  [xgb_lepm_tew] fold 1 it=797 150s
+  [xgb_lepm_tew] fold 2 it=816 223s
+  [xgb_lepm_tew] fold 3 it=922 309s
+  [xgb_lepm_tew] fold 4 it=894 360s
+[xgb_lepm_tew] elec=0.32377 iters=[858, 797, 816, 922, 894] time=360s
+  [xgb_gpm_tew] fold 0 it=1917 142s
+  [xgb_gpm_tew] fold 1 it=1700 266s
+  [xgb_gpm_tew] fold 2 it=1632 388s
+  [xgb_gpm_tew] fold 3 it=1614 507s
+  [xgb_gpm_tew] fold 4 it=1724 577s
+[xgb_gpm_tew] eui=0.66550 gas=0.25384 iters=[1917, 1700, 1632, 1614, 1724] time=577s
+  [xgb_gas_tew] fold 0 it=2556 61s
+  [xgb_gas_tew] fold 1 it=1771 190s
+  [xgb_gas_tew] fold 2 it=2229 348s
+  [xgb_gas_tew] fold 3 it=2130 492s
+  [xgb_gas_tew] fold 4 it=2320 638s
+[xgb_gas_tew] eui=0.67451 gas=0.25524 iters=[2556, 1771, 2229, 2130, 2320] time=638s
+  [xgb_elec_tew] fold 0 it=1137 101s
+  [xgb_elec_tew] fold 1 it=1196 198s
+  [xgb_elec_tew] fold 2 it=1211 290s
+  [xgb_elec_tew] fold 3 it=1122 373s
+  [xgb_elec_tew] fold 4 it=1053 453s
+[xgb_elec_tew] elec=0.32420 iters=[1137, 1196, 1211, 1122, 1053] time=453s
+  [xgb_gpn_tew] fold 0 it=6530 369s
+  [xgb_gpn_tew] fold 1 it=6076 717s
+  [xgb_gpn_tew] fold 2 it=6213 1175s
+  [xgb_gpn_tew] fold 3 it=5133 1550s
+  [xgb_gpn_tew] fold 4 it=6110 1980s
+[xgb_gpn_tew] eui=0.67814 gas=0.26082 iters=[6530, 6076, 6213, 5133, 6110] time=1980s
+  [xgb_gpgea_tew] fold 0 it=1652 151s
+  [xgb_gpgea_tew] fold 1 it=1582 261s
+  [xgb_gpgea_tew] fold 2 it=1495 401s
+  [xgb_gpgea_tew] fold 3 it=1853 558s
+  [xgb_gpgea_tew] fold 4 it=1735 722s
+[xgb_gpgea_tew] eui=0.66748 gas=0.25372 iters=[1652, 1582, 1495, 1853, 1735] time=722s
+  [xgb_lgpm_tew] fold 0 it=1777 150s
+  [xgb_lgpm_tew] fold 1 it=1663 309s
+  [xgb_lgpm_tew] fold 2 it=1820 463s
+  [xgb_lgpm_tew] fold 3 it=1859 637s
+  [xgb_lgpm_tew] fold 4 it=1682 777s
+[xgb_lgpm_tew] eui=0.66944 gas=0.25410 iters=[1777, 1663, 1820, 1859, 1682] time=777s
+  [xgb_epa_tew] fold 0 it=843 92s
+  [xgb_epa_tew] fold 1 it=1017 199s
+  [xgb_epa_tew] fold 2 it=786 237s
+  [xgb_epa_tew] fold 3 it=791 259s
+  [xgb_epa_tew] fold 4 it=709 282s
+[xgb_epa_tew] elec=0.32374 iters=[843, 1017, 786, 791, 709] time=282s
+  [xgb_lepa_tew] fold 0 it=854 27s
+  [xgb_lepa_tew] fold 1 it=1057 57s
+  [xgb_lepa_tew] fold 2 it=984 83s
+  [xgb_lepa_tew] fold 3 it=950 110s
+  [xgb_lepa_tew] fold 4 it=845 135s
+[xgb_lepa_tew] elec=0.32365 iters=[854, 1057, 984, 950, 845] time=135s
+  [cat_eui_wA_tew] fold 0 it=4661 324s
+  [cat_eui_wA_tew] fold 1 it=4657 1079s
+  [cat_eui_wA_tew] fold 2 it=5716 2146s
+  [cat_eui_wA_tew] fold 3 it=5553 3149s
+  [cat_eui_wA_tew] fold 4 it=5798 4255s
+[cat_eui_wA_tew] eui=0.66378 gas=0.25246 iters=[4661, 4657, 5716, 5553, 5798] time=4255s
+Warning: less than 75% GPU memory available for training. Free: 11750.3125 Total: 15974.6875
+  [cat_epm_wM_tew] fold 0 it=2513 404s
+  [cat_epm_wM_tew] fold 1 it=2346 757s
+  [cat_epm_wM_tew] fold 2 it=2745 1133s
+  [cat_epm_wM_tew] fold 3 it=2845 1542s
+  [cat_epm_wM_tew] fold 4 it=2915 1977s
+[cat_epm_wM_tew] elec=0.32235 iters=[2513, 2346, 2745, 2845, 2915] time=1977s

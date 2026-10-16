@@ -1,0 +1,6 @@
+  [lgb_gpm_tew] fold 0 it=1243 308s
+  [lgb_gpm_tew] fold 1 it=1558 1411s
+  [lgb_gpm_tew] fold 2 it=1150 1775s
+  [lgb_gpm_tew] fold 3 it=1409 2224s
+  [lgb_gpm_tew] fold 4 it=1420 2882s
+[lgb_gpm_tew] eui=0.66428 gas=0.25302 iters=[1243, 1558, 1150, 1409, 1420] time=2882s

@@ -1,0 +1,44 @@
+/root/Dicefest/src/nn.py:43: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  Z[c + "_nan"] = X[c].isna().astype("float32")
+/root/Dicefest/src/nn.py:44: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  Zt[c + "_nan"] = Xt[c].isna().astype("float32")
+/root/Dicefest/src/nn.py:43: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  Z[c + "_nan"] = X[c].isna().astype("float32")
+/root/Dicefest/src/nn.py:44: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  Zt[c + "_nan"] = Xt[c].isna().astype("float32")
+/root/Dicefest/src/nn.py:43: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  Z[c + "_nan"] = X[c].isna().astype("float32")
+/root/Dicefest/src/nn.py:44: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  Zt[c + "_nan"] = Xt[c].isna().astype("float32")
+/root/Dicefest/src/nn.py:43: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  Z[c + "_nan"] = X[c].isna().astype("float32")
+/root/Dicefest/src/nn.py:44: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  Zt[c + "_nan"] = Xt[c].isna().astype("float32")
+  [nn_eui] fold 0 best_ep=12 10s
+  [nn_eui] fold 1 best_ep=11 20s
+  [nn_eui] fold 2 best_ep=14 30s
+  [nn_eui] fold 3 best_ep=9 40s
+  [nn_eui] fold 4 best_ep=11 51s
+[nn_eui] eui=0.68710 gas=0.26537 epochs=[12, 11, 14, 9, 11] time=51s
+/root/Dicefest/src/nn.py:43: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  Z[c + "_nan"] = X[c].isna().astype("float32")
+/root/Dicefest/src/nn.py:44: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  Zt[c + "_nan"] = Xt[c].isna().astype("float32")
+/root/Dicefest/src/nn.py:43: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  Z[c + "_nan"] = X[c].isna().astype("float32")
+/root/Dicefest/src/nn.py:44: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  Zt[c + "_nan"] = Xt[c].isna().astype("float32")
+/root/Dicefest/src/nn.py:43: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  Z[c + "_nan"] = X[c].isna().astype("float32")
+/root/Dicefest/src/nn.py:44: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  Zt[c + "_nan"] = Xt[c].isna().astype("float32")
+/root/Dicefest/src/nn.py:43: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  Z[c + "_nan"] = X[c].isna().astype("float32")
+/root/Dicefest/src/nn.py:44: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  Zt[c + "_nan"] = Xt[c].isna().astype("float32")
+  [nn_epm] fold 0 best_ep=5 9s
+  [nn_epm] fold 1 best_ep=6 19s
+  [nn_epm] fold 2 best_ep=5 29s
+  [nn_epm] fold 3 best_ep=8 38s
+  [nn_epm] fold 4 best_ep=6 48s
+[nn_epm] elec=0.32750 epochs=[5, 6, 5, 8, 6] time=48s

@@ -1,0 +1,52 @@
+/root/Dicefest/.venv/lib/python3.12/site-packages/xgboost/core.py:569: UserWarning: [20:02:37] WARNING: /__w/xgboost/xgboost/src/common/error_msg.cc:62: Falling back to prediction using DMatrix due to mismatched devices. This might lead to higher memory usage and slower performance. XGBoost is running on: cuda:0, while the input data is on: cpu.
+Potential solutions:
+- Use a data structure that matches the device ordinal in the booster.
+- Set the device for booster before call to inplace_predict.
+
+This warning will only be shown once.
+
+  return func(**kwargs)
+  [x8_gpm] fold 0 it=1414 81s
+  [x8_gpm] fold 1 it=1846 190s
+  [x8_gpm] fold 2 it=2004 306s
+  [x8_gpm] fold 3 it=1559 407s
+  [x8_gpm] fold 4 it=1752 511s
+  [x8_gpm] fold 5 it=1853 623s
+  [x8_gpm] fold 6 it=2251 753s
+  [x8_gpm] fold 7 it=2303 889s
+  [x8_gpm] fold 8 it=1786 995s
+  [x8_gpm] fold 9 it=2251 1127s
+[x8_gpm] eui=0.66131 gas=0.25156 iters=[1414, 1846, 2004, 1559, 1752, 1853, 2251, 2303, 1786, 2251] time=1127s
+  [x8_gpgea] fold 0 it=1582 99s
+  [x8_gpgea] fold 1 it=1709 205s
+  [x8_gpgea] fold 2 it=1589 284s
+  [x8_gpgea] fold 3 it=1831 371s
+  [x8_gpgea] fold 4 it=1574 460s
+  [x8_gpgea] fold 5 it=1657 546s
+  [x8_gpgea] fold 6 it=1975 643s
+  [x8_gpgea] fold 7 it=1685 732s
+  [x8_gpgea] fold 8 it=2145 838s
+  [x8_gpgea] fold 9 it=1744 939s
+[x8_gpgea] eui=0.66351 gas=0.25166 iters=[1582, 1709, 1589, 1831, 1574, 1657, 1975, 1685, 2145, 1744] time=939s
+  [x8_lgpm] fold 0 it=1672 63s
+  [x8_lgpm] fold 1 it=2250 158s
+  [x8_lgpm] fold 2 it=1854 248s
+  [x8_lgpm] fold 3 it=1855 339s
+  [x8_lgpm] fold 4 it=1947 438s
+  [x8_lgpm] fold 5 it=1643 538s
+  [x8_lgpm] fold 6 it=1728 641s
+  [x8_lgpm] fold 7 it=2026 756s
+  [x8_lgpm] fold 8 it=1912 863s
+  [x8_lgpm] fold 9 it=1494 953s
+[x8_lgpm] eui=0.66525 gas=0.25160 iters=[1672, 2250, 1854, 1855, 1947, 1643, 1728, 2026, 1912, 1494] time=953s
+  [x8_gpn] fold 0 it=5372 214s
+  [x8_gpn] fold 1 it=6158 453s
+  [x8_gpn] fold 2 it=4238 619s
+  [x8_gpn] fold 3 it=4097 784s
+  [x8_gpn] fold 4 it=4813 1127s
+  [x8_gpn] fold 5 it=4026 1269s
+  [x8_gpn] fold 6 it=5148 1448s
+  [x8_gpn] fold 7 it=5474 1634s
+  [x8_gpn] fold 8 it=5708 1845s
+  [x8_gpn] fold 9 it=4141 1992s
+[x8_gpn] eui=0.67793 gas=0.26045 iters=[5372, 6158, 4238, 4097, 4813, 4026, 5148, 5474, 5708, 4141] time=1992s

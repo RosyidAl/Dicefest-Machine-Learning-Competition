@@ -1,0 +1,44 @@
+  [l4_gpgea] fold 0 it=1263 421s
+  [l4_gpgea] fold 1 it=1437 698s
+  [l4_gpgea] fold 2 it=1011 906s
+  [l4_gpgea] fold 3 it=1183 1149s
+  [l4_gpgea] fold 4 it=1056 1364s
+  [l4_gpgea] fold 5 it=1248 1617s
+  [l4_gpgea] fold 6 it=1134 1843s
+  [l4_gpgea] fold 7 it=1145 2068s
+  [l4_gpgea] fold 8 it=1790 2402s
+  [l4_gpgea] fold 9 it=973 2606s
+[l4_gpgea] eui=0.66332 gas=0.25188 iters=[1263, 1437, 1011, 1183, 1056, 1248, 1134, 1145, 1790, 973] time=2606s
+  [l4_epa] fold 0 it=571 136s
+  [l4_epa] fold 1 it=583 281s
+  [l4_epa] fold 2 it=667 445s
+  [l4_epa] fold 3 it=659 596s
+  [l4_epa] fold 4 it=767 772s
+  [l4_epa] fold 5 it=505 904s
+  [l4_epa] fold 6 it=737 1149s
+  [l4_epa] fold 7 it=442 1333s
+  [l4_epa] fold 8 it=680 1498s
+  [l4_epa] fold 9 it=541 1644s
+[l4_epa] elec=0.32207 iters=[571, 583, 667, 659, 767, 505, 737, 442, 680, 541] time=1644s
+  [l4_lepa] fold 0 it=626 156s
+  [l4_lepa] fold 1 it=634 313s
+  [l4_lepa] fold 2 it=729 473s
+  [l4_lepa] fold 3 it=880 625s
+  [l4_lepa] fold 4 it=672 769s
+  [l4_lepa] fold 5 it=566 906s
+  [l4_lepa] fold 6 it=775 1065s
+  [l4_lepa] fold 7 it=689 1232s
+  [l4_lepa] fold 8 it=612 1364s
+  [l4_lepa] fold 9 it=789 1497s
+[l4_lepa] elec=0.32290 iters=[626, 634, 729, 880, 672, 566, 775, 689, 612, 789] time=1497s
+  [l4_elec] fold 0 it=1014 186s
+  [l4_elec] fold 1 it=890 373s
+  [l4_elec] fold 2 it=784 503s
+  [l4_elec] fold 3 it=757 653s
+  [l4_elec] fold 4 it=691 789s
+  [l4_elec] fold 5 it=729 950s
+  [l4_elec] fold 6 it=1074 1286s
+  [l4_elec] fold 7 it=770 1461s
+  [l4_elec] fold 8 it=644 1623s
+  [l4_elec] fold 9 it=687 1801s
+[l4_elec] elec=0.32317 iters=[1014, 890, 784, 757, 691, 729, 1074, 770, 644, 687] time=1801s

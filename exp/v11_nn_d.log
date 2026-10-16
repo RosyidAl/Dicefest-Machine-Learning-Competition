@@ -1,0 +1,11 @@
+  [t1_epm_wM] fold 0 best_ep=[23] 1431s
+  [t1_epm_wM] fold 1 best_ep=[23] 2907s
+  [t1_epm_wM] fold 2 best_ep=[23] 4514s
+  [t1_epm_wM] fold 3 best_ep=[23] 6072s
+  [t1_epm_wM] fold 4 best_ep=[23] 7569s
+  [t1_epm_wM] fold 5 best_ep=[23] 9158s
+  [t1_epm_wM] fold 6 best_ep=[23] 10902s
+  [t1_epm_wM] fold 7 best_ep=[23] 12643s
+  [t1_epm_wM] fold 8 best_ep=[23] 14382s
+  [t1_epm_wM] fold 9 best_ep=[23] 15914s
+[t1_epm_wM] elec=0.31938 epochs=[23, 23, 23, 23, 23, 23, 23, 23, 23, 23] time=15914s

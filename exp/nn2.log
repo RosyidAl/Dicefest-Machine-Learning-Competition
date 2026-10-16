@@ -1,0 +1,24 @@
+  [nn_eui_wA_te] fold 0 best_ep=[27] 16s
+  [nn_eui_wA_te] fold 1 best_ep=[29] 30s
+  [nn_eui_wA_te] fold 2 best_ep=[24] 46s
+  [nn_eui_wA_te] fold 3 best_ep=[27] 60s
+  [nn_eui_wA_te] fold 4 best_ep=[28] 75s
+[nn_eui_wA_te] eui=0.67351 gas=0.25527 epochs=[27, 29, 24, 27, 28] time=75s
+  [nn_epm_wM_te] fold 0 best_ep=[27] 15s
+  [nn_epm_wM_te] fold 1 best_ep=[24] 30s
+  [nn_epm_wM_te] fold 2 best_ep=[18] 47s
+  [nn_epm_wM_te] fold 3 best_ep=[18] 61s
+  [nn_epm_wM_te] fold 4 best_ep=[22] 78s
+[nn_epm_wM_te] elec=0.32197 epochs=[27, 24, 18, 18, 22] time=78s
+  [nn_leui_wA_te] fold 0 best_ep=[24] 15s
+  [nn_leui_wA_te] fold 1 best_ep=[27] 29s
+  [nn_leui_wA_te] fold 2 best_ep=[24] 44s
+  [nn_leui_wA_te] fold 3 best_ep=[27] 60s
+  [nn_leui_wA_te] fold 4 best_ep=[27] 76s
+[nn_leui_wA_te] eui=0.68130 gas=0.25636 epochs=[24, 27, 24, 27, 27] time=76s
+  [nn_lepm_te] fold 0 best_ep=[27] 14s
+  [nn_lepm_te] fold 1 best_ep=[24] 29s
+  [nn_lepm_te] fold 2 best_ep=[25] 43s
+  [nn_lepm_te] fold 3 best_ep=[24] 59s
+  [nn_lepm_te] fold 4 best_ep=[21] 74s
+[nn_lepm_te] elec=0.32284 epochs=[27, 24, 25, 24, 21] time=74s

@@ -1,0 +1,7 @@
+gas  lam [0.468 0.457 0.274] correction rms/sigma 0.01741
+eui  lam [0.608 0.435 0.284] correction rms/sigma 0.03360
+elec lam [0.393 0.039 0.307] correction rms/sigma 0.01225
+wrote submissions/sub_v15ncr.csv (183987, 6)
+rows copied from train: 77
+wrote submissions/sub_v15ncrd.csv (183987, 6)
+done

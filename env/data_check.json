@@ -1,0 +1,85 @@
+{
+ "train": {
+  "md5": "fa14e9aa16ab8fa65a9a55e2e7188447",
+  "shape": [
+   429303,
+   209
+  ],
+  "prefix_counts": {
+   "bld_dim_": 43,
+   "bld_era_": 15,
+   "hvac_dist_": 10,
+   "env_climate_": 6,
+   "socio_demog_": 127
+  },
+  "n_features": 201,
+  "other_cols": [
+   "id",
+   "zone_region_id",
+   "subzone_id",
+   "target_macro_gas_kwh",
+   "target_macro_elec_kwh",
+   "target_eui_gas_kwh_per_sqm",
+   "target_clean_building_ratio",
+   "target_electric_heating_adoption"
+  ],
+  "cache_identical": true,
+  "dtypes": {
+   "float64": 204,
+   "str": 5
+  }
+ },
+ "test": {
+  "md5": "9511b3f7f8fcd912eb25cee8a109900d",
+  "shape": [
+   183987,
+   204
+  ],
+  "prefix_counts": {
+   "bld_dim_": 43,
+   "bld_era_": 15,
+   "hvac_dist_": 10,
+   "env_climate_": 6,
+   "socio_demog_": 127
+  },
+  "n_features": 201,
+  "other_cols": [
+   "id",
+   "zone_region_id",
+   "subzone_id"
+  ],
+  "cache_identical": true,
+  "dtypes": {
+   "float64": 199,
+   "str": 5
+  }
+ },
+ "sample_submission": {
+  "md5": "0403eac2273404c8807422d1e3caa542",
+  "shape": [
+   183987,
+   6
+  ],
+  "prefix_counts": {
+   "bld_dim_": 0,
+   "bld_era_": 0,
+   "hvac_dist_": 0,
+   "env_climate_": 0,
+   "socio_demog_": 0
+  },
+  "n_features": 0,
+  "other_cols": [
+   "id",
+   "target_macro_gas_kwh",
+   "target_macro_elec_kwh",
+   "target_eui_gas_kwh_per_sqm",
+   "target_clean_building_ratio",
+   "target_electric_heating_adoption"
+  ],
+  "cache_identical": true,
+  "dtypes": {
+   "float64": 5,
+   "str": 1
+  }
+ }
+}

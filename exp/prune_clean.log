@@ -1,0 +1,48 @@
+gas family (in-sample eui+gas NRMSE):
+   1 +c4_eui_wA              0.91258
+   2 +n6_gpm                 0.90603
+   3 +l4_gpm                 0.90310
+   4 +x4_gpn                 0.90234
+   5 +c4_lgpm                0.90174
+   6 +x4_gpgea               0.90137
+   7 +x4_gas                 0.90117
+   8 +l4_eui_wA              0.90103
+   9 +l4_lgpm                0.90093
+  10 +n6_lgpm                0.90084
+  11 +c4_gpm                 0.90077
+  12 +n6_gpgea               0.90071
+  13 +x4_gpm                 0.90066
+  14 +c4_leui_wA             0.90061
+  15 +c4_gpgea               0.90059
+  16 +l4_leui_wA             0.90056
+  17 +l4_gpgea               0.90055
+  18 +x4_lgpm                0.90054
+  19 +x4_leui_wA             0.90053
+  20 +x4_eui_wA              0.90053
+  21 +n6_leui_wA             0.90053
+  22 +n6_eui_wA              0.90053
+elec family (in-sample elec NRMSE):
+   1 +n6_lepm                0.32031
+   2 +l4_epa                 0.31828
+   3 +c4_lepa                0.31792
+   4 +l4_epm_wM              0.31777
+   5 +x4_elec                0.31770
+   6 +x4_lepa                0.31766
+   7 +c4_epa                 0.31762
+   8 +x4_epm_wM              0.31760
+   9 +l4_elec                0.31759
+  10 +n6_epm_wM              0.31758
+  11 +c4_lepm                0.31757
+  12 +l4_lepa                0.31757
+  13 +l4_lepm                0.31756
+  14 +x4_epa                 0.31756
+  15 +x4_lepm                0.31756
+  16 +c4_epm_wM              0.31756
+  17 +n6_epa                 0.31756
+gas runs: c4_eui_wA,n6_gpm,l4_gpm,x4_gpn,c4_lgpm,x4_gpgea,x4_gas,l4_eui_wA,l4_lgpm,n6_lgpm,c4_gpm,n6_gpgea,x4_gpm,c4_leui_wA,c4_gpgea,l4_leui_wA,l4_gpgea,x4_lgpm,x4_leui_wA,x4_eui_wA,n6_leui_wA,n6_eui_wA
+elec runs: n6_lepm,l4_epa,c4_lepa,l4_epm_wM,x4_elec,x4_lepa,c4_epa,x4_epm_wM,l4_elec,n6_epm_wM,c4_lepm,l4_lepa,l4_lepm,x4_epa,x4_lepm,c4_epm_wM,n6_epa
+top-8: honest gas 0.24705 elec 0.31763 eui 0.65401 total 0.25087
+top-12: honest gas 0.24687 elec 0.31761 eui 0.65389 total 0.25080
+top-16: honest gas 0.24679 elec 0.31761 eui 0.65384 total 0.25078
+top-20: honest gas 0.24679 elec 0.31761 eui 0.65382 total 0.25077
+top-25: honest gas 0.24679 elec 0.31761 eui 0.65382 total 0.25077

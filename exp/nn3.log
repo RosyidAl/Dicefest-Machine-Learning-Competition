@@ -1,0 +1,12 @@
+  [nn3_eui_wA_te] fold 0 best_ep=[25, 30, 23] 116s
+  [nn3_eui_wA_te] fold 1 best_ep=[23, 23, 23] 234s
+  [nn3_eui_wA_te] fold 2 best_ep=[24, 24, 24] 347s
+  [nn3_eui_wA_te] fold 3 best_ep=[33, 24, 29] 461s
+  [nn3_eui_wA_te] fold 4 best_ep=[27, 27, 36] 573s
+[nn3_eui_wA_te] eui=0.67105 gas=0.25415 epochs=[25, 30, 23, 23, 23, 23, 24, 24, 24, 33, 24, 29, 27, 27, 36] time=573s
+  [nn3_epm_wM_te] fold 0 best_ep=[14, 14, 14] 115s
+  [nn3_epm_wM_te] fold 1 best_ep=[12, 14, 14] 231s
+  [nn3_epm_wM_te] fold 2 best_ep=[18, 18, 14] 346s
+  [nn3_epm_wM_te] fold 3 best_ep=[18, 18, 17] 461s
+  [nn3_epm_wM_te] fold 4 best_ep=[13, 17, 13] 576s
+[nn3_epm_wM_te] elec=0.32182 epochs=[14, 14, 14, 12, 14, 14, 18, 18, 14, 18, 18, 17, 13, 17, 13] time=576s

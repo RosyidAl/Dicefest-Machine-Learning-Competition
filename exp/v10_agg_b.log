@@ -1,0 +1,52 @@
+/root/Dicefest/.venv/lib/python3.12/site-packages/xgboost/core.py:569: UserWarning: [13:52:08] WARNING: /__w/xgboost/xgboost/src/common/error_msg.cc:62: Falling back to prediction using DMatrix due to mismatched devices. This might lead to higher memory usage and slower performance. XGBoost is running on: cuda:0, while the input data is on: cpu.
+Potential solutions:
+- Use a data structure that matches the device ordinal in the booster.
+- Set the device for booster before call to inplace_predict.
+
+This warning will only be shown once.
+
+  return func(**kwargs)
+  [xa_gpgea] fold 0 it=1597 300s
+  [xa_gpgea] fold 1 it=1856 584s
+  [xa_gpgea] fold 2 it=1750 779s
+  [xa_gpgea] fold 3 it=1833 1003s
+  [xa_gpgea] fold 4 it=1887 1231s
+  [xa_gpgea] fold 5 it=1379 1409s
+  [xa_gpgea] fold 6 it=1665 1615s
+  [xa_gpgea] fold 7 it=1656 1820s
+  [xa_gpgea] fold 8 it=2008 2067s
+  [xa_gpgea] fold 9 it=1605 2293s
+[xa_gpgea] eui=0.66294 gas=0.25131 iters=[1597, 1856, 1750, 1833, 1887, 1379, 1665, 1656, 2008, 1605] time=2293s
+  [xa_lgpm] fold 0 it=1736 221s
+  [xa_lgpm] fold 1 it=1975 441s
+  [xa_lgpm] fold 2 it=1807 659s
+  [xa_lgpm] fold 3 it=2019 905s
+  [xa_lgpm] fold 4 it=1678 1117s
+  [xa_lgpm] fold 5 it=1695 1331s
+  [xa_lgpm] fold 6 it=1637 1538s
+  [xa_lgpm] fold 7 it=1511 1734s
+  [xa_lgpm] fold 8 it=1844 1957s
+  [xa_lgpm] fold 9 it=1708 2168s
+[xa_lgpm] eui=0.66465 gas=0.25158 iters=[1736, 1975, 1807, 2019, 1678, 1695, 1637, 1511, 1844, 1708] time=2168s
+  [xa_lepa] fold 0 it=1010 108s
+  [xa_lepa] fold 1 it=833 204s
+  [xa_lepa] fold 2 it=1066 316s
+  [xa_lepa] fold 3 it=967 430s
+  [xa_lepa] fold 4 it=1248 575s
+  [xa_lepa] fold 5 it=836 733s
+  [xa_lepa] fold 6 it=1265 962s
+  [xa_lepa] fold 7 it=858 1137s
+  [xa_lepa] fold 8 it=974 1324s
+  [xa_lepa] fold 9 it=767 1478s
+[xa_lepa] elec=0.32268 iters=[1010, 833, 1066, 967, 1248, 836, 1265, 858, 974, 767] time=1478s
+  [xa_epm_wM] fold 0 it=801 163s
+  [xa_epm_wM] fold 1 it=676 303s
+  [xa_epm_wM] fold 2 it=899 482s
+  [xa_epm_wM] fold 3 it=672 624s
+  [xa_epm_wM] fold 4 it=786 782s
+  [xa_epm_wM] fold 5 it=685 922s
+  [xa_epm_wM] fold 6 it=944 1098s
+  [xa_epm_wM] fold 7 it=675 1237s
+  [xa_epm_wM] fold 8 it=794 1400s
+  [xa_epm_wM] fold 9 it=731 1554s
+[xa_epm_wM] elec=0.32199 iters=[801, 676, 899, 672, 786, 685, 944, 675, 794, 731] time=1554s

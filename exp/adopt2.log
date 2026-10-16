@@ -1,0 +1,14 @@
+  adoption fold 0 it=329
+  adoption fold 1 it=269
+  adoption fold 2 it=394
+  adoption fold 3 it=464
+  adoption fold 4 it=372
+adoption unseen-subzone CV rmse=0.89729
+neighbours=False: rmse_unseen=0.89729 frac_known=0.9186 expected test NRMSE=0.03566
+  adoption fold 0 it=190
+  adoption fold 1 it=430
+  adoption fold 2 it=222
+  adoption fold 3 it=357
+  adoption fold 4 it=415
+adoption unseen-subzone CV rmse=0.89546
+neighbours=True: rmse_unseen=0.89546 frac_known=0.9186 expected test NRMSE=0.03559

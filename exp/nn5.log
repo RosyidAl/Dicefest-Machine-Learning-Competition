@@ -1,0 +1,36 @@
+  [nn5_gpgea_te] fold 0 best_ep=[30, 30, 30] 108s
+  [nn5_gpgea_te] fold 1 best_ep=[23, 28, 23] 214s
+  [nn5_gpgea_te] fold 2 best_ep=[35, 24, 24] 319s
+  [nn5_gpgea_te] fold 3 best_ep=[33, 28, 29] 428s
+  [nn5_gpgea_te] fold 4 best_ep=[27, 27, 29] 535s
+[nn5_gpgea_te] eui=0.67054 gas=0.25385 epochs=[30, 30, 30, 23, 28, 23, 35, 24, 24, 33, 28, 29, 27, 27, 29] time=535s
+  [nn5_gpn_te] fold 0 best_ep=[52, 52, 55] 114s
+  [nn5_gpn_te] fold 1 best_ep=[49, 47, 49] 240s
+  [nn5_gpn_te] fold 2 best_ep=[59, 59, 59] 371s
+  [nn5_gpn_te] fold 3 best_ep=[50, 49, 49] 505s
+  [nn5_gpn_te] fold 4 best_ep=[57, 57, 57] 638s
+[nn5_gpn_te] eui=0.68506 gas=0.26421 epochs=[52, 52, 55, 49, 47, 49, 59, 59, 59, 50, 49, 49, 57, 57, 57] time=638s
+  [nn5_lgpm_te] fold 0 best_ep=[27, 37, 27] 128s
+  [nn5_lgpm_te] fold 1 best_ep=[41, 24, 41] 261s
+  [nn5_lgpm_te] fold 2 best_ep=[27, 27, 27] 389s
+  [nn5_lgpm_te] fold 3 best_ep=[34, 34, 34] 516s
+  [nn5_lgpm_te] fold 4 best_ep=[28, 29, 35] 642s
+[nn5_lgpm_te] eui=0.67198 gas=0.25425 epochs=[27, 37, 27, 41, 24, 41, 27, 27, 27, 34, 34, 34, 28, 29, 35] time=642s
+  [nn5_epa_te] fold 0 best_ep=[13, 13, 13] 126s
+  [nn5_epa_te] fold 1 best_ep=[18, 18, 18] 253s
+  [nn5_epa_te] fold 2 best_ep=[10, 10, 10] 381s
+  [nn5_epa_te] fold 3 best_ep=[20, 17, 16] 508s
+  [nn5_epa_te] fold 4 best_ep=[16, 11, 11] 635s
+[nn5_epa_te] elec=0.32301 epochs=[13, 13, 13, 18, 18, 18, 10, 10, 10, 20, 17, 16, 16, 11, 11] time=635s
+  [nn5_gas_te] fold 0 best_ep=[54, 54, 54] 126s
+  [nn5_gas_te] fold 1 best_ep=[54, 54, 54] 255s
+  [nn5_gas_te] fold 2 best_ep=[51, 51, 51] 383s
+  [nn5_gas_te] fold 3 best_ep=[59, 59, 59] 510s
+  [nn5_gas_te] fold 4 best_ep=[51, 51, 45] 637s
+[nn5_gas_te] eui=0.67187 gas=0.25603 epochs=[54, 54, 54, 54, 54, 54, 51, 51, 51, 59, 59, 59, 51, 51, 45] time=637s
+  [nn5_elec_te] fold 0 best_ep=[34, 34, 22] 127s
+  [nn5_elec_te] fold 1 best_ep=[27, 27, 31] 255s
+  [nn5_elec_te] fold 2 best_ep=[27, 15, 27] 381s
+  [nn5_elec_te] fold 3 best_ep=[30, 30, 24] 512s
+  [nn5_elec_te] fold 4 best_ep=[36, 45, 32] 643s
+[nn5_elec_te] elec=0.32368 epochs=[34, 34, 22, 27, 27, 31, 27, 15, 27, 30, 30, 24, 36, 45, 32] time=643s

@@ -1,0 +1,4 @@
+gas  lam [0.468 0.457 0.274] correction rms/sigma 0.01727
+eui  lam [0.608 0.435 0.284] correction rms/sigma 0.03336
+elec lam [0.393 0.039 0.307] correction rms/sigma 0.01224
+wrote submissions/sub_v11r.csv (183987, 6)

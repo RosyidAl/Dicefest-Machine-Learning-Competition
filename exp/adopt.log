@@ -1,0 +1,6 @@
+OA-level cols 118 postcode-level cols 85
+naive rest-mean(r): rmse 1.2154833428623104
+r-model [361, 320, 414, 281, 328]
+r-model rmse 0.8968686411417608 78.06409025192261
+direct [696, 677, 538, 861, 686]
+direct rmse 0.9700303788465593

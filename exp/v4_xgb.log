@@ -1,0 +1,140 @@
+/root/Dicefest/.venv/lib/python3.12/site-packages/xgboost/core.py:569: UserWarning: [21:05:27] WARNING: /__w/xgboost/xgboost/src/common/error_msg.cc:62: Falling back to prediction using DMatrix due to mismatched devices. This might lead to higher memory usage and slower performance. XGBoost is running on: cuda:0, while the input data is on: cpu.
+Potential solutions:
+- Use a data structure that matches the device ordinal in the booster.
+- Set the device for booster before call to inplace_predict.
+
+This warning will only be shown once.
+
+  return func(**kwargs)
+  [x4_eui_wA] fold 0 it=1383 134s
+  [x4_eui_wA] fold 1 it=1688 291s
+  [x4_eui_wA] fold 2 it=2042 471s
+  [x4_eui_wA] fold 3 it=1323 596s
+  [x4_eui_wA] fold 4 it=1719 754s
+  [x4_eui_wA] fold 5 it=1786 914s
+  [x4_eui_wA] fold 6 it=1813 1077s
+  [x4_eui_wA] fold 7 it=1821 1245s
+  [x4_eui_wA] fold 8 it=1797 1409s
+  [x4_eui_wA] fold 9 it=1466 1543s
+[x4_eui_wA] eui=0.66536 gas=0.25204 iters=[1383, 1688, 2042, 1323, 1719, 1786, 1813, 1821, 1797, 1466] time=1543s
+  [x4_lepa] fold 0 it=881 92s
+  [x4_lepa] fold 1 it=1001 184s
+  [x4_lepa] fold 2 it=1024 299s
+  [x4_lepa] fold 3 it=1045 416s
+  [x4_lepa] fold 4 it=846 501s
+  [x4_lepa] fold 5 it=798 585s
+  [x4_lepa] fold 6 it=1083 706s
+  [x4_lepa] fold 7 it=900 807s
+  [x4_lepa] fold 8 it=907 899s
+  [x4_lepa] fold 9 it=823 997s
+[x4_lepa] elec=0.32293 iters=[881, 1001, 1024, 1045, 846, 798, 1083, 900, 907, 823] time=997s
+  [x4_gpn] fold 0 it=2918 236s
+  [x4_gpn] fold 1 it=4478 565s
+  [x4_gpn] fold 2 it=3042 812s
+  [x4_gpn] fold 3 it=3035 1042s
+  [x4_gpn] fold 4 it=3513 1315s
+  [x4_gpn] fold 5 it=3147 1559s
+  [x4_gpn] fold 6 it=3223 1809s
+  [x4_gpn] fold 7 it=3295 2059s
+  [x4_gpn] fold 8 it=3160 2303s
+  [x4_gpn] fold 9 it=2344 2501s
+[x4_gpn] eui=0.67899 gas=0.26188 iters=[2918, 4478, 3042, 3035, 3513, 3147, 3223, 3295, 3160, 2344] time=2501s
+  [x4_epm_wM] fold 0 it=831 81s
+  [x4_epm_wM] fold 1 it=769 163s
+  [x4_epm_wM] fold 2 it=1204 288s
+  [x4_epm_wM] fold 3 it=784 375s
+  [x4_epm_wM] fold 4 it=886 464s
+  [x4_epm_wM] fold 5 it=678 549s
+  [x4_epm_wM] fold 6 it=1094 642s
+  [x4_epm_wM] fold 7 it=729 721s
+  [x4_epm_wM] fold 8 it=667 819s
+  [x4_epm_wM] fold 9 it=730 901s
+[x4_epm_wM] elec=0.32197 iters=[831, 769, 1204, 784, 886, 678, 1094, 729, 667, 730] time=901s
+  [x4_lgpm] fold 0 it=1358 137s
+  [x4_lgpm] fold 1 it=1689 294s
+  [x4_lgpm] fold 2 it=1908 464s
+  [x4_lgpm] fold 3 it=1673 615s
+  [x4_lgpm] fold 4 it=1628 765s
+  [x4_lgpm] fold 5 it=1920 939s
+  [x4_lgpm] fold 6 it=1592 1088s
+  [x4_lgpm] fold 7 it=1911 1160s
+  [x4_lgpm] fold 8 it=1980 1233s
+  [x4_lgpm] fold 9 it=1940 1298s
+[x4_lgpm] eui=0.66688 gas=0.25259 iters=[1358, 1689, 1908, 1673, 1628, 1920, 1592, 1911, 1980, 1940] time=1298s
+  [x4_elec] fold 0 it=1148 48s
+  [x4_elec] fold 1 it=1092 92s
+  [x4_elec] fold 2 it=1406 143s
+  [x4_elec] fold 3 it=1388 195s
+  [x4_elec] fold 4 it=1035 236s
+  [x4_elec] fold 5 it=1088 284s
+  [x4_elec] fold 6 it=1166 332s
+  [x4_elec] fold 7 it=840 370s
+  [x4_elec] fold 8 it=1384 420s
+  [x4_elec] fold 9 it=735 457s
+[x4_elec] elec=0.32328 iters=[1148, 1092, 1406, 1388, 1035, 1088, 1166, 840, 1384, 735] time=457s
+  [x4_leui_wA] fold 0 it=1317 53s
+  [x4_leui_wA] fold 1 it=1643 112s
+  [x4_leui_wA] fold 2 it=1906 180s
+  [x4_leui_wA] fold 3 it=1773 245s
+  [x4_leui_wA] fold 4 it=2020 314s
+  [x4_leui_wA] fold 5 it=1935 386s
+  [x4_leui_wA] fold 6 it=1767 451s
+  [x4_leui_wA] fold 7 it=1684 514s
+  [x4_leui_wA] fold 8 it=1779 579s
+  [x4_leui_wA] fold 9 it=1993 649s
+[x4_leui_wA] eui=0.67020 gas=0.25221 iters=[1317, 1643, 1906, 1773, 2020, 1935, 1767, 1684, 1779, 1993] time=649s
+  [x4_epa] fold 0 it=616 39s
+  [x4_epa] fold 1 it=706 76s
+  [x4_epa] fold 2 it=734 114s
+  [x4_epa] fold 3 it=708 151s
+  [x4_epa] fold 4 it=969 194s
+  [x4_epa] fold 5 it=878 235s
+  [x4_epa] fold 6 it=959 276s
+  [x4_epa] fold 7 it=1195 327s
+  [x4_epa] fold 8 it=850 369s
+  [x4_epa] fold 9 it=778 409s
+[x4_epa] elec=0.32291 iters=[616, 706, 734, 708, 969, 878, 959, 1195, 850, 778] time=409s
+  [x4_gpm] fold 0 it=1550 60s
+  [x4_gpm] fold 1 it=1992 130s
+  [x4_gpm] fold 2 it=1800 192s
+  [x4_gpm] fold 3 it=1914 262s
+  [x4_gpm] fold 4 it=1867 325s
+  [x4_gpm] fold 5 it=1893 396s
+  [x4_gpm] fold 6 it=1709 454s
+  [x4_gpm] fold 7 it=1510 513s
+  [x4_gpm] fold 8 it=2054 588s
+  [x4_gpm] fold 9 it=1911 656s
+[x4_gpm] eui=0.66332 gas=0.25230 iters=[1550, 1992, 1800, 1914, 1867, 1893, 1709, 1510, 2054, 1911] time=656s
+  [x4_lepm] fold 0 it=944 44s
+  [x4_lepm] fold 1 it=834 85s
+  [x4_lepm] fold 2 it=1212 134s
+  [x4_lepm] fold 3 it=1036 182s
+  [x4_lepm] fold 4 it=1004 224s
+  [x4_lepm] fold 5 it=862 266s
+  [x4_lepm] fold 6 it=1035 312s
+  [x4_lepm] fold 7 it=823 352s
+  [x4_lepm] fold 8 it=1030 400s
+  [x4_lepm] fold 9 it=831 442s
+[x4_lepm] elec=0.32298 iters=[944, 834, 1212, 1036, 1004, 862, 1035, 823, 1030, 831] time=442s
+  [x4_gas] fold 0 it=1890 62s
+  [x4_gas] fold 1 it=2590 147s
+  [x4_gas] fold 2 it=2499 231s
+  [x4_gas] fold 3 it=1771 294s
+  [x4_gas] fold 4 it=2237 369s
+  [x4_gas] fold 5 it=1980 440s
+  [x4_gas] fold 6 it=2219 507s
+  [x4_gas] fold 7 it=2465 589s
+  [x4_gas] fold 8 it=2368 668s
+  [x4_gas] fold 9 it=2472 745s
+[x4_gas] eui=0.67194 gas=0.25372 iters=[1890, 2590, 2499, 1771, 2237, 1980, 2219, 2465, 2368, 2472] time=745s
+  [x4_gpgea] fold 0 it=2027 71s
+  [x4_gpgea] fold 1 it=1856 138s
+  [x4_gpgea] fold 2 it=2049 213s
+  [x4_gpgea] fold 3 it=1362 268s
+  [x4_gpgea] fold 4 it=1542 328s
+  [x4_gpgea] fold 5 it=2319 404s
+  [x4_gpgea] fold 6 it=1674 468s
+  [x4_gpgea] fold 7 it=2226 545s
+  [x4_gpgea] fold 8 it=1972 611s
+  [x4_gpgea] fold 9 it=1638 671s
+[x4_gpgea] eui=0.66513 gas=0.25251 iters=[2027, 1856, 2049, 1362, 1542, 2319, 1674, 2226, 1972, 1638] time=671s

@@ -1,0 +1,1 @@
+Terminated                 .venv/bin/python -u src/exp_v11_nn.py t1_epm_wM,t1_gpgea > exp/v11_nn_d.log 2>&1

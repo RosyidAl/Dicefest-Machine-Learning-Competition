@@ -1,0 +1,11 @@
+  [p1_gpm] fold 0 best_ep=[43, 43, 43] 711s
+  [p1_gpm] fold 1 best_ep=[43, 43, 43] 1416s
+  [p1_gpm] fold 2 best_ep=[43, 43, 43] 2126s
+  [p1_gpm] fold 3 best_ep=[43, 43, 43] 2849s
+  [p1_gpm] fold 4 best_ep=[43, 43, 43] 3577s
+  [p1_gpm] fold 5 best_ep=[43, 43, 43] 4288s
+  [p1_gpm] fold 6 best_ep=[43, 43, 43] 5004s
+  [p1_gpm] fold 7 best_ep=[43, 43, 43] 5699s
+  [p1_gpm] fold 8 best_ep=[43, 43, 43] 6368s
+  [p1_gpm] fold 9 best_ep=[43, 43, 43] 7067s
+[p1_gpm] eui=0.68291 gas=0.26033 epochs=[43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43] time=7067s

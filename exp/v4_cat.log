@@ -1,0 +1,44 @@
+  [c4_eui_wA] fold 0 it=4874 859s
+  [c4_eui_wA] fold 1 it=4568 1707s
+  [c4_eui_wA] fold 2 it=5383 2655s
+  [c4_eui_wA] fold 3 it=3664 3314s
+  [c4_eui_wA] fold 4 it=5794 4417s
+  [c4_eui_wA] fold 5 it=4399 5274s
+  [c4_eui_wA] fold 6 it=6698 6618s
+  [c4_eui_wA] fold 7 it=6240 7206s
+  [c4_eui_wA] fold 8 it=5984 7472s
+  [c4_eui_wA] fold 9 it=4187 7654s
+[c4_eui_wA] eui=0.66163 gas=0.25095 iters=[4874, 4568, 5383, 3664, 5794, 4399, 6698, 6240, 5984, 4187] time=7654s
+  [c4_epm_wM] fold 0 it=3296 151s
+  [c4_epm_wM] fold 1 it=2675 290s
+  [c4_epm_wM] fold 2 it=3605 460s
+  [c4_epm_wM] fold 3 it=3780 636s
+  [c4_epm_wM] fold 4 it=3327 782s
+  [c4_epm_wM] fold 5 it=2543 898s
+  [c4_epm_wM] fold 6 it=3706 1067s
+  [c4_epm_wM] fold 7 it=3822 1250s
+  [c4_epm_wM] fold 8 it=3197 1417s
+  [c4_epm_wM] fold 9 it=2372 1539s
+[c4_epm_wM] elec=0.32187 iters=[3296, 2675, 3605, 3780, 3327, 2543, 3706, 3822, 3197, 2372] time=1539s
+  [c4_gpm] fold 0 it=4894 232s
+  [c4_gpm] fold 1 it=4524 440s
+  [c4_gpm] fold 2 it=5452 674s
+  [c4_gpm] fold 3 it=5826 949s
+  [c4_gpm] fold 4 it=4129 1146s
+  [c4_gpm] fold 5 it=5080 1390s
+  [c4_gpm] fold 6 it=3252 1549s
+  [c4_gpm] fold 7 it=4979 1786s
+  [c4_gpm] fold 8 it=4190 1990s
+  [c4_gpm] fold 9 it=5342 2146s
+[c4_gpm] eui=0.66166 gas=0.25137 iters=[4894, 4524, 5452, 5826, 4129, 5080, 3252, 4979, 4190, 5342] time=2146s
+  [c4_lepm] fold 0 it=3211 68s
+  [c4_lepm] fold 1 it=2921 132s
+  [c4_lepm] fold 2 it=3612 206s
+  [c4_lepm] fold 3 it=3069 271s
+  [c4_lepm] fold 4 it=3009 336s
+  [c4_lepm] fold 5 it=3487 408s
+  [c4_lepm] fold 6 it=2694 466s
+  [c4_lepm] fold 7 it=2775 528s
+  [c4_lepm] fold 8 it=2489 582s
+  [c4_lepm] fold 9 it=2774 641s
+[c4_lepm] elec=0.32236 iters=[3211, 2921, 3612, 3069, 3009, 3487, 2694, 2775, 2489, 2774] time=641s

@@ -1,0 +1,13 @@
+eui {'x4_eui_wA': np.float64(0.9999)} sum 0.9999
+gas {'x4_eui_wA': np.float64(0.9986)} sum 0.9986
+elec {'x4_epm_wM': np.float64(0.9994)} sum 0.9994
+CV per target: {'target_macro_gas_kwh': np.float64(0.25202), 'target_macro_elec_kwh': np.float64(0.32197), 'target_eui_gas_kwh_per_sqm': np.float64(0.66536), 'target_clean_building_ratio': np.float64(0.0), 'target_electric_heating_adoption': np.float64(0.03565)}  mean: 0.255
+wrote submissions/sub_probe_x4.csv (183987, 6)
+                                           mean  ...           max
+target_macro_gas_kwh              230701.154550  ...  1.094447e+06
+target_macro_elec_kwh              63877.739495  ...  3.205979e+05
+target_eui_gas_kwh_per_sqm           138.961369  ...  3.988397e+02
+target_clean_building_ratio           90.770428  ...  1.000000e+02
+target_electric_heating_adoption       5.387128  ...  8.236010e+01
+
+[5 rows x 4 columns]

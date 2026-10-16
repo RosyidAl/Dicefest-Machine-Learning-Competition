@@ -1,0 +1,47 @@
+# DECISIONS (format ADR)
+
+### D000 [2026-10-16 11:28 WIB] Menerapkan MASTER_PROMPT di atas pekerjaan yang sudah berjalan
+- Konteks: MASTER_PROMPT baru diberikan 16 Okt, setelah 4 hari pemodelan (12 sampai 16 Okt).
+  Yang sudah ada: 168 model di exp/oof + exp/pred, 17 versi blend, public LB terbaik 0,2499 (sub_v15ncrd).
+  Struktur kode lama ada di src/ (train_lib, nn, te, prune, resid_corr, resid_knn) dan exp/.
+- Opsi:
+  - (a) mulai ulang dari nol sesuai struktur MASTER_PROMPT;
+  - (b) pertahankan kode dan artefak lama, backfill ke registry, lalu lanjutkan fase dengan struktur baru.
+- Bukti: run ulang model lama identik byte (XGB, LGB, MLP), jadi artefak lama bisa direproduksi.
+  Mengulang semuanya butuh sekitar 28 jam GPU + CPU hanya untuk kembali ke titik yang sama.
+- Keputusan: (b).
+  - Run lama tercatat sebagai E0001 sampai E0168 (model), ENS0001 sampai ENS0017 (blend), PP0001 sampai PP0004 (post-processing).
+  - Feature set lama dinamai FS_legacy.
+  - Eksperimen baru memakai registry, configs/ dan experiments/<id>/.
+- Risiko dan mitigasi: run lama tidak punya folder experiments/<id>/ lengkap. Mitigasinya, log, OOF dan skrip sumber dirujuk di kolom notes/config_path.
+
+### D001 [2026-10-16 11:28 WIB] Mekanisme split train/test: acak per baris
+- Bukti awal (EDA 12 Okt, diverifikasi ulang di Fase 1, angka lengkap di reports/eda/EDA_REPORT.md):
+  - 429.303 / 613.290 = 0,7000 tepat;
+  - semua 330 zone_region_id test ada di train;
+  - sekitar 92% subzone test ada di train;
+  - urutan id acak;
+  - CV KFold per baris cocok dengan public LB di 9 submisi.
+- Keputusan: test = sampel acak 30% per baris. Informasi tingkat grup (TE subzone/zone, agregat) sah dan dipakai.
+
+### D002 [2026-10-16 11:28 WIB] CV_PRIMARY = KFold(shuffle=True, random_state=42) per baris, 10-fold untuk model final
+- Konteks: MASTER menyarankan StratifiedKFold pada 20 bin t1 untuk split acak.
+  Semua 168 model lama memakai KFold(5 atau 10, shuffle, 42) per baris.
+- Bukti: CV vs public LB konsisten.
+  - v8 0,25061 ke 0,25116; v9r ke 0,25070; v12r 0,25015 ke 0,25025; v13ra ke 0,25008; v15rd 0,25001 ke 0,25000.
+  - Offset stabil, urutan selalu benar.
+- Keputusan: pertahankan KFold. File permanen: data/folds/folds_primary_k5_s42.parquet dan folds_primary_k10_s42.parquet.
+  tests/test_folds.py membuktikan keduanya identik dengan split train_lib.
+  CV_SECONDARY: data/folds/folds_secondary_k5_s42.parquet (zone dialokasikan acak ber-seed, baris seimbang).
+- Risiko: blend lama mencampur anggota 5-fold dan 10-fold (pitfall bagian 18). Tiap OOF tetap jujur out-of-fold.
+  Bobot NNLS dinilai dengan nested CV, dan holdout P70/H30 memberi bobot setara (0,25095 vs 0,25096).
+  Dampaknya kecil dan tercatat.
+
+### D003 [2026-10-16 11:28 WIB] Gerbang freeze dimajukan
+- Konteks: pipeline final (50 anggota blend v15nc) butuh sekitar 19 jam GPU + 9 jam CPU (paralel), jadi sekitar 20 jam per run.
+  Audit butuh 3 run penuh (run #1, run #2, notebook headless), sekitar 60 jam berurutan.
+  GPU juga dipakai bersama container lain.
+- Keputusan: freeze kandidat final paling lambat 18 Okt 18:00 WIB (bukan 22 Okt 12:00).
+  Run #1 dimulai segera setelah freeze, disusul run #2 dan notebook.
+  Eksperimen yang selesai setelah freeze hanya masuk bila ada waktu untuk mengulang ketiga run.
+- Risiko: perbaikan setelah freeze tidak ikut final. Mitigasi: prioritaskan eksperimen bernilai tinggi sebelum freeze.

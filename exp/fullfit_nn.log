@@ -1,0 +1,4 @@
+[n6_gpm] fold-avg eui 0.66693 gas 0.25338 | full x1 eui 0.66926 gas 0.25420 | full x3 eui 0.66796 gas 0.25361 | mix eui 0.66698 gas 0.25325
+[n6_lepm] fold-avg elec 0.32035 | full x1 elec 0.32089 | full x3 elec 0.32067 | mix elec 0.32034
+[n6_lgpm] fold-avg eui 0.66915 gas 0.25329 | full x1 eui 0.67150 gas 0.25446 | full x3 eui 0.67023 gas 0.25370 | mix eui 0.66923 gas 0.25324
+[n6_epm_wM] fold-avg elec 0.31958 | full x1 elec 0.32045 | full x3 elec 0.31998 | mix elec 0.31958

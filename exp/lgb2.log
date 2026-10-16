@@ -1,0 +1,24 @@
+  [lgb_eui_wA_tew] fold 0 it=1248 332s
+  [lgb_eui_wA_tew] fold 1 it=1161 643s
+  [lgb_eui_wA_tew] fold 2 it=1185 928s
+  [lgb_eui_wA_tew] fold 3 it=1170 1238s
+  [lgb_eui_wA_tew] fold 4 it=1307 1539s
+[lgb_eui_wA_tew] eui=0.66497 gas=0.25277 iters=[1248, 1161, 1185, 1170, 1307] time=1539s
+  [lgb_epm_wM_tew] fold 0 it=502 145s
+  [lgb_epm_wM_tew] fold 1 it=577 285s
+  [lgb_epm_wM_tew] fold 2 it=522 450s
+  [lgb_epm_wM_tew] fold 3 it=497 599s
+  [lgb_epm_wM_tew] fold 4 it=567 796s
+[lgb_epm_wM_tew] elec=0.32229 iters=[502, 577, 522, 497, 567] time=796s
+  [lgb_leui_wA_tew] fold 0 it=1159 311s
+  [lgb_leui_wA_tew] fold 1 it=1256 649s
+  [lgb_leui_wA_tew] fold 2 it=913 827s
+  [lgb_leui_wA_tew] fold 3 it=1461 1107s
+  [lgb_leui_wA_tew] fold 4 it=1215 1409s
+[lgb_leui_wA_tew] eui=0.66994 gas=0.25349 iters=[1159, 1256, 913, 1461, 1215] time=1409s
+  [lgb_lepm_tew] fold 0 it=573 155s
+  [lgb_lepm_tew] fold 1 it=575 300s
+  [lgb_lepm_tew] fold 2 it=600 459s
+  [lgb_lepm_tew] fold 3 it=544 633s
+  [lgb_lepm_tew] fold 4 it=708 886s
+[lgb_lepm_tew] elec=0.32338 iters=[573, 575, 600, 544, 708] time=886s

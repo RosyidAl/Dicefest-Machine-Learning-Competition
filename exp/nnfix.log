@@ -1,0 +1,22 @@
+  [n4f_gpm] fold 0 best_ep=[37, 37, 37] 68s
+  [n4f_gpm] fold 1 best_ep=[37, 37, 37] 139s
+  [n4f_gpm] fold 2 best_ep=[37, 37, 37] 209s
+  [n4f_gpm] fold 3 best_ep=[37, 37, 37] 278s
+  [n4f_gpm] fold 4 best_ep=[37, 37, 37] 347s
+  [n4f_gpm] fold 5 best_ep=[37, 37, 37] 415s
+  [n4f_gpm] fold 6 best_ep=[37, 37, 37] 484s
+  [n4f_gpm] fold 7 best_ep=[37, 37, 37] 554s
+  [n4f_gpm] fold 8 best_ep=[37, 37, 37] 623s
+  [n4f_gpm] fold 9 best_ep=[37, 37, 37] 691s
+[n4f_gpm] eui=0.66772 gas=0.25296 epochs=[37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37] time=691s
+  [n4f_lepm] fold 0 best_ep=[18, 18, 18] 37s
+  [n4f_lepm] fold 1 best_ep=[18, 18, 18] 74s
+  [n4f_lepm] fold 2 best_ep=[18, 18, 18] 112s
+  [n4f_lepm] fold 3 best_ep=[18, 18, 18] 147s
+  [n4f_lepm] fold 4 best_ep=[18, 18, 18] 184s
+  [n4f_lepm] fold 5 best_ep=[18, 18, 18] 222s
+  [n4f_lepm] fold 6 best_ep=[18, 18, 18] 259s
+  [n4f_lepm] fold 7 best_ep=[18, 18, 18] 297s
+  [n4f_lepm] fold 8 best_ep=[18, 18, 18] 335s
+  [n4f_lepm] fold 9 best_ep=[18, 18, 18] 372s
+[n4f_lepm] elec=0.32284 epochs=[18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18] time=372s

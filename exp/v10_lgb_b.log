@@ -1,0 +1,55 @@
+  [la_epa] fold 0 it=595 132s
+  [la_epa] fold 1 it=522 251s
+  [la_epa] fold 2 it=458 359s
+  [la_epa] fold 3 it=678 714s
+  [la_epa] fold 4 it=623 1217s
+  [la_epa] fold 5 it=526 2025s
+  [la_epa] fold 6 it=671 2438s
+  [la_epa] fold 7 it=372 2848s
+  [la_epa] fold 8 it=688 3027s
+  [la_epa] fold 9 it=783 3270s
+[la_epa] elec=0.32168 iters=[595, 522, 458, 678, 623, 526, 671, 372, 688, 783] time=3270s
+  [la_elec] fold 0 it=920 261s
+  [la_elec] fold 1 it=665 443s
+  [la_elec] fold 2 it=800 620s
+  [la_elec] fold 3 it=652 789s
+  [la_elec] fold 4 it=637 903s
+  [la_elec] fold 5 it=720 1084s
+  [la_elec] fold 6 it=910 1273s
+  [la_elec] fold 7 it=809 1432s
+  [la_elec] fold 8 it=778 1575s
+  [la_elec] fold 9 it=806 1743s
+[la_elec] elec=0.32314 iters=[920, 665, 800, 652, 637, 720, 910, 809, 778, 806] time=1743s
+  [la_gas] fold 0 it=1552 489s
+  [la_gas] fold 1 it=1721 1003s
+  [la_gas] fold 2 it=1387 1319s
+  [la_gas] fold 3 it=1748 1735s
+  [la_gas] fold 4 it=1451 2068s
+  [la_gas] fold 5 it=1668 2380s
+  [la_gas] fold 6 it=1781 2717s
+  [la_gas] fold 7 it=1934 3137s
+  [la_gas] fold 8 it=1930 3518s
+  [la_gas] fold 9 it=1735 3877s
+[la_gas] eui=0.66842 gas=0.25294 iters=[1552, 1721, 1387, 1748, 1451, 1668, 1781, 1934, 1930, 1735] time=3877s
+  [la_lepa] fold 0 it=662 177s
+  [la_lepa] fold 1 it=638 308s
+  [la_lepa] fold 2 it=779 479s
+  [la_lepa] fold 3 it=833 648s
+  [la_lepa] fold 4 it=786 900s
+  [la_lepa] fold 5 it=610 1119s
+  [la_lepa] fold 6 it=772 1321s
+  [la_lepa] fold 7 it=520 1475s
+  [la_lepa] fold 8 it=690 1635s
+  [la_lepa] fold 9 it=754 1910s
+[la_lepa] elec=0.32217 iters=[662, 638, 779, 833, 786, 610, 772, 520, 690, 754] time=1910s
+  [la_gpgea] fold 0 it=1067 349s
+  [la_gpgea] fold 1 it=1404 744s
+  [la_gpgea] fold 2 it=1149 1092s
+  [la_gpgea] fold 3 it=1097 1323s
+  [la_gpgea] fold 4 it=1325 1672s
+  [la_gpgea] fold 5 it=1234 1957s
+  [la_gpgea] fold 6 it=1107 2218s
+  [la_gpgea] fold 7 it=1258 2524s
+  [la_gpgea] fold 8 it=1329 2851s
+  [la_gpgea] fold 9 it=1312 3216s
+[la_gpgea] eui=0.66319 gas=0.25173 iters=[1067, 1404, 1149, 1097, 1325, 1234, 1107, 1258, 1329, 1312] time=3216s

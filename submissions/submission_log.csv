@@ -1,0 +1,52 @@
+created_wib,file,sha256,source,cv_mean,public_lb,note
+2026-10-12 23:18,submissions/sub_v1.csv,7a48c36853a629693b21cdb141aefe7e7cf94f6e0206cf520e201bea1a20a84c,legacy sub_v1,,,
+2026-10-12 23:56,submissions/sub_v2pre.csv,ed5a1d537353ac88fc707df3df26a916fc8cda3bf067441c2c098da7950ffa19,legacy sub_v2pre,,,
+2026-10-13 00:36,submissions/sub_tmp.csv,503b79b0e8ecf3326a0d3fe0a224907de53940ed809b713ede87b7d4342b3cae,legacy sub_tmp,,,
+2026-10-13 00:37,submissions/sub_v2.csv,503b79b0e8ecf3326a0d3fe0a224907de53940ed809b713ede87b7d4342b3cae,legacy sub_v2,,,
+2026-10-13 02:24,submissions/sub_v3.csv,b53f4fff81d8e59e36c000b21e9b2eca947eb92738506581acd0b4cb67945df0,legacy sub_v3,,,
+2026-10-13 05:42,submissions/sub_v4pre.csv,487d648c2ea483bdc7115d7d9892505f288bca221386c22ffcd5045ec213e494,legacy sub_v4pre,,,
+2026-10-13 16:33,submissions/sub_v4.csv,ad7c8f3b1f7ea0b915e225d81f393e5f7d930af1003233afb1d7549b0b381d43,legacy sub_v4,,,
+2026-10-13 19:52,submissions/sub_v6pre.csv,b9134afc0f0237ee24975fe272c42b8a300dd85906d2fde0aa82ecb88949e5e0,legacy sub_v6pre,,0.25125,submitted by user
+2026-10-13 20:33,submissions/sub_probe_x4.csv,585699d16674a76de737b84bbf41959668b13dbc9179112b2625b5b329a9b3db,legacy sub_probe_x4,,0.25317,submitted by user
+2026-10-14 00:45,submissions/sub_v6.csv,cdb426bfed787c093a39be8f1dd38a651bca603a389ae42d86f9d81f77529803,legacy sub_v6,0.25065,,
+2026-10-14 04:29,submissions/sub_v8.csv,2b3baaa33424bcc810a99103dfdaaf4fbf774e825ae1d4fa8e56d9a552601569,legacy sub_v8,0.25061,0.25116,submitted by user
+2026-10-14 12:58,submissions/sub_v8nc.csv,f5785b9367a39953a578fd7e2cf41f65609dc56969748c9834daa1d09b9f5d45,legacy sub_v8nc,0.25066,0.25118,submitted by user
+2026-10-14 17:10,submissions/sub_v9.csv,c6480a8a04f784aa42abc85715352a5a96add8c3301ae4ab39d0dad80ec178d8,legacy sub_v9,0.25055,,
+2026-10-14 17:11,submissions/sub_v9nc.csv,dbf3f200d4c7da4a561e8fa9358142741433c00f3ad02ab44942ed31e8a7da88,legacy sub_v9nc,0.25059,,
+2026-10-14 17:19,submissions/sub_v9r.csv,5f5170044adfae94b91d0873480da6921b1ffb162dd63fe73751755a7f6e004d,legacy sub_v9r,,0.25070,submitted by user
+2026-10-14 17:19,submissions/sub_v9ncr.csv,0a96ba7285f5c05ede52438b4638117cb5dbd2261439835189d9cf8f46e6ae3b,legacy sub_v9ncr,,,
+2026-10-14 18:48,submissions/sub_v10.csv,7da3e4207aab97d4bee7abfa5f83632e03bb79c13572f840a0fdb157b5a4fbf6,legacy sub_v10,,,
+2026-10-14 18:48,submissions/sub_v10r.csv,ff62e7fc11661e6eacca4898d3e1d6bee4913f8a44b956769367da9b2f9d97ef,legacy sub_v10r,,,
+2026-10-14 18:49,submissions/sub_v10nc.csv,af869067093545b7f559d3a7555b14c1925d1dc4e2b8bf6941230b1d78e0f067,legacy sub_v10nc,,,
+2026-10-14 18:49,submissions/sub_v10ncr.csv,204eee09249d63038b03fa3c7991b153144c5634beb85534129ce0cf722a4c52,legacy sub_v10ncr,,,
+2026-10-14 20:45,submissions/sub_v11.csv,411f604f3fd515ea43af6bbf43d556484cf4a0de5bef45565d64ebabb2f2ba9f,legacy sub_v11,,,
+2026-10-14 20:45,submissions/sub_v11r.csv,992f1b142cbe6e3b8561dd8cab25263d673a1704032f709b6a98371f6bd70eba,legacy sub_v11r,,,
+2026-10-14 20:46,submissions/sub_v11nc.csv,7c8731a7830baa2f976e47ae1bd2a8de58bd76f27c85b973a0410a9fda4fcf24,legacy sub_v11nc,,,
+2026-10-14 20:46,submissions/sub_v11ncr.csv,b905d138dd5696c491bf21968a3e584d4753c6f060d8e18648c2d802fde6d27a,legacy sub_v11ncr,,,
+2026-10-14 22:08,submissions/sub_v12.csv,678e902b296c15e194903790903b84c6cacc9fc203e4a6f43b6b27a9db44fa6d,legacy sub_v12,,,
+2026-10-14 22:08,submissions/sub_v12r.csv,4205f6c80d7de963454367d8cffcc1f360c768b258449a832aca37d16a45f5bc,legacy sub_v12r,0.25015 (pre-corr),0.25025,submitted by user
+2026-10-14 22:09,submissions/sub_v12nc.csv,81a06cfc955a4d7237866d858b5fbf49610bf54b9bcf7b02a41dc1616cc8c84d,legacy sub_v12nc,,,
+2026-10-14 22:10,submissions/sub_v12ncr.csv,4fc1ca011819dbb18b8189bd6bda705be1212a31a3c960d640e66244c289346c,legacy sub_v12ncr,,,
+2026-10-15 02:24,submissions/sub_v12ra.csv,7ab1b39e364e7d24917e632da9eb21d72a9777f77c9f1692c99c4796ccf9a43d,legacy sub_v12ra,,,
+2026-10-15 03:01,submissions/sub_v13.csv,5cbd678a40dc582ff643bad7a471494a7b98f54e2351539a4d983da3689f5158,legacy sub_v13,,,
+2026-10-15 03:01,submissions/sub_v13r.csv,86b6ae4866563b6297c494edf642e51e77b134eb7af3eddafb87c090ec565416,legacy sub_v13r,,,
+2026-10-15 03:02,submissions/sub_v13nc.csv,74be3da61dd6ee9ed671665bb6850c458ca947f386d6b9e9fcc83a0318470199,legacy sub_v13nc,,,
+2026-10-15 03:02,submissions/sub_v13ncr.csv,2bbae0eaa0561f2e72c5b54699f075bc105156336f469245ef035ad3b9297d3e,legacy sub_v13ncr,,,
+2026-10-15 03:03,submissions/sub_v13ra.csv,e040b26a17fee48ca9cd92815e46f4de84f7425ba0af13b911e1b4836dfaa706,legacy sub_v13ra,0.25007 (pre-corr),0.25008,submitted by user
+2026-10-15 03:03,submissions/sub_v13ncra.csv,889ed679775801d20d12d64158a685ac86ded8bb949075787cf97824bd25e53e,legacy sub_v13ncra,,,
+2026-10-15 07:46,submissions/sub_v13rad.csv,85e93b80e43aba52dd757b69d45c1b1a80a8f26e2aa62740e9e17999754f52eb,legacy sub_v13rad,,,
+2026-10-15 07:56,submissions/sub_v14.csv,a28faf184ac821fa0d206ead745bc7fad559a7c73beb791c7c1e6c98db331957,legacy sub_v14,,,
+2026-10-15 07:57,submissions/sub_v14r.csv,ea9a5230ece4e948b719ae1803d4ceee5dfe35d541bae990c595ab8c5c613a8d,legacy sub_v14r,,,
+2026-10-15 07:57,submissions/sub_v14nc.csv,11ee3a4d1c004a1ae461ce83897559fc7d0a10b77125845121346b034a394575,legacy sub_v14nc,,,
+2026-10-15 07:57,submissions/sub_v14ncr.csv,3150e3455af256d8ec7320d084416b54b3a3f033c381c85f4591d1c0e284ca35,legacy sub_v14ncr,,,
+2026-10-15 08:20,submissions/sub_v14rd.csv,92711267132f1835f262710e4e67c2c371317ade3330354c78c5f18676ae0f80,legacy sub_v14rd,,,
+2026-10-15 08:20,submissions/sub_v14ncrd.csv,3bdeb070c1b1453899b9c51b31138b511e17a83c4fd6158a388a7fa7f9658682,legacy sub_v14ncrd,,,
+2026-10-15 08:21,submissions/sub_v15.csv,291774de2987fa95f40ed33018aa025907b84113e390b3bf384aa8a0eca08987,legacy sub_v15,,,
+2026-10-15 08:21,submissions/sub_v15r.csv,58f3401a2384d0acbafd8a2c794f3b0141e0cae6f192e8baff61553f8e6064fe,legacy sub_v15r,,,
+2026-10-15 08:21,submissions/sub_v15rd.csv,3e63bb9e9eb60b4c8816f55bdf8c574f39ec00232fd91ecc889f3484782bb65a,legacy sub_v15rd,0.25001 (pre-corr),0.25000,submitted by user
+2026-10-15 08:22,submissions/sub_v15nc.csv,0b75eefaf46da9525eb7431c4e04a05ad43996e87f2822afd1b7626577fc34a8,legacy sub_v15nc,,,
+2026-10-15 08:22,submissions/sub_v15ncr.csv,257c543bd139e34c3af294b4e2fc6961d5263d28f36e63f357ae9be9156c0404,legacy sub_v15ncr,,,
+2026-10-15 08:22,submissions/sub_v15ncrd.csv,67d94da5c665e695a2df8420f82d959fcf8f08b49b357a42c363004c4177fef5,legacy sub_v15ncrd,0.25002 (pre-corr),0.2499,submitted by user
+2026-10-15 16:50,submissions/sub_v15ncrk.csv,ac4a88cd38818f231003f8832d01eb9decc41394b54c98caa4f782d4fec80e29,legacy sub_v15ncrk,,,
+2026-10-15 16:50,submissions/sub_v15ncrkd.csv,b6431a339ccc20a228c88b8bc977f596323006cdcb060722621f3de7550ba8d2,legacy sub_v15ncrkd,,,
+2026-10-16 11:25,submissions/BEST_CURRENT.csv,b6431a339ccc20a228c88b8bc977f596323006cdcb060722621f3de7550ba8d2,v15nc + resid_knn + dup_fix (= sub_v15ncrkd),0.25002 pre-corr; holdout corr -0.0009,,BEST_CURRENT

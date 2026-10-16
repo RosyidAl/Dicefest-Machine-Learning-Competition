@@ -1,0 +1,38 @@
+/root/Dicefest/.venv/lib/python3.12/site-packages/xgboost/core.py:569: UserWarning: [16:42:21] WARNING: /__w/xgboost/xgboost/src/common/error_msg.cc:62: Falling back to prediction using DMatrix due to mismatched devices. This might lead to higher memory usage and slower performance. XGBoost is running on: cuda:0, while the input data is on: cpu.
+Potential solutions:
+- Use a data structure that matches the device ordinal in the booster.
+- Set the device for booster before call to inplace_predict.
+
+This warning will only be shown once.
+
+  return func(**kwargs)
+  [xgb_eui_wA] fold 0 it=1791 40s
+  [xgb_eui_wA] fold 1 it=1683 82s
+  [xgb_eui_wA] fold 2 it=1862 126s
+  [xgb_eui_wA] fold 3 it=1638 166s
+  [xgb_eui_wA] fold 4 it=1850 206s
+[xgb_eui_wA] eui=0.66993 gas=0.25509 iters=[1791, 1683, 1862, 1638, 1850] time=206s
+  [xgb_leui_wA] fold 0 it=1667 37s
+  [xgb_leui_wA] fold 1 it=1618 75s
+  [xgb_leui_wA] fold 2 it=1754 114s
+  [xgb_leui_wA] fold 3 it=1505 153s
+  [xgb_leui_wA] fold 4 it=1768 193s
+[xgb_leui_wA] eui=0.67467 gas=0.25538 iters=[1667, 1618, 1754, 1505, 1768] time=193s
+  [xgb_gas_wA] fold 0 it=2282 46s
+  [xgb_gas_wA] fold 1 it=2219 92s
+  [xgb_gas_wA] fold 2 it=2416 137s
+  [xgb_gas_wA] fold 3 it=2534 185s
+  [xgb_gas_wA] fold 4 it=2329 230s
+[xgb_gas_wA] eui=0.67624 gas=0.25756 iters=[2282, 2219, 2416, 2534, 2329] time=230s
+  [xgb_epm_wM] fold 0 it=646 23s
+  [xgb_epm_wM] fold 1 it=736 47s
+  [xgb_epm_wM] fold 2 it=704 68s
+  [xgb_epm_wM] fold 3 it=781 87s
+  [xgb_epm_wM] fold 4 it=815 107s
+[xgb_epm_wM] elec=0.32410 iters=[646, 736, 704, 781, 815] time=107s
+  [xgb_lepm] fold 0 it=715 19s
+  [xgb_lepm] fold 1 it=829 39s
+  [xgb_lepm] fold 2 it=727 59s
+  [xgb_lepm] fold 3 it=766 78s
+  [xgb_lepm] fold 4 it=855 100s
+[xgb_lepm] elec=0.32465 iters=[715, 829, 727, 766, 855] time=100s

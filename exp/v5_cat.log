@@ -1,0 +1,55 @@
+  [c4_lgpm] fold 0 it=4737 576s
+  [c4_lgpm] fold 1 it=5313 1104s
+  [c4_lgpm] fold 2 it=5642 1671s
+  [c4_lgpm] fold 3 it=4418 2137s
+  [c4_lgpm] fold 4 it=4612 2610s
+  [c4_lgpm] fold 5 it=4606 3104s
+  [c4_lgpm] fold 6 it=5320 3638s
+  [c4_lgpm] fold 7 it=4433 4110s
+  [c4_lgpm] fold 8 it=4584 4570s
+  [c4_lgpm] fold 9 it=5079 4770s
+[c4_lgpm] eui=0.66454 gas=0.25113 iters=[4737, 5313, 5642, 4418, 4612, 4606, 5320, 4433, 4584, 5079] time=4770s
+  [c4_lepa] fold 0 it=2919 61s
+  [c4_lepa] fold 1 it=3070 125s
+  [c4_lepa] fold 2 it=2640 182s
+  [c4_lepa] fold 3 it=2540 236s
+  [c4_lepa] fold 4 it=3351 306s
+  [c4_lepa] fold 5 it=3284 373s
+  [c4_lepa] fold 6 it=3481 443s
+  [c4_lepa] fold 7 it=2677 500s
+  [c4_lepa] fold 8 it=3225 567s
+  [c4_lepa] fold 9 it=2315 617s
+[c4_lepa] elec=0.32215 iters=[2919, 3070, 2640, 2540, 3351, 3284, 3481, 2677, 3225, 2315] time=617s
+  [c4_gpgea] fold 0 it=5411 105s
+  [c4_gpgea] fold 1 it=5727 216s
+  [c4_gpgea] fold 2 it=4515 307s
+  [c4_gpgea] fold 3 it=4908 405s
+  [c4_gpgea] fold 4 it=5299 507s
+  [c4_gpgea] fold 5 it=3688 581s
+  [c4_gpgea] fold 6 it=5910 694s
+  [c4_gpgea] fold 7 it=5829 807s
+  [c4_gpgea] fold 8 it=4785 900s
+  [c4_gpgea] fold 9 it=4264 984s
+[c4_gpgea] eui=0.66195 gas=0.25142 iters=[5411, 5727, 4515, 4908, 5299, 3688, 5910, 5829, 4785, 4264] time=984s
+  [c4_epa] fold 0 it=2825 58s
+  [c4_epa] fold 1 it=2728 115s
+  [c4_epa] fold 2 it=3522 184s
+  [c4_epa] fold 3 it=2400 235s
+  [c4_epa] fold 4 it=3249 300s
+  [c4_epa] fold 5 it=3234 365s
+  [c4_epa] fold 6 it=2786 475s
+  [c4_epa] fold 7 it=2055 579s
+  [c4_epa] fold 8 it=3642 671s
+  [c4_epa] fold 9 it=3152 994s
+[c4_epa] elec=0.32172 iters=[2825, 2728, 3522, 2400, 3249, 3234, 2786, 2055, 3642, 3152] time=994s
+  [c4_leui_wA] fold 0 it=5219 475s
+  [c4_leui_wA] fold 1 it=5059 756s
+  [c4_leui_wA] fold 2 it=5071 855s
+  [c4_leui_wA] fold 3 it=4774 947s
+  [c4_leui_wA] fold 4 it=5277 1047s
+  [c4_leui_wA] fold 5 it=4865 1140s
+  [c4_leui_wA] fold 6 it=5912 1252s
+  [c4_leui_wA] fold 7 it=4740 1343s
+  [c4_leui_wA] fold 8 it=5137 1440s
+  [c4_leui_wA] fold 9 it=4452 1526s
+[c4_leui_wA] eui=0.66621 gas=0.25108 iters=[5219, 5059, 5071, 4774, 5277, 4865, 5912, 4740, 5137, 4452] time=1526s

@@ -1,0 +1,59 @@
+gas family (in-sample eui+gas NRMSE):
+   1 +x8_gpm                 0.91283
+   2 +n6_gpgea               0.90507
+   3 +xgb_eui_wsM            0.90316
+   4 +x8_lgpm                0.90222
+   5 +x8_gpn                 0.90155
+   6 +n6_gpm                 0.90116
+   7 +x8_gpgea               0.90081
+   8 +lgb_gas                0.90056
+   9 +l4_gpm                 0.90042
+  10 +n6_lgpm                0.90033
+  11 +l4_lgpm                0.90027
+  12 +xgb_gpn_tew            0.90021
+  13 +x4_gas                 0.90015
+  14 +l4_leui_wA             0.90012
+  15 +xgb_leui_wA            0.90009
+  16 +lgb_gpm_tew            0.90006
+  17 +x4_gpgea               0.90005
+  18 +n4f_gpm                0.90003
+  19 +xgb_gas                0.90001
+  20 +l4_eui_wA              0.90000
+  21 +x4_gpn                 0.89999
+  22 +xgb_eui_wA_te          0.89998
+  23 +x4_lgpm                0.89997
+  24 +x4_gpm                 0.89996
+  25 +lgb_eui                0.89995
+elec family (in-sample elec NRMSE):
+   1 +n6b_lepm               0.32022
+   2 +l4_epa                 0.31823
+   3 +xgb_epm_wM_tew_k10     0.31789
+   4 +x4_lepa                0.31776
+   5 +xgb_elec               0.31767
+   6 +l4_epm_wM              0.31763
+   7 +xgb_lepa_tew           0.31761
+   8 +x4_elec                0.31759
+   9 +n6_epm_wM              0.31758
+  10 +xgb_lepm               0.31756
+  11 +l4_lepa                0.31755
+  12 +l4_elec                0.31755
+  13 +x4_epa                 0.31754
+  14 +x4_epm_wM              0.31754
+  15 +n6_lepm                0.31754
+  16 +l4_lepm                0.31754
+  17 +l7_lepm_wv             0.31754
+  18 +xgb_epm_wM             0.31754
+  19 +lgb_epm_wM_tew         0.31754
+  20 +xgb_epm_wM_te          0.31754
+  21 +xgb_elec_tew           0.31754
+  22 +lgb_epm                0.31754
+  23 +xgb_lepm_tew           0.31754
+  24 +n4f_lepm               0.31754
+  25 +lgb_lepm_tew           0.31754
+gas runs: x8_gpm,n6_gpgea,xgb_eui_wsM,x8_lgpm,x8_gpn,n6_gpm,x8_gpgea,lgb_gas,l4_gpm,n6_lgpm,l4_lgpm,xgb_gpn_tew,x4_gas,l4_leui_wA,xgb_leui_wA,lgb_gpm_tew,x4_gpgea,n4f_gpm,xgb_gas,l4_eui_wA,x4_gpn,xgb_eui_wA_te,x4_lgpm,x4_gpm,lgb_eui
+elec runs: n6b_lepm,l4_epa,xgb_epm_wM_tew_k10,x4_lepa,xgb_elec,l4_epm_wM,xgb_lepa_tew,x4_elec,n6_epm_wM,xgb_lepm,l4_lepa,l4_elec,x4_epa,x4_epm_wM,n6_lepm,l4_lepm,l7_lepm_wv,xgb_epm_wM,lgb_epm_wM_tew,xgb_epm_wM_te,xgb_elec_tew,lgb_epm,xgb_lepm_tew,n4f_lepm,lgb_lepm_tew
+top-8: honest gas 0.24693 elec 0.31760 eui 0.65367 total 0.25077
+top-12: honest gas 0.24676 elec 0.31758 eui 0.65350 total 0.25070
+top-16: honest gas 0.24668 elec 0.31757 eui 0.65345 total 0.25067
+top-20: honest gas 0.24667 elec 0.31758 eui 0.65341 total 0.25066
+top-25: honest gas 0.24666 elec 0.31758 eui 0.65340 total 0.25066

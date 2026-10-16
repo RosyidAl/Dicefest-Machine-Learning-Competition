@@ -1,0 +1,10 @@
+[lepm E=best60] elec=0.32386 84s
+[lepm E=10] elec=0.32517 15s
+[lepm E=14] elec=0.32429 20s
+[lepm E=18] elec=0.32412 26s
+[lepm E=24] elec=0.32390 34s
+[gpm E=best60] eui=0.67147 gas=0.25406 87s
+[gpm E=20] eui=0.67424 gas=0.25517 29s
+[gpm E=28] eui=0.67209 gas=0.25416 40s
+[gpm E=36] eui=0.67104 gas=0.25368 51s
+[gpm E=44] eui=0.67093 gas=0.25363 61s

@@ -1,0 +1,13 @@
+import sys; sys.path.insert(0, "src")
+from train_lib import *
+d = Data()
+xp = dict(learning_rate=0.05, max_depth=8, subsample=0.8, colsample_bytree=0.6, min_child_weight=50, reg_lambda=1.0, eval_metric="rmse")
+run(d, "xgb_eui_wM", "xgb", "eui", xp, out_dir="exp", wmul=d.M.astype(float))
+run(d, "xgb_eui_wsM", "xgb", "eui", xp, out_dir="exp", wmul=np.sqrt(d.M))
+run(d, "xgb_gas", "xgb", "gas", xp, out_dir="exp")
+run(d, "xgb_gpm", "xgb", "gpm", xp, out_dir="exp")
+run(d, "xgb_elec", "xgb", "elec", xp, out_dir="exp")
+run(d, "xgb_epm", "xgb", "epm", xp, out_dir="exp")
+cp = dict(learning_rate=0.08, depth=8, l2_leaf_reg=3, border_count=254)
+run(d, "cat_eui", "cat", "eui", cp, out_dir="exp")
+run(d, "cat_epm", "cat", "epm", cp, out_dir="exp")

@@ -1,0 +1,11 @@
+  [m1] fold 0 454s
+  [m1] fold 1 905s
+  [m1] fold 2 1349s
+  [m1] fold 3 1728s
+  [m1] fold 4 1956s
+  [m1] fold 5 2177s
+  [m1] fold 6 2398s
+  [m1] fold 7 2621s
+  [m1] fold 8 2844s
+  [m1] fold 9 3067s
+[m1] gpm: eui=0.66077 gas=0.24984 | epm: elec=0.31910 time=3067s

@@ -1,0 +1,18 @@
+  [lgb_eui] fold 0 it=962 466s
+  [lgb_eui] fold 1 it=712 565s
+  [lgb_eui] fold 2 it=888 692s
+  [lgb_eui] fold 3 it=920 830s
+  [lgb_eui] fold 4 it=990 984s
+[lgb_eui] eui=0.66967 gas=0.25588 iters=[962, 712, 888, 920, 990] time=984s
+  [lgb_epm] fold 0 it=461 102s
+  [lgb_epm] fold 1 it=502 2118s
+  [lgb_epm] fold 2 it=375 2195s
+  [lgb_epm] fold 3 it=497 2309s
+  [lgb_epm] fold 4 it=439 2380s
+[lgb_epm] elec=0.32436 iters=[461, 502, 375, 497, 439] time=2380s
+  [lgb_gas] fold 0 it=1720 197s
+  [lgb_gas] fold 1 it=1479 412s
+  [lgb_gas] fold 2 it=1361 625s
+  [lgb_gas] fold 3 it=1476 888s
+  [lgb_gas] fold 4 it=1580 1133s
+[lgb_gas] eui=0.67494 gas=0.25700 iters=[1720, 1479, 1361, 1476, 1580] time=1133s

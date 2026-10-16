@@ -1,0 +1,66 @@
+  [la_gpm] fold 0 it=1261 292s
+  [la_gpm] fold 1 it=1273 610s
+  [la_gpm] fold 2 it=1569 951s
+  [la_gpm] fold 3 it=1444 1244s
+  [la_gpm] fold 4 it=1128 1499s
+  [la_gpm] fold 5 it=1132 1754s
+  [la_gpm] fold 6 it=1353 2061s
+  [la_gpm] fold 7 it=1469 2409s
+  [la_gpm] fold 8 it=1041 2635s
+  [la_gpm] fold 9 it=1568 2949s
+[la_gpm] eui=0.66165 gas=0.25163 iters=[1261, 1273, 1569, 1444, 1128, 1132, 1353, 1469, 1041, 1568] time=2949s
+  [la_eui_wA] fold 0 it=957 182s
+  [la_eui_wA] fold 1 it=1533 467s
+  [la_eui_wA] fold 2 it=1420 729s
+  [la_eui_wA] fold 3 it=1408 1014s
+  [la_eui_wA] fold 4 it=1056 1363s
+  [la_eui_wA] fold 5 it=1183 1648s
+  [la_eui_wA] fold 6 it=1262 1934s
+  [la_eui_wA] fold 7 it=1207 2172s
+  [la_eui_wA] fold 8 it=1374 2431s
+  [la_eui_wA] fold 9 it=843 2612s
+[la_eui_wA] eui=0.66235 gas=0.25118 iters=[957, 1533, 1420, 1408, 1056, 1183, 1262, 1207, 1374, 843] time=2612s
+  [la_epm_wM] fold 0 it=516 125s
+  [la_epm_wM] fold 1 it=463 233s
+  [la_epm_wM] fold 2 it=654 383s
+  [la_epm_wM] fold 3 it=575 519s
+  [la_epm_wM] fold 4 it=656 729s
+  [la_epm_wM] fold 5 it=472 876s
+  [la_epm_wM] fold 6 it=628 1025s
+  [la_epm_wM] fold 7 it=411 1130s
+  [la_epm_wM] fold 8 it=553 1261s
+  [la_epm_wM] fold 9 it=651 1404s
+[la_epm_wM] elec=0.32143 iters=[516, 463, 654, 575, 656, 472, 628, 411, 553, 651] time=1404s
+  [la_lgpm] fold 0 it=1350 237s
+  [la_lgpm] fold 1 it=1384 509s
+  [la_lgpm] fold 2 it=1279 756s
+  [la_lgpm] fold 3 it=1197 988s
+  [la_lgpm] fold 4 it=1050 1210s
+  [la_lgpm] fold 5 it=1180 1425s
+  [la_lgpm] fold 6 it=1639 1713s
+  [la_lgpm] fold 7 it=1337 1964s
+  [la_lgpm] fold 8 it=1337 2317s
+  [la_lgpm] fold 9 it=1258 2554s
+[la_lgpm] eui=0.66503 gas=0.25167 iters=[1350, 1384, 1279, 1197, 1050, 1180, 1639, 1337, 1337, 1258] time=2554s
+  [la_leui_wA] fold 0 it=1201 241s
+  [la_leui_wA] fold 1 it=1273 492s
+  [la_leui_wA] fold 2 it=1323 776s
+  [la_leui_wA] fold 3 it=1311 1038s
+  [la_leui_wA] fold 4 it=1099 1262s
+  [la_leui_wA] fold 5 it=1182 1487s
+  [la_leui_wA] fold 6 it=1367 1798s
+  [la_leui_wA] fold 7 it=1200 2049s
+  [la_leui_wA] fold 8 it=1560 2296s
+  [la_leui_wA] fold 9 it=1244 2497s
+[la_leui_wA] eui=0.66719 gas=0.25134 iters=[1201, 1273, 1323, 1311, 1099, 1182, 1367, 1200, 1560, 1244] time=2497s
+  [la_lepm] fold 0 it=618 109s
+  [la_lepm] fold 1 it=612 215s
+  [la_lepm] fold 2 it=848 354s
+  [la_lepm] fold 3 it=775 488s
+  [la_lepm] fold 4 it=542 594s
+  [la_lepm] fold 5 it=676 723s
+  [la_lepm] fold 6 it=703 856s
+  [la_lepm] fold 7 it=721 984s
+  [la_lepm] fold 8 it=718 1111s
+  [la_lepm] fold 9 it=812 1248s
+[la_lepm] elec=0.32237 iters=[618, 612, 848, 775, 542, 676, 703, 721, 718, 812] time=1248s

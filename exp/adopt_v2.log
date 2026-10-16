@@ -1,0 +1,14 @@
+  adoption fold 0 q_xent it=631
+  adoption fold 0 r_reg it=444
+  adoption fold 1 q_xent it=725
+  adoption fold 1 r_reg it=1061
+  adoption fold 2 q_xent it=433
+  adoption fold 2 r_reg it=871
+  adoption fold 3 q_xent it=623
+  adoption fold 3 r_reg it=992
+  adoption fold 4 q_xent it=741
+  adoption fold 4 r_reg it=961
+q_xent: CV rmse all 0.8890 unseen-weighted 1.0329
+r_reg: CV rmse all 0.8900 unseen-weighted 1.0351
+average: CV rmse all 0.8868 unseen-weighted 1.0303
+unseen fraction 0.0814; expected test adoption NRMSE 0.04094

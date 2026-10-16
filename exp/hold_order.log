@@ -1,0 +1,23 @@
+[W1014 07:55:14.618810948 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 268435456 bytes (free: 219676672, total: 16750673920).
+  [no_lepm] fold 0 best_ep=[23, 23, 23] 84s
+  [no_lepm] fold 1 best_ep=[23, 23, 23] 135s
+  [no_lepm] fold 2 best_ep=[23, 23, 23] 192s
+  [no_lepm] fold 3 best_ep=[23, 23, 23] 247s
+  [no_lepm] fold 4 best_ep=[23, 23, 23] 305s
+  [no_lepm] fold 5 best_ep=[23, 23, 23] 361s
+  [no_lepm] fold 6 best_ep=[23, 23, 23] 417s
+  [no_lepm] fold 7 best_ep=[23, 23, 23] 473s
+  [no_lepm] fold 8 best_ep=[23, 23, 23] 529s
+  [no_lepm] fold 9 best_ep=[23, 23, 23] 587s
+[no_lepm] elec=0.32377 epochs=[23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23] time=587s
+  [no_gpm] fold 0 best_ep=[43, 43, 43] 100s
+  [no_gpm] fold 1 best_ep=[43, 43, 43] 200s
+  [no_gpm] fold 2 best_ep=[43, 43, 43] 295s
+  [no_gpm] fold 3 best_ep=[43, 43, 43] 394s
+  [no_gpm] fold 4 best_ep=[43, 43, 43] 496s
+  [no_gpm] fold 5 best_ep=[43, 43, 43] 596s
+  [no_gpm] fold 6 best_ep=[43, 43, 43] 690s
+  [no_gpm] fold 7 best_ep=[43, 43, 43] 789s
+  [no_gpm] fold 8 best_ep=[43, 43, 43] 891s
+  [no_gpm] fold 9 best_ep=[43, 43, 43] 992s
+[no_gpm] eui=0.67183 gas=0.25510 epochs=[43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43] time=992s

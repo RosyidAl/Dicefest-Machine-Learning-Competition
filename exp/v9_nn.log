@@ -1,0 +1,11 @@
+  [p1_lepm] fold 0 best_ep=[23, 23, 23] 577s
+  [p1_lepm] fold 1 best_ep=[23, 23, 23] 1137s
+  [p1_lepm] fold 2 best_ep=[23, 23, 23] 1697s
+  [p1_lepm] fold 3 best_ep=[23, 23, 23] 2264s
+  [p1_lepm] fold 4 best_ep=[23, 23, 23] 2844s
+  [p1_lepm] fold 5 best_ep=[23, 23, 23] 3422s
+  [p1_lepm] fold 6 best_ep=[23, 23, 23] 3987s
+  [p1_lepm] fold 7 best_ep=[23, 23, 23] 4552s
+  [p1_lepm] fold 8 best_ep=[23, 23, 23] 5116s
+  [p1_lepm] fold 9 best_ep=[23, 23, 23] 5684s
+[p1_lepm] elec=0.32713 epochs=[23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23] time=5684s

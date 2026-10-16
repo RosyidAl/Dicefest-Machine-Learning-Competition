@@ -1,0 +1,16 @@
+  [l7_lepm_wv] fold 0 it=638 316s
+  [l7_lepm_wv] fold 1 it=515 445s
+  [l7_lepm_wv] fold 2 it=588 578s
+  [l7_lepm_wv] fold 3 it=783 785s
+  [l7_lepm_wv] fold 4 it=724 999s
+  [l7_lepm_wv] fold 5 it=640 1186s
+  [l7_lepm_wv] fold 6 it=831 1404s
+  [l7_lepm_wv] fold 7 it=455 1574s
+  [l7_lepm_wv] fold 8 it=599 1746s
+  [l7_lepm_wv] fold 9 it=729 1952s
+[l7_lepm_wv] elec=0.32263 iters=[638, 515, 588, 783, 724, 640, 831, 455, 599, 729] time=1952s
+  [l7_eui_wv] fold 0 it=1003 374s
+  [l7_eui_wv] fold 1 it=1358 669s
+  [l7_eui_wv] fold 2 it=1269 896s
+  [l7_eui_wv] fold 3 it=832 1055s
+  [l7_eui_wv] fold 4 it=1358 1312s

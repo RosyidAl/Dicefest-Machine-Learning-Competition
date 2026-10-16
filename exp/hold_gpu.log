@@ -1,0 +1,21 @@
+Warning: less than 75% GPU memory available for training. Free: 11779.5 Total: 15974.6875
+Warning: less than 75% GPU memory available for training. Free: 11777.4375 Total: 15974.6875
+[c4_eui_wA] eui=0.66755 gas=0.25415 iters=[3657, 4477, 3569, 3688, 3807, 3917, 3529, 2787, 4622, 3033] time=4117s
+[c4_lepa] elec=0.32459 iters=[1857, 2455, 2354, 2519, 2783, 2235, 1824, 1905, 2630, 2253] time=1647s
+/root/Dicefest/.venv/lib/python3.12/site-packages/xgboost/core.py:569: UserWarning: [15:24:15] WARNING: /__w/xgboost/xgboost/src/common/error_msg.cc:62: Falling back to prediction using DMatrix due to mismatched devices. This might lead to higher memory usage and slower performance. XGBoost is running on: cuda:0, while the input data is on: cpu.
+Potential solutions:
+- Use a data structure that matches the device ordinal in the booster.
+- Set the device for booster before call to inplace_predict.
+
+This warning will only be shown once.
+
+  return func(**kwargs)
+[x4_gpm] eui=0.66914 gas=0.25526 iters=[1462, 1266, 1739, 1810, 1260, 1183, 1321, 1097, 1713, 1661] time=1431s
+[c4_lgpm] eui=0.67036 gas=0.25374 iters=[2959, 3585, 3633, 4181, 2760, 3276, 4751, 3676, 4220, 3272] time=2212s
+[x4_lepa] elec=0.32538 iters=[1035, 807, 904, 751, 715, 624, 1066, 822, 880, 868] time=348s
+[c4_gpm] eui=0.66794 gas=0.25390 iters=[4629, 3259, 3825, 4422, 4760, 4734, 4185, 4301, 4255, 3853] time=1541s
+[c4_epa] elec=0.32420 iters=[1868, 2031, 2640, 1779, 2082, 2098, 2378, 2303, 2272, 2032] time=413s
+[c4_leui_wA] eui=0.67189 gas=0.25399 iters=[4527, 3296, 3031, 5068, 3920, 3431, 4063, 3486, 3794, 3168] time=676s
+[c4_lepm] elec=0.32458 iters=[1912, 2050, 2997, 2389, 2597, 1669, 3042, 2188, 2245, 2357] time=450s
+[c4_epm_wM] elec=0.32410 iters=[2163, 2733, 2387, 2264, 2320, 2512, 2572, 2403, 3124, 2060] time=455s
+[c4_gpgea] eui=0.66775 gas=0.25422 iters=[4672, 3115, 3118, 4946, 3522, 3790, 3061, 2448, 4108, 4947] time=672s

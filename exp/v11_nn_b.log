@@ -1,0 +1,44 @@
+  [p2_lgpm] fold 0 best_ep=[11, 11, 11] 355s
+  [p2_lgpm] fold 1 best_ep=[11, 11, 11] 709s
+  [p2_lgpm] fold 2 best_ep=[11, 11, 11] 1054s
+  [p2_lgpm] fold 3 best_ep=[11, 11, 11] 1401s
+  [p2_lgpm] fold 4 best_ep=[11, 11, 11] 1748s
+  [p2_lgpm] fold 5 best_ep=[11, 11, 11] 2088s
+  [p2_lgpm] fold 6 best_ep=[11, 11, 11] 2435s
+  [p2_lgpm] fold 7 best_ep=[11, 11, 11] 2745s
+  [p2_lgpm] fold 8 best_ep=[11, 11, 11] 3052s
+  [p2_lgpm] fold 9 best_ep=[11, 11, 11] 3369s
+[p2_lgpm] eui=0.66421 gas=0.24996 epochs=[11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11] time=3369s
+  [p2_epm_wM] fold 0 best_ep=[11, 11, 11] 314s
+  [p2_epm_wM] fold 1 best_ep=[11, 11, 11] 624s
+  [p2_epm_wM] fold 2 best_ep=[11, 11, 11] 924s
+  [p2_epm_wM] fold 3 best_ep=[11, 11, 11] 1230s
+  [p2_epm_wM] fold 4 best_ep=[11, 11, 11] 1534s
+  [p2_epm_wM] fold 5 best_ep=[11, 11, 11] 1830s
+  [p2_epm_wM] fold 6 best_ep=[11, 11, 11] 2134s
+  [p2_epm_wM] fold 7 best_ep=[11, 11, 11] 2438s
+  [p2_epm_wM] fold 8 best_ep=[11, 11, 11] 2741s
+  [p2_epm_wM] fold 9 best_ep=[11, 11, 11] 3036s
+[p2_epm_wM] elec=0.31902 epochs=[11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11] time=3036s
+  [p2_gpgea] fold 0 best_ep=[11, 11, 11] 303s
+  [p2_gpgea] fold 1 best_ep=[11, 11, 11] 604s
+  [p2_gpgea] fold 2 best_ep=[11, 11, 11] 900s
+  [p2_gpgea] fold 3 best_ep=[11, 11, 11] 1202s
+  [p2_gpgea] fold 4 best_ep=[11, 11, 11] 1505s
+  [p2_gpgea] fold 5 best_ep=[11, 11, 11] 1807s
+  [p2_gpgea] fold 6 best_ep=[11, 11, 11] 2101s
+  [p2_gpgea] fold 7 best_ep=[11, 11, 11] 2403s
+  [p2_gpgea] fold 8 best_ep=[11, 11, 11] 2705s
+  [p2_gpgea] fold 9 best_ep=[11, 11, 11] 2997s
+[p2_gpgea] eui=0.66097 gas=0.24968 epochs=[11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11] time=2997s
+  [p2_leui_wA] fold 0 best_ep=[11, 11, 11] 301s
+  [p2_leui_wA] fold 1 best_ep=[11, 11, 11] 601s
+  [p2_leui_wA] fold 2 best_ep=[11, 11, 11] 896s
+  [p2_leui_wA] fold 3 best_ep=[11, 11, 11] 1205s
+  [p2_leui_wA] fold 4 best_ep=[11, 11, 11] 1510s
+  [p2_leui_wA] fold 5 best_ep=[11, 11, 11] 1807s
+  [p2_leui_wA] fold 6 best_ep=[11, 11, 11] 2111s
+  [p2_leui_wA] fold 7 best_ep=[11, 11, 11] 2409s
+  [p2_leui_wA] fold 8 best_ep=[11, 11, 11] 2714s
+  [p2_leui_wA] fold 9 best_ep=[11, 11, 11] 3009s
+[p2_leui_wA] eui=0.66746 gas=0.25058 epochs=[11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11] time=3009s
