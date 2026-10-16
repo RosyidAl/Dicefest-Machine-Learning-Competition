@@ -28,6 +28,7 @@ lp = dict(learning_rate=0.04, num_leaves=255, min_data_in_leaf=100, feature_frac
 JOBS = {  # name: backend, kind, params, weight code
     "xk_gpm": ("xgb", "gpm", x8, "iA"),
     "xk_lgpm": ("xgb", "lgas_per:bld_dim_12", x8, "A"),
+    "xk_gpgea": ("xgb", "gas_per:bld_dim_03", x8, "iA"),
     "xk_lepa": ("xgb", "lelec_per:bld_dim_06", x4, "M"),
     "xk_epm_wM": ("xgb", "epm", x4, "iM"),
     "lk_gpm": ("lgb", "gpm", lp, "iA"),

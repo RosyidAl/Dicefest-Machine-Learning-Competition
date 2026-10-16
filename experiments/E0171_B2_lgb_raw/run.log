@@ -19,3 +19,7 @@
 [2026-10-16 12:47] target_eui_gas_kwh_per_sqm: OOF nrmse 0.69333
 [2026-10-16 12:52] target_clean_building_ratio fold 0: nrmse 0.01658 it 2801 (1382s)
 [2026-10-16 13:05] target_clean_building_ratio fold 1: nrmse 0.01605 it 6373 (2142s)
+[2026-10-16 13:22] target_clean_building_ratio fold 2: nrmse 0.01595 it 8934 (3203s)
+[2026-10-16 13:28] target_clean_building_ratio fold 3: nrmse 0.01486 it 3103 (3573s)
+[2026-10-16 13:39] target_clean_building_ratio fold 4: nrmse 0.01541 it 5696 (4235s)
+[2026-10-16 13:39] target_clean_building_ratio: OOF nrmse 0.01572

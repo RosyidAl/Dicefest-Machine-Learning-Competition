@@ -48,5 +48,5 @@ created_wib,file,sha256,source,cv_mean,public_lb,note
 2026-10-15 08:22,submissions/sub_v15ncr.csv,257c543bd139e34c3af294b4e2fc6961d5263d28f36e63f357ae9be9156c0404,legacy sub_v15ncr,,,
 2026-10-15 08:22,submissions/sub_v15ncrd.csv,67d94da5c665e695a2df8420f82d959fcf8f08b49b357a42c363004c4177fef5,legacy sub_v15ncrd,0.25002 (pre-corr),0.2499,submitted by user
 2026-10-15 16:50,submissions/sub_v15ncrk.csv,ac4a88cd38818f231003f8832d01eb9decc41394b54c98caa4f782d4fec80e29,legacy sub_v15ncrk,,,
-2026-10-15 16:50,submissions/sub_v15ncrkd.csv,b6431a339ccc20a228c88b8bc977f596323006cdcb060722621f3de7550ba8d2,legacy sub_v15ncrkd,,,
-2026-10-16 11:25,submissions/BEST_CURRENT.csv,b6431a339ccc20a228c88b8bc977f596323006cdcb060722621f3de7550ba8d2,v15nc + resid_knn + dup_fix (= sub_v15ncrkd),0.25002 pre-corr; holdout corr -0.0009,,BEST_CURRENT
+2026-10-15 16:50,submissions/sub_v15ncrkd.csv,b6431a339ccc20a228c88b8bc977f596323006cdcb060722621f3de7550ba8d2,legacy sub_v15ncrkd,,0.24954, submitted by user 16 Okt
+2026-10-16 11:25,submissions/BEST_CURRENT.csv,b6431a339ccc20a228c88b8bc977f596323006cdcb060722621f3de7550ba8d2,v15nc + resid_knn + dup_fix (= sub_v15ncrkd),0.25002 pre-corr; holdout corr -0.0009,0.24954,BEST_CURRENT submitted by user 16 Okt

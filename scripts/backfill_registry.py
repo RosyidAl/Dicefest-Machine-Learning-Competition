@@ -50,7 +50,7 @@ def log_info():
     return info
 
 
-if __name__ == "__main__":
+def main():
     tr, _ = load()
     A = tr["bld_dim_06"].values
     y = {c: tr[c].values for c in TARGET_COLS}
@@ -93,3 +93,7 @@ if __name__ == "__main__":
         row["hypothesis"] = f"legacy model zoo member {n}"
         upsert(row)
     print(len(names), "rows")
+
+
+if __name__ == "__main__":
+    raise SystemExit("one-off backfill already applied (E0001-E0168); use scripts/register_member.py for new runs")

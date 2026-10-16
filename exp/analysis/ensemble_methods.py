@@ -52,21 +52,21 @@ def m_nnls(P, y, s):
 
 
 def m_hill(P, y, s, iters=100, bags=20, seed=0):
+    """Caruana selection with replacement (init top-3), bagged over random half subsets; SSE from Gram matrices"""
+    Ps, ys = P * s[:, None], y * s
+    G, b, yy = Ps.T @ Ps, Ps.T @ ys, ys @ ys
+    sse = lambda w: yy - 2 * b @ w + w @ G @ w  # noqa: E731
     rng = np.random.default_rng(seed)
     W = np.zeros(P.shape[1])
+    single = np.array([sse(np.eye(P.shape[1])[k]) for k in range(P.shape[1])])
     for _ in range(bags):
         sub = np.sort(rng.choice(P.shape[1], max(3, P.shape[1] // 2), replace=False))
-        sc = [rmse(P[:, k], y, s) for k in sub]
         cnt = np.zeros(P.shape[1])
-        for k in np.array(sub)[np.argsort(sc)[:3]]:
-            cnt[k] += 1
-        cur = P @ cnt / cnt.sum()
+        cnt[sub[np.argsort(single[sub])[:3]]] = 1
         for _ in range(iters):
             n = cnt.sum()
-            cand = [rmse((cur * n + P[:, k]) / (n + 1), y, s) for k in sub]
-            k = sub[int(np.argmin(cand))]
-            cnt[k] += 1
-            cur = (cur * n + P[:, k]) / (n + 1)
+            cand = [sse((cnt + np.eye(P.shape[1])[k]) / (n + 1)) for k in sub]
+            cnt[sub[int(np.argmin(cand))]] += 1
         W += cnt / cnt.sum() / bags
     return W
 
