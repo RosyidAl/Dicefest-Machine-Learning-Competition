@@ -1,0 +1,6 @@
+[2026-10-16 17:46] features: 219 base columns, blocks ['agg', 'te']; folds [0, 1, 2] of 5; subsample None
+[2026-10-16 18:15] target_electric_heating_adoption fold 0: nrmse 0.07632 it 14503 (1760s)
+[2026-10-16 18:45] target_electric_heating_adoption fold 1: nrmse 0.07512 it 15103 (3573s)
+[2026-10-16 19:16] target_electric_heating_adoption fold 2: nrmse 0.07303 it 14828 (5411s)
+[2026-10-16 19:16] target_electric_heating_adoption: OOF nrmse 0.07481
+[2026-10-16 19:16] done in 90.2 min

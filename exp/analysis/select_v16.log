@@ -1,0 +1,23 @@
+pruned base {'gas': 0.898034, 'elec': 0.316411} total 0.242889
++xk_gpm gas 0.897150
++mk1_gpm gas 0.896719
++xk_gpgea gas 0.896496
++xk_lgpm gas 0.896381
++pk_gpgea gas 0.896285
++lk_gpm gas 0.896273
++pk_lgpm gas 0.896262
+-p2_gpgea gas 0.896262
+-xa_lgpm gas 0.896260
+-m1_gpm gas 0.896260
+-la_lgpm gas 0.896259
+-xgb_eui_d10 gas 0.896258
+-xgb_eui_wA_te gas 0.896258
++mk1_epm elec 0.316197
++pk_lepm elec 0.316119
++xk_lepa elec 0.316091
++lk_lepa elec 0.316081
+-p3_lepm elec 0.316081
+-m1_epm elec 0.316079
+-xa_lepa elec 0.316076
+-xgb_lepa_tew elec 0.316075
+final total 0.242467 {'gas': 22, 'elec': 12}

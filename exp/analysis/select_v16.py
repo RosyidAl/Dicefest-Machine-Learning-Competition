@@ -10,7 +10,7 @@ gas = re.search(r"^gas runs: (\S+)", log, re.M).group(1).split(",")
 el = re.search(r"^elec runs: (\S+)", log, re.M).group(1).split(",")
 PRUNED = ["l4_lepa", "n6_epm_wM", "p2_gpm", "p3_epm_wM", "lgb_epm_wM_tew", "x4_epm_wM", "la_elec", "la_epm_wM", "x4_lepa",
           "x4_epa", "l4_elec", "xgb_epm_wM", "l4_epm_wM", "p2_lgpm", "la_gpm", "la_epa", "l4_gpm"]
-CAND = [c for c in ["xk_gpm", "xk_lgpm", "xk_gpgea", "lk_gpm", "pk_gpm", "xk_lepa", "lk_lepa", "pk_lepm"]
+CAND = [c for c in ["xk_gpm", "xk_lgpm", "xk_gpgea", "lk_gpm", "pk_gpm", "pk_gpgea", "pk_lgpm", "mk1_gpm", "xk_lepa", "lk_lepa", "pk_lepm", "mk1_epm"]
         if os.path.exists(f"exp/oof/{c}.npy")]
 ELEC = ("epm", "elec", "lepm", "epa", "lepa")
 is_el = lambda r: any(t in r.split("_") for t in ELEC)  # noqa: E731

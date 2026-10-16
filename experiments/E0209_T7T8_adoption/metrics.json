@@ -1,0 +1,25 @@
+{
+ "exp_id": "E0209",
+ "cv_scheme": "primary",
+ "fold_file": "data/folds/folds_primary_k5_s42.parquet",
+ "per_target": {
+  "target_electric_heating_adoption": {
+   "nrmse": 0.07480589700092005,
+   "rmse": 0.537106340466606,
+   "fold_nrmse": [
+    0.07631667605196472,
+    0.07512265632327747,
+    0.07303225120364379
+   ],
+   "best_iteration": [
+    14503,
+    15103,
+    14828
+   ]
+  }
+ },
+ "nrmse_mean": null,
+ "runtime_min": 90.18177251021068,
+ "peak_ram_gb": 6.021053314208984,
+ "peak_vram_gb": 0.0
+}

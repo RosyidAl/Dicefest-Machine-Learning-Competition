@@ -5,10 +5,8 @@
   "p1_gpm",
   "lgb_gas",
   "x8_gpn",
-  "p2_gpgea",
   "n6_lgpm",
   "xgb_eui_wsM",
-  "m1_gpm",
   "la_gas",
   "xgb_leui_wA",
   "xgb_gpn_tew",
@@ -18,25 +16,29 @@
   "xgb_gas",
   "x8_gpm",
   "xk_gpm",
+  "mk1_gpm",
   "xk_gpgea",
   "xk_lgpm",
-  "pk_gpm",
-  "lk_gpm"
+  "pk_gpgea",
+  "lk_gpm",
+  "pk_lgpm"
  ],
  "elec": [
-  "m1_epm",
   "xgb_lepm",
   "t1_lepm",
   "l4_epa",
+  "la_lepa",
+  "n6b_lepm",
   "x4_elec",
   "xgb_epm_wM_tew_k10",
   "xgb_elec",
+  "mk1_epm",
   "pk_lepm",
   "xk_lepa",
   "lk_lepa"
  ],
  "score": {
-  "gas": 0.8964983565495612,
-  "elec": 0.3161495516808506
+  "gas": 0.8962578698351361,
+  "elec": 0.3160754778079863
  }
 }

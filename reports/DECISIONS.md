@@ -70,3 +70,16 @@
 - Keputusan: (b) jika holdout membuktikan rantai blend + koreksi baru lebih baik. Bila tidak, (a) dengan pruning.
   Freeze setelah λ baru di-fit (target 17 Okt siang), lalu run #1.
 - Risiko: λ koreksi lama di-fit tanpa fitur kNN di model; dipakai apa adanya bisa over-correct. Mitigasi: fit ulang wajib.
+
+### D006 [2026-10-16 20:24 WIB] FREEZE kandidat final v16
+- Konteks: semua anggota FB07 selesai (full + holdout); seleksi dan fit ulang λ selesai.
+- Bukti:
+  - Seleksi (exp/analysis/select_v16.log): v15nc dikurangi 17 anggota hasil pruning, ditambah forward-add anggota FB07 lalu backward-drop.
+    Hasilnya 34 anggota (22 gas, 12 elec), blend honest 0,242467 vs 0,242886 untuk v15nc.
+  - Holdout rantai penuh (exp/resid_knn_fit_v16.log), v15 → v16: gas 0,24592 → 0,24539; EUI 0,65087 → 0,64961; elec 0,31569 → 0,31477.
+    Total sekitar -0,00054; ekspektasi LB sekitar 0,2490.
+- Keputusan:
+  - Final A = v16 (final/configs/members.yaml + resid_knn.json = exp/resid_knn_v16.json).
+  - Final B (lindung nilai) = v15nc-pruned tanpa FB07 (members_v15nc.yaml, λ v15), komposisi berbeda dengan CV sedikit lebih buruk; dibangun bila waktu GPU tersisa.
+  - Kode final/ dibekukan (git tag freeze-v16). Setelah ini hanya perbaikan bug.
+- Risiko: holdout memakai semua anggota holdout, bukan persis 34 anggota final (approksimasi yang sama seperti v15, terbukti akurat di LB).

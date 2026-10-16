@@ -1,0 +1,12 @@
+[2026-10-16 20:13] features: 192 base columns, blocks []; folds [0, 1, 2, 3, 4] of 5; subsample None
+[2026-10-16 20:14] mlp_multi fold 0 done (21s)
+[2026-10-16 20:14] mlp_multi fold 1 done (37s)
+[2026-10-16 20:14] mlp_multi fold 2 done (58s)
+[2026-10-16 20:15] mlp_multi fold 3 done (78s)
+[2026-10-16 20:15] mlp_multi fold 4 done (98s)
+[2026-10-16 20:15] target_macro_gas_kwh: OOF nrmse 0.26541
+[2026-10-16 20:15] target_macro_elec_kwh: OOF nrmse 0.32759
+[2026-10-16 20:15] target_eui_gas_kwh_per_sqm: OOF nrmse 0.69025
+[2026-10-16 20:15] target_clean_building_ratio: OOF nrmse 0.05393
+[2026-10-16 20:15] target_electric_heating_adoption: OOF nrmse 0.14776
+[2026-10-16 20:15] done in 1.6 min
