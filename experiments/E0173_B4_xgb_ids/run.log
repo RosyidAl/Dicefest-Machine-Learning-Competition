@@ -24,3 +24,9 @@
 [2026-10-16 11:48] target_clean_building_ratio fold 4: nrmse 0.01598 it 2392 (498s)
 [2026-10-16 11:48] target_clean_building_ratio: OOF nrmse 0.01575
 [2026-10-16 11:53] target_electric_heating_adoption fold 0: nrmse 0.09769 it 19999 (812s)
+[2026-10-16 11:58] target_electric_heating_adoption fold 1: nrmse 0.09448 it 19998 (1129s)
+[2026-10-16 12:04] target_electric_heating_adoption fold 2: nrmse 0.09349 it 19878 (1470s)
+[2026-10-16 12:10] target_electric_heating_adoption fold 3: nrmse 0.09359 it 19910 (1809s)
+[2026-10-16 12:15] target_electric_heating_adoption fold 4: nrmse 0.09595 it 19373 (2134s)
+[2026-10-16 12:15] target_electric_heating_adoption: OOF nrmse 0.09502
+[2026-10-16 12:15] done in 35.6 min

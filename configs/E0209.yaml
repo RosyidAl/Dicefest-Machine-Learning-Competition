@@ -1,0 +1,38 @@
+exp_id: E0209
+slug: T7T8_adoption
+hypothesis: 'T7 proporsi + cross_entropy vs T8 logit untuk t5 (lihat E0210); t5 identity
+  sebagai acuan [screening: LGB lr 0.1, 3 fold]'
+targets:
+- t5
+target_transform:
+  default:
+    type: identity
+model:
+  family: lgb
+  device: cpu
+  params:
+    objective: regression
+    learning_rate: 0.1
+    num_leaves: 255
+    min_data_in_leaf: 100
+    feature_fraction: 0.5
+    bagging_fraction: 0.8
+    bagging_freq: 1
+    lambda_l2: 10.0
+    max_bin: 255
+    n_estimators: 20000
+    early_stopping_rounds: 200
+    num_threads: 8
+phase: 3
+seeds:
+- 42
+cv:
+  scheme: primary
+  fold_file: data/folds/folds_primary_k5_s42.parquet
+  screen_folds: 3
+features:
+  set: legacy
+  blocks:
+  - agg
+  - te
+parent_id: E0209

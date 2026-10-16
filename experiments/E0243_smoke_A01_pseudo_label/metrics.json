@@ -1,0 +1,36 @@
+{
+ "exp_id": "E0243_smoke",
+ "cv_scheme": "primary",
+ "fold_file": "data/folds/folds_primary_k5_s42.parquet",
+ "per_target": {
+  "target_macro_gas_kwh": {
+   "nrmse": 0.2761116706352015,
+   "rmse": 41899.957063358655,
+   "fold_nrmse": [
+    0.2798390379192914,
+    0.272394109721343
+   ],
+   "best_iteration": [
+    299,
+    299
+   ]
+  },
+  "target_eui_gas_kwh_per_sqm": {
+   "nrmse": 0.6982164331034523,
+   "rmse": 28.382498005655332,
+   "fold_nrmse": [
+    0.704693407286812,
+    0.691783813421822
+   ],
+   "best_iteration": [
+    299,
+    299
+   ],
+   "derived_from": "target_macro_gas_kwh"
+  }
+ },
+ "nrmse_mean": null,
+ "runtime_min": 1.7557955463727315,
+ "peak_ram_gb": 5.779994964599609,
+ "peak_vram_gb": 0.0
+}

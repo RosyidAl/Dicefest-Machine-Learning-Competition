@@ -1,0 +1,18 @@
+[2026-10-16 12:17] features: 219 base columns, blocks ['agg', 'te']; folds [0, 1] of 5; subsample 0.1
+[2026-10-16 12:17] FAILED
+Traceback (most recent call last):
+  File "/root/Dicefest/src/train_cv.py", line 327, in main
+    pb, ptk, it, imp = fit_predict(fam, mcfg.get("params", {}), Xa, ya, wa, Xb, yb, wb, Xt, s,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/Dicefest/src/train_cv.py", line 142, in fit_predict
+    m = cls(**q).fit(Xa.values.astype(np.float32), np.asarray(ya, np.float32), X_val=Xb.values.astype(np.float32),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/Dicefest/.venv/lib/python3.12/site-packages/pytabkit/models/sklearn/sklearn_base.py", line 245, in fit
+    raise ValueError('NaN values in continuous columns are currently not allowed!')
+ValueError: NaN values in continuous columns are currently not allowed!
+
+[2026-10-16 12:26] features: 219 base columns, blocks ['agg', 'te']; folds [0, 1] of 5; subsample 0.1
+[2026-10-16 12:31] target_macro_gas_kwh fold 0: nrmse 0.28182 it 0 (289s)
+[2026-10-16 12:35] target_macro_gas_kwh fold 1: nrmse 0.27511 it 0 (558s)
+[2026-10-16 12:35] target_macro_gas_kwh: OOF nrmse 0.27846
+[2026-10-16 12:35] target_eui_gas_kwh_per_sqm (derived gas / A): OOF nrmse 0.70235

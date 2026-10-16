@@ -1,0 +1,3 @@
+[2026-10-16 12:36] features: 219 base columns, blocks ['agg', 'te']; folds [0, 1, 2, 3, 4] of 5; subsample None
+[2026-10-16 12:37] target_macro_gas_kwh fold 0: nrmse 0.25262 it 1677 (73s)
+[2026-10-16 12:38] target_macro_gas_kwh fold 1: nrmse 0.25458 it 1648 (158s)

@@ -1,0 +1,31 @@
+exp_id: E0249
+slug: M15_realmlp
+hypothesis: 'M15: RealMLP-TD (pytabkit, 16 epoch, batch 2048) log gas/meter dan log
+  elec/meter vs XGB (E0242)'
+phase: 5
+targets:
+- t1
+- t2
+target_transform:
+  default:
+    type: logratio
+    exposure_col: bld_dim_12
+cv:
+  scheme: primary
+  fold_file: data/folds/folds_primary_k5_s42.parquet
+  screen_folds: 3
+features:
+  set: legacy
+  blocks:
+  - agg
+  - te
+model:
+  family: realmlp
+  device: gpu
+  params:
+    n_epochs: 16
+    batch_size: 2048
+seeds:
+- 42
+derive_eui: true
+parent_id: E0242

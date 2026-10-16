@@ -53,6 +53,10 @@ class FeatureBuilder:
         if self.set in ("raw", "raw_ids"):
             keep = [c for c in X.columns if c not in ENGINEERED or (self.set == "raw_ids" and c in ("zone_n", "sub_n"))]
             X, Xt = X[keep], Xt[keep]
+        drop = tuple(cfg.get("drop_prefixes", []))
+        if drop:  # family ablation: remove raw columns of these prefixes (and ratios built from them stay)
+            keep = [c for c in X.columns if not c.startswith(drop)]
+            X, Xt = X[keep], Xt[keep]
         self.X, self.Xt = X.reset_index(drop=True), Xt.reset_index(drop=True)
         self.d = None
         if "te" in self.blocks or "agg" in self.blocks:
@@ -129,6 +133,16 @@ def fit_predict(family, params, Xa, ya, wa, Xb, yb, wb, Xt, seed, cat_cols=()):
         imp = pd.Series(m.get_feature_importance(), Xa.columns)
         return m.predict(Pool(Xb, cat_features=list(cat_cols) or None)), \
             m.predict(Pool(Xt, cat_features=list(cat_cols) or None)), m.get_best_iteration(), imp
+    if family in ("realmlp", "xgb_td", "lgbm_td", "cat_td"):
+        import pytabkit
+        cls = {"realmlp": pytabkit.RealMLP_TD_Regressor, "xgb_td": pytabkit.XGB_TD_Regressor,
+               "lgbm_td": pytabkit.LGBM_TD_Regressor, "cat_td": pytabkit.CatBoost_TD_Regressor}[family]
+        q = dict(device="cuda" if family != "lgbm_td" else "cpu", random_state=seed, n_threads=8, verbosity=0)
+        q.update(p)
+        med = Xa.median()  # pytabkit models reject NaN: fill with fit-part medians
+        Za, Zb, Zt = (z.fillna(med).fillna(0).values.astype(np.float32) for z in (Xa, Xb, Xt))
+        m = cls(**q).fit(Za, np.asarray(ya, np.float32), X_val=Zb, y_val=np.asarray(yb, np.float32))
+        return np.ravel(m.predict(Zb)), np.ravel(m.predict(Zt)), 0, None
     if family == "mean":
         mu = float(np.average(ya, weights=wa))
         return np.full(len(Xb), mu), np.full(len(Xt), mu), 0, None
@@ -255,6 +269,30 @@ def main(cfg_path, smoke=False):
                 for j, (T, t) in enumerate(zip(Ts, targets)):
                     cache[(t, k)] = (T.inverse(pb_s[:, j], None), T.inverse(pt_s[:, j], None))
                 log(f"mlp_multi fold {k} done ({time.time() - t0:.0f}s)")
+        if fam == "xgb_multi":  # one multi-output tree ensemble for all targets (M18)
+            import xgboost as xgb
+            for k in use_folds:
+                a = np.flatnonzero((fold != k) & fit_mask)
+                b = np.flatnonzero((fold == k) & fit_mask)
+                Xa, Xb, Xt = fb.fold(a, b)
+                Ts = [Transform(**tcfg.get(t, tcfg.get("default", {"type": "identity"}))) for t in targets]
+                Ya = np.column_stack([T.fit(tr[t].values[a], None).forward(tr[t].values[a],
+                                      {c: v[a] for c, v in ctx_tr.items()})[0] for T, t in zip(Ts, targets)])
+                Yb = np.column_stack([T.forward(tr[t].values[b], {c: v[b] for c, v in ctx_tr.items()})[0]
+                                      for T, t in zip(Ts, targets)])
+                mu, sd = Ya.mean(0), Ya.std(0)
+                p = dict(mcfg.get("params", {}))
+                n_est, es = p.pop("n_estimators", 20000), p.pop("early_stopping_rounds", 200)
+                p.update(device="cuda", tree_method="hist", seed=seeds[0], multi_strategy="multi_output_tree")
+                da = xgb.QuantileDMatrix(Xa, (Ya - mu) / sd, max_bin=p.get("max_bin", 256))
+                db = xgb.QuantileDMatrix(Xb, (Yb - mu) / sd, ref=da, max_bin=p.get("max_bin", 256))
+                m = xgb.train(p, da, n_est, evals=[(db, "va")], early_stopping_rounds=es, verbose_eval=False)
+                r = (0, m.best_iteration + 1)
+                pb = m.inplace_predict(Xb, iteration_range=r) * sd + mu
+                pt_ = m.inplace_predict(Xt, iteration_range=r) * sd + mu
+                for j, (T, t) in enumerate(zip(Ts, targets)):
+                    cache[(t, k)] = (T.inverse(pb[:, j], {c: v[b] for c, v in ctx_tr.items()}), T.inverse(pt_[:, j], ctx_te))
+                log(f"xgb_multi fold {k} it {m.best_iteration} ({time.time() - t0:.0f}s)")
         for tgt in targets:
             tc = tcfg.get(tgt, tcfg.get("default", {"type": "identity"}))
             o = np.full(len(tr), np.nan)
@@ -274,8 +312,13 @@ def main(cfg_path, smoke=False):
                 Xa, Xb, Xt = fb.fold(a, b)
                 if cat_cols:
                     for c in cat_cols:
-                        for z in (Xa, Xb, Xt):
-                            z[c] = z[c].astype(int)
+                        if fam == "xgb" and mcfg.get("params", {}).get("enable_categorical"):
+                            cats = np.unique(np.r_[Xa[c].values, Xb[c].values, Xt[c].values]).astype(int)
+                            for z in (Xa, Xb, Xt):
+                                z[c] = pd.Categorical(z[c].astype(int), categories=cats)
+                        else:
+                            for z in (Xa, Xb, Xt):
+                                z[c] = z[c].astype(int)
                 y = tr[tgt].values
                 T = Transform(**tc).fit(y[a], {c: v[a] for c, v in ctx_tr.items()})
                 ya, wa = T.forward(y[a], {c: v[a] for c, v in ctx_tr.items()})
@@ -284,6 +327,16 @@ def main(cfg_path, smoke=False):
                 for s in seeds:
                     pb, ptk, it, imp = fit_predict(fam, mcfg.get("params", {}), Xa, ya, wa, Xb, yb, wb, Xt, s,
                                                    cat_cols)
+                    pl = cfg.get("pseudo_label")
+                    if pl:  # student on fit part + test rows labelled by this fold's teacher (A01)
+                        Xs = pd.concat([Xa, Xt], ignore_index=True)
+                        ys = np.r_[ya, np.asarray(ptk, float)]
+                        w0 = np.ones(len(ya)) if wa is None else wa
+                        wt = T.forward(T.inverse(np.asarray(ptk, float), ctx_te), ctx_te)[1]
+                        wt = np.ones(len(Xt)) if wt is None else wt
+                        ws = np.r_[w0, pl["weight"] * wt]
+                        pb, ptk, it, imp = fit_predict(fam, mcfg.get("params", {}), Xs, ys, ws, Xb, yb, wb, Xt, s,
+                                                       cat_cols)
                     pb_s += T.inverse(np.asarray(pb, float), {c: v[b] for c, v in ctx_tr.items()}) / len(seeds)
                     pt_s += T.inverse(np.asarray(ptk, float), ctx_te) / len(seeds)
                     its.append(int(it))

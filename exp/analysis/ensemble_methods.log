@@ -1,0 +1,18 @@
+gas  EN1 single best                  0.24968
+gas  EN2 top-N avg                    0.24660
+gas  EN3 NNLS (dipakai)               0.24591
+gas  EN4 hill climbing x20 bag        0.24606
+gas  EN5 Ridge positive + intercept   0.24587
+Traceback (most recent call last):
+  File "/root/Dicefest/exp/analysis/ensemble_methods.py", line 104, in <module>
+    mdl = meth()(P[a], y[a], s[a])
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/Dicefest/exp/analysis/ensemble_methods.py", line 88, in __call__
+    self.m.fit((P - self.mu) / self.sd, (y - self.ym) / self.ys)
+  File "/root/Dicefest/.venv/lib/python3.12/site-packages/sklearn/base.py", line 1393, in wrapper
+    estimator._validate_params()
+  File "/root/Dicefest/.venv/lib/python3.12/site-packages/sklearn/base.py", line 554, in _validate_params
+    validate_parameter_constraints(
+  File "/root/Dicefest/.venv/lib/python3.12/site-packages/sklearn/utils/_param_validation.py", line 98, in validate_parameter_constraints
+    raise InvalidParameterError(
+sklearn.utils._param_validation.InvalidParameterError: The 'loss' parameter of MLPRegressor must be a str among {'squared_error', 'poisson'}. Got (32,) instead.

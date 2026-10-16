@@ -1,0 +1,38 @@
+exp_id: E0248
+slug: M11_cat_lossguide
+hypothesis: 'M11: CatBoost grow_policy Lossguide (max_leaves 255) vs SymmetricTree
+  (E0246)'
+phase: 5
+targets:
+- t1
+target_transform:
+  default:
+    type: ratio
+    exposure_col: bld_dim_12
+    weight_power: 2
+    weight_col: bld_dim_06
+    weight_col_power: -1
+cv:
+  scheme: primary
+  fold_file: data/folds/folds_primary_k5_s42.parquet
+  screen_folds: 3
+features:
+  set: legacy
+  blocks:
+  - agg
+  - te
+model:
+  family: cat
+  device: gpu
+  params:
+    learning_rate: 0.08
+    depth: 10
+    l2_leaf_reg: 3
+    border_count: 254
+    grow_policy: Lossguide
+    max_leaves: 255
+    min_data_in_leaf: 50
+seeds:
+- 42
+derive_eui: true
+parent_id: E0246

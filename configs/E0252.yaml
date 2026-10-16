@@ -1,0 +1,28 @@
+exp_id: E0252
+slug: M16_lgbm_td
+hypothesis: 'M16: LGBM-TD default pytabkit vs XGB kita (E0242)'
+phase: 5
+targets:
+- t1
+- t2
+target_transform:
+  default:
+    type: logratio
+    exposure_col: bld_dim_12
+cv:
+  scheme: primary
+  fold_file: data/folds/folds_primary_k5_s42.parquet
+  screen_folds: 3
+features:
+  set: legacy
+  blocks:
+  - agg
+  - te
+model:
+  family: lgbm_td
+  device: cpu
+  params: {}
+seeds:
+- 42
+derive_eui: true
+parent_id: E0242

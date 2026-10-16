@@ -1,0 +1,42 @@
+exp_id: E0240
+slug: S02_xgb_seedbag3
+hypothesis: 'S02: seed bagging 3 seed (42, 2026, 7) pada XGB gpm menurunkan NRMSE
+  vs 1 seed (E0190 fold 0-2)'
+phase: 7
+targets:
+- t1
+target_transform:
+  default:
+    type: ratio
+    exposure_col: bld_dim_12
+    weight_power: 2
+    weight_col: bld_dim_06
+    weight_col_power: -1
+cv:
+  scheme: primary
+  fold_file: data/folds/folds_primary_k5_s42.parquet
+  screen_folds: 3
+features:
+  set: legacy
+  blocks:
+  - agg
+  - te
+model:
+  family: xgb
+  device: gpu
+  params:
+    learning_rate: 0.05
+    max_depth: 8
+    subsample: 0.8
+    colsample_bytree: 0.6
+    min_child_weight: 50
+    reg_lambda: 1.0
+    eval_metric: rmse
+    n_estimators: 20000
+    early_stopping_rounds: 200
+seeds:
+- 42
+- 2026
+- 7
+derive_eui: true
+parent_id: E0190

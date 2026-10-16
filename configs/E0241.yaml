@@ -1,0 +1,38 @@
+exp_id: E0241
+slug: M18_xgb_multi_output
+hypothesis: 'M18: XGB multi_output_tree untuk log gas/meter dan log elec/meter sekaligus
+  vs per target (E0242)'
+phase: 5
+targets:
+- t1
+- t2
+target_transform:
+  default:
+    type: logratio
+    exposure_col: bld_dim_12
+cv:
+  scheme: primary
+  fold_file: data/folds/folds_primary_k5_s42.parquet
+  screen_folds: 3
+features:
+  set: legacy
+  blocks:
+  - agg
+  - te
+model:
+  family: xgb_multi
+  device: gpu
+  params:
+    learning_rate: 0.05
+    max_depth: 8
+    subsample: 0.8
+    colsample_bytree: 0.6
+    min_child_weight: 50
+    reg_lambda: 1.0
+    eval_metric: rmse
+    n_estimators: 20000
+    early_stopping_rounds: 200
+seeds:
+- 42
+derive_eui: true
+parent_id: E0242
