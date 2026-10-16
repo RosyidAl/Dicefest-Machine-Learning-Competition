@@ -1,0 +1,24 @@
+exp_id: E0169
+slug: B0_mean
+hypothesis: 'B0: prediksi rata-rata fold training (sanity sekitar 1,0) [CV primary]'
+phase: 2
+targets:
+- t1
+- t2
+- t3
+- t4
+- t5
+seeds:
+- 42
+target_transform:
+  default:
+    type: identity
+cv:
+  scheme: primary
+  fold_file: data/folds/folds_primary_k5_s42.parquet
+features:
+  set: raw
+model:
+  family: mean
+  device: cpu
+  params: {}

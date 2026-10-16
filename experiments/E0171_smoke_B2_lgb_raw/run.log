@@ -1,0 +1,17 @@
+[2026-10-16 11:34] features: 190 base columns, blocks []; folds [0, 1] of 5; subsample 0.1
+[2026-10-16 11:34] target_macro_gas_kwh fold 0: nrmse 0.29145 it 169 (22s)
+[2026-10-16 11:34] target_macro_gas_kwh fold 1: nrmse 0.28799 it 129 (35s)
+[2026-10-16 11:34] target_macro_gas_kwh: OOF nrmse 0.28971
+[2026-10-16 11:35] target_macro_elec_kwh fold 0: nrmse 0.34771 it 89 (47s)
+[2026-10-16 11:35] target_macro_elec_kwh fold 1: nrmse 0.34796 it 94 (60s)
+[2026-10-16 11:35] target_macro_elec_kwh: OOF nrmse 0.34784
+[2026-10-16 11:35] target_eui_gas_kwh_per_sqm fold 0: nrmse 0.73308 it 127 (72s)
+[2026-10-16 11:35] target_eui_gas_kwh_per_sqm fold 1: nrmse 0.73408 it 119 (85s)
+[2026-10-16 11:35] target_eui_gas_kwh_per_sqm: OOF nrmse 0.73358
+[2026-10-16 11:35] target_clean_building_ratio fold 0: nrmse 0.04593 it 284 (98s)
+[2026-10-16 11:36] target_clean_building_ratio fold 1: nrmse 0.03757 it 300 (111s)
+[2026-10-16 11:36] target_clean_building_ratio: OOF nrmse 0.04181
+[2026-10-16 11:36] target_electric_heating_adoption fold 0: nrmse 0.20054 it 296 (125s)
+[2026-10-16 11:36] target_electric_heating_adoption fold 1: nrmse 0.18865 it 300 (140s)
+[2026-10-16 11:36] target_electric_heating_adoption: OOF nrmse 0.19436
+[2026-10-16 11:36] done in 2.3 min

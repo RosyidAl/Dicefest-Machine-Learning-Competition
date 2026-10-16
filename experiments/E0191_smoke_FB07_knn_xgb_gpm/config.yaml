@@ -1,0 +1,40 @@
+exp_id: E0191
+parent_id: E0190
+slug: FB07_knn_xgb_gpm
+hypothesis: 'FB07: + fitur KNN-target OOF (ruang stok bangunan, window sub_n 30/100/300)
+  menurunkan NRMSE gas dan EUI'
+features:
+  set: legacy
+  blocks:
+  - agg
+  - te
+  - knn_target
+phase: 4
+targets:
+- t1
+derive_eui: true
+seeds:
+- 42
+target_transform:
+  default:
+    type: ratio
+    exposure_col: bld_dim_12
+    weight_power: 2
+    weight_col: bld_dim_06
+    weight_col_power: -1
+cv:
+  scheme: primary
+  fold_file: data/folds/folds_primary_k5_s42.parquet
+model:
+  family: xgb
+  device: gpu
+  params:
+    learning_rate: 0.05
+    max_depth: 8
+    subsample: 0.8
+    colsample_bytree: 0.6
+    min_child_weight: 50
+    reg_lambda: 1.0
+    eval_metric: rmse
+    n_estimators: 20000
+    early_stopping_rounds: 200

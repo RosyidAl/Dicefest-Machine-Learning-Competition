@@ -1,0 +1,632 @@
+members:
+  p2_gpm:
+    backend: nn
+    kind: gpm
+    epochs: 12
+    fixed_ep: 11
+    wmul: iA
+    params:
+      lr: 0.001
+      wd: 0.0001
+      drop: 0.3
+      hidden: [1024, 512, 256]
+      emb: {k: 24, sigma: 0.05, d: 24}
+    seeds: [42, 43, 44]
+    n_folds: 10
+    agg: true
+    use_te: true
+    windows: [2, 10]
+    cells: true
+    source: src/exp_v11_nn.py
+  xa_gpm:
+    backend: xgb
+    kind: gpm
+    params: {learning_rate: 0.03, max_depth: 10, subsample: 0.8, colsample_bytree: 0.6, min_child_weight: 50, reg_lambda: 1.0, eval_metric: rmse}
+    wmul: iA
+    n_folds: 10
+    agg: true
+    source: src/exp_v10_agg.py
+    use_te: true
+    windows: [2, 10]
+    cells: true
+  xa_gpgea:
+    backend: xgb
+    kind: gas_per:bld_dim_03
+    params: {learning_rate: 0.03, max_depth: 10, subsample: 0.8, colsample_bytree: 0.6, min_child_weight: 50, reg_lambda: 1.0, eval_metric: rmse}
+    wmul: iA
+    n_folds: 10
+    agg: true
+    source: src/exp_v10_agg.py
+    use_te: true
+    windows: [2, 10]
+    cells: true
+  p1_gpm:
+    backend: nn
+    kind: gpm
+    epochs: 44
+    fixed_ep: 43
+    wmul: iA
+    params:
+      lr: 0.001
+      wd: 0.0001
+      drop: 0.3
+      hidden: [1024, 512, 256]
+      emb: {k: 24, sigma: 0.05, d: 24}
+    seeds: [42, 43, 44]
+    n_folds: 10
+    agg: false
+    use_te: true
+    windows: [2, 10]
+    cells: true
+    source: src/exp_v9_nn.py
+  lgb_gas:
+    backend: lgb
+    kind: gas
+    params: {learning_rate: 0.04, num_leaves: 255, min_data_in_leaf: 100, feature_fraction: 0.5, bagging_fraction: 0.8, bagging_freq: 1, lambda_l2: 10.0,
+      max_bin: 255, num_threads: 12}
+    wmul: null
+    n_folds: 5
+    agg: false
+    source: src/exp_lgb1.py
+  x8_gpn:
+    backend: xgb
+    kind: gas_per:bld_dim_01
+    params: {learning_rate: 0.05, max_depth: 10, subsample: 0.8, colsample_bytree: 0.6, min_child_weight: 50, reg_lambda: 1.0, eval_metric: rmse}
+    wmul: iA
+    n_folds: 10
+    agg: false
+    source: src/exp_v8_xgb.py
+    use_te: true
+    windows: [2, 10]
+    cells: true
+  p2_gpgea:
+    backend: nn
+    kind: gas_per:bld_dim_03
+    epochs: 12
+    fixed_ep: 11
+    wmul: iA
+    params:
+      lr: 0.001
+      wd: 0.0001
+      drop: 0.3
+      hidden: [1024, 512, 256]
+      emb: {k: 24, sigma: 0.05, d: 24}
+    seeds: [42, 43, 44]
+    n_folds: 10
+    agg: true
+    use_te: true
+    windows: [2, 10]
+    cells: true
+    source: src/exp_v11_nn.py
+  n6_lgpm:
+    backend: nn
+    kind: lgas_per:bld_dim_12
+    epochs: 40
+    fixed_ep: 39
+    wmul: A
+    params:
+      lr: 0.001
+      wd: 0.0001
+      drop: 0.3
+      hidden: [1024, 512, 256]
+    seeds: [42, 43, 44]
+    n_folds: 10
+    agg: false
+    use_te: true
+    windows: [2, 10]
+    cells: true
+    source: src/exp_v6_nn.py
+  xgb_eui_wsM:
+    backend: xgb
+    kind: eui
+    params: {learning_rate: 0.05, max_depth: 8, subsample: 0.8, colsample_bytree: 0.6, min_child_weight: 50, reg_lambda: 1.0, eval_metric: rmse}
+    wmul: sqrtM
+    n_folds: 5
+    agg: false
+    source: src/exp_zoo1.py
+  xa_lgpm:
+    backend: xgb
+    kind: lgas_per:bld_dim_12
+    params: {learning_rate: 0.03, max_depth: 10, subsample: 0.8, colsample_bytree: 0.6, min_child_weight: 50, reg_lambda: 1.0, eval_metric: rmse}
+    wmul: A
+    n_folds: 10
+    agg: true
+    source: src/exp_v10_agg.py
+    use_te: true
+    windows: [2, 10]
+    cells: true
+  m1_gpm: {backend: nn_multi, group: m1, source: src/exp_v14_mt.py}
+  l4_gpm:
+    backend: lgb
+    kind: gpm
+    params: {learning_rate: 0.04, num_leaves: 255, min_data_in_leaf: 100, feature_fraction: 0.5, bagging_fraction: 0.8, bagging_freq: 1, lambda_l2: 10.0,
+      max_bin: 255, num_threads: 12}
+    wmul: iA
+    n_folds: 10
+    agg: false
+    source: src/exp_v4_lgb.py
+    use_te: true
+    windows: [2, 10]
+    cells: true
+  la_gas:
+    backend: lgb
+    kind: gas
+    params: {learning_rate: 0.04, num_leaves: 255, min_data_in_leaf: 100, feature_fraction: 0.5, bagging_fraction: 0.8, bagging_freq: 1, lambda_l2: 10.0,
+      max_bin: 255, num_threads: 12}
+    wmul: null
+    n_folds: 10
+    agg: true
+    source: src/exp_v10_lgb.py
+    use_te: true
+    windows: [2, 10]
+    cells: true
+  xgb_leui_wA:
+    backend: xgb
+    kind: leui
+    params: {learning_rate: 0.05, max_depth: 8, subsample: 0.8, colsample_bytree: 0.6, min_child_weight: 50, reg_lambda: 1.0, eval_metric: rmse}
+    wmul: A
+    n_folds: 5
+    agg: false
+    source: src/exp_zoo2.py
+  xgb_gpn_tew:
+    backend: xgb
+    kind: gas_per:bld_dim_01
+    params: {learning_rate: 0.05, max_depth: 8, subsample: 0.8, colsample_bytree: 0.6, min_child_weight: 50, reg_lambda: 1.0, eval_metric: rmse}
+    wmul: iA
+    n_folds: 5
+    agg: false
+    source: src/exp_zoo5.py
+    use_te: true
+    windows: [2, 10]
+    cells: false
+  la_leui_wA:
+    backend: lgb
+    kind: leui
+    params: {learning_rate: 0.04, num_leaves: 255, min_data_in_leaf: 100, feature_fraction: 0.5, bagging_fraction: 0.8, bagging_freq: 1, lambda_l2: 10.0,
+      max_bin: 255, num_threads: 12}
+    wmul: A
+    n_folds: 10
+    agg: true
+    source: src/exp_v10_lgb.py
+    use_te: true
+    windows: [2, 10]
+    cells: true
+  n4f_gpm:
+    backend: nn
+    kind: gpm
+    epochs: 60
+    fixed_ep: 37
+    wmul: iA
+    params:
+      lr: 0.001
+      wd: 0.0001
+      drop: 0.3
+      hidden: [1024, 512, 256]
+    seeds: [42, 43, 44]
+    n_folds: 10
+    agg: false
+    use_te: true
+    windows: [2, 10]
+    cells: true
+    source: src/exp_nnfix.py
+  la_lgpm:
+    backend: lgb
+    kind: lgas_per:bld_dim_12
+    params: {learning_rate: 0.04, num_leaves: 255, min_data_in_leaf: 100, feature_fraction: 0.5, bagging_fraction: 0.8, bagging_freq: 1, lambda_l2: 10.0,
+      max_bin: 255, num_threads: 12}
+    wmul: A
+    n_folds: 10
+    agg: true
+    source: src/exp_v10_lgb.py
+    use_te: true
+    windows: [2, 10]
+    cells: true
+  la_gpm:
+    backend: lgb
+    kind: gpm
+    params: {learning_rate: 0.04, num_leaves: 255, min_data_in_leaf: 100, feature_fraction: 0.5, bagging_fraction: 0.8, bagging_freq: 1, lambda_l2: 10.0,
+      max_bin: 255, num_threads: 12}
+    wmul: iA
+    n_folds: 10
+    agg: true
+    source: src/exp_v10_lgb.py
+    use_te: true
+    windows: [2, 10]
+    cells: true
+  xgb_eui_d10:
+    backend: xgb
+    kind: eui
+    params: {learning_rate: 0.05, max_depth: 10, subsample: 0.8, colsample_bytree: 0.6, min_child_weight: 20, reg_lambda: 1.0, eval_metric: rmse}
+    wmul: null
+    n_folds: 5
+    agg: false
+    source: src/exp_xgb_grid.py
+  p2_lgpm:
+    backend: nn
+    kind: lgas_per:bld_dim_12
+    epochs: 12
+    fixed_ep: 11
+    wmul: A
+    params:
+      lr: 0.001
+      wd: 0.0001
+      drop: 0.3
+      hidden: [1024, 512, 256]
+      emb: {k: 24, sigma: 0.05, d: 24}
+    seeds: [42, 43, 44]
+    n_folds: 10
+    agg: true
+    use_te: true
+    windows: [2, 10]
+    cells: true
+    source: src/exp_v11_nn.py
+  x8_lgpm:
+    backend: xgb
+    kind: lgas_per:bld_dim_12
+    params: {learning_rate: 0.03, max_depth: 10, subsample: 0.8, colsample_bytree: 0.6, min_child_weight: 50, reg_lambda: 1.0, eval_metric: rmse}
+    wmul: A
+    n_folds: 10
+    agg: false
+    source: src/exp_v8_xgb.py
+    use_te: true
+    windows: [2, 10]
+    cells: true
+  xgb_gas:
+    backend: xgb
+    kind: gas
+    params: {learning_rate: 0.05, max_depth: 8, subsample: 0.8, colsample_bytree: 0.6, min_child_weight: 50, reg_lambda: 1.0, eval_metric: rmse}
+    wmul: null
+    n_folds: 5
+    agg: false
+    source: src/exp_zoo1.py
+  x8_gpm:
+    backend: xgb
+    kind: gpm
+    params: {learning_rate: 0.03, max_depth: 10, subsample: 0.8, colsample_bytree: 0.6, min_child_weight: 50, reg_lambda: 1.0, eval_metric: rmse}
+    wmul: iA
+    n_folds: 10
+    agg: false
+    source: src/exp_v8_xgb.py
+    use_te: true
+    windows: [2, 10]
+    cells: true
+  xgb_eui_wA_te:
+    backend: xgb
+    kind: eui
+    params: {learning_rate: 0.05, max_depth: 8, subsample: 0.8, colsample_bytree: 0.6, min_child_weight: 50, reg_lambda: 1.0, eval_metric: rmse}
+    wmul: A
+    n_folds: 5
+    agg: false
+    source: src/exp_zoo3.py
+    use_te: true
+    windows: []
+    cells: false
+  p3_lepm:
+    backend: nn
+    kind: lepm
+    epochs: 10
+    fixed_ep: 9
+    wmul: M
+    params:
+      lr: 0.001
+      wd: 0.0001
+      drop: 0.3
+      hidden: [1024, 512, 256]
+      emb: {k: 24, sigma: 0.02, d: 48}
+    seeds: [42, 43, 44]
+    n_folds: 10
+    agg: true
+    use_te: true
+    windows: [2, 10]
+    cells: true
+    source: src/exp_v11_nn.py
+  la_epa:
+    backend: lgb
+    kind: elec_per:bld_dim_06
+    params: {learning_rate: 0.04, num_leaves: 255, min_data_in_leaf: 100, feature_fraction: 0.5, bagging_fraction: 0.8, bagging_freq: 1, lambda_l2: 10.0,
+      max_bin: 255, num_threads: 12}
+    wmul: iM
+    n_folds: 10
+    agg: true
+    source: src/exp_v10_lgb.py
+    use_te: true
+    windows: [2, 10]
+    cells: true
+  m1_epm: {backend: nn_multi, group: m1, source: src/exp_v14_mt.py}
+  xgb_lepm:
+    backend: xgb
+    kind: lepm
+    params: {learning_rate: 0.05, max_depth: 8, subsample: 0.8, colsample_bytree: 0.6, min_child_weight: 50, reg_lambda: 1.0, eval_metric: rmse}
+    wmul: M
+    n_folds: 5
+    agg: false
+    source: src/exp_zoo2.py
+  t1_lepm:
+    backend: nn
+    kind: lepm
+    epochs: 24
+    fixed_ep: 23
+    wmul: M
+    params:
+      lr: 0.002
+      wd: 0.0001
+      drop: 0.1
+      hidden: [512, 512, 512]
+      emb: {k: 24, sigma: 0.05, d: 24}
+      ens: 16
+    seeds: [42]
+    n_folds: 10
+    agg: true
+    use_te: true
+    windows: [2, 10]
+    cells: true
+    source: src/exp_v11_nn.py
+  l4_epa:
+    backend: lgb
+    kind: elec_per:bld_dim_06
+    params: {learning_rate: 0.04, num_leaves: 255, min_data_in_leaf: 100, feature_fraction: 0.5, bagging_fraction: 0.8, bagging_freq: 1, lambda_l2: 10.0,
+      max_bin: 255, num_threads: 12}
+    wmul: iM
+    n_folds: 10
+    agg: false
+    source: src/exp_v5_lgb.py
+    use_te: true
+    windows: [2, 10]
+    cells: true
+  la_lepa:
+    backend: lgb
+    kind: lelec_per:bld_dim_06
+    params: {learning_rate: 0.04, num_leaves: 255, min_data_in_leaf: 100, feature_fraction: 0.5, bagging_fraction: 0.8, bagging_freq: 1, lambda_l2: 10.0,
+      max_bin: 255, num_threads: 12}
+    wmul: M
+    n_folds: 10
+    agg: true
+    source: src/exp_v10_lgb.py
+    use_te: true
+    windows: [2, 10]
+    cells: true
+  n6b_lepm:
+    backend: nn
+    kind: lepm
+    epochs: 24
+    fixed_ep: 23
+    wmul: M
+    params:
+      lr: 0.001
+      wd: 0.0001
+      drop: 0.3
+      hidden: [1024, 512, 256]
+    seeds: [45, 46, 47]
+    n_folds: 10
+    agg: false
+    use_te: true
+    windows: [2, 10]
+    cells: true
+    source: src/exp_v6b_nn.py
+  x4_elec:
+    backend: xgb
+    kind: elec
+    params: {learning_rate: 0.05, max_depth: 8, subsample: 0.8, colsample_bytree: 0.6, min_child_weight: 50, reg_lambda: 1.0, eval_metric: rmse}
+    wmul: null
+    n_folds: 10
+    agg: false
+    source: src/exp_v4_xgb.py
+    use_te: true
+    windows: [2, 10]
+    cells: true
+  xgb_epm_wM_tew_k10:
+    backend: xgb
+    kind: epm
+    params: {learning_rate: 0.05, max_depth: 8, subsample: 0.8, colsample_bytree: 0.6, min_child_weight: 50, reg_lambda: 1.0, eval_metric: rmse}
+    wmul: iM
+    n_folds: 10
+    agg: false
+    source: src/exp_k10.py
+    use_te: true
+    windows: [2, 10]
+    cells: false
+  xa_lepa:
+    backend: xgb
+    kind: lelec_per:bld_dim_06
+    params: {learning_rate: 0.05, max_depth: 8, subsample: 0.8, colsample_bytree: 0.6, min_child_weight: 50, reg_lambda: 1.0, eval_metric: rmse}
+    wmul: M
+    n_folds: 10
+    agg: true
+    source: src/exp_v10_agg.py
+    use_te: true
+    windows: [2, 10]
+    cells: true
+  xgb_elec:
+    backend: xgb
+    kind: elec
+    params: {learning_rate: 0.05, max_depth: 8, subsample: 0.8, colsample_bytree: 0.6, min_child_weight: 50, reg_lambda: 1.0, eval_metric: rmse}
+    wmul: null
+    n_folds: 5
+    agg: false
+    source: src/exp_zoo1.py
+  l4_epm_wM:
+    backend: lgb
+    kind: epm
+    params: {learning_rate: 0.04, num_leaves: 255, min_data_in_leaf: 100, feature_fraction: 0.5, bagging_fraction: 0.8, bagging_freq: 1, lambda_l2: 10.0,
+      max_bin: 255, num_threads: 12}
+    wmul: iM
+    n_folds: 10
+    agg: false
+    source: src/exp_v4_lgb.py
+    use_te: true
+    windows: [2, 10]
+    cells: true
+  xgb_lepa_tew:
+    backend: xgb
+    kind: lelec_per:bld_dim_06
+    params: {learning_rate: 0.05, max_depth: 8, subsample: 0.8, colsample_bytree: 0.6, min_child_weight: 50, reg_lambda: 1.0, eval_metric: rmse}
+    wmul: M
+    n_folds: 5
+    agg: false
+    source: src/exp_zoo5.py
+    use_te: true
+    windows: [2, 10]
+    cells: false
+  l4_elec:
+    backend: lgb
+    kind: elec
+    params: {learning_rate: 0.04, num_leaves: 255, min_data_in_leaf: 100, feature_fraction: 0.5, bagging_fraction: 0.8, bagging_freq: 1, lambda_l2: 10.0,
+      max_bin: 255, num_threads: 12}
+    wmul: null
+    n_folds: 10
+    agg: false
+    source: src/exp_v5_lgb.py
+    use_te: true
+    windows: [2, 10]
+    cells: true
+  la_epm_wM:
+    backend: lgb
+    kind: epm
+    params: {learning_rate: 0.04, num_leaves: 255, min_data_in_leaf: 100, feature_fraction: 0.5, bagging_fraction: 0.8, bagging_freq: 1, lambda_l2: 10.0,
+      max_bin: 255, num_threads: 12}
+    wmul: iM
+    n_folds: 10
+    agg: true
+    source: src/exp_v10_lgb.py
+    use_te: true
+    windows: [2, 10]
+    cells: true
+  x4_lepa:
+    backend: xgb
+    kind: lelec_per:bld_dim_06
+    params: {learning_rate: 0.05, max_depth: 8, subsample: 0.8, colsample_bytree: 0.6, min_child_weight: 50, reg_lambda: 1.0, eval_metric: rmse}
+    wmul: M
+    n_folds: 10
+    agg: false
+    source: src/exp_v4_xgb.py
+    use_te: true
+    windows: [2, 10]
+    cells: true
+  la_elec:
+    backend: lgb
+    kind: elec
+    params: {learning_rate: 0.04, num_leaves: 255, min_data_in_leaf: 100, feature_fraction: 0.5, bagging_fraction: 0.8, bagging_freq: 1, lambda_l2: 10.0,
+      max_bin: 255, num_threads: 12}
+    wmul: null
+    n_folds: 10
+    agg: true
+    source: src/exp_v10_lgb.py
+    use_te: true
+    windows: [2, 10]
+    cells: true
+  p3_epm_wM:
+    backend: nn
+    kind: epm
+    epochs: 10
+    fixed_ep: 9
+    wmul: iM
+    params:
+      lr: 0.001
+      wd: 0.0001
+      drop: 0.3
+      hidden: [1024, 512, 256]
+      emb: {k: 24, sigma: 0.02, d: 48}
+    seeds: [42, 43, 44]
+    n_folds: 10
+    agg: true
+    use_te: true
+    windows: [2, 10]
+    cells: true
+    source: src/exp_v11_nn.py
+  x4_epa:
+    backend: xgb
+    kind: elec_per:bld_dim_06
+    params: {learning_rate: 0.05, max_depth: 8, subsample: 0.8, colsample_bytree: 0.6, min_child_weight: 50, reg_lambda: 1.0, eval_metric: rmse}
+    wmul: iM
+    n_folds: 10
+    agg: false
+    source: src/exp_v4_xgb.py
+    use_te: true
+    windows: [2, 10]
+    cells: true
+  x4_epm_wM:
+    backend: xgb
+    kind: epm
+    params: {learning_rate: 0.05, max_depth: 8, subsample: 0.8, colsample_bytree: 0.6, min_child_weight: 50, reg_lambda: 1.0, eval_metric: rmse}
+    wmul: iM
+    n_folds: 10
+    agg: false
+    source: src/exp_v4_xgb.py
+    use_te: true
+    windows: [2, 10]
+    cells: true
+  lgb_epm_wM_tew:
+    backend: lgb
+    kind: epm
+    params: {learning_rate: 0.04, num_leaves: 255, min_data_in_leaf: 100, feature_fraction: 0.5, bagging_fraction: 0.8, bagging_freq: 1, lambda_l2: 10.0,
+      max_bin: 255, num_threads: 12}
+    wmul: iM
+    n_folds: 5
+    agg: false
+    source: src/exp_lgb2.py
+    use_te: true
+    windows: [2, 10]
+    cells: false
+  xgb_epm_wM:
+    backend: xgb
+    kind: epm
+    params: {learning_rate: 0.05, max_depth: 8, subsample: 0.8, colsample_bytree: 0.6, min_child_weight: 50, reg_lambda: 1.0, eval_metric: rmse}
+    wmul: iM
+    n_folds: 5
+    agg: false
+    source: src/exp_zoo2.py
+  n6_epm_wM:
+    backend: nn
+    kind: epm
+    epochs: 23
+    fixed_ep: 22
+    wmul: iM
+    params:
+      lr: 0.001
+      wd: 0.0001
+      drop: 0.3
+      hidden: [1024, 512, 256]
+    seeds: [42, 43, 44]
+    n_folds: 10
+    agg: false
+    use_te: true
+    windows: [2, 10]
+    cells: true
+    source: src/exp_v6_nn.py
+  l4_lepa:
+    backend: lgb
+    kind: lelec_per:bld_dim_06
+    params: {learning_rate: 0.04, num_leaves: 255, min_data_in_leaf: 100, feature_fraction: 0.5, bagging_fraction: 0.8, bagging_freq: 1, lambda_l2: 10.0,
+      max_bin: 255, num_threads: 12}
+    wmul: M
+    n_folds: 10
+    agg: false
+    source: src/exp_v5_lgb.py
+    use_te: true
+    windows: [2, 10]
+    cells: true
+multi:
+  m1:
+    tasks:
+    - [gpm, gpm, iA]
+    - [epm, epm, iM]
+    epochs: 12
+    fixed_ep: 11
+    params:
+      lr: 0.001
+      wd: 0.0001
+      drop: 0.3
+      hidden: [2048, 1024, 512]
+      emb: {k: 24, sigma: 0.05, d: 24}
+    seeds: [42, 43, 44]
+    n_folds: 10
+    agg: true
+    use_te: true
+    windows: [2, 10]
+    cells: true
+    source: src/exp_v14_mt.py
+blend:
+  gas: [p2_gpm, xa_gpm, xa_gpgea, p1_gpm, lgb_gas, x8_gpn, p2_gpgea, n6_lgpm, xgb_eui_wsM, xa_lgpm, m1_gpm, l4_gpm, la_gas, xgb_leui_wA, xgb_gpn_tew, la_leui_wA,
+    n4f_gpm, la_lgpm, la_gpm, xgb_eui_d10, p2_lgpm, x8_lgpm, xgb_gas, x8_gpm, xgb_eui_wA_te]
+  elec: [p3_lepm, la_epa, m1_epm, xgb_lepm, t1_lepm, l4_epa, la_lepa, n6b_lepm, x4_elec, xgb_epm_wM_tew_k10, xa_lepa, xgb_elec, l4_epm_wM, xgb_lepa_tew,
+    l4_elec, la_epm_wM, x4_lepa, la_elec, p3_epm_wM, x4_epa, x4_epm_wM, lgb_epm_wM_tew, xgb_epm_wM, n6_epm_wM, l4_lepa]

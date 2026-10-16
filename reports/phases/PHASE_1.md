@@ -1,0 +1,11 @@
+# Fase 1: EDA dan forensik data (selesai 2026-10-16 11:58 WIB)
+- Laporan: reports/eda/EDA_REPORT.md, angka mentah: reports/eda/findings.json, figur: reports/eda/figures/.
+- D001: split acak per baris.
+  - Baris test di subzone tak terlihat: teramati 8,14% vs harapan 8,17%.
+  - std z rasio test per zone 0,989.
+  - AUC adversarial 0,50.
+  - id tidak informatif (|rho| <= 0,003).
+- Identitas eksak: gas = EUI x bld_dim_06 (selisih relatif 6,7e-16); clean = round(100 b02/b01, 2) (100%); adopsi konstan per subzone.
+- Sigma beku = std train (ddof 1).
+- Prioritas: EUI (sekitar 65% skor), lalu elec, lalu gas.
+- Lantai noise sekitar 0,21 dari rata-rata rumah tangga.

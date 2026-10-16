@@ -1,0 +1,26 @@
+[2026-10-16 11:40] features: 192 base columns, blocks []; folds [0, 1, 2, 3, 4] of 5; subsample None
+[2026-10-16 11:40] target_macro_gas_kwh fold 0: nrmse 0.26288 it 838 (26s)
+[2026-10-16 11:40] target_macro_gas_kwh fold 1: nrmse 0.26428 it 806 (46s)
+[2026-10-16 11:41] target_macro_gas_kwh fold 2: nrmse 0.26290 it 876 (69s)
+[2026-10-16 11:41] target_macro_gas_kwh fold 3: nrmse 0.26304 it 777 (90s)
+[2026-10-16 11:41] target_macro_gas_kwh fold 4: nrmse 0.26234 it 755 (112s)
+[2026-10-16 11:41] target_macro_gas_kwh: OOF nrmse 0.26309
+[2026-10-16 11:42] target_macro_elec_kwh fold 0: nrmse 0.33042 it 305 (127s)
+[2026-10-16 11:42] target_macro_elec_kwh fold 1: nrmse 0.33216 it 336 (142s)
+[2026-10-16 11:42] target_macro_elec_kwh fold 2: nrmse 0.33091 it 267 (156s)
+[2026-10-16 11:42] target_macro_elec_kwh fold 3: nrmse 0.32906 it 280 (169s)
+[2026-10-16 11:43] target_macro_elec_kwh fold 4: nrmse 0.32786 it 385 (185s)
+[2026-10-16 11:43] target_macro_elec_kwh: OOF nrmse 0.33009
+[2026-10-16 11:43] target_eui_gas_kwh_per_sqm fold 0: nrmse 0.68660 it 510 (202s)
+[2026-10-16 11:43] target_eui_gas_kwh_per_sqm fold 1: nrmse 0.68919 it 549 (221s)
+[2026-10-16 11:43] target_eui_gas_kwh_per_sqm fold 2: nrmse 0.68600 it 460 (239s)
+[2026-10-16 11:44] target_eui_gas_kwh_per_sqm fold 3: nrmse 0.68390 it 578 (259s)
+[2026-10-16 11:44] target_eui_gas_kwh_per_sqm fold 4: nrmse 0.68658 it 580 (279s)
+[2026-10-16 11:44] target_eui_gas_kwh_per_sqm: OOF nrmse 0.68645
+[2026-10-16 11:45] target_clean_building_ratio fold 0: nrmse 0.01549 it 3857 (339s)
+[2026-10-16 11:46] target_clean_building_ratio fold 1: nrmse 0.01634 it 2651 (381s)
+[2026-10-16 11:46] target_clean_building_ratio fold 2: nrmse 0.01619 it 2382 (418s)
+[2026-10-16 11:47] target_clean_building_ratio fold 3: nrmse 0.01470 it 2445 (459s)
+[2026-10-16 11:48] target_clean_building_ratio fold 4: nrmse 0.01598 it 2392 (498s)
+[2026-10-16 11:48] target_clean_building_ratio: OOF nrmse 0.01575
+[2026-10-16 11:53] target_electric_heating_adoption fold 0: nrmse 0.09769 it 19999 (812s)

@@ -1,0 +1,36 @@
+exp_id: E0172
+slug: B3_lgb_ids
+hypothesis: 'B3: B2 + zone/subzone id numerik [CV primary]'
+phase: 2
+targets:
+- t1
+- t2
+- t3
+- t4
+- t5
+seeds:
+- 42
+target_transform:
+  default:
+    type: identity
+cv:
+  scheme: primary
+  fold_file: data/folds/folds_primary_k5_s42.parquet
+features:
+  set: raw_ids
+model:
+  family: lgb
+  device: cpu
+  params:
+    objective: regression
+    learning_rate: 0.1
+    num_leaves: 255
+    min_data_in_leaf: 100
+    feature_fraction: 0.6
+    bagging_fraction: 0.8
+    bagging_freq: 1
+    lambda_l2: 1.0
+    max_bin: 255
+    n_estimators: 20000
+    early_stopping_rounds: 300
+    num_threads: 6

@@ -1,0 +1,32 @@
+exp_id: E0184
+slug: B5_cat_ids_sec
+hypothesis: 'B5: CatBoost GPU, zone_n dan sub_n sebagai cat_features [CV secondary]'
+phase: 2
+targets:
+- t1
+- t2
+- t3
+- t4
+- t5
+seeds:
+- 42
+target_transform:
+  default:
+    type: identity
+cv:
+  scheme: secondary
+  fold_file: data/folds/folds_secondary_k5_s42.parquet
+features:
+  set: raw_ids
+model:
+  family: cat
+  device: gpu
+  params:
+    learning_rate: 0.1
+    depth: 8
+    l2_leaf_reg: 3
+    border_count: 254
+  cat_cols:
+  - zone_n
+  - sub_n
+parent_id: E0174

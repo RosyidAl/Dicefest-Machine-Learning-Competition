@@ -1,0 +1,71 @@
+{
+ "exp_id": "E0173_smoke",
+ "cv_scheme": "primary",
+ "fold_file": "data/folds/folds_primary_k5_s42.parquet",
+ "per_target": {
+  "target_macro_gas_kwh": {
+   "nrmse": 0.2878877862537214,
+   "rmse": 43686.98307951367,
+   "fold_nrmse": [
+    0.2898547470732311,
+    0.28593906370650946
+   ],
+   "best_iteration": [
+    187,
+    183
+   ]
+  },
+  "target_macro_elec_kwh": {
+   "nrmse": 0.34558951309474695,
+   "rmse": 14419.850301998162,
+   "fold_nrmse": [
+    0.34537837858563125,
+    0.34579714635303965
+   ],
+   "best_iteration": [
+    147,
+    96
+   ]
+  },
+  "target_eui_gas_kwh_per_sqm": {
+   "nrmse": 0.7270670592587664,
+   "rmse": 29.55527595886885,
+   "fold_nrmse": [
+    0.7291740694913731,
+    0.7249877563985521
+   ],
+   "best_iteration": [
+    223,
+    299
+   ]
+  },
+  "target_clean_building_ratio": {
+   "nrmse": 0.03460987044371373,
+   "rmse": 0.43227728184198455,
+   "fold_nrmse": [
+    0.03855657547690418,
+    0.030273896151835317
+   ],
+   "best_iteration": [
+    298,
+    298
+   ]
+  },
+  "target_electric_heating_adoption": {
+   "nrmse": 0.20964781157233595,
+   "rmse": 1.505271287089372,
+   "fold_nrmse": [
+    0.21294414386625998,
+    0.20637703593839626
+   ],
+   "best_iteration": [
+    299,
+    299
+   ]
+  }
+ },
+ "nrmse_mean": 0.3209604081246568,
+ "runtime_min": 0.6058202346165975,
+ "peak_ram_gb": 3.0145339965820312,
+ "peak_vram_gb": 0.0
+}

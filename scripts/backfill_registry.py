@@ -36,12 +36,16 @@ def family(name):
 
 def log_info():
     info = {}
-    for f in sorted(glob.glob("exp/*.log"), key=os.path.getmtime):
+    for f in sorted((g for g in glob.glob("exp/*.log") if not re.search(r"hold|htune|ksim|fullfit", g)), key=os.path.getmtime):
+        nfold = {}
         for line in open(f, errors="ignore"):
+            mf = re.match(r"^\s+\[(\S+)\] fold (\d+)", line)
+            if mf:
+                nfold[mf.group(1)] = max(nfold.get(mf.group(1), 0), int(mf.group(2)) + 1)
             m = re.match(r"^\[(\S+)\] (.*?)(iters|epochs)=(\[[^\]]*\]).*time=(\d+)s", line)
             if m:
                 n_it = len(m.group(4).strip("[]").split(","))
-                folds = n_it if m.group(3) == "iters" else n_it // 3
+                folds = nfold.get(m.group(1)) or (n_it if m.group(3) == "iters" else n_it // 3)
                 info[m.group(1)] = (folds, int(m.group(5)), f)
     return info
 

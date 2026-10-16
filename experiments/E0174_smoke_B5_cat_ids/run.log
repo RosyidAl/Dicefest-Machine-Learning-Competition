@@ -1,0 +1,38 @@
+[2026-10-16 11:38] features: 192 base columns, blocks []; folds [0, 1] of 5; subsample 0.1
+[2026-10-16 11:38] FAILED
+Traceback (most recent call last):
+  File "/root/Dicefest/src/train_cv.py", line 284, in main
+    pb, ptk, it, imp = fit_predict(fam, mcfg.get("params", {}), Xa, ya, wa, Xb, yb, wb, Xt, s,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/Dicefest/src/train_cv.py", line 127, in fit_predict
+    m.fit(Pool(Xa, ya, weight=wa, cat_features=list(cat_cols) or None),
+  File "/root/Dicefest/.venv/lib/python3.12/site-packages/catboost/core.py", line 6175, in fit
+    params = self._get_canonized_params()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/Dicefest/.venv/lib/python3.12/site-packages/catboost/core.py", line 2001, in _get_canonized_params
+    _process_synonyms(self._canonized_params)
+  File "/root/Dicefest/.venv/lib/python3.12/site-packages/catboost/core.py", line 1645, in _process_synonyms
+    _process_synonyms_groups(params)
+  File "/root/Dicefest/.venv/lib/python3.12/site-packages/catboost/core.py", line 1604, in _process_synonyms_groups
+    _process_synonyms_group(['iterations', 'n_estimators', 'num_boost_round', 'num_trees'], params)
+  File "/root/Dicefest/.venv/lib/python3.12/site-packages/catboost/core.py", line 1589, in _process_synonyms_group
+    raise CatBoostError('only one of the parameters ' + (', '.join(synonyms)) + ' should be initialized.')
+_catboost.CatBoostError: only one of the parameters iterations, n_estimators, num_boost_round, num_trees should be initialized.
+
+[2026-10-16 11:38] features: 192 base columns, blocks []; folds [0, 1] of 5; subsample 0.1
+[2026-10-16 11:38] target_macro_gas_kwh fold 0: nrmse 0.28963 it 299 (11s)
+[2026-10-16 11:38] target_macro_gas_kwh fold 1: nrmse 0.28205 it 299 (17s)
+[2026-10-16 11:38] target_macro_gas_kwh: OOF nrmse 0.28584
+[2026-10-16 11:38] target_macro_elec_kwh fold 0: nrmse 0.34123 it 297 (23s)
+[2026-10-16 11:39] target_macro_elec_kwh fold 1: nrmse 0.34102 it 299 (29s)
+[2026-10-16 11:39] target_macro_elec_kwh: OOF nrmse 0.34112
+[2026-10-16 11:39] target_eui_gas_kwh_per_sqm fold 0: nrmse 0.71839 it 299 (35s)
+[2026-10-16 11:39] target_eui_gas_kwh_per_sqm fold 1: nrmse 0.71682 it 296 (41s)
+[2026-10-16 11:39] target_eui_gas_kwh_per_sqm: OOF nrmse 0.71760
+[2026-10-16 11:39] target_clean_building_ratio fold 0: nrmse 0.03082 it 299 (46s)
+[2026-10-16 11:39] target_clean_building_ratio fold 1: nrmse 0.02871 it 299 (52s)
+[2026-10-16 11:39] target_clean_building_ratio: OOF nrmse 0.02977
+[2026-10-16 11:39] target_electric_heating_adoption fold 0: nrmse 0.16566 it 299 (58s)
+[2026-10-16 11:39] target_electric_heating_adoption fold 1: nrmse 0.15787 it 299 (63s)
+[2026-10-16 11:39] target_electric_heating_adoption: OOF nrmse 0.16178
+[2026-10-16 11:39] done in 1.1 min

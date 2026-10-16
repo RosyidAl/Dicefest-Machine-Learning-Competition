@@ -14,7 +14,7 @@ Catatan delta: "H" = holdout P70/H30 (seed 7). Delta skor total = delta per-targ
 |---|---|---|---|
 | V01 | CV_PRIMARY meniru split test (KFold acak per baris) | DONE | D001/D002; CV vs LB konsisten (offset +0,0000 sampai +0,0005 di 9 submisi) |
 | V02 | CV_SECONDARY GroupKFold per zone_region_id dilaporkan | QUEUED | |
-| V03 | Adversarial validation train vs test | QUEUED | |
+| V03 | Adversarial validation train vs test | DONE | LGB 5-fold AUC 0,4997 (tanpa ID) dan 0,4990 (dengan ID); EDA_REPORT 5.B |
 | V04 | Uji pembeda skema CV via LB (dengan vs tanpa info grup) | QUEUED | |
 | V05 | Kriteria penerimaan 4/5 fold atau 2 SE | QUEUED | dipakai untuk eksperimen baru |
 
@@ -36,7 +36,7 @@ Catatan delta: "H" = holdout P70/H30 (seed 7). Delta skor total = delta per-targ
 | R02 | XGBoost GPU hist | DONE | rerun zoo1/zoo3/zoo5/grid identik byte (14 Okt) |
 | R03 | CatBoost GPU | DONE | TIDAK deterministik (c4_lepa: iterasi beda, rms beda pred 352 kWh) |
 | R04 | MLP polos (PyTorch deterministic) | DONE | rerun n4f_lepm identik byte |
-| R05 | MLP PLR, TabM-mini, MLP multi-task | QUEUED | wajib sebelum final |
+| R05 | MLP PLR, TabM-mini, MLP multi-task | DONE | hash identik di 2 proses (logs/repro_check_repro_nn.result), D004 |
 
 ## Transform target (Fase 3)
 | ID | Transform | Status | Bukti / hasil |
@@ -70,7 +70,7 @@ Catatan delta: "H" = holdout P70/H30 (seed 7). Delta skor total = delta per-targ
 | FB10 | Pencarian interaksi | QUEUED | |
 | FB11 | Transform untuk NN/linear | DONE | nn.preprocess: log1p kolom miring + standardisasi; PLR embedding |
 | FB12 | Seleksi fitur (null importance) | QUEUED | |
-| LK1 | Tes kebocoran blok ber-target (tests/test_no_leakage.py) | QUEUED | |
+| LK1 | Tes kebocoran blok ber-target (tests/test_no_leakage.py) | DONE | TE grup (train_lib) dan FB07 knn_target lulus: fitur validasi/test identik setelah label validasi diacak |
 
 ## Model zoo (Fase 5)
 | ID | Model | Status | Bukti / hasil |
@@ -138,6 +138,6 @@ Catatan delta: "H" = holdout P70/H30 (seed 7). Delta skor total = delta per-targ
 |---|---|---|---|
 | A01 | Pseudo-labeling | QUEUED | |
 | A02 | Model residual (koreksi grup + kNN) | DONE | PP0001, PP0004; LGB residual tahap dua hanya -0,00006 |
-| A03 | Adversarial reweighting | QUEUED | tergantung V03 |
+| A03 | Adversarial reweighting | SKIPPED | AUC adversarial 0,50: tidak ada drift yang bisa dikoreksi (V03) |
 | A04 | Distilasi NN dari ensemble | QUEUED | lihat M28 |
 | A05 | Ide dari analisis error | DONE | adopt_v2 (N rumah tangga eksak), dup_fix, koreksi kNN |

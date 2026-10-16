@@ -1,0 +1,27 @@
+exp_id: E0170
+slug: B1_ridge
+hypothesis: 'B1: Ridge (StandardScaler, log1p fitur miring) dengan ID numerik [CV
+  primary]'
+phase: 2
+targets:
+- t1
+- t2
+- t3
+- t4
+- t5
+seeds:
+- 42
+target_transform:
+  default:
+    type: identity
+cv:
+  scheme: primary
+  fold_file: data/folds/folds_primary_k5_s42.parquet
+features:
+  set: raw_ids
+model:
+  family: ridge
+  device: cpu
+  params:
+    alpha: 1.0
+    log1p_skewed: true

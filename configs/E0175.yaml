@@ -1,0 +1,34 @@
+exp_id: E0175
+slug: B6_mlp_multi
+hypothesis: 'B6: MLP multi-output sederhana (5 target terstandar, 20 epoch one-cycle)
+  [CV primary]'
+phase: 2
+targets:
+- t1
+- t2
+- t3
+- t4
+- t5
+seeds:
+- 42
+target_transform:
+  default:
+    type: identity
+cv:
+  scheme: primary
+  fold_file: data/folds/folds_primary_k5_s42.parquet
+features:
+  set: raw_ids
+model:
+  family: mlp_multi
+  device: gpu
+  params:
+    epochs: 20
+    lr: 0.001
+    wd: 1.0e-05
+    hidden:
+    - 512
+    - 256
+    - 128
+    drop: 0.1
+    bs: 2048

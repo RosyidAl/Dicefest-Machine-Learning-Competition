@@ -45,3 +45,16 @@
   Run #1 dimulai segera setelah freeze, disusul run #2 dan notebook.
   Eksperimen yang selesai setelah freeze hanya masuk bila ada waktu untuk mengulang ketiga run.
 - Risiko: perbaikan setelah freeze tidak ikut final. Mitigasi: prioritaskan eksperimen bernilai tinggi sebelum freeze.
+
+### D004 [2026-10-16 11:47 WIB] Determinisme per keluarga model (Fase 2, 6.4)
+- Bukti:
+  - LightGBM CPU (deterministic=True, force_row_wise, num_threads tetap): rerun lgb_epm_wM_tew identik byte (14 Okt).
+  - XGBoost CUDA hist: rerun anggota zoo1/zoo3/zoo5/grid identik byte (14 Okt).
+  - CatBoost GPU: TIDAK identik. Rerun c4_lepa memberi iterasi early-stopping berbeda dan rms beda prediksi test 352 kWh.
+  - MLP polos PyTorch (cudnn deterministic, use_deterministic_algorithms, CUBLAS_WORKSPACE_CONFIG): rerun n4f_lepm identik byte.
+  - MLP PLR, TabM-mini + PLR, multi-task (R05, 16 Okt, scripts/check_repro_nn.py + check_repro.sh, 2 proses terpisah):
+    hash prediksi identik untuk keempat varian (logs/repro_check_repro_nn.result).
+- Keputusan: pipeline final hanya memakai LightGBM, XGBoost, dan PyTorch (blend "nc", tanpa CatBoost).
+  Biaya membuang CatBoost: CV +0,00001 (v15 0,25001 vs v15nc 0,25002). Di public LB, v15ncrd (0,2499) malah lebih baik dari v15rd (0,25000).
+- Risiko: GPU dipakai bersama container lain. Peringatan OOM sempat muncul saat prediksi TabM (alokasi 1,25 GB gagal lalu
+  dicoba ulang), tetapi hasilnya tetap identik. Mitigasi: chunk prediksi TabM 1024 baris; jalur GPU final hanya satu proses.

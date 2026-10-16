@@ -1,0 +1,17 @@
+[2026-10-16 11:38] features: 192 base columns, blocks []; folds [0, 1] of 5; subsample 0.1
+[2026-10-16 11:38] FAILED
+Traceback (most recent call last):
+  File "/root/Dicefest/src/train_cv.py", line 250, in main
+    pb, ptk, _ = fit_fold(Za, Ya, np.ones_like(Ya), Zb, Yb, np.ones_like(Yb), Zt_, epochs=E,
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: fit_fold() got an unexpected keyword argument 'n_estimators'
+
+[2026-10-16 11:39] features: 192 base columns, blocks []; folds [0, 1] of 5; subsample 0.1
+[2026-10-16 11:39] mlp_multi fold 0 done (7s)
+[2026-10-16 11:39] mlp_multi fold 1 done (8s)
+[2026-10-16 11:39] target_macro_gas_kwh: OOF nrmse 0.34664
+[2026-10-16 11:39] target_macro_elec_kwh: OOF nrmse 0.40017
+[2026-10-16 11:39] target_eui_gas_kwh_per_sqm: OOF nrmse 0.82953
+[2026-10-16 11:39] target_clean_building_ratio: OOF nrmse 0.34498
+[2026-10-16 11:39] target_electric_heating_adoption: OOF nrmse 0.48178
+[2026-10-16 11:39] done in 0.1 min
