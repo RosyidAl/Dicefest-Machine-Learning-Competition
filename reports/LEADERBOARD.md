@@ -1,4 +1,4 @@
-# LEADERBOARD (dibangun ulang 2026-10-16 20:38 WIB)
+# LEADERBOARD (dibangun ulang 2026-10-17 02:22 WIB)
 
 Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil lebih baik.
 
@@ -56,29 +56,32 @@ Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil l
 
 | exp_id | nrmse_t3 | target_transform | runtime_min | notes |
 |---|---|---|---|---|
+| E0262 | 0.66536 | {"default": {"exposure_col": "bld_dim_12", "type": "ratio", "weight_power": 1}} | 29.9 |  screen_folds=3 |
+| E0261 | 0.66755 | {"default": {"type": "identity"}} | 31.7 |  screen_folds=3 |
 | E0207 | 0.66947 | {"default": {"type": "identity"}} | 17.7 |  screen_folds=3 |
+| E0263 | 0.67030 | {"default": {"exposure_col": "bld_dim_12", "type": "ratio", "weight_power": 1}} | 15.9 |  screen_folds=3 |
+| E0260 | 0.67119 | {"target_macro_elec_kwh": {"exposure_col": "bld_dim_12", "type": "ratio", "weight_col": "bld_dim_12", "weight_col_power": -1, "weight_power": 2}, "target_macro_gas_kwh": {"exposure_col": "bld_dim_12", "type": "ratio", "weight_col": "bld_dim_06", "weight_col_power": -1, "weight_power": 2}} | 17.2 |  screen_folds=3 |
 | E0208 | 0.67357 | {"default": {"type": "log1p"}} | 12.0 |  screen_folds=3 |
 | E0205 | 0.67381 | {"default": {"type": "identity"}} | 9.1 |  screen_folds=3 |
 | E0202 | 0.67432 | {"default": {"type": "sqrt"}} | 9.5 |  screen_folds=3 |
 | E0200 | 0.67436 | {"default": {"type": "identity"}} | 10.5 |  screen_folds=3 |
 | E0206 | 0.67437 | {"default": {"type": "identity"}} | 8.9 |  screen_folds=3 |
-| E0203 | 0.67527 | {"default": {"type": "yeojohnson"}} | 9.2 |  screen_folds=3 |
-| E0201 | 0.67734 | {"default": {"type": "log1p"}} | 9.3 |  screen_folds=3 |
 
 
 ### lgb / t2 elec
 
 | exp_id | nrmse_t2 | target_transform | runtime_min | notes |
 |---|---|---|---|---|
+| E0262 | 0.32385 | {"default": {"exposure_col": "bld_dim_12", "type": "ratio", "weight_power": 1}} | 29.9 |  screen_folds=3 |
 | E0207 | 0.32543 | {"default": {"type": "identity"}} | 17.7 |  screen_folds=3 |
+| E0261 | 0.32543 | {"default": {"type": "identity"}} | 31.7 |  screen_folds=3 |
+| E0263 | 0.32587 | {"default": {"exposure_col": "bld_dim_12", "type": "ratio", "weight_power": 1}} | 15.9 |  screen_folds=3 |
+| E0260 | 0.32633 | {"target_macro_elec_kwh": {"exposure_col": "bld_dim_12", "type": "ratio", "weight_col": "bld_dim_12", "weight_col_power": -1, "weight_power": 2}, "target_macro_gas_kwh": {"exposure_col": "bld_dim_12", "type": "ratio", "weight_col": "bld_dim_06", "weight_col_power": -1, "weight_power": 2}} | 17.2 |  screen_folds=3 |
 | E0204 | 0.32675 | {"default": {"exposure_col": "bld_dim_12", "type": "ratio", "weight_power": 2}} | 6.4 |  screen_folds=3 |
 | E0202 | 0.32776 | {"default": {"type": "sqrt"}} | 9.5 |  screen_folds=3 |
 | E0205 | 0.32791 | {"default": {"type": "identity"}} | 9.1 |  screen_folds=3 |
 | E0200 | 0.32830 | {"default": {"type": "identity"}} | 10.5 |  screen_folds=3 |
 | E0208 | 0.32850 | {"default": {"type": "log1p"}} | 12.0 |  screen_folds=3 |
-| E0203 | 0.32976 | {"default": {"type": "yeojohnson"}} | 9.2 |  screen_folds=3 |
-| E0206 | 0.32978 | {"default": {"type": "identity"}} | 8.9 |  screen_folds=3 |
-| E0201 | 0.33056 | {"default": {"type": "log1p"}} | 9.3 |  screen_folds=3 |
 
 
 ### lightgbm / t3 EUI
@@ -314,10 +317,6 @@ Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil l
 
 | exp_id | status | model_family | nrmse_mean | nrmse_t1 | nrmse_t2 | nrmse_t3 | hypothesis |
 |---|---|---|---|---|---|---|---|
-| E0179 | done | mean | 1.00060 | 1.00034 | 1.00022 | 1.00088 | B0: prediksi rata-rata fold training (sanity sekitar 1,0) [CV secondary] |
-| E0170 | done | ridge | 0.40011 | 0.31137 | 0.35558 | 0.79288 | B1: Ridge (StandardScaler, log1p fitur miring) dengan ID numerik [CV primary] |
-| E0180 | done | ridge | 0.40136 | 0.31272 | 0.35649 | 0.79515 | B1: Ridge (StandardScaler, log1p fitur miring) dengan ID numerik [CV secondary] |
-| E0171 | running | lgb |  |  |  |  | B2: LightGBM referensi (Lampiran H, lr 0.1 screening) tanpa ID spasial [CV primary] |
 | E0190 | done | xgb |  | 0.25291 |  | 0.66444 | Acuan FB07: XGB gpm (x4 params) FS_legacy + agg + TE, 5-fold |
 | E0191 | done | xgb |  | 0.25181 |  | 0.66229 | FB07: + fitur KNN-target OOF (ruang stok bangunan, window sub_n 30/100/300) menurunkan NRMSE gas dan EUI |
 | E0174 | running | cat |  |  |  |  | B5: CatBoost GPU, zone_n dan sub_n sebagai cat_features [CV primary] |
@@ -332,8 +331,12 @@ Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil l
 | E0207 | done | lgb |  | 0.25468 | 0.32543 | 0.66947 | T5 objective Poisson [screening: LGB lr 0.1, 3 fold] |
 | E0208 | done | lgb |  | 0.25791 | 0.32850 | 0.67357 | T6 Huber (alpha 0.2) di skala log1p [screening: LGB lr 0.1, 3 fold] |
 | E0209 | done | lgb |  |  |  |  | T7 proporsi + cross_entropy vs T8 logit untuk t5 (lihat E0210); t5 identity sebagai acuan [screening: LGB lr 0.1, 3 fold] |
-| E0210 | running | lgb |  |  |  |  | T7 proporsi (y/100) dengan objective cross_entropy untuk t5 [screening: LGB lr 0.1, 3 fold] |
+| E0210 | failed | lgb |  |  |  |  | T7 proporsi (y/100) dengan objective cross_entropy untuk t5 [screening: LGB lr 0.1, 3 fold] |
 | E0175 | done | mlp_multi | 0.29699 | 0.26541 | 0.32759 | 0.69025 | B6: MLP multi-output sederhana (5 target terstandar, 20 epoch one-cycle) [CV primary] |
+| E0260 | done | lgb |  | 0.25672 | 0.32633 | 0.67119 | Acuan uji Poisson: LGB gpm (bobot M^2/A) dan epm (bobot M), MSE |
+| E0261 | done | lgb |  | 0.25468 | 0.32543 | 0.66755 | Poisson pada gas dan elec mentah (tanpa bobot) mengalahkan formulasi rasio MSE (E0260) |
+| E0262 | done | lgb |  | 0.25310 | 0.32385 | 0.66536 | Poisson pada laju per meter dengan bobot M (GLM laju dengan exposure) mengalahkan E0260 |
+| E0263 | done | lgb |  | 0.25629 | 0.32587 | 0.67030 | Tweedie p=1.2 pada laju per meter (bobot M) vs E0260 |
 
 
 ## Submisi dengan skor public LB
@@ -351,3 +354,4 @@ Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil l
 | 2026-10-15 08:22 | submissions/sub_v15ncrd.csv | 0.25002 (pre-corr) | 0.2499 | submitted by user |
 | 2026-10-15 16:50 | submissions/sub_v15ncrkd.csv |  | 0.24954 |  submitted by user 16 Okt |
 | 2026-10-16 11:25 | submissions/BEST_CURRENT.csv | 0.25002 pre-corr; holdout corr -0.0009 | 0.24954 | BEST_CURRENT submitted by user 16 Okt |
+| 2026-10-16 20:27 | submissions/sub_v16dev.csv | blend honest 0.242467 (gas+eui+elec)/5; holdout chain -0.00054 vs v15 | 0.24943 | kandidat v16, ekspektasi LB ~0.2490 submitted by user 17 Okt |

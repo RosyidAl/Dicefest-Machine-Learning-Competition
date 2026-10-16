@@ -123,3 +123,20 @@
 ### [2026-10-17 00:55 WIB] LB | sub_v16dev (kandidat final A)
 - Public LB 0,24943 (user), vs sub_v15ncrkd 0,24954: -0,00011.
 - Holdout memperkirakan -0,00054. Arah sama, besarnya lebih kecil. Public LB hanya sekitar 55 ribu baris, jadi selisih sekecil ini masih dalam rentang noise; keputusan tetap memakai CV/holdout.
+
+### [2026-10-17 02:25 WIB] E0260-E0263 | Fase 3 | A/B Poisson vs formulasi rasio terbaik (LGB lr 0,1, 3 fold, FS_legacy + agg + TE)
+- Hipotesis: objective Poisson mengalahkan formulasi rasio MSE yang dipakai anggota kita (E0260).
+- Hasil (NRMSE OOF 3 fold):
+
+  | Exp | Formulasi | gas | EUI | elec |
+  |---|---|---|---|---|
+  | E0260 | rasio per meter, MSE (bobot M^2/A gas, M elec) | 0,25672 | 0,67119 | 0,32633 |
+  | E0261 | Poisson pada nilai mentah | 0,25468 | 0,66755 | 0,32543 |
+  | **E0262** | **Poisson pada laju per meter, bobot M (offset log M)** | **0,25310** | **0,66536** | **0,32385** |
+  | E0263 | Tweedie 1,2 pada laju per meter, bobot M | 0,25629 | 0,67030 | 0,32587 |
+
+- E0262 vs E0260: gas -0,0036, EUI -0,0058, elec -0,0025; membaik di 3/3 fold untuk gas dan elec (fold-wise: 0,25200/0,25429/0,25300 vs 0,25556/0,25800/0,25659).
+  Melampaui SE fold, memenuhi kriteria 6.2.
+- Tweedie 1,2 hampir tidak lebih baik dari MSE dan berhenti jauh lebih awal (it sekitar 260 vs 800); Poisson murni yang bekerja.
+- Kesimpulan: DITERIMA untuk model tunggal. Formulasi GLM laju dengan exposure meter cocok dengan mekanisme noise (rata-rata rumah tangga, varians sebanding mean).
+- Tindak lanjut: versi XGB (E0264 gpm, E0265 EUI) sedang jalan; bila menang, buat anggota Poisson full 10-fold + holdout (xk/lk dengan fitur kNN) untuk kandidat v17 dan ukur gain blend + koreksi di holdout.

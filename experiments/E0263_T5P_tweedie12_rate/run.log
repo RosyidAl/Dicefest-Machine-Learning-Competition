@@ -1,0 +1,11 @@
+[2026-10-17 02:06] features: 219 base columns, blocks ['agg', 'te']; folds [0, 1, 2] of 5; subsample None
+[2026-10-17 02:09] target_macro_gas_kwh fold 0: nrmse 0.25572 it 258 (175s)
+[2026-10-17 02:12] target_macro_gas_kwh fold 1: nrmse 0.25701 it 314 (372s)
+[2026-10-17 02:15] target_macro_gas_kwh fold 2: nrmse 0.25615 it 259 (533s)
+[2026-10-17 02:15] target_macro_gas_kwh: OOF nrmse 0.25629
+[2026-10-17 02:15] target_eui_gas_kwh_per_sqm (derived gas / A): OOF nrmse 0.67030
+[2026-10-17 02:17] target_macro_elec_kwh fold 0: nrmse 0.32618 it 139 (666s)
+[2026-10-17 02:19] target_macro_elec_kwh fold 1: nrmse 0.32590 it 155 (796s)
+[2026-10-17 02:22] target_macro_elec_kwh fold 2: nrmse 0.32552 it 161 (953s)
+[2026-10-17 02:22] target_macro_elec_kwh: OOF nrmse 0.32587
+[2026-10-17 02:22] done in 15.9 min
