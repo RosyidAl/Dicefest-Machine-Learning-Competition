@@ -79,3 +79,24 @@
   - Total sekitar -0,0002.
 - Kesimpulan: DITERIMA. Tambah xk_lgpm, xk_gpgea (gas), pk_lepm (elec); xk_lepa, lk_gpm, lk_lepa, pk_gpm sedang berjalan.
 - LB: BEST_CURRENT (sub_v15ncrkd) = 0,24954 (user, 16 Okt), sesuai perkiraan holdout.
+
+### [2026-10-16 20:39 WIB] E0200-E0208 | Fase 3 | screening transform target (LGB lr 0,1, 3 fold, FS_legacy + agg + TE)
+- Hipotesis: transform T1 sampai T6 menurunkan NRMSE dibanding identity (E0200).
+- Hasil (delta vs identity, fold membaik):
+
+  | Transform | gas | elec | EUI |
+  |---|---|---|---|
+  | T1 log1p | +0,0017 (0/3) | +0,0023 | +0,0030 |
+  | T2 sqrt | -0,0006 (3/3) | -0,0005 | 0,0000 |
+  | T3 Yeo-Johnson | +0,0006 | +0,0015 | +0,0009 |
+  | T4 rasio/meter E^2 | -0,0010 (3/3) | -0,0016 | n/a |
+  | T5 Tweedie 1,5 | -0,0009 | -0,0004 | -0,0005 |
+  | T5 Gamma | +0,0008 | +0,0015 | 0,0000 |
+  | **T5 Poisson** | **-0,0041 (3/3)** | **-0,0029** | **-0,0049** |
+  | T6 Huber log | -0,0009 | +0,0002 | -0,0008 |
+
+- Kesimpulan:
+  - Poisson paling kuat, juga dibanding T4 (gas 0,25467 vs 0,25775).
+  - Masuk akal: noise label = rata-rata rumah tangga, sehingga varians sebanding dengan mean.
+  - log1p tanpa koreksi bias kalah; anggota log kita tetap berguna di blend karena bobot NNLS menyerap bias.
+- Tindak lanjut: A/B Poisson vs formulasi rasio terbaik (E0260 sampai E0263). Bila menang, buat anggota Poisson (+ holdout) dan pertimbangkan freeze v17.

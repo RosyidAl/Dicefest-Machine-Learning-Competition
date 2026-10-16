@@ -1,4 +1,4 @@
-# LEADERBOARD (dibangun ulang 2026-10-16 11:58 WIB)
+# LEADERBOARD (dibangun ulang 2026-10-16 20:38 WIB)
 
 Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil lebih baik.
 
@@ -19,7 +19,9 @@ Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil l
 |---|---|---|---|---|
 | t1 gas | E0163 | 0.24967 | mlp_plr | legacy run p2_eui_wA; log exp/v11_nn_c.log |
 | t2 elec | E0166 | 0.31835 | mlp_plr | legacy run p3_epm_wM; log exp/v11_nn_e.log; member of blend v15nc |
-| t3 EUI | E0162 | 0.66060 | xgboost | legacy run xs_gpm; log exp/v13_xs.log |
+| t3 EUI | EM0001 | 0.65977 | other | member xk_gpm |
+| t4 clean | E0173 | 0.01575 | xgb |  |
+| t5 adopt | E0209 | 0.07481 | lgb |  screen_folds=3 |
 
 
 ## Top-10 per keluarga model (t3 EUI untuk keluarga gas, t2 untuk elec)
@@ -48,6 +50,35 @@ Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil l
 | E0068 | 0.32235 | elec per meter | 33.0 | legacy run cat_epm_wM_tew; log exp/zoo5.log |
 | E0097 | 0.32236 | log elec per meter | 10.7 | legacy run c4_lepm; log exp/v4_cat.log |
 | E0014 | 0.32437 | elec per meter | 8.5 | legacy run cat_epm; log exp/zoo1.log |
+
+
+### lgb / t3 EUI
+
+| exp_id | nrmse_t3 | target_transform | runtime_min | notes |
+|---|---|---|---|---|
+| E0207 | 0.66947 | {"default": {"type": "identity"}} | 17.7 |  screen_folds=3 |
+| E0208 | 0.67357 | {"default": {"type": "log1p"}} | 12.0 |  screen_folds=3 |
+| E0205 | 0.67381 | {"default": {"type": "identity"}} | 9.1 |  screen_folds=3 |
+| E0202 | 0.67432 | {"default": {"type": "sqrt"}} | 9.5 |  screen_folds=3 |
+| E0200 | 0.67436 | {"default": {"type": "identity"}} | 10.5 |  screen_folds=3 |
+| E0206 | 0.67437 | {"default": {"type": "identity"}} | 8.9 |  screen_folds=3 |
+| E0203 | 0.67527 | {"default": {"type": "yeojohnson"}} | 9.2 |  screen_folds=3 |
+| E0201 | 0.67734 | {"default": {"type": "log1p"}} | 9.3 |  screen_folds=3 |
+
+
+### lgb / t2 elec
+
+| exp_id | nrmse_t2 | target_transform | runtime_min | notes |
+|---|---|---|---|---|
+| E0207 | 0.32543 | {"default": {"type": "identity"}} | 17.7 |  screen_folds=3 |
+| E0204 | 0.32675 | {"default": {"exposure_col": "bld_dim_12", "type": "ratio", "weight_power": 2}} | 6.4 |  screen_folds=3 |
+| E0202 | 0.32776 | {"default": {"type": "sqrt"}} | 9.5 |  screen_folds=3 |
+| E0205 | 0.32791 | {"default": {"type": "identity"}} | 9.1 |  screen_folds=3 |
+| E0200 | 0.32830 | {"default": {"type": "identity"}} | 10.5 |  screen_folds=3 |
+| E0208 | 0.32850 | {"default": {"type": "log1p"}} | 12.0 |  screen_folds=3 |
+| E0203 | 0.32976 | {"default": {"type": "yeojohnson"}} | 9.2 |  screen_folds=3 |
+| E0206 | 0.32978 | {"default": {"type": "identity"}} | 8.9 |  screen_folds=3 |
+| E0201 | 0.33056 | {"default": {"type": "log1p"}} | 9.3 |  screen_folds=3 |
 
 
 ### lightgbm / t3 EUI
@@ -82,6 +113,22 @@ Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil l
 | E0107 | 0.32290 | log elec per area | 24.9 | legacy run l4_lepa; log exp/v5_lgb.log; member of blend v15nc |
 
 
+### mean / t3 EUI
+
+| exp_id | nrmse_t3 | target_transform | runtime_min | notes |
+|---|---|---|---|---|
+| E0169 | 1.00006 | {"default": {"type": "identity"}} | 0.1 |  |
+| E0179 | 1.00088 | {"default": {"type": "identity"}} | 0.1 |  |
+
+
+### mean / t2 elec
+
+| exp_id | nrmse_t2 | target_transform | runtime_min | notes |
+|---|---|---|---|---|
+| E0169 | 1.00000 | {"default": {"type": "identity"}} | 0.1 |  |
+| E0179 | 1.00022 | {"default": {"type": "identity"}} | 0.1 |  |
+
+
 ### mlp / t3 EUI
 
 | exp_id | nrmse_t3 | target_transform | runtime_min | notes |
@@ -112,6 +159,20 @@ Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil l
 | E0069 | 0.32149 | log elec per meter | 20.2 | legacy run n4_lepm; log exp/v4_nn.log |
 | E0118 | 0.32173 | elec per area | 12.0 | legacy run n6_epa; log exp/v6_nn_elec.log |
 | E0124 | 0.32179 | elec per area | 11.5 | legacy run n6b_epa; log exp/v6b_nn_elec.log |
+
+
+### mlp_multi / t3 EUI
+
+| exp_id | nrmse_t3 | target_transform | runtime_min | notes |
+|---|---|---|---|---|
+| E0175 | 0.69025 | {"default": {"type": "identity"}} | 1.6 |  |
+
+
+### mlp_multi / t2 elec
+
+| exp_id | nrmse_t2 | target_transform | runtime_min | notes |
+|---|---|---|---|---|
+| E0175 | 0.32759 | {"default": {"type": "identity"}} | 1.6 |  |
 
 
 ### mlp_multitask / t3 EUI
@@ -156,6 +217,29 @@ Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil l
 | E0130 | 0.32713 | log elec per meter | 94.7 | legacy run p1_lepm; log exp/v9_nn.log |
 
 
+### other / t3 EUI
+
+| exp_id | nrmse_t3 | target_transform | runtime_min | notes |
+|---|---|---|---|---|
+| EM0001 | 0.65977 | gas per meter (bld_dim_12) | 50.0 | member xk_gpm |
+
+
+### ridge / t3 EUI
+
+| exp_id | nrmse_t3 | target_transform | runtime_min | notes |
+|---|---|---|---|---|
+| E0170 | 0.79288 | {"default": {"type": "identity"}} | 2.2 |  |
+| E0180 | 0.79515 | {"default": {"type": "identity"}} | 2.2 |  |
+
+
+### ridge / t2 elec
+
+| exp_id | nrmse_t2 | target_transform | runtime_min | notes |
+|---|---|---|---|---|
+| E0170 | 0.35558 | {"default": {"type": "identity"}} | 2.2 |  |
+| E0180 | 0.35649 | {"default": {"type": "identity"}} | 2.2 |  |
+
+
 ### tabm_mini_plr / t3 EUI
 
 | exp_id | nrmse_t3 | target_transform | runtime_min | notes |
@@ -169,6 +253,22 @@ Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil l
 |---|---|---|---|---|
 | E0164 | 0.31938 | elec per meter | 265.2 | legacy run t1_epm_wM; log exp/v11_nn_d.log |
 | E0149 | 0.31992 | log elec per meter | 176.4 | legacy run t1_lepm; log exp/v11_nn.log; member of blend v15nc |
+
+
+### xgb / t3 EUI
+
+| exp_id | nrmse_t3 | target_transform | runtime_min | notes |
+|---|---|---|---|---|
+| E0191 | 0.66229 | {"default": {"exposure_col": "bld_dim_12", "type": "ratio", "weight_col": "bld_dim_06", "weight_col_power": -1, "weight_power": 2}} | 21.3 |  |
+| E0190 | 0.66444 | {"default": {"exposure_col": "bld_dim_12", "type": "ratio", "weight_col": "bld_dim_06", "weight_col_power": -1, "weight_power": 2}} | 5.7 |  |
+| E0173 | 0.68645 | {"default": {"type": "identity"}} | 35.6 |  |
+
+
+### xgb / t2 elec
+
+| exp_id | nrmse_t2 | target_transform | runtime_min | notes |
+|---|---|---|---|---|
+| E0173 | 0.33009 | {"default": {"type": "identity"}} | 35.6 |  |
 
 
 ### xgboost / t3 EUI
@@ -214,26 +314,26 @@ Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil l
 
 | exp_id | status | model_family | nrmse_mean | nrmse_t1 | nrmse_t2 | nrmse_t3 | hypothesis |
 |---|---|---|---|---|---|---|---|
-| ENS0003 | done | ensemble | 0.25066 | 0.24666 | 0.31758 | 0.65340 | NNLS blend v8_nocat (greedy top-25 per family, prune.py) |
-| ENS0004 | done | ensemble | 0.25055 | 0.24659 | 0.31722 | 0.65329 | NNLS blend v9 (greedy top-25 per family, prune.py) |
-| ENS0005 | done | ensemble | 0.25059 | 0.24666 | 0.31725 | 0.65340 | NNLS blend v9nc (greedy top-25 per family, prune.py) |
-| ENS0006 | done | ensemble | 0.25055 | 0.24659 | 0.31720 | 0.65329 | NNLS blend v10 (greedy top-25 per family, prune.py) |
-| ENS0007 | done | ensemble | 0.25059 | 0.24666 | 0.31723 | 0.65340 | NNLS blend v10nc (greedy top-25 per family, prune.py) |
-| ENS0008 | done | ensemble | 0.25034 | 0.24623 | 0.31720 | 0.65262 | NNLS blend v11 (greedy top-25 per family, prune.py) |
-| ENS0009 | done | ensemble | 0.25037 | 0.24629 | 0.31723 | 0.65268 | NNLS blend v11nc (greedy top-25 per family, prune.py) |
-| ENS0010 | done | ensemble | 0.25015 | 0.24602 | 0.31683 | 0.65227 | NNLS blend v12 (greedy top-25 per family, prune.py) |
-| ENS0011 | done | ensemble | 0.25017 | 0.24604 | 0.31684 | 0.65230 | NNLS blend v12nc (greedy top-25 per family, prune.py) |
-| ENS0012 | done | ensemble | 0.25007 | 0.24592 | 0.31660 | 0.65219 | NNLS blend v13 (greedy top-25 per family, prune.py) |
-| ENS0013 | done | ensemble | 0.25008 | 0.24593 | 0.31660 | 0.65221 | NNLS blend v13nc (greedy top-25 per family, prune.py) |
-| ENS0014 | done | ensemble | 0.25005 | 0.24592 | 0.31654 | 0.65217 | NNLS blend v14 (greedy top-25 per family, prune.py) |
-| ENS0015 | done | ensemble | 0.25006 | 0.24592 | 0.31654 | 0.65219 | NNLS blend v14nc (greedy top-25 per family, prune.py) |
-| ENS0016 | done | ensemble | 0.25001 | 0.24590 | 0.31641 | 0.65209 | NNLS blend v15 (greedy top-25 per family, prune.py) |
-| ENS0017 | done | ensemble | 0.25002 | 0.24591 | 0.31641 | 0.65211 | NNLS blend v15nc (greedy top-25 per family, prune.py) |
-| PP0001 | done | postprocess |  |  |  |  | group residual correction (zone, climate cell, +-30 sub_n window), lambda fitted on holdout |
-| PP0002 | done | postprocess |  |  |  |  | adoption v2: binomial q model with exact household count N |
-| PP0003 | done | postprocess |  |  |  |  | train-duplicate copy (77 test rows identical to a train row) |
-| PP0004 | done | postprocess |  |  |  |  | similarity-kNN residual correction on top of PP0001 |
-| E0173 | running | xgb |  |  |  |  | B4: XGBoost GPU parameter wajar + id numerik [CV primary] |
+| E0179 | done | mean | 1.00060 | 1.00034 | 1.00022 | 1.00088 | B0: prediksi rata-rata fold training (sanity sekitar 1,0) [CV secondary] |
+| E0170 | done | ridge | 0.40011 | 0.31137 | 0.35558 | 0.79288 | B1: Ridge (StandardScaler, log1p fitur miring) dengan ID numerik [CV primary] |
+| E0180 | done | ridge | 0.40136 | 0.31272 | 0.35649 | 0.79515 | B1: Ridge (StandardScaler, log1p fitur miring) dengan ID numerik [CV secondary] |
+| E0171 | running | lgb |  |  |  |  | B2: LightGBM referensi (Lampiran H, lr 0.1 screening) tanpa ID spasial [CV primary] |
+| E0190 | done | xgb |  | 0.25291 |  | 0.66444 | Acuan FB07: XGB gpm (x4 params) FS_legacy + agg + TE, 5-fold |
+| E0191 | done | xgb |  | 0.25181 |  | 0.66229 | FB07: + fitur KNN-target OOF (ruang stok bangunan, window sub_n 30/100/300) menurunkan NRMSE gas dan EUI |
+| E0174 | running | cat |  |  |  |  | B5: CatBoost GPU, zone_n dan sub_n sebagai cat_features [CV primary] |
+| EM0001 | done | other |  | 0.25042 |  | 0.65977 | FB07 anggota full: XGB gpm (d10 lr .03) + agg + TE + kNN-target, 10-fold |
+| E0200 | done | lgb |  | 0.25877 | 0.32830 | 0.67436 | T0 identity (acuan Fase 3) untuk t1 gas, t2 elec, t3 EUI [screening: LGB lr 0.1, 3 fold] |
+| E0201 | done | lgb |  | 0.26049 | 0.33056 | 0.67734 | T1 log1p (expm1 tanpa koreksi bias) menurunkan NRMSE dibanding identity [screening: LGB lr 0.1, 3 fold] |
+| E0202 | done | lgb |  | 0.25814 | 0.32776 | 0.67432 | T2 sqrt menurunkan NRMSE dibanding identity [screening: LGB lr 0.1, 3 fold] |
+| E0203 | done | lgb |  | 0.25934 | 0.32976 | 0.67527 | T3 Yeo-Johnson (lambda di-fit di train fold) menurunkan NRMSE [screening: LGB lr 0.1, 3 fold] |
+| E0204 | done | lgb |  | 0.25775 | 0.32675 |  | T4 rasio per meter (bld_dim_12) dengan bobot E^2 untuk t1 dan t2; t3 via EUI identity [screening: LGB lr 0.1, 3 fold] |
+| E0205 | done | lgb |  | 0.25788 | 0.32791 | 0.67381 | T5 objective Tweedie (variance power 1.5) [screening: LGB lr 0.1, 3 fold] |
+| E0206 | done | lgb |  | 0.25957 | 0.32978 | 0.67437 | T5 objective Gamma [screening: LGB lr 0.1, 3 fold] |
+| E0207 | done | lgb |  | 0.25468 | 0.32543 | 0.66947 | T5 objective Poisson [screening: LGB lr 0.1, 3 fold] |
+| E0208 | done | lgb |  | 0.25791 | 0.32850 | 0.67357 | T6 Huber (alpha 0.2) di skala log1p [screening: LGB lr 0.1, 3 fold] |
+| E0209 | done | lgb |  |  |  |  | T7 proporsi + cross_entropy vs T8 logit untuk t5 (lihat E0210); t5 identity sebagai acuan [screening: LGB lr 0.1, 3 fold] |
+| E0210 | running | lgb |  |  |  |  | T7 proporsi (y/100) dengan objective cross_entropy untuk t5 [screening: LGB lr 0.1, 3 fold] |
+| E0175 | done | mlp_multi | 0.29699 | 0.26541 | 0.32759 | 0.69025 | B6: MLP multi-output sederhana (5 target terstandar, 20 epoch one-cycle) [CV primary] |
 
 
 ## Submisi dengan skor public LB
@@ -249,3 +349,5 @@ Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil l
 | 2026-10-15 03:03 | submissions/sub_v13ra.csv | 0.25007 (pre-corr) | 0.25008 | submitted by user |
 | 2026-10-15 08:21 | submissions/sub_v15rd.csv | 0.25001 (pre-corr) | 0.25000 | submitted by user |
 | 2026-10-15 08:22 | submissions/sub_v15ncrd.csv | 0.25002 (pre-corr) | 0.2499 | submitted by user |
+| 2026-10-15 16:50 | submissions/sub_v15ncrkd.csv |  | 0.24954 |  submitted by user 16 Okt |
+| 2026-10-16 11:25 | submissions/BEST_CURRENT.csv | 0.25002 pre-corr; holdout corr -0.0009 | 0.24954 | BEST_CURRENT submitted by user 16 Okt |
