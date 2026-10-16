@@ -1,7 +1,7 @@
 # NEEDS_USER (hal yang butuh tindakan user)
 
 - [x] (16 Okt) BEST_CURRENT (sub_v15ncrkd) sudah di-submit user: public LB 0,24954.
-- [ ] (16 Okt malam) Submit `submissions/BEST_CURRENT.csv` (= sub_v16dev, v16 dengan fitur kNN-target) ke Kaggle dan laporkan skornya. Ekspektasi sekitar 0,2490.
+- [x] (17 Okt) BEST_CURRENT (sub_v16dev) sudah di-submit user: public LB 0,24943 (v15ncrkd 0,24954).
 - [ ] Kredensial Kaggle CLI belum ada (KAGGLE_AUTO_SUBMIT: false), jadi semua submit dilakukan manual oleh user.
 - [ ] TEAM_NAME masih "ISI_NAMA_TIM". Nama tim dibutuhkan untuk nama notebook final `final/DICEFEST2026_<TEAM_NAME>.ipynb`.
 - [ ] GPU dipakai bersama container lain (sekitar 11 GB VRAM terpakai dari luar). Bila memungkinkan, minta admin memastikan GPU cukup longgar selama run audit final (17 sampai 21 Okt).

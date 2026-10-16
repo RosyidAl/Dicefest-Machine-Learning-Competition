@@ -119,3 +119,7 @@
   - E0265: EUI (gas per luas), bobot A (setara Poisson gas dengan offset log A).
   - min_child_weight disetarakan sekitar 50 baris: hessian Poisson = w x mu (mu sekitar 1e4 per meter, 135 per m2), jadi mcw 1e6 dan 1,35e4.
 - Jalan otomatis setelah rantai E0260-E0263 selesai (logs/xgb_poisson_ab.sh, pengaman RAM yang sama).
+
+### [2026-10-17 00:55 WIB] LB | sub_v16dev (kandidat final A)
+- Public LB 0,24943 (user), vs sub_v15ncrkd 0,24954: -0,00011.
+- Holdout memperkirakan -0,00054. Arah sama, besarnya lebih kecil. Public LB hanya sekitar 55 ribu baris, jadi selisih sekecil ini masih dalam rentang noise; keputusan tetap memakai CV/holdout.
