@@ -5,7 +5,8 @@ Fase selesai: Fase 0, Fase 1; FREEZE v16 (D006, tag freeze-v16)
 Insiden: 16 Okt ~20:40 WIB run #1 + E0260 kehabisan RAM (24 GB), container restart ~00:00. RAM sekarang 32 GB.
 Job berjalan:
 - run #1 final v16: PID 4476 (lane xgb 4520, nn 4521, cpu 4522), mulai 00:36 WIB 17 Okt, log logs/run1.log + final/work/run1/lane_*.log, output final/output/submission_run1.csv
-- A/B Poisson E0260-E0263 (smoke lalu full, LGB 4 thread): logs/poisson_ab.sh, status di logs/poisson_ab_guard.log; berhenti sendiri bila MemAvailable < 3 GB
+- A/B Poisson E0260-E0265 SELESAI: Poisson menang (LGB E0262, XGB E0264/E0265)
+- anggota Poisson v17 (GPU): logs/v17_pois_chain.sh, status logs/v17_pois_guard.log, log logs/v17_<mode>_<name>.log
 - queue worker CPU/GPU: STOP (sengaja, selama run audit)
 Catatan lingkungan: nvidia-smi gagal (NVML 595 vs kernel 580), tetapi torch/XGBoost CUDA berjalan (A4000, 16,6 GB free).
 Terbaik CV_PRIMARY: v16 blend honest 0,242467 (34 anggota) | t1 0,2452 | t2 0,3157 | t3 0,6517 | t4 0 | t5 sekitar 0,036
@@ -13,9 +14,9 @@ Holdout rantai penuh v16 (blend + koreksi grup/kNN): gas 0,24539, EUI 0,64961, e
 BEST_CURRENT.csv: sub_v16dev, sha256 e9375ba6...9a7f, public LB 0,24943 (terbaik; v15ncrkd 0,24954)
 Kompetitor di public LB: 0,23666 (user, 17 Okt dini hari).
 5 langkah berikutnya:
-1. Pantau run #1 (tail final/work/run1/lane_*.log); setelah selesai bandingkan submission_run1.csv dengan sub_v16dev (sha256 harus identik)
-2. Baca hasil A/B Poisson (E0260-E0263); bila Poisson menang jelas, buat anggota Poisson (full + holdout) untuk kandidat v17
-3. Analisis konsentrasi error (scratchpad err_conc.py) untuk mencari sumber gain besar (gap ke 0,2367)
-4. Putuskan v17 vs v16 paling lambat 19 Okt pagi (D003: 3 run x ~16-20 jam)
-5. Run #2 + notebook headless, paket final, laporan Fase 12
+1. Pantau run #1 (final/work/run1/lane_*.log); setelah selesai bandingkan submission_run1.csv dengan sub_v16dev (sha256 harus identik)
+2. Anggota Poisson v17 (src/exp_v17_pois.py): rantai GPU logs/v17_pois_chain.sh (xp_gpm, xp_eui, xp_epm; full + hold), status logs/v17_pois_guard.log; lp_gpm, lp_epm setelah jalur CPU run #1 selesai
+3. Holdout: fit ulang λ (src/resid_knn.py fit), seleksi anggota (exp/analysis/select_v16.py versi v17), bandingkan rantai penuh v17 vs v16
+4. Bila v17 lebih baik: freeze v17 (members.yaml + resid_knn.json), notebook headless + run_all, paling lambat mulai 18 Okt
+5. Paket final, laporan Fase 12
 Risiko / blocker / NEEDS_USER: TEAM_NAME belum diisi; format writeup di guidebook Drive tidak terbaca
