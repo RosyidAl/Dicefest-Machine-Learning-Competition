@@ -140,3 +140,18 @@
 - Tweedie 1,2 hampir tidak lebih baik dari MSE dan berhenti jauh lebih awal (it sekitar 260 vs 800); Poisson murni yang bekerja.
 - Kesimpulan: DITERIMA untuk model tunggal. Formulasi GLM laju dengan exposure meter cocok dengan mekanisme noise (rata-rata rumah tangga, varians sebanding mean).
 - Tindak lanjut: versi XGB (E0264 gpm, E0265 EUI) sedang jalan; bila menang, buat anggota Poisson full 10-fold + holdout (xk/lk dengan fitur kNN) untuk kandidat v17 dan ukur gain blend + koreksi di holdout.
+
+### [2026-10-17 03:40 WIB] E0264-E0265 | Fase 3 | hasil Poisson XGB
+- Hasil vs E0190 (XGB MSE rasio, 5-fold):
+
+  | Exp | gas | EUI | fold membaik |
+  |---|---|---|---|
+  | E0190 MSE gpm (bobot M^2/A) | 0,25291 | 0,66444 | |
+  | E0264 Poisson gpm (bobot M) | 0,25085 (-0,0021) | 0,66054 (-0,0039) | 5/5 gas, 5/5 EUI |
+  | E0265 Poisson EUI (bobot A) | 0,25043 (-0,0025) | 0,66307 (-0,0014) | 5/5 gas, 5/5 EUI |
+
+- Iterasi sekitar 3500 (vs 1650 MSE), waktu sekitar 2x.
+- Kesimpulan: DITERIMA. E0264 tanpa fitur kNN dan 5-fold sudah mendekati xk_gpm (EUI 0,65977, dengan kNN dan 10-fold).
+  E0264 unggul di EUI, E0265 unggul di gas, jadi keduanya dibuat sebagai anggota (keragaman untuk blend).
+- Tindak lanjut: anggota v17 (src/exp_v17_pois.py, fitur v16 + kNN, 10-fold + holdout): xp_gpm, xp_eui, xp_epm (GPU, rantai logs/v17_pois_chain.sh mulai 03:38);
+  lp_gpm, lp_epm (LGB CPU) menunggu jalur CPU run #1 selesai. Lalu holdout: fit ulang λ koreksi, seleksi anggota, keputusan v17.

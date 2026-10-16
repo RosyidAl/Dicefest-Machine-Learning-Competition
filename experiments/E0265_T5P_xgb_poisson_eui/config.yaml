@@ -1,0 +1,38 @@
+exp_id: E0265
+parent_id: E0190
+slug: T5P_xgb_poisson_eui
+hypothesis: Poisson XGB pada EUI (laju per luas, bobot A = Poisson gas dengan offset
+  log A), mcw setara 50 baris; vs E0190
+features:
+  set: legacy
+  blocks:
+  - agg
+  - te
+phase: 3
+targets:
+- t1
+derive_eui: true
+seeds:
+- 42
+target_transform:
+  default:
+    type: ratio
+    exposure_col: bld_dim_06
+    weight_power: 1
+cv:
+  scheme: primary
+  fold_file: data/folds/folds_primary_k5_s42.parquet
+model:
+  family: xgb
+  device: gpu
+  params:
+    objective: count:poisson
+    learning_rate: 0.05
+    max_depth: 8
+    subsample: 0.8
+    colsample_bytree: 0.6
+    min_child_weight: 13500.0
+    reg_lambda: 1.0
+    eval_metric: poisson-nloglik
+    n_estimators: 20000
+    early_stopping_rounds: 200

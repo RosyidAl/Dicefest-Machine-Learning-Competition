@@ -1,4 +1,4 @@
-# LEADERBOARD (dibangun ulang 2026-10-17 02:22 WIB)
+# LEADERBOARD (dibangun ulang 2026-10-17 03:39 WIB)
 
 Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil lebih baik.
 
@@ -262,7 +262,9 @@ Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil l
 
 | exp_id | nrmse_t3 | target_transform | runtime_min | notes |
 |---|---|---|---|---|
+| E0264 | 0.66054 | {"default": {"exposure_col": "bld_dim_12", "type": "ratio", "weight_power": 1}} | 35.0 |  |
 | E0191 | 0.66229 | {"default": {"exposure_col": "bld_dim_12", "type": "ratio", "weight_col": "bld_dim_06", "weight_col_power": -1, "weight_power": 2}} | 21.3 |  |
+| E0265 | 0.66307 | {"default": {"exposure_col": "bld_dim_06", "type": "ratio", "weight_power": 1}} | 36.9 |  |
 | E0190 | 0.66444 | {"default": {"exposure_col": "bld_dim_12", "type": "ratio", "weight_col": "bld_dim_06", "weight_col_power": -1, "weight_power": 2}} | 5.7 |  |
 | E0173 | 0.68645 | {"default": {"type": "identity"}} | 35.6 |  |
 
@@ -317,8 +319,6 @@ Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil l
 
 | exp_id | status | model_family | nrmse_mean | nrmse_t1 | nrmse_t2 | nrmse_t3 | hypothesis |
 |---|---|---|---|---|---|---|---|
-| E0190 | done | xgb |  | 0.25291 |  | 0.66444 | Acuan FB07: XGB gpm (x4 params) FS_legacy + agg + TE, 5-fold |
-| E0191 | done | xgb |  | 0.25181 |  | 0.66229 | FB07: + fitur KNN-target OOF (ruang stok bangunan, window sub_n 30/100/300) menurunkan NRMSE gas dan EUI |
 | E0174 | running | cat |  |  |  |  | B5: CatBoost GPU, zone_n dan sub_n sebagai cat_features [CV primary] |
 | EM0001 | done | other |  | 0.25042 |  | 0.65977 | FB07 anggota full: XGB gpm (d10 lr .03) + agg + TE + kNN-target, 10-fold |
 | E0200 | done | lgb |  | 0.25877 | 0.32830 | 0.67436 | T0 identity (acuan Fase 3) untuk t1 gas, t2 elec, t3 EUI [screening: LGB lr 0.1, 3 fold] |
@@ -337,6 +337,8 @@ Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil l
 | E0261 | done | lgb |  | 0.25468 | 0.32543 | 0.66755 | Poisson pada gas dan elec mentah (tanpa bobot) mengalahkan formulasi rasio MSE (E0260) |
 | E0262 | done | lgb |  | 0.25310 | 0.32385 | 0.66536 | Poisson pada laju per meter dengan bobot M (GLM laju dengan exposure) mengalahkan E0260 |
 | E0263 | done | lgb |  | 0.25629 | 0.32587 | 0.67030 | Tweedie p=1.2 pada laju per meter (bobot M) vs E0260 |
+| E0264 | done | xgb |  | 0.25085 |  | 0.66054 | Poisson XGB pada gas per meter (bobot M, offset log M), mcw setara 50 baris; vs E0190 (MSE rasio bobot M^2/A) |
+| E0265 | done | xgb |  | 0.25043 |  | 0.66307 | Poisson XGB pada EUI (laju per luas, bobot A = Poisson gas dengan offset log A), mcw setara 50 baris; vs E0190 |
 
 
 ## Submisi dengan skor public LB
