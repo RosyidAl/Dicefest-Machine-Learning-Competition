@@ -33,8 +33,14 @@ def honest(Sg, Se):
 
 cur = {"gas": list(range(len(gas))), "elec": list(range(len(el)))}
 base_h = honest(cur["gas"], cur["elec"]); saved = 0
+pre = sys.argv[1].split(",") if len(sys.argv) > 1 else []
+for r in pre:  # resume: members already dropped in an earlier run
+    fam = "elec" if r in el else "gas"
+    cur[fam] = [x for x in cur[fam] if names[fam][x] != r]; saved += T[r]
+if pre:
+    print(f"resumed after dropping {pre}: honest {honest(cur['gas'], cur['elec']):.6f} saved {saved:.2f}h", flush=True)
 print(f"base honest {base_h:.6f}; total member hours {sum(T[r] for r in gas + el):.2f}", flush=True)
-for step in range(14):
+for step in range(16):
     best = None
     for fam in cur:
         c0 = ins(fam, cur[fam])
