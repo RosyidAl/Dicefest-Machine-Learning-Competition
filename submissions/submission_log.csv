@@ -50,3 +50,5 @@ created_wib,file,sha256,source,cv_mean,public_lb,note
 2026-10-15 16:50,submissions/sub_v15ncrk.csv,ac4a88cd38818f231003f8832d01eb9decc41394b54c98caa4f782d4fec80e29,legacy sub_v15ncrk,,,
 2026-10-15 16:50,submissions/sub_v15ncrkd.csv,b6431a339ccc20a228c88b8bc977f596323006cdcb060722621f3de7550ba8d2,legacy sub_v15ncrkd,,0.24954, submitted by user 16 Okt
 2026-10-16 11:25,submissions/BEST_CURRENT.csv,b6431a339ccc20a228c88b8bc977f596323006cdcb060722621f3de7550ba8d2,v15nc + resid_knn + dup_fix (= sub_v15ncrkd),0.25002 pre-corr; holdout corr -0.0009,0.24954,BEST_CURRENT submitted by user 16 Okt
+2026-10-16 20:27,submissions/sub_v16dev.csv,e9375ba66ae50b5cb31bdcc98d29ce54c51b59f4789182c9a051ee82015c9a7f,"v16 (34 anggota, FB07) dirakit dari array dev via final/run_all.py --stage assemble",blend honest 0.242467 (gas+eui+elec)/5; holdout chain -0.00054 vs v15,,"kandidat v16, ekspektasi LB ~0.2490"
+2026-10-16 20:27,submissions/BEST_CURRENT.csv,e9375ba66ae50b5cb31bdcc98d29ce54c51b59f4789182c9a051ee82015c9a7f,= sub_v16dev,holdout chain -0.00054 vs v15,,BEST_CURRENT v16
