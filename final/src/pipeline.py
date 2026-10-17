@@ -109,12 +109,22 @@ def run_adoption(work):
 def _correction(args):
     """residual-correction features of one metric (run in a worker process)"""
     from postprocess import all_features
+    from threadpoolctl import threadpool_limits
     metric, kt, ke, r, pf, pa, A, At, Zs, n, n_te, subn, subnt, lam = args
-    F = all_features(metric, kt, ke, r, pf, pa, A, At, Zs, np.arange(n), np.arange(n, n + n_te), subn, subnt)
-    return metric, F @ np.asarray(lam)
+    with threadpool_limits(1):  # single-threaded BLAS: multithreaded gemv changes the last bit with the thread count
+        F = all_features(metric, kt, ke, r, pf, pa, A, At, Zs, np.arange(n), np.arange(n, n + n_te), subn, subnt)
+        return metric, F @ np.asarray(lam)
 
 
 def assemble(work, out_csv, log=print):
+    """blend + adoption + residual correction + duplicate copy -> submission; BLAS is limited to one thread so that
+    the output bytes do not depend on the machine's core count (OpenBLAS gemv sums in a thread-dependent order)"""
+    from threadpoolctl import threadpool_limits
+    with threadpool_limits(1):
+        return _assemble(work, out_csv, log)
+
+
+def _assemble(work, out_csv, log=print):
     from blend import cv_blend_score, nnls_blend
     from dup_fix import duplicate_targets
     from postprocess import KSHR, CONFIGS, blend_preds, group_keys, spaces

@@ -92,3 +92,8 @@
   - MASTER_PROMPT bagian 12 (Fase 8): gain di bawah 0,1% relatif (sekitar 0,00025) -> pilih yang lebih sederhana.
 - Keputusan: v16 tetap Final A (members.yaml dan resid_knn.json tidak diubah). Rantai v17 (xp_epa, xp8_gpm, lp_*) dihentikan, GPU dikembalikan ke run #1 (SIGCONT 11:11).
 - Risiko: tidak ada; pipeline final tidak berubah.
+
+### D008 [2026-10-17 22:58 WIB] Perbaikan determinisme tahap assemble (BLAS satu thread)
+- Konteks: run #1 mereproduksi semua array anggota byte per byte, tetapi file submisi berbeda di bit terakhir pada 24 nilai karena OpenBLAS gemv multithread.
+- Keputusan: assemble dan koreksi residual dijalankan dengan threadpool_limits(1). Ini perbaikan bug (diizinkan setelah freeze D006), tidak mengubah model.
+- Risiko: tidak ada pada skor (selisih relatif <= 4e-16). File final harus berasal dari kode yang sudah diperbaiki; sub_v16dev di Kaggle tidak identik byte dengan output notebook.

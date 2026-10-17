@@ -300,3 +300,10 @@
   - Gas+EUI 0,896258 -> 0,895944: +xk2_gpm (-0,000213), +xp_gpm, +xp_gpgea, +xp_eui; x8_gpm dan lk_gpm terbuang.
   - Listrik 0,316075 -> 0,316024: +xp_epm; x4_elec, xgb_epm_wM_tew_k10 terbuang.
 - Berikutnya: xk2_gpgea, xk2_lgpm, xk2_lepa, xp_epa, xp8_gpm (GPU), lp_gpm, lp_epm, lk2_gpm, lk2_lepa (CPU), mk2, pk2_gpgea, pk2_lepm (NN), lalu seleksi ulang, versi holdout anggota terpilih, fit ulang λ.
+
+### [2026-10-17 22:58 WIB] Fase 11 | run #1 selesai, sha256 beda di bit terakhir
+- run #1 (final/run_all.py, resume) selesai 21:44: sha256 53780c9e...e686, sedangkan sub_v16dev e9375ba6...9a7f.
+- Diagnosis: 35 array anggota (oof + pred, termasuk adopt_v2) identik byte dengan array pengembangan; skor CV blend identik sampai digit terakhir. Yang berbeda hanya 24 nilai dari sekitar 920 ribu (6 gas, 7 listrik, 11 EUI), selisih relatif maksimum 4e-16.
+- Penyebab: OpenBLAS gemv multithread menjumlahkan dengan urutan yang bergantung jumlah thread. Uji: P @ w dengan 8 dan 16 thread berbeda di 5 dan 12 baris dibanding 1 thread; 1 thread selalu identik.
+- Perbaikan (D008): tahap assemble dan pekerja koreksi residual di final/src/pipeline.py memakai threadpoolctl.threadpool_limits(1); threadpoolctl==3.7.0 dipin. Uji: assemble run #1 dua kali dengan OMP/OpenBLAS 1 dan 16 thread (scratchpad asm/run.sh), sha256 harus sama.
+- Konsekuensi: submisi final harus file keluaran pipeline yang sudah diperbaiki (skornya identik sampai 1e-16 dengan sub_v16dev).
