@@ -6,7 +6,7 @@ DICE FEST 2026, Machine Learning. Tim: [[TEAM_NAME]]
 Kami memprediksi lima indikator energi untuk lebih dari 600 ribu kawasan permukiman: konsumsi gas, konsumsi listrik, intensitas gas per meter persegi (EUI), rasio bangunan bersih, dan adopsi pemanas listrik.
 
 Kunci pendekatan kami adalah memahami struktur data sebelum memilih model. Ada tiga hal yang kami temukan:
-- Dua target bisa dihitung secara eksak dari fitur.
+- Rasio bangunan bersih bisa dihitung secara eksak dari fitur, dan adopsi pemanas listrik konstan di dalam subzona sehingga nilainya sudah diketahui untuk 92% baris test.
 - Gas dan EUI terikat identitas fisik, gas = EUI x luas lantai.
 - Data test diambil acak per baris, sehingga informasi tingkat wilayah dapat dipakai secara sah.
 
@@ -42,6 +42,10 @@ Temuan yang paling menentukan arah pemodelan:
 3. **Target makro didominasi ukuran kawasan.** Korelasi Spearman gas dengan luas lantai 0,92, dan listrik dengan jumlah meter 0,90. Sebaliknya, EUI hanya berkorelasi lemah dengan fitur tunggal (maksimum 0,18).
 4. **Noise label besar dan terstruktur.** Varians residual log mengikuti pola a + b/M, dengan M jumlah meter (Gambar 2). Pola ini khas rata-rata konsumsi rumah tangga: bila konsumsi tiap rumah tangga bervariasi acak, varians relatif totalnya turun sebanding 1/M. Pada blend final, 73% varians residual gas dan 77% varians residual listrik adalah noise semacam ini, yang tidak bisa dijelaskan fitur apa pun. Lantai skor dari fitur saja sekitar 0,21.
 
+![Gambar 1. Sebaran kelima target di train.](figures/fig1_targets.png)
+
+![Gambar 2. Varians residual log blend final per kelompok jumlah meter M, dengan kurva a + b/M. Garis putus-putus adalah bagian a yang masih bisa dijelaskan model.](figures/fig2_noise_floor.png)
+
 ## 3. Strategi validasi
 Sebelum memilih skema cross-validation, kami memeriksa bagaimana data test dibuat:
 - Rasio train/total tepat 0,700000.
@@ -52,6 +56,8 @@ Sebelum memilih skema cross-validation, kami memeriksa bagaimana data test dibua
 Kesimpulannya, test adalah sampel acak 30% per baris. Karena itu CV utama memakai KFold acak per baris (5 dan 10 fold, seed 42), dan statistik tingkat wilayah (target encoding subzona, zona, jendela spasial) sah dipakai selama dihitung out-of-fold. [[CV sekunder per zona: hasil E0271-E0278, seberapa besar skor bergantung pada wilayah yang terlihat di train.]]
 
 Bukti bahwa CV ini bisa dipercaya datang dari leaderboard (Gambar 3). Pada sepuluh submisi, public LB sama dengan CV nested ditambah estimasi holdout untuk post-processing, plus selisih tetap 0,00052 (simpangan baku 0,00004). Urutan kandidat di CV selalu sama dengan urutan di LB.
+
+![Gambar 3. Kiri: CV nested, CV dengan estimasi holdout post-processing, dan public LB per submisi. Kanan: public LB terhadap CV, selisihnya tetap.](figures/fig3_cv_lb.png)
 
 ## 4. Rekayasa target dan fitur
 **Formulasi target.** Karena gas = EUI x luas, semua model keluarga gas memprediksi kuantitas per unit lalu dikalikan kembali. Pilihan unitnya beragam:
@@ -88,6 +94,8 @@ Tabel 1 merangkum 34 anggota blend final. Satu MLP multi-task mempelajari gas da
 - XGBoost memakai `hist` di CUDA dan LightGBM `deterministic=True`. 27 anggota dilatih 10-fold dan 7 anggota 5-fold, dengan split fold yang sama (KFold seed 42).
 - MLP (PyTorch) dilatih tiga seed dengan jumlah epoch tetap pada jadwal one-cycle, tanpa memilih epoch dari fold validasi, sehingga OOF tetap jujur. Varian PLR memakai embedding periodik untuk fitur numerik. TabM-mini memakai 16 adapter berbagi bobot.
 - CatBoost GPU diuji dan kuat, tetapi tidak deterministik antar run, sehingga dikeluarkan dari pipeline final. Biayanya di CV sekitar 0,00001.
+
+![Gambar 4. Porsi bobot NNLS blend final per keluarga model.](figures/fig4_blend_weights.png)
 
 ## 6. Ensemble dan koreksi residual
 **Blend.** Bobot non-negative least squares di-fit per kolom yang dinilai: gas dengan skala baris luas lantai, EUI dan listrik langsung. Anggota dipilih secara greedy maju-mundur dengan skor blend nested (bobot di-fit di fold lain, dinilai di fold yang tidak ikut fitting). Stacking level-2 dengan LightGBM, blend per kelompok ukuran kawasan, dan bobot dari holdout tidak lebih baik dari NNLS (selisih paling banyak 0,00006). Blend memperbaiki anggota tunggal terbaik sebesar 0,0083 pada EUI, 0,0036 pada gas, dan 0,0027 pada listrik.
@@ -129,6 +137,8 @@ Yang tidak berhasil (semua tercatat di registry):
 - Koreksi residual lintas target (residual listrik untuk gas dan sebaliknya): gain nol.
 - Pencarian kebocoran (urutan ID, nilai gas "kembar", relasi rasio antar kolom): hanya 77 baris duplikat yang bisa dimanfaatkan.
 
+![Gambar 5. Atas: ablation model tunggal. Bawah: gain blend terhadap anggota tunggal terbaik dan gain koreksi residual di holdout.](figures/fig5_gains.png)
+
 ## 8. Interpretasi kebijakan
 Kami menghitung TreeSHAP pada 30 ribu baris validasi untuk model LightGBM per target (Gambar 6 sampai 8): log EUI (t3, sekaligus t1 = EUI x luas), log listrik per meter (t2), dan adopsi (t5). Rasio bangunan bersih (t4) adalah identitas eksak, jadi tidak perlu model. Nama fitur dianonimkan panitia, sehingga makna kolom di bawah ini kami simpulkan dari sebaran nilainya dan kami tulis sebagai dugaan.
 
@@ -148,6 +158,12 @@ Porsi |SHAP| per keluarga fitur:
 
 Keluarga sosio-demografi menyumbang seperempat sampai sepertiga porsi |SHAP| untuk EUI dan listrik. Konsumsi energi kawasan tidak hanya soal fisik bangunan, tetapi juga komposisi penghuninya.
 
+![Gambar 6. TreeSHAP untuk log EUI: porsi per keluarga fitur dan 15 fitur teratas.](figures/shap_t3.png)
+
+![Gambar 7. Dependence plot log EUI: intensitas turun tajam seiring luas hunian per meter.](figures/shap_dep_t3.png)
+
+![Gambar 8. Dependence plot adopsi pemanas listrik: sisa pangsa pemanas dan pangsa pemanas gas sentral (dugaan).](figures/shap_dep_t5.png)
+
 ## 9. Reproducibility
 - Seed dikunci di semua tahap (split, model, PyTorch), tidak ada batas waktu training, urutan kolom diambil dari list yang di-sort, dan versi paket dipin di `final/requirements.txt`.
 - Determinisme diuji per keluarga model: XGBoost CUDA, LightGBM CPU, dan semua varian MLP memberi hasil identik byte antar run. CatBoost GPU tidak, sehingga dikeluarkan.
@@ -161,4 +177,4 @@ Keluarga sosio-demografi menyumbang seperempat sampai sepertiga porsi |SHAP| unt
 - Pipeline penuh butuh [[jam]] di satu GPU RTX A4000. Untuk penggunaan operasional, subset anggota dengan bobot terbesar memberi hampir seluruh skor dengan waktu jauh lebih singkat.
 
 ## 11. Kesimpulan
-Skor kami datang dari tiga keputusan. Pertama, mencari struktur fisik sebelum memodelkan: dua target selesai tanpa model, dan gas serta EUI berbagi satu model. Kedua, membangun validasi yang meniru cara test dibuat, lalu membuktikannya di leaderboard: selisih CV dan LB tetap di sepuluh submisi. Ketiga, menilai setiap komponen secara jujur, dari bobot blend yang nested sampai bobot koreksi residual yang di-fit di holdout. Dengan sekitar tiga perempat galat tersisa berupa noise rata-rata rumah tangga, kami yakin skor ini dekat dengan batas yang bisa dicapai dari data yang tersedia.
+Skor kami datang dari tiga keputusan. Pertama, mencari struktur fisik sebelum memodelkan: rasio bangunan bersih selesai tanpa model, adopsi untuk 92% baris test tinggal disalin dari train, dan gas serta EUI berbagi satu model. Kedua, membangun validasi yang meniru cara test dibuat, lalu membuktikannya di leaderboard: selisih CV dan LB tetap di sepuluh submisi. Ketiga, menilai setiap komponen secara jujur, dari bobot blend yang nested sampai bobot koreksi residual yang di-fit di holdout. Dengan sekitar tiga perempat galat tersisa berupa noise rata-rata rumah tangga, kami yakin skor ini dekat dengan batas yang bisa dicapai dari data yang tersedia.

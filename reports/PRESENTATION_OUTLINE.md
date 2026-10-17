@@ -23,7 +23,7 @@ Figur ada di `reports/figures/` (300 dpi). Angka bertanda [[...]] diisi setelah 
   - Adopsi pemanas listrik konstan dalam subzona (unit sensus). Untuk 92% baris test nilainya diketahui dari train.
 - Forensik split: porsi test di subzona baru 8,14% (harapan split acak 8,17%), adversarial validation AUC 0,50. Test adalah sampel acak per baris.
 - Implikasi: KFold acak per baris meniru test, dan statistik wilayah (target encoding) sah dipakai asalkan dihitung out-of-fold.
-- Catatan pembicara: tekankan bahwa dua dari lima target "selesai" sebelum model apa pun dilatih.
+- Catatan pembicara: tekankan bahwa satu target selesai tanpa model, adopsi 92% tinggal disalin, dan gas serta EUI berbagi satu model. Semua itu ditemukan sebelum model apa pun dilatih.
 
 ### Slide 4. Berapa yang sebenarnya bisa dijelaskan? (1 menit)
 - Varians residual log mengikuti a + b/M (M = jumlah meter). Pola ini khas rata-rata konsumsi rumah tangga.

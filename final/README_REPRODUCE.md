@@ -7,7 +7,7 @@
 | `inference_from_artifacts.ipynb` | notebook cadangan: membuat ulang submisi yang sama dari model tersimpan di `artifacts/` tanpa training |
 | `run_all.py` | satu pintu baris perintah untuk pipeline yang sama (`python final/run_all.py --clean`) |
 | `src/` | modul beku: data (`common.py`), target encoding (`te.py`), GBDT (`train_lib.py`), MLP (`nn.py`), blend NNLS (`blend.py`), adopsi (`adopt_v2.py`), koreksi residual (`postprocess.py`), duplikat (`dup_fix.py`), orkestrasi (`pipeline.py`), inference (`inference.py`) |
-| `configs/members.yaml` | 50 model anggota blend: back-end, formulasi target, bobot, parameter, jumlah fold, fitur |
+| `configs/members.yaml` | 34 anggota blend (33 jaringan/model, satu MLP multi-task untuk gas dan listrik): back-end, formulasi target, bobot, parameter, jumlah fold, fitur |
 | `configs/resid_knn.json` | bobot koreksi residual (beku, hasil fit di holdout internal 70/30 train) |
 | `artifacts/` | model per fold (XGBoost .ubj, LightGBM .txt, MLP .pt), prediksi OOF/test per anggota, `SHA256SUMS` |
 | `requirements.txt` | versi paket yang dipin |
@@ -36,7 +36,7 @@
   Bila GPU berbeda, notebook inference dari artefak memberi hasil identik karena hanya memakai prediksi dari model tersimpan.
 
 ## Hardware dan waktu jalan referensi
-- NVIDIA RTX A4000 16 GB (driver 595.84, CUDA 13.0), Intel Xeon Silver 4216 16 vCPU, RAM 24 GB, Ubuntu 26.04.
+- NVIDIA RTX A4000 16 GB (driver 595.84, CUDA 13.0), Intel Xeon Silver 4216 16 vCPU, RAM 32 GB (run #1 dimulai dengan 24 GB), Ubuntu 26.04.
 - Waktu jalan per tahap: diisi setelah run #1 (lihat `reports/phases/PHASE_11.md`).
 
 ## sha256 yang diharapkan

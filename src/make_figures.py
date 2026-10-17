@@ -126,7 +126,7 @@ fams = ["XGBoost", "LightGBM", "MLP", "MLP + embedding PLR", "TabM-mini", "MLP m
 cols = ["#2c3e50", "#16a085", "#f39c12", "#8e44ad", "#d35400", "#c0392b"]
 share = pd.DataFrame({m: pd.Series({f: sum(w for n, w in W[m].items() if fam(n) == f) for f in fams}) for m in ("gas", "eui", "elec")}).T
 share = share.div(share.sum(1), axis=0)
-fig, ax = plt.subplots(figsize=(8, 2.2))
+fig, ax = plt.subplots(figsize=(9, 2.2))
 left = np.zeros(3)
 for f, c in zip(fams, cols):
     ax.barh(["t1 gas", "t3 EUI", "t2 listrik"], share[f].values, left=left, color=c, label=f)
@@ -135,7 +135,7 @@ ax.set_xlim(0, 1)
 ax.set_xlabel("porsi bobot NNLS")
 n_mem = {m: sum(1 for w in W[m].values() if w > 0) for m in W}
 ax.set_title(f"Komposisi blend final (anggota berbobot: gas {n_mem['gas']}, EUI {n_mem['eui']}, listrik {n_mem['elec']})")
-ax.legend(ncol=3, fontsize=7, frameon=False, loc="upper center", bbox_to_anchor=(0.5, -0.35))
+ax.legend(fontsize=7, frameon=False, loc="center left", bbox_to_anchor=(1.01, 0.5))
 save(fig, "fig4_blend_weights")
 share.round(4).to_csv("reports/blend_family_share.csv")
 

@@ -219,7 +219,7 @@
 - CV vs LB (10 submisi): public LB = CV nested + estimasi holdout post-processing + 0,00052 (sd 0,00004).
 - src/interpret.py (LightGBM TreeSHAP, 30 ribu baris fold 0) berjalan di unit dice-shap.
 
-### [2026-10-17 13:40 WIB] Analisis | kepadatan tetangga koreksi residual (λ di test)
+### [2026-10-17 13:35 WIB] Analisis | kepadatan tetangga koreksi residual (λ di test)
 - Hipotesis: λ di-fit dengan kumpulan tetangga P (49% dari total baris), sedangkan di test kumpulannya seluruh train (70%), 1,43x lebih padat. λ mungkin terlalu kecil untuk test.
 - Setup (scratchpad density.py, holdout P70/H30, anggota holdout sama dengan xtarget): fitur koreksi dihitung dengan subsampel 70% dari P sebagai kumpulan tetangga, λ di-fit di H (cross-fitted 5-fold), lalu diterapkan ke fitur dari kumpulan P penuh dengan skala 1,0 sampai 1,6.
 - Hasil (NRMSE H):
@@ -232,13 +232,13 @@
 
 - Kesimpulan: gain koreksi naik dengan kepadatan (gas -0,00029, EUI -0,00036, elec -0,00014 dari 70% ke 100%), dan λ dari kumpulan yang lebih jarang hampir optimal di kumpulan yang lebih padat (rugi <= 0,00004 per metrik, skala 1,1-1,2 memulihkan <= 0,00001 total). λ tidak diubah. Estimasi holdout untuk gain koreksi di test bersifat konservatif.
 
-### [2026-10-17 13:40 WIB] Fase 12 | SHAP selesai
+### [2026-10-17 13:35 WIB] Fase 12 | SHAP selesai
 - src/interpret.py: reports/figures/shap_t3|t2|t5.png + shap_dep_*.png, reports/shap_family.csv, reports/shap_top_features.csv.
 - Porsi |SHAP| per keluarga: EUI sosio 25%, rasio fisik 25%, TE spasial 19%, era 11%, dimensi 10%; listrik per meter sosio 35%, rasio fisik 29%, TE 13%; adopsi sisa pangsa pemanas 45%, hvac_dist 27%, sosio 21%.
 - Fitur teratas: area_per_meter (EUI turun tajam, listrik per meter naik hampir linear), s002_ratio, area_per_epc, meters_per_epc; adopsi: hvac_rest, hvac_dist_02 (rata-rata 82%, dugaan pangsa gas sentral; < 40% menambah adopsi 5-15 poin).
 - Writeup bagian 8 dan slide 8 diisi (tiga dilema kebijakan).
 
-### [2026-10-17 13:55 WIB] E0271-E0278 | V02 CV_SECONDARY (hipotesis)
+### [2026-10-17 13:38 WIB] E0271-E0278 | V02 CV_SECONDARY (hipotesis)
 - Hipotesis: dengan GroupKFold per zona (saran panitia), semua baris validasi berada di wilayah yang tidak terlihat, sehingga TE spasial tidak tersedia dan skor jauh lebih buruk. Di CV_PRIMARY (meniru test, D001) TE memberi gain besar.
   Selisih ini menunjukkan seberapa besar skor bergantung pada informasi wilayah, dan mengapa pemilihan skema CV harus mengikuti mekanisme split.
 - Setup: configs/E0271.yaml, src/exp_cv_secondary.py (LightGBM lr 0,1, early stopping di fold validasi, hanya untuk perbandingan relatif).

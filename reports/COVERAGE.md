@@ -16,18 +16,18 @@ Catatan delta: "H" = holdout P70/H30 (seed 7). Delta skor total = delta per-targ
 | V02 | CV_SECONDARY GroupKFold per zone_region_id dilaporkan | QUEUED | |
 | V03 | Adversarial validation train vs test | DONE | LGB 5-fold AUC 0,4997 (tanpa ID) dan 0,4990 (dengan ID); EDA_REPORT 5.B |
 | V04 | Uji pembeda skema CV via LB (dengan vs tanpa info grup) | QUEUED | |
-| V05 | Kriteria penerimaan 4/5 fold atau 2 SE | QUEUED | dipakai untuk eksperimen baru |
+| V05 | Kriteria penerimaan 4/5 fold atau 2 SE | DONE | dipakai di E0191 (5/5 fold), E0264/E0265 (5/5 fold) |
 
 ## Baseline (Fase 2)
 | ID | Pendekatan | Status | Bukti / hasil |
 |---|---|---|---|
-| B0 | Prediksi rata-rata | QUEUED | |
-| B1 | Ridge | QUEUED | |
-| B2 | LightGBM referensi tanpa ID spasial | QUEUED | |
-| B3 | B2 + ID spasial (numerik, kategori) | QUEUED | |
-| B4 | XGBoost GPU default | QUEUED | |
-| B5 | CatBoost GPU + cat_features ID | QUEUED | |
-| B6 | MLP multi-output sederhana | QUEUED | |
+| B0 | Prediksi rata-rata | DONE | E0169 (primer 1,00016), E0179 (sekunder 1,0006) |
+| B1 | Ridge | DONE | E0170 (primer 0,40011), E0180 (sekunder 0,40136) |
+| B2 | LightGBM referensi tanpa ID spasial | SKIPPED | E0171 terhenti insiden RAM 16 Okt; digantikan E0271-E0278 (LGB dengan/tanpa TE, CV primer dan sekunder) |
+| B3 | B2 + ID spasial (numerik, kategori) | SKIPPED | idem B2; ID spasial numerik dipakai di semua anggota |
+| B4 | XGBoost GPU default | DONE | E0173 (0,27808) |
+| B5 | CatBoost GPU + cat_features ID | SKIPPED | E0174 terhenti insiden RAM; CatBoost GPU tidak deterministik (D004) |
+| B6 | MLP multi-output sederhana | DONE | E0175 (0,29699) |
 
 ## Determinisme per keluarga
 | ID | Keluarga | Status | Bukti / hasil |
@@ -46,7 +46,7 @@ Catatan delta: "H" = holdout P70/H30 (seed 7). Delta skor total = delta per-targ
 | T2 | sqrt | QUEUED | |
 | T3 | Yeo-Johnson | QUEUED | |
 | T4 | rasio terhadap exposure + bobot E^p | DONE | gpm, gpgea, gpn, epm, epa dengan bobot 1/A, M, 1/M; anggota terbaik |
-| T5 | Tweedie / Gamma / Poisson | QUEUED | |
+| T5 | Tweedie / Gamma / Poisson | DONE | E0260-E0265: Poisson menang di model tunggal, Tweedie 1,2 kalah; anggota EM0002-EM0005 hanya -0,000035 di blend (D007); MLP Poisson ditolak (E0266-E0270) |
 | T6 | Huber | QUEUED | |
 | T7 | proporsi + cross_entropy (t4, t5) | DONE | t5: adopt_v2 (LGB cross_entropy, model binomial); t4 identitas eksak |
 | T8 | logit (t4, t5) | QUEUED | |
@@ -64,7 +64,7 @@ Catatan delta: "H" = holdout P70/H30 (seed 7). Delta skor total = delta per-targ
 | FB04 | Fisika energi (rasio luas, GEA/GIA, dll) | DONE | common.base_features (area_per_meter, gea_ratio, dst) |
 | FB05 | Agregat grup transductive | DONE | Data.agg_features: LGB gpm EUI -0,0011 |
 | FB06 | Target encoding OOF (subzone, zone, window sub_n, sel iklim) | DONE | te.py; sel iklim EUI -0,0012, window, 10-fold |
-| FB07 | KNN-target OOF | QUEUED | koreksi residual kNN sudah DONE (PP0004); fitur KNN-target di dalam model belum |
+| FB07 | KNN-target OOF | DONE | E0190-E0191 (gas -0,0011, EUI -0,0022, 5/5 fold), EM0001, anggota xk_/lk_/pk_/mk1 di v16 (ENS0018) |
 | FB08 | PCA / SVD transductive | QUEUED | |
 | FB09 | KMeans cluster + TE | QUEUED | |
 | FB10 | Pencarian interaksi | QUEUED | |
