@@ -75,6 +75,8 @@ Ringkasan anggota final per keluarga: `reports/WRITEUP_DRAFT.md` Tabel 1 dan `re
 | Loss Poisson pada MLP (E0266-E0270) | EUI +0,0045 | ditolak |
 | Koreksi residual lintas target | gas +0,00001, EUI +0,00002, listrik -0,00003 | ditolak |
 | Adopsi sebagai fitur gas/listrik | korelasi residual <= 0,01 | ditolak |
+| FB07b: kNN-target tambahan (E0279-E0280) | XGB gas -0,00031 (5/5), EUI -0,00045 (4/5, SE 0,00048) | ditolak, perkiraan blend -0,00003 |
+| λ koreksi diskalakan (kepadatan) / interaksi ukuran | <= -0,00001 / memburuk | ditolak |
 | 20 fold vs 10 fold | OOF membaik, holdout tidak | |
 | CatBoost di final | tidak deterministik | D004 |
 | Pencarian kebocoran (urutan ID, gas "kembar", rasio antar kolom, copula) | tidak ada sinyal | hanya 77 duplikat |

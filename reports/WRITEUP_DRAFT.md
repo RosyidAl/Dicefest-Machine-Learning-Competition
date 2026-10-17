@@ -135,6 +135,8 @@ Yang tidak berhasil (semua tercatat di registry):
 - Loss Poisson pada MLP (EUI memburuk 0,0045).
 - 20 fold dibanding 10 fold: OOF terlihat membaik, tetapi holdout tidak.
 - Koreksi residual lintas target (residual listrik untuk gas dan sebaliknya): gain nol.
+- Fitur kNN-target tambahan di ruang kemiripan lain (era, sensus, ukuran) dan jendela W=10/W=1000: model tunggal hanya membaik 0,0003 (gas) dan 0,0005 (EUI, tidak signifikan), jauh di bawah FB07.
+- Bobot koreksi residual yang bergantung ukuran kawasan, atau diskalakan untuk kepadatan tetangga di test: tidak lebih baik dari koreksi linear.
 - Pencarian kebocoran (urutan ID, nilai gas "kembar", relasi rasio antar kolom): hanya 77 baris duplikat yang bisa dimanfaatkan.
 
 ![Gambar 5. Atas: ablation model tunggal. Bawah: gain blend terhadap anggota tunggal terbaik dan gain koreksi residual di holdout.](figures/fig5_gains.png)

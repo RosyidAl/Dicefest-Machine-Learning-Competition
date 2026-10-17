@@ -260,3 +260,13 @@
 - Dampak: output 18 anggota yang sudah selesai aman (resume melewati mereka). Progres x8_gpn (fold 6/10) dan p1_gpm (fold 8/10) hilang, sekitar 1,5 jam GPU.
 - Pelajaran: SIGSTOP tidak membebaskan RAM. Hitung RAM semua proses yang dijeda sebelum meluncurkan job baru; beri MemoryMax pada setiap unit.
 - Uji kesamaan fitur FB07b versi paralel per blok (scratchpad fb07b_eq.py): 5 dari 6 konfigurasi identik; era_w300_k50 berbeda di 0,033% entri (jarak seri di ruang era, maks 0,0046). Deterministik untuk BLOCK tetap.
+
+### [2026-10-17 14:59 WIB] FB07b | hasil A/B (XGB gpm 5-fold)
+| Varian | gas | EUI |
+|---|---|---|
+| A: FB07 | 0,25198 | 0,66243 |
+| B: FB07 + FB07b | 0,25167 | 0,66199 |
+| Delta | -0,00031 (5/5 fold, SE 0,00015) | -0,00045 (4/5 fold, SE 0,00048) |
+- Per fold EUI: +0,00098, -0,00014, -0,00146, -0,00156, -0,00005.
+- Kesimpulan: DITOLAK untuk dibangun jadi anggota. Gain sekitar seperlima gain FB07 (EUI -0,0022) dan EUI tidak signifikan. Perkiraan gain blend sekitar -0,00003 setelah koreksi residual, yang sudah memakai ruang tetangga yang sama secara linear. Biaya 9 anggota baru lebih dari 10 jam GPU.
+- Catatan teknis: FB07 versi paralel per blok (fb07b.DataP) memangkas waktu satu fold A/B dari sekitar 35 menit menjadi sekitar 2 menit.
