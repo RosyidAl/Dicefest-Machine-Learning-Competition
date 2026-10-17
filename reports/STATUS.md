@@ -1,14 +1,17 @@
-# STATUS (diperbarui: 2026-10-17 18:15 WIB)
+# STATUS (diperbarui: 2026-10-17 20:55 WIB)
 STATUS: BERJALAN
 Fase aktif / gerbang berikutnya: v18 (arahan user: hasil terbaik) + run #1 final v16 di latar / seleksi v18 18 Okt
 Fase selesai: Fase 0, Fase 1; FREEZE v16 (D006, tag freeze-v16); v17 Poisson ditolak (D007)
 Insiden: 16 Okt ~20:40 WIB run #1 + E0260 kehabisan RAM (24 GB), container restart ~00:00. RAM sekarang 32 GB. 17 Okt 04:05 semua job nohup mati serentak.
-Job berjalan:
-- run #1 final v16: unit dice-run1 (resume 18:11 setelah OOM GPU 17:40), 25/35 output selesai, ETA sekitar 01:00. Log final/work/run1/lane_*.log
-- v18 GPU: dice-v18g (logs/dev_chain.sh, status logs/v18_guard.log): xk2_gpm, xk2_gpgea, xk2_lgpm, xk2_lepa, xp_epa, xp8_gpm (full)
-- v18 CPU: dice-v18c (mulai bila cache/knn_x lengkap dan MemAvailable > 10 GB): lp_gpm, lp_epm, lk2_gpm, lk2_lepa
-- v18 NN: dice-v18n (mulai setelah jalur NN run #1, pid 209657, selesai): mk2, pk2_gpgea, pk2_lepm
-- Job /root/kaggle dihentikan atas izin user 17:40
+Job berjalan (semua unit systemd, log status logs/v18_guard.log):
+- dice-run1: run #1 final v16 (resume), 29/35, ETA sekitar 00:00
+- dice-v18g: XGB full xk2_lgpm -> xk2_lepa -> xp_epa -> xp8_gpm (xk2_gpm, xk2_gpgea selesai), ETA 23:55
+- dice-v18c: LGB full lp_epm -> lk2_gpm -> lk2_lepa (lp_gpm selesai: EUI 0,65697 terbaik), ETA 23:40
+- dice-v18n: NN full mk2 -> pk2_gpgea -> pk2_lepm, mulai setelah jalur NN run #1 (pid 209657), ETA 05:30
+- dice-v18h: holdout XGB (7 anggota), mulai setelah dice-v18c + dice-run1
+- dice-v18ch: holdout LGB (4 anggota), mulai setelah dice-v18g + dice-run1 + dice-v18c
+- dice-v18nh: holdout NN (3 anggota), mulai setelah dice-v18n
+- Besok pagi: seleksi (exp/analysis/select_v18.py), resid_knn fit (exp/resid_knn_v18.json), scripts/assemble_dev.py -> sub_v18dev
 Cek job: systemctl status dice-run1. Selalu luncurkan job panjang dengan systemd-run (nohup setsid ikut terbunuh).
 Terbaik CV_PRIMARY: ENS0018 v16 blend honest 0,24960 (5 target) | t1 0,24524 | t2 0,31608 | t3 0,65101 | t4 0 | t5 0,0357
 Holdout rantai penuh v16 (blend + koreksi grup/kNN): gas 0,24539, EUI 0,64961, elec 0,31477
