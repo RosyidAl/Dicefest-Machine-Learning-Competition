@@ -1,0 +1,47 @@
+{
+ "gas": [
+  "xa_gpm",
+  "p1_gpm",
+  "lgb_gas",
+  "x8_gpn",
+  "n6_lgpm",
+  "xgb_eui_wsM",
+  "la_gas",
+  "xgb_leui_wA",
+  "xgb_gpn_tew",
+  "la_leui_wA",
+  "n4f_gpm",
+  "x8_lgpm",
+  "xgb_gas",
+  "x8_gpm",
+  "xk_gpm",
+  "pk_lgpm",
+  "mk2_gpm",
+  "xk2_lgpm",
+  "pk2_gpgea",
+  "xk2_gpgea",
+  "lk2_gpm",
+  "xp_gpm",
+  "xk2_gpm",
+  "xp_gpgea",
+  "xp_eui"
+ ],
+ "elec": [
+  "t1_lepm",
+  "l4_epa",
+  "la_lepa",
+  "n6b_lepm",
+  "xgb_epm_wM_tew_k10",
+  "xgb_elec",
+  "pk_lepm",
+  "xk_lepa",
+  "lk_lepa",
+  "xp_epm",
+  "mk2_epm",
+  "xk2_lepa"
+ ],
+ "score": {
+  "gas": 0.8954445788442864,
+  "elec": 0.315975437836283
+ }
+}

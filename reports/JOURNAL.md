@@ -308,3 +308,11 @@
 - Perbaikan (D008): tahap assemble dan pekerja koreksi residual di final/src/pipeline.py memakai threadpoolctl.threadpool_limits(1); threadpoolctl==3.7.0 dipin. Uji: assemble run #1 dua kali dengan OMP/OpenBLAS 1 dan 16 thread (scratchpad asm/run.sh), sha256 harus sama.
 - Konsekuensi: submisi final harus file keluaran pipeline yang sudah diperbaiki (skornya identik sampai 1e-16 dengan sub_v16dev).
 - Hasil uji D008 (23:21): assemble dengan 1 thread dan 16 thread memberi sha256 yang sama, 3767ba10...59be. Disimpan sebagai submissions/sub_v16fin.csv (lolos validate_submission). Ini output pipeline final v16 yang reproducible; skornya sama dengan sub_v16dev.
+
+### [2026-10-17 23:35 WIB] v18 | seleksi sementara (12 dari 13 kandidat full)
+- Skor model tunggal (full 10-fold): xk2_gpm EUI 0,65928 / gas 0,25014; xk2_gpgea 0,66074 / 0,25046; xk2_lgpm 0,66229 / 0,25060; lk2_gpm 0,65954 / 0,25046; mk2 0,65851 / 0,24883 / elec 0,31859 (mk1: 0,65934 / 0,24901 / 0,31873); pk2_gpgea 0,65836 / 0,24851; lp_gpm 0,65697 / 0,24881 (terbaik); lp_epm elec 0,31974; lk2_lepa elec 0,32229.
+- Seleksi nested (exp/analysis/select_v18_r2.json): total 0,242467 -> 0,242284 (-0,000183). Gas+EUI 0,896258 -> 0,895445, listrik 0,316075 -> 0,315975.
+  - Gas ditambah: xk2_gpm, xk2_gpgea, xk2_lgpm, lk2_gpm, mk2_gpm, pk2_gpgea, xp_gpm, xp_eui, xp_gpgea; dibuang: xk_gpgea, xk_lgpm, lk_gpm, mk1_gpm, pk_gpgea, xa_gpgea.
+  - Listrik ditambah: mk2_epm, xk2_lepa, xp_epm; dibuang: mk1_epm, x4_elec, xgb_lepm.
+  - Versi FB07b menggantikan pendahulunya; lp_gpm (model tunggal terbaik) tidak terpilih.
+- Masih berjalan: pk2_lepm, xp8_gpm (full) dan semua versi holdout (selesai sekitar 04:00-05:00). Keputusan v18 menunggu rantai holdout.
