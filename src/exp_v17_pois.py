@@ -34,6 +34,10 @@ JOBS = {  # name: backend, kind, params, weight code
     "xp_gpm": ("xgb", "gpm", dict(xp, min_child_weight=1e6), "iM"),
     "xp_eui": ("xgb", "gas_per:bld_dim_06", dict(xp, min_child_weight=1.35e4), "iA"),
     "xp_epm": ("xgb", "epm", dict(xp, min_child_weight=2.8e5), "iM"),
+    "xp_gpgea": ("xgb", "gas_per:bld_dim_03", dict(xp, min_child_weight=8e3), "iA"),  # weight b03^2/A ~ b03
+    "xp_epa": ("xgb", "epa", dict(xp, min_child_weight=3.7e3), "iA"),  # elec per m2, weight A
+    "xp8_gpm": ("xgb", "gpm", dict(x8, objective="count:poisson", eval_metric="poisson-nloglik",
+                                   min_child_weight=1e6), "iM"),  # deeper / slower variant (depth 10, lr 0.03)
     "lp_gpm": ("lgb", "gpm", lpp, "iM"),
     "lp_epm": ("lgb", "epm", lpp, "iM"),
 }

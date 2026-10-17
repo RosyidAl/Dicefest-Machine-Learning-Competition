@@ -163,3 +163,29 @@
   Insiden 16 Okt 20:40 yang dikira OOM kemungkinan sama.
 - Tindakan: semua job kini dijalankan sebagai unit systemd terpisah (systemd-run --unit=dice-run1 / dice-v17), di luar cgroup terminal.
   Run #1 dilanjutkan tanpa --clean: 10 anggota yang sudah selesai dipakai ulang (anggota deterministik; tiap anggota dilatih di proses baru). Audit bersih penuh tetap dilakukan lewat eksekusi notebook headless.
+
+### [2026-10-17 09:20 WIB] E0266-E0270 | Fase 3/5 | loss Poisson pada PLR MLP (fold 0)
+- Hipotesis: loss deviance Poisson (link log) juga memperbaiki MLP PLR seperti pada GBM (E0262/E0264), sehingga anggota NN Poisson memberi keragaman baru.
+- Setup: setelan pk_* (PLR, 1024-512-256, 12 epoch, epoch tetap 11), input v16 + kNN, 1 seed, fold 0 dari split 10-fold; src/exp_nn_pois_ab.py.
+  Opsi baru loss="poisson" di src/nn.py (default "mse" tidak mengubah anggota lama).
+  - E0266 MSE gpm (bobot M^2/A, acuan) vs E0267 Poisson gpm (bobot M) vs E0268 Poisson EUI (bobot A)
+  - E0269 MSE epm vs E0270 Poisson epm (bobot M)
+
+### [2026-10-17 09:25 WIB] E0266-E0270 | hasil loss Poisson pada PLR MLP (fold 0, 1 seed)
+| Exp | Formulasi | EUI | gas | elec |
+|---|---|---|---|---|
+| E0266 | MSE gpm (acuan) | 0,66687 | 0,25022 | |
+| E0267 | Poisson gpm | 0,67138 | 0,25086 | |
+| E0268 | Poisson EUI | 0,67086 | 0,25096 | |
+| E0269 | MSE epm (acuan) | | | 0,31969 |
+| E0270 | Poisson epm | | | 0,32054 |
+- Kesimpulan: DITOLAK. Untuk NN, MSE dengan bobot yang sudah disetel tetap lebih baik; gain Poisson khusus GBM (kemungkinan karena GBM MSE memboroskan kapasitas pohon pada baris besar yang noisy).
+
+### [2026-10-17 09:25 WIB] Analisis | pencarian sinyal baru (semua negatif)
+- Kategori pemanas yang hilang r (dari target adopsi, diketahui persis di 92% baris test): korelasi dengan residual log gas -0,0003, log elec -0,0068, EUI 0,0037. Tidak dipakai.
+- Hipotesis Gaussian copula: ridge pada skor normal semua fitur, R2 ruang-z gas 0,907 / elec 0,874 / EUI 0,464 vs blend 0,929 / 0,892 / 0,587; residual berkorelasi 0,88 sampai 0,93 dengan residual blend. Tidak ada sinyal linear-copula tersisa.
+- Gas kembar (4259 nilai, 8618 baris train, identik sampai presisi penuh float): 186 baris adalah duplikat penuh (sudah ditangani dup_fix).
+  Sisanya berada di subzone/zone berbeda dan tidak berbagi fitur di luar efek modus kolom (bld_dim_39/27/42/29 dst. sama karena hampir konstan).
+  Artefak pembangkitan data, tidak bisa diidentifikasi dari fitur.
+- Kolom bernilai hampir unik (socio_demog_005, bld_dim_17): bukan koordinat, tidak ada identitas rasio/produk.
+- Baris dengan nilai fitur identik (kolom apa pun): korelasi residual leave-one-out maksimum 0,09 (1.270 baris).

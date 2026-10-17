@@ -101,8 +101,10 @@ class MLP(nn.Module):
 
 
 def fit_fold(Za, ya, wa, Zb, yb, wb, Zt, epochs=30, bs=4096, lr=2e-3, wd=1e-5, hidden=(512, 256, 128),
-             drop=0.1, dev="cuda", fixed_ep=None, emb=None, order_seed=SEED, ens=0):
-    """fixed_ep=None keeps the epoch with the best validation score (optimistic OOF);
+             drop=0.1, dev="cuda", fixed_ep=None, emb=None, order_seed=SEED, ens=0, loss="mse"):
+    """loss: "mse" (standardised target) or "poisson" (log link: the net outputs log(y / mean y), weighted Poisson
+    deviance; predictions are mean y * exp(output)). Single-task only.
+    fixed_ep=None keeps the epoch with the best validation score (optimistic OOF);
     fixed_ep=k stops after epoch k of the same schedule without looking at the validation rows.
     emb: PLR embedding settings (see MLP), None for the plain MLP.
     order_seed: seed of the mini-batch order (the default SEED gives every seed and fold the same order).
@@ -110,6 +112,11 @@ def fit_fold(Za, ya, wa, Zb, yb, wb, Zt, epochs=30, bs=4096, lr=2e-3, wd=1e-5, h
     ya / wa of shape (n, t): multi-task fit of t targets with per-task weights (needs fixed_ep)."""
     multi = ya.ndim == 2
     mu, sd = (ya.mean(0), ya.std(0)) if multi else (ya.mean(), ya.std())
+    pois = loss == "poisson"
+    if pois:
+        assert not multi
+        mu, sd, scale = 0.0, 1.0, float(ya.mean())
+        ya = ya / scale
     g = torch.Generator(device="cpu").manual_seed(order_seed)
     cont = None if emb is None else np.array([len(np.unique(Za[:, j])) > 2 for j in range(Za.shape[1])])
     model = MLP(Za.shape[1], hidden, drop, emb, cont, ens, n_out=ya.shape[1] if multi else 1).to(dev)
@@ -133,6 +140,8 @@ def fit_fold(Za, ya, wa, Zb, yb, wb, Zt, epochs=30, bs=4096, lr=2e-3, wd=1e-5, h
             if ens:
                 out = out.mean(1)
         model.train()
+        if pois:
+            return scale * np.exp(np.clip(out.cpu().numpy(), -30, 30))
         return out.cpu().numpy() * sd + mu
 
     best, best_state, best_ep = np.inf, None, -1
@@ -141,12 +150,16 @@ def fit_fold(Za, ya, wa, Zb, yb, wb, Zt, epochs=30, bs=4096, lr=2e-3, wd=1e-5, h
         for i in range(0, len(Za), bs):
             idx = perm[i:i + bs]
             out = model(Xa[idx])
-            if ens:
-                loss = (Wa[idx, None] * (out - Ya[idx, None]) ** 2).mean()
+            if pois:
+                o = out.clamp(max=20)
+                yy, ww = (Ya[idx, None], Wa[idx, None]) if ens else (Ya[idx], Wa[idx])
+                lv = (ww * (torch.exp(o) - yy * o)).mean()
+            elif ens:
+                lv = (Wa[idx, None] * (out - Ya[idx, None]) ** 2).mean()
             else:
-                loss = (Wa[idx] * (out - Ya[idx]) ** 2).mean()
+                lv = (Wa[idx] * (out - Ya[idx]) ** 2).mean()
             opt.zero_grad(set_to_none=True)
-            loss.backward()
+            lv.backward()
             opt.step()
             sched.step()
         if fixed_ep is not None:
