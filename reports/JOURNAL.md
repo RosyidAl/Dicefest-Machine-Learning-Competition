@@ -242,3 +242,9 @@
 - Hipotesis: dengan GroupKFold per zona (saran panitia), semua baris validasi berada di wilayah yang tidak terlihat, sehingga TE spasial tidak tersedia dan skor jauh lebih buruk. Di CV_PRIMARY (meniru test, D001) TE memberi gain besar.
   Selisih ini menunjukkan seberapa besar skor bergantung pada informasi wilayah, dan mengapa pemilihan skema CV harus mengikuti mekanisme split.
 - Setup: configs/E0271.yaml, src/exp_cv_secondary.py (LightGBM lr 0,1, early stopping di fold validasi, hanya untuk perbandingan relatif).
+
+### [2026-10-17 13:50 WIB] Analisis | bobot koreksi residual bergantung ukuran baris?
+- Hipotesis: λ optimal berbeda untuk kawasan kecil dan besar (noise label sebanding 1/M).
+- Setup (scratchpad lam_inter.py): fitur koreksi holdout yang sama (xt/own_*.npy), ditambah interaksi dengan log M, log A, dan log M kuadrat; λ cross-fitted 5-fold di H, bootstrap 100x.
+- Hasil (delta vs koreksi linear): gas +0,00002 sampai +0,00004, EUI +0,00005 sampai +0,00009, elec -0,00001 sampai +0,00002.
+- Kesimpulan: DITOLAK. Koreksi linear sudah optimal; interaksi hanya menambah varians.
