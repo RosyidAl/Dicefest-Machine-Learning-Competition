@@ -316,3 +316,19 @@
   - Listrik ditambah: mk2_epm, xk2_lepa, xp_epm; dibuang: mk1_epm, x4_elec, xgb_lepm.
   - Versi FB07b menggantikan pendahulunya; lp_gpm (model tunggal terbaik) tidak terpilih.
 - Masih berjalan: pk2_lepm, xp8_gpm (full) dan semua versi holdout (selesai sekitar 04:00-05:00). Keputusan v18 menunggu rantai holdout.
+
+### [2026-10-18 02:41 WIB] v18 | seleksi final + rantai holdout
+- Semua anggota full dan holdout selesai 02:25 (rc=0). Skor tunggal baru: pk2_lepm elec 0,31884, xp8_gpm EUI 0,65717 / gas 0,24917, xp_epa elec 0,32022, xk2_lepa elec 0,32241.
+- Seleksi nested (exp/analysis/select_v18_final.log/.json, 18 kandidat): total 0,242467 -> 0,242265 (-0,000202). Gas+EUI 0,896258 -> 0,895396 (26 anggota), listrik 0,316075 -> 0,315927 (12 anggota).
+  - Gas ditambah: mk2_gpm, xk2_lgpm, pk2_gpgea, lp_gpm, xk2_gpgea, xk2_gpm, lk2_gpm, xp_gpgea, xp_eui, xp8_gpm, xp_gpm; dibuang: xa_gpgea, x8_gpm, xk_gpm, mk1_gpm, xk_lgpm, pk_gpgea, lk_gpm.
+  - Listrik ditambah: lp_epm, mk2_epm, pk2_lepm, xp_epa, xp_epm; dibuang: xgb_lepm, x4_elec, xgb_epm_wM_tew_k10, pk_lepm, lk_lepa.
+- Rantai holdout (src/resid_knn.py fit, semua anggota holdout, exp/resid_knn_fit_v18.log, λ -> exp/resid_knn_v18.json):
+
+  | Metrik | H v16 | H v18 | rantai v16 | rantai v18 |
+  |---|---|---|---|---|
+  | gas | 0,24643 | 0,24625 | 0,24539 | 0,24533 |
+  | EUI | 0,65115 | 0,65071 | 0,64961 | 0,64937 |
+  | elec | 0,31508 | 0,31500 | 0,31477 | 0,31476 |
+
+- Kesimpulan: v18 lebih baik di ketiga metrik; gain setelah koreksi sekitar -0,00006 total (sebelum koreksi -0,00014 di H, -0,0002 di OOF nested). Diadopsi (D009, arahan user "hasil terbaik"). Ekspektasi public LB sekitar 0,2493-0,2494.
+- Perakitan sub_v18dev: scripts/assemble_dev.py exp/v18cfg (blend v18 + λ v18) -> submissions/sub_v18dev.csv.

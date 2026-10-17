@@ -97,3 +97,9 @@
 - Konteks: run #1 mereproduksi semua array anggota byte per byte, tetapi file submisi berbeda di bit terakhir pada 24 nilai karena OpenBLAS gemv multithread.
 - Keputusan: assemble dan koreksi residual dijalankan dengan threadpool_limits(1). Ini perbaikan bug (diizinkan setelah freeze D006), tidak mengubah model.
 - Risiko: tidak ada pada skor (selisih relatif <= 4e-16). File final harus berasal dari kode yang sudah diperbaiki; sub_v16dev di Kaggle tidak identik byte dengan output notebook.
+
+### D009 [2026-10-18 02:41 WIB] v18 menggantikan v16 sebagai kandidat Final A (meninjau D007)
+- Konteks: user meminta hasil terbaik walau gain kecil (17-18 Okt). D007 menolak anggota Poisson saja (-0,000035) dengan aturan 0,1%.
+- Bukti: seleksi nested v18 (FB07b + Poisson, 38 anggota) -0,000202; rantai holdout membaik di ketiga metrik (gas -0,00006, EUI -0,00024, elec -0,00001; total -0,00006).
+- Keputusan: v18 = Final A setelah dirakit dan dicek di LB. Pipeline final perlu diperbarui: anggota FB07b (fb07b.DataX) dan Poisson masuk members.yaml, resid_knn.json = exp/resid_knn_v18.json, lalu uji drift (array final identik dengan array pengembangan).
+- Risiko: waktu jalan pipeline bertambah (sekitar 14 anggota baru); kode baru (fb07b.py) harus masuk final/src dan notebook. Final B = v16 (sub_v16fin, pipeline sudah terbukti) sebagai lindung nilai.
