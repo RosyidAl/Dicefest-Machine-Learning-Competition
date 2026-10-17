@@ -355,3 +355,12 @@
 - Kandidat (src/exp_v18_knn2.py, input FB07b): lp2_gpm, lp2_epm (LGB Poisson), xp2_gpm, xp2_eui, xp2_gpgea, xp2_epm, xp2_epa, xp82_gpm (XGB Poisson), pk2_lgpm (PLR, pengganti pk_lgpm yang masih di blend v18).
 - Jalur: dice-v19c (CPU), dice-v19g (GPU, mulai bila MemAvailable > 12 GB), dice-v19n (NN, setelah jalur NN run final v18 selesai). Status: logs/v19_guard.log. Full lalu holdout untuk setiap kandidat.
 - Run final v18 berjalan di latar (jalur XGB di xp_eui, jalur NN selesai mk2 dengan skor identik dengan dev).
+
+### [2026-10-18 06:50 WIB] v20 | kandidat: versi kNN + FB07b dari anggota lama tanpa kNN
+- Dasar: di v18 sebagian besar gain datang dari versi FB07b yang menggantikan pendahulunya. Blend v18 masih memuat 18 anggota tanpa input kNN.
+- Kandidat (src/exp_v18_knn2.py, formulasi/bobot/parameter sama dengan anggota lama, input + agg + TE + FB07 + FB07b):
+  - XGB: xk2_gpn (x8_gpn), xk2_eui_wsM (xgb_eui_wsM), xk2_gas (xgb_gas), xk2_leui_wA (xgb_leui_wA), xk2_elec (xgb_elec);
+  - LGB: lk2_gas (la_gas), lk2_leui_wA (la_leui_wA), lk2_epa (l4_epa);
+  - NN: nk2_gpm (n4f_gpm, 60/37 epoch), nk2_lgpm (n6_lgpm, 40/39), nk2b_lepm (n6b_lepm, 24/23), pk2_gpm (p1_gpm, epoch PLR-kNN 12/11), tk2_lepm (t1_lepm, TabM).
+- Jalur dice-v20c / dice-v20g / dice-v20n (status logs/v20_guard.log), masing-masing menunggu jalur v19 / run final yang setara selesai dan MemAvailable > 12 GB.
+- Rencana: seleksi gabungan v19 + v20, fit ulang λ, sub_v20dev besok pagi; pipeline final + notebook setelahnya (notebook paling lambat mulai 20 Okt siang).

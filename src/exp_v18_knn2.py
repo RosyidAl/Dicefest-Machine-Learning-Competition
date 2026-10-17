@@ -33,6 +33,7 @@ x4 = dict(x8, learning_rate=0.05, max_depth=8)
 lp = dict(learning_rate=0.04, num_leaves=255, min_data_in_leaf=100, feature_fraction=0.5, bagging_fraction=0.8,
           bagging_freq=1, lambda_l2=10.0, max_bin=255, num_threads=12)
 XP = dict(x4, objective="count:poisson", eval_metric="poisson-nloglik")  # as src/exp_v17_pois.py
+MLP = dict(lr=1e-3, wd=1e-4, drop=0.3, hidden=(1024, 512, 256), seeds=(42, 43, 44))  # plain MLP (n4f / n6 settings)
 PLR = dict(lr=1e-3, wd=1e-4, drop=0.3, hidden=(1024, 512, 256), seeds=(42, 43, 44), emb=dict(k=24, sigma=0.05, d=24),
            epochs=12, fixed_ep=11)
 JOBS = {  # name: backend, kind, params, weight code (same formulations as the v16 kNN members)
@@ -55,6 +56,21 @@ JOBS = {  # name: backend, kind, params, weight code (same formulations as the v
     "lp2_gpm": ("lgb", "gpm", dict(lp, objective="poisson"), "iM"),
     "lp2_epm": ("lgb", "epm", dict(lp, objective="poisson"), "iM"),
     "pk2_lgpm": ("nn", "lgas_per:bld_dim_12", PLR, "A"),
+    # v20: kNN + FB07b versions of the blend members that had no kNN inputs (same kind / weight / params)
+    "xk2_gpn": ("xgb", "gas_per:bld_dim_01", dict(x8, learning_rate=0.05), "iA"),  # x8_gpn
+    "xk2_eui_wsM": ("xgb", "eui", x4, "sqrtM"),  # xgb_eui_wsM
+    "xk2_gas": ("xgb", "gas", x4, None),  # xgb_gas
+    "xk2_leui_wA": ("xgb", "leui", x4, "A"),  # xgb_leui_wA
+    "xk2_elec": ("xgb", "elec", x4, None),  # xgb_elec
+    "lk2_gas": ("lgb", "gas", lp, None),  # la_gas
+    "lk2_leui_wA": ("lgb", "leui", lp, "A"),  # la_leui_wA
+    "lk2_epa": ("lgb", "elec_per:bld_dim_06", lp, "iM"),  # l4_epa
+    "nk2_gpm": ("nn", "gpm", dict(MLP, epochs=60, fixed_ep=37), "iA"),  # n4f_gpm
+    "nk2_lgpm": ("nn", "lgas_per:bld_dim_12", dict(MLP, epochs=40, fixed_ep=39), "A"),  # n6_lgpm
+    "nk2b_lepm": ("nn", "lepm", dict(MLP, epochs=24, fixed_ep=23, seeds=(45, 46, 47)), "M"),  # n6b_lepm
+    "pk2_gpm": ("nn", "gpm", PLR, "iA"),  # p1_gpm formulation, PLR epochs of the kNN members
+    "tk2_lepm": ("nn", "lepm", dict(lr=2e-3, wd=1e-4, drop=0.1, hidden=(512, 512, 512), seeds=(42,),
+                                    emb=dict(k=24, sigma=0.05, d=24), ens=16, epochs=24, fixed_ep=23), "M"),  # t1_lepm
 }
 if mode == "hold":
     perm = np.random.default_rng(7).permutation(len(d.X))
@@ -76,7 +92,7 @@ if mode == "hold":
     D, out, agg = s, "exp/hold", dict(extra=exs, extra_t=exts)
 else:
     D, out, agg = d, "exp", dict(extra=ex, extra_t=ext)
-W = {"A": D.A, "iA": 1.0 / D.A, "M": D.M.astype(float), "iM": 1.0 / D.M}
+W = {"A": D.A, "iA": 1.0 / D.A, "M": D.M.astype(float), "iM": 1.0 / D.M, "sqrtM": np.sqrt(D.M), None: None}
 for name in names:
     backend, kind, params, wk = JOBS[name]
     if os.path.exists(f"{out}/pred/{name}.npy") or os.path.exists(f"{out}/pred/{name}_gpm.npy"):
