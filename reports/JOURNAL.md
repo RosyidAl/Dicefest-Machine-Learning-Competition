@@ -348,3 +348,10 @@
 - Tindakan: jalur CPU (pid 275317, lk2_gpm fold 4/10) dihentikan manual agar OOM killer tidak menghentikan seluruh unit (OOMPolicy stop). RAM turun ke 14 GB terpakai. Jalur XGB dan NN berlanjut.
 - Tindak lanjut: setelah jalur XGB dan NN selesai, run_all di-resume untuk lk2_gpm, lp_gpm, lp_epm lalu adopsi + assemble.
 - Pelajaran untuk notebook: jalur paralel dengan blok FB07b butuh RAM lebih besar. Opsi: kurangi THREADS di fb07b atau jalankan jalur CPU setelah cache FB07b terisi.
+
+### [2026-10-18 06:40 WIB] LB sub_v18dev 0,24936 + v19 diluncurkan
+- Public LB sub_v18dev: 0,24936 (v16 0,24943, -0,00007). Estimasi rantai holdout -0,00006: validasi tetap akurat.
+- User minta lebih maksimal lagi. Hipotesis v19: dua sumber gain v18 (FB07b dan objektif Poisson) belum pernah digabung; anggota Poisson v18 memakai input v16. Poisson + FB07b diharapkan memberi model tunggal terbaik baru dan keragaman blend.
+- Kandidat (src/exp_v18_knn2.py, input FB07b): lp2_gpm, lp2_epm (LGB Poisson), xp2_gpm, xp2_eui, xp2_gpgea, xp2_epm, xp2_epa, xp82_gpm (XGB Poisson), pk2_lgpm (PLR, pengganti pk_lgpm yang masih di blend v18).
+- Jalur: dice-v19c (CPU), dice-v19g (GPU, mulai bila MemAvailable > 12 GB), dice-v19n (NN, setelah jalur NN run final v18 selesai). Status: logs/v19_guard.log. Full lalu holdout untuk setiap kandidat.
+- Run final v18 berjalan di latar (jalur XGB di xp_eui, jalur NN selesai mk2 dengan skor identik dengan dev).

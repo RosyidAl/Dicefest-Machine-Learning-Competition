@@ -32,6 +32,7 @@ x8 = dict(learning_rate=0.03, max_depth=10, subsample=0.8, colsample_bytree=0.6,
 x4 = dict(x8, learning_rate=0.05, max_depth=8)
 lp = dict(learning_rate=0.04, num_leaves=255, min_data_in_leaf=100, feature_fraction=0.5, bagging_fraction=0.8,
           bagging_freq=1, lambda_l2=10.0, max_bin=255, num_threads=12)
+XP = dict(x4, objective="count:poisson", eval_metric="poisson-nloglik")  # as src/exp_v17_pois.py
 PLR = dict(lr=1e-3, wd=1e-4, drop=0.3, hidden=(1024, 512, 256), seeds=(42, 43, 44), emb=dict(k=24, sigma=0.05, d=24),
            epochs=12, fixed_ep=11)
 JOBS = {  # name: backend, kind, params, weight code (same formulations as the v16 kNN members)
@@ -44,6 +45,16 @@ JOBS = {  # name: backend, kind, params, weight code (same formulations as the v
     "pk2_gpgea": ("nn", "gas_per:bld_dim_03", PLR, "iA"),
     "pk2_lepm": ("nn", "lepm", dict(PLR, emb=dict(k=24, sigma=0.02, d=48), epochs=10, fixed_ep=9), "M"),
     "mk2": ("nn_multi", [("gpm", "gpm", "iA"), ("epm", "epm", "iM")], dict(PLR, hidden=(2048, 1024, 512)), None),
+    # v19: Poisson objective (src/exp_v17_pois.py settings) with the FB07b inputs, and the PLR log-gas member
+    "xp2_gpm": ("xgb", "gpm", dict(XP, min_child_weight=1e6), "iM"),
+    "xp2_eui": ("xgb", "gas_per:bld_dim_06", dict(XP, min_child_weight=1.35e4), "iA"),
+    "xp2_epm": ("xgb", "epm", dict(XP, min_child_weight=2.8e5), "iM"),
+    "xp2_gpgea": ("xgb", "gas_per:bld_dim_03", dict(XP, min_child_weight=8e3), "iA"),
+    "xp2_epa": ("xgb", "epa", dict(XP, min_child_weight=3.7e3), "iA"),
+    "xp82_gpm": ("xgb", "gpm", dict(x8, objective="count:poisson", eval_metric="poisson-nloglik", min_child_weight=1e6), "iM"),
+    "lp2_gpm": ("lgb", "gpm", dict(lp, objective="poisson"), "iM"),
+    "lp2_epm": ("lgb", "epm", dict(lp, objective="poisson"), "iM"),
+    "pk2_lgpm": ("nn", "lgas_per:bld_dim_12", PLR, "A"),
 }
 if mode == "hold":
     perm = np.random.default_rng(7).permutation(len(d.X))
