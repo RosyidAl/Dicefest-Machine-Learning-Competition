@@ -293,3 +293,10 @@
 - 17:40 job /root/kaggle dihentikan atas izin user (VRAM terpakai turun ke 3 GB). mk2 sempat berjalan 3 fold lalu ikut terhenti saat unit dice-v18n di-restart (kesalahan urutan perintah, sekitar 30 menit hilang).
 - 18:11 diluncurkan ulang: dice-run1 (resume), dice-v18g (XGB FB07b + Poisson), dice-v18n (NN FB07b), dice-v18c (LGB; mulai bila cache blok tambahan lengkap dan MemAvailable > 10 GB).
 - Pelajaran: cek VRAM bebas (bukan hanya RAM) sebelum meluncurkan job GPU; jangan stop unit yang sedang menjalankan job berharga tanpa cek isinya.
+
+### [2026-10-17 19:45 WIB] v18 | anggota pertama + seleksi sementara
+- xk2_gpm (full 10-fold, FB07 + FB07b): EUI 0,65928, gas 0,25014 vs xk_gpm 0,65977 / 0,25042 (konsisten dengan A/B E0280).
+- Seleksi nested (exp/analysis/select_v18.py, salinan exp/analysis/select_v18_r1.json): v16 0,242467 -> 0,242394 (-0,000073).
+  - Gas+EUI 0,896258 -> 0,895944: +xk2_gpm (-0,000213), +xp_gpm, +xp_gpgea, +xp_eui; x8_gpm dan lk_gpm terbuang.
+  - Listrik 0,316075 -> 0,316024: +xp_epm; x4_elec, xgb_epm_wM_tew_k10 terbuang.
+- Berikutnya: xk2_gpgea, xk2_lgpm, xk2_lepa, xp_epa, xp8_gpm (GPU), lp_gpm, lp_epm, lk2_gpm, lk2_lepa (CPU), mk2, pk2_gpgea, pk2_lepm (NN), lalu seleksi ulang, versi holdout anggota terpilih, fit ulang λ.
