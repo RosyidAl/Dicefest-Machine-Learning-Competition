@@ -342,3 +342,9 @@
   - members.yaml: 39 anggota (11 anggota v16 yang tidak terpakai dibuang, 16 baru); resid_knn.json = λ v18; salinan v16 di members_v16.yaml / resid_knn_v16.json (Final B).
 - Bug ditemukan di final/make_notebooks.py: features_knn.py tidak ikut tertanam (notebook v16 akan gagal di anggota kNN pertama). Diperbaiki, fb07b.py juga ditambahkan.
 - 02:53 run final v18 dilanjutkan di final/work/run1 (anggota v16 dipakai ulang, 16 anggota baru dilatih) -> final/output/submission_run1_v18.csv. Lalu uji drift: array baru harus identik dengan array pengembangan, sha256 harus sama dengan sub_v18dev.
+
+### [2026-10-18 04:05 WIB] Insiden | RAM kritis di run final v18, jalur CPU dihentikan
+- Run final v18 (dice-run1) memakai 26,6 GB (puncak 29,4 GB, swap 1 GB): ketiga jalur (xk2_gpm, pk2_gpgea, lk2_gpm) menghitung blok FB07b untuk split yang sama secara bersamaan, masing-masing dengan 8 thread, ditambah DataX + ruang kemiripan per jalur. Claude Code menghentikan shell pemantau karena memori rendah.
+- Tindakan: jalur CPU (pid 275317, lk2_gpm fold 4/10) dihentikan manual agar OOM killer tidak menghentikan seluruh unit (OOMPolicy stop). RAM turun ke 14 GB terpakai. Jalur XGB dan NN berlanjut.
+- Tindak lanjut: setelah jalur XGB dan NN selesai, run_all di-resume untuk lk2_gpm, lp_gpm, lp_epm lalu adopsi + assemble.
+- Pelajaran untuk notebook: jalur paralel dengan blok FB07b butuh RAM lebih besar. Opsi: kurangi THREADS di fb07b atau jalankan jalur CPU setelah cache FB07b terisi.
