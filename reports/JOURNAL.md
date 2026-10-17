@@ -202,3 +202,19 @@
 - Total blend honest 0,242467 -> 0,242437 (-0,00003). Sama seperti xp_gpm: efek Poisson sudah terserap ensemble.
 - Uji ulang adopsi sebagai fitur (subzone seen): adopsi rata-rata 5,38 vs sisa pangsa hvac 6,18 (r = 0,80, sd 1,17), korelasi dengan residual blend |r| <= 0,01. Konsisten dengan entri 09:25, tidak dipakai.
 - Berikutnya: xp_gpgea / xp_epa / xp8_gpm (dice-v17b, GPU), uji koreksi residual lintas-target di holdout (dice-xt), lalu fit holdout v17.
+
+### [2026-10-17 11:15 WIB] Koreksi residual lintas target + keputusan v17
+- Hipotesis: residual listrik tetangga membantu koreksi gas/EUI (dan residual gas membantu listrik), karena residual log gas dan listrik berkorelasi 0,24 per baris dan 0,69 antar rata-rata zona.
+- Setup (scratchpad xtarget.py, holdout P70/H30): fitur koreksi sendiri persis resid_knn.py (grup + kNN), ditambah rata-rata residual relatif keluarga lain (zona, sel, jendela, 4 konfigurasi kNN) dikali prediksi baris. λ cross-fitted 5-fold di H, bootstrap 200x.
+- Hasil (gain di atas koreksi sendiri): gas +0,00001 (sd 0,00001), EUI +0,00002 (sd 0,00003), elec -0,00003 (sd 0,00003).
+- Kesimpulan: DITOLAK. Faktor bersama gas-listrik sudah tertangkap oleh koreksi masing-masing.
+- Efek sampingan: rantai holdout dengan anggota Poisson (xp_gpm, xp_eui, xp_epm ikut di blend holdout) memberi gas 0,24538 / EUI 0,64959 / elec 0,31475 vs v16 0,24539 / 0,64961 / 0,31477.
+- xp_gpgea (full): EUI 0,65985, gas 0,24911. Seleksi dengan empat anggota Poisson: blend honest -0,000035.
+- Keputusan D007: v16 tetap Final A. Rantai v17 dihentikan 11:11, jalur GPU run #1 dilanjutkan (SIGCONT).
+
+### [2026-10-17 11:15 WIB] Fase 12 | figur dan SHAP
+- src/make_figures.py -> reports/figures/fig1_targets, fig2_noise_floor, fig3_cv_lb, fig4_blend_weights, fig5_gains (300 dpi).
+  Data pendukung: reports/cv_lb_history.csv, reports/ablation_summary.csv, reports/noise_floor.csv, reports/blend_family_share.csv.
+- Noise floor pada blend v16: gas a = 0,0093, b = 0,367 (73% varians residual adalah noise rata-rata rumah tangga); elec a = 0,0116, b = 0,577 (77%).
+- CV vs LB (10 submisi): public LB = CV nested + estimasi holdout post-processing + 0,00052 (sd 0,00004).
+- src/interpret.py (LightGBM TreeSHAP, 30 ribu baris fold 0) berjalan di unit dice-shap.

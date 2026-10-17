@@ -83,3 +83,12 @@
   - Final B (lindung nilai) = v15nc-pruned tanpa FB07 (members_v15nc.yaml, λ v15), komposisi berbeda dengan CV sedikit lebih buruk; dibangun bila waktu GPU tersisa.
   - Kode final/ dibekukan (git tag freeze-v16). Setelah ini hanya perbaikan bug.
 - Risiko: holdout memakai semua anggota holdout, bukan persis 34 anggota final (approksimasi yang sama seperti v15, terbukti akurat di LB).
+
+### D007 [2026-10-17 11:15 WIB] Anggota Poisson (v17) tidak masuk final; v16 tetap Final A
+- Konteks: A/B Poisson menang besar di model tunggal (E0260-E0265), lalu 4 anggota XGB Poisson penuh dilatih (xp_gpm, xp_eui, xp_epm, xp_gpgea).
+- Bukti:
+  - Blend honest nested (exp/analysis/select_v17_r3.log): 0,242467 -> sekitar 0,242432 (-0,000035), walau model tunggal xp_gpm adalah anggota EUI terbaik (0,65741).
+  - Holdout rantai penuh (blend + koreksi grup/kNN, semua anggota holdout termasuk xp_gpm/xp_eui/xp_epm): gas 0,24539 -> 0,24538, EUI 0,64961 -> 0,64959. Praktis nol.
+  - MASTER_PROMPT bagian 12 (Fase 8): gain di bawah 0,1% relatif (sekitar 0,00025) -> pilih yang lebih sederhana.
+- Keputusan: v16 tetap Final A (members.yaml dan resid_knn.json tidak diubah). Rantai v17 (xp_epa, xp8_gpm, lp_*) dihentikan, GPU dikembalikan ke run #1 (SIGCONT 11:11).
+- Risiko: tidak ada; pipeline final tidak berubah.

@@ -1,0 +1,4 @@
+,XGBoost,LightGBM,MLP,MLP + embedding PLR,TabM-mini,MLP multi-task
+gas,0.4253,0.1097,0.082,0.2904,0.0,0.0927
+eui,0.5153,0.1059,0.039,0.1949,0.0,0.1448
+elec,0.2035,0.1718,0.0563,0.1776,0.1082,0.2827

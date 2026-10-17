@@ -1,0 +1,11 @@
+date_wib,version,cv_blend_nested,post_est,public_lb,steps
+2026-10-13,v6pre,0.25075,0.0,0.25125,NNLS blend of ratio formulations (XGB/LGB/CatBoost/MLP)
+2026-10-14,v8,0.25061,0.0,0.25116,XGB depth 10 / lr 0.03 members (holdout tuned)
+2026-10-14,v8nc,0.25066,0.0,0.25118,v8 without CatBoost (deterministic)
+2026-10-14,v9r,0.25055,-0.0004,0.25070,PLR MLP + group residual correction (r)
+2026-10-15,v12r,0.25015,-0.0004,0.25025,transductive aggregates + PLR / TabM members
+2026-10-15,v13ra,0.25007,-0.0005,0.25008,+ binomial adoption model for unseen subzones (a)
+2026-10-15,v15rd,0.25001,-0.00053,0.25000,+ multi-task MLP + duplicate copy (d)
+2026-10-15,v15ncrd,0.25002,-0.00053,0.2499,v15 without CatBoost
+2026-10-16,v15ncrkd,0.25002,-0.00103,0.24954,+ similarity kNN residual correction (k)
+2026-10-16,v16dev,0.24960,-0.00071,0.24943,kNN-target features inside models (FB07); final pipeline
