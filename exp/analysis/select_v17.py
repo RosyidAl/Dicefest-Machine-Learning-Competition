@@ -8,7 +8,7 @@ import yaml
 from blend import cv_blend_score
 from common import TARGET_COLS, load, nrmse
 cfg = yaml.safe_load(open("final/configs/members.yaml"))
-CAND = [c for c in ["xp_gpm", "xp_eui", "xp_epm", "lp_gpm", "lp_epm"] if os.path.exists(f"exp/oof/{c}.npy")]
+CAND = [c for c in ["xp_gpm", "xp_eui", "xp_epm", "xp_gpgea", "xp_epa", "xp8_gpm", "lp_gpm", "lp_epm"] if os.path.exists(f"exp/oof/{c}.npy")]
 ELEC = ("epm", "elec", "lepm", "epa", "lepa")
 is_el = lambda r: any(t in r.split("_") for t in ELEC)  # noqa: E731
 tr, _ = load(); A = tr.bld_dim_06.values

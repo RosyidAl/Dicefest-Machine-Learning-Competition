@@ -189,3 +189,16 @@
   Artefak pembangkitan data, tidak bisa diidentifikasi dari fitur.
 - Kolom bernilai hampir unik (socio_demog_005, bld_dim_17): bukan koordinat, tidak ada identitas rasio/produk.
 - Baris dengan nilai fitur identik (kolom apa pun): korelasi residual leave-one-out maksimum 0,09 (1.270 baris).
+
+### [2026-10-17 09:45 WIB] xp_gpm (anggota v17) | gain blend
+- Model tunggal (10-fold, input v16 + kNN, Poisson gpm bobot M): EUI 0,65741, gas 0,24899. Terbaik sejauh ini (xk_gpm MSE: 0,65977 / 0,25042).
+- Seleksi (exp/analysis/select_v17.py, blend honest nested): v16 0,242467 -> 0,242451 (gas+EUI 0,896258 -> 0,896178), lk_gpm terbuang.
+- Kesimpulan: gain model tunggal hampir tidak menular ke blend (-0,000016 total). Ensemble MSE/log sudah menyerap efek yang sama. Tunggu anggota Poisson elec dan holdout sebelum memutuskan v17.
+- Catatan: GPU tanpa kontensi (jalur GPU run #1 dibekukan 09:24) memotong waktu fold XGB dari sekitar 600 s menjadi sekitar 100 s.
+
+### [2026-10-17 11:00 WIB] xp_eui + xp_epm (anggota v17) | gain blend
+- Model tunggal: xp_eui EUI 0,66008 / gas 0,24873 (Poisson pada EUI, bobot A); xp_epm elec 0,31977 (Poisson listrik per meter).
+- Seleksi maju-mundur (exp/analysis/select_v17_r2.log): +xp_gpm, +xp_eui (gas+EUI 0,896258 -> 0,896161), +xp_epm (elec 0,316075 -> 0,316025), x4_elec dan xgb_epm_wM_tew_k10 terbuang.
+- Total blend honest 0,242467 -> 0,242437 (-0,00003). Sama seperti xp_gpm: efek Poisson sudah terserap ensemble.
+- Uji ulang adopsi sebagai fitur (subzone seen): adopsi rata-rata 5,38 vs sisa pangsa hvac 6,18 (r = 0,80, sd 1,17), korelasi dengan residual blend |r| <= 0,01. Konsisten dengan entri 09:25, tidak dipakai.
+- Berikutnya: xp_gpgea / xp_epa / xp8_gpm (dice-v17b, GPU), uji koreksi residual lintas-target di holdout (dice-xt), lalu fit holdout v17.
