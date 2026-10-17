@@ -1,13 +1,14 @@
-# STATUS (diperbarui: 2026-10-17 00:45 WIB)
+# STATUS (diperbarui: 2026-10-17 09:00 WIB)
 STATUS: BERJALAN
 Fase aktif / gerbang berikutnya: Fase 11 (run #1 final v16) + Fase 3/8 (A/B Poisson) / G2 17 Okt malam
 Fase selesai: Fase 0, Fase 1; FREEZE v16 (D006, tag freeze-v16)
 Insiden: 16 Okt ~20:40 WIB run #1 + E0260 kehabisan RAM (24 GB), container restart ~00:00. RAM sekarang 32 GB.
 Job berjalan:
-- run #1 final v16: PID 4476 (lane xgb 4520, nn 4521, cpu 4522), mulai 00:36 WIB 17 Okt, log logs/run1.log + final/work/run1/lane_*.log, output final/output/submission_run1.csv
+- run #1 final v16: unit systemd dice-run1 (resume 08:55 WIB setelah job mati serentak 04:05), log logs/run1.log + final/work/run1/lane_*.log, output final/output/submission_run1.csv
 - A/B Poisson E0260-E0265 SELESAI: Poisson menang (LGB E0262, XGB E0264/E0265)
-- anggota Poisson v17 (GPU): logs/v17_pois_chain.sh, status logs/v17_pois_guard.log, log logs/v17_<mode>_<name>.log
+- anggota Poisson v17 (GPU): unit systemd dice-v17, logs/v17_pois_chain.sh, status logs/v17_pois_guard.log, log logs/v17_<mode>_<name>.log
 - queue worker CPU/GPU: STOP (sengaja, selama run audit)
+Cek job: systemctl status dice-run1 dice-v17. Selalu luncurkan job panjang dengan systemd-run (nohup setsid ikut terbunuh).
 Catatan lingkungan: nvidia-smi gagal (NVML 595 vs kernel 580), tetapi torch/XGBoost CUDA berjalan (A4000, 16,6 GB free).
 Terbaik CV_PRIMARY: v16 blend honest 0,242467 (34 anggota) | t1 0,2452 | t2 0,3157 | t3 0,6517 | t4 0 | t5 sekitar 0,036
 Holdout rantai penuh v16 (blend + koreksi grup/kNN): gas 0,24539, EUI 0,64961, elec 0,31477 (ekspektasi LB sekitar 0,2490)

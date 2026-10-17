@@ -155,3 +155,11 @@
   E0264 unggul di EUI, E0265 unggul di gas, jadi keduanya dibuat sebagai anggota (keragaman untuk blend).
 - Tindak lanjut: anggota v17 (src/exp_v17_pois.py, fitur v16 + kNN, 10-fold + holdout): xp_gpm, xp_eui, xp_epm (GPU, rantai logs/v17_pois_chain.sh mulai 03:38);
   lp_gpm, lp_epm (LGB CPU) menunggu jalur CPU run #1 selesai. Lalu holdout: fit ulang λ koreksi, seleksi anggota, keputusan v17.
+
+### [2026-10-17 09:00 WIB] Insiden kedua: semua job mati serentak sekitar 04:05 WIB
+- Run #1 (10 dari 34 anggota selesai), rantai anggota Poisson (xp_gpm fold 2) dan skrip penjaganya mati bersamaan antara 04:02 dan 04:06 WIB.
+- Bukan OOM: container tidak restart (uptime 8:55), memory.events cgroup oom = 0, rantai bash kecil ikut mati tanpa sempat menulis rc.
+  Penyebab pasti tidak terlihat di journal; dugaan terkuat pembersihan proses di cgroup code-server saat sesi klien terputus.
+  Insiden 16 Okt 20:40 yang dikira OOM kemungkinan sama.
+- Tindakan: semua job kini dijalankan sebagai unit systemd terpisah (systemd-run --unit=dice-run1 / dice-v17), di luar cgroup terminal.
+  Run #1 dilanjutkan tanpa --clean: 10 anggota yang sudah selesai dipakai ulang (anggota deterministik; tiap anggota dilatih di proses baru). Audit bersih penuh tetap dilakukan lewat eksekusi notebook headless.
