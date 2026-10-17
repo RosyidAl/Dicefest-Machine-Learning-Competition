@@ -14,7 +14,8 @@ import yaml
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 TEAM = sys.argv[1] if len(sys.argv) > 1 else os.environ.get("TEAM_NAME", "ISI_NAMA_TIM")
-SRC = ["common.py", "te.py", "train_lib.py", "nn.py", "blend.py", "adopt_v2.py", "dup_fix.py", "postprocess.py",
+SRC = ["common.py", "te.py", "features_knn.py", "fb07b.py", "train_lib.py", "nn.py", "blend.py", "adopt_v2.py",
+       "dup_fix.py", "postprocess.py",
        "pipeline.py", "inference.py", "metric.py", "seed.py"]
 CONF = ["members.yaml", "resid_knn.json"]
 N_MEMBERS = len(yaml.safe_load(open(os.path.join(HERE, "configs", "members.yaml")))["members"])

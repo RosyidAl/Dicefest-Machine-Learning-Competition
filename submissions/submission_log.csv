@@ -54,3 +54,6 @@ created_wib,file,sha256,source,cv_mean,public_lb,note
 2026-10-16 20:27,submissions/BEST_CURRENT.csv,e9375ba66ae50b5cb31bdcc98d29ce54c51b59f4789182c9a051ee82015c9a7f,= sub_v16dev,holdout chain -0.00054 vs v15,,BEST_CURRENT v16
 2026-10-17 23:22,submissions/sub_v16fin.csv,3767ba10a82e28d1cf80bf2b62debb20f612fa8d10d2f0c929488e0e481f59be,,,,
 2026-10-17 23:22,submissions/sub_v16fin.csv,3767ba10a82e28d1cf80bf2b62debb20f612fa8d10d2f0c929488e0e481f59be,"v16 from final run #1 arrays, assemble with single-thread BLAS (D008); = sub_v16dev up to 4e-16 relative",0.24960 (nested; holdout chain -0.00071),,
+2026-10-18 02:51,submissions/sub_v18dev.csv,07f67f8cda7d5d07200a08cf49c5547b3556fa1b47183e467d999fbf8dbf135b,,,,
+2026-10-18 02:51,submissions/sub_v18dev.csv,07f67f8cda7d5d07200a08cf49c5547b3556fa1b47183e467d999fbf8dbf135b,"v18 (38 members: v16 + FB07b + Poisson), dev arrays, assemble_dev (D008 code), lambda v18",0.24940 (nested; holdout chain -0.00006 vs v16),,
+2026-10-18 02:51,submissions/BEST_CURRENT.csv,07f67f8cda7d5d07200a08cf49c5547b3556fa1b47183e467d999fbf8dbf135b,= sub_v18dev,CV nested 0.24940 (v16 0.24960),,BEST_CURRENT v18

@@ -52,6 +52,21 @@ def lane_of(spec, lane):
     return kind == lane or (lane == "gpu" and kind in ("xgb", "nn"))
 
 
+def make_data(work):
+    """Data for the members: train_lib.Data plus the FB07b kNN block (fb07b.DataX), which is switched on per member
+    (spec knn_x: true) and off otherwise, so FB07-only members see exactly the train_lib.Data features"""
+    from fb07b import DataX
+    from postprocess import spaces
+    d = DataX()
+    tr, te = load()
+    S = spaces(tr, te)
+    d.sp = {k: (v[:len(tr)], v[len(tr):]) for k, v in S.items()}
+    d.use_x = False
+    d.knn_cache_dir = f"{work}/knn_cache"  # FB07 fold encodings shared between members and lanes (same values)
+    d.knn_x_cache_dir = f"{work}/knn_x_cache"  # FB07b fold encodings
+    return d
+
+
 def run_members(lane, work, only=None):
     """train every member of a lane (in config order); members with existing outputs are skipped"""
     from nn import run_nn, run_nn_multi
@@ -59,8 +74,7 @@ def run_members(lane, work, only=None):
     cfg = load_config()
     os.makedirs(f"{work}/oof", exist_ok=True)
     os.makedirs(f"{work}/pred", exist_ok=True)
-    d = Data()
-    d.knn_cache_dir = f"{work}/knn_cache"  # FB07 fold encodings shared between members and lanes (same values)
+    d = make_data(work)
     ex, ext = d.agg_features()
     done_multi = set()
     for name, spec in cfg["members"].items():
@@ -76,6 +90,7 @@ def run_members(lane, work, only=None):
             if all(os.path.exists(o) for o in outs):
                 continue
             d.folds = list(KFold(m["n_folds"], shuffle=True, random_state=SEED).split(d.X))
+            d.use_x = bool(m.get("knn_x", False))
             tasks = [(s, k, _wmul(d, w)) for s, k, w in m["tasks"]]
             agg = dict(extra=ex, extra_t=ext) if m["agg"] else {}
             run_nn_multi(d, g, tasks, out_dir=work, use_te=m["use_te"], windows=tuple(m["windows"]), cells=m["cells"],
@@ -85,6 +100,7 @@ def run_members(lane, work, only=None):
         if os.path.exists(f"{work}/pred/{name}.npy"):
             continue
         d.folds = list(KFold(spec["n_folds"], shuffle=True, random_state=SEED).split(d.X))
+        d.use_x = bool(spec.get("knn_x", False))
         agg = dict(extra=ex, extra_t=ext) if spec["agg"] else {}
         te = dict(use_te=spec.get("use_te", False), windows=tuple(spec.get("windows", ())),
                   cells=spec.get("cells", False), knn=spec.get("knn", False))

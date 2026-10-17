@@ -87,10 +87,13 @@ def _cross_fit(feats, fit_idx, apply, inner):
 
 
 class DataX(Data):
-    """Data whose kNN block is FB07 followed by FB07b (train rows = self.X, apply rows = self.Xt)"""
+    """Data whose kNN block is FB07 followed by FB07b (train rows = self.X, apply rows = self.Xt).
+    use_x=False switches the extra block off, so one instance serves FB07 and FB07b members alike."""
 
     def knn_features(self, fit_idx, apply="oof", inner=5):
         F = super().knn_features(fit_idx, apply, inner)
+        if not getattr(self, "use_x", True):  # FB07 only (members without the FB07b block, e.g. the v16 kNN members)
+            return F
         cdir = getattr(self, "knn_x_cache_dir", None)
         path = None
         if cdir:

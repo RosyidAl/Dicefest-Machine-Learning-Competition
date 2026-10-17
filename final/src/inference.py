@@ -104,12 +104,11 @@ def predict_nn(d, name, spec, model_dir, extra=None, extra_t=None, tasks=None):
 
 def predict_all(work_models, out_dir, only=None):
     """writes <out_dir>/oof|pred/<member>.npy for every member (or `only`) from <work_models>/<member>/"""
-    from train_lib import Data
+    from pipeline import make_data
     cfg = load_config()
     os.makedirs(f"{out_dir}/oof", exist_ok=True)
     os.makedirs(f"{out_dir}/pred", exist_ok=True)
-    d = Data()
-    d.knn_cache_dir = f"{out_dir}/knn_cache"
+    d = make_data(out_dir)
     ex, ext = d.agg_features()
     done = set()
     for name, spec in cfg["members"].items():
@@ -122,6 +121,7 @@ def predict_all(work_models, out_dir, only=None):
             done.add(g)
             m = cfg["multi"][g]
             d.folds = list(KFold(m["n_folds"], shuffle=True, random_state=SEED).split(d.X))
+            d.use_x = bool(m.get("knn_x", False))
             agg = (ex, ext) if m["agg"] else (None, None)
             oof, pt = predict_nn(d, g, m, f"{work_models}/{g}", *agg, tasks=m["tasks"])
             for j, t in enumerate(m["tasks"]):
@@ -129,6 +129,7 @@ def predict_all(work_models, out_dir, only=None):
                 np.save(f"{out_dir}/pred/{g}_{t[0]}.npy", pt[:, j])
             continue
         d.folds = list(KFold(spec["n_folds"], shuffle=True, random_state=SEED).split(d.X))
+        d.use_x = bool(spec.get("knn_x", False))
         agg = (ex, ext) if spec["agg"] else (None, None)
         if spec["backend"] == "nn":
             oof, pt = predict_nn(d, name, spec, f"{work_models}/{name}", *agg)
