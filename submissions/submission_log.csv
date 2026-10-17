@@ -52,3 +52,5 @@ created_wib,file,sha256,source,cv_mean,public_lb,note
 2026-10-16 11:25,submissions/BEST_CURRENT.csv,b6431a339ccc20a228c88b8bc977f596323006cdcb060722621f3de7550ba8d2,v15nc + resid_knn + dup_fix (= sub_v15ncrkd),0.25002 pre-corr; holdout corr -0.0009,0.24954,BEST_CURRENT submitted by user 16 Okt
 2026-10-16 20:27,submissions/sub_v16dev.csv,e9375ba66ae50b5cb31bdcc98d29ce54c51b59f4789182c9a051ee82015c9a7f,"v16 (34 anggota, FB07) dirakit dari array dev via final/run_all.py --stage assemble",blend honest 0.242467 (gas+eui+elec)/5; holdout chain -0.00054 vs v15,0.24943,"kandidat v16, ekspektasi LB ~0.2490 submitted by user 17 Okt"
 2026-10-16 20:27,submissions/BEST_CURRENT.csv,e9375ba66ae50b5cb31bdcc98d29ce54c51b59f4789182c9a051ee82015c9a7f,= sub_v16dev,holdout chain -0.00054 vs v15,,BEST_CURRENT v16
+2026-10-17 23:22,submissions/sub_v16fin.csv,3767ba10a82e28d1cf80bf2b62debb20f612fa8d10d2f0c929488e0e481f59be,,,,
+2026-10-17 23:22,submissions/sub_v16fin.csv,3767ba10a82e28d1cf80bf2b62debb20f612fa8d10d2f0c929488e0e481f59be,"v16 from final run #1 arrays, assemble with single-thread BLAS (D008); = sub_v16dev up to 4e-16 relative",0.24960 (nested; holdout chain -0.00071),,

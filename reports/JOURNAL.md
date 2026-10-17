@@ -307,3 +307,4 @@
 - Penyebab: OpenBLAS gemv multithread menjumlahkan dengan urutan yang bergantung jumlah thread. Uji: P @ w dengan 8 dan 16 thread berbeda di 5 dan 12 baris dibanding 1 thread; 1 thread selalu identik.
 - Perbaikan (D008): tahap assemble dan pekerja koreksi residual di final/src/pipeline.py memakai threadpoolctl.threadpool_limits(1); threadpoolctl==3.7.0 dipin. Uji: assemble run #1 dua kali dengan OMP/OpenBLAS 1 dan 16 thread (scratchpad asm/run.sh), sha256 harus sama.
 - Konsekuensi: submisi final harus file keluaran pipeline yang sudah diperbaiki (skornya identik sampai 1e-16 dengan sub_v16dev).
+- Hasil uji D008 (23:21): assemble dengan 1 thread dan 16 thread memberi sha256 yang sama, 3767ba10...59be. Disimpan sebagai submissions/sub_v16fin.csv (lolos validate_submission). Ini output pipeline final v16 yang reproducible; skornya sama dengan sub_v16dev.
