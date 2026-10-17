@@ -248,3 +248,15 @@
 - Setup (scratchpad lam_inter.py): fitur koreksi holdout yang sama (xt/own_*.npy), ditambah interaksi dengan log M, log A, dan log M kuadrat; λ cross-fitted 5-fold di H, bootstrap 100x.
 - Hasil (delta vs koreksi linear): gas +0,00002 sampai +0,00004, EUI +0,00005 sampai +0,00009, elec -0,00001 sampai +0,00002.
 - Kesimpulan: DITOLAK. Koreksi linear sudah optimal; interaksi hanya menambah varians.
+
+### [2026-10-17 13:57 WIB] FB07b | kNN-target diperluas (hipotesis)
+- Konteks: user minta fokus memaksimalkan model (notebook belakangan). Koreksi residual masih memberi sekitar -0,0006 total di atas blend v16, artinya model belum menangkap semua sinyal ketetanggaan.
+- Hipotesis: menambahkan ke blok FB07 statistik kNN-target di ruang lain dan jendela lain yang terbukti berguna di koreksi residual (ruang era, ruang bangunan + PCA sensus, ruang ukuran 3 fitur, jendela W=10 dan W=1000) memperbaiki model tunggal (target: EUI <= -0,001 dan 4/5 fold).
+- Setup: src/exp_fb07b.py, XGB gpm (x4: lr 0,05, depth 8), 5-fold primer, input v16 (agg + TE + sel + FB07). A = FB07, B = FB07 + FB07b (6 konfigurasi, nilai leui/lepm/lgpm + jarak rata-rata). Jalur kode sama untuk A dan B.
+- Job lain di /root/kaggle dijeda (SIGSTOP, izin user); cache pip/uv dihapus (izin user).
+
+### [2026-10-17 14:36 WIB] Insiden | run #1 terkena OOM
+- dice-run1 dibunuh OOM killer (systemd: Result oom-kill, mem peak 17,2 GB). Penyebab: proses yang dijeda dengan SIGSTOP tetap memegang RAM (jalur run #1 sekitar 11 GB, dua job /root/kaggle sekitar 8 GB, uji CV sekunder 3 GB), ditambah A/B FB07b (2 x 5 GB) dan satu uji kesamaan fitur (sekitar 5 GB).
+- Dampak: output 18 anggota yang sudah selesai aman (resume melewati mereka). Progres x8_gpn (fold 6/10) dan p1_gpm (fold 8/10) hilang, sekitar 1,5 jam GPU.
+- Pelajaran: SIGSTOP tidak membebaskan RAM. Hitung RAM semua proses yang dijeda sebelum meluncurkan job baru; beri MemoryMax pada setiap unit.
+- Uji kesamaan fitur FB07b versi paralel per blok (scratchpad fb07b_eq.py): 5 dari 6 konfigurasi identik; era_w300_k50 berbeda di 0,033% entri (jarak seri di ruang era, maks 0,0046). Deterministik untuk BLOCK tetap.
