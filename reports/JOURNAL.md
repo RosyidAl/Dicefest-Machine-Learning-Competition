@@ -333,7 +333,7 @@
 - Kesimpulan: v18 lebih baik di ketiga metrik; gain setelah koreksi sekitar -0,00006 total (sebelum koreksi -0,00014 di H, -0,0002 di OOF nested). Diadopsi (D009, arahan user "hasil terbaik"). Ekspektasi public LB sekitar 0,2493-0,2494.
 - Perakitan sub_v18dev: scripts/assemble_dev.py exp/v18cfg (blend v18 + λ v18) -> submissions/sub_v18dev.csv.
 
-### [2026-10-18 02:55 WIB] v18 | sub_v18dev dirakit, pipeline final diperbarui
+### [2026-10-18 02:53 WIB] v18 | sub_v18dev dirakit, pipeline final diperbarui
 - sub_v18dev (scripts/assemble_dev.py, exp/v18cfg = blend v18 + λ v18, kode D008): sha256 07f67f8c...135b, lolos validasi. CV blend nested gas 0,245017 / EUI 0,650379 / elec 0,315927, rata-rata 5 target 0,24940 (v16 0,24960). Koreksi rms/sigma lebih kecil dari v16 (gas 0,0210 vs 0,0224, EUI 0,0410 vs 0,0440, elec 0,0129 vs 0,0143): model menangkap lebih banyak sinyal ketetanggaan.
 - Selisih dengan v16 (rms / sigma): gas 0,0065, elec 0,0070, EUI 0,0162; korelasi >= 0,9997. BEST_CURRENT = sub_v18dev.
 - Pipeline final v18:
