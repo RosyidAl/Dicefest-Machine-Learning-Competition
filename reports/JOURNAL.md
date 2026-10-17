@@ -280,3 +280,16 @@
 | sekunder | dengan | 0,36375 | 0,83305 | 0,34736 |
 - Kesimpulan: DITERIMA. Di skema yang meniru test, TE memperbaiki gas -0,0011, EUI -0,0022, elec -0,0008. Di GroupKFold per zona, wilayah validasi tidak pernah terlihat: skor memburuk bahkan tanpa TE (EUI +0,020), dan model ber-TE runtuh (EUI 0,833) karena fitur TE baris latih informatif sedangkan baris validasi kosong.
 - Implikasi: skema CV harus mengikuti mekanisme split (D001). Dengan fold per zona, TE akan salah dibuang. Bahan jawaban juri.
+
+### [2026-10-17 17:33 WIB] v18 | kandidat anggota (arahan user: "pokoknya hasil terbaik")
+- Keputusan: kejar semua gain yang nyata walau kecil (di bawah aturan 0,1%), selama terbukti di blend nested dan dikonfirmasi rantai holdout. D007 ditinjau ulang setelah seleksi v18.
+- Kandidat (full 10-fold dulu, holdout hanya untuk yang terpilih):
+  - FB07b (src/exp_v18_knn2.py, fb07b.DataX: FB07 dari cache v16 + blok tambahan): xk2_gpm, xk2_gpgea, xk2_lgpm, xk2_lepa, lk2_gpm, lk2_lepa, mk2, pk2_gpgea, pk2_lepm;
+  - Poisson (src/exp_v17_pois.py): xp_epa, xp8_gpm, lp_gpm, lp_epm (xp_gpm, xp_eui, xp_epm, xp_gpgea sudah ada).
+- Jalur: dice-v18g (GPU, XGB), dice-v18c (CPU, LGB, mulai setelah cache blok tambahan split penuh lengkap), NN menyusul saat VRAM cukup. Penjaga RAM: rantai berhenti bila MemAvailable < 3 GB; OOMScoreAdjust 500 agar run #1 terlindungi.
+
+### [2026-10-17 18:12 WIB] Insiden | OOM GPU 17:37-17:40, semua jalur diluncurkan ulang
+- 17:33 rantai v18 GPU (xk2_gpm) diluncurkan saat VRAM bebas hanya sekitar 4,9 GB (job /root/kaggle yang dijeda masih memegang 7,4 GB). Pukul 17:37 xk2_gpm gagal (cudaErrorMemoryAllocation) dan pukul 17:40 jalur XGB run #1 ikut OOM, sehingga run #1 berhenti (anggota yang sudah selesai aman, 25 output).
+- 17:40 job /root/kaggle dihentikan atas izin user (VRAM terpakai turun ke 3 GB). mk2 sempat berjalan 3 fold lalu ikut terhenti saat unit dice-v18n di-restart (kesalahan urutan perintah, sekitar 30 menit hilang).
+- 18:11 diluncurkan ulang: dice-run1 (resume), dice-v18g (XGB FB07b + Poisson), dice-v18n (NN FB07b), dice-v18c (LGB; mulai bila cache blok tambahan lengkap dan MemAvailable > 10 GB).
+- Pelajaran: cek VRAM bebas (bukan hanya RAM) sebelum meluncurkan job GPU; jangan stop unit yang sedang menjalankan job berharga tanpa cek isinya.
