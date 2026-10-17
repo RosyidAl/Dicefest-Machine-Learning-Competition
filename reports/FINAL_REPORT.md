@@ -24,7 +24,16 @@ Rincian lengkap di `reports/eda/EDA_REPORT.md` (Fase 1). Yang menentukan pemodel
 | Adversarial validation | AUC 0,4997 tanpa ID, 0,4990 dengan ID |
 
 - CV_PRIMARY: KFold(shuffle, seed 42), 5 fold untuk screening dan 10 fold untuk anggota final (`data/folds/folds_primary_k*_s42.parquet`).
-- CV_SECONDARY: GroupKFold per `zone_region_id` (`data/folds/folds_secondary_k5_s42.parquet`). [[Hasil E0271-E0278.]]
+- CV_SECONDARY: GroupKFold per `zone_region_id` (`data/folds/folds_secondary_k5_s42.parquet`). Hasil E0271-E0278 (LightGBM screening):
+
+| Skema | TE | t1 gas | t3 EUI | t2 listrik |
+|---|---|---|---|---|
+| primer | tanpa | 0,25727 | 0,67210 | 0,32623 |
+| primer | dengan | 0,25617 | 0,66990 | 0,32546 |
+| sekunder | tanpa | 0,27081 | 0,69231 | 0,33018 |
+| sekunder | dengan | 0,36375 | 0,83305 | 0,34736 |
+
+  Di wilayah yang tidak terlihat, TE tidak tersedia untuk baris validasi dan model ber-TE runtuh. Karena test acak per baris (92% baris test punya subzona terlihat), pemilihan fitur memakai CV_PRIMARY.
 - Validasi CV terhadap LB (Gambar 3, `reports/cv_lb_history.csv`): pada 10 submisi, public LB = CV nested + estimasi holdout post-processing + 0,00052 (sd 0,00004).
 
 ## 4. Formulasi target

@@ -270,3 +270,13 @@
 - Per fold EUI: +0,00098, -0,00014, -0,00146, -0,00156, -0,00005.
 - Kesimpulan: DITOLAK untuk dibangun jadi anggota. Gain sekitar seperlima gain FB07 (EUI -0,0022) dan EUI tidak signifikan. Perkiraan gain blend sekitar -0,00003 setelah koreksi residual, yang sudah memakai ruang tetangga yang sama secara linear. Biaya 9 anggota baru lebih dari 10 jam GPU.
 - Catatan teknis: FB07 versi paralel per blok (fb07b.DataP) memangkas waktu satu fold A/B dari sekitar 35 menit menjadi sekitar 2 menit.
+
+### [2026-10-17 15:18 WIB] E0271-E0278 | hasil V02 CV_SECONDARY
+| Skema | TE | t1 gas | t3 EUI | t2 elec |
+|---|---|---|---|---|
+| primer (KFold per baris) | tanpa | 0,25727 | 0,67210 | 0,32623 |
+| primer | dengan | 0,25617 | 0,66990 | 0,32546 |
+| sekunder (GroupKFold zona) | tanpa | 0,27081 | 0,69231 | 0,33018 |
+| sekunder | dengan | 0,36375 | 0,83305 | 0,34736 |
+- Kesimpulan: DITERIMA. Di skema yang meniru test, TE memperbaiki gas -0,0011, EUI -0,0022, elec -0,0008. Di GroupKFold per zona, wilayah validasi tidak pernah terlihat: skor memburuk bahkan tanpa TE (EUI +0,020), dan model ber-TE runtuh (EUI 0,833) karena fitur TE baris latih informatif sedangkan baris validasi kosong.
+- Implikasi: skema CV harus mengikuti mekanisme split (D001). Dengan fold per zona, TE akan salah dibuang. Bahan jawaban juri.

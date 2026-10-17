@@ -23,6 +23,7 @@ Figur ada di `reports/figures/` (300 dpi). Angka bertanda [[...]] diisi setelah 
   - Adopsi pemanas listrik konstan dalam subzona (unit sensus). Untuk 92% baris test nilainya diketahui dari train.
 - Forensik split: porsi test di subzona baru 8,14% (harapan split acak 8,17%), adversarial validation AUC 0,50. Test adalah sampel acak per baris.
 - Implikasi: KFold acak per baris meniru test, dan statistik wilayah (target encoding) sah dipakai asalkan dihitung out-of-fold.
+- Bukti tambahan (E0271-E0278): dengan fold per zona, target encoding terlihat merusak (EUI 0,833 vs 0,692); dengan fold per baris, encoding yang sama memperbaiki EUI 0,0022. Skema CV yang salah akan membuang fitur terbaik.
 - Catatan pembicara: tekankan bahwa satu target selesai tanpa model, adopsi 92% tinggal disalin, dan gas serta EUI berbagi satu model. Semua itu ditemukan sebelum model apa pun dilatih.
 
 ### Slide 4. Berapa yang sebenarnya bisa dijelaskan? (1 menit)
@@ -63,7 +64,7 @@ Figur ada di `reports/figures/` (300 dpi). Angka bertanda [[...]] diisi setelah 
 ## Pertanyaan juri yang mungkin muncul
 
 1. **Mengapa KFold acak, bukan GroupKFold per zona seperti saran panitia?**
-   Kami menguji cara test dibuat. Porsi test di subzona baru 8,14% sementara harapan split acak 8,17%, proporsi test per zona tersebar binomial, dan adversarial validation memberi AUC 0,50. Test adalah sampel acak per baris, jadi KFold acak yang meniru kondisi itu. GroupKFold per zona tetap kami hitung sebagai uji ketahanan, dan selisih CV dengan LB yang stabil (sd 0,00004) mengonfirmasi pilihan ini.
+   Kami menguji cara test dibuat. Porsi test di subzona baru 8,14% sementara harapan split acak 8,17%, proporsi test per zona tersebar binomial, dan adversarial validation memberi AUC 0,50. Test adalah sampel acak per baris, jadi KFold acak yang meniru kondisi itu. Kami juga mengujinya langsung: dengan GroupKFold per zona, LightGBM ber-target-encoding terlihat jauh lebih buruk (EUI 0,833 vs 0,692 tanpa encoding), sehingga fitur terbaik kami akan salah dibuang. Di skema yang meniru test, encoding yang sama justru memperbaiki EUI 0,0022. Selisih CV dengan LB yang stabil (sd 0,00004) mengonfirmasi pilihan ini.
 
 2. **Bagaimana mencegah kebocoran pada target encoding dan fitur kNN-target?**
    Semua statistik bertarget dihitung out-of-fold, nested di dalam fold training. Kami mengujinya dengan mengacak label baris validasi lalu memastikan fitur validasi tidak berubah. Bobot koreksi residual di-fit di holdout internal, tidak di OOF penuh.

@@ -13,7 +13,7 @@ Catatan delta: "H" = holdout P70/H30 (seed 7). Delta skor total = delta per-targ
 | ID | Pendekatan | Status | Bukti / hasil |
 |---|---|---|---|
 | V01 | CV_PRIMARY meniru split test (KFold acak per baris) | DONE | D001/D002; CV vs LB konsisten (offset +0,0000 sampai +0,0005 di 9 submisi) |
-| V02 | CV_SECONDARY GroupKFold per zone_region_id dilaporkan | QUEUED | |
+| V02 | CV_SECONDARY GroupKFold per zone_region_id dilaporkan | DONE | E0271-E0278: TE membantu di primer (EUI -0,0022), runtuh di sekunder (EUI 0,833 vs 0,692) |
 | V03 | Adversarial validation train vs test | DONE | LGB 5-fold AUC 0,4997 (tanpa ID) dan 0,4990 (dengan ID); EDA_REPORT 5.B |
 | V04 | Uji pembeda skema CV via LB (dengan vs tanpa info grup) | QUEUED | |
 | V05 | Kriteria penerimaan 4/5 fold atau 2 SE | DONE | dipakai di E0191 (5/5 fold), E0264/E0265 (5/5 fold) |

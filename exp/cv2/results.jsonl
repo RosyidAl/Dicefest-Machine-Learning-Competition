@@ -1,0 +1,8 @@
+{"name": "lgb_gpm_primary_note", "scheme": "primary", "te": false, "kind": "gpm", "minutes": 5.7, "t1": 0.2572729456806092, "t3": 0.6720985399324281}
+{"name": "lgb_epm_primary_note", "scheme": "primary", "te": false, "kind": "epm", "minutes": 5.1, "t2": 0.3262256196151608}
+{"name": "lgb_gpm_primary_te", "scheme": "primary", "te": true, "kind": "gpm", "minutes": 16.4, "t1": 0.25617055067299915, "t3": 0.6699013376971004}
+{"name": "lgb_epm_primary_te", "scheme": "primary", "te": true, "kind": "epm", "minutes": 54.3, "t2": 0.32545917304677086}
+{"name": "lgb_gpm_secondary_note", "scheme": "secondary", "te": false, "kind": "gpm", "minutes": 3.6, "t1": 0.2708063678657521, "t3": 0.6923146162595597}
+{"name": "lgb_epm_secondary_note", "scheme": "secondary", "te": false, "kind": "epm", "minutes": 2.9, "t2": 0.330181558948791}
+{"name": "lgb_gpm_secondary_te", "scheme": "secondary", "te": true, "kind": "gpm", "minutes": 6.2, "t1": 0.36374811605371604, "t3": 0.8330538274343691}
+{"name": "lgb_epm_secondary_te", "scheme": "secondary", "te": true, "kind": "epm", "minutes": 4.2, "t2": 0.3473564584844149}

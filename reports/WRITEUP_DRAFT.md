@@ -53,7 +53,20 @@ Sebelum memilih skema cross-validation, kami memeriksa bagaimana data test dibua
 - Porsi baris test di subzona yang tidak muncul di train adalah 8,14%, hampir sama dengan harapan split acak per baris (8,17%).
 - Adversarial validation (LightGBM) memberi AUC 0,50, artinya train dan test tidak bisa dibedakan.
 
-Kesimpulannya, test adalah sampel acak 30% per baris. Karena itu CV utama memakai KFold acak per baris (5 dan 10 fold, seed 42), dan statistik tingkat wilayah (target encoding subzona, zona, jendela spasial) sah dipakai selama dihitung out-of-fold. [[CV sekunder per zona: hasil E0271-E0278, seberapa besar skor bergantung pada wilayah yang terlihat di train.]]
+Kesimpulannya, test adalah sampel acak 30% per baris. Karena itu CV utama memakai KFold acak per baris (5 dan 10 fold, seed 42), dan statistik tingkat wilayah (target encoding subzona, zona, jendela spasial) sah dipakai selama dihitung out-of-fold.
+
+Pilihan skema CV ternyata menentukan kesimpulan pemodelan. Kami melatih LightGBM yang sama dengan dan tanpa target encoding spasial, lalu menilainya di dua skema (Tabel 1).
+
+**Tabel 1.** NRMSE LightGBM screening (5-fold) pada dua skema CV.
+
+| Skema CV | Target encoding | Gas | EUI | Listrik |
+|---|---|---|---|---|
+| KFold per baris (meniru test) | tanpa | 0,2573 | 0,6721 | 0,3262 |
+| KFold per baris (meniru test) | dengan | 0,2562 | 0,6699 | 0,3255 |
+| GroupKFold per zona | tanpa | 0,2708 | 0,6923 | 0,3302 |
+| GroupKFold per zona | dengan | 0,3637 | 0,8331 | 0,3474 |
+
+Dengan fold per zona, target encoding terlihat merusak dan akan dibuang. Penyebabnya, wilayah validasi tidak pernah terlihat saat training, sehingga fitur encoding baris validasi kosong sementara baris latih terisi. Pada test yang diambil acak per baris, 92% baris punya subzona yang terlihat di train, dan target encoding justru salah satu fitur paling berharga. GroupKFold per zona tetap berguna sebagai ukuran ketahanan untuk wilayah baru, tetapi tidak cocok untuk memilih fitur di kompetisi ini.
 
 Bukti bahwa CV ini bisa dipercaya datang dari leaderboard (Gambar 3). Pada sepuluh submisi, public LB sama dengan CV nested ditambah estimasi holdout untuk post-processing, plus selisih tetap 0,00052 (simpangan baku 0,00004). Urutan kandidat di CV selalu sama dengan urutan di LB.
 
@@ -78,9 +91,9 @@ Bobot sampel diatur agar loss setara dengan MSE pada skala asli (misalnya bobot 
 Semua fitur bertarget dihitung dengan cross-fitting dan lulus uji kebocoran: label baris validasi diacak, lalu fitur validasi diperiksa tetap identik.
 
 ## 5. Pemodelan
-Tabel 1 merangkum 34 anggota blend final. Satu MLP multi-task mempelajari gas dan listrik sekaligus, sehingga jumlah jaringan yang dilatih 33.
+Tabel 2 merangkum 34 anggota blend final. Satu MLP multi-task mempelajari gas dan listrik sekaligus, sehingga jumlah jaringan yang dilatih 33.
 
-**Tabel 1.** Anggota blend final per keluarga (NRMSE OOF; bobot = porsi bobot NNLS).
+**Tabel 2.** Anggota blend final per keluarga (NRMSE OOF; bobot = porsi bobot NNLS).
 
 | Keluarga | Anggota gas/EUI | Anggota listrik | Terbaik EUI (gas) | Terbaik listrik | Bobot gas / EUI / listrik |
 |---|---|---|---|---|---|
@@ -110,7 +123,7 @@ Bobot kombinasinya di-fit pada holdout internal 70/30: baris holdout berperan se
 **Adopsi dan duplikat.** Untuk subzona yang ada di train, nilai adopsi disalin. Untuk 8% baris di subzona baru, cacah kategori pemanas yang hilang dimodelkan sebagai binomial dengan LightGBM (objektif cross-entropy, bobot cacah, fitur N dan proporsi tetangga). Terakhir, 77 baris test identik dengan baris train pada subzona, jumlah meter, jumlah sertifikat, luas lantai, dan satu fitur sensus yang hampir unik. Semua 92 grup duplikat di train punya target identik, sehingga target baris itu disalin.
 
 ## 7. Hasil dan ablation
-**Tabel 2.** Perkembangan dari baseline ke model final (NRMSE, CV primer 5-fold untuk baseline, nested 10-fold untuk final).
+**Tabel 3.** Perkembangan dari baseline ke model final (NRMSE, CV primer 5-fold untuk baseline, nested 10-fold untuk final).
 
 | Model | t1 gas | t2 listrik | t3 EUI | t4 bersih | t5 adopsi | Rata-rata |
 |---|---|---|---|---|---|---|
