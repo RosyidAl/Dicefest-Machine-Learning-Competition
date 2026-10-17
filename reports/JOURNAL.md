@@ -218,3 +218,22 @@
 - Noise floor pada blend v16: gas a = 0,0093, b = 0,367 (73% varians residual adalah noise rata-rata rumah tangga); elec a = 0,0116, b = 0,577 (77%).
 - CV vs LB (10 submisi): public LB = CV nested + estimasi holdout post-processing + 0,00052 (sd 0,00004).
 - src/interpret.py (LightGBM TreeSHAP, 30 ribu baris fold 0) berjalan di unit dice-shap.
+
+### [2026-10-17 13:40 WIB] Analisis | kepadatan tetangga koreksi residual (λ di test)
+- Hipotesis: λ di-fit dengan kumpulan tetangga P (49% dari total baris), sedangkan di test kumpulannya seluruh train (70%), 1,43x lebih padat. λ mungkin terlalu kecil untuk test.
+- Setup (scratchpad density.py, holdout P70/H30, anggota holdout sama dengan xtarget): fitur koreksi dihitung dengan subsampel 70% dari P sebagai kumpulan tetangga, λ di-fit di H (cross-fitted 5-fold), lalu diterapkan ke fitur dari kumpulan P penuh dengan skala 1,0 sampai 1,6.
+- Hasil (NRMSE H):
+
+  | Metrik | tanpa koreksi | kumpulan 70% | kumpulan 100% | λ70 di fitur 100% (x1,0) | x1,1-1,2 |
+  |---|---|---|---|---|---|
+  | gas | 0,24638 | 0,24567 | 0,24538 | 0,24540 | 0,24538 |
+  | EUI | 0,65109 | 0,64995 | 0,64959 | 0,64961 | 0,64959 |
+  | elec | 0,31503 | 0,31489 | 0,31475 | 0,31479 | 0,31478 |
+
+- Kesimpulan: gain koreksi naik dengan kepadatan (gas -0,00029, EUI -0,00036, elec -0,00014 dari 70% ke 100%), dan λ dari kumpulan yang lebih jarang hampir optimal di kumpulan yang lebih padat (rugi <= 0,00004 per metrik, skala 1,1-1,2 memulihkan <= 0,00001 total). λ tidak diubah. Estimasi holdout untuk gain koreksi di test bersifat konservatif.
+
+### [2026-10-17 13:40 WIB] Fase 12 | SHAP selesai
+- src/interpret.py: reports/figures/shap_t3|t2|t5.png + shap_dep_*.png, reports/shap_family.csv, reports/shap_top_features.csv.
+- Porsi |SHAP| per keluarga: EUI sosio 25%, rasio fisik 25%, TE spasial 19%, era 11%, dimensi 10%; listrik per meter sosio 35%, rasio fisik 29%, TE 13%; adopsi sisa pangsa pemanas 45%, hvac_dist 27%, sosio 21%.
+- Fitur teratas: area_per_meter (EUI turun tajam, listrik per meter naik hampir linear), s002_ratio, area_per_epc, meters_per_epc; adopsi: hvac_rest, hvac_dist_02 (rata-rata 82%, dugaan pangsa gas sentral; < 40% menambah adopsi 5-15 poin).
+- Writeup bagian 8 dan slide 8 diisi (tiga dilema kebijakan).

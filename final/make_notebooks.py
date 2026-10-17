@@ -10,12 +10,14 @@ import os
 import sys
 
 import nbformat as nbf
+import yaml
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 TEAM = sys.argv[1] if len(sys.argv) > 1 else os.environ.get("TEAM_NAME", "ISI_NAMA_TIM")
 SRC = ["common.py", "te.py", "train_lib.py", "nn.py", "blend.py", "adopt_v2.py", "dup_fix.py", "postprocess.py",
        "pipeline.py", "inference.py", "metric.py", "seed.py"]
 CONF = ["members.yaml", "resid_knn.json"]
+N_MEMBERS = len(yaml.safe_load(open(os.path.join(HERE, "configs", "members.yaml")))["members"])
 
 SETUP = '''import os, sys, platform, hashlib, json, subprocess, time
 # ---- paths (edit DATA_DIR if the competition CSVs live elsewhere) ----
@@ -65,10 +67,10 @@ def full_notebook():
     nb.cells = [
         md(f"# DICE FEST 2026: The Urban Energy Transition Trilemma ({TEAM})\n\n"
            "Notebook ini mereproduksi submisi final secara deterministik dari `train.csv` dan `test.csv` saja.\n\n"
-           "Alur: 50 model cross-validated (XGBoost CUDA, LightGBM, MLP PyTorch) → blend NNLS per kolom → "
+           f"Alur: {N_MEMBERS} anggota model cross-validated (XGBoost CUDA, LightGBM, MLP PyTorch) → blend NNLS per kolom → "
            "model adopsi pemanas listrik → koreksi residual grup + kNN (bobot beku) → salin target 77 baris duplikat "
            "→ submisi + sha256.\n\n"
-           "Hardware referensi: NVIDIA RTX A4000 16 GB, 16 vCPU, RAM 24 GB. Waktu jalan sekitar 20 jam "
+           "Hardware referensi: NVIDIA RTX A4000 16 GB, 16 vCPU, RAM 32 GB. Waktu jalan sekitar 20 jam "
            "(jalur GPU dan CPU paralel). Untuk verifikasi cepat dari model tersimpan, pakai "
            "`inference_from_artifacts.ipynb`."),
         code(SETUP),

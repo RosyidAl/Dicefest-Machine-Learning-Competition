@@ -7,9 +7,9 @@ single,fitur kNN-target FB07 (XGB),gas,0.0,-0.0011,E0190 -> E0191
 single,objektif Poisson pada laju per meter (XGB),EUI,0.0,-0.0039,E0264-E0265 vs E0190
 single,objektif Poisson pada laju per meter (XGB),gas,0.0,-0.0025,E0264-E0265 vs E0190
 single,objektif Poisson pada laju per meter (LGB),elec,0.0,-0.0025,E0260-E0263
-blend,blend NNLS vs anggota tunggal terbaik,EUI,0.65977,0.65101,v16 summary.json
-blend,blend NNLS vs anggota tunggal terbaik,gas,0.24967,0.24524,v16 summary.json
-blend,blend NNLS vs anggota tunggal terbaik,elec,0.31835,0.31608,v16 summary.json
+blend,blend NNLS vs anggota tunggal terbaik,EUI,0.65934,0.65101,v16 summary.json
+blend,blend NNLS vs anggota tunggal terbaik,gas,0.24885,0.24524,v16 summary.json
+blend,blend NNLS vs anggota tunggal terbaik,elec,0.31873,0.31608,v16 summary.json
 post,koreksi residual grup (holdout),EUI,0.65115,0.65028,exp/resid_knn_fit_v16.log
 post,koreksi grup + kNN kemiripan (holdout),EUI,0.65115,0.64961,exp/resid_knn_fit_v16.log
 post,koreksi residual grup (holdout),gas,0.24643,0.24584,exp/resid_knn_fit_v16.log

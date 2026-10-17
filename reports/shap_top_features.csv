@@ -1,0 +1,46 @@
+target,feature,family,mean_abs_shap
+t3 EUI (log),area_per_meter,rasio fisika,0.08254198738777913
+t3 EUI (log),s002_ratio,rasio fisika,0.025573837958185918
+t3 EUI (log),area_per_epc,rasio fisika,0.025454049824558594
+t3 EUI (log),bld_era_15,bld_era,0.017370947851028537
+t3 EUI (log),socio_demog_005,socio_demog,0.01696257470311235
+t3 EUI (log),w10_eui,target encoding spasial,0.01605918892916035
+t3 EUI (log),c0x_eui,target encoding spasial,0.013022402628483858
+t3 EUI (log),socio_demog_038,socio_demog,0.013015606538906873
+t3 EUI (log),bld_era_09,bld_era,0.010574726116479168
+t3 EUI (log),socio_demog_082,socio_demog,0.010468737196652018
+t3 EUI (log),bld_dim_32,bld_dim,0.010368058361635223
+t3 EUI (log),bld_dim_37,bld_dim,0.010351354623377166
+t3 EUI (log),zn_leui,target encoding spasial,0.0101590524570657
+t3 EUI (log),a04_ratio,rasio fisika,0.008512546592721335
+t3 EUI (log),gea_ratio,rasio fisika,0.008450361905072942
+t2 elec per meter (log),area_per_meter,rasio fisika,0.08441933482831573
+t2 elec per meter (log),meters_per_epc,rasio fisika,0.029101309330713747
+t2 elec per meter (log),socio_demog_005,socio_demog,0.019882530950024176
+t2 elec per meter (log),socio_demog_038,socio_demog,0.018342084386179076
+t2 elec per meter (log),socio_demog_027,socio_demog,0.012788244327722435
+t2 elec per meter (log),zn_epm,target encoding spasial,0.01184023747222857
+t2 elec per meter (log),hvac_rest,rasio fisika,0.011798266570561112
+t2 elec per meter (log),socio_demog_061,socio_demog,0.011201955018485317
+t2 elec per meter (log),bld_dim_32,bld_dim,0.010836785903219298
+t2 elec per meter (log),s002_ratio,rasio fisika,0.010180131124087685
+t2 elec per meter (log),socio_demog_090,socio_demog,0.009182633999318096
+t2 elec per meter (log),gea_ratio,rasio fisika,0.008212603131194667
+t2 elec per meter (log),socio_demog_065,socio_demog,0.007654753250409358
+t2 elec per meter (log),socio_demog_064,socio_demog,0.00740234262345552
+t2 elec per meter (log),hvac_dist_02,hvac_dist,0.006499399577367545
+t5 adopsi,hvac_rest,rasio fisika,3.2779376434759424
+t5 adopsi,hvac_dist_02,hvac_dist,1.1311602426865963
+t5 adopsi,hvac_dist_09,hvac_dist,0.3081975040969649
+t5 adopsi,socio_demog_035,socio_demog,0.20717740098045118
+t5 adopsi,hvac_dist_01,hvac_dist,0.11484026800717612
+t5 adopsi,hvac_dist_08,hvac_dist,0.1077384818947772
+t5 adopsi,hvac_dist_04,hvac_dist,0.09280337730337294
+t5 adopsi,hvac_dist_03,hvac_dist,0.08839218672199728
+t5 adopsi,socio_demog_057,socio_demog,0.08136947813588731
+t5 adopsi,hvac_dist_10,hvac_dist,0.06706288767478281
+t5 adopsi,socio_demog_055,socio_demog,0.057495183366664794
+t5 adopsi,socio_demog_082,socio_demog,0.048485016932776646
+t5 adopsi,socio_demog_024,socio_demog,0.04773265706493847
+t5 adopsi,socio_demog_051,socio_demog,0.045881424242358304
+t5 adopsi,socio_demog_036,socio_demog,0.04384006880437052

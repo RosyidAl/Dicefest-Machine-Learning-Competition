@@ -39,7 +39,7 @@ Figur ada di `reports/figures/` (300 dpi). Angka bertanda [[...]] diisi setelah 
 
 ### Slide 6. Ensemble dan koreksi residual (1,5 menit)
 - [[N_MEMBERS]] anggota: XGBoost, LightGBM, MLP, MLP dengan embedding periodik (PLR), TabM-mini, MLP multi-task.
-- Blend NNLS per kolom, dinilai secara nested. Blend memperbaiki anggota terbaik: EUI 0,0088, gas 0,0044, listrik 0,0023.
+- Blend NNLS per kolom, dinilai secara nested. Blend memperbaiki anggota tunggal terbaik: EUI 0,0083, gas 0,0036, listrik 0,0027.
 - Koreksi residual: residual blend masih berkorelasi antar kawasan yang mirip dan berdekatan. Prediksi digeser oleh rata-rata residual (di-shrink) dari zona, sel iklim, jendela subzona, dan k tetangga paling mirip. Bobotnya di-fit di holdout internal 70/30, bukan di OOF penuh yang bias.
 - Figur: `fig4_blend_weights.png`, `fig5_gains.png` (panel bawah).
 
@@ -50,10 +50,11 @@ Figur ada di `reports/figures/` (300 dpi). Angka bertanda [[...]] diisi setelah 
 - Figur: `fig3_cv_lb.png`.
 
 ### Slide 8. Insight kebijakan (1,5 menit)
-- [[Isi dari SHAP per keluarga fitur, figur shap_t3.png, shap_t2.png, shap_t5.png]]
-- Dilema 1, skala vs intensitas termal: gas total digerakkan ukuran kawasan (luas lantai, jumlah meter), sedangkan EUI digerakkan [[keluarga utama EUI]].
-- Dilema 2, beban jaringan listrik: [[pendorong listrik per meter dan kaitannya dengan adopsi pemanas listrik]].
-- Dilema 3, kesenjangan adopsi: [[pendorong adopsi, tenure dan sosio-demografi]].
+- Figur: `shap_t3.png`, `shap_dep_t3.png`, `shap_dep_t5.png` (TreeSHAP LightGBM, 30 ribu baris validasi).
+- Dilema 1, skala vs intensitas termal: gas total mengikuti ukuran kawasan, tetapi EUI turun tajam dengan luas hunian per meter. Kawasan hunian kecil punya intensitas gas per m² lebih dari dua kali kawasan hunian besar. Prioritas "emisi absolut" dan "efisiensi per m²" memilih kawasan yang berbeda.
+- Dilema 2, beban jaringan: listrik per meter naik hampir linear dengan luas hunian dan dengan pangsa pemanas listrik. Kawasan hunian besar dengan pemanas listrik tinggi paling rawan kemacetan gardu saat elektrifikasi dipercepat.
+- Dilema 3, kesenjangan adopsi: adopsi pemanas listrik paling ditentukan infrastruktur pemanas yang sudah ada (pangsa pemanas gas sentral di bawah 40% menambah adopsi 5 sampai 15 poin). Sosio-demografi baru menyusul (21% porsi |SHAP|).
+- Catatan pembicara: sebut bahwa nama fitur dianonimkan, jadi makna kolom adalah dugaan dari sebaran nilai. Keluarga sosio-demografi menyumbang seperempat sampai sepertiga porsi |SHAP| untuk EUI dan listrik: konsumsi energi bukan hanya soal fisik bangunan.
 
 ### Slide 9. Kesimpulan dan pengembangan (30 detik)
 - Tiga pelajaran: (1) cari struktur fisik dulu, (2) bangun validasi yang meniru test lalu buktikan dengan LB, (3) nilai ensemble dan post-processing secara jujur.
@@ -92,7 +93,7 @@ Figur ada di `reports/figures/` (300 dpi). Angka bertanda [[...]] diisi setelah 
     Saat fitting bobot, baris holdout berperan sebagai baris test: tetangganya hanya diambil dari bagian 70%, dengan residual OOF yang tidak pernah melihat label holdout. Saat inferensi, tetangga diambil dari residual OOF train. Bobot tidak pernah di-fit di OOF penuh karena di sana residual tetangga sudah tercemar lewat target encoding.
 
 11. **Insight kebijakan apa yang didapat?**
-    [[Diisi dari SHAP: tiga dilema.]]
+    Tiga hal. Intensitas gas per m² paling tinggi di kawasan hunian kecil, jadi target efisiensi dan target emisi absolut perlu daftar prioritas berbeda. Beban listrik per meter paling besar di kawasan hunian besar dengan pemanas listrik, yang perlu diperhatikan saat elektrifikasi pemanas dipercepat. Adopsi pemanas listrik saat ini lebih ditentukan oleh infrastruktur gas yang sudah ada daripada faktor sosio-demografi, sehingga kawasan yang sangat bergantung pada gas butuh insentif khusus.
 
 12. **Berapa lama pipeline berjalan dan butuh hardware apa?**
     [[jam]] di satu RTX A4000 16 GB dan 16 core CPU. Notebook kedua membuat ulang submisi yang sama dari model tersimpan dalam waktu jauh lebih singkat.
