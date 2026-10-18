@@ -364,3 +364,9 @@
   - NN: nk2_gpm (n4f_gpm, 60/37 epoch), nk2_lgpm (n6_lgpm, 40/39), nk2b_lepm (n6b_lepm, 24/23), pk2_gpm (p1_gpm, epoch PLR-kNN 12/11), tk2_lepm (t1_lepm, TabM).
 - Jalur dice-v20c / dice-v20g / dice-v20n (status logs/v20_guard.log), masing-masing menunggu jalur v19 / run final yang setara selesai dan MemAvailable > 12 GB.
 - Rencana: seleksi gabungan v19 + v20, fit ulang λ, sub_v20dev besok pagi; pipeline final + notebook setelahnya (notebook paling lambat mulai 20 Okt siang).
+
+### [2026-10-18 09:10 WIB] v19 berjalan, v20 dibatalkan (permintaan user)
+- User: setelah v19 selesai, server dipakai untuk proyek kaggle-nya. Jalur v20 (dice-v20c/g/n) dibatalkan; xk2_gpn full dihentikan di tengah jalan.
+- Skor v19 sejauh ini (full 10-fold): lp2_gpm EUI 0,65660 / gas 0,24881 (model tunggal terbaik); xp2_gpm 0,65684 / 0,24889 (xp_gpm 0,65741 / 0,24899); xp2_eui 0,65882 / 0,24860; xp2_gpgea 0,65856 / 0,24891 (xp_gpgea 0,65985 / 0,24911); xp2_epm elec 0,31973; xp2_epa elec 0,32001.
+- Run final v18 berakhir 08:31 (jalur XGB dan NN rc=0, jalur CPU dihentikan manual): 48 output; lk2_gpm, lp_gpm, lp_epm menyusul di run final berikutnya.
+- Sisa jadwal DICE FEST setelah v19: run final anggota baru (sekitar 8 jam) + notebook headless (sekitar 30 jam). Server perlu kembali paling lambat Selasa 20 Okt malam.
