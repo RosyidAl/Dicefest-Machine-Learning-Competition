@@ -19,7 +19,7 @@ Figur Fase 12: reports/figures/fig1-fig5 (src/make_figures.py); outline presenta
 5. Paket final + checklist NEEDS_USER paling lambat 23 Okt 12:00
 Risiko / blocker / NEEDS_USER: TEAM_NAME = BISMILLAH (konfirmasi user); format writeup di guidebook Drive tidak terbaca
 
-## HANDOFF (18 Okt 18:35, sebelum migrasi akun Claude)
+## HANDOFF (18 Okt 18:35, sebelum migrasi akun Claude; konteks lengkap di HANDOVER.md)
 - Tidak ada job DICE FEST yang berjalan. Server dipakai user untuk proyek /root/kaggle; jangan jalankan apa pun sebelum user mengizinkan.
 - Model final: v19 (D010). sub_v19dev public LB 0,24934 (v18 0,24936, v16 0,24943). CV nested 0,24937. Konfigurasi final sudah v19: final/configs/members.yaml (40 anggota) + resid_knn.json (λ v19). Cadangan: members_v18.yaml / resid_knn_v18.json, members_v16.yaml / resid_knn_v16.json.
 - Sisa pekerjaan yang butuh server (sekitar 21 jam; mulai paling lambat Selasa 20 Okt malam):
