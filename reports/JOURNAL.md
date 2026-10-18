@@ -385,3 +385,7 @@
 - Konfigurasi final diperbarui ke v19 (final/configs/members.yaml: 40 anggota; resid_knn.json = λ v19); salinan v18 (members_v18.yaml, resid_knn_v18.json) dan v16 disimpan.
 - final/src/fb07b.py: THREADS 8 -> 3 untuk notebook (nilai tidak bergantung jumlah thread, hanya RAM), mencegah lonjakan RAM saat tiga jalur menghitung FB07b bersamaan.
 - Semua job DICE FEST berhenti 11:45; server dipakai user untuk proyek kaggle. Sisa: run final anggota baru (lk2_gpm, lp_gpm, lp_epm dari v18 + 7 anggota v19) sekitar 6-8 jam, lalu notebook headless sekitar 30 jam. Server perlu kembali paling lambat Selasa 20 Okt malam.
+
+### [2026-10-18 18:35 WIB] LB sub_v19dev 0,24934; jeda untuk migrasi akun
+- Public LB sub_v19dev 0,24934 (prediksi rantai holdout sekitar 0,24934). Riwayat: v16 0,24943, v18 0,24936, v19 0,24934.
+- User sedang memakai server untuk proyek /root/kaggle dan akan memigrasi akun Claude: tidak ada proses DICE FEST yang dijalankan. Langkah lanjutan lengkap di reports/STATUS.md bagian HANDOFF.
