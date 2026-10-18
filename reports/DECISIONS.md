@@ -103,3 +103,8 @@
 - Bukti: seleksi nested v18 (FB07b + Poisson, 38 anggota) -0,000202; rantai holdout membaik di ketiga metrik (gas -0,00006, EUI -0,00024, elec -0,00001; total -0,00006).
 - Keputusan: v18 = Final A setelah dirakit dan dicek di LB. Pipeline final perlu diperbarui: anggota FB07b (fb07b.DataX) dan Poisson masuk members.yaml, resid_knn.json = exp/resid_knn_v18.json, lalu uji drift (array final identik dengan array pengembangan).
 - Risiko: waktu jalan pipeline bertambah (sekitar 14 anggota baru); kode baru (fb07b.py) harus masuk final/src dan notebook. Final B = v16 (sub_v16fin, pipeline sudah terbukti) sebagai lindung nilai.
+
+### D010 [2026-10-18 11:45 WIB] v19 menggantikan v18 sebagai kandidat Final A
+- Bukti: seleksi nested -0,000034 di atas v18; rantai holdout membaik di ketiga metrik (total sekitar -0,00002).
+- Keputusan: v19 = Final A (arahan user: maksimal); Final B = v16 (sub_v16fin, pipeline final sudah terbukti end-to-end) atau v18 sebagai lindung nilai, diputuskan di D-FINAL.
+- Risiko: 7 anggota tambahan memperpanjang notebook sekitar 3-4 jam; semua anggota baru harus lolos uji drift (array final identik dengan dev).

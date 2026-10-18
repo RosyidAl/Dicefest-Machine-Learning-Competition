@@ -24,7 +24,7 @@ from train_lib import Data  # noqa: E402
 
 EXTRA = (("era", 30, 20, 0.0), ("era", 300, 50, 0.0), ("fc", 300, 50, 0.0), ("full", 10, 10, 0.0),
          ("full", 1000, 100, 0.0), ("small", 30, 20, 0.0))
-THREADS = 8
+THREADS = 3  # 8 in development; the values do not depend on it (blocks are independent), only the memory does
 BLOCK = 20000  # apply rows per parallel task
 
 

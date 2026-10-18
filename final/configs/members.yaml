@@ -20,58 +20,6 @@ members:
     - 10
     cells: true
     knn: true
-  xk_lepa:
-    backend: xgb
-    kind: lelec_per:bld_dim_06
-    params:
-      learning_rate: 0.05
-      max_depth: 8
-      subsample: 0.8
-      colsample_bytree: 0.6
-      min_child_weight: 50
-      reg_lambda: 1.0
-      eval_metric: rmse
-    wmul: M
-    n_folds: 10
-    agg: true
-    source: src/exp_v16_knn.py
-    use_te: true
-    windows:
-    - 2
-    - 10
-    cells: true
-    knn: true
-  pk_lgpm:
-    backend: nn
-    kind: lgas_per:bld_dim_12
-    epochs: 12
-    fixed_ep: 11
-    wmul: A
-    params:
-      lr: 0.001
-      wd: 0.0001
-      drop: 0.3
-      hidden:
-      - 1024
-      - 512
-      - 256
-      emb:
-        k: 24
-        sigma: 0.05
-        d: 24
-    seeds:
-    - 42
-    - 43
-    - 44
-    n_folds: 10
-    agg: true
-    source: src/exp_v16_knn.py
-    use_te: true
-    windows:
-    - 2
-    - 10
-    cells: true
-    knn: true
   mk1_gpm:
     backend: nn_multi
     group: mk1
@@ -265,28 +213,6 @@ members:
     - 2
     - 10
     cells: false
-  la_leui_wA:
-    backend: lgb
-    kind: leui
-    params:
-      learning_rate: 0.04
-      num_leaves: 255
-      min_data_in_leaf: 100
-      feature_fraction: 0.5
-      bagging_fraction: 0.8
-      bagging_freq: 1
-      lambda_l2: 10.0
-      max_bin: 255
-      num_threads: 12
-    wmul: A
-    n_folds: 10
-    agg: true
-    source: src/exp_v10_lgb.py
-    use_te: true
-    windows:
-    - 2
-    - 10
-    cells: true
   n4f_gpm:
     backend: nn
     kind: gpm
@@ -462,10 +388,10 @@ members:
     n_folds: 5
     agg: false
     source: src/exp_zoo1.py
-  xk2_gpm:
+  xk2_gpgea:
     backend: xgb
-    kind: gpm
-    params: &id001
+    kind: gas_per:bld_dim_03
+    params:
       learning_rate: 0.03
       max_depth: 10
       subsample: 0.8
@@ -477,35 +403,9 @@ members:
     n_folds: 10
     agg: true
     use_te: true
-    windows: &id002
+    windows: &id001
     - 2
     - 10
-    cells: true
-    knn: true
-    source: src/exp_v18_knn2.py
-    knn_x: true
-  xk2_lgpm:
-    backend: xgb
-    kind: lgas_per:bld_dim_12
-    params: *id001
-    wmul: A
-    n_folds: 10
-    agg: true
-    use_te: true
-    windows: *id002
-    cells: true
-    knn: true
-    source: src/exp_v18_knn2.py
-    knn_x: true
-  xk2_gpgea:
-    backend: xgb
-    kind: gas_per:bld_dim_03
-    params: *id001
-    wmul: iA
-    n_folds: 10
-    agg: true
-    use_te: true
-    windows: *id002
     cells: true
     knn: true
     source: src/exp_v18_knn2.py
@@ -527,7 +427,7 @@ members:
     n_folds: 10
     agg: true
     use_te: true
-    windows: *id002
+    windows: *id001
     cells: true
     knn: true
     source: src/exp_v18_knn2.py
@@ -542,7 +442,7 @@ members:
       lr: 0.001
       wd: 0.0001
       drop: 0.3
-      hidden: &id003
+      hidden: &id002
       - 1024
       - 512
       - 256
@@ -557,7 +457,7 @@ members:
     n_folds: 10
     agg: true
     use_te: true
-    windows: *id002
+    windows: *id001
     cells: true
     knn: true
     source: src/exp_v18_knn2.py
@@ -572,7 +472,7 @@ members:
       lr: 0.001
       wd: 0.0001
       drop: 0.3
-      hidden: *id003
+      hidden: *id002
       emb:
         k: 24
         sigma: 0.02
@@ -584,7 +484,7 @@ members:
     n_folds: 10
     agg: true
     use_te: true
-    windows: *id002
+    windows: *id001
     cells: true
     knn: true
     source: src/exp_v18_knn2.py
@@ -613,7 +513,7 @@ members:
     n_folds: 10
     agg: true
     use_te: true
-    windows: *id002
+    windows: *id001
     cells: true
     knn: true
     source: src/exp_v17_pois.py
@@ -633,27 +533,7 @@ members:
     n_folds: 10
     agg: true
     use_te: true
-    windows: *id002
-    cells: true
-    knn: true
-    source: src/exp_v17_pois.py
-  xp_epm:
-    backend: xgb
-    kind: epm
-    params:
-      learning_rate: 0.05
-      max_depth: 8
-      subsample: 0.8
-      colsample_bytree: 0.6
-      min_child_weight: 280000.0
-      reg_lambda: 1.0
-      eval_metric: poisson-nloglik
-      objective: count:poisson
-    wmul: iM
-    n_folds: 10
-    agg: true
-    use_te: true
-    windows: *id002
+    windows: *id001
     cells: true
     knn: true
     source: src/exp_v17_pois.py
@@ -673,7 +553,7 @@ members:
     n_folds: 10
     agg: true
     use_te: true
-    windows: *id002
+    windows: *id001
     cells: true
     knn: true
     source: src/exp_v17_pois.py
@@ -693,7 +573,7 @@ members:
     n_folds: 10
     agg: true
     use_te: true
-    windows: *id002
+    windows: *id001
     cells: true
     knn: true
     source: src/exp_v17_pois.py
@@ -713,7 +593,7 @@ members:
     n_folds: 10
     agg: true
     use_te: true
-    windows: *id002
+    windows: *id001
     cells: true
     knn: true
     source: src/exp_v17_pois.py
@@ -735,7 +615,7 @@ members:
     n_folds: 10
     agg: true
     use_te: true
-    windows: *id002
+    windows: *id001
     cells: true
     knn: true
     source: src/exp_v17_pois.py
@@ -757,10 +637,172 @@ members:
     n_folds: 10
     agg: true
     use_te: true
-    windows: *id002
+    windows: *id001
     cells: true
     knn: true
     source: src/exp_v17_pois.py
+  xp82_gpm:
+    backend: xgb
+    kind: gpm
+    params:
+      learning_rate: 0.03
+      max_depth: 10
+      subsample: 0.8
+      colsample_bytree: 0.6
+      min_child_weight: 1000000.0
+      reg_lambda: 1.0
+      eval_metric: poisson-nloglik
+      objective: count:poisson
+    wmul: iM
+    n_folds: 10
+    agg: true
+    use_te: true
+    windows: &id003
+    - 2
+    - 10
+    cells: true
+    knn: true
+    source: src/exp_v18_knn2.py
+    knn_x: true
+  xp2_gpgea:
+    backend: xgb
+    kind: gas_per:bld_dim_03
+    params:
+      learning_rate: 0.05
+      max_depth: 8
+      subsample: 0.8
+      colsample_bytree: 0.6
+      min_child_weight: 8000.0
+      reg_lambda: 1.0
+      eval_metric: poisson-nloglik
+      objective: count:poisson
+    wmul: iA
+    n_folds: 10
+    agg: true
+    use_te: true
+    windows: *id003
+    cells: true
+    knn: true
+    source: src/exp_v18_knn2.py
+    knn_x: true
+  xp2_eui:
+    backend: xgb
+    kind: gas_per:bld_dim_06
+    params:
+      learning_rate: 0.05
+      max_depth: 8
+      subsample: 0.8
+      colsample_bytree: 0.6
+      min_child_weight: 13500.0
+      reg_lambda: 1.0
+      eval_metric: poisson-nloglik
+      objective: count:poisson
+    wmul: iA
+    n_folds: 10
+    agg: true
+    use_te: true
+    windows: *id003
+    cells: true
+    knn: true
+    source: src/exp_v18_knn2.py
+    knn_x: true
+  xp2_epa:
+    backend: xgb
+    kind: epa
+    params:
+      learning_rate: 0.05
+      max_depth: 8
+      subsample: 0.8
+      colsample_bytree: 0.6
+      min_child_weight: 3700.0
+      reg_lambda: 1.0
+      eval_metric: poisson-nloglik
+      objective: count:poisson
+    wmul: iA
+    n_folds: 10
+    agg: true
+    use_te: true
+    windows: *id003
+    cells: true
+    knn: true
+    source: src/exp_v18_knn2.py
+    knn_x: true
+  lp2_gpm:
+    backend: lgb
+    kind: gpm
+    params:
+      learning_rate: 0.04
+      num_leaves: 255
+      min_data_in_leaf: 100
+      feature_fraction: 0.5
+      bagging_fraction: 0.8
+      bagging_freq: 1
+      lambda_l2: 10.0
+      max_bin: 255
+      num_threads: 12
+      objective: poisson
+    wmul: iM
+    n_folds: 10
+    agg: true
+    use_te: true
+    windows: *id003
+    cells: true
+    knn: true
+    source: src/exp_v18_knn2.py
+    knn_x: true
+  lp2_epm:
+    backend: lgb
+    kind: epm
+    params:
+      learning_rate: 0.04
+      num_leaves: 255
+      min_data_in_leaf: 100
+      feature_fraction: 0.5
+      bagging_fraction: 0.8
+      bagging_freq: 1
+      lambda_l2: 10.0
+      max_bin: 255
+      num_threads: 12
+      objective: poisson
+    wmul: iM
+    n_folds: 10
+    agg: true
+    use_te: true
+    windows: *id003
+    cells: true
+    knn: true
+    source: src/exp_v18_knn2.py
+    knn_x: true
+  pk2_lgpm:
+    backend: nn
+    kind: lgas_per:bld_dim_12
+    epochs: 12
+    fixed_ep: 11
+    wmul: A
+    params:
+      lr: 0.001
+      wd: 0.0001
+      drop: 0.3
+      hidden:
+      - 1024
+      - 512
+      - 256
+      emb:
+        k: 24
+        sigma: 0.05
+        d: 24
+    seeds:
+    - 42
+    - 43
+    - 44
+    n_folds: 10
+    agg: true
+    use_te: true
+    windows: *id003
+    cells: true
+    knn: true
+    source: src/exp_v18_knn2.py
+    knn_x: true
 multi:
   mk1:
     tasks:
@@ -844,23 +886,24 @@ blend:
   - la_gas
   - xgb_leui_wA
   - xgb_gpn_tew
-  - la_leui_wA
   - n4f_gpm
   - x8_lgpm
   - xgb_gas
   - xk_gpgea
-  - pk_lgpm
   - mk2_gpm
-  - xk2_lgpm
   - pk2_gpgea
   - lp_gpm
   - xk2_gpgea
-  - xk2_gpm
   - lk2_gpm
   - xp_gpgea
   - xp_eui
   - xp8_gpm
   - xp_gpm
+  - xp82_gpm
+  - xp2_gpgea
+  - lp2_gpm
+  - pk2_lgpm
+  - xp2_eui
   elec:
   - t1_lepm
   - l4_epa
@@ -868,9 +911,9 @@ blend:
   - n6b_lepm
   - xgb_elec
   - mk1_epm
-  - xk_lepa
   - lp_epm
   - mk2_epm
   - pk2_lepm
   - xp_epa
-  - xp_epm
+  - lp2_epm
+  - xp2_epa

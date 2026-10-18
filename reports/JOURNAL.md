@@ -377,3 +377,11 @@
   - Gas+EUI 0,895396 -> 0,895264: +xp82_gpm, +xp2_gpgea, +lp2_gpm, +pk2_lgpm, +xp2_eui; dibuang la_leui_wA, pk_lgpm, xk2_lgpm, xk2_gpm.
   - Listrik 0,315927 -> 0,315894: +lp2_epm, +xp2_epa; dibuang xk_lepa, xp_epm.
 - Gain sekitar seperenam gain v18: model tunggal lebih baik tetapi informasinya tumpang tindih dengan anggota v18. Keputusan menunggu rantai holdout (4 holdout XGB terakhir sedang berjalan).
+
+### [2026-10-18 11:45 WIB] v19 diadopsi, sub_v19dev dirakit, server diserahkan ke user
+- Rantai holdout (exp/resid_knn_fit_v19.log, λ -> exp/resid_knn_v19.json) vs v18: gas 0,24533 -> 0,24531, EUI 0,64937 -> 0,64930, elec 0,31476 -> 0,31475 (total sekitar -0,00002). Seleksi nested -0,000034.
+- Keputusan D010: v19 = kandidat Final A (arahan user: maksimal); semua metrik membaik walau tipis.
+- sub_v19dev (exp/v19cfg = blend v19 + λ v19): sha256 62444504...f216, lolos validasi. CV blend nested gas 0,244976 / EUI 0,650288 / elec 0,315894, rata-rata 5 target 0,24937. BEST_CURRENT = sub_v19dev.
+- Konfigurasi final diperbarui ke v19 (final/configs/members.yaml: 40 anggota; resid_knn.json = λ v19); salinan v18 (members_v18.yaml, resid_knn_v18.json) dan v16 disimpan.
+- final/src/fb07b.py: THREADS 8 -> 3 untuk notebook (nilai tidak bergantung jumlah thread, hanya RAM), mencegah lonjakan RAM saat tiga jalur menghitung FB07b bersamaan.
+- Semua job DICE FEST berhenti 11:45; server dipakai user untuk proyek kaggle. Sisa: run final anggota baru (lk2_gpm, lp_gpm, lp_epm dari v18 + 7 anggota v19) sekitar 6-8 jam, lalu notebook headless sekitar 30 jam. Server perlu kembali paling lambat Selasa 20 Okt malam.
