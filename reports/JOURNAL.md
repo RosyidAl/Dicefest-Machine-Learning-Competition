@@ -370,3 +370,10 @@
 - Skor v19 sejauh ini (full 10-fold): lp2_gpm EUI 0,65660 / gas 0,24881 (model tunggal terbaik); xp2_gpm 0,65684 / 0,24889 (xp_gpm 0,65741 / 0,24899); xp2_eui 0,65882 / 0,24860; xp2_gpgea 0,65856 / 0,24891 (xp_gpgea 0,65985 / 0,24911); xp2_epm elec 0,31973; xp2_epa elec 0,32001.
 - Run final v18 berakhir 08:31 (jalur XGB dan NN rc=0, jalur CPU dihentikan manual): 48 output; lk2_gpm, lp_gpm, lp_epm menyusul di run final berikutnya.
 - Sisa jadwal DICE FEST setelah v19: run final anggota baru (sekitar 8 jam) + notebook headless (sekitar 30 jam). Server perlu kembali paling lambat Selasa 20 Okt malam.
+
+### [2026-10-18 10:45 WIB] v19 | skor anggota + seleksi
+- Full 10-fold: xp82_gpm EUI 0,65638 / gas 0,24888 (model tunggal terbaik), lp2_gpm 0,65660 / 0,24881, xp2_gpm 0,65684 / 0,24889, xp2_gpgea 0,65856 / 0,24891, xp2_eui 0,65882 / 0,24860, pk2_lgpm 0,66193 / 0,24888; elec lp2_epm 0,31967, xp2_epm 0,31973, xp2_epa 0,32001.
+- Seleksi nested di atas blend v18 (exp/analysis/select_v19.log/.json): 0,242265 -> 0,242231 (-0,000034).
+  - Gas+EUI 0,895396 -> 0,895264: +xp82_gpm, +xp2_gpgea, +lp2_gpm, +pk2_lgpm, +xp2_eui; dibuang la_leui_wA, pk_lgpm, xk2_lgpm, xk2_gpm.
+  - Listrik 0,315927 -> 0,315894: +lp2_epm, +xp2_epa; dibuang xk_lepa, xp_epm.
+- Gain sekitar seperenam gain v18: model tunggal lebih baik tetapi informasinya tumpang tindih dengan anggota v18. Keputusan menunggu rantai holdout (4 holdout XGB terakhir sedang berjalan).

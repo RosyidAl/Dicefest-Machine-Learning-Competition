@@ -1,0 +1,26 @@
+single xp2_gpm: 0.65684 gas 0.24889
+single xp2_eui: 0.65882 gas 0.24860
+single xp2_gpgea: 0.65856 gas 0.24891
+single xp2_epm: 0.31973
+single xp2_epa: 0.32001
+single xp82_gpm: 0.65638 gas 0.24888
+single lp2_gpm: 0.65660 gas 0.24881
+single lp2_epm: 0.31967
+single pk2_lgpm: 0.66193 gas 0.24888
+single xk2_lepa: 0.32241
+single lk2_lepa: 0.32229
+v16 base {'gas': 0.895396, 'elec': 0.315927} total 0.242265
++xp82_gpm gas 0.895344
++xp2_gpgea gas 0.895306
++lp2_gpm gas 0.895284
++pk2_lgpm gas 0.895275
++xp2_eui gas 0.895270
+-la_leui_wA gas 0.895270
+-pk_lgpm gas 0.895270
+-xk2_lgpm gas 0.895266
+-xk2_gpm gas 0.895264
++lp2_epm elec 0.315905
++xp2_epa elec 0.315895
+-xk_lepa elec 0.315895
+-xp_epm elec 0.315894
+final total 0.242231 {'gas': 27, 'elec': 12}
