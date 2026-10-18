@@ -1,0 +1,13 @@
+single xp_gpm: 0.65741 gas 0.24899
+single xp_eui: 0.66008 gas 0.24873
+single xp_epm: 0.31977
+single xp_gpgea: 0.65985 gas 0.24911
+v16 base {'gas': 0.896258, 'elec': 0.316075} total 0.242467
++xp_gpm gas 0.896178
++xp_gpgea gas 0.896146
++xp_eui gas 0.896131
+-lk_gpm gas 0.896130
++xp_epm elec 0.316025
+-x4_elec elec 0.316024
+-xgb_epm_wM_tew_k10 elec 0.316024
+final total 0.242431 {'gas': 24, 'elec': 11}

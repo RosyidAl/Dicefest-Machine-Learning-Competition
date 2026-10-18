@@ -1,0 +1,5 @@
+single xp_gpm: 0.65741 gas 0.24899
+v16 base {'gas': 0.896258, 'elec': 0.316075} total 0.242467
++xp_gpm gas 0.896178
+-lk_gpm gas 0.896178
+final total 0.242451 {'gas': 22, 'elec': 12}
