@@ -1,0 +1,6 @@
+[2026-10-17 19:41:25] blend honest CV {'gas': 0.2450167978916835, 'eui': 0.6503790896520698, 'elec': 0.3159270277806097}
+[2026-10-17 19:51:17] gas correction rms/sigma 0.02096
+[2026-10-17 19:51:17] eui correction rms/sigma 0.04095
+[2026-10-17 19:51:17] elec correction rms/sigma 0.01285
+[2026-10-17 19:51:19] wrote submissions/sub_v18dev.csv sha256 07f67f8cda7d5d07200a08cf49c5547b3556fa1b47183e467d999fbf8dbf135b
+[2026-10-17 19:51:19] wrote submissions/sub_v18dev.csv sha256 07f67f8cda7d5d07200a08cf49c5547b3556fa1b47183e467d999fbf8dbf135b in 0.17 h
