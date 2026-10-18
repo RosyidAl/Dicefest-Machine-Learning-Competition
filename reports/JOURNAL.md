@@ -378,7 +378,7 @@
   - Listrik 0,315927 -> 0,315894: +lp2_epm, +xp2_epa; dibuang xk_lepa, xp_epm.
 - Gain sekitar seperenam gain v18: model tunggal lebih baik tetapi informasinya tumpang tindih dengan anggota v18. Keputusan menunggu rantai holdout (4 holdout XGB terakhir sedang berjalan).
 
-### [2026-10-18 11:45 WIB] v19 diadopsi, sub_v19dev dirakit, server diserahkan ke user
+### [2026-10-18 11:42 WIB] v19 diadopsi, sub_v19dev dirakit, server diserahkan ke user
 - Rantai holdout (exp/resid_knn_fit_v19.log, λ -> exp/resid_knn_v19.json) vs v18: gas 0,24533 -> 0,24531, EUI 0,64937 -> 0,64930, elec 0,31476 -> 0,31475 (total sekitar -0,00002). Seleksi nested -0,000034.
 - Keputusan D010: v19 = kandidat Final A (arahan user: maksimal); semua metrik membaik walau tipis.
 - sub_v19dev (exp/v19cfg = blend v19 + λ v19): sha256 62444504...f216, lolos validasi. CV blend nested gas 0,244976 / EUI 0,650288 / elec 0,315894, rata-rata 5 target 0,24937. BEST_CURRENT = sub_v19dev.
