@@ -5,7 +5,7 @@ elec family), same as the v19 selection but with blend.blend_vc instead of one g
 Screen: share of the current nested residual explained (least squares, all rows) by a candidate's spec-expanded
 column block; only the TOPK best-screened candidates are scored exactly.
 
-usage: python exp/analysis/select_vc.py <spec> <out.json> [gas|elec]
+usage: python exp/analysis/select_vc.py <spec> <out.json> [gas|elec]   (env CANDS=a,b: only these candidates)
 """
 import json
 import os
@@ -111,8 +111,10 @@ for fam in FAMS:
     cur, res, X = fam_eval(sel, fam)
     print(f"[{fam}] v19 members under {SPEC}: {cur:.6f}", flush=True)
     pool = [n for n in names if n not in sel and is_el(n) == (fam == "elec")]
+    if os.environ.get("CANDS"):  # explicit candidate list (e.g. new members): every one is scored exactly
+        pool = [n for n in os.environ["CANDS"].split(",") if n in pool]
     while pool:
-        top = [c for _, c in screen(X, res, pool, fam)[:TOPK]]
+        top = pool if os.environ.get("CANDS") else [c for _, c in screen(X, res, pool, fam)[:TOPK]]
         scored = []
         for c in top:
             sc, _, _ = fam_eval(sel + [c], fam)
