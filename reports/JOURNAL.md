@@ -395,3 +395,9 @@
 - GPU dipakai proses di luar container (PID host 931477, 13,2 GB VRAM); tidak terlihat dan tidak bisa dihentikan dari sini. User diminta mematikannya dari sisi lain.
 - 13:00 jalur CPU run final v19 dijalankan sendiri (dice-run1cpu: lk2_gpm, lp_gpm, lp_epm, lp2_gpm, lp2_epm). Jalur XGB (xp82_gpm, xp2_gpgea, xp2_eui, xp2_epa) dan NN (pk2_lgpm) menunggu GPU.
 - 13:0x atas permintaan user semua job DICE FEST dihentikan (dice-run1cpu dihentikan saat lk2_gpm fold awal; belum ada anggota baru yang selesai). Tidak ada unit dice-* yang aktif. Langkah lanjutan tetap sesuai HANDOVER.md bagian 7.
+
+### [2026-10-19 16:30 WIB] Run final v19 dilanjutkan, berbagi server dengan proyek kaggle
+- User: lanjutkan DICE FEST sekarang; server juga dipakai proyek kaggle (job train_noisy_student.py).
+- Resource 16:16: RAM bebas 28 GB (job kaggle 5,5 GB, sekitar 1 core); VRAM terpakai 15,5/16 GB = proses luar container (PID host 931477, 13,2 GB, ada sejak siang) + job kaggle (2,3 GB); disk bebas 11 GB.
+- dice-run1s (logs/run1_shared.sh): jalur CPU langsung jalan (OMP 12 seperti pipeline.LANE_THREADS, Nice 5 supaya job kaggle didahulukan); jalur XGB + NN menunggu VRAM bebas >= 10 GB agar job kaggle tetap punya ruang; semua jalur dihentikan bila MemAvailable < 2,5 GB; setelah ketiga jalur rc=0 assemble -> final/output/submission_run1_v19.csv dan sha256 dibandingkan dengan sub_v19dev.
+- Perkiraan dari waktu dev: jalur CPU sekitar 5,4 jam (lk2_gpm 57 menit, lp_gpm 74, lp_epm 44, lp2_gpm 92, lp2_epm 55); jalur XGB sekitar 2,6 jam + NN setelah VRAM tersedia. Disk: 10 anggota baru sekitar 5-6 GB (cukup); notebook penuh butuh sekitar 23 GB lagi.
