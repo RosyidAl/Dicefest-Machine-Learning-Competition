@@ -417,3 +417,9 @@
 - Submit sub_v19a3 (v19 + adopt_v3a, sha 9e745796...) 17:44: LB publik 0,24938, lebih buruk 0,00004 dari sub_v19dev. Simulasi subset publik dari galat CV: -0,000016 +- 0,000017, peluang >= +0,00003 sekitar 0,3%. Diperlakukan sebagai perbedaan sistematis; adopt_v2 dipertahankan. Sisa varian (cknn_epc, hp1, hp2) dihentikan.
 - Pelajaran: CV per subzona berlabel bukan proksi sempurna untuk subzona test baru; perubahan adopsi berikutnya butuh bukti LB.
 - Kuota hari ini: 4 tersisa.
+
+### [2026-10-19 18:05 WIB] ENS0019 (hipotesis): bobot blend yang berubah mulus dengan ukuran bangunan
+- Uji cepat di blend v19 (skor nested 5-fold jujur, scratchpad blend_bins.py / blend_vc.py): NNLS per tertil luas lantai (bld_dim_06) total 0,242197 vs global 0,242231 (-0,000034); bobot linear sepotong-sepotong pada peringkat luas (2 knot) 0,242192 (-0,000039), 3 knot 0,242190; per M atau A/M lebih kecil. Gain terbesar di EUI (0,650288 -> 0,650139).
+- Hipotesis: anggota berbeda unggul di bangunan kecil vs besar; bobot yang bergantung ukuran (fungsi dari fitur, bukan target) menangkapnya. Implementasi: src/blend.py size_basis / nnls_blend_vc / predict_vc (peringkat = ECDF luas baris fit).
+- Uji penentu: rantai holdout dengan koreksi residual (src/chain_vc.py 2 knot, exp/chain_vc2.log) vs v19 (gas 0,24531, EUI 0,64930, elec 0,31475). Diadopsi bila ketiga metrik tidak memburuk dan total membaik.
+- Run final v19: jalur CPU dijeda (SIGSTOP) 17:49 karena dua proses LightGBM 12 thread saling memperlambat (lp2_eui fold 0 butuh 73 menit).
