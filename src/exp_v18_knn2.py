@@ -71,6 +71,10 @@ JOBS = {  # name: backend, kind, params, weight code (same formulations as the v
     "pk2_gpm": ("nn", "gpm", PLR, "iA"),  # p1_gpm formulation, PLR epochs of the kNN members
     "tk2_lepm": ("nn", "lepm", dict(lr=2e-3, wd=1e-4, drop=0.1, hidden=(512, 512, 512), seeds=(42,),
                                     emb=dict(k=24, sigma=0.05, d=24), ens=16, epochs=24, fixed_ep=23), "M"),  # t1_lepm
+    # v21 (CPU only while the GPU is taken): LightGBM Poisson counterparts of the selected xp2_* members
+    "lp2_gpgea": ("lgb", "gas_per:bld_dim_03", dict(lp, objective="poisson"), "iA"),  # xp2_gpgea
+    "lp2_eui": ("lgb", "gas_per:bld_dim_06", dict(lp, objective="poisson"), "iA"),  # xp2_eui
+    "lp2_epa": ("lgb", "epa", dict(lp, objective="poisson"), "iA"),  # xp2_epa
 }
 if mode == "hold":
     perm = np.random.default_rng(7).permutation(len(d.X))

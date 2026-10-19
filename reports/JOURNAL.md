@@ -401,3 +401,13 @@
 - Resource 16:16: RAM bebas 28 GB (job kaggle 5,5 GB, sekitar 1 core); VRAM terpakai 15,5/16 GB = proses luar container (PID host 931477, 13,2 GB, ada sejak siang) + job kaggle (2,3 GB); disk bebas 11 GB.
 - dice-run1s (logs/run1_shared.sh): jalur CPU langsung jalan (OMP 12 seperti pipeline.LANE_THREADS, Nice 5 supaya job kaggle didahulukan); jalur XGB + NN menunggu VRAM bebas >= 10 GB agar job kaggle tetap punya ruang; semua jalur dihentikan bila MemAvailable < 2,5 GB; setelah ketiga jalur rc=0 assemble -> final/output/submission_run1_v19.csv dan sha256 dibandingkan dengan sub_v19dev.
 - Perkiraan dari waktu dev: jalur CPU sekitar 5,4 jam (lk2_gpm 57 menit, lp_gpm 74, lp_epm 44, lp2_gpm 92, lp2_epm 55); jalur XGB sekitar 2,6 jam + NN setelah VRAM tersedia. Disk: 10 anggota baru sekitar 5-6 GB (cukup); notebook penuh butuh sekitar 23 GB lagi.
+
+### [2026-10-19 16:35 WIB] Arahan baru user + PP0005 adopsi v3 (hipotesis)
+- User: notebook ditunda; fokus submisi terbaik; boleh submit langsung ke Kaggle (token diberikan, disimpan di file privat di luar repo); target user peringkat 3/4 di LB publik.
+- LB publik 19 Okt 16:40: #3 Il Principe 0,23857, #4 Hbat 0,24809, #5 opo yo 0,24897, #6 BISMILLAH 0,24934, #7 We are him 0,24936, #8 nga tau 0,24940. Kuota hari ini 5 (belum dipakai). Penilaian jujur ke user: peringkat 4 butuh -0,00126 (v16 -> v19 total -0,00009); celah sah tersisa sekitar 0,0001 sampai 0,0004.
+- Adopsi untuk subzona baru adalah tuas sah terbesar yang tersisa: NRMSE test sekitar 0,041 (8,1% baris test, RMSE unseen-weighted 1,030 vs lantai binomial sekitar 0,944), batas gain sekitar -0,0006 total.
+- PP0005 (src/exp_adopt_v3.py, CV 5-fold per subzona sama dengan adopt_v2): (a) cknn = pooled count_r/K dari k subzona berlabel paling mirip di ruang PCA sensus (k 10/30/100, out-of-fold); (b) wmix = bobot latih yang menyamakan campuran nrow berlabel dengan campuran subzona test baru; (c) gabungan. Ukuran: RMSE unseen-weighted, baseline 1,0303. Kriteria: < 1,025 baru layak dipakai.
+
+### [2026-10-19 16:46 WIB] v21 (hipotesis): LightGBM Poisson + FB07b untuk formulasi xp2_* (CPU, GPU masih terpakai)
+- lp2_gpm/lp2_epm (LGB Poisson + FB07b) adalah model tunggal terbaik di v19 dan masuk blend bersama versi XGB-nya. Pasangan LGB untuk formulasi xp2_* yang terpilih belum ada: lp2_eui (gas per luas, bobot iA), lp2_gpgea (gas per bld_dim_03, iA), lp2_epa (listrik per luas, iA).
+- Rencana: full 10-fold + hold P70/H30 (src/exp_v18_knn2.py, rantai logs/dev_chain.sh, guard RAM 3 GB), lalu seleksi nested di atas v19 + rantai holdout. Perkiraan gain kecil (-0,00002 sampai -0,00004).
