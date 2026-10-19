@@ -389,3 +389,8 @@
 ### [2026-10-18 18:35 WIB] LB sub_v19dev 0,24934; jeda untuk migrasi akun
 - Public LB sub_v19dev 0,24934 (prediksi rantai holdout sekitar 0,24934). Riwayat: v16 0,24943, v18 0,24936, v19 0,24934.
 - User sedang memakai server untuk proyek /root/kaggle dan akan memigrasi akun Claude: tidak ada proses DICE FEST yang dijalankan. Langkah lanjutan lengkap di reports/STATUS.md bagian HANDOFF.
+
+### [2026-10-19 13:10 WIB] Lanjut setelah migrasi akun (Claude Code kini akun rayhanmulachela@ada4career.com)
+- Uji drift anggota v18 di final/work/run1 (dilatih pipeline final 17-18 Okt): 13 anggota (xk2_gpm, xk2_lgpm, xk2_gpgea, pk2_gpgea, pk2_lepm, mk2_gpm, mk2_epm, xp_gpm, xp_eui, xp_epm, xp_gpgea, xp_epa, xp8_gpm) identik byte dengan exp/oof|pred.
+- GPU dipakai proses di luar container (PID host 931477, 13,2 GB VRAM); tidak terlihat dan tidak bisa dihentikan dari sini. User diminta mematikannya dari sisi lain.
+- 13:05 jalur CPU run final v19 dijalankan sendiri (dice-run1cpu: lk2_gpm, lp_gpm, lp_epm, lp2_gpm, lp2_epm). Jalur XGB (xp82_gpm, xp2_gpgea, xp2_eui, xp2_epa) dan NN (pk2_lgpm) menunggu GPU.
