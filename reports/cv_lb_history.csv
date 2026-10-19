@@ -9,3 +9,6 @@ date_wib,version,cv_blend_nested,post_est,public_lb,steps
 2026-10-15,v15ncrd,0.25002,-0.00053,0.2499,v15 without CatBoost
 2026-10-16,v15ncrkd,0.25002,-0.00103,0.24954,+ similarity kNN residual correction (k)
 2026-10-16,v16dev,0.24960,-0.00071,0.24943,kNN-target features inside models (FB07); final pipeline
+2026-10-18,v18dev,0.24940,,0.24936,FB07b kNN-target block + Poisson members (v18)
+2026-10-18,v19dev,0.24937,,0.24934,Poisson x FB07b members + pk2_lgpm (v19)
+2026-10-19,v19a3,0.24937,,0.24938,v19 + adoption v3a (PP0005); only the adoption column of unseen subzones differs

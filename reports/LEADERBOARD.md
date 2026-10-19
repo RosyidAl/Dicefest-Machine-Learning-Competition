@@ -1,4 +1,4 @@
-# LEADERBOARD (dibangun ulang 2026-10-17 03:39 WIB)
+# LEADERBOARD (dibangun ulang 2026-10-19 17:49 WIB)
 
 Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil lebih baik.
 
@@ -6,20 +6,20 @@ Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil l
 
 | exp_id | nrmse_mean | nrmse_t1 | nrmse_t2 | nrmse_t3 | hypothesis |
 |---|---|---|---|---|---|
+| ENS0018 | 0.24960 | 0.24524 | 0.31608 | 0.65101 | NNLS blend v16 (34 anggota, FB07 kNN-target; exp/analysis/select_v16.py) = Final A (D006) |
 | ENS0016 | 0.25001 | 0.24590 | 0.31641 | 0.65209 | NNLS blend v15 (greedy top-25 per family, prune.py) |
 | ENS0017 | 0.25002 | 0.24591 | 0.31641 | 0.65211 | NNLS blend v15nc (greedy top-25 per family, prune.py) |
 | ENS0014 | 0.25005 | 0.24592 | 0.31654 | 0.65217 | NNLS blend v14 (greedy top-25 per family, prune.py) |
 | ENS0015 | 0.25006 | 0.24592 | 0.31654 | 0.65219 | NNLS blend v14nc (greedy top-25 per family, prune.py) |
-| ENS0012 | 0.25007 | 0.24592 | 0.31660 | 0.65219 | NNLS blend v13 (greedy top-25 per family, prune.py) |
 
 
 ## Terbaik per target (model tunggal)
 
 | target | exp_id | nrmse | family | notes |
 |---|---|---|---|---|
-| t1 gas | E0163 | 0.24967 | mlp_plr | legacy run p2_eui_wA; log exp/v11_nn_c.log |
+| t1 gas | EM0003 | 0.24873 | xgb | member xp_eui; v17 selection: blend total -0.000035 with all four, not adopted ( |
 | t2 elec | E0166 | 0.31835 | mlp_plr | legacy run p3_epm_wM; log exp/v11_nn_e.log; member of blend v15nc |
-| t3 EUI | EM0001 | 0.65977 | other | member xk_gpm |
+| t3 EUI | EM0002 | 0.65741 | xgb | member xp_gpm; v17 selection: blend total -0.000035 with all four, not adopted ( |
 | t4 clean | E0173 | 0.01575 | xgb |  |
 | t5 adopt | E0209 | 0.07481 | lgb |  screen_folds=3 |
 
@@ -59,13 +59,13 @@ Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil l
 | E0262 | 0.66536 | {"default": {"exposure_col": "bld_dim_12", "type": "ratio", "weight_power": 1}} | 29.9 |  screen_folds=3 |
 | E0261 | 0.66755 | {"default": {"type": "identity"}} | 31.7 |  screen_folds=3 |
 | E0207 | 0.66947 | {"default": {"type": "identity"}} | 17.7 |  screen_folds=3 |
+| E0273 | 0.6699013376971004 | gpm (ratio to bld_dim_12) | 16.4 | screening lr 0.1, early stopping on the validation fold (relative comparison only) |
 | E0263 | 0.67030 | {"default": {"exposure_col": "bld_dim_12", "type": "ratio", "weight_power": 1}} | 15.9 |  screen_folds=3 |
 | E0260 | 0.67119 | {"target_macro_elec_kwh": {"exposure_col": "bld_dim_12", "type": "ratio", "weight_col": "bld_dim_12", "weight_col_power": -1, "weight_power": 2}, "target_macro_gas_kwh": {"exposure_col": "bld_dim_12", "type": "ratio", "weight_col": "bld_dim_06", "weight_col_power": -1, "weight_power": 2}} | 17.2 |  screen_folds=3 |
+| E0271 | 0.6720985399324281 | gpm (ratio to bld_dim_12) | 5.7 | screening lr 0.1, early stopping on the validation fold (relative comparison only) |
 | E0208 | 0.67357 | {"default": {"type": "log1p"}} | 12.0 |  screen_folds=3 |
 | E0205 | 0.67381 | {"default": {"type": "identity"}} | 9.1 |  screen_folds=3 |
 | E0202 | 0.67432 | {"default": {"type": "sqrt"}} | 9.5 |  screen_folds=3 |
-| E0200 | 0.67436 | {"default": {"type": "identity"}} | 10.5 |  screen_folds=3 |
-| E0206 | 0.67437 | {"default": {"type": "identity"}} | 8.9 |  screen_folds=3 |
 
 
 ### lgb / t2 elec
@@ -75,13 +75,13 @@ Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil l
 | E0262 | 0.32385 | {"default": {"exposure_col": "bld_dim_12", "type": "ratio", "weight_power": 1}} | 29.9 |  screen_folds=3 |
 | E0207 | 0.32543 | {"default": {"type": "identity"}} | 17.7 |  screen_folds=3 |
 | E0261 | 0.32543 | {"default": {"type": "identity"}} | 31.7 |  screen_folds=3 |
+| E0274 | 0.32545917304677086 | epm (ratio to bld_dim_12) | 54.3 | screening lr 0.1, early stopping on the validation fold (relative comparison only) |
 | E0263 | 0.32587 | {"default": {"exposure_col": "bld_dim_12", "type": "ratio", "weight_power": 1}} | 15.9 |  screen_folds=3 |
+| E0272 | 0.3262256196151608 | epm (ratio to bld_dim_12) | 5.1 | screening lr 0.1, early stopping on the validation fold (relative comparison only) |
 | E0260 | 0.32633 | {"target_macro_elec_kwh": {"exposure_col": "bld_dim_12", "type": "ratio", "weight_col": "bld_dim_12", "weight_col_power": -1, "weight_power": 2}, "target_macro_gas_kwh": {"exposure_col": "bld_dim_12", "type": "ratio", "weight_col": "bld_dim_06", "weight_col_power": -1, "weight_power": 2}} | 17.2 |  screen_folds=3 |
 | E0204 | 0.32675 | {"default": {"exposure_col": "bld_dim_12", "type": "ratio", "weight_power": 2}} | 6.4 |  screen_folds=3 |
 | E0202 | 0.32776 | {"default": {"type": "sqrt"}} | 9.5 |  screen_folds=3 |
 | E0205 | 0.32791 | {"default": {"type": "identity"}} | 9.1 |  screen_folds=3 |
-| E0200 | 0.32830 | {"default": {"type": "identity"}} | 10.5 |  screen_folds=3 |
-| E0208 | 0.32850 | {"default": {"type": "log1p"}} | 12.0 |  screen_folds=3 |
 
 
 ### lightgbm / t3 EUI
@@ -262,8 +262,13 @@ Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil l
 
 | exp_id | nrmse_t3 | target_transform | runtime_min | notes |
 |---|---|---|---|---|
+| EM0002 | 0.65741 | gas per meter (bld_dim_12), count:poisson |  | member xp_gpm; v17 selection: blend total -0.000035 with all four, not adopted (D007); log logs/v17_full_xp_gpm.log |
+| EM0005 | 0.65985 | gas per bld_dim_03, count:poisson |  | member xp_gpgea; v17 selection: blend total -0.000035 with all four, not adopted (D007); log logs/v17_full_xp_gpgea.log |
+| EM0003 | 0.66008 | gas per area (bld_dim_06), count:poisson |  | member xp_eui; v17 selection: blend total -0.000035 with all four, not adopted (D007); log logs/v17_full_xp_eui.log |
 | E0264 | 0.66054 | {"default": {"exposure_col": "bld_dim_12", "type": "ratio", "weight_power": 1}} | 35.0 |  |
+| E0280 | 0.66199 | gas per meter (bld_dim_12), weight M^2/A | 19.1 | rejected: gain ~1/5 of FB07, EUI not significant (SE 0.00048); expected blend gain ~-0.00003 |
 | E0191 | 0.66229 | {"default": {"exposure_col": "bld_dim_12", "type": "ratio", "weight_col": "bld_dim_06", "weight_col_power": -1, "weight_power": 2}} | 21.3 |  |
+| E0279 | 0.66243 | gas per meter (bld_dim_12), weight M^2/A | 9.7 | A/B reference |
 | E0265 | 0.66307 | {"default": {"exposure_col": "bld_dim_06", "type": "ratio", "weight_power": 1}} | 36.9 |  |
 | E0190 | 0.66444 | {"default": {"exposure_col": "bld_dim_12", "type": "ratio", "weight_col": "bld_dim_06", "weight_col_power": -1, "weight_power": 2}} | 5.7 |  |
 | E0173 | 0.68645 | {"default": {"type": "identity"}} | 35.6 |  |
@@ -273,6 +278,7 @@ Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil l
 
 | exp_id | nrmse_t2 | target_transform | runtime_min | notes |
 |---|---|---|---|---|
+| EM0004 | 0.31977 | elec per meter (bld_dim_12), count:poisson |  | member xp_epm; v17 selection: blend total -0.000035 with all four, not adopted (D007); log logs/v17_full_xp_epm.log |
 | E0173 | 0.33009 | {"default": {"type": "identity"}} | 35.6 |  |
 
 
@@ -319,26 +325,26 @@ Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil l
 
 | exp_id | status | model_family | nrmse_mean | nrmse_t1 | nrmse_t2 | nrmse_t3 | hypothesis |
 |---|---|---|---|---|---|---|---|
-| E0174 | running | cat |  |  |  |  | B5: CatBoost GPU, zone_n dan sub_n sebagai cat_features [CV primary] |
-| EM0001 | done | other |  | 0.25042 |  | 0.65977 | FB07 anggota full: XGB gpm (d10 lr .03) + agg + TE + kNN-target, 10-fold |
-| E0200 | done | lgb |  | 0.25877 | 0.32830 | 0.67436 | T0 identity (acuan Fase 3) untuk t1 gas, t2 elec, t3 EUI [screening: LGB lr 0.1, 3 fold] |
-| E0201 | done | lgb |  | 0.26049 | 0.33056 | 0.67734 | T1 log1p (expm1 tanpa koreksi bias) menurunkan NRMSE dibanding identity [screening: LGB lr 0.1, 3 fold] |
-| E0202 | done | lgb |  | 0.25814 | 0.32776 | 0.67432 | T2 sqrt menurunkan NRMSE dibanding identity [screening: LGB lr 0.1, 3 fold] |
-| E0203 | done | lgb |  | 0.25934 | 0.32976 | 0.67527 | T3 Yeo-Johnson (lambda di-fit di train fold) menurunkan NRMSE [screening: LGB lr 0.1, 3 fold] |
-| E0204 | done | lgb |  | 0.25775 | 0.32675 |  | T4 rasio per meter (bld_dim_12) dengan bobot E^2 untuk t1 dan t2; t3 via EUI identity [screening: LGB lr 0.1, 3 fold] |
-| E0205 | done | lgb |  | 0.25788 | 0.32791 | 0.67381 | T5 objective Tweedie (variance power 1.5) [screening: LGB lr 0.1, 3 fold] |
-| E0206 | done | lgb |  | 0.25957 | 0.32978 | 0.67437 | T5 objective Gamma [screening: LGB lr 0.1, 3 fold] |
-| E0207 | done | lgb |  | 0.25468 | 0.32543 | 0.66947 | T5 objective Poisson [screening: LGB lr 0.1, 3 fold] |
-| E0208 | done | lgb |  | 0.25791 | 0.32850 | 0.67357 | T6 Huber (alpha 0.2) di skala log1p [screening: LGB lr 0.1, 3 fold] |
-| E0209 | done | lgb |  |  |  |  | T7 proporsi + cross_entropy vs T8 logit untuk t5 (lihat E0210); t5 identity sebagai acuan [screening: LGB lr 0.1, 3 fold] |
-| E0210 | failed | lgb |  |  |  |  | T7 proporsi (y/100) dengan objective cross_entropy untuk t5 [screening: LGB lr 0.1, 3 fold] |
-| E0175 | done | mlp_multi | 0.29699 | 0.26541 | 0.32759 | 0.69025 | B6: MLP multi-output sederhana (5 target terstandar, 20 epoch one-cycle) [CV primary] |
-| E0260 | done | lgb |  | 0.25672 | 0.32633 | 0.67119 | Acuan uji Poisson: LGB gpm (bobot M^2/A) dan epm (bobot M), MSE |
-| E0261 | done | lgb |  | 0.25468 | 0.32543 | 0.66755 | Poisson pada gas dan elec mentah (tanpa bobot) mengalahkan formulasi rasio MSE (E0260) |
 | E0262 | done | lgb |  | 0.25310 | 0.32385 | 0.66536 | Poisson pada laju per meter dengan bobot M (GLM laju dengan exposure) mengalahkan E0260 |
 | E0263 | done | lgb |  | 0.25629 | 0.32587 | 0.67030 | Tweedie p=1.2 pada laju per meter (bobot M) vs E0260 |
 | E0264 | done | xgb |  | 0.25085 |  | 0.66054 | Poisson XGB pada gas per meter (bobot M, offset log M), mcw setara 50 baris; vs E0190 (MSE rasio bobot M^2/A) |
 | E0265 | done | xgb |  | 0.25043 |  | 0.66307 | Poisson XGB pada EUI (laju per luas, bobot A = Poisson gas dengan offset log A), mcw setara 50 baris; vs E0190 |
+| ENS0018 | done | ensemble | 0.24960 | 0.24524 | 0.31608 | 0.65101 | NNLS blend v16 (34 anggota, FB07 kNN-target; exp/analysis/select_v16.py) = Final A (D006) |
+| EM0002 | done | xgb |  | 0.24899 |  | 0.65741 | XGB Poisson gas per meter (bobot M), input v16 + kNN-target, 10-fold |
+| EM0003 | done | xgb |  | 0.24873 |  | 0.66008 | XGB Poisson EUI (laju per luas, bobot A), input v16 + kNN-target, 10-fold |
+| EM0004 | done | xgb |  |  | 0.31977 |  | XGB Poisson listrik per meter (bobot M), input v16 + kNN-target, 10-fold |
+| EM0005 | done | xgb |  | 0.24911 |  | 0.65985 | XGB Poisson gas per luas selubung bld_dim_03, input v16 + kNN-target, 10-fold |
+| E0271 | done | lgb |  | 0.2572729456806092 |  | 0.6720985399324281 | CV_SECONDARY check: LGB gpm tanpa TE spasial, skema primary |
+| E0272 | done | lgb |  |  | 0.3262256196151608 |  | CV_SECONDARY check: LGB epm tanpa TE spasial, skema primary |
+| E0273 | done | lgb |  | 0.25617055067299915 |  | 0.6699013376971004 | CV_SECONDARY check: LGB gpm dengan TE spasial, skema primary |
+| E0279 | done | xgb |  | 0.25198 |  | 0.66243 | FB07b acuan: XGB gpm x4 5-fold, input v16 (agg + TE + sel + FB07 paralel) |
+| E0280 | done | xgb |  | 0.25167 |  | 0.66199 | FB07b: + kNN-target di ruang era / bangunan+sensus / ukuran, W=10 dan W=1000 |
+| E0274 | done | lgb |  |  | 0.32545917304677086 |  | CV_SECONDARY check: LGB epm dengan TE spasial, skema primary |
+| E0275 | done | lgb |  | 0.2708063678657521 |  | 0.6923146162595597 | CV_SECONDARY check: LGB gpm tanpa TE spasial, skema secondary |
+| E0276 | done | lgb |  |  | 0.330181558948791 |  | CV_SECONDARY check: LGB epm tanpa TE spasial, skema secondary |
+| E0277 | done | lgb |  | 0.36374811605371604 |  | 0.8330538274343691 | CV_SECONDARY check: LGB gpm dengan TE spasial, skema secondary |
+| E0278 | done | lgb |  |  | 0.3473564584844149 |  | CV_SECONDARY check: LGB epm dengan TE spasial, skema secondary |
+| PP0005 | done | lgb |  |  |  |  | adoption v3: census-kNN pooled q, unseen-mix training weights, EPC subzone sums, model averaging (unseen-subzone model) |
 
 
 ## Submisi dengan skor public LB
@@ -357,3 +363,5 @@ Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil l
 | 2026-10-15 16:50 | submissions/sub_v15ncrkd.csv |  | 0.24954 |  submitted by user 16 Okt |
 | 2026-10-16 11:25 | submissions/BEST_CURRENT.csv | 0.25002 pre-corr; holdout corr -0.0009 | 0.24954 | BEST_CURRENT submitted by user 16 Okt |
 | 2026-10-16 20:27 | submissions/sub_v16dev.csv | blend honest 0.242467 (gas+eui+elec)/5; holdout chain -0.00054 vs v15 | 0.24943 | kandidat v16, ekspektasi LB ~0.2490 submitted by user 17 Okt |
+| 2026-10-18 02:51 | submissions/sub_v18dev.csv | 0.24940 (nested; holdout chain -0.00006 vs v16) | 0.24936 | submitted by user 18 Okt |
+| 2026-10-18 11:42 | submissions/sub_v19dev.csv | 0.24937 (nested; holdout chain -0.00002 vs v18) | 0.24934 | submitted by user 18 Okt |

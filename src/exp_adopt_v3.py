@@ -7,6 +7,7 @@ Same 5-fold subzone CV and unseen-weighted RMSE as src/adopt_v2.py (test row mix
 - wmix   : training weights that move the nrow mix of the labelled subzones to the unseen test subzone mix;
 - wrow   : as wmix but matching the unseen test row mix (the weighting of the score);
 - epc    : + subzone sums of the postcode-level building columns (train + test rows) and their ratios to N and K;
+- hp1/hp2: other LightGBM settings (diversity for the blend: src/adopt_blend.py);
 Out-of-fold r predictions are saved in exp/adopt/ so that the variants can be blended on the same folds.
 
 usage: python src/exp_adopt_v3.py <variant>[,<variant>...] [--smoke]   (--smoke: 20k subzones, quick logic check)
@@ -30,6 +31,8 @@ OUT = "exp/adopt"
 KS = (10, 30, 100)
 NB_MAX = 400  # neighbours kept per subzone before the fold filter
 THREADS = 4
+HP = {"hp1": dict(num_leaves=63, min_data_in_leaf=30, feature_fraction=0.3, learning_rate=0.02, seed=SEED + 1),
+      "hp2": dict(num_leaves=15, min_data_in_leaf=100, feature_fraction=0.7, lambda_l2=20.0, seed=SEED + 2)}
 
 
 def census_neighbours(S, lab):
@@ -158,8 +161,9 @@ def main(variants, smoke=False):
             w = wl if "wmix" in v else (wr if "wrow" in v else None)
             wa = None if w is None else w[a]
             wb = None if w is None else w[b]
+            hp = next((HP[t] for t in v.split("_") if t in HP), None)
             for mode in modes:
-                rb, ru, it = fit_one(Fa, La, Fb, Lb, Fu, U, mode, wa, wb)
+                rb, ru, it = fit_one(Fa, La, Fb, Lb, Fu, U, mode, wa, wb, hp)
                 oof[mode][b] = rb
                 pu[mode] += ru / len(folds)
                 print(f"  [{v}] fold {k} {mode} it={it} {time.time() - t0:.0f}s", flush=True)

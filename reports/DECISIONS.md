@@ -108,3 +108,9 @@
 - Bukti: seleksi nested -0,000034 di atas v18; rantai holdout membaik di ketiga metrik (total sekitar -0,00002).
 - Keputusan: v19 = Final A (arahan user: maksimal); Final B = v16 (sub_v16fin, pipeline final sudah terbukti end-to-end) atau v18 sebagai lindung nilai, diputuskan di D-FINAL.
 - Risiko: 7 anggota tambahan memperpanjang notebook sekitar 3-4 jam; semua anggota baru harus lolos uji drift (array final identik dengan dev).
+
+### D011 [2026-10-19 17:55 WIB] Adopsi v3 (PP0005) ditolak, adopt_v2 dipertahankan
+- Bukti CV (5-fold subzona, bobot campuran baris subzona test baru): rata-rata 8 model LightGBM (base, census-kNN, bobot campuran) 1,0283 vs adopt_v2 1,0303, perkiraan -0,000016 total.
+- Bukti LB publik: sub_v19a3 (hanya kolom adopsi subzona baru yang berbeda) 0,24938 vs sub_v19dev 0,24934. Simulasi subset publik dari galat CV memberi selisih -0,000016 (sd 0,000017); peluang hasil >= +0,00003 sekitar 0,3%.
+- Keputusan: anggap ada perbedaan sistematis antara subzona test baru dan proksi CV-nya; adopt_v2 tetap dipakai. Tidak ada lagi tuning adopsi berdasarkan CV saja.
+- Risiko: kecil; perubahan yang ditolak bernilai sekitar 0,00002 menurut CV.

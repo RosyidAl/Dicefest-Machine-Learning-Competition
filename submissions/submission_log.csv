@@ -57,3 +57,4 @@ created_wib,file,sha256,source,cv_mean,public_lb,note
 2026-10-18 02:51,submissions/BEST_CURRENT.csv,07f67f8cda7d5d07200a08cf49c5547b3556fa1b47183e467d999fbf8dbf135b,= sub_v18dev,CV nested 0.24940 (v16 0.24960),,BEST_CURRENT v18
 2026-10-18 11:42,submissions/sub_v19dev.csv,62444504fb7de677d10fd69d17b06da796076b75e96d103cef2d22dd95dff216,"v19 (v18 + Poisson x FB07b + pk2_lgpm; 39 blend members), dev arrays, assemble_dev, lambda v19",0.24937 (nested; holdout chain -0.00002 vs v18),0.24934,submitted by user 18 Okt
 2026-10-18 11:42,submissions/BEST_CURRENT.csv,62444504fb7de677d10fd69d17b06da796076b75e96d103cef2d22dd95dff216,= sub_v19dev,CV nested 0.24937,,BEST_CURRENT v19
+2026-10-19 17:44,submissions/sub_v19a3.csv,9e7457969bf2634f76349f3068f77ceda917b50d7236945fa5cf96809686cedc,"v19 + adoption v3a (PP0005: mean of 8 LGB q/r models, base+census-kNN+mix weights)",1.0283,,adoption unseen-weighted RMSE 1.0283 vs 1.0303

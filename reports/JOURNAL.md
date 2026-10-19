@@ -411,3 +411,9 @@
 ### [2026-10-19 16:46 WIB] v21 (hipotesis): LightGBM Poisson + FB07b untuk formulasi xp2_* (CPU, GPU masih terpakai)
 - lp2_gpm/lp2_epm (LGB Poisson + FB07b) adalah model tunggal terbaik di v19 dan masuk blend bersama versi XGB-nya. Pasangan LGB untuk formulasi xp2_* yang terpilih belum ada: lp2_eui (gas per luas, bobot iA), lp2_gpgea (gas per bld_dim_03, iA), lp2_epa (listrik per luas, iA).
 - Rencana: full 10-fold + hold P70/H30 (src/exp_v18_knn2.py, rantai logs/dev_chain.sh, guard RAM 3 GB), lalu seleksi nested di atas v19 + rantai holdout. Perkiraan gain kecil (-0,00002 sampai -0,00004).
+
+### [2026-10-19 17:55 WIB] PP0005 hasil: adopsi v3 ditolak (D011); submisi pertama hari ini
+- CV unseen-weighted (logs/pp0005_adopt3.log): base 1,0303 (sama dengan adopt_v2, byte identik lewat src/adopt_make.py), cknn 1,0297, wmix 1,0346, cknn_wmix 1,0335, epc 1,0307. Rata-rata 8 model (src/adopt_blend.py) 1,0283 (NNLS jujur 1,0284). Efek ke skor total hanya sekitar -0,000016.
+- Submit sub_v19a3 (v19 + adopt_v3a, sha 9e745796...) 17:44: LB publik 0,24938, lebih buruk 0,00004 dari sub_v19dev. Simulasi subset publik dari galat CV: -0,000016 +- 0,000017, peluang >= +0,00003 sekitar 0,3%. Diperlakukan sebagai perbedaan sistematis; adopt_v2 dipertahankan. Sisa varian (cknn_epc, hp1, hp2) dihentikan.
+- Pelajaran: CV per subzona berlabel bukan proksi sempurna untuk subzona test baru; perubahan adopsi berikutnya butuh bukti LB.
+- Kuota hari ini: 4 tersisa.
