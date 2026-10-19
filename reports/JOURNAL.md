@@ -440,3 +440,5 @@
 - 20:05 uji nested variabel murni fitur di atas A2xM2xp2: u (urban), c (EPC per meter), r (rasio bersih), t (env_climate_01), h (bld_dim_17).
 - 20:07 variabel murni fitur di atas A2xM2xp2 (nested): u -0,000002, c -0,000004, r +0,000022, t +0,000012, h -0,000005 -> tidak ada yang berarti; intersep bebas per basis +0,000009 (ditolak). Spesifikasi final tetap A2xM2xp2.
 - PP0006 (hipotesis): konfigurasi kNN koreksi residual dipilih untuk blend v15; dengan blend VC dan anggota ber-kNN, pilihan optimal bisa berbeda. Seleksi maju serakah di H (exp/analysis/select_corr.py, grid 39 konfigurasi per metrik, kolom di-cache di exp/corrsel/), dibandingkan dengan CONFIGS sekarang pada skor yang sama.
+- 20:50 lp2_eui full selesai: EUI 0,65803, gas 0,24855 (model tunggal gas terbaik; xp2_eui 0,24860). Ditambahkan ke blend VC (select_vc CANDS=lp2_eui): gas+EUI 0,894656 -> 0,894635 (total -0,000004).
+- PP0006 sementara (gas): grup 0,24547, CONFIGS sekarang 0,24514, seleksi serakah 0,24507 (10 konfigurasi; sebagian gain = optimisme seleksi di H).

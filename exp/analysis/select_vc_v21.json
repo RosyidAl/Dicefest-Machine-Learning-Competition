@@ -1,0 +1,35 @@
+{
+ "gas": {
+  "members": [
+   "xa_gpm",
+   "p1_gpm",
+   "lgb_gas",
+   "x8_gpn",
+   "n6_lgpm",
+   "xgb_eui_wsM",
+   "la_gas",
+   "xgb_leui_wA",
+   "xgb_gpn_tew",
+   "n4f_gpm",
+   "x8_lgpm",
+   "xgb_gas",
+   "xk_gpgea",
+   "mk2_gpm",
+   "pk2_gpgea",
+   "lp_gpm",
+   "xk2_gpgea",
+   "lk2_gpm",
+   "xp_gpgea",
+   "xp_eui",
+   "xp8_gpm",
+   "xp_gpm",
+   "xp82_gpm",
+   "xp2_gpgea",
+   "lp2_gpm",
+   "pk2_lgpm",
+   "xp2_eui",
+   "lp2_eui"
+  ],
+  "score": 0.8946351824022303
+ }
+}
