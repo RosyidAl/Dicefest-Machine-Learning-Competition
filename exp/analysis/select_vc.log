@@ -1,0 +1,21 @@
+[gas] v19 members under A2xM2xp2: 0.894656
+   try +nn5_gpn_te: 0.894656
+   try +p2_gpn: 0.894656
+   try +nn_leui_wA_te: 0.894656
+   try +nn_eui_wA_te: 0.894656
+[elec] v19 members under A2xM2xp2: 0.315877
+   try +lgb_epm_wM_tew: 0.315880
+   try +n4_epa: 0.315862
+   try +nn5_epa_te: 0.315854
+   try +xs_epm_wM: 0.315877
++nn5_epa_te elec 0.315854
+   try +lgb_epm_wM_tew: 0.315859
+   try +lgb_epm: 0.315853
+   try +xgb_epm_wM_ad: 0.315844
+   try +n4_epa: 0.315859
++xgb_epm_wM_ad elec 0.315844
+   try +lgb_epm_wM_tew: 0.315847
+   try +xgb_epm_wM_tew: 0.315844
+   try +xs_epm_wM: 0.315844
+   try +lgb_epm: 0.315849
+done {'gas': (27, 0.894656), 'elec': (14, 0.315844)}
