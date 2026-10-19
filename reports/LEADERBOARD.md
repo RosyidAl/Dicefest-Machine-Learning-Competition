@@ -1,4 +1,4 @@
-# LEADERBOARD (dibangun ulang 2026-10-19 22:53 WIB)
+# LEADERBOARD (dibangun ulang 2026-10-19 23:42 WIB)
 
 Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil lebih baik.
 
@@ -325,8 +325,6 @@ Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil l
 
 | exp_id | status | model_family | nrmse_mean | nrmse_t1 | nrmse_t2 | nrmse_t3 | hypothesis |
 |---|---|---|---|---|---|---|---|
-| E0264 | done | xgb |  | 0.25085 |  | 0.66054 | Poisson XGB pada gas per meter (bobot M, offset log M), mcw setara 50 baris; vs E0190 (MSE rasio bobot M^2/A) |
-| E0265 | done | xgb |  | 0.25043 |  | 0.66307 | Poisson XGB pada EUI (laju per luas, bobot A = Poisson gas dengan offset log A), mcw setara 50 baris; vs E0190 |
 | ENS0018 | done | ensemble | 0.24960 | 0.24524 | 0.31608 | 0.65101 | NNLS blend v16 (34 anggota, FB07 kNN-target; exp/analysis/select_v16.py) = Final A (D006) |
 | EM0002 | done | xgb |  | 0.24899 |  | 0.65741 | XGB Poisson gas per meter (bobot M), input v16 + kNN-target, 10-fold |
 | EM0003 | done | xgb |  | 0.24873 |  | 0.66008 | XGB Poisson EUI (laju per luas, bobot A), input v16 + kNN-target, 10-fold |
@@ -345,6 +343,8 @@ Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil l
 | PP0005 | done | lgb |  |  |  |  | adoption v3: census-kNN pooled q, unseen-mix training weights, EPC subzone sums, model averaging (unseen-subzone model) |
 | ENS0019 | done | ensemble |  | 0.244817 | 0.315877 | 0.649839 | varying-coefficient NNLS blend: member weights multilinear in ranks of floor area, meters and global blend prediction (A2xM2xp2) |
 | PP0006 | done | postprocess |  | 0.24514 | 0.31462 | 0.64859 | re-select the similarity-kNN residual-correction configs for the VC blend (greedy over 39 configs on the holdout) |
+| PP0007 | done | postprocess |  |  |  |  | alternative estimators (relative shift, plain mean, per-area shift) for the kNN residual-correction features |
+| PP0008 | done | lgb |  |  |  |  | nonlinear residual correction: small LightGBM on top of the linear group+kNN correction (features + log A, log M, log blend prediction) |
 
 
 ## Submisi dengan skor public LB

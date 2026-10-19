@@ -1,0 +1,3 @@
+gas: H blend 0.24603 linear 0.24514 linear+lgb 0.24515 (+0.000002) rounds [1, 2, 1, 1, 1]
+eui: H blend 0.65008 linear 0.64859 linear+lgb 0.64856 (-0.000029) rounds [20, 78, 13, 1, 10]
+elec: H blend 0.31484 linear 0.31462 linear+lgb 0.31464 (+0.000014) rounds [34, 9, 18, 2, 2]

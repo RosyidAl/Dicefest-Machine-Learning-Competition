@@ -2,9 +2,9 @@
 
 - [x] (16 Okt) BEST_CURRENT (sub_v15ncrkd) sudah di-submit user: public LB 0,24954.
 - [x] (17 Okt) BEST_CURRENT (sub_v16dev) sudah di-submit user: public LB 0,24943 (v15ncrkd 0,24954).
-- [ ] Kredensial Kaggle CLI belum ada (KAGGLE_AUTO_SUBMIT: false), jadi semua submit dilakukan manual oleh user.
+- [x] (19 Okt) Token Kaggle diberikan user; submit dilakukan langsung dari server (token di file privat scratchpad, tidak masuk repo), hanya untuk kandidat yang lebih baik di rantai holdout.
 - [x] (17 Okt) TEAM_NAME = BISMILLAH (konfirmasi user).
-- [ ] GPU dipakai bersama container lain (sekitar 11 GB VRAM terpakai dari luar). Bila memungkinkan, minta admin memastikan GPU cukup longgar selama run audit final (17 sampai 21 Okt).
+- [ ] (19 Okt, PENTING) Sejak 19 Okt siang GPU dipakai proses di luar container (PID host 931477, 13,2 GB VRAM, utilisasi 100%) ditambah job kaggle user (2,3 GB). Jalur GPU run final (XGB + NN) dan notebook penuh tidak bisa jalan sampai VRAM bebas >= 10 GB. Mohon cek ke admin server siapa pemilik proses itu dan kapan selesai. Sebelumnya: GPU dipakai bersama container lain (sekitar 11 GB VRAM terpakai dari luar). Bila memungkinkan, minta admin memastikan GPU cukup longgar selama run audit final (17 sampai 21 Okt).
 - [ ] Ketentuan format writeup PDF dan aturan penamaan file ada di guidebook lengkap (folder Google Drive panitia, lewat dicefest.web.id/guidebook/machine-learning) yang tidak bisa diakses dari server. Mohon cek: batas halaman, template, dan nama file notebook/PDF. Draf saat ini ada di reports/WRITEUP_DRAFT.md dan mengikuti struktur MASTER_PROMPT.
 - [x] (17 Okt 13:50, cache pip/uv dihapus atas izin user, 28 GB bebas) Disk: 26 GB bebas. Run #1 butuh sekitar 8 GB lagi dan run notebook kedua sekitar 20 GB. Minta izin membersihkan ~/.cache/pip (1,6 GB) dan ~/.cache/uv (sekitar 6,4 GB riil) bila kurang. ~/.cache/huggingface (12 GB, model audio burung, proyek lain) tidak disentuh.
 - [x] (17 Okt 14:00, dijeda SIGSTOP atas izin user; lanjutkan: kill -CONT 141266) Job lain (`/root/kaggle`, train_noisy_student.py) memakai GPU yang sama (GPU 100%, VRAM 11,9/16,4 GB). Run #1 melambat dan ada risiko OOM di jalur NN. Mohon tunda job itu sampai run final + notebook DICE FEST selesai, atau terima perlambatan (lane yang gagal bisa di-resume).
