@@ -70,11 +70,18 @@ def vc_basis(spec, fit_vars, app_vars):
     return B
 
 
+def disagreement(P):
+    """coefficient of variation of the members' predictions per row"""
+    return P.std(axis=1) / np.maximum(np.abs(P.mean(axis=1)), 1e-9)
+
+
 def blend_vc(Pf, Pa, yf, spec, vars_f, vars_a, row_scale=None):
     """size/level-varying NNLS blend. vars_f / vars_a: dicts of the conditioning variables ('A', 'M', ...) on the fit
-    and apply rows; 'p' (the global NNLS blend's prediction) is added here. Returns (pred_fit, pred_apply, W)."""
+    and apply rows; 'p' (the global NNLS blend's prediction) and 'd' (member disagreement) are added here.
+    Returns (pred_fit, pred_apply, W)."""
     w = nnls_blend(Pf, yf, row_scale)
-    vf, va = dict(vars_f, p=Pf @ w), dict(vars_a, p=Pa @ w)
+    vf = dict(vars_f, p=Pf @ w, d=disagreement(Pf))
+    va = dict(vars_a, p=Pa @ w, d=disagreement(Pa))
     Bf, Ba = vc_basis(spec, vf, vf), vc_basis(spec, vf, va)
     W = nnls_blend_vc(Pf, yf, Bf, row_scale)
     return predict_vc(Pf, W, Bf), predict_vc(Pa, W, Ba), W

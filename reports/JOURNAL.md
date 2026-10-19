@@ -429,3 +429,8 @@
 - Rantai holdout A2xM2xp2 (exp/chain_vc_AMp.log): gas 0,24514, EUI 0,64878, elec 0,31462 (v19 0,24531 / 0,64930 / 0,31475). A2: 0,24529 / 0,64909 / 0,31469.
 - sub_v19vc (exp/v19vc = blend v19 + exp/resid_knn_vc_AMp.json; sha 99148e8e...b428) submit 18:54: LB publik 0,24925 (v19 0,24934). BEST_CURRENT = sub_v19vc. Kuota hari ini tersisa 3.
 - Insiden: 18:41 guard RAM rantai v21 mematikan lp2_eui di fold 4 (dua assemble paralel menekan MemAvailable < 3 GB). Pelajaran: jangan jalankan dua assemble sekaligus saat job dev besar berjalan. Rantai v21 diluncurkan ulang 18:53.
+
+### [2026-10-19 19:30 WIB] ENS0019 lanjutan: variabel pengondisi tambahan
+- Nested (NNLS lewat persamaan normal + Cholesky, hasil identik dengan NNLS langsung untuk A2xM2xp2 = 0,242107): + s (subzona terlihat oleh model fold) 0,242123 (lebih buruk); + d (koefisien variasi prediksi anggota) 0,242074 (-0,000033 lagi; total -0,000157 vs v19). s saja 0,242243, d saja 0,242185.
+- blend.blend_vc kini menambahkan 'd' (disagreement) selain 'p'. Rantai holdout A2xM2xp2xd2 berjalan (exp/chain_vc_AMpd.log).
+- Uji yang memakan RAM besar (A3xM3xp3, 7,8 GB) dihentikan supaya guard RAM rantai v21 tidak terpicu lagi.
