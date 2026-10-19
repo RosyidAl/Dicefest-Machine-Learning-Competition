@@ -89,8 +89,9 @@ def knn_mean(Zf, sf, Za, sa, num, den, W, k, spatial=0.0):
     return cnt / (cnt + KSHR) * out
 
 
-def all_features(metric, kf, ka, r, p_fit, p_app, A_fit, A_app, Zs, f_rows, a_rows, sub_f, sub_a):
-    """group features of resid_corr.py followed by the metric's kNN features (same metric scaling)"""
+def all_features(metric, kf, ka, r, p_fit, p_app, A_fit, A_app, Zs, f_rows, a_rows, sub_f, sub_a, configs=None):
+    """group features of resid_corr.py followed by the metric's kNN features (same metric scaling); configs = list of
+    (space, W, k, spatial), default CONFIGS[metric]"""
     F = features(metric, kf, ka, r, p_fit, p_app, A_fit, A_app)
     if metric == "gas":
         num, den, mult = r, A_fit, A_app
@@ -99,7 +100,7 @@ def all_features(metric, kf, ka, r, p_fit, p_app, A_fit, A_app, Zs, f_rows, a_ro
     else:
         num, den, mult = r, p_fit, p_app
     cols = [knn_mean(Zs[space][f_rows], sub_f, Zs[space][a_rows], sub_a, num, den, W, k, sp) * mult
-            for space, W, k, sp in CONFIGS[metric]]
+            for space, W, k, sp in (CONFIGS[metric] if configs is None else configs)]
     return np.column_stack([F] + cols)
 
 

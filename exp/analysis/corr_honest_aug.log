@@ -1,0 +1,9 @@
+gas select on half 0, score other half: reselected 0.24442 (15 cfg) vs current 0.24441 -> +0.000017
+gas select on half 1, score other half: reselected 0.24589 (12 cfg) vs current 0.24590 -> -0.000011
+gas mean honest change +0.000003
+eui select on half 0, score other half: reselected 0.64716 (14 cfg) vs current 0.64728 -> -0.000122
+eui select on half 1, score other half: reselected 0.65034 (13 cfg) vs current 0.65042 -> -0.000089
+eui mean honest change -0.000106
+elec select on half 0, score other half: reselected 0.31632 (11 cfg) vs current 0.31628 -> +0.000046
+elec select on half 1, score other half: reselected 0.31296 (7 cfg) vs current 0.31296 -> -0.000001
+elec mean honest change +0.000023

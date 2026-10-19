@@ -121,3 +121,9 @@
 - Bukti LB publik: sub_v19vc 0,24925 vs sub_v19dev 0,24934 (-0,00009).
 - Keputusan: sub_v19vc = BEST_CURRENT dan kandidat Final A baru. Bobot anggota = interpolasi multilinear (hat basis) pada peringkat A (bld_dim_06), M (bld_dim_12) dan prediksi blend global p; semuanya fungsi fitur/prediksi, bukan target. Implementasi: blend.blend_vc, postprocess.blend_preds(spec), pipeline._assemble membaca "vc" dari resid_knn.json.
 - Risiko: konfigurasi final harus memuat exp/resid_knn_vc_AMp.json (λ + vc); uji regresi jalur global (v19 harus tetap 62444504...) belum selesai (dihentikan karena RAM), dijadwalkan ulang.
+
+### D013 [2026-10-19 22:53 WIB] Konfigurasi koreksi kNN EUI diperluas (PP0006); gas dan elec tetap
+- Bukti: seleksi dari nol di seluruh H tampak lebih baik di ketiga metrik, tapi cek jujur split-half (pilih di separuh H, nilai di separuh lain) memberi gas +0,000054, EUI -0,000059, elec +0,000019. Varian "CONFIGS sekarang + tambahan serakah": gas +0,000003, EUI -0,000106 (kedua separuh negatif), elec +0,000023.
+- Rantai holdout dengan 7 konfigurasi EUI tambahan (exp/chain_vc_AMp_e.log): EUI 0,64878 -> 0,64859; gas dan elec identik (λ sama persis).
+- LB publik: sub_v19vce 0,24923 vs sub_v19vc 0,24925; kolom gas, elec, rasio bersih dan adopsi identik byte dengan sub_v19vc.
+- Keputusan: sub_v19vce = BEST_CURRENT dan kandidat Final A. Konfigurasi kNN kini dibaca dari resid_knn.json ("configs") di pipeline final; konfigurasi final = exp/resid_knn_vc_AMp_e.json.

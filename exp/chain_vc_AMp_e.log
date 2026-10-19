@@ -1,0 +1,6 @@
+specs {'gas': 'A2xM2xp2', 'eui': 'A2xM2xp2', 'elec': 'A2xM2xp2'} configs exp/analysis/corr_final.json
+gas  H 0.24603 -> group 0.24547 -> group+knn 0.24514  lam [ 0.463  0.342 -0.021  0.038  0.126  0.078  0.076  0.123  0.153]
+eui  H 0.65008 -> group 0.64922 -> group+knn 0.64859  lam [ 0.603  0.299  0.027  0.007  0.054  0.036  0.047 -0.064 -0.046  0.108
+  0.13   0.076  0.236  0.088  0.051  0.041]
+elec H 0.31484 -> group 0.31466 -> group+knn 0.31462  lam [ 0.39   0.013  0.156 -0.005  0.056  0.047  0.067  0.054]
+wrote exp/resid_knn_vc_AMp_e.json

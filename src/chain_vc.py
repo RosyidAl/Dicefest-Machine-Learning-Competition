@@ -3,8 +3,10 @@ of floor area A (bld_dim_06), meters M (bld_dim_12) and / or the global blend pr
 Same hold members, correction features and cross-fitted lambda as resid_knn.fit, so the H scores compare directly
 with exp/resid_knn_fit_v19.log.
 
-usage: python src/chain_vc.py <spec> <lam_out.json>    spec: one for all metrics (e.g. A2xp2) or
-                                                      gas=A2xp2,eui=A2xM2,elec=p2 ; a bare integer n = A<n>
+usage: python src/chain_vc.py <spec> <lam_out.json> [configs.json]
+       spec: one for all metrics (e.g. A2xp2) or gas=A2xp2,eui=A2xM2,elec=p2 ; a bare integer n = A<n>
+       configs.json: kNN correction configs per metric, as {metric: {"configs": [...]}} (exp/analysis/select_corr.json)
+       or {"configs": {metric: [...]}} (a resid_knn json); default src/resid_knn.py CONFIGS
 """
 import json
 import os
@@ -29,10 +31,18 @@ def parse_specs(arg):
     return dict(p.split("=") for p in arg.split(","))
 
 
-def main(spec_arg, lam_file):
+def load_configs(path):
+    if not path:
+        return {m: [tuple(c) for c in CONFIGS[m]] for m in METRICS}
+    js = json.load(open(path))
+    return {m: [tuple(c) for c in (js["configs"][m] if "configs" in js else js[m]["configs"])] for m in METRICS}
+
+
+def main(spec_arg, lam_file, cfg_file=None):
     from train_lib import Data
     specs = parse_specs(spec_arg)
-    print("specs", specs, flush=True)
+    configs = load_configs(cfg_file)
+    print("specs", specs, "configs", cfg_file or "CONFIGS", flush=True)
     d = Data()
     tr, te = load()
     P, H = holdout_split(len(tr))
@@ -59,7 +69,7 @@ def main(spec_arg, lam_file):
             pP, pH = pP * A[P], pH * A[H]
         scale = A if metric == "gas" else np.ones(len(A))
         rP, rH = scale[P] * yv[P] - pP, scale[H] * yv[H] - pH
-        F = all_features(metric, kP, kH, rP, pP, pH, A[P], A[H], Zs, P, H, d.subn[P], d.subn[H])
+        F = all_features(metric, kP, kH, rP, pP, pH, A[P], A[H], Zs, P, H, d.subn[P], d.subn[H], configs[metric])
         base = np.sqrt(np.mean(rH ** 2)) / SIGMAS[col]
         msg = []
         for nf in (3, F.shape[1]):
@@ -70,9 +80,9 @@ def main(spec_arg, lam_file):
         lam[metric] = np.linalg.lstsq(F, rH, rcond=None)[0].tolist()
         print(f"{metric:4s} H {base:.5f} -> group {msg[0]} -> group+knn {msg[1]}  lam {np.round(lam[metric], 3)}",
               flush=True)
-    json.dump({"lam": lam, "configs": CONFIGS, "kshr": KSHR, "vc": specs}, open(lam_file, "w"), indent=1)
+    json.dump({"lam": lam, "configs": configs, "kshr": KSHR, "vc": specs}, open(lam_file, "w"), indent=1)
     print("wrote", lam_file)
 
 
 if __name__ == "__main__":
-    main(sys.argv[1], sys.argv[2])
+    main(*sys.argv[1:4])

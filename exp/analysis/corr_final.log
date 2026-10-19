@@ -1,0 +1,2 @@
+eui final: current 0.648776 -> 0.648593 with +[('era', 10, 10, 0.0), ('era', 1000, 100, 0.0), ('small', 10, 10, 0.0), ('fc', 3000, 200, 0.0), ('full', 30, 10, 4.0), ('era', 100, 20, 0.0), ('small', 30, 10, 0.0)]
+wrote exp/analysis/corr_final.json

@@ -126,9 +126,10 @@ def _correction(args):
     """residual-correction features of one metric (run in a worker process)"""
     from postprocess import all_features
     from threadpoolctl import threadpool_limits
-    metric, kt, ke, r, pf, pa, A, At, Zs, n, n_te, subn, subnt, lam = args
+    metric, kt, ke, r, pf, pa, A, At, Zs, n, n_te, subn, subnt, lam, configs = args
     with threadpool_limits(1):  # single-threaded BLAS: multithreaded gemv changes the last bit with the thread count
-        F = all_features(metric, kt, ke, r, pf, pa, A, At, Zs, np.arange(n), np.arange(n, n + n_te), subn, subnt)
+        F = all_features(metric, kt, ke, r, pf, pa, A, At, Zs, np.arange(n), np.arange(n, n + n_te), subn, subnt,
+                         configs)
         return metric, F @ np.asarray(lam)
 
 
@@ -143,7 +144,7 @@ def assemble(work, out_csv, log=print):
 def _assemble(work, out_csv, log=print):
     from blend import cv_blend_score, nnls_blend
     from dup_fix import duplicate_targets
-    from postprocess import KSHR, CONFIGS, blend_preds, group_keys, spaces
+    from postprocess import KSHR, blend_preds, group_keys, spaces
     cfg = load_config()
     tr, te = load()
     A, At = tr["bld_dim_06"].values, te["bld_dim_06"].values
@@ -179,7 +180,10 @@ def _assemble(work, out_csv, log=print):
         summary["vc"] = vc
         log(f"varying-coefficient blend {vc}")
     # 2. residual correction (group + similarity kNN), weights frozen from the holdout fit
-    assert lamcfg["configs"] == {m: [list(c) for c in v] for m, v in CONFIGS.items()} and lamcfg["kshr"] == KSHR
+    # kNN configs (space, W, k, spatial) per metric come with their weights from the same holdout fit (PP0006)
+    assert lamcfg["kshr"] == KSHR
+    configs = {m: [tuple(c) for c in lamcfg["configs"][m]] for m in METRICS}
+    summary["correction_configs"] = lamcfg["configs"]
     subn = tr["subzone_id"].str[4:].astype(int).values
     subnt = te["subzone_id"].str[4:].astype(int).values
     kt, ke = group_keys(tr, te, subn, subnt)
@@ -192,7 +196,9 @@ def _assemble(work, out_csv, log=print):
         assert np.allclose(np.clip(pa, 0, None), sub[col].values, rtol=1e-9, atol=1e-9)
         r = (A if metric == "gas" else 1.0) * yv - pf
         base[metric] = pa
-        jobs.append((metric, kt, ke, r, pf, pa, A, At, Zs, len(tr), len(te), subn, subnt, lamcfg["lam"][metric]))
+        assert len(lamcfg["lam"][metric]) == 3 + len(configs[metric])
+        jobs.append((metric, kt, ke, r, pf, pa, A, At, Zs, len(tr), len(te), subn, subnt, lamcfg["lam"][metric],
+                     configs[metric]))
     with ProcessPoolExecutor(3) as ex:
         for metric, corr in ex.map(_correction, jobs):
             col = METRICS[metric]

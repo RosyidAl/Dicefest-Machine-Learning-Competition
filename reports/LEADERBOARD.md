@@ -1,4 +1,4 @@
-# LEADERBOARD (dibangun ulang 2026-10-19 18:55 WIB)
+# LEADERBOARD (dibangun ulang 2026-10-19 22:53 WIB)
 
 Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil lebih baik.
 
@@ -325,7 +325,6 @@ Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil l
 
 | exp_id | status | model_family | nrmse_mean | nrmse_t1 | nrmse_t2 | nrmse_t3 | hypothesis |
 |---|---|---|---|---|---|---|---|
-| E0263 | done | lgb |  | 0.25629 | 0.32587 | 0.67030 | Tweedie p=1.2 pada laju per meter (bobot M) vs E0260 |
 | E0264 | done | xgb |  | 0.25085 |  | 0.66054 | Poisson XGB pada gas per meter (bobot M, offset log M), mcw setara 50 baris; vs E0190 (MSE rasio bobot M^2/A) |
 | E0265 | done | xgb |  | 0.25043 |  | 0.66307 | Poisson XGB pada EUI (laju per luas, bobot A = Poisson gas dengan offset log A), mcw setara 50 baris; vs E0190 |
 | ENS0018 | done | ensemble | 0.24960 | 0.24524 | 0.31608 | 0.65101 | NNLS blend v16 (34 anggota, FB07 kNN-target; exp/analysis/select_v16.py) = Final A (D006) |
@@ -345,6 +344,7 @@ Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil l
 | E0278 | done | lgb |  |  | 0.3473564584844149 |  | CV_SECONDARY check: LGB epm dengan TE spasial, skema secondary |
 | PP0005 | done | lgb |  |  |  |  | adoption v3: census-kNN pooled q, unseen-mix training weights, EPC subzone sums, model averaging (unseen-subzone model) |
 | ENS0019 | done | ensemble |  | 0.244817 | 0.315877 | 0.649839 | varying-coefficient NNLS blend: member weights multilinear in ranks of floor area, meters and global blend prediction (A2xM2xp2) |
+| PP0006 | done | postprocess |  | 0.24514 | 0.31462 | 0.64859 | re-select the similarity-kNN residual-correction configs for the VC blend (greedy over 39 configs on the holdout) |
 
 
 ## Submisi dengan skor public LB
@@ -365,3 +365,5 @@ Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil l
 | 2026-10-16 20:27 | submissions/sub_v16dev.csv | blend honest 0.242467 (gas+eui+elec)/5; holdout chain -0.00054 vs v15 | 0.24943 | kandidat v16, ekspektasi LB ~0.2490 submitted by user 17 Okt |
 | 2026-10-18 02:51 | submissions/sub_v18dev.csv | 0.24940 (nested; holdout chain -0.00006 vs v16) | 0.24936 | submitted by user 18 Okt |
 | 2026-10-18 11:42 | submissions/sub_v19dev.csv | 0.24937 (nested; holdout chain -0.00002 vs v18) | 0.24934 | submitted by user 18 Okt |
+| 2026-10-19 22:51 | submissions/sub_v19vce.csv | 0.64859 | 0.24923 | holdout chain EUI 0.64859 vs 0.64878 (honest split-half -0.000106); gas/elec/clean/adoption byte-identical to sub_v19vc |
+| 2026-10-19 22:53 | submissions/BEST_CURRENT.csv | 0.64859 | 0.24923 | BEST_CURRENT v19vce (LB 0.24923) |

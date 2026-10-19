@@ -13,3 +13,4 @@ date_wib,version,cv_blend_nested,post_est,public_lb,steps
 2026-10-18,v19dev,0.24937,,0.24934,Poisson x FB07b members + pk2_lgpm (v19)
 2026-10-19,v19a3,0.24937,,0.24938,v19 + adoption v3a (PP0005); only the adoption column of unseen subzones differs
 2026-10-19,v19vc,0.24925,,0.24925,varying-coefficient blend A2xM2xp2 + lambda refit (ENS0019)
+2026-10-19,v19vce,0.24923,,0.24923,v19vc + EUI kNN correction configs augmented on the holdout (PP0006); only the EUI column differs
