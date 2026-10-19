@@ -1,9 +1,9 @@
-# STATUS (diperbarui: 2026-10-18 18:35 WIB)
+# STATUS (diperbarui: 2026-10-19 13:10 WIB)
 STATUS: BERJALAN
 Fase aktif / gerbang berikutnya: v18 (arahan user: hasil terbaik) + run #1 final v16 di latar / seleksi v18 18 Okt
 Fase selesai: Fase 0, Fase 1; FREEZE v16 (D006, tag freeze-v16); v17 Poisson ditolak (D007)
 Insiden: 16 Okt ~20:40 WIB run #1 + E0260 kehabisan RAM (24 GB), container restart ~00:00. RAM sekarang 32 GB. 17 Okt 04:05 semua job nohup mati serentak.
-Job berjalan: TIDAK ADA. Server dipakai user untuk proyek kaggle sejak 11:45 18 Okt (permintaan user).
+Job berjalan: TIDAK ADA. 19 Okt 13:0x user meminta semua job DICE FEST dihentikan (jalur CPU run final v19 sempat berjalan sekitar 10 menit lalu dihentikan; belum ada anggota baru yang selesai). Jangan jalankan apa pun sebelum user mengizinkan.
 - Saat dilanjutkan: run final v19 (resume final/work/run1; baru: lk2_gpm, lp_gpm, lp_epm, xp82_gpm, xp2_gpgea, xp2_eui, xp2_epa, lp2_gpm, lp2_epm, pk2_lgpm) -> uji drift vs exp/oof|pred -> sha256 vs sub_v19dev (62444504...); lalu make_notebooks.py BISMILLAH + scripts/run_notebook.sh (full + inference)
 - Batas: server harus kembali paling lambat Selasa 20 Okt malam (run final sekitar 8 jam + notebook sekitar 30 jam)
 Cek job: systemctl status dice-run1. Selalu luncurkan job panjang dengan systemd-run (nohup setsid ikut terbunuh).

@@ -394,3 +394,4 @@
 - Uji drift anggota v18 di final/work/run1 (dilatih pipeline final 17-18 Okt): 13 anggota (xk2_gpm, xk2_lgpm, xk2_gpgea, pk2_gpgea, pk2_lepm, mk2_gpm, mk2_epm, xp_gpm, xp_eui, xp_epm, xp_gpgea, xp_epa, xp8_gpm) identik byte dengan exp/oof|pred.
 - GPU dipakai proses di luar container (PID host 931477, 13,2 GB VRAM); tidak terlihat dan tidak bisa dihentikan dari sini. User diminta mematikannya dari sisi lain.
 - 13:00 jalur CPU run final v19 dijalankan sendiri (dice-run1cpu: lk2_gpm, lp_gpm, lp_epm, lp2_gpm, lp2_epm). Jalur XGB (xp82_gpm, xp2_gpgea, xp2_eui, xp2_epa) dan NN (pk2_lgpm) menunggu GPU.
+- 13:0x atas permintaan user semua job DICE FEST dihentikan (dice-run1cpu dihentikan saat lk2_gpm fold awal; belum ada anggota baru yang selesai). Tidak ada unit dice-* yang aktif. Langkah lanjutan tetap sesuai HANDOVER.md bagian 7.
