@@ -1,9 +1,9 @@
-# STATUS (diperbarui: 2026-10-19 22:53 WIB)
+# STATUS (diperbarui: 2026-10-19 22:58 WIB)
 STATUS: BERJALAN
 Fase aktif / gerbang berikutnya: arahan user 19 Okt 16:30: fokus submisi terbaik, notebook ditunda; boleh submit langsung (token Kaggle di file privat scratchpad, KAGGLE_API_TOKEN=<path>); submit hanya bila holdout/CV lebih baik dari v19
 Fase selesai: Fase 0, Fase 1; FREEZE v16 (D006, tag freeze-v16); v17 Poisson ditolak (D007)
 Insiden: 16 Okt ~20:40 WIB run #1 + E0260 kehabisan RAM (24 GB), container restart ~00:00. RAM sekarang 32 GB. 17 Okt 04:05 semua job nohup mati serentak.
-Job berjalan: dice-run1s (logs/run1_shared.sh, run final v19 resume di final/work/run1): jalur CPU DIJEDA (SIGSTOP PID 653822 sejak 17:49, lanjutkan dengan kill -CONT 653822 setelah job LGB dev selesai); jalur XGB + NN menunggu VRAM bebas >= 10 GB (22:00: proses luar PID host 931477 masih memakai 13,2 GB). | Dev: dice-v21l (logs/dev_chain.sh: lp2_eui selesai 20:50, lp2_gpgea full sampai sekitar 22:30, lalu lp2_epa full, lalu hold ketiganya, selesai sekitar Selasa 04:00; logs/v21_guard.log). dice-corrfin: PP0006 seleksi akhir EUI + rantai lambda (exp/chain_vc_AMp_e.log -> exp/resid_knn_vc_AMp_e.json).
+Job berjalan: dice-run1s (logs/run1_shared.sh, run final v19 resume di final/work/run1): jalur CPU dilanjutkan otomatis setelah lp2_epa full selesai (sekitar 23:45; watcher menghentikan rantai v21 sebelum hold lalu SIGCONT 653822); jalur XGB + NN menunggu VRAM bebas >= 10 GB (proses luar PID host 931477 masih 13,2 GB). Setelah ketiga jalur rc=0 assemble otomatis dengan final/configs v19 dan cek sha 62444504 (uji drift); SESUDAH itu baru final/configs/resid_knn.json diganti ke exp/resid_knn_vc_AMp_e.json dan assemble ulang harus = sub_v19vce (38dd55b9). | Dev: dice-correst (PP0007 estimator alternatif koreksi kNN, exp/analysis/corr_est.log).
 - Setelah run selesai: uji drift vs exp/oof|pred; make_artifacts + make_notebooks.py BISMILLAH + scripts/run_notebook.sh (full + inference). Notebook penuh butuh sekitar 23 GB disk lagi (bebas 11 GB) dan GPU kosong.
 - Batas: server harus kembali paling lambat Selasa 20 Okt malam (run final sekitar 8 jam + notebook sekitar 30 jam)
 Cek job: systemctl status dice-run1s. Selalu luncurkan job panjang dengan systemd-run (nohup setsid ikut terbunuh).
@@ -13,7 +13,7 @@ BEST_CURRENT.csv: sub_v19vce (38dd55b9...a9e6), LB publik 0,24923 (peringkat 6; 
 Figur Fase 12: reports/figures/fig1-fig5 (src/make_figures.py); outline presentasi: reports/PRESENTATION_OUTLINE.md
 5 langkah berikutnya (fokus submisi terbaik, arahan user 19 Okt; notebook ditunda):
 1. Selesai: sub_v19vce (D013). Konfigurasi final berikutnya = exp/v19vce (members v19 + exp/resid_knn_vc_AMp_e.json)
-2. Anggota v21 (lp2_eui, lp2_gpgea, lp2_epa): setelah hold selesai, select_vc CANDS + rantai, kandidat v21vc, submit bila lebih baik
+2. Anggota v21 ditolak untuk final (nested -0,000006 total); PP0007 estimator alternatif koreksi kNN: bila cek jujur negatif di kedua separuh, dukung konfigurasi (space, W, k, sp, est) di postprocess, rantai lambda, rakit, submit
 3. Lanjutkan jalur CPU run final (kill -CONT 653822) setelah job LGB dev selesai; jalur GPU menunggu VRAM; lalu tambahkan VC + konfigurasi baru ke final/configs (members.yaml, resid_knn.json)
 4. make_artifacts + notebook (butuh GPU kosong dan sekitar 23 GB disk); writeup/FINAL_REPORT/PRESENTATION: blend VC, LB 0,24925; D-FINAL
 5. Paket final + checklist NEEDS_USER paling lambat 23 Okt 12:00

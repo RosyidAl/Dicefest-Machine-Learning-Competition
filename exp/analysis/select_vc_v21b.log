@@ -2,3 +2,6 @@
    try +lp2_eui: 0.894635
    try +lp2_gpgea: 0.894631
 +lp2_gpgea gas 0.894631
+   try +lp2_eui: 0.894624
++lp2_eui gas 0.894624
+done {'gas': (29, 0.894624)}
