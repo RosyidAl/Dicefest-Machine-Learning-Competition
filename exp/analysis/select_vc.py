@@ -18,7 +18,7 @@ from scipy.optimize import nnls
 from sklearn.model_selection import KFold
 
 sys.path.insert(0, "src")
-from blend import predict_vc, vc_basis  # noqa: E402
+from blend import disagreement, predict_vc, vc_basis  # noqa: E402
 from common import TARGET_COLS, load, nrmse  # noqa: E402
 
 SPEC, OUT = sys.argv[1], sys.argv[2]
@@ -65,9 +65,9 @@ def honest(X, y, s):
     for a, b in FOLDS:
         w = nnls_blend(X[a], y[a], s[a])
         va = {k: v[a] for k, v in V.items()}
-        va["p"] = X[a] @ w
+        va["p"], va["d"] = X[a] @ w, disagreement(X[a])
         vb = {k: v[b] for k, v in V.items()}
-        vb["p"] = X[b] @ w
+        vb["p"], vb["d"] = X[b] @ w, disagreement(X[b])
         W = nnls_blend_vc(X[a], y[a], vc_basis(SPEC, va, va), s[a])
         pred[b] = predict_vc(X[b], W, vc_basis(SPEC, va, vb))
     return pred
@@ -92,7 +92,8 @@ def screen(X, res, cands, fam):
     for i, r in enumerate(res):
         s = A if (fam == "gas" and i == 0) else np.ones(len(A))
         w = nnls_blend(X, ye if fam == "gas" else yl, s)
-        B = vc_basis(SPEC, dict(V, p=X @ w), dict(V, p=X @ w))
+        vv = dict(V, p=X @ w, d=disagreement(X))
+        B = vc_basis(SPEC, vv, vv)
         bases.append((B, s))
     for c in cands:
         tot = 0.0
