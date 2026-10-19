@@ -152,6 +152,9 @@ def _assemble(work, out_csv, log=print):
     P = {f: (np.column_stack([np.load(f"{work}/oof/{r}.npy") for r in runs[f]]),
              np.column_stack([np.load(f"{work}/pred/{r}.npy") for r in runs[f]])) for f in runs}
     summary = {}
+    lamcfg = json.load(open(os.path.join(CONF, "resid_knn.json")))
+    vc = lamcfg.get("vc", {})  # metric -> varying-coefficient spec (D012); empty = one global weight vector
+    M, Mt = tr["bld_dim_12"].values.astype(float), te["bld_dim_12"].values.astype(float)
     # 1. blend (as src/make_submission.py) and its honest nested-CV score
     w = {"eui": nnls_blend(P["gas"][0], y[EUI]), "gas": nnls_blend(P["gas"][0], y[EUI], row_scale=A),
          "elec": nnls_blend(P["elec"][0], y[EL])}
@@ -167,8 +170,15 @@ def _assemble(work, out_csv, log=print):
     sub[EUI] = np.clip(P["gas"][1] @ w["eui"], 0, None)
     sub[TARGET_COLS[3]] = np.round(100 * te["bld_dim_02"].values / te["bld_dim_01"].values, 2)
     sub[TARGET_COLS[4]] = np.clip(np.load(f"{work}/pred/adopt_v2.npy"), 0, 100)
+    if vc:  # member weights piecewise linear in the ranks of A, M and the global blend prediction (blend.blend_vc)
+        for metric, col in METRICS.items():
+            fam = "elec" if metric == "elec" else "gas"
+            _, pa = blend_preds(P[fam][0], P[fam][1], y[EL if metric == "elec" else EUI], metric, A, At,
+                                vc.get(metric, ""), M, Mt)
+            sub[col] = np.clip(pa, 0, None)
+        summary["vc"] = vc
+        log(f"varying-coefficient blend {vc}")
     # 2. residual correction (group + similarity kNN), weights frozen from the holdout fit
-    lamcfg = json.load(open(os.path.join(CONF, "resid_knn.json")))
     assert lamcfg["configs"] == {m: [list(c) for c in v] for m, v in CONFIGS.items()} and lamcfg["kshr"] == KSHR
     subn = tr["subzone_id"].str[4:].astype(int).values
     subnt = te["subzone_id"].str[4:].astype(int).values
@@ -178,7 +188,7 @@ def _assemble(work, out_csv, log=print):
     for metric, col in METRICS.items():
         fam = "elec" if metric == "elec" else "gas"
         yv = y[EL if metric == "elec" else EUI]
-        pf, pa = blend_preds(P[fam][0], P[fam][1], yv, metric, A, At)
+        pf, pa = blend_preds(P[fam][0], P[fam][1], yv, metric, A, At, vc.get(metric, ""), M, Mt)
         assert np.allclose(np.clip(pa, 0, None), sub[col].values, rtol=1e-9, atol=1e-9)
         r = (A if metric == "gas" else 1.0) * yv - pf
         base[metric] = pa

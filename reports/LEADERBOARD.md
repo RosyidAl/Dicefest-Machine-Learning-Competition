@@ -1,4 +1,4 @@
-# LEADERBOARD (dibangun ulang 2026-10-19 17:49 WIB)
+# LEADERBOARD (dibangun ulang 2026-10-19 18:55 WIB)
 
 Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil lebih baik.
 
@@ -325,7 +325,6 @@ Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil l
 
 | exp_id | status | model_family | nrmse_mean | nrmse_t1 | nrmse_t2 | nrmse_t3 | hypothesis |
 |---|---|---|---|---|---|---|---|
-| E0262 | done | lgb |  | 0.25310 | 0.32385 | 0.66536 | Poisson pada laju per meter dengan bobot M (GLM laju dengan exposure) mengalahkan E0260 |
 | E0263 | done | lgb |  | 0.25629 | 0.32587 | 0.67030 | Tweedie p=1.2 pada laju per meter (bobot M) vs E0260 |
 | E0264 | done | xgb |  | 0.25085 |  | 0.66054 | Poisson XGB pada gas per meter (bobot M, offset log M), mcw setara 50 baris; vs E0190 (MSE rasio bobot M^2/A) |
 | E0265 | done | xgb |  | 0.25043 |  | 0.66307 | Poisson XGB pada EUI (laju per luas, bobot A = Poisson gas dengan offset log A), mcw setara 50 baris; vs E0190 |
@@ -345,6 +344,7 @@ Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil l
 | E0277 | done | lgb |  | 0.36374811605371604 |  | 0.8330538274343691 | CV_SECONDARY check: LGB gpm dengan TE spasial, skema secondary |
 | E0278 | done | lgb |  |  | 0.3473564584844149 |  | CV_SECONDARY check: LGB epm dengan TE spasial, skema secondary |
 | PP0005 | done | lgb |  |  |  |  | adoption v3: census-kNN pooled q, unseen-mix training weights, EPC subzone sums, model averaging (unseen-subzone model) |
+| ENS0019 | done | ensemble |  | 0.244817 | 0.315877 | 0.649839 | varying-coefficient NNLS blend: member weights multilinear in ranks of floor area, meters and global blend prediction (A2xM2xp2) |
 
 
 ## Submisi dengan skor public LB

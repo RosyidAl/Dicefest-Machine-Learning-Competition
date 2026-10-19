@@ -114,3 +114,10 @@
 - Bukti LB publik: sub_v19a3 (hanya kolom adopsi subzona baru yang berbeda) 0,24938 vs sub_v19dev 0,24934. Simulasi subset publik dari galat CV memberi selisih -0,000016 (sd 0,000017); peluang hasil >= +0,00003 sekitar 0,3%.
 - Keputusan: anggap ada perbedaan sistematis antara subzona test baru dan proksi CV-nya; adopt_v2 tetap dipakai. Tidak ada lagi tuning adopsi berdasarkan CV saja.
 - Risiko: kecil; perubahan yang ditolak bernilai sekitar 0,00002 menurut CV.
+
+### D012 [2026-10-19 18:55 WIB] Blend dengan bobot yang bervariasi (varying-coefficient) menggantikan blend NNLS global
+- Bukti nested 5-fold jujur (anggota v19): A2 (peringkat luas, 2 knot) -0,000039; AxM -0,000077; level prediksi -0,000067; A2xM2xp2 -0,000124 (EUI 0,650288 -> 0,649839); spesifikasi yang lebih kaya (A3xM2xp2, A2xM2xp3) tidak lebih baik.
+- Bukti rantai holdout (src/chain_vc.py, λ di-fit ulang): A2xM2xp2 gas 0,24514 / EUI 0,64878 / elec 0,31462 vs v19 0,24531 / 0,64930 / 0,31475 (total -0,000164); A2 saja -0,000058.
+- Bukti LB publik: sub_v19vc 0,24925 vs sub_v19dev 0,24934 (-0,00009).
+- Keputusan: sub_v19vc = BEST_CURRENT dan kandidat Final A baru. Bobot anggota = interpolasi multilinear (hat basis) pada peringkat A (bld_dim_06), M (bld_dim_12) dan prediksi blend global p; semuanya fungsi fitur/prediksi, bukan target. Implementasi: blend.blend_vc, postprocess.blend_preds(spec), pipeline._assemble membaca "vc" dari resid_knn.json.
+- Risiko: konfigurasi final harus memuat exp/resid_knn_vc_AMp.json (λ + vc); uji regresi jalur global (v19 harus tetap 62444504...) belum selesai (dihentikan karena RAM), dijadwalkan ulang.

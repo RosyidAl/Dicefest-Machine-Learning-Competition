@@ -423,3 +423,9 @@
 - Hipotesis: anggota berbeda unggul di bangunan kecil vs besar; bobot yang bergantung ukuran (fungsi dari fitur, bukan target) menangkapnya. Implementasi: src/blend.py size_basis / nnls_blend_vc / predict_vc (peringkat = ECDF luas baris fit).
 - Uji penentu: rantai holdout dengan koreksi residual (src/chain_vc.py 2 knot, exp/chain_vc2.log) vs v19 (gas 0,24531, EUI 0,64930, elec 0,31475). Diadopsi bila ketiga metrik tidak memburuk dan total membaik.
 - Run final v19: jalur CPU dijeda (SIGSTOP) 17:49 karena dua proses LightGBM 12 thread saling memperlambat (lp2_eui fold 0 butuh 73 menit).
+
+### [2026-10-19 18:55 WIB] ENS0019 hasil: blend varying-coefficient, LB 0,24925 (D012)
+- Nested (scratchpad blend_vc*.py): A2 -0,000039, AxM -0,000077, p -0,000067, A x p -0,000087, A2xM2xp2 -0,000124 (terbaik; A3xM2xp2 0,242111, A2xM2xp3 0,242104).
+- Rantai holdout A2xM2xp2 (exp/chain_vc_AMp.log): gas 0,24514, EUI 0,64878, elec 0,31462 (v19 0,24531 / 0,64930 / 0,31475). A2: 0,24529 / 0,64909 / 0,31469.
+- sub_v19vc (exp/v19vc = blend v19 + exp/resid_knn_vc_AMp.json; sha 99148e8e...b428) submit 18:54: LB publik 0,24925 (v19 0,24934). BEST_CURRENT = sub_v19vc. Kuota hari ini tersisa 3.
+- Insiden: 18:41 guard RAM rantai v21 mematikan lp2_eui di fold 4 (dua assemble paralel menekan MemAvailable < 3 GB). Pelajaran: jangan jalankan dua assemble sekaligus saat job dev besar berjalan. Rantai v21 diluncurkan ulang 18:53.

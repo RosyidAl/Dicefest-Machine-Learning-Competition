@@ -9,7 +9,7 @@ import numpy as np
 import pandas as pd
 from sklearn.decomposition import PCA
 
-from blend import nnls_blend
+from blend import blend_vc, nnls_blend
 
 K = 30    # shrinkage n / (n + K) of a group mean
 WIN = 30  # half-width of the sub_n window
@@ -62,8 +62,14 @@ def features(metric, kf, ka, r, p_fit, p_app, A_fit, A_app):
                             window_mean(kf[2], ka[2], num, den)]) * np.reshape(mult, (-1, 1))
 
 
-def blend_preds(Pf, Pa, yf, metric, A_fit, A_app):
-    """NNLS blend as in make_submission.py; returns predictions on the metric's scale for fit and apply rows"""
+def blend_preds(Pf, Pa, yf, metric, A_fit, A_app, spec="", M_fit=None, M_app=None):
+    """NNLS blend as in make_submission.py; returns predictions on the metric's scale for fit and apply rows.
+    spec (e.g. 'A2xM2xp2'): varying-coefficient blend whose member weights are piecewise linear in the ranks of floor
+    area A, meters M and the global blend prediction p (blend.blend_vc); '' = one global weight vector."""
+    if spec:
+        s = A_fit if metric == "gas" else None
+        pf, pa, _ = blend_vc(Pf, Pa, yf, spec, dict(A=A_fit, M=M_fit), dict(A=A_app, M=M_app), s)
+        return (pf * A_fit, pa * A_app) if metric == "gas" else (pf, pa)
     if metric == "gas":
         w = nnls_blend(Pf, yf, A_fit)
         return Pf @ w * A_fit, Pa @ w * A_app

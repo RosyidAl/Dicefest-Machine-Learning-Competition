@@ -53,3 +53,28 @@ def nnls_blend_vc(P, y, B, row_scale=None):
 
 def predict_vc(P, W, B):
     return ((P @ W) * B).sum(axis=1)
+
+
+def parse_vc(spec):
+    """'A2xp2' -> [('A', 2), ('p', 2)]: product of hat bases, each on the rank of one variable"""
+    return [(t[0], int(t[1:])) for t in spec.split("x")] if spec else []
+
+
+def vc_basis(spec, fit_vars, app_vars):
+    """Product basis for spec (parse_vc); fit_vars / app_vars map a variable letter to its values on the fit rows /
+    the rows to evaluate (ranks are taken within the fit rows). Empty spec -> one constant column (global blend)."""
+    B = np.ones((len(next(iter(app_vars.values()))), 1))
+    for var, nk in parse_vc(spec):
+        b2 = size_basis(fit_vars[var], app_vars[var], np.linspace(0, 1, nk))
+        B = np.column_stack([B[:, i] * b2[:, j] for i in range(B.shape[1]) for j in range(b2.shape[1])])
+    return B
+
+
+def blend_vc(Pf, Pa, yf, spec, vars_f, vars_a, row_scale=None):
+    """size/level-varying NNLS blend. vars_f / vars_a: dicts of the conditioning variables ('A', 'M', ...) on the fit
+    and apply rows; 'p' (the global NNLS blend's prediction) is added here. Returns (pred_fit, pred_apply, W)."""
+    w = nnls_blend(Pf, yf, row_scale)
+    vf, va = dict(vars_f, p=Pf @ w), dict(vars_a, p=Pa @ w)
+    Bf, Ba = vc_basis(spec, vf, vf), vc_basis(spec, vf, va)
+    W = nnls_blend_vc(Pf, yf, Bf, row_scale)
+    return predict_vc(Pf, W, Bf), predict_vc(Pa, W, Ba), W

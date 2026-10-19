@@ -1,8 +1,10 @@
-"""Holdout chain (src/resid_knn.py fit) with the size-varying blend: member weights piecewise-linear in the rank of
-floor area (bld_dim_06) over the fit rows (src/blend.py size_basis / nnls_blend_vc). Same hold members, correction
-features and cross-fitted lambda as resid_knn.fit, so the H scores compare directly with exp/resid_knn_fit_v19.log.
+"""Holdout chain (src/resid_knn.py fit) with a varying-coefficient blend: member weights piecewise-linear in the ranks
+of floor area A (bld_dim_06), meters M (bld_dim_12) and / or the global blend prediction p (src/blend.py blend_vc).
+Same hold members, correction features and cross-fitted lambda as resid_knn.fit, so the H scores compare directly
+with exp/resid_knn_fit_v19.log.
 
-usage: python src/chain_vc.py <n_knots> <lam_out.json>
+usage: python src/chain_vc.py <spec> <lam_out.json>    spec: one for all metrics (e.g. A2xp2) or
+                                                      gas=A2xp2,eui=A2xM2,elec=p2 ; a bare integer n = A<n>
 """
 import json
 import os
@@ -12,23 +14,25 @@ import numpy as np
 from sklearn.model_selection import KFold
 
 sys.path.insert(0, os.path.dirname(__file__))
-from blend import nnls_blend_vc, predict_vc, size_basis  # noqa: E402
+from blend import blend_vc  # noqa: E402
 from common import SIGMAS, holdout_split, load  # noqa: E402
 from prune import ELEC  # noqa: E402
 from resid_corr import EL, EUI, METRICS, X8, group_keys  # noqa: E402
 from resid_knn import CONFIGS, KSHR, all_features, spaces  # noqa: E402
 
 
-def blend_vc(Pf, Pa, yf, metric, A_fit, A_app, knots):
-    Bf, Ba = size_basis(A_fit, A_fit, knots), size_basis(A_fit, A_app, knots)
-    W = nnls_blend_vc(Pf, yf, Bf, A_fit if metric == "gas" else None)
-    s_f, s_a = (A_fit, A_app) if metric == "gas" else (1.0, 1.0)
-    return predict_vc(Pf, W, Bf) * s_f, predict_vc(Pa, W, Ba) * s_a
+def parse_specs(arg):
+    if arg.isdigit():
+        arg = f"A{arg}"
+    if "=" not in arg:
+        return {m: arg for m in METRICS}
+    return dict(p.split("=") for p in arg.split(","))
 
 
-def main(n_knots, lam_file):
+def main(spec_arg, lam_file):
     from train_lib import Data
-    knots = np.linspace(0, 1, n_knots)
+    specs = parse_specs(spec_arg)
+    print("specs", specs, flush=True)
     d = Data()
     tr, te = load()
     P, H = holdout_split(len(tr))
@@ -42,13 +46,17 @@ def main(n_knots, lam_file):
     path = lambda n, part: next(f for f in (f"exp/hold/{part}/{n}.npy", f"exp/hold/tune/{part}/{n}.npy")  # noqa: E731
                                 if os.path.exists(f))
     A = tr["bld_dim_06"].values
+    M = tr["bld_dim_12"].values.astype(float)
     lam = {}
     for metric, col in METRICS.items():
         names = el if metric == "elec" else gas
         Po = np.column_stack([np.load(path(n, "oof")) for n in names])
         Ph = np.column_stack([np.load(path(n, "pred")) for n in names])
         yv = tr[EL if metric == "elec" else EUI].values
-        pP, pH = blend_vc(Po, Ph, yv[P], metric, A[P], A[H], knots)
+        sc = A[P] if metric == "gas" else None
+        pP, pH, _ = blend_vc(Po, Ph, yv[P], specs[metric], dict(A=A[P], M=M[P]), dict(A=A[H], M=M[H]), sc)
+        if metric == "gas":
+            pP, pH = pP * A[P], pH * A[H]
         scale = A if metric == "gas" else np.ones(len(A))
         rP, rH = scale[P] * yv[P] - pP, scale[H] * yv[H] - pH
         F = all_features(metric, kP, kH, rP, pP, pH, A[P], A[H], Zs, P, H, d.subn[P], d.subn[H])
@@ -62,9 +70,9 @@ def main(n_knots, lam_file):
         lam[metric] = np.linalg.lstsq(F, rH, rcond=None)[0].tolist()
         print(f"{metric:4s} H {base:.5f} -> group {msg[0]} -> group+knn {msg[1]}  lam {np.round(lam[metric], 3)}",
               flush=True)
-    json.dump({"lam": lam, "configs": CONFIGS, "kshr": KSHR, "vc_knots": knots.tolist()}, open(lam_file, "w"), indent=1)
+    json.dump({"lam": lam, "configs": CONFIGS, "kshr": KSHR, "vc": specs}, open(lam_file, "w"), indent=1)
     print("wrote", lam_file)
 
 
 if __name__ == "__main__":
-    main(int(sys.argv[1]), sys.argv[2])
+    main(sys.argv[1], sys.argv[2])
