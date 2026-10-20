@@ -1,0 +1,30 @@
+deltas P-OOF {'gas': [0.1974, 0.0785], 'eui': [0.2098, 0.0334], 'elec': [0.1785, 0.063]} | full-train OOF {'gas': [0.1994, 0.062], 'eui': [0.1817, 0.0302], 'elec': [0.1871, 0.071]}
+
+(1) S1 on H (P-OOF deltas applied to the corrected H predictions)
+   gas  (2, 3) n   48 H-realised bias +0.240 | TOTAL realised -0.00000116 expected(b=dP) -0.00000081 expected(b=dF) -0.00000083 noise sd 0.00000056
+   gas  (4, 4) n  205 H-realised bias +0.078 | TOTAL realised -0.00000069 expected(b=dP) -0.00000070 expected(b=dF) -0.00000040 noise sd 0.00000050
+   eui  (2, 3) n   48 H-realised bias +0.156 | TOTAL realised -0.00003241 expected(b=dP) -0.00006603 expected(b=dF) -0.00004832 noise sd 0.00004023
+   eui  (4, 4) n  205 H-realised bias +0.046 | TOTAL realised -0.00001053 expected(b=dP) -0.00000596 expected(b=dF) -0.00000481 noise sd 0.00000945
+   elec (2, 3) n   48 H-realised bias +0.223 | TOTAL realised -0.00000070 expected(b=dP) -0.00000047 expected(b=dF) -0.00000051 noise sd 0.00000045
+   elec (4, 4) n  205 H-realised bias +0.058 | TOTAL realised -0.00000027 expected(b=dP) -0.00000032 expected(b=dF) -0.00000040 noise sd 0.00000035
+   S1 TOTAL realised -0.00004576 expected(b=full OOF) -0.00005527 noise sd 0.00004134 -> z of (realised - expected) +0.23
+
+(1b) S3 on H after S1 (k fitted on all of H, i.e. the expectation uses k* = k)
+   gas  k 0.5046 rows |kx|>1e-3 sigma 980 | TOTAL realised(in-sample k) -0.00001628 expected -0.00001628 noise sd 0.00001127
+   eui  k 0.6574 rows |kx|>1e-3 sigma 991 | TOTAL realised(in-sample k) -0.00000423 expected -0.00000423 noise sd 0.00000272
+
+(2) test: rows 183987, duplicates (not changed) 77, M groups [60, 298] (H [48, 205])
+   S1 gas  (2, 3): expected TOTAL test -0.00000080 vs H -0.00000081 (ratio 0.99) | rms p test 5.905e+04 H 5.619e+04 | n/N test 0.00033 H 0.00037 | p quartiles test [40690.1, 52449.2, 66026.1] H [37962.7, 49845.1, 66065.6]
+   S1 gas  (4, 4): expected TOTAL test -0.00000049 vs H -0.00000070 (ratio 0.70) | rms p test 6.649e+04 H 6.33e+04 | n/N test 0.00162 H 0.00159 | p quartiles test [46683.0, 56257.0, 74878.7] H [44761.3, 55173.9, 71267.3]
+   S3 gas : expected TOTAL test -0.00001231 vs H -0.00001628 (ratio 0.76) | rows |kx|>1e-3 sigma per 1e5: test 745.7 H 760.9 | sum (kx)^2/N/sigma^2 test 3.019e-05 H 3.991e-05
+      share of rows with base gas pred > 0.80 cap: test 0.002876 H 0.002896; truth share in train > 0.80 cap 0.004225
+      share of rows with base gas pred > 0.90 cap: test 0.000582 H 0.000606; truth share in train > 0.90 cap 0.001151
+      share of rows with base gas pred > 0.95 cap: test 0.000163 H 0.000280; truth share in train > 0.95 cap 0.000452
+      share of rows with base gas pred > 1.00 cap: test 0.000038 H 0.000085; truth share in train > 1.00 cap 0.000000
+   S1 eui  (2, 3): expected TOTAL test -0.00003659 vs H -0.00006603 (ratio 0.55) | rms p test 190.9 H 207.7 | n/N test 0.00033 H 0.00037 | p quartiles test [141.6, 169.6, 209.8] H [149.9, 186.6, 235.8]
+   S1 eui  (4, 4): expected TOTAL test -0.00000460 vs H -0.00000596 (ratio 0.77) | rms p test 182.9 H 189.8 | n/N test 0.00162 H 0.00159 | p quartiles test [145.3, 174.4, 207.4] H [146.3, 175.9, 214.2]
+   S3 eui : expected TOTAL test -0.00000336 vs H -0.00000423 (ratio 0.79) | rows |kx|>1e-3 sigma per 1e5: test 765.8 H 769.5 | sum (kx)^2/N/sigma^2 test 2.177e-05 H 2.743e-05
+   S1 elec (2, 3): expected TOTAL test -0.00000046 vs H -0.00000047 (ratio 0.99) | rms p test 1.487e+04 H 1.465e+04 | n/N test 0.00033 H 0.00037 | p quartiles test [10876.9, 12913.3, 16555.0] H [10309.2, 13527.2, 16426.2]
+   S1 elec (4, 4): expected TOTAL test -0.00000044 vs H -0.00000032 (ratio 1.40) | rms p test 1.72e+04 H 1.654e+04 | n/N test 0.00162 H 0.00159 | p quartiles test [13135.4, 15494.0, 18855.7] H [13262.9, 15110.2, 17918.2]
+   expected S1+S3 TOTAL: test -0.00005905 vs H -0.00009479
+maxrss 457056 kB, 2.93 s

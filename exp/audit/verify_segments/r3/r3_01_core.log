@@ -1,0 +1,36 @@
+sanity {"P_H_disjoint": true, "P_plus_H": 429303, "gas_y_H_vs_parquet": 3.4924596548080444e-10, "gas_pP_plus_rP_vs_parquet": 3.4924596548080444e-10, "eui_y_H_vs_parquet": 5.684341886080802e-14, "eui_pP_plus_rP_vs_parquet": 5.684341886080802e-14, "train_gas_max": 999764.8988254856, "train_gas_n_ge_1e6": 0, "eui_times_A_vs_gas_max_rel": 6.365377175664286e-16}
+base NRMSE on H {'gas': 0.245144, 'eui': 0.648593, 'gas_teacher': 0.246026, 'eui_teacher': 0.650075}
+  a_kP_gas                 0.08520
+  a_kP_eui_own             0.09160
+  a_H_gas                  -0.00001952
+  a_H_eui_gask             -0.00000500
+  a_H_eui_ownk             -0.00000513
+  a_H_total_gask           -0.00002452
+  a_Hteacher_gas           -0.00001821
+  a_Hteacher_eui           -0.00000480
+  k008_H_gas               -0.00001969
+  k008_H_eui               -0.00000481
+  k008_H_total             -0.00002450
+  diag_kH_corrected_gas    0.08061
+  diag_kH_teacher_gas      0.08051
+  diag_kH_corrected_eui    0.09466
+  c_P_gas                  -0.00002474
+  c_P_eui_gask             -0.00000386
+cross-fits inside H:
+  5fold        {'gas_mean': np.float64(-1.832e-05), 'gas_sd': np.float64(9.2e-07), 'gas_worst': np.float64(-1.525e-05), 'eui_mean': np.float64(-4.67e-06), 'eui_sd': np.float64(2.7e-07), 'tot_mean': np.float64(-2.299e-05), 'tot_worst': np.float64(-1.927e-05), 'share_tot_neg': 1.0}
+  2fold        {'gas_mean': np.float64(-1.836e-05), 'gas_sd': np.float64(1.83e-06), 'gas_worst': np.float64(-1.041e-05), 'eui_mean': np.float64(-4.71e-06), 'eui_sd': np.float64(4.9e-07), 'tot_mean': np.float64(-2.307e-05), 'tot_worst': np.float64(-1.413e-05), 'share_tot_neg': 1.0}
+  subn_blocks  {'gas': -1.848e-05, 'eui': -4.72e-06, 'tot': -2.32e-05, 'k_gas': [0.0747, 0.08, 0.0792, 0.083, 0.0838, 0.08, 0.0811, 0.0793, 0.078, 0.0853], 'k_eui': [0.0831, 0.094, 0.0954, 0.0972, 0.0956, 0.0947, 0.0945, 0.0944, 0.094, 0.0988]}
+double bootstrap: k (P resampled) mean 0.0850 sd 0.0056 5..95% 0.0759..0.0941
+  H        n=128791: total change mean -0.00002391 sd 0.00000856  P(<0) 0.998  5% -0.00003918  95% -0.00001045
+  public   n= 55196: total change mean -0.00002448 sd 0.00001328  P(<0) 0.985  5% -0.00004706  95% -0.00000497
+  private  n=128791: total change mean -0.00002402 sd 0.00000862  P(<0) 1.000  5% -0.00003868  95% -0.00001058
+gas SSE change on H (sigma^2 units) -6.161; rows changed > 1 kWh 933; helped 330 hurt 354
+   remove gain of the  0 most-helped rows: gas dTotal -0.00001952
+   remove gain of the  1 most-helped rows: gas dTotal -0.00001604
+   remove gain of the  3 most-helped rows: gas dTotal -0.00001180
+   remove gain of the  5 most-helped rows: gas dTotal -0.00000787
+   remove gain of the 10 most-helped rows: gas dTotal -0.00000117
+   remove gain of the 20 most-helped rows: gas dTotal +0.00000508
+   remove loss of the  5 most-hurt rows: gas dTotal -0.00002266
+   remove loss of the 10 most-hurt rows: gas dTotal -0.00002505
+elapsed 69.0 s maxrss 247848 kB

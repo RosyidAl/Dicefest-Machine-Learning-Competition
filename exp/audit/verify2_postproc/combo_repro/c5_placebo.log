@@ -1,0 +1,3 @@
+real S1 (5-fold seed0) total -0.00004732
+placebo (200 draws): mean +0.00000108 sd 0.00000084 min -0.00000142 q05 -0.00000025 | real -0.00004732, empirical p 0.0050
+maxrss 283608 kB, 71.58 s

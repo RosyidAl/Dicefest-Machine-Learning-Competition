@@ -59,4 +59,8 @@ for name in names:
     folds = None
     if mode == "smoke":
         kw["epochs"], folds = 2, [0, 1]
+    if os.environ.get("NCA_DEVICE") == "cpu":  # shared GPU full: CPU run (results differ from a GPU run)
+        import torch
+        torch.set_num_threads(int(os.environ.get("NCA_THREADS", "12")))
+        kw["dev"] = "cpu"
     run_nca(D, name, kind, out_dir=out, wmul=W[wk], folds=folds, **agg, **kw)

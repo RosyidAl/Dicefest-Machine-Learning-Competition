@@ -1,0 +1,7 @@
+submissions/sub_v19vce.csv                       sha 38dd55b9e150  gas max   1061409  >0.95e6  30  >1e6 7  eui*A max   1065514  | k=0.08 applied on top: rows moved > 0.1 sigma  81, rms move/sigma 0.00556
+exp/audit/segments/sub_v19vce_cap_k0.08.csv      sha 5d95cb7945e9  gas max    950325  >0.95e6   1  >1e6 0  eui*A max    951028  | k=0.08 applied on top: rows moved > 0.1 sigma  40, rms move/sigma 0.00273
+submissions/sub_v19ncapp.csv                     sha c24fbd0779b9  gas max    990542  >0.95e6  10  >1e6 0  eui*A max    970018  | k=0.08 applied on top: rows moved > 0.1 sigma  37, rms move/sigma 0.00309
+submissions/sub_v19nca2pp.csv                    sha 9dc0974e84c7  gas max    990542  >0.95e6  10  >1e6 0  eui*A max    970018  | k=0.08 applied on top: rows moved > 0.1 sigma  37, rms move/sigma 0.00309
+submissions/BEST_CURRENT.csv                     sha 9dc0974e84c7  gas max    990542  >0.95e6  10  >1e6 0  eui*A max    970018  | k=0.08 applied on top: rows moved > 0.1 sigma  37, rms move/sigma 0.00309
+H corrected gas: k 0.08 once dTotal -0.00001969  twice (stacked) -0.00001630
+H corrected eui: k 0.08 once dTotal -0.00000481  twice (stacked) -0.00000532

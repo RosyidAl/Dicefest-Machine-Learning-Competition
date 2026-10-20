@@ -1,0 +1,11 @@
+ nrow  subzones  expected_unseen  observed_unseen     z
+    1     19850           5955.0             5916 -0.60
+    2     28259           2543.3             2579  0.74
+    3     32817            886.0              888  0.07
+    4     30073            243.6              236 -0.49
+    5     22698             55.2               51 -0.56
+    6     14318             10.4                7 -1.06
+    7      7942              1.7                0 -1.32
+    8      4109              0.3                0 -0.52
+nrow=1: AUC 0.5008 (shuffled-label reference 0.4977), n=19850 unseen=5916
+nrow=2: AUC 0.5016 (shuffled-label reference 0.5071), n=28259 unseen=2579

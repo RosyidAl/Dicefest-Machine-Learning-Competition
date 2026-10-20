@@ -1,0 +1,17 @@
+H gas max y 999764.8988254856 n y>=980k 25 n pred>1e6 11 n pred>9e5 77
+P side: rP==y-pP check: mean rP 6.11493730585961  pP max 1129308.8963246918
+P y max 999305.155724838
+eui identity check on H: corr(ey*AH, ?) n/a; max ey*AH 999764.8988254856
+base gas 0.245144 eui 0.648593
+P-fit knot 850000 beta -0.4380  dgas -0.0000995 deui -0.0000268 total -0.00002524
+P-fit knot 900000 beta -0.7275  dgas -0.0000936 deui -0.0000234 total -0.00002341
+P-fit knot 950000 beta -1.1068  dgas -0.0000665 deui -0.0000129 total -0.00001589
+hard clip only total -0.00000348
+H 5-fold crossfit (40 seeds): dgas mean -0.0000897 deui -0.0000219 total mean -0.00002233 sd 0.00000071 min -0.00002336 max -0.00002006
+split-half total mean -0.00002198 sd 0.00000771 frac<0 0.988
+bin [800000,900000) n 293 mean resid 2322 se 4616
+bin [900000,950000) n 42 mean resid -16558 se 8084
+bin [950000,2000000) n 35 mean resid -61392 se 10988
+after fix top bin resid 100
+truncnorm c=0.085 total -0.00002452
+G on top of truncnorm: beta 0.0088 incremental total +0.00000000

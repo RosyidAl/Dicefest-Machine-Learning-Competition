@@ -1,0 +1,38 @@
+== gas: group recompute max rel err 2.88e-08; teacher 0.246026; stored corrected 0.245144; recomputed (float32 F) 0.245144
+  kNN pool counts: share of rows with c<k per config [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  [E1 KSHR] base 0.245144; best on all H 50.0: -0.0000000; top [(50.0, np.float64(-0.0)), (20.0, np.float64(-0.0)), (10.0, np.float64(-0.0)), (5.0, np.float64(0.0))]
+  [E1 KSHR] split-half honest mean +0.0000000 (per split/half [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]); picks [50.0, 0.0, 50.0, 0.0, 0.0, 50.0, 50.0, 0.0]
+  [E2 two-level K] base 0.245144; best on all H base: +0.0000000; top [('base', np.float64(0.0)), ((30, 100), np.float64(6.8e-06)), ((10, 100), np.float64(8e-06)), ((10, 300), np.float64(8.8e-06))]
+  [E2 two-level K] split-half honest mean +0.0000000 (per split/half [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]); picks ['base', 'base', 'base', 'base', 'base', 'base', 'base', 'base']
+  [E3 Kish n_eff] base 0.245144; best on all H base: +0.0000000; top [('base', np.float64(0.0)), (('kish', 30), np.float64(9e-07)), (('kish', 10), np.float64(1.4e-06)), (('kish', 100), np.float64(6.1e-06))]
+  [E3 Kish n_eff] split-half honest mean +0.0000012 (per split/half [6e-07, 0.0, 4.4e-06, -1e-06, 0.0, 3.7e-06, 2.1e-06, 0.0]); picks [('kish', 10), 'base', ('kish', 10), ('kish', 30), 'base', ('kish', 10), ('kish', 30), 'base']
+  [E4 joint K x WIN x KSHR] base 0.245144; best on all H (30, 30, 20.0): -0.0000000; top [((30, 30, 20.0), np.float64(-0.0)), ((30, 30, 5.0), np.float64(0.0)), ((30, 30, 2.0), np.float64(0.0)), ((30, 100, 20.0), np.float64(0.0))]
+  [E4 joint K x WIN x KSHR] split-half honest mean +0.0000035 (per split/half [-1.8e-06, -7e-06, 2.16e-05, 1.27e-05, 1e-06, -1.15e-05, 9.6e-06, 3e-06]); picks [(30, 10, 20.0), (30, 10, 2.0), (10, 100, 20.0), (100, 30, 2.0), (100, 10, 2.0), (30, 10, 20.0), (30, 100, 20.0), (30, 10, 2.0)]
+  (36s)
+== eui: group recompute max rel err 4.08e-08; teacher 0.650075; stored corrected 0.648593; recomputed (float32 F) 0.648593
+  kNN pool counts: share of rows with c<k per config [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  [E1 KSHR] base 0.648593; best on all H 50.0: -0.0000000; top [(50.0, np.float64(-0.0)), (20.0, np.float64(-0.0)), (10.0, np.float64(-0.0)), (5.0, np.float64(0.0))]
+  [E1 KSHR] split-half honest mean +0.0000000 (per split/half [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]); picks [50.0, 0.0, 50.0, 0.0, 0.0, 50.0, 50.0, 0.0]
+  [E2 two-level K] base 0.648593; best on all H (30, 100): -0.0000096; top [((30, 100), np.float64(-9.6e-06)), ((3, 30, 300), np.float64(-8.4e-06)), ((10, 300), np.float64(-4.1e-06)), ((10, 100), np.float64(-2.6e-06))]
+  [E2 two-level K] split-half honest mean +0.0000113 (per split/half [0.0, 3.76e-05, 2.96e-05, 0.0, 2.35e-05, 0.0, 0.0, 0.0]); picks ['base', (10, 30), (30, 100), 'base', (10, 300), 'base', 'base', 'base']
+  [E3 Kish n_eff] base 0.648593; best on all H ('kish', 10): -0.0000040; top [(('kish', 10), np.float64(-4e-06)), (('kish', 30), np.float64(-1e-07)), ('base', np.float64(0.0)), (('kish', 3), np.float64(7.4e-06))]
+  [E3 Kish n_eff] split-half honest mean +0.0000010 (per split/half [-2.6e-06, -1.21e-05, 2.23e-05, 0.0, 1.5e-06, 4e-06, -3e-06, -1.8e-06]); picks [('kish', 10), ('kish', 10), ('kish', 3), 'base', ('kish', 10), ('kish', 30), ('kish', 10), ('kish', 10)]
+  [E4 joint K x WIN x KSHR] base 0.648593; best on all H (30, 100, 20.0): -0.0000070; top [((30, 100, 20.0), np.float64(-7e-06)), ((30, 100, 5.0), np.float64(-7e-06)), ((30, 100, 2.0), np.float64(-7e-06)), ((10, 100, 20.0), np.float64(-7e-06))]
+  [E4 joint K x WIN x KSHR] split-half honest mean +0.0000009 (per split/half [-6.5e-06, -1.27e-05, 1.91e-05, 2e-06, 7.9e-06, -5e-06, 2.4e-06, 0.0]); picks [(10, 100, 20.0), (10, 100, 2.0), (10, 100, 20.0), (30, 10, 5.0), (10, 100, 2.0), (30, 100, 20.0), (30, 100, 20.0), (30, 30, 2.0)]
+  (99s)
+== elec: group recompute max rel err 2.76e-08; teacher 0.314840; stored corrected 0.314623; recomputed (float32 F) 0.314623
+  kNN pool counts: share of rows with c<k per config [0.0, 0.0, 0.0, 0.0, 0.0]
+  [E1 KSHR] base 0.314623; best on all H 0.0: +0.0000000; top [(0.0, np.float64(0.0)), (1.0, np.float64(0.0)), (2.0, np.float64(0.0)), (5.0, np.float64(0.0))]
+  [E1 KSHR] split-half honest mean +0.0000000 (per split/half [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]); picks [0.0, 0.0, 0.0, 0.0, 0.0, 5.0, 0.0, 0.0]
+  [E2 two-level K] base 0.314623; best on all H base: +0.0000000; top [('base', np.float64(0.0)), ((10, 300), np.float64(1.44e-05)), ((3, 300), np.float64(1.45e-05)), ((10, 100), np.float64(1.48e-05))]
+  [E2 two-level K] split-half honest mean +0.0000031 (per split/half [2.5e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]); picks [(10, 300), 'base', 'base', 'base', 'base', 'base', 'base', 'base']
+  [E3 Kish n_eff] base 0.314623; best on all H base: +0.0000000; top [('base', np.float64(0.0)), (('kish', 10), np.float64(1e-06)), (('kish', 30), np.float64(1.2e-06)), (('kish', 3), np.float64(1.5e-06))]
+  [E3 Kish n_eff] split-half honest mean +0.0000018 (per split/half [1e-07, 0.0, 8e-06, -4e-07, 1.07e-05, -3e-07, -4e-06, 5e-07]); picks [('kish', 3), 'base', ('kish', 3), ('kish', 100), ('kish', 3), ('kish', 100), ('kish', 10), ('kish', 3)]
+  [E4 joint K x WIN x KSHR] base 0.314623; best on all H (100, 10, 2.0): -0.0000018; top [((100, 10, 2.0), np.float64(-1.8e-06)), ((100, 10, 5.0), np.float64(-1.8e-06)), ((100, 10, 20.0), np.float64(-1.8e-06)), ((30, 10, 2.0), np.float64(-1.3e-06))]
+  [E4 joint K x WIN x KSHR] split-half honest mean +0.0000034 (per split/half [0.0, 0.0, 1.37e-05, -7e-07, 3.42e-05, 1e-07, -6.6e-06, -1.36e-05]); picks [(10, 30, 2.0), (30, 30, 2.0), (10, 100, 2.0), (100, 30, 2.0), (10, 10, 2.0), (100, 30, 2.0), (10, 10, 2.0), (10, 10, 2.0)]
+  (127s)
+TOTAL E1_kshr: honest split-half +0.00000000; all-H best (optimistic) -0.00000000
+TOTAL E2_twolevel: honest split-half +0.00000289; all-H best (optimistic) -0.00000192
+TOTAL E3_kish: honest split-half +0.00000082; all-H best (optimistic) -0.00000081
+TOTAL E4_joint: honest split-half +0.00000155; all-H best (optimistic) -0.00000177
+wrote exp/audit/corrhyper/c01_shrink.json

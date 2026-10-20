@@ -1,0 +1,10 @@
+gas  M2-3: d +0.1994 | bias train-alone +0.374 (n 9) seen +0.189 (n 127) | test n 60 unseen 3 | expected TOTAL pooled-b -0.00000080 split-b -0.00000079 (boot 5-95% -0.00000123 -0.00000037)
+gas  M4-4: d +0.0620 | bias train-alone +0.168 (n 59) seen +0.052 (n 682) | test n 298 unseen 23 | expected TOTAL pooled-b -0.00000049 split-b -0.00000046 (boot 5-95% -0.00000081 -0.00000009)
+eui  M2-3: d +0.1817 | bias train-alone +0.446 (n 9) seen +0.156 (n 127) | test n 60 unseen 3 | expected TOTAL pooled-b -0.00003659 split-b -0.00003165 (boot 5-95% -0.00005176 -0.00001164)
+eui  M4-4: d +0.0302 | bias train-alone +0.110 (n 59) seen +0.023 (n 682) | test n 298 unseen 23 | expected TOTAL pooled-b -0.00000460 split-b -0.00000469 (boot 5-95% -0.00001145 +0.00000179)
+elec M2-3: d +0.1871 | bias train-alone +0.122 (n 9) seen +0.191 (n 127) | test n 60 unseen 3 | expected TOTAL pooled-b -0.00000046 split-b -0.00000046 (boot 5-95% -0.00000078 -0.00000014)
+elec M4-4: d +0.0710 | bias train-alone +0.151 (n 59) seen +0.063 (n 682) | test n 298 unseen 23 | expected TOTAL pooled-b -0.00000044 split-b -0.00000042 (boot 5-95% -0.00000092 +0.00000008)
+S1 expected TOTAL on test: pooled-b -0.00004338 | seen/unseen-b -0.00003846 | bootstrap of b: mean -0.00003844, 5-95% [-0.00006011, -0.00001827], P(expected gain >= 0) 0.000
+S3 expected TOTAL on test (v02): -0.00001567; S4 on test (3 elec rows) ~0
+=> expected TOTAL change on test S1+S3+S4: -0.00005413 (pooled-b -0.00005905); claim -0.0000652
+maxrss 345872 kB, 4.09 s

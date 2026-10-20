@@ -1,0 +1,131 @@
+{
+ "E1 gas clip 1e6": {
+  "n": 11,
+  "base": 0.24514443281708553,
+  "dnrmse": -1.528241094311822e-05,
+  "dtotal": -3.0564821886236437e-06,
+  "rows_better": 11,
+  "rows_worse": 0,
+  "y_of_changed_max": 999764.8988254856
+ },
+ "E1 gas clip max gas over P (999305)": {
+  "n": 11,
+  "base": 0.24514443281708553,
+  "dnrmse": -1.5765664818645497e-05,
+  "dtotal": -3.1531329637290995e-06,
+  "rows_better": 11,
+  "rows_worse": 0,
+  "y_of_changed_max": 999764.8988254856
+ },
+ "E1 eui clip 1e6/A": {
+  "n": 10,
+  "base": 0.648592771967224,
+  "dnrmse": -2.1176828837177197e-06,
+  "dtotal": -4.2353657674354396e-07,
+  "rows_better": 10,
+  "rows_worse": 0,
+  "y_of_changed_max": 205.2379531390475
+ },
+ "E1 eui clip maxgasP/A": {
+  "n": 11,
+  "base": 0.648592771967224,
+  "dnrmse": -2.168571435312572e-06,
+  "dtotal": -4.3371428706251434e-07,
+  "rows_better": 11,
+  "rows_worse": 0,
+  "y_of_changed_max": 205.2379531390475
+ },
+ "E1 gas clip 1e6 (teacher)": {
+  "n": 9,
+  "base": 0.24602575988566863,
+  "dnrmse": -1.264148036345114e-05,
+  "dtotal": -2.5282960726902282e-06,
+  "rows_better": 9,
+  "rows_worse": 0,
+  "y_of_changed_max": 999764.8988254856
+ },
+ "E1 eui clip 1e6/A (teacher)": {
+  "n": 11,
+  "base": 0.6500752791478267,
+  "dnrmse": -1.5902474064244387e-06,
+  "dtotal": -3.1804948128488777e-07,
+  "rows_better": 11,
+  "rows_worse": 0,
+  "y_of_changed_max": 205.2379531390475
+ },
+ "E2 gas clip 1e6": {
+  "n": 23,
+  "base": 0.24739218791568057,
+  "dnrmse": -4.3058170425214204e-05,
+  "dtotal": -8.61163408504284e-06,
+  "rows_better": 23,
+  "rows_worse": 0,
+  "y_of_changed_max": 999305.155724838
+ },
+ "E2 gas clip max gas over H (999765)": {
+  "n": 23,
+  "base": 0.24739218791568057,
+  "dnrmse": -4.324465438373948e-05,
+  "dtotal": -8.648930876747896e-06,
+  "rows_better": 23,
+  "rows_worse": 0,
+  "y_of_changed_max": 999305.155724838
+ },
+ "E2 eui clip 1e6/A": {
+  "n": 25,
+  "base": 0.6554127374812637,
+  "dnrmse": -4.897170487461189e-06,
+  "dtotal": -9.794340974922378e-07,
+  "rows_better": 25,
+  "rows_worse": 0,
+  "y_of_changed_max": 182.79360842508973
+ },
+ "E2 eui clip maxgasH/A": {
+  "n": 25,
+  "base": 0.6554127374812637,
+  "dnrmse": -4.918816829957429e-06,
+  "dtotal": -9.837633659914857e-07,
+  "rows_better": 25,
+  "rows_worse": 0,
+  "y_of_changed_max": 182.79360842508973
+ },
+ "E3 halves": [
+  -9.687186567852724e-07,
+  -6.098686505218165e-06
+ ],
+ "E3 5-fold": [
+  -2.5796527627963694e-06,
+  0.0,
+  -8.540259206879507e-07,
+  -3.0705256727325823e-06,
+  -1.0956917585946967e-05
+ ],
+ "E4": {
+  "mean": -3.4664658525874953e-06,
+  "sd": 1.654478479106063e-06,
+  "share_le0": 1.0
+ },
+ "cond H corrected": {
+  "n": 11,
+  "mean_y": 953686.9864390023,
+  "mean_pred": 1018091.6051551175
+ },
+ "cond H teacher": {
+  "n": 9,
+  "mean_y": 960431.521711276,
+  "mean_pred": 1022768.5239731611
+ },
+ "cond P teacher": {
+  "n": 23,
+  "mean_y": 940850.3110936256,
+  "mean_pred": 1036609.453042107
+ },
+ "cond H corrected eui": {
+  "n": 10,
+  "mean_yA": 957834.9873229694
+ },
+ "cond P teacher eui": {
+  "n": 25,
+  "mean_yA": 942923.3665418348
+ }
+}

@@ -1,0 +1,21 @@
+frac_unseen_test_rows 0.081413
+unseen_weighted_rmse_production 1.030311
+test_adoption_nrmse_est 0.040944
+adoption_share_of_total 0.008189
+count_noise_fit_a_binomial 0.142548
+count_noise_fit_b_qerror_var -0.000803
+mean_qhat_1mqhat_w 0.119283
+pooled_q 0.116457
+unseen_weighted_rmse_global_q 1.778717
+floor_rmse_q_exact_fit 1.111556
+floor_rmse_q_exact_plugin 0.849232
+total_change_if_q_exact_fit 0.000646
+total_change_if_q_exact_plugin -0.001439
+total_change_if_exact_formula -0.008189
+calib_scale_rmse 1.030276
+calib_scale_total_change -0.0
+calib_scale_by_nrow_rmse 1.030355
+calib_scale_by_nrow_total_change 0.0
+calib_mix_rmse 1.030313
+calib_mix_total_change 0.0
+sq_error_share_by_K {'(-1, 0]': 0.0, '(0, 5]': 0.1506, '(5, 10]': 0.2185, '(10, 20]': 0.2715, '(20, 40]': 0.2165, '(40, 1000]': 0.143}

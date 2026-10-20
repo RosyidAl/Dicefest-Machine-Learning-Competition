@@ -1,0 +1,9 @@
+labelled subzones with K>0: 146189; candidate columns: 118
+best single-column |corr| per target: {'r': (0.4812, 'x', 'socio_demog_058'), 'q': (-0.2423, 'log1p', 'socio_demog_019'), 'cr': (0.5042, 'x*N', 'socio_demog_058'), 'ad': (0.9902, 'x', 'rest')}
+best pair for r: [(-0.5388, 'sum', 'socio_demog_082', 'socio_demog_040'), (-0.5388, 'sum', 'socio_demog_040', 'socio_demog_082'), (0.5388, 'sum', 'socio_demog_058', 'socio_demog_024')]
+best pair for q: [(-0.278, 'sum', 'socio_demog_019', 'rest'), (-0.278, 'sum', 'rest', 'socio_demog_019'), (0.2769, 'prod', 'socio_demog_037', 'socio_demog_024')]
+best pair for cr: [(-0.5202, 'sum', 'socio_demog_082', 'socio_demog_040'), (-0.5202, 'sum', 'socio_demog_040', 'socio_demog_082'), (0.5174, 'sum', 'socio_demog_058', 'socio_demog_024')]
+best pair for ad: [(0.9902, 'diff', 'rest', 'socio_demog_016'), (-0.9902, 'diff', 'socio_demog_016', 'rest'), (0.9902, 'diff', 'rest', 'socio_demog_120')]
+count-space best corr with cr: [(0.5646, 'csum', 'socio_demog_058', 'socio_demog_024'), (0.5646, 'csum', 'socio_demog_024', 'socio_demog_058'), (0.5416, 'csum', 'socio_demog_126', 'socio_demog_058')]
+exact integer match share best: [(0.4590290651143383, 'c', 'socio_demog_118', ''), (0.4589059368351928, 'c', 'socio_demog_117', ''), (0.4587349253363796, 'csum', 'socio_demog_118', 'socio_demog_117')] chance (mode share): 0.4591
+ridge 5-fold CV R2: {'U:r': 0.3625, 'U:q': 0.1413, 'U:cr': 0.372, 'U+pc_mean:r': 0.3663, 'U+pc_mean:q': 0.1447, 'U+pc_mean:cr': 0.3754}

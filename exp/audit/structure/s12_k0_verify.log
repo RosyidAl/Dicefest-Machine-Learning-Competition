@@ -1,0 +1,8 @@
+train K0 groups 92 columns that differ inside some group: ['bld_dim_20', 'bld_dim_21', 'bld_dim_23', 'bld_dim_24', 'bld_dim_26', 'bld_dim_28', 'bld_dim_32', 'bld_dim_33', 'bld_dim_34', 'bld_dim_36'] 20
+targets identical in all K0 groups: True
+H rows with K0 partner 46
+test rows matching train K0: 77
+max |sub - train target| on matched rows per target: [0. 0. 0. 0. 0.]
+test rows in test-only K0 groups: 48
+max within-group prediction spread per target: {'target_macro_gas_kwh': 4556.038956, 'target_macro_elec_kwh': 1438.775014, 'target_eui_gas_kwh_per_sqm': 3.984222, 'target_clean_building_ratio': 0.0, 'target_electric_heating_adoption': 0.0}
+feature columns differing in test-only groups: ['bld_dim_20', 'bld_dim_21', 'bld_dim_23', 'bld_dim_24', 'bld_dim_28', 'bld_dim_32', 'bld_dim_33', 'bld_dim_37', 'bld_dim_38', 'bld_dim_40']

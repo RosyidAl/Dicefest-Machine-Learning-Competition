@@ -1,0 +1,42 @@
+alignment OK; P 300512 H 128791; small-M counts P {M2-3: 88, M4: 536} H {M2-3: 48, M4: 205}
+
+== 1. re-derivation: P-OOF deltas -> H corrected (and H teacher)
+   gas  P deltas {M2-3: 0.19738, M4: 0.07848} | H corrected base 0.245144 dNRMSE -0.0000093 | H teacher base 0.246026 dNRMSE -0.0000093
+   eui  P deltas {M2-3: 0.20978, M4: 0.03337} | H corrected base 0.648593 dNRMSE -0.0002147 | H teacher base 0.650075 dNRMSE -0.0002167
+   elec P deltas {M2-3: 0.17854, M4: 0.06301} | H corrected base 0.314623 dNRMSE -0.0000048 | H teacher base 0.314840 dNRMSE -0.0000048
+   TOTAL change on H corrected -0.00004577 | on H teacher -0.00004616   [claim -0.0000458]
+
+== 2a. exact duplicate rows (dup_fix key) and exact-target twins between H and P
+   H rows whose dup key occurs in P: 36 (of which M<=4: 0)
+   gas : H rows with an exact-value twin in P 1796 (0.0139); small-M (M<=4) H rows with a twin anywhere in P 8 of 253, with a twin among small-M P rows 0
+   elec: H rows with an exact-value twin in P 13833 (0.1074); small-M (M<=4) H rows with a twin anywhere in P 44 of 253, with a twin among small-M P rows 0
+   small-M H rows with any twin/dup in P: 50; small-M P rows with any twin/dup in H: 67
+   identical gas values among the 877 train rows with M<=4: 0 values shared by 0 rows
+
+== 2b. H gain with every twin/duplicate pair between P and H removed (P side and H side)
+   gas  deltas {M2-3: 0.18471, M4: 0.08046} dNRMSE -0.0000083
+   eui  deltas {M2-3: 0.19529, M4: 0.03265} dNRMSE -0.0002030
+   elec deltas {M2-3: 0.18255, M4: 0.06237} dNRMSE -0.0000024
+   TOTAL without twins/duplicates -0.00004274
+
+== 3. cluster structure of the small-M rows
+   M2-3: train rows 136 in 135 subzones (max 2 per subzone) and 100 zones (max 4, top-5 zones hold 17 rows)
+   M4: train rows 741 in 730 subzones (max 3 per subzone) and 254 zones (max 17, top-5 zones hold 70 rows)
+   P-side gas  M2-3 d +0.1974 se HC0 0.0485 (t +4.1) | zone-clustered 0.0476 (t +4.1, 71 zones) | subzone-clustered 0.0485 (t +4.1, 87 subzones)
+   P-side gas  M4   d +0.0785 se HC0 0.0163 (t +4.8) | zone-clustered 0.0155 (t +5.1, 229 zones) | subzone-clustered 0.0164 (t +4.8, 530 subzones)
+   P-side eui  M2-3 d +0.2098 se HC0 0.0434 (t +4.8) | zone-clustered 0.0427 (t +4.9, 71 zones) | subzone-clustered 0.0434 (t +4.8, 87 subzones)
+   P-side eui  M4   d +0.0334 se HC0 0.0157 (t +2.1) | zone-clustered 0.0156 (t +2.1, 229 zones) | subzone-clustered 0.0158 (t +2.1, 530 subzones)
+   P-side elec M2-3 d +0.1785 se HC0 0.0494 (t +3.6) | zone-clustered 0.0481 (t +3.7, 71 zones) | subzone-clustered 0.0495 (t +3.6, 87 subzones)
+   P-side elec M4   d +0.0630 se HC0 0.0479 (t +1.3) | zone-clustered 0.0496 (t +1.3, 229 zones) | subzone-clustered 0.0479 (t +1.3, 530 subzones)
+   M2-3: share of H rows whose subzone holds a same-group P row 0.000 (any P row 0.833) | share of test rows whose subzone holds a same-group train row 0.017 (any train row 0.950)
+   M4: share of H rows whose subzone holds a same-group P row 0.024 (any P row 0.854) | share of test rows whose subzone holds a same-group train row 0.013 (any train row 0.923)
+
+== 3b. H relative bias (corrected) of small-M rows by subzone sharing with same-group P rows
+   gas  M2-3 not shared n  48 LS rel bias +0.240
+   gas  M4   shared n   5 LS rel bias -0.178 | not shared n 200 LS rel bias +0.083
+   eui  M2-3 not shared n  48 LS rel bias +0.156
+   eui  M4   shared n   5 LS rel bias -0.112 | not shared n 200 LS rel bias +0.049
+   elec M2-3 not shared n  48 LS rel bias +0.223
+   elec M4   shared n   5 LS rel bias -0.216 | not shared n 200 LS rel bias +0.064
+
+maxrss 590052 kB wall 21.5 s

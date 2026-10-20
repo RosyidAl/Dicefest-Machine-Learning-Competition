@@ -1,0 +1,38 @@
+per-row socio columns describe (nunique train): {'socio_demog_002': 42953, 'socio_demog_003': 34127, 'socio_demog_006': 87, 'socio_demog_007': 82, 'socio_demog_008': 69, 'socio_demog_009': 55, 'socio_demog_010': 51, 'socio_demog_011': 1561, 'socio_demog_012': 1359, 'socio_demog_013': 672, 'socio_demog_014': 1933, 'socio_demog_015': 701, 'socio_demog_127': 58}
+
+[census_x005] train multi groups 100, rows in multi 219, of which K0-dup rows 10; test rows matching train 95
+   H rows matched (not K0): 66
+   gas: base rmse on matched 0.1786 | copyw1.0:+0.000005 copyw0.5:-0.000004 copy_exact:0.000 perEw1.0:+0.000005 perEw0.5:-0.000004 perE_exact:0.000 perMw1.0:+0.000005 perMw0.5:-0.000004 perM_exact:0.000 perAw1.0:+0.000005 perAw0.5:-0.000005 perA_exact:0.000
+   elec: base rmse on matched 0.3023 | copyw1.0:+0.000060 copyw0.5:+0.000017 copy_exact:0.000 perEw1.0:+0.000061 perEw0.5:+0.000018 perE_exact:0.000 perMw1.0:+0.000062 perMw0.5:+0.000017 perM_exact:0.000 perAw1.0:+0.000063 perAw0.5:+0.000018 perA_exact:0.000
+   eui: base rmse on matched 0.7140 | copyw1.0:+0.000199 copyw0.5:+0.000042 copy_exact:0.000 perEw1.0:+0.000222 perEw0.5:+0.000047 perE_exact:0.000 perMw1.0:+0.000168 perMw0.5:+0.000031 perM_exact:0.000 perAw1.0:+0.000384 perAw0.5:+0.000089 perA_exact:0.000
+
+[perrow13] train multi groups 19620, rows in multi 99791, of which K0-dup rows 13; test rows matching train 42707
+   H rows matched (not K0): 29818
+   gas: base rmse on matched 0.2048 | copyw1.0:+0.078918 copyw0.5:+0.021914 copy_exact:0.000 perEw1.0:+0.969013 perEw0.5:+0.398036 perE_exact:0.000 perMw1.0:+0.136210 perMw0.5:+0.040300 perM_exact:0.000 perAw1.0:+0.059208 perAw0.5:+0.016121 perA_exact:0.000
+   elec: base rmse on matched 0.2668 | copyw1.0:+0.086353 copyw0.5:+0.023526 copy_exact:0.000 perEw1.0:+1.162067 perEw0.5:+0.472293 perE_exact:0.000 perMw1.0:+0.073542 perMw0.5:+0.019561 perM_exact:0.000 perAw1.0:+0.052963 perAw0.5:+0.013810 perA_exact:0.000
+   eui: base rmse on matched 0.7480 | copyw1.0:+0.164732 copyw0.5:+0.045312 copy_exact:0.000 perEw1.0:+1.576733 perEw0.5:+0.598136 perE_exact:0.000 perMw1.0:+0.827505 perMw0.5:+0.278072 perM_exact:0.000 perAw1.0:+0.617710 perAw0.5:+0.197559 perA_exact:0.000
+
+[perrow13+sub] train multi groups 100, rows in multi 219, of which K0-dup rows 10; test rows matching train 95
+   H rows matched (not K0): 66
+   gas: base rmse on matched 0.1786 | copyw1.0:+0.000005 copyw0.5:-0.000004 copy_exact:0.000 perEw1.0:+0.000005 perEw0.5:-0.000004 perE_exact:0.000 perMw1.0:+0.000005 perMw0.5:-0.000004 perM_exact:0.000 perAw1.0:+0.000005 perAw0.5:-0.000005 perA_exact:0.000
+   elec: base rmse on matched 0.3023 | copyw1.0:+0.000060 copyw0.5:+0.000017 copy_exact:0.000 perEw1.0:+0.000061 perEw0.5:+0.000018 perE_exact:0.000 perMw1.0:+0.000062 perMw0.5:+0.000017 perM_exact:0.000 perAw1.0:+0.000063 perAw0.5:+0.000018 perA_exact:0.000
+   eui: base rmse on matched 0.7140 | copyw1.0:+0.000199 copyw0.5:+0.000042 copy_exact:0.000 perEw1.0:+0.000222 perEw0.5:+0.000047 perE_exact:0.000 perMw1.0:+0.000168 perMw0.5:+0.000031 perM_exact:0.000 perAw1.0:+0.000384 perAw0.5:+0.000089 perA_exact:0.000
+
+[perrow13+sub+M+E] train multi groups 88, rows in multi 195, of which K0-dup rows 10; test rows matching train 76
+   H rows matched (not K0): 56
+   gas: base rmse on matched 0.1799 | copyw1.0:+0.000001 copyw0.5:-0.000005 copy_exact:0.000 perEw1.0:+0.000001 perEw0.5:-0.000005 perE_exact:0.000 perMw1.0:+0.000001 perMw0.5:-0.000005 perM_exact:0.000 perAw1.0:-0.000000 perAw0.5:-0.000006 perA_exact:0.000
+   elec: base rmse on matched 0.3119 | copyw1.0:+0.000054 copyw0.5:+0.000015 copy_exact:0.000 perEw1.0:+0.000054 perEw0.5:+0.000015 perE_exact:0.000 perMw1.0:+0.000054 perMw0.5:+0.000015 perM_exact:0.000 perAw1.0:+0.000051 perAw0.5:+0.000014 perA_exact:0.000
+   eui: base rmse on matched 0.6971 | copyw1.0:+0.000065 copyw0.5:+0.000004 copy_exact:0.000 perEw1.0:+0.000065 perEw0.5:+0.000004 perE_exact:0.000 perMw1.0:+0.000065 perMw0.5:+0.000004 perM_exact:0.000 perAw1.0:+0.000093 perAw0.5:+0.000008 perA_exact:0.000
+        bld_dim_12  bld_dim_01  bld_dim_06  bld_dim_03  subzone_id  socio_demog_002  socio_demog_003  socio_demog_006  target_macro_gas_kwh  target_macro_elec_kwh  target_eui_gas_kwh_per_sqm
+164551        12.0        12.0    1550.223      2799.2  SUB_137369           1273.2              0.0              0.0            122326.309              47966.300                      78.909
+37695         25.0        21.0    1754.506      2546.4   SUB_31088           1273.2              0.0              0.0            141630.974              61202.168                      80.724
+332569         9.0         9.0    1338.602      2327.9   SUB_31375           1273.2              0.0              0.0            170367.016              23926.900                     127.272
+120429         6.0         6.0     627.058       968.8  SUB_119538            484.4              0.0              0.0            121071.994              24435.500                     193.079
+412368        13.0         8.0     962.036      1643.5   SUB_16924            484.4              0.0              0.0            113736.332              35008.925                     118.225
+406569         9.0         9.0     707.307       968.8   SUB_27856            484.4              0.0              0.0             62998.335              34596.200                      89.068
+97078         10.0        10.0     721.259       968.8   SUB_46166            484.4              0.0              0.0             92468.069              30236.700                     128.204
+228501        10.0         8.0     712.981       968.8   SUB_50790            484.4              0.0              0.0             94780.815              23755.900                     132.936
+217253        18.0         6.0     850.643      1453.2  SUB_101688            484.4              0.0              0.0            136353.270              29658.400                     160.294
+155050         7.0         6.0     595.973       968.8   SUB_33876            484.4              0.0              0.0             97116.435              14009.100                     162.954
+407943         9.0         6.0     587.186       968.8  SUB_108056            484.4              0.0              0.0             96019.728              24423.200                     163.525
+158631         8.0         3.0     591.526       968.8   SUB_96141            484.4              0.0              0.0             61545.315               7645.300                     104.045

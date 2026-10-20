@@ -1,0 +1,31 @@
+base NRMSE on H {'gas': 0.245144, 'eui': 0.648593, 'elec': 0.314623}
+bounds from P {'gmax': 999305.155724838, 'euimin': 5.12060441250641, 'eamin': 5.134860503888461, 'eamax': 149.99086755789654}
+S1 deltas from P (LS) {'gas': [0.1974, 0.0785], 'eui': [0.2098, 0.0334], 'elec': [0.1785, 0.063]}
+noise model from P (a0, b0) {'gas': [0.00806, 0.39297], 'eui': [0.00839, 0.38715]}
+(a) claim protocol 5-fold seed0: total -0.00006519 per metric gas -0.0000872 eui -0.0002330 elec -0.0000058
+     step S0->S1: total -0.00004577 | gas -0.0000093 eui -0.0002147 elec -0.0000048
+     step S1->S3: total -0.00001923 | gas -0.0000779 eui -0.0000182 elec +0.0000000
+     step S3->S4: total -0.00000020 | gas +0.0000000 eui +0.0000000 elec -0.0000010
+     k per fold {'gas': [0.5637, 0.4672, 0.5066, 0.4701, 0.5123], 'eui': [0.7291, 0.4888, 0.69, 0.6776, 0.6689]}
+(b)  5-fold seeds 1..100: total mean -0.00006443 sd 0.00000122 min -0.00006605 max -0.00005908 | S3 step mean -0.00001846 sd 0.00000122
+(b)  2-fold seeds 1..100: total mean -0.00006401 sd 0.00000317 min -0.00006637 max -0.00004755 | S3 step mean -0.00001804 sd 0.00000320
+(b) 10-fold seeds 1..20: total mean -0.00006477 sd 0.00000070 min -0.00006600 max -0.00006280 | S3 step mean -0.00001881 sd 0.00000070
+(b') split-half scored on held-out half only (100 halves): mean -0.00006382 sd 0.00003231 frac<0 0.96
+(c) first-order total -0.00006518, delta-method SE of total 0.00003249 (z -2.01); per-metric SE gas 0.0000330 eui 0.0001555 elec 0.0000025
+    bootstrap (2000) of first-order total: mean -0.00006543 sd 0.00003305 frac<0 0.977 q05 -0.00012149 q95 -0.00001403
+    total without the k most-improved rows: {1: '-0.00005000', 3: '-0.00002832', 5: '-0.00001658', 10: '+0.00000455', 20: '+0.00003085', 50: '+0.00007091'}
+    rows changed in any metric 9969, rows improved 5159, worsened 4810
+    first-order contribution by segment {'M2-3': {'gas': '-0.00000582', 'eui': '-0.00016204', 'elec': '-0.00000348', 'total': '-0.00003427'}, 'M4': {'gas': '-0.00000344', 'eui': '-0.00005266', 'elec': '-0.00000134', 'total': '-0.00001149'}, 'other': {'gas': '-0.00007788', 'eui': '-0.00001823', 'elec': '-0.00000098', 'total': '-0.00001942'}}
+    S1-only per metric (first order, NRMSE units; divide by 5 for total): {'gas': {'all': '-0.0000093', 'wo_top1': '-0.0000078', 'wo_top3': '-0.0000061', 'wo_top5': '-0.0000049', 'wo_worst5': '-0.0000114', 'n_changed': 253, 'n_improved': 134, 'n_worsened': 119}, 'eui': {'all': '-0.0002147', 'wo_top1': '-0.0001393', 'wo_top3': '-0.0000323', 'wo_top5': '+0.0000259', 'wo_worst5': '-0.0003429', 'n_changed': 253, 'n_improved': 122, 'n_worsened': 131}, 'elec': {'all': '-0.0000048', 'wo_top1': '-0.0000040', 'wo_top3': '-0.0000027', 'wo_top5': '-0.0000018', 'wo_worst5': '-0.0000068', 'n_changed': 253, 'n_improved': 126, 'n_worsened': 127}}
+(d) S1 deltas fitted on H (corrected): {'gas': [0.2403, 0.078], 'eui': [0.1564, 0.0462], 'elec': [0.2228, 0.0584]}
+    H->P S1 change on P rows: total -0.00005413 | gas -0.0000064 eui -0.0002608 elec -0.0000034
+(e) S1 est=ros                                                             total -0.00006813
+(e) S1 est=meanrel                                                         total -0.00006988
+(e) S1 only                                                                total -0.00004577
+(e) S3+S4 only (5f seed0)                                                  total -0.00001942
+(e) S4 only                                                                total -0.00000378
+(e) S1(M2-3 only)+S3+S4                                                    total -0.00005370
+(e) S1 without EUI + S3+S4                                                 total -0.00002224
+(e) chain, S3 noise model from H fit folds (5f seed7, mean of fold totals) total -0.00006580
+wrote exp/audit/verify2_postproc/combo_repro/c1_chainH.json
+maxrss 292896 kB, 18.85 s

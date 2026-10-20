@@ -1,0 +1,3 @@
+gas: H rows with a collision partner 0.0487, SSE share 0.0285, oracle NRMSE 0.24514 -> 0.24163
+eui: H rows with a collision partner 0.0487, SSE share 0.0531, oracle NRMSE 0.64859 -> 0.63113
+oracle total change -0.00420; expected test rows with a train partner ~9061

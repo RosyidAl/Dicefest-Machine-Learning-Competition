@@ -1,0 +1,27 @@
+train n=429303 test n=183987 total=613290 train share=0.7000000000 0.7*total=429303.000
+[train gas] max=999764.8988 n>=1e6=0 n>=999000=4 n>=990000=38 nan=0
+[train eui*A vs gas] max |eui*A-gas|/gas = 6.365e-16; max eui*A = 999764.8988
+[train gas] rows per 50k band 700k..1.1M: 700k:1783 750k:1206 800k:812 850k:505 900k:299 950k:193 1000k:0 1050k:0
+[train gas] log-linear tail fit on 700k-1M extrapolates ~206 train rows in [1e6,1.1e6) if uncapped; observed 0
+[ids] sample_submission order == cache/test order: True
+[submissions/sub_v19vce.csv] rows=183987 id order ok=True gas>1e6: 7  gas>train max: 7  eui*A>1e6: 8  gas max=1061409.1  max eui*A=1065513.9
+    gas   ID_584986 pred=   1061409.1 excess=  61409.1 excess/sigma=0.4047  M=73.0  A=9431.0
+    gas   ID_509296 pred=   1042639.2 excess=  42639.2 excess/sigma=0.2810  M=59.0  A=4909.4
+    gas   ID_501376 pred=   1039875.6 excess=  39875.6 excess/sigma=0.2628  M=60.0  A=5235.4
+    gas   ID_490481 pred=   1023195.0 excess=  23195.0 excess/sigma=0.1529  M=51.0  A=10465.1
+    gas   ID_432043 pred=   1016814.0 excess=  16814.0 excess/sigma=0.1108  M=75.0  A=7593.8
+    gas   ID_562155 pred=   1010786.3 excess=  10786.3 excess/sigma=0.0711  M=49.0  A=4434.1
+    gas   ID_444612 pred=   1004355.4 excess=   4355.4 excess/sigma=0.0287  M=75.0  A=6704.0
+    eui   ID_584986 pred=  112.980 cap 1e6/A=  106.033 excess/sigma=0.1709  gas pred=   1061409.1
+    eui   ID_509296 pred=  215.127 cap 1e6/A=  203.690 excess/sigma=0.2813  gas pred=   1042639.2
+    eui   ID_501376 pred=  199.986 cap 1e6/A=  191.007 excess/sigma=0.2209  gas pred=   1039875.6
+    eui   ID_490481 pred=   98.574 cap 1e6/A=   95.556 excess/sigma=0.0742  gas pred=   1023195.0
+    eui   ID_432043 pred=  133.416 cap 1e6/A=  131.687 excess/sigma=0.0425  gas pred=   1016814.0
+    eui   ID_444612 pred=  150.502 cap 1e6/A=  149.165 excess/sigma=0.0329  gas pred=   1004355.4
+    eui   ID_562155 pred=  227.236 cap 1e6/A=  225.526 excess/sigma=0.0421  gas pred=   1010786.3
+    eui   ID_560825 pred=  113.718 cap 1e6/A=  113.672 excess/sigma=0.0011  gas pred=    996073.2
+[submissions/BEST_CURRENT.csv] rows=183987 id order ok=True gas>1e6: 0  gas>train max: 0  eui*A>1e6: 0  gas max=990541.6  max eui*A=970018.4
+[submissions/sub_v19nca2pp.csv] rows=183987 id order ok=True gas>1e6: 0  gas>train max: 0  eui*A>1e6: 0  gas max=990541.6  max eui*A=970018.4
+[submissions/sub_v19ncapp.csv] rows=183987 id order ok=True gas>1e6: 0  gas>train max: 0  eui*A>1e6: 0  gas max=990541.6  max eui*A=970018.4
+[submissions/sub_v19nca.csv] rows=183987 id order ok=True gas>1e6: 7  gas>train max: 7  eui*A>1e6: 8  gas max=1061477.9  max eui*A=1064849.4
+elapsed 2.3s maxrss 0.28 GB

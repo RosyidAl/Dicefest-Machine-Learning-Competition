@@ -1,0 +1,26 @@
+{
+ "claim_minus_S3dep": -5.049499818615559e-06,
+ "claim_minus_S3cf": -5.838162034131356e-06,
+ "claim_minus_base1": -2.556452930849052e-05,
+ "S3cf_minus_base1": -1.9726367274359167e-05,
+ "boot_claim_minus_S3dep": {
+  "sd": 2.5377521423058165e-06,
+  "p_ge_0": 0.023
+ },
+ "boot_claim_minus_S3cf": {
+  "sd": 2.625299673410386e-06,
+  "p_ge_0": 0.015
+ },
+ "blocks_claim_minus_S3cf_e5": [
+  -1.064,
+  -0.759,
+  0.349,
+  -0.808
+ ],
+ "blocks_claim_minus_base1_e5": [
+  -3.971,
+  -1.953,
+  -1.008,
+  -3.183
+ ]
+}

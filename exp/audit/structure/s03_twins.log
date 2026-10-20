@@ -1,0 +1,45 @@
+/root/Dicefest/.venv/lib/python3.12/site-packages/numpy/lib/_function_base_impl.py:3037: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+/root/Dicefest/.venv/lib/python3.12/site-packages/numpy/lib/_function_base_impl.py:3038: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+pairs 4165
+                       col   eq_twin   eq_rand  corr_twin
+7               bld_dim_06  0.021369  0.000000   0.772723
+9               bld_dim_08  0.021369  0.000000   0.771884
+201  target_macro_elec_kwh  0.021369  0.000000   0.759089
+4               bld_dim_03  0.021609  0.000000   0.755538
+3          socio_demog_002  0.021609  0.000000   0.755041
+6               bld_dim_05  0.021609  0.000000   0.753902
+195         env_climate_04  0.078271  0.023770   0.711005
+193         env_climate_02  0.078271  0.023770   0.711005
+13              bld_dim_12  0.103481  0.025210   0.672109
+2               bld_dim_02  0.100600  0.028571   0.638937
+1               bld_dim_01  0.088836  0.026891   0.599540
+196         env_climate_05  0.022089  0.000000   0.491201
+192         env_climate_01  0.022089  0.000000   0.457649
+194         env_climate_03  0.022089  0.000000   0.379471
+88         socio_demog_023  0.021369  0.000000   0.246357
+16              bld_dim_14  0.274670  0.201921   0.243148
+200                 zone_n  0.060744  0.004802   0.236692
+17              bld_dim_15  0.274670  0.201921   0.231557
+42              bld_dim_23  0.228812  0.298920   0.230546
+15         socio_demog_003  0.274670  0.201921   0.210327
+151        socio_demog_086  0.030732  0.003361   0.205954
+18              bld_dim_16  0.274670  0.201921   0.197501
+52         socio_demog_009  0.327971  0.252341   0.188654
+14              bld_dim_13  0.327491  0.252341   0.188531
+177        socio_demog_112  0.022569  0.000720   0.182258
+                 col  eq_twin  eq_rand  corr_twin
+91   socio_demog_026      1.0      1.0        NaN
+99   socio_demog_034      1.0      1.0        NaN
+104  socio_demog_039      1.0      1.0        NaN
+110  socio_demog_045      1.0      1.0        NaN
+119  socio_demog_054      1.0      1.0        NaN
+125  socio_demog_060      1.0      1.0        NaN
+134  socio_demog_069      1.0      1.0        NaN
+197   env_climate_06      1.0      1.0        NaN
+sub_n |diff| quantiles [   275.    7321.   29217.   63545.  108504.4]
+random sub_n |diff| quantiles [  3993.2  21137.   46108.   79319.  124221.4]
+ratio M quantiles [0.48148148 0.75       1.         1.33333333 2.125     ]
+elec ratio quantiles [0.48912748 0.75512186 1.         1.31450115 2.03904836]
+index diff quantiles [ 10538.  125063.  333375.6]

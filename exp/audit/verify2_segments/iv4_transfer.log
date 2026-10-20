@@ -1,0 +1,31 @@
+test rows 183987; dup 77; live rows with gas level > 6e5: 4516, eui level > 6e5: 4515
+level distribution per 100k rows (gas):
+   test (live) : [0.60,0.80) 2168.5  [0.80,0.85)  145.7  [0.85,0.90)   84.3  [0.90,0.95)   40.8  [0.95,1.00)   12.5  [1.00,1.05)    3.3  [1.05,inf)    0.5
+   H corrected : [0.60,0.80) 2174.1  [0.80,0.85)  154.5  [0.85,0.90)   73.0  [0.90,0.95)   32.6  [0.95,1.00)   18.6  [1.00,1.05)    8.5  [1.05,inf)    0.0
+   full OOF    : [0.60,0.80) 2152.3  [0.80,0.85)  146.5  [0.85,0.90)   87.4  [0.90,0.95)   36.3  [0.95,1.00)   13.7  [1.00,1.05)    5.4  [1.05,inf)    1.4
+H corrected    K 10: expected full-test dTotal gas -0.00001473 eui -0.00000235 sum -0.00001708
+H corrected    K 20: expected full-test dTotal gas -0.00001659 eui -0.00000261 sum -0.00001920
+      public  sim: mean -0.00001926 sd 0.00001097 P(improve) 0.9802 P(<= -1e-5) 0.7983 5%..95% -0.00003889..-0.00000302
+      private sim: mean -0.00001929 sd 0.00000683 P(improve) 0.9990 P(<= -1e-5) 0.9140 5%..95% -0.00003110..-0.00000878
+H corrected    K 40: expected full-test dTotal gas -0.00001771 eui -0.00000278 sum -0.00002049
+full OOF NNLS  K 10: expected full-test dTotal gas -0.00001508 eui -0.00000259 sum -0.00001766
+full OOF NNLS  K 20: expected full-test dTotal gas -0.00001580 eui -0.00000259 sum -0.00001839
+      public  sim: mean -0.00001852 sd 0.00001000 P(improve) 0.9845 P(<= -1e-5) 0.7980 5%..95% -0.00003660..-0.00000365
+      private sim: mean -0.00001851 sd 0.00000606 P(improve) 0.9998 P(<= -1e-5) 0.9315 5%..95% -0.00002891..-0.00000914
+full OOF NNLS  K 40: expected full-test dTotal gas -0.00001575 eui -0.00000260 sum -0.00001835
+12 test rows with the largest expected gas gain (H source, K 20): pred -> new, E[truth], expected dSE/sigma^2
+      1061409 ->     950325  E[y]     926548  dSE -0.7652
+      1042639 ->     946777  E[y]     926548  dSE -0.5675
+      1039876 ->     946204  E[y]     926548  dSE -0.5409
+      1023195 ->     942436  E[y]     926548  dSE -0.3947
+      1016814 ->     940841  E[y]     926548  dSE -0.3450
+      1010786 ->     939247  E[y]     926548  dSE -0.3011
+      1004355 ->     937448  E[y]     923531  dSE -0.2753
+       996073 ->     934972  E[y]     922876  dSE -0.2263
+       995142 ->     934681  E[y]     922876  dSE -0.2207
+       978714 ->     929133  E[y]     902876  dSE -0.2198
+       976573 ->     928346  E[y]     905922  dSE -0.1949
+       976564 ->     928343  E[y]     905922  dSE -0.1949
+share of the expected gas gain from these 12 rows: 0.568
+
+elapsed 6.3s maxrss 696412 kB

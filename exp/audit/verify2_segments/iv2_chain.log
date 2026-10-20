@@ -1,0 +1,49 @@
+
+===== gas: H corrected NRMSE 0.245144  (H n 128791, P n 300512)
+bias of residual (gas units) by level = pred*scale / 1e6:
+  P teacher  : [0.80,0.85) n  426 mean      +543 t +0.15 | [0.85,0.90) n  256 mean     -2019 t -0.46 | [0.90,0.95) n  116 mean    -33639 t -5.01 | [0.95,1.00) n   42 mean    -43831 t -4.89 | [1.00,inf) n   23 mean    -95759 t -6.95
+  H corrected: [0.80,0.85) n  199 mean     +7978 t +1.39 | [0.85,0.90) n   94 mean     -9652 t -1.27 | [0.90,0.95) n   42 mean    -16558 t -2.02 | [0.95,1.00) n   24 mean    -60011 t -4.14 | [1.00,inf) n   11 mean    -64405 t -3.80
+S0 k fitted on P teacher 0.0852 -> H corrected dTotal -0.00001952  (H teacher -0.00001821)
+  H corr. after S0 calib: [0.80,0.85) n  202 mean     +8796 t +1.56 | [0.85,0.90) n  110 mean     -1970 t -0.30 | [0.90,0.95) n   54 mean     +2475 t +0.29 | [0.95,1.00) n    0 mean      +nan t  +nan | [1.00,inf) n    0 mean      +nan t  +nan
+S1 GroupKFold(subzone) 5x20 on H: dTotal mean -0.00001847 sd 0.00000092 worst -0.00001645  k range 0.0692..0.0920
+S2 contiguous thirds of H: dTotal -0.00001815  per block (k, dSSE/sigma^2, n): [(0.0705, -3.138, 42929), (0.086, -0.17, 42931), (0.081, -2.421, 42931)]
+S3 k from P half (subzone parity 0 / 1) -> H corrected: k 0.0856 dTotal -0.00001949; k 0.0849 dTotal -0.00001954
+S4 k fitted on all H corrected 0.0806 -> P teacher dTotal -0.00002474
+S5 fixed k on H corrected: 0.030 -0.00000867  0.050 -0.00001445  0.060 -0.00001701  0.070 -0.00001889  0.080 -0.00001969  0.090 -0.00001893  0.100 -0.00001614  0.110 -0.00001087  0.120 -0.00000267  0.140 +0.00002424
+   fixed k on P teacher : 0.050 -0.00001838  0.080 -0.00002470  0.100 -0.00002297  0.120 -0.00001237
+S7 rows changed 1672; better 1627 (sum -12.201 sigma^2), worse 1543 (sum 6.040); rows with |dSE| > 0.01 sigma^2: 202 of which better 106
+   10 largest gains [-1.098, -0.677, -0.66, -0.623, -0.618, -0.566, -0.544, -0.371, -0.332, -0.303]  10 largest losses [0.14, 0.143, 0.145, 0.155, 0.172, 0.18, 0.185, 0.201, 0.201, 0.224]
+   symmetric trim (drop 1 best and 1 worst rows): dTotal -0.00001675
+   symmetric trim (drop 3 best and 3 worst rows): dTotal -0.00001379
+   symmetric trim (drop 5 best and 5 worst rows): dTotal -0.00001101
+S8 bootstrap public size 55196: mean -0.00001954 sd 0.00001112 P(improve) 0.9728
+S8 bootstrap private size 128791: mean -0.00001949 sd 0.00000716 P(improve) 0.9982
+
+===== eui: H corrected NRMSE 0.648593  (H n 128791, P n 300512)
+bias of residual (gas units) by level = pred*scale / 1e6:
+  P teacher  : [0.80,0.85) n  424 mean       -21 t -0.01 | [0.85,0.90) n  259 mean     -4802 t -1.08 | [0.90,0.95) n  120 mean    -33404 t -5.15 | [0.95,1.00) n   43 mean    -51668 t -5.34 | [1.00,inf) n   25 mean    -98473 t -7.42
+  H corrected: [0.80,0.85) n  189 mean     +7868 t +1.35 | [0.85,0.90) n   99 mean     -8619 t -1.15 | [0.90,0.95) n   48 mean    -17939 t -2.16 | [0.95,1.00) n   23 mean    -70140 t -4.87 | [1.00,inf) n   10 mean    -65142 t -4.06
+S0 k fitted on P teacher 0.0916 -> H corrected dTotal -0.00000513  (H teacher -0.00000493)
+  H corr. after S0 calib: [0.80,0.85) n  208 mean    +10105 t +1.80 | [0.85,0.90) n  110 mean      +219 t +0.03 | [0.90,0.95) n   50 mean     +5106 t +0.57 | [0.95,1.00) n    0 mean      +nan t  +nan | [1.00,inf) n    0 mean      +nan t  +nan
+S1 GroupKFold(subzone) 5x20 on H: dTotal mean -0.00000470 sd 0.00000039 worst -0.00000347  k range 0.0713..0.1036
+S2 contiguous thirds of H: dTotal -0.00000463  per block (k, dSSE/sigma^2, n): [(0.0804, -2.915, 42929), (0.0979, -0.183, 42931), (0.098, -0.766, 42931)]
+S3 k from P half (subzone parity 0 / 1) -> H corrected: k 0.0936 dTotal -0.00000514; k 0.0896 dTotal -0.00000510
+S4 k fitted on all H corrected 0.0947 -> P teacher dTotal -0.00000398
+S5 fixed k on H corrected: 0.030 -0.00000151  0.050 -0.00000291  0.060 -0.00000363  0.070 -0.00000429  0.080 -0.00000481  0.090 -0.00000511  0.100 -0.00000509  0.110 -0.00000467  0.120 -0.00000375  0.140 -0.00000008
+   fixed k on P teacher : 0.050 -0.00000262  0.080 -0.00000385  0.100 -0.00000390  0.120 -0.00000267
+S7 rows changed 1960; better 1612 (sum -7.141 sigma^2), worse 1554 (sum 2.857); rows with |dSE| > 0.01 sigma^2: 167 of which better 89
+   10 largest gains [-1.779, -0.462, -0.296, -0.193, -0.18, -0.177, -0.175, -0.175, -0.171, -0.143]  10 largest losses [0.056, 0.057, 0.062, 0.062, 0.068, 0.07, 0.07, 0.072, 0.081, 0.103]
+   symmetric trim (drop 1 best and 1 worst rows): dTotal -0.00000312
+   symmetric trim (drop 3 best and 3 worst rows): dTotal -0.00000240
+   symmetric trim (drop 5 best and 5 worst rows): dTotal -0.00000212
+S8 bootstrap public size 55196: mean -0.00000511 sd 0.00000361 P(improve) 0.9848
+S8 bootstrap private size 128791: mean -0.00000517 sd 0.00000240 P(improve) 0.9995
+
+===== combined gas + eui on H corrected
+S0 (each metric's own P-fit k): -0.00002465
+k = 0.08 both (candidate): gas -0.00001969 eui -0.00000481 sum -0.00002450
+eui with the gas P-fit k 0.0852: -0.00000500
+combined bootstrap public: mean -0.00002439 sd 0.00001335 P(improve) 0.9802
+combined bootstrap private: mean -0.00002499 sd 0.00000897 P(improve) 1.0000
+
+elapsed 32.8s maxrss 153864 kB

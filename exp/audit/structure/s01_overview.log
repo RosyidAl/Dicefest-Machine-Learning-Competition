@@ -1,0 +1,24 @@
+float64    49
+str         3
+Name: count, dtype: int64
+socio_demog_005 nunique train 429135 test 183935 sample [0.1946646842503885, 0.2052229230548486, 0.2447387811455428, 0.0203923770327072, 0.2843927544564769]
+bld_dim_12 nunique train 127 test 117 sample [23.0, 28.0, 32.0, 16.0, 23.0]
+bld_dim_01 nunique train 100 test 100 sample [23.0, 54.0, 65.0, 16.0, 26.0]
+bld_dim_06 nunique train 422386 test 182533 sample [1659.6478498844451, 3126.328552400729, 2908.4063426631137, 807.9553254854383, 1793.6985706058222]
+socio_demog_005 nunique per subzone: mean 2.7959976027308024 share==1 0.22907600906793132
+gas twins rows 8618 share 0.02007439966643606 groups 4259 max group 4
+top repeated gas values {155395.63343067723: 4, 217341.1208455013: 4, 126723.345359108: 4, 78906.47214937917: 4, 93017.60239357124: 4, 206474.3627947633: 4, 138014.4357349511: 3, 110055.96099748727: 3, 103842.10421757356: 3, 238872.99600691345: 3}
+elec repeated rows 62936 top {17520.6: 5, 16550.5: 5, 32789.3: 5, 25755.0: 5, 32032.9: 5}
+twin groups with identical bld_dim_12 0.1019
+twin groups with identical bld_dim_01 0.0873
+twin groups with identical bld_dim_06 0.0214
+twin groups with identical subzone_id 0.0214
+twin groups with identical zone_region_id 0.0599
+twin groups with identical socio_demog_005 0.0214
+twin groups with identical target_macro_elec_kwh 0.0214
+twin groups with identical env_climate_01 0.0221
+gas min 4324.151505160408 share gas<1e5 0.19843793311483965
+identical subzone+all bld groups>1: 50
+test rows matching on subzone+all bld: 34
+identical all-bld groups>1 (any subzone): 50
+test rows matching on all bld: 34

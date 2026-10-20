@@ -1,0 +1,6 @@
+size only (A,08,03,M,E,s002) partner rank quantiles [  3915.2  27875.5  72058.5 142266.5] top1 0.01 top10 0.01
+size+climate partner rank quantiles [  1048.85  17067.5   53027.5  121415.25] top1 0.01 top10 0.01
+A only partner rank quantiles [  7373.55  39823.75  89246.5  147410.25] top1 0.01 top10 0.01
+H twin rows 2573 abs log-res twin 0.14801334623407691 non-twin 0.13737188530515365
+H gas rmse share from twins 0.011222785336116833 row share 0.01997810406006631
+mean log-res twin -0.022784387906025674 non -0.017074402827676072

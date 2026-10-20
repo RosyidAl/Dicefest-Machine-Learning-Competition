@@ -1,0 +1,31 @@
+== gas: ols 0.245144 (stored corrected 0.245144)
+  icpt         all-H +0.0000026; per-half diffs mean +0.0000048 frac<0 0.12
+  nnls         all-H -0.0000012; per-half diffs mean -0.0000026 frac<0 0.62
+  ridge0.0001  all-H -0.0000000; per-half diffs mean -0.0000000 frac<0 1.00
+  ridge0.001   all-H -0.0000001; per-half diffs mean -0.0000001 frac<0 1.00
+  ridge0.01    all-H -0.0000008; per-half diffs mean -0.0000012 frac<0 1.00
+  ridge0.1     all-H -0.0000045; per-half diffs mean -0.0000074 frac<0 1.00
+  wls          all-H -0.0000029; per-half diffs mean -0.0000004 frac<0 0.50
+  split-half honest (choose among 8 kinds on one half, score other): -0.0000025; best on all H ridge0.1 -0.0000045
+== eui: ols 0.648593 (stored corrected 0.648593)
+  icpt         all-H +0.0000031; per-half diffs mean +0.0000091 frac<0 0.12
+  nnls         all-H -0.0000029; per-half diffs mean -0.0000178 frac<0 0.62
+  ridge0.0001  all-H -0.0000000; per-half diffs mean -0.0000001 frac<0 1.00
+  ridge0.001   all-H -0.0000003; per-half diffs mean -0.0000005 frac<0 1.00
+  ridge0.01    all-H -0.0000024; per-half diffs mean -0.0000047 frac<0 1.00
+  ridge0.1     all-H -0.0000108; per-half diffs mean -0.0000276 frac<0 1.00
+  wls          all-H +0.0000086; per-half diffs mean -0.0000078 frac<0 0.62
+  split-half honest (choose among 8 kinds on one half, score other): -0.0000252; best on all H ridge0.1 -0.0000108
+== elec: ols 0.314623 (stored corrected 0.314623)
+  icpt         all-H -0.0000017; per-half diffs mean +0.0000055 frac<0 0.25
+  nnls         all-H -0.0000075; per-half diffs mean -0.0000115 frac<0 1.00
+  ridge0.0001  all-H -0.0000000; per-half diffs mean -0.0000000 frac<0 1.00
+  ridge0.001   all-H -0.0000001; per-half diffs mean -0.0000001 frac<0 1.00
+  ridge0.01    all-H -0.0000006; per-half diffs mean -0.0000014 frac<0 1.00
+  ridge0.1     all-H -0.0000050; per-half diffs mean -0.0000108 frac<0 1.00
+  wls          all-H -0.0000032; per-half diffs mean -0.0000098 frac<0 0.88
+  split-half honest (choose among 8 kinds on one half, score other): -0.0000089; best on all H nnls -0.0000075
+KSHR test analogue gas: share of rows with pool < k per config [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+KSHR test analogue eui: share of rows with pool < k per config [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+KSHR test analogue elec: share of rows with pool < k per config [0.0, 0.0, 0.0, 0.0, 0.0]
+TOTAL lambda-fit variants: honest split-half -0.00000731; all-H best (optimistic) -0.00000455

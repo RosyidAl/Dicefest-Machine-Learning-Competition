@@ -1,0 +1,5 @@
+test rows: gas > 1e6 7, eui*A > 1e6 8
+  y = 1e6 (minimum gain)         gas dTotal -0.00000078  eui dTotal -0.00000014  sum -0.00000092
+  y = E[y|p>1e6] H corrected     gas dTotal -0.00000256  eui dTotal -0.00000042  sum -0.00000298
+  y = E[y|p>1e6] P teacher       gas dTotal -0.00000305  eui dTotal -0.00000049  sum -0.00000354
+  y = 900k                       gas dTotal -0.00000462  eui dTotal -0.00000074  sum -0.00000535

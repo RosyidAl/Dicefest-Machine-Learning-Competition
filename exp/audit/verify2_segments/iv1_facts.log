@@ -1,0 +1,21 @@
+train 429303 test 183987 share 0.7000000  0.7*total = 429303.000  ceil(0.3*total) = 183987
+gas max 999764.8988  min 4324.1515  rows >= 1e6: 0  rows >= 999e3: 4
+counts in [0.90,0.95,0.98,0.99,1.00,1.01]e6: [299, 122, 33, 38, 0]
+eui*A vs gas: max rel diff 6.661e-16
+20k bins from 0.60e6: observed [1872, 1559, 1324, 1180, 958, 812, 663, 572, 510, 432, 389, 281, 261, 223, 163, 153, 97, 91, 80, 71, 0, 0, 0, 0, 0]
+      log-linear fit on [0.60,0.90)e6, expected: [1865, 1580, 1339, 1135, 962, 815, 691, 585, 496, 420, 356, 302, 256, 217, 184, 156, 132, 112, 95, 80, 68, 58, 49, 41, 35]
+  expected rows in [0.90,1.00)e6 575 (obs 492)  in [1.00,1.10)e6 251 (obs 0)
+sub_v19vce: gas > 1e6 rows 7 max 1061409.1; eui*A > 1e6 rows 8 max eui*A 1065513.9; gas > 0.95e6 30  > 0.9e6 105
+candidate: gas > 1e6 rows 0 max 950324.7; eui*A > 1e6 rows 0 max eui*A 951027.9; gas > 0.95e6 1  > 0.9e6 61
+duplicate test rows (18 bld dims + subzone + socio_005): 77; consistent groups: True
+  base gas on dup rows == train gas: True; candidate dup cells == base (all 5 targets): True
+rebuild k=0.08: gas rows changed 4326  eui rows changed 4338
+  vs candidate: gas max |diff| 1.164e-10 kWh, eui max |rel diff| 2.220e-16
+  candidate - base: gas rows changed 4326, > 0.1 sigma 81, max change 111084, any increase False, new max 950324.7
+  column id: identical to base True
+  column target_macro_elec_kwh: identical to base True
+  column target_clean_building_ratio: identical to base True
+  column target_electric_heating_adoption: identical to base True
+  dup rows with base gas > 6e5: 4 (left untouched)
+candidate sha256 5d95cb7945e9d43938fe68bce81fc539f135ef5e764c540ce6ae72fece7bcc95
+elapsed 4.5s maxrss 640176 kB

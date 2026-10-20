@@ -1,0 +1,6 @@
+gas/M: rows in exact-collision groups 5792, excluding K0 dups 5606, excluding K0 and gas twins 4657
+gas/E: rows in exact-collision groups 4612, excluding K0 dups 4426, excluding K0 and gas twins 3681
+eui: rows in exact-collision groups 186, excluding K0 dups 0, excluding K0 and gas twins 0
+gas/b03: rows in exact-collision groups 210, excluding K0 dups 24, excluding K0 and gas twins 22
+elec/M: rows in exact-collision groups 35795, excluding K0 dups 35609, excluding K0 and gas twins 34642
+elec/E: rows in exact-collision groups 25585, excluding K0 dups 25399, excluding K0 and gas twins 24741

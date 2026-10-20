@@ -1,0 +1,60 @@
+== gas: group recompute rel err 2.9e-08; n_H 128791; base cols 9
+  [a_same4] split-half honest NRMSE +0.0000000 (se 0.0e+00); non-base picks 0/8
+  [b_16splits] split-half honest NRMSE +0.0000131 (se 1.1e-05); non-base picks 2/32
+  [b_16splits_kseed7] split-half honest NRMSE +0.0000088 (se 6.1e-06); non-base picks 5/32
+  [c nested outer seed 1] honest NRMSE -0.0000011; picks ['30/100', 'base', 'base', 'base', 'base']
+  [c nested outer seed 2] honest NRMSE +0.0000042; picks ['base', '30/100', 'base', 'base', 'base']
+  [c nested outer seed 3] honest NRMSE +0.0000075; picks ['base', '10/30', 'base', 'base', '10/30']
+  [d fixed] base      cv5 +0.0000000  cv10 +0.0000000  extrap@n_H +0.0000000
+  [d fixed] 3/100     cv5 +0.0000127  cv10 +0.0000104  extrap@n_H +0.0000097
+  [d fixed] 3/300     cv5 +0.0000139  cv10 +0.0000109  extrap@n_H +0.0000119
+  [d fixed] 10/100    cv5 +0.0000107  cv10 +0.0000082  extrap@n_H +0.0000088
+  [d fixed] 10/300    cv5 +0.0000123  cv10 +0.0000092  extrap@n_H +0.0000111
+  [d fixed] 3/30/300  cv5 +0.0000084  cv10 +0.0000126  extrap@n_H +0.0000149
+  [d fixed] 10/30     cv5 +0.0000097  cv10 +0.0000080  extrap@n_H +0.0000068
+  [d fixed] 30/100    cv5 +0.0000109  cv10 +0.0000081  extrap@n_H +0.0000098
+== eui: group recompute rel err 4.1e-08; n_H 128791; base cols 16
+  [a_same4] split-half honest NRMSE +0.0000113 (se 5.3e-06); non-base picks 3/8
+  [b_16splits] split-half honest NRMSE +0.0000056 (se 2.1e-06); non-base picks 7/32
+  [b_16splits_kseed7] split-half honest NRMSE +0.0000165 (se 9.1e-06); non-base picks 10/32
+  [c nested outer seed 1] honest NRMSE +0.0000002; picks ['base', 'base', '10/30', 'base', 'base']
+  [c nested outer seed 2] honest NRMSE +0.0000001; picks ['30/100', '3/30/300', '30/100', 'base', 'base']
+  [c nested outer seed 3] honest NRMSE +0.0000000; picks ['base', 'base', 'base', 'base', 'base']
+  [d fixed] base      cv5 +0.0000000  cv10 +0.0000000  extrap@n_H +0.0000000
+  [d fixed] 3/100     cv5 +0.0000080  cv10 +0.0000115  extrap@n_H +0.0000061
+  [d fixed] 3/300     cv5 +0.0000071  cv10 +0.0000108  extrap@n_H +0.0000060
+  [d fixed] 10/100    cv5 +0.0000006  cv10 +0.0000042  extrap@n_H +0.0000010
+  [d fixed] 10/300    cv5 +0.0000001  cv10 +0.0000040  extrap@n_H +0.0000013
+  [d fixed] 3/30/300  cv5 +0.0000022  cv10 -0.0000030  extrap@n_H -0.0000184
+  [d fixed] 10/30     cv5 +0.0000041  cv10 +0.0000074  extrap@n_H +0.0000027
+  [d fixed] 30/100    cv5 -0.0000055  cv10 -0.0000013  extrap@n_H -0.0000029
+== elec: group recompute rel err 2.8e-08; n_H 128791; base cols 8
+  [a_same4] split-half honest NRMSE +0.0000031 (se 2.9e-06); non-base picks 1/8
+  [b_16splits] split-half honest NRMSE +0.0000020 (se 1.0e-06); non-base picks 5/32
+  [b_16splits_kseed7] split-half honest NRMSE +0.0000045 (se 2.4e-06); non-base picks 7/32
+  [c nested outer seed 1] honest NRMSE +0.0000000; picks ['base', 'base', 'base', 'base', 'base']
+  [c nested outer seed 2] honest NRMSE +0.0000000; picks ['base', 'base', 'base', 'base', 'base']
+  [c nested outer seed 3] honest NRMSE +0.0000124; picks ['base', 'base', '10/30', 'base', 'base']
+  [d fixed] base      cv5 +0.0000000  cv10 +0.0000000  extrap@n_H +0.0000000
+  [d fixed] 3/100     cv5 +0.0000188  cv10 +0.0000225  extrap@n_H +0.0000225
+  [d fixed] 3/300     cv5 +0.0000168  cv10 +0.0000181  extrap@n_H +0.0000182
+  [d fixed] 10/100    cv5 +0.0000172  cv10 +0.0000184  extrap@n_H +0.0000185
+  [d fixed] 10/300    cv5 +0.0000174  cv10 +0.0000173  extrap@n_H +0.0000176
+  [d fixed] 3/30/300  cv5 +0.0004655  cv10 +0.0003772  extrap@n_H +0.0004880
+  [d fixed] 10/30     cv5 +0.0000200  cv10 +0.0000249  extrap@n_H +0.0000248
+  [d fixed] 30/100    cv5 +0.0000181  cv10 +0.0000176  extrap@n_H +0.0000181
+TOTAL a_same4: +0.00000289
+TOTAL b_16splits: +0.00000414
+TOTAL b_16splits_kseed7: +0.00000597
+TOTAL c_nested_seed1: -0.00000016
+TOTAL c_nested_seed2: +0.00000086
+TOTAL c_nested_seed3: +0.00000398
+TOTAL d_fixed_ext_base: +0.00000000
+TOTAL d_fixed_ext_3/100: +0.00000766
+TOTAL d_fixed_ext_3/300: +0.00000722
+TOTAL d_fixed_ext_10/100: +0.00000565
+TOTAL d_fixed_ext_10/300: +0.00000600
+TOTAL d_fixed_ext_3/30/300: +0.00009690
+TOTAL d_fixed_ext_10/30: +0.00000685
+TOTAL d_fixed_ext_30/100: +0.00000500
+TOTAL d_oracle_best_ext_per_target: -0.00000368

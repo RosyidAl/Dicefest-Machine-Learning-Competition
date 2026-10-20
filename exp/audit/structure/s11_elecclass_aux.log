@@ -1,0 +1,5 @@
+best iter 139 AUC on H 0.7078 base rate 0.2436
+top features {'bld_dim_12': 114262.0, 'bld_dim_02': 45946.0, 'bld_dim_01': 16118.0, 'bld_dim_08': 12298.0, 'socio_demog_040': 6774.0, 'bld_era_14': 6134.0, 'zone_n': 5654.0, 'sub_n': 5595.0}
+gas: H NRMSE 0.24514 -> 0.24515  delta +0.000004  (total +0.000001)
+eui: H NRMSE 0.64859 -> 0.64864  delta +0.000044  (total +0.000009)
+elec: H NRMSE 0.31462 -> 0.31462  delta +0.000001  (total +0.000000)

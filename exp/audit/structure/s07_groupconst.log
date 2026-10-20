@@ -1,0 +1,42 @@
+socio columns constant within subzone: share of subzones per column, min/median/max 0.22919978111889935 1.0 1.0
+columns not subzone-constant (<0.99): ['socio_demog_002', 'socio_demog_003', 'socio_demog_006', 'socio_demog_007', 'socio_demog_008', 'socio_demog_009', 'socio_demog_010', 'socio_demog_011', 'socio_demog_012', 'socio_demog_013', 'socio_demog_014', 'socio_demog_015', 'socio_demog_127']
+[subzone] groups 153508, multi-row groups 118349, rows in multi 0.918
+   gas       identical-in-group share 0.0001  LOO-mean R2(log) -0.205
+   gas/M     identical-in-group share 0.0001  LOO-mean R2(log) 0.218
+   eui       identical-in-group share 0.0001  LOO-mean R2(log) -0.013
+   gas/E     identical-in-group share 0.0001  LOO-mean R2(log) 0.326
+   gas/b03   identical-in-group share 0.0001  LOO-mean R2(log) 0.051
+   elec      identical-in-group share 0.0001  LOO-mean R2(log) -0.279
+   elec/M    identical-in-group share 0.0001  LOO-mean R2(log) -0.066
+   elec/E    identical-in-group share 0.0001  LOO-mean R2(log) 0.252
+   gas/elec  identical-in-group share 0.0001  LOO-mean R2(log) -0.061
+[zone] groups 330, multi-row groups 330, rows in multi 1.000
+   gas       identical-in-group share 0.0000  LOO-mean R2(log) 0.051
+   gas/M     identical-in-group share 0.0000  LOO-mean R2(log) 0.092
+   eui       identical-in-group share 0.0000  LOO-mean R2(log) 0.130
+   gas/E     identical-in-group share 0.0000  LOO-mean R2(log) 0.170
+   gas/b03   identical-in-group share 0.0000  LOO-mean R2(log) 0.160
+   elec      identical-in-group share 0.0000  LOO-mean R2(log) 0.031
+   elec/M    identical-in-group share 0.0000  LOO-mean R2(log) 0.061
+   elec/E    identical-in-group share 0.0000  LOO-mean R2(log) 0.146
+   gas/elec  identical-in-group share 0.0000  LOO-mean R2(log) 0.082
+[cell] groups 28152, multi-row groups 23962, rows in multi 0.990
+   gas       identical-in-group share 0.0001  LOO-mean R2(log) 0.056
+   gas/M     identical-in-group share 0.0001  LOO-mean R2(log) 0.241
+   eui       identical-in-group share 0.0001  LOO-mean R2(log) 0.171
+   gas/E     identical-in-group share 0.0001  LOO-mean R2(log) 0.360
+   gas/b03   identical-in-group share 0.0001  LOO-mean R2(log) 0.207
+   elec      identical-in-group share 0.0001  LOO-mean R2(log) 0.016
+   elec/M    identical-in-group share 0.0001  LOO-mean R2(log) 0.105
+   elec/E    identical-in-group share 0.0001  LOO-mean R2(log) 0.299
+   gas/elec  identical-in-group share 0.0001  LOO-mean R2(log) 0.133
+[census_vec] groups 429184, multi-row groups 100, rows in multi 0.001
+   gas       identical-in-group share 0.0500  LOO-mean R2(log) 0.869
+   gas/M     identical-in-group share 0.0500  LOO-mean R2(log) 0.579
+   eui       identical-in-group share 0.0500  LOO-mean R2(log) 0.413
+   gas/E     identical-in-group share 0.0500  LOO-mean R2(log) 0.951
+   gas/b03   identical-in-group share 0.0500  LOO-mean R2(log) 0.477
+   elec      identical-in-group share 0.0500  LOO-mean R2(log) 0.824
+   elec/M    identical-in-group share 0.0500  LOO-mean R2(log) 0.237
+   elec/E    identical-in-group share 0.0500  LOO-mean R2(log) 0.943
+   gas/elec  identical-in-group share 0.0500  LOO-mean R2(log) 0.164

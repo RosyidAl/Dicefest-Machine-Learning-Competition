@@ -1,0 +1,16 @@
+rows with repeated A (train+test): 21839 share 0.0356 test rows: 6539
+  groups with identical bld_dim_08: 0.946
+  groups with identical bld_dim_07: 0.064
+  groups with identical bld_dim_03: 1.000
+  groups with identical bld_dim_12: 0.146
+  groups with identical bld_dim_01: 0.398
+  groups with identical bld_dim_02: 0.523
+  groups with identical bld_dim_17: 0.066
+  groups with identical subzone_id: 0.029
+  A==bld_dim_08 share: repeated 0.971 others 0.769
+  A/E quantiles repeated [  62.1  373.3 1058. ] others [ 53.3  80.9 169.5]
+  E quantiles repeated [ 1.  1. 14.] others [ 5. 17. 42.]
+  top repeated A with group E values: [(579.505, [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 2.0, 3.0, 6.0]), (833.55, [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 2.0, 4.0]), (628.675, [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 2.0, 2.0, 3.0]), (955.305, [1.0, 1.0, 1.0, 1.0, 2.0, 3.0, 6.0, 9.0, 9.0])]
+H gas: flagged 4581  mean log-res flag -0.0332 (se 0.0039) vs -0.0166; mean res flag -119.261 vs -41.448; rmse flag 26280.180 vs 37542.748
+H eui: flagged 4581  mean log-res flag -0.0328 (se 0.0038) vs -0.0167; mean res flag +0.091 vs -0.052; rmse flag 35.307 vs 25.977
+H elec: flagged 4581  mean log-res flag -0.0391 (se 0.0043) vs -0.0256; mean res flag +245.225 vs -57.505; rmse flag 10086.708 vs 13226.546

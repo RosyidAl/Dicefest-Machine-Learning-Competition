@@ -1,0 +1,44 @@
+table (163185, 222) 29s
+fold 0 arm A q_xent it=168 38s
+fold 0 arm A r_reg it=136 43s
+fold 0 arm B q_xent it=158 50s
+fold 0 arm B r_reg it=162 55s
+fold 1 arm A q_xent it=202 63s
+fold 1 arm A r_reg it=267 70s
+fold 1 arm B q_xent it=221 77s
+fold 1 arm B r_reg it=172 83s
+fold 2 arm A q_xent it=171 90s
+fold 2 arm A r_reg it=166 96s
+fold 2 arm B q_xent it=284 104s
+fold 2 arm B r_reg it=250 111s
+fold 3 arm A q_xent it=236 119s
+fold 3 arm A r_reg it=173 125s
+fold 3 arm B q_xent it=320 134s
+fold 3 arm B r_reg it=208 141s
+fold 4 arm A q_xent it=183 148s
+fold 4 arm A r_reg it=209 156s
+fold 4 arm B q_xent it=180 163s
+fold 4 arm B r_reg it=153 169s
+A0_q_xent_unseen_weighted 1.03696
+A0_r_reg_unseen_weighted 1.04523
+A0_avg_all 0.89965
+A0_avg_unseen_weighted 1.0358
+A1_q_xent_unseen_weighted 1.03696
+A1_r_reg_unseen_weighted 1.04523
+A1_avg_all 0.89973
+A1_avg_unseen_weighted 1.0358
+B_q_xent_unseen_weighted 1.04208
+B_r_reg_unseen_weighted 1.04935
+B_avg_all 0.90023
+B_avg_unseen_weighted 1.04028
+A0_mse_by_nrow {1: 1.2745, 2: 1.0544, 3: 0.8228, 4: 0.7609, 5: 0.6245, 6: 0.5457}
+A0_mean_r_by_nrow {1: 1.1133, 2: 1.0262, 3: 0.9024, 4: 0.8212, 5: 0.7505, 6: 0.6571}
+A1_mse_by_nrow {1: 1.2745, 2: 1.0543, 3: 0.8228, 4: 0.7609, 5: 0.6255, 6: 0.5457}
+A1_mean_r_by_nrow {1: 1.1133, 2: 1.026, 3: 0.9016, 4: 0.82, 5: 0.7494, 6: 0.6559}
+B_mse_by_nrow {1: 1.2975, 2: 1.0546, 3: 0.8233, 4: 0.7628, 5: 0.6195, 6: 0.5413}
+B_mean_r_by_nrow {1: 1.1123, 2: 1.0279, 3: 0.9017, 4: 0.822, 5: 0.7503, 6: 0.6563}
+true_mean_r_by_nrow {1: 1.0661, 2: 1.0154, 3: 0.9064, 4: 0.8257, 5: 0.7597, 6: 0.6711}
+nrow_tr_gain_share {'q_xent': [np.float64(0.0003), np.float64(0.0004), np.float64(0.0007), np.float64(0.001), np.float64(0.0002)], 'r_reg': [np.float64(0.0005), np.float64(0.0003), np.float64(0.0008), np.float64(0.0004), np.float64(0.0005)]}
+unseen_r_shift_B_minus_A_by_nrow {1: -0.0029, 2: -0.0017, 3: 0.0006, 4: -0.0059, 5: 0.0093, 6: -0.0111}
+unseen_rms_diff_B_vs_A_rows 0.040517037263939744
+done 170s

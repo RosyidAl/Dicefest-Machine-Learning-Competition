@@ -1,0 +1,15 @@
+P-side teacher gas: base 0.247392  claimed S3 d -0.0001052 (rowwise se 0.0000246, t -4.27) hard clip only d -0.0000432
+P-side teacher eui: base 0.655413  claimed S3 d -0.0000171 (rowwise se 0.0000050, t -3.41) hard clip only d -0.0000049
+P-side TOTAL (claimed constants, k from H) -0.00002447
+H gas: per 10k rows |chg|>0.01sig 36.6  >0.1sig 7.5  rms 0.0063 sig  max 0.448 sig; pred > T(/A): 11
+H eui: per 10k rows |chg|>0.01sig 36.5  >0.1sig 5.9  rms 0.0052 sig  max 0.513 sig; pred > T(/A): 10
+test(v19vce) gas: per 10k |chg|>0.01sig 36.4  >0.1sig 7.3  rms 0.0055 sig  max 0.467 sig  over cap 7  largest {'id': 'ID_584986', 'p': 1061409.095080163, 'new': 990508.6651778178, 'A': 9430.99570561702, 'M': 73.0}
+   H    rows per 10k by b bin [<0, 0-.5, .5-1, 1-2, 2-3]: [0.85, 2.17, 4.12, 21.51, 40.53]
+   test rows per 10k by b bin [<0, 0-.5, .5-1, 1-2, 2-3]: [0.38, 1.52, 4.95, 20.87, 42.18]
+test(v19vce) eui: per 10k |chg|>0.01sig 36.4  >0.1sig 5.8  rms 0.0047 sig  max 0.466 sig  over cap 8  largest {'id': 'ID_509296', 'p': 215.1267531167821, 'new': 196.1906601549339, 'A': 4909.409491782965, 'M': 59.0}
+   H    rows per 10k by b bin [<0, 0-.5, .5-1, 1-2, 2-3]: [0.78, 2.33, 4.04, 22.28, 41.23]
+   test rows per 10k by b bin [<0, 0-.5, .5-1, 1-2, 2-3]: [0.43, 1.63, 5.11, 21.31, 42.61]
+deployed sub_v19nca->sub_v19ncapp gas: rows M>4 max |actual - predicted S3| 1.49e-02 sig; rows with S3 change but untouched 4; max p1 990541.6; rows over cap after 0
+deployed sub_v19nca->sub_v19ncapp eui: rows M>4 max |actual - predicted S3| 1.06e-02 sig; rows with S3 change but untouched 4; max p1 605.9; rows over cap after 0
+deployed sub_v19nca2->sub_v19nca2pp gas: rows M>4 max |actual - predicted S3| 1.49e-02 sig; rows with S3 change but untouched 4; max p1 990541.6; rows over cap after 0
+deployed sub_v19nca2->sub_v19nca2pp eui: rows M>4 max |actual - predicted S3| 1.06e-02 sig; rows with S3 change but untouched 4; max p1 605.9; rows over cap after 0

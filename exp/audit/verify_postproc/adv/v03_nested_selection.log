@@ -1,0 +1,16 @@
+full-H 5-fold scores, best 8 variants:
+   ('M3+M4add', True, True, True)         -0.00008079
+   ('M3+M4add', True, True, False)        -0.00008060
+   ('M3+M4', True, True, True)            -0.00007279
+   ('M3+M4', True, True, False)           -0.00007260
+   ('M3+M4add', False, True, True)        -0.00007192
+   ('M3+M4add', False, True, False)       -0.00007172
+   ('M3+M4add', True, False, True)        -0.00006569
+   ('M3+M4', False, True, True)           -0.00006519
+   fixed ('M3+M4', False, True, True) -0.00006519 (rank 8 of 40)
+
+nested over 40 half-splits:
+   selected variant: A-score mean -0.00008007 | B-score mean -0.00006758 (sd 0.00002581, frac<0 0.97) | optimism A-B -0.00001249
+   fixed chain     : A-score mean -0.00006387 | B-score mean -0.00006420 (sd 0.00002985, frac<0 0.97) | A-B +0.00000033
+   selection counts {"('M3+M4add', True, True, True)": 15, "('M3+M4', True, True, True)": 10, "('M3+M4', False, True, True)": 4, "('M3+M4add', False, True, True)": 4, "('M3+M4', True, True, False)": 3, "('M3+M45', True, True, True)": 2, "('M3+M4add', False, True, False)": 2}
+maxrss 280180 kB, 208.24 s

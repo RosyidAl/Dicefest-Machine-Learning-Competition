@@ -1,0 +1,30 @@
+sanity {
+"A==bld_dim_06": true,
+"M==bld_dim_12": true,
+"gas_y==train[H]": 2.301455508550801e-15,
+"gas_pP+rP==train[P]": 2.301455508550801e-15,
+"gas_nrmse_P_teacher": 0.24739218791568057,
+"gas_nrmse_H_teacher": 0.24602575988566863,
+"gas_nrmse_H_corrected": 0.24514443281708553,
+"eui_y==train[H]": 1.3983620875967531e-15,
+"eui_pP+rP==train[P]": 1.3983620875967531e-15,
+"eui_nrmse_P_teacher": 0.6554127374812637,
+"eui_nrmse_H_teacher": 0.6500752791478267,
+"eui_nrmse_H_corrected": 0.648592771967224,
+"elec_y==train[H]": 6.975092241658661e-16,
+"elec_pP+rP==train[P]": 6.975092241658661e-16,
+"elec_nrmse_P_teacher": 0.317920932155306,
+"elec_nrmse_H_teacher": 0.3148396086652565,
+"elec_nrmse_H_corrected": 0.31462276217495244
+}
+P-OOF deltas {'gas': [0.1974, 0.0785], 'eui': [0.2098, 0.0334], 'elec': [0.1785, 0.063]} | var model {'gas': [0.00806, 0.39297], 'eui': [0.00839, 0.38715]}
+S0 (H corrected, clip 0) {'gas': 0.245144, 'eui': 0.648593, 'elec': 0.314623}
+seed 0  S1+S3+S4: {'gas': '-0.0000872', 'eui': '-0.0002330', 'elec': '-0.0000058'} TOTAL -0.00006519 k {'gas': [0.5637, 0.4672, 0.5066, 0.4701, 0.5123], 'eui': [0.7291, 0.4888, 0.69, 0.6776, 0.6689]}
+   per-fold totals [-2.4420e-05 -1.0327e-04 -6.1180e-05 -1.2876e-04 -7.2100e-06]
+   steps S1         {'gas': '-0.0000093', 'eui': '-0.0002147', 'elec': '-0.0000048'} TOTAL -0.00004577
+   steps S1+S3      {'gas': '-0.0000872', 'eui': '-0.0002330', 'elec': '-0.0000048'} TOTAL -0.00006499
+   steps S3         {'gas': '-0.0000779', 'eui': '-0.0000182', 'elec': '+0.0000000'} TOTAL -0.00001922
+   steps S4         {'gas': '-0.0000158', 'eui': '-0.0000022', 'elec': '-0.0000010'} TOTAL -0.00000378
+   steps S1+S4      {'gas': '-0.0000250', 'eui': '-0.0002169', 'elec': '-0.0000058'} TOTAL -0.00004955
+TOTAL over KFold seeds 0..9: mean -0.00006506 min -0.00006594 max -0.00006433
+maxrss 339284 kB, 3.79 s

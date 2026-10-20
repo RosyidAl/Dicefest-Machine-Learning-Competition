@@ -1,0 +1,42 @@
+id_eq_sample_raw True
+id_eq_test True
+adopt_identical_sub_v19vce True
+adopt_identical_sub_v19nca2pp True
+adopt_identical_BEST_CURRENT True
+n_rows 183987
+nonfinite 0
+min 0.0
+max 82.68745257918636
+train_subzones 153508
+train_subzones_nonconstant 0
+test_rows_seen 169008
+test_rows_unseen 14979
+seen_exact_equal 169008
+seen_max_absdiff 0.0
+unseen_subzones 9677
+unseen_subzones_nonconstant_pred 0
+unseen_row_mix {1: 5916, 2: 5158, 3: 2664, 4: 944, 5: 255, 6: 0}
+unseen_row_mix_6plus_rows 42
+UNSEEN_MIX_in_code {1: 5916, 2: 5158, 3: 2664, 4: 944, 5: 255, 6: 42}
+unseen_pred_gt_rest_rows 38
+unseen_pred_gt_rest_max_excess 7.62939453125e-06
+unseen_rest0_rows 539
+unseen_rest0_pred_nonzero_rows 23
+unseen_rest0_pred_max 7.62939453125e-06
+unseen_pred_lt0 0
+train_ad_gt_rest_rows 0
+train_rest0_rows 23178
+train_rest0_ad_nonzero 0
+train_rest_min -2.842170943040401e-14
+test_rest_min -2.842170943040401e-14
+eq_adopt_v2_npy 183987
+N_not_found 0
+subzones_adcount_not_integral 1439
+N_multiplier_counts {1: 152069, 2: 1068, 3: 240, 4: 59, 5: 51, 6: 5, 7: 9, 8: 1, 9: 1, 10: 2, 11: 2, 15: 1}
+off_N_hat_median 59.0
+off_N_true_median 126.0
+n_feature_cols 202
+n_const_within_subzone_train 127
+n_const_within_subzone_train_test 127
+const_train_not_train_test []
+hvac_all_const_train_test True

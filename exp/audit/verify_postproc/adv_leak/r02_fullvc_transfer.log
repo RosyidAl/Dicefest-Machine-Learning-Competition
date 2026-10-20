@@ -1,0 +1,42 @@
+loaded: gas members 27, elec members 12; maxrss 512 MB
+   VC refit eui : in-sample NRMSE 0.64959 (jitter 0.0); maxrss 703 MB
+   VC refit gas : in-sample NRMSE 0.24470 (jitter 0.0); maxrss 742 MB
+   VC refit elec: in-sample NRMSE 0.31574 (jitter 0.0); maxrss 742 MB
+   elec production blend_preds vs refit: max rel diff fit 4.69e-12 test 2.80e-12; maxrss 1573 MB
+
+== a. full-OOF LS deltas (r = y - pf, metric scale)
+   gas  M2-3 n  136 d +0.19942 (claim +0.19942, diff -4.5e-06) se HC0 0.0329 jk 0.0332 t +6.1
+   gas  M4   n  741 d +0.06202 (claim +0.06202, diff +1.6e-06) se HC0 0.0137 jk 0.0138 t +4.5
+   eui  M2-3 n  136 d +0.18166 (claim +0.18166, diff -4.7e-06) se HC0 0.0321 jk 0.0324 t +5.7
+   eui  M4   n  741 d +0.03016 (claim +0.03016, diff +2.8e-06) se HC0 0.0136 jk 0.0136 t +2.2
+   elec M2-3 n  136 d +0.18714 (claim +0.18714, diff -3.1e-06) se HC0 0.0399 jk 0.0402 t +4.7
+   elec M4   n  741 d +0.07098 (claim +0.07098, diff +4.2e-06) se HC0 0.0254 jk 0.0257 t +2.8
+
+== b. test side: what the residual correction already does for small-M rows; candidate ratios
+   test duplicates 77, of which M<=4: 0; test M=1 rows 1
+   gas  M2-3 n     60 corr/teacher +0.0038 | M4 n    298 corr/teacher +0.0005 | M>=5 n 183551 corr/teacher -0.0000 || candidate/base - 1: M2-3 [0.19942, 0.19942] M4 [0.06202, 0.06202]
+   eui  M2-3 n     60 corr/teacher +0.0030 | M4 n    298 corr/teacher +0.0004 | M>=5 n 183551 corr/teacher -0.0000 || candidate/base - 1: M2-3 [0.18166, 0.18166] M4 [0.03016, 0.03016]
+   elec M2-3 n     60 corr/teacher +0.0018 | M4 n    298 corr/teacher +0.0008 | M>=5 n 183551 corr/teacher -0.0001 || candidate/base - 1: M2-3 [0.18714, 0.18714] M4 [0.07098, 0.07098]
+
+== c. expected change on test (sub_v19vce predictions q of the touched rows, N = 183987)
+   gas  expected dNRMSE: naive -0.0000064 | debiased -0.0000060 | tercile -0.0000061
+   eui  expected dNRMSE: naive -0.0002060 | debiased -0.0001852 | tercile -0.0002020
+   elec expected dNRMSE: naive -0.0000045 | debiased -0.0000037 | tercile -0.0000042
+   TOTAL expected: naive -0.00004338 | debiased -0.00003897 | tercile -0.00004247   [claim analytic -0.0000434]
+
+== d. honest 70/30 splits of the full OOF (deltas on 70 %, gain on the 30 % = 128.8k rows), 400 repeats
+   TOTAL mean -0.00004444 sd 0.00002459 P(gain<0) 0.955 q05/50/95 [-8.05177570e-05 -4.43454398e-05 -1.87796240e-06]
+   gas  dNRMSE mean -0.0000054 sd 0.0000025
+   eui  dNRMSE mean -0.0002135 sd 0.0001213
+   elec dNRMSE mean -0.0000033 sd 0.0000032
+
+== e. specificity: LS relative bias of M>=5 rows in the lowest prediction bins (same p range as M2-3)
+   gas  M>=5 in M2-3 p-range: n 38609 d -0.0002 (t -0.2) | M5-6 in M2-3 p-range: n 17942 d +0.0022 (t +1.0)
+   eui  M>=5 in M2-3 p-range: n 274190 d -0.0004 (t -0.9) | M5-6 in M2-3 p-range: n 17727 d -0.0004 (t -0.2)
+   elec M>=5 in M2-3 p-range: n 22820 d -0.0001 (t -0.0) | M5-6 in M2-3 p-range: n 16037 d -0.0008 (t -0.3)
+
+== f. small-M test rows vs train rows: Mann-Whitney / KS p-values
+   M2-3: A/M MW p 0.034 KS p 0.063 (median train 87.97 test 107.9) | E/M MW p 0.445 KS p 0.958 (median train 1 test 1) | gas teacher MW p 0.069 KS p 0.045 (median train 4.591e+04 test 5.256e+04) | eui teacher MW p 0.126 KS p 0.256 (median train 187.8 test 169.7) | elec teacher MW p 0.240 KS p 0.513 (median train 1.262e+04 test 1.295e+04)
+   M4: A/M MW p 0.301 KS p 0.337 (median train 84.55 test 84.86) | E/M MW p 0.299 KS p 0.699 (median train 1 test 1) | gas teacher MW p 0.642 KS p 0.860 (median train 5.582e+04 test 5.603e+04) | eui teacher MW p 0.308 KS p 0.495 (median train 179 test 174.5) | elec teacher MW p 0.702 KS p 0.403 (median train 1.549e+04 test 1.547e+04)
+
+maxrss 1573 MB wall 43.2 s

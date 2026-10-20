@@ -1,0 +1,5 @@
+sub_v19vce max 1061409 n>1e6 7 n>9e5 105 n>9.5e5 30
+sub_v19nca max 1061478 n>1e6 7 n>9e5 107 n>9.5e5 30
+sub_v19ncapp max 990542 n>1e6 0 n>9e5 56 n>9.5e5 10
+sub_v19nca2pp max 990542 n>1e6 0 n>9e5 56 n>9.5e5 10
+nca -> ncapp mean shift on rows a>9.5e5: -41904 (n 30)

@@ -1,0 +1,31 @@
+dup rows 77; dup rows equal to train values in base: True
+candidate sha256 5d95cb7945e9d43938fe68bce81fc539f135ef5e764c540ce6ae72fece7bcc95
+gas: max |cand - my cal| 0.000e+00; eui max rel 0.000e+00; other columns identical: True; dup rows untouched: True
+gas rows changed 4326, by > 0.1 sigma 81, max |change| 111084, max before 1061409 after 950325; rows > 1e6 before 7
+
+rows per 100k by bin of prediction / 1e6 (counts in brackets)
+  test gas      [0.60,0.80) 2167.5 (3988) [0.80,0.85)  145.7 ( 268) [0.85,0.90)   84.2 ( 155) [0.90,0.93)   31.0 (  57) [0.93,0.96)   15.2 (  28) [0.96,0.98)    4.9 (   9) [0.98,1.00)    2.2 (   4) [1.00,1.02)    1.6 (   3) [1.02,9.00)    2.2 (   4)
+  H corrected   [0.60,0.80) 2174.1 (2800) [0.80,0.85)  154.5 ( 199) [0.85,0.90)   73.0 (  94) [0.90,0.93)   22.5 (  29) [0.93,0.96)   14.8 (  19) [0.96,0.98)   10.1 (  13) [0.98,1.00)    3.9 (   5) [1.00,1.02)    4.7 (   6) [1.02,9.00)    3.9 (   5)
+  H teacher     [0.60,0.80) 2183.4 (2812) [0.80,0.85)  147.5 ( 190) [0.85,0.90)   74.5 (  96) [0.90,0.93)   21.0 (  27) [0.93,0.96)   20.2 (  26) [0.96,0.98)    7.8 (  10) [0.98,1.00)    5.4 (   7) [1.00,1.02)    3.1 (   4) [1.02,9.00)    3.9 (   5)
+  P teacher     [0.60,0.80) 2139.7 (6430) [0.80,0.85)  141.8 ( 426) [0.85,0.90)   85.2 ( 256) [0.90,0.93)   28.3 (  85) [0.93,0.96)   14.6 (  44) [0.96,0.98)    5.3 (  16) [0.98,1.00)    4.3 (  13) [1.00,1.02)    3.7 (  11) [1.02,9.00)    4.0 (  12)
+  test eui*A    [0.60,0.80) 2164.8 (3983) [0.80,0.85)  144.6 ( 266) [0.85,0.90)   87.0 ( 160) [0.90,0.93)   28.8 (  53) [0.93,0.96)   14.1 (  26) [0.96,0.98)    7.6 (  14) [0.98,1.00)    2.7 (   5) [1.00,1.02)    2.2 (   4) [1.02,9.00)    2.2 (   4)
+  H corr eui*A  [0.60,0.80) 2171.7 (2797) [0.80,0.85)  146.7 ( 189) [0.85,0.90)   76.9 (  99) [0.90,0.93)   23.3 (  30) [0.93,0.96)   14.8 (  19) [0.96,0.98)   10.9 (  14) [0.98,1.00)    6.2 (   8) [1.00,1.02)    3.9 (   5) [1.02,9.00)    3.9 (   5)
+  gas pred > 0.90e6: test 105 vs expected at the H rate 110.0  (Poisson z -0.48)
+  gas pred > 0.95e6: test 30 vs expected at the H rate 50.0  (Poisson z -2.83)
+  gas pred > 1.00e6: test 7 vs expected at the H rate 15.7  (Poisson z -2.20)
+
+realised on H (k 0.08): gas -0.00001969 eui -0.00000481 total -0.00002450
+(m) model-implied expected change (truncated-normal truth with k_true; applied k 0.08):
+   k_true 0.060: H gas -0.00000736 eui -0.00000103 | test gas -0.00000410 eui -0.00000060 total -0.00000470
+   k_true 0.070: H gas -0.00001299 eui -0.00000187 | test gas -0.00000819 eui -0.00000121 total -0.00000939
+   k_true 0.075: H gas -0.00001592 eui -0.00000231 | test gas -0.00001036 eui -0.00000153 total -0.00001190
+   k_true 0.080: H gas -0.00001893 eui -0.00000276 | test gas -0.00001262 eui -0.00000187 total -0.00001449
+   k_true 0.085: H gas -0.00002199 eui -0.00000322 | test gas -0.00001494 eui -0.00000222 total -0.00001716
+   k_true 0.090: H gas -0.00002511 eui -0.00000368 | test gas -0.00001733 eui -0.00000258 total -0.00001991
+(e) empirical bias curve of H corrected per bin (gas units): [945, 7978, -9652, -18189, -19724, -67862, -70251, -49008, -82881]
+    expected test change: gas -0.00001152 (boot mean -0.00001159 sd 0.00000414) eui -0.00000192 (boot sd 0.00000064); total -0.00001345  P(total<0) 1.000
+    with the P-teacher bias curve [1785, 543, -2019, -29576, -42726, -34731, -61037, -82429, -107978]: test gas -0.00001659
+(w) importance-weighted H value (test prediction mix): gas -0.00001239 eui -0.00000312 total -0.00001550
+    public  size 55196: mean -0.00001560 sd 0.00000959 P(<0) 0.968 P(<= -1e-5) 0.694  5% -0.00003252 95% -0.00000179
+    private size 128791: mean -0.00001538 sd 0.00000624 P(<0) 0.997 P(<= -1e-5) 0.800  5% -0.00002639 95% -0.00000567
+elapsed 115.0 s maxrss 399652 kB

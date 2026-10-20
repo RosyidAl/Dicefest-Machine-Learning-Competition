@@ -1,0 +1,8 @@
+gas H gain by distance bin (total-score units): [-9,0) n 11 -0.00000663; [0,0.5) n 28 -0.00001051; [0.5,1) n 55 -0.00000399; [1,1.5) n 99 +0.00000125; [1.5,2) n 177 +0.00000257; [2,3) n 524 +0.00000107; [3,1000000000.0) n 127897 -0.00000003
+eui H gain by distance bin (total-score units): [-9,0) n 11 -0.00000073; [0,0.5) n 29 -0.00000360; [0.5,1) n 52 -0.00000090; [1,1.5) n 113 +0.00000018; [1.5,2) n 174 +0.00000064; [2,3) n 535 +0.00000019; [3,1000000000.0) n 127877 +0.00000000
+gas: k* H corrected 0.506 (sd 0.094) | full-train OOF 0.479 (sd 0.056) | break-even k*=0.252: P(H boot below) 0.002, P(full boot below) 0.000
+eui: k* H corrected 0.651 (sd 0.158) | full-train OOF 0.539 (sd 0.067) | break-even k*=0.329: P(H boot below) 0.015, P(full boot below) 0.000
+full-OOF private   subsets: total change mean -0.00001616 sd 0.00000679 frac<0 0.996 5/95% [-0.00002741, -0.00000485]
+full-OOF public    subsets: total change mean -0.00001658 sd 0.00001158 frac<0 0.939 5/95% [-0.00003728, +0.00000129]
+full-OOF all_train subsets: total change mean -0.00001634 sd 0.00000000 frac<0 1.000 5/95% [-0.00001634, -0.00001634]
+wrote exp/audit/verify_postproc/s3_leakopt/l03_risk.json; wall 233.3s maxrss 303064 kB

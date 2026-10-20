@@ -1,0 +1,47 @@
+=== 1. data facts
+train rows 429303, test rows 183987, total 613290; 3*n_tr == 7*n_te: True
+raw train.csv gas: rows 429303, max 999764.899, rows >= 1e6 0; cache == raw: True
+top 5 train gas: 999764.9 999729.3 999305.2 999102.5 998998.0
+identity eui*A == gas: max rel err 6.37e-16
+tail [7e5, 1e6): n 4798, MLE e-fold 114621 kWh, expected rows >= 1e6 if untruncated 378 (observed 0)
+if the 1e6 filter hit train only after a 70/30 split: expected train shortfall ~378 rows (sd ~19); observed n_tr - 0.7*(n_tr+n_te) = 0.00
+
+=== 2. holdout chain: n P 300512, n H 128791; max gas on P 999305.2, on H 999764.9
+gas_rP == y_P - gas_pP: True
+  gas H corrected clip 1e6  : base 0.245144 rows  11 improved  11 dNRMSE -0.00001528 dTotal -0.000003056 (boot mean -0.000002975 sd 0.000001423 P<0 1.000)
+  gas H corrected clip max_P: base 0.245144 rows  11 improved  11 dNRMSE -0.00001577 dTotal -0.000003153 (boot mean -0.000003127 sd 0.000001506 P<0 1.000)
+    H corrected rows with pred > 1e6: n 11; overshoot p-1e6 sum 199008; gap 1e6-y mean 46313 median 23819 min 235
+  gas H teacher   clip 1e6  : base 0.246026 rows   9 improved   9 dNRMSE -0.00001264 dTotal -0.000002528 (boot mean -0.000002567 sd 0.000001168 P<0 1.000)
+  gas H teacher   clip max_P: base 0.246026 rows   9 improved   9 dNRMSE -0.00001298 dTotal -0.000002596 (boot mean -0.000002667 sd 0.000001182 P<0 1.000)
+  eui H corrected clip 1e6/A  : base 0.648593 rows  10 dNRMSE -0.00000212 dTotal -0.000000424 (boot sd 0.000000217 P<0 1.000)
+  eui H corrected clip max_P/A: base 0.648593 rows  11 dNRMSE -0.00000217 dTotal -0.000000434 (boot sd 0.000000215 P<0 1.000)
+  eui H teacher   clip 1e6/A  : base 0.650075 rows  11 dNRMSE -0.00000159 dTotal -0.000000318 (boot sd 0.000000148 P<0 1.000)
+  eui H teacher   clip max_P/A: base 0.650075 rows  11 dNRMSE -0.00000166 dTotal -0.000000332 (boot sd 0.000000151 P<0 1.000)
+  gas P-OOF teacher clip 1e6: base 0.247392 rows  23 dNRMSE -0.00004306 dTotal -0.000008612  (rows scaled to H size: dTotal x 2.33 density-neutral)
+  eui P-OOF teacher clip 1e6/A: base 0.655413 rows  25 dNRMSE -0.00000490 dTotal -0.000000979  (rows scaled to H size: dTotal x 2.33 density-neutral)
+
+=== 3. sub_v19vce test: gas rows > 1e6: 7: 1061409 1042639 1039876 1023195 1016814 1010786 1004355
+    rows > train max 999765: 7
+    EUI rows with eui*A > 1e6: 8; overlap with gas rows 7; eui overshoot (eui - 1e6/A): 11.44 8.98 6.95 3.02 1.73 1.71 1.34 0.05
+    gas/eui consistency on those rows: max |eui*A/gas - 1| 0.0130
+
+=== 4. transfer to test (base NRMSE taken from H corrected)
+  ref H corrected   : n  11 mean gap    46313 median    23819 min      235
+  ref P-OOF teacher : n  23 mean gap    59150 median    35686 min      695
+  ref pooled        : n  34 mean gap    54997 median    31899 min      235
+  guaranteed (gap 0)  : gas dTotal -0.000000783 (sd 0.000000000)  eui dTotal -0.000000140  sum -0.000000923
+  H corrected         : gas dTotal -0.000002559 (sd 0.000000609)  eui dTotal -0.000000417  sum -0.000002975
+  P-OOF teacher       : gas dTotal -0.000003051 (sd 0.000000472)  eui dTotal -0.000000493  sum -0.000003544
+  pooled              : gas dTotal -0.000002892 (sd 0.000000383)  eui dTotal -0.000000469  sum -0.000003360
+  gas private LB (n 128791): mean -0.000002892  P10 -0.000004062  P90 -0.000001609
+  gas public  LB (n 55196): mean -0.000002892  P10 -0.000005885  P90 -0.000000160
+
+=== 5. rows per 100k with gas pred above t: test sub | H corrected | P-OOF teacher
+  t    800000:   287.0   287.3   287.2
+  t    900000:    57.1    59.8    60.2
+  t    950000:    16.3    27.2    21.6
+  t   1000000:     3.8     8.5     7.7
+  P rows with truth >= 9.5e5: share with pred > 9e5 = 0.458; if test were untruncated it would hold ~162 rows >= 1e6 -> >= 74 extra rows with pred > 9e5; observed 105, train-side rate implies 111
+  exp/audit/segments/sub_v19vce_cap_k0.08.csv: gas max 950325, rows > 1e6 0, rows eui*A > 1e6 0
+  submissions/sub_v19nca2pp.csv: gas max 990542, rows > 1e6 0, rows eui*A > 1e6 0
+  submissions/BEST_CURRENT.csv: gas max 990542, rows > 1e6 0, rows eui*A > 1e6 0

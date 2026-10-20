@@ -1,0 +1,42 @@
+check gas==eui*A  H max rel 8.44e-16  P max rel 2.20e-15
+y max: H gas 999764.9  P gas 999305.2  (rows >= 1e6: H 0, P 0)
+
+E1  H rows, corrected prediction (honest analog of sub_v19vce)
+  gas clip 1e6                                         rows  11 (better  11 worse  0)  base 0.24514  dNRMSE -0.0000153  dTotal -0.00000306
+  gas clip max gas over P (999305)                     rows  11 (better  11 worse  0)  base 0.24514  dNRMSE -0.0000158  dTotal -0.00000315
+  eui clip 1e6/A                                       rows  10 (better  10 worse  0)  base 0.64859  dNRMSE -0.0000021  dTotal -0.00000042
+  eui clip maxgasP/A                                   rows  11 (better  11 worse  0)  base 0.64859  dNRMSE -0.0000022  dTotal -0.00000043
+  E1 gas+eui (1e6, 1e6/A) dTotal -0.00000348
+  teacher instead of corrected (for reference):
+  gas clip 1e6 (teacher)                               rows   9 (better   9 worse  0)  base 0.24603  dNRMSE -0.0000126  dTotal -0.00000253
+  eui clip 1e6/A (teacher)                             rows  11 (better  11 worse  0)  base 0.65008  dNRMSE -0.0000016  dTotal -0.00000032
+
+E2  P rows (disjoint from H), teacher pP from P-OOF members
+  gas clip 1e6                                         rows  23 (better  23 worse  0)  base 0.24739  dNRMSE -0.0000431  dTotal -0.00000861
+  gas clip max gas over H (999765)                     rows  23 (better  23 worse  0)  base 0.24739  dNRMSE -0.0000432  dTotal -0.00000865
+  eui clip 1e6/A                                       rows  25 (better  25 worse  0)  base 0.65541  dNRMSE -0.0000049  dTotal -0.00000098
+  eui clip maxgasH/A                                   rows  25 (better  25 worse  0)  base 0.65541  dNRMSE -0.0000049  dTotal -0.00000098
+  E2 gas+eui (1e6, 1e6/A) dTotal -0.00000959
+
+E3  H re-split, bound from complement (P + other H parts)
+  halves part 0: bound 999305  gas rows  5 dTotal -0.00000089  eui rows  4 dTotal -0.00000008  sum -0.00000097
+  halves part 1: bound 999765  gas rows  6 dTotal -0.00000533  eui rows  6 dTotal -0.00000077  sum -0.00000610
+  halves: all parts negative-or-zero: True; mean part dTotal -0.00000353
+  5-fold part 0: bound 999765  gas rows  1 dTotal -0.00000246  eui rows  2 dTotal -0.00000012  sum -0.00000258
+  5-fold part 1: bound 999765  gas rows  0 dTotal +0.00000000  eui rows  0 dTotal +0.00000000  sum +0.00000000
+  5-fold part 2: bound 999765  gas rows  2 dTotal -0.00000075  eui rows  2 dTotal -0.00000011  sum -0.00000085
+  5-fold part 3: bound 999729  gas rows  4 dTotal -0.00000277  eui rows  2 dTotal -0.00000030  sum -0.00000307
+  5-fold part 4: bound 999765  gas rows  4 dTotal -0.00000935  eui rows  4 dTotal -0.00000160  sum -0.00001096
+  5-fold: all parts negative-or-zero: True; mean part dTotal -0.00000349
+
+E4  bootstrap of the H effect (gas 1e6 + eui 1e6/A)
+  dTotal bootstrap mean -0.00000347 sd 0.00000165  share <= 0: 1.000  5%..95%: -0.00000633 .. -0.00000102
+
+conditional truth for rows predicted above 1e6 (used for the test-side estimate)
+  H corrected  rows  11  mean pred    1018092  mean y     953687  min y    831201  max y    999765  mean excess    18092
+  H teacher    rows   9  mean pred    1022769  mean y     960432  min y    831201  max y    999765  mean excess    22769
+  P teacher    rows  23  mean pred    1036609  mean y     940850  min y    775019  max y    999305  mean excess    36609
+  H corrected eui  rows  10  mean pred*A    1022977  mean y*A     957835
+  P teacher eui    rows  25  mean pred*A    1041396  mean y*A     942923
+
+maxrss 0.08 GB

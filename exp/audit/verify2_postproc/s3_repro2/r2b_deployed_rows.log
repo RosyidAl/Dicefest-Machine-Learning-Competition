@@ -1,0 +1,14 @@
+gas ID_594567 M 46 p 786356.95 pred_chg -2259.402 actual +0.000 err/sig +1.49e-02
+gas ID_593705 M 56 p 786602.09 pred_chg -1726.216 actual +0.000 err/sig +1.14e-02
+gas ID_486416 M 34 p 692206.38 pred_chg -127.520 actual +0.000 err/sig +8.40e-04
+gas ID_463001 M 134 p 990596.49 pred_chg -38915.197 actual -38923.593 err/sig -5.53e-05
+gas ID_498003 M 94 p 978426.28 pred_chg -36967.397 actual -36975.203 err/sig -5.14e-05
+gas ID_560825 M 79 p 996778.62 pred_chg -44862.372 actual -44869.972 err/sig -5.01e-05
+gas rows M>4 with nonzero actual change: max |err|/sig 5.53e-05 max rel err 2.93e+00
+eui ID_594567 M 46 p 111.62 pred_chg -0.432 actual +0.000 err/sig +1.06e-02
+eui ID_593705 M 56 p 141.97 pred_chg -0.424 actual +0.000 err/sig +1.04e-02
+eui ID_486416 M 34 p 157.90 pred_chg -0.040 actual +0.000 err/sig +9.75e-04
+eui ID_458543 M 63 p 255.24 pred_chg -13.208 actual -13.212 err/sig -8.35e-05
+eui ID_509296 M 59 p 215.22 pred_chg -18.987 actual -18.990 err/sig -8.10e-05
+eui ID_562155 M 49 p 226.34 pred_chg -15.518 actual -15.521 err/sig -7.72e-05
+eui rows M>4 with nonzero actual change: max |err|/sig 8.35e-05 max rel err 7.02e-02

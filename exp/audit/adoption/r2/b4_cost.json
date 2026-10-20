@@ -1,0 +1,30 @@
+{
+ "frac_unseen_test_rows": 0.08141336072657307,
+ "unseen_weighted_rmse_production": 1.0303111254950326,
+ "test_adoption_nrmse_est": 0.040944143113666086,
+ "adoption_share_of_total": 0.008188828622733218,
+ "count_noise_fit_a_binomial": 0.142547850514581,
+ "count_noise_fit_b_qerror_var": -0.000802548469099482,
+ "mean_qhat_1mqhat_w": 0.11928339024882599,
+ "pooled_q": 0.11645718170127752,
+ "unseen_weighted_rmse_global_q": 1.7787167084284632,
+ "floor_rmse_q_exact_fit": 1.111556399943737,
+ "floor_rmse_q_exact_plugin": 0.8492316884288845,
+ "total_change_if_q_exact_fit": 0.0006457308015068823,
+ "total_change_if_q_exact_plugin": -0.0014392045669925574,
+ "total_change_if_exact_formula": -0.008188828622733218,
+ "calib_scale_rmse": 1.0302760576084398,
+ "calib_scale_total_change": -2.7871669670137544e-07,
+ "calib_scale_by_nrow_rmse": 1.0303545406142842,
+ "calib_scale_by_nrow_total_change": 3.450598196896859e-07,
+ "calib_mix_rmse": 1.0303128454765509,
+ "calib_mix_total_change": 1.3670272540691752e-08,
+ "sq_error_share_by_K": {
+  "(-1, 0]": 0.0,
+  "(0, 5]": 0.1506,
+  "(5, 10]": 0.2185,
+  "(10, 20]": 0.2715,
+  "(20, 40]": 0.2165,
+  "(40, 1000]": 0.143
+ }
+}

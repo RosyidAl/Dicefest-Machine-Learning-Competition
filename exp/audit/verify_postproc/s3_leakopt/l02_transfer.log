@@ -1,0 +1,32 @@
+train 429303 test 183987 ratio 0.42857; train gas max 999764.8988; rows >= 1e6: 0
+OLS log-gas proxy: 24 coefs, R2 0.8725, resid sd 0.2466
+   half-fit resid sd in-sample 0.24573 vs other half 0.24754
+bin of proxy distance to log(1e6) in resid-sd | n train | n test | test/train / expected | z | expected test/train ratio if ONLY train were truncated
+   [  -9,  0)      38      16   0.982  -0.08  alt  2.697
+   [   0,0.5)     161      69   1.000  +0.00  alt  1.620
+   [ 0.5,  1)     651     277   0.993  -0.14  alt  1.271
+   [   1,1.5)    1765     730   0.965  -1.15  alt  1.111
+   [ 1.5,  2)    3967    1744   1.026  +1.27  alt  1.041
+   [   2,2.5)    7252    3228   1.039  +2.57  alt  1.012
+   [ 2.5,  3)   11775    5119   1.014  +1.22  alt  1.003
+   [   3,  4)   37566   16160   1.004  +0.57  alt  1.000
+   [   4, 99)  366128  156644   0.998  -0.81  alt  1.000
+   bld_dim_06: [5000,6000) 3917/1716 rel 1.022; [6000,7000) 1198/554 rel 1.079; [7000,8000) 379/158 rel 0.973; [8000,10000) 157/54 rel 0.803; [10000,1e+09) 20/15 rel 1.750
+   bld_dim_12: [60,80) 7239/3059 rel 0.986; [80,100) 790/353 rel 1.043; [100,120) 58/35 rel 1.408; [120,1e+09) 14/5 rel 0.833
+pooled proxy dist < 1.5: train 2615 test 1092 expected 1120.7 (rel 0.974); train-only-truncation alternative expects rel 1.183 (q 0.155), i.e. 1325.6 test rows
+duplicate rows 77 | dup rows already equal to train targets: True
+gas rows per 10k by distance: [-9,0) H 0.85 / T 0.38; [0,0.5) H 2.17 / T 1.52; [0.5,1) H 4.27 / T 5.06; [1,1.5) H 7.69 / T 8.65; [1.5,2) H 13.74 / T 12.13; [2,3) H 40.69 / T 42.09;
+   change >0.01 sigma per 10k: H 36.9 test 36.3; >0.1 sigma: H 7.8 test 7.3; rms change/sigma H 0.00632 test 0.00550; mean x^2/sigma^2 H 1.568e-04 test 1.186e-04
+   largest test change: p 1061409.1 -> 990500.1
+eui rows per 10k by distance: [-9,0) H 0.85 / T 0.43; [0,0.5) H 2.25 / T 1.63; [0.5,1) H 4.04 / T 5.11; [1,1.5) H 8.77 / T 8.75; [1.5,2) H 13.51 / T 12.56; [2,3) H 41.54 / T 42.58;
+   change >0.01 sigma per 10k: H 36.6 test 36.3; >0.1 sigma: H 5.9 test 5.8; rms change/sigma H 0.00524 test 0.00467; mean x^2/sigma^2 H 6.346e-05 test 5.038e-05
+   largest test change: p 215.1 -> 196.2
+gas: k* P-OOF 0.5715 | full-train OOF 0.4815 (P rows 0.5207, H rows 0.3843) | H corrected 0.5046 -> test regime estimate 0.4252
+eui: k* P-OOF 0.6097 | full-train OOF 0.5410 (P rows 0.5509, H rows 0.5181) | H corrected 0.6574 -> test regime estimate 0.5833
+gas: dNRMSE formula on H -0.0000814 (actual in-sample -0.0000814) | test, same k* -0.0000616 | test, scaled k* -0.0000422 | test bin-wise -0.0000448
+eui: dNRMSE formula on H -0.0000212 (actual in-sample -0.0000212) | test, same k* -0.0000168 | test, scaled k* -0.0000130 | test bin-wise -0.0000172
+TOTAL H_formula_kH: -0.00002051
+TOTAL test_same_kstar: -0.00001568
+TOTAL test_scaled_kstar: -0.00001104
+TOTAL test_binwise: -0.00001239
+wrote exp/audit/verify_postproc/s3_leakopt/l02_transfer.json; wall 3.6s maxrss 735936 kB

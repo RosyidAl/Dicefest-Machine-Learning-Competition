@@ -1,0 +1,24 @@
+members 27; NNLS gas weight sum 1.0030 nonzero 22; eui sum 1.0030 nonzero 20
+full-OOF global NNLS: gas NRMSE 0.244940  eui 0.650226
+
+== gas: bias (gas units) by level/1e6
+   [0.80,0.85) n  629 mean     +3133 t +1.02
+   [0.85,0.90) n  375 mean     -5097 t -1.37
+   [0.90,0.95) n  156 mean    -23969 t -4.45
+   [0.95,1.00) n   59 mean    -53712 t -6.52
+   [1.00,inf) n   29 mean    -85595 t -7.37
+   GroupKFold(zone) 5x10 cross-fit: dTotal mean -0.00002034 sd 0.00000029 worst -0.00001980  k 0.0743..0.0858  (330 groups)
+   GroupKFold(subzone) 5x10 cross-fit: dTotal mean -0.00002033 sd 0.00000024 worst -0.00001997  k 0.0757..0.0860  (153508 groups)
+   k fitted on all rows 0.0815; fixed k 0.08 in-sample dTotal -0.00002070
+
+== eui: bias (gas units) by level/1e6
+   [0.80,0.85) n  631 mean     +3459 t +1.11
+   [0.85,0.90) n  363 mean     -4839 t -1.31
+   [0.90,0.95) n  150 mean    -24907 t -4.66
+   [0.95,1.00) n   61 mean    -47600 t -6.09
+   [1.00,inf) n   28 mean    -89564 t -7.09
+   GroupKFold(zone) 5x10 cross-fit: dTotal mean -0.00000273 sd 0.00000004 worst -0.00000265  k 0.0782..0.0912  (330 groups)
+   GroupKFold(subzone) 5x10 cross-fit: dTotal mean -0.00000272 sd 0.00000006 worst -0.00000262  k 0.0791..0.0918  (153508 groups)
+   k fitted on all rows 0.0864; fixed k 0.08 in-sample dTotal -0.00000277
+
+elapsed 14.6s maxrss 514660 kB

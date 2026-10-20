@@ -1,0 +1,5 @@
+gas/M: observed collision rows 5792, shuffled-denominator [1889, 1782]
+gas/E: observed collision rows 4612, shuffled-denominator [1601, 1578]
+elec/M: observed collision rows 35795, shuffled-denominator [11790, 11885]
+elec/E: observed collision rows 25585, shuffled-denominator [10962, 10779]
+rows with any of gas / gas/M / gas/E collision: 16457 share 0.0383 | gas/E-only (not gas, not gas/M): 3182

@@ -1,0 +1,80 @@
+rows by M  train: {1: 0, 2: 1, 3: 135, 4: 741, 5: 9883}  test: {1: 1, 2: 1, 3: 59, 4: 298, 5: 4222}
+
+1. LS multiplicative bias (se, t) on full train: in-sample VC fit | nested VC fit
+  gas  M2-3  n    136 | in-sample +0.1994 (0.0329, t +6.1) | nested +0.2002 (0.0330, t +6.1)
+  gas  M=4   n    741 | in-sample +0.0620 (0.0137, t +4.5) | nested +0.0624 (0.0137, t +4.5)
+  gas  M=5   n   9883 | in-sample +0.0089 (0.0032, t +2.8) | nested +0.0089 (0.0032, t +2.8)
+  gas  M=6   n  18074 | in-sample -0.0032 (0.0024, t -1.3) | nested -0.0033 (0.0024, t -1.3)
+  gas  M>=7  n 400469 | in-sample -0.0000 (0.0003, t -0.0) | nested -0.0000 (0.0003, t -0.1)
+  eui  M2-3  n    136 | in-sample +0.1817 (0.0321, t +5.7) | nested +0.1838 (0.0323, t +5.7)
+  eui  M=4   n    741 | in-sample +0.0302 (0.0136, t +2.2) | nested +0.0301 (0.0137, t +2.2)
+  eui  M=5   n   9883 | in-sample +0.0033 (0.0032, t +1.0) | nested +0.0033 (0.0032, t +1.0)
+  eui  M=6   n  18074 | in-sample -0.0016 (0.0024, t -0.7) | nested -0.0016 (0.0024, t -0.7)
+  eui  M>=7  n 400469 | in-sample -0.0002 (0.0003, t -0.8) | nested -0.0003 (0.0003, t -0.8)
+  elec M2-3  n    136 | in-sample +0.1871 (0.0399, t +4.7) | nested +0.1899 (0.0399, t +4.8)
+  elec M=4   n    741 | in-sample +0.0710 (0.0254, t +2.8) | nested +0.0681 (0.0275, t +2.5)
+  elec M=5   n   9883 | in-sample +0.0033 (0.0046, t +0.7) | nested +0.0032 (0.0046, t +0.7)
+  elec M=6   n  18074 | in-sample +0.0036 (0.0035, t +1.0) | nested +0.0035 (0.0035, t +1.0)
+  elec M>=7  n 400469 | in-sample -0.0000 (0.0004, t -0.1) | nested -0.0000 (0.0004, t -0.1)
+
+2. action deltas from the in-sample full fit vs claimed constants
+  gas  d23 +0.19942 (claim +0.19942)  d4 +0.06202 (claim +0.06202)
+  eui  d23 +0.18166 (claim +0.18166)  d4 +0.03016 (claim +0.03016)
+  elec d23 +0.18714 (claim +0.18714)  d4 +0.07098 (claim +0.07098)
+
+3a. fully nested (VC blend and deltas fitted on 4/5, scored on 1/5), all train rows
+  gas  dNRMSE -0.0000055 (sd: train 0.0000016, public-size 0.0000045, private-size 0.0000030) g23 -0.0000030 g4 -0.0000024 | fold d23 +0.219 +0.202 +0.193 +0.178 +0.206
+  eui  dNRMSE -0.0002282 (sd: train 0.0000823, public-size 0.0002308, private-size 0.0001508) g23 -0.0002088 g4 -0.0000194 | fold d23 +0.194 +0.193 +0.173 +0.178 +0.173
+  elec dNRMSE -0.0000030 (sd: train 0.0000023, public-size 0.0000064, private-size 0.0000041) g23 -0.0000018 g4 -0.0000012 | fold d23 +0.192 +0.228 +0.194 +0.170 +0.163
+  TOTAL change -0.0000473
+
+3b. deltas cross-fitted on the in-sample full fit (5-fold, 50 seeds)
+  gas -0.0000052 eui -0.0002105 elec -0.0000035 | TOTAL -0.0000438 (seed sd 0.0000022, frac<0 1.00)
+
+3c. concentration of the gain (nested scheme): share of the squared-error reduction from the top rows
+  gas  touched 877, better 434 | share of net gain from top 1/3/5/10 rows 0.07 0.18 0.26 0.46 | worst 1/3/5 rows -0.07 -0.15 -0.21 | dNRMSE without top 1/3/5 helpful rows -0.0000051 -0.0000045 -0.0000040
+  eui  touched 877, better 407 | share of net gain from top 1/3/5/10 rows 0.15 0.32 0.48 0.80 | worst 1/3/5 rows -0.07 -0.14 -0.21 | dNRMSE without top 1/3/5 helpful rows -0.0001942 -0.0001545 -0.0001183
+  elec touched 877, better 414 | share of net gain from top 1/3/5/10 rows 0.21 0.40 0.58 0.94 | worst 1/3/5 rows -0.48 -0.73 -0.88 | dNRMSE without top 1/3/5 helpful rows -0.0000024 -0.0000018 -0.0000013
+
+4. test side
+  test rows: g23 60 (dup 0), g4 298 (dup 0), M==1 1, dups 77
+  gas  relative correction on test (sum pa*corr/sum pa^2): g23 +0.0041 g4 +0.0006 other -0.0000 | mean log level (per area for gas/elec): g23 test-pred 5.117 train-oof 5.200 train-y 5.341; g4 test-pred 5.120 train-oof 5.136 train-y 5.154
+  eui  relative correction on test (sum pa*corr/sum pa^2): g23 +0.0025 g4 +0.0002 other -0.0000 | mean log level (per area for gas/elec): g23 test-pred 5.146 train-oof 5.237 train-y 5.341; g4 test-pred 5.144 train-oof 5.162 train-y 5.154
+  elec relative correction on test (sum pa*corr/sum pa^2): g23 +0.0022 g4 +0.0010 other +0.0000 | mean log level (per area for gas/elec): g23 test-pred 3.778 train-oof 3.894 train-y 4.043; g4 test-pred 3.810 train-oof 3.833 train-y 3.845
+
+4b. analytic expected test gain (sub_v19vce predictions, constants as claimed)
+  gas  expected dNRMSE -0.0000065
+  eui  expected dNRMSE -0.0002096
+  elec expected dNRMSE -0.0000044
+  TOTAL expected change -0.0000441
+
+5. claim candidate exp/audit/postproc/sub_v19vce_pp.csv vs sub_v19vce.csv (ratio on touched rows)
+  gas  g23: n 60 changed 60 ratio 1.19942..1.19942 | g4: n 298 changed 298 ratio 1.06202..1.06202 | dup: n 77 changed 0 ratio 1.00000..1.00000 | M1: n 1 changed 0 ratio 1.00000..1.00000 | other: n 183551 changed 13989 ratio 0.93319..1.00000
+  eui  g23: n 60 changed 60 ratio 1.18166..1.18166 | g4: n 298 changed 298 ratio 1.03016..1.03016 | dup: n 77 changed 0 ratio 1.00000..1.00000 | M1: n 1 changed 0 ratio 1.00000..1.00000 | other: n 183551 changed 14161 ratio 0.91066..1.00000
+  elec g23: n 60 changed 60 ratio 1.18714..1.18714 | g4: n 298 changed 298 ratio 1.07098..1.07098 | dup: n 77 changed 0 ratio 1.00000..1.00000 | M1: n 1 changed 0 ratio 1.00000..1.00000 | other: n 183551 changed 3 ratio 0.96993..1.00000
+  other columns identical: {'target_clean_building_ratio': True, 'target_electric_heating_adoption': True}
+
+wrote exp/audit/verify2_postproc/r2_smallM/s03_analysis.json
+	Command being timed: ".venv/bin/python exp/audit/verify2_postproc/r2_smallM/s03_analysis.py"
+	User time (seconds): 63.19
+	System time (seconds): 0.53
+	Percent of CPU this job got: 98%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:04.69
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 445064
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 155115
+	Voluntary context switches: 118
+	Involuntary context switches: 875
+	Swaps: 0
+	File system inputs: 42752
+	File system outputs: 40
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

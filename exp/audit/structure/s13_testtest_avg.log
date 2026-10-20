@@ -1,0 +1,7 @@
+target_macro_gas_kwh: test-only dup rows 48, SSE drop 1.52e+07, NRMSE change ~-0.0000000
+target_macro_elec_kwh: test-only dup rows 48, SSE drop 1.287e+06, NRMSE change ~-0.0000000
+target_eui_gas_kwh_per_sqm: test-only dup rows 48, SSE drop 11.55, NRMSE change ~-0.0000000
+total change ~-0.0000000  (public/private both: rows split at random)
+H gas: rows in H-H dup groups 10, y identical inside groups: True, SSE before 3.915e+10 after 3.913e+10
+H elec: rows in H-H dup groups 10, y identical inside groups: True, SSE before 9.931e+08 after 9.925e+08
+H eui: rows in H-H dup groups 10, y identical inside groups: True, SSE before 6698 after 6695

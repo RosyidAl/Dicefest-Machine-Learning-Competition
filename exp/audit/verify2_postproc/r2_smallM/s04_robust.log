@@ -1,0 +1,33 @@
+gas  g23 n  136 d +0.200 boot95 [+0.133,+0.264] P(d<=0) 0.0000 | r/p mean +0.209 median +0.186 IQR [-0.061,+0.422] share>0 0.70 | d without top 1/3/5/10 infl rows +0.190 +0.176 +0.163 +0.133 | max row share of sum p^2: train 0.047 test 0.051; test/train mean p^2 1.23
+gas  g4  n  741 d +0.062 boot95 [+0.036,+0.090] P(d<=0) 0.0000 | r/p mean +0.065 median +0.017 IQR [-0.134,+0.220] share>0 0.52 | d without top 1/3/5/10 infl rows +0.060 +0.054 +0.049 +0.040 | max row share of sum p^2: train 0.009 test 0.016; test/train mean p^2 1.05
+eui  g23 n  136 d +0.184 boot95 [+0.122,+0.248] P(d<=0) 0.0000 | r/p mean +0.165 median +0.125 IQR [-0.076,+0.391] share>0 0.68 | d without top 1/3/5/10 infl rows +0.170 +0.154 +0.138 +0.104 | max row share of sum p^2: train 0.025 test 0.058; test/train mean p^2 0.85
+eui  g4  n  741 d +0.030 boot95 [+0.004,+0.057] P(d<=0) 0.0107 | r/p mean +0.037 median -0.013 IQR [-0.165,+0.190] share>0 0.48 | d without top 1/3/5/10 infl rows +0.027 +0.021 +0.015 +0.006 | max row share of sum p^2: train 0.006 test 0.013; test/train mean p^2 0.92
+elec g23 n  136 d +0.190 boot95 [+0.114,+0.271] P(d<=0) 0.0000 | r/p mean +0.239 median +0.199 IQR [-0.055,+0.459] share>0 0.69 | d without top 1/3/5/10 infl rows +0.189 +0.166 +0.144 +0.105 | max row share of sum p^2: train 0.068 test 0.053; test/train mean p^2 1.12
+elec g4  n  741 d +0.068 boot95 [+0.014,+0.121] P(d<=0) 0.0097 | r/p mean +0.089 median -0.006 IQR [-0.216,+0.282] share>0 0.49 | d without top 1/3/5/10 infl rows +0.059 +0.049 +0.041 +0.026 | max row share of sum p^2: train 0.035 test 0.015; test/train mean p^2 1.01
+
+simulated TOTAL change on the public part: mean -0.0000493 sd 0.0000468 P(>0) 0.130 90% [-0.0001321, +0.0000209]  gas -0.0000055 eui -0.0002374 elec -0.0000038
+simulated TOTAL change on the private part: mean -0.0000479 sd 0.0000307 P(>0) 0.056 90% [-0.0000994, +0.0000018]  gas -0.0000055 eui -0.0002302 elec -0.0000037
+wrote exp/audit/verify2_postproc/r2_smallM/s04_robust.json
+	Command being timed: ".venv/bin/python exp/audit/verify2_postproc/r2_smallM/s04_robust.py"
+	User time (seconds): 11.51
+	System time (seconds): 0.21
+	Percent of CPU this job got: 95%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:12.25
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 224800
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 68811
+	Voluntary context switches: 47
+	Involuntary context switches: 952
+	Swaps: 0
+	File system inputs: 32
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

@@ -1,0 +1,74 @@
+{
+ "gas": {
+  "rms_correction_sigma_test": 0.020559741964679197,
+  "rms_correction_sigma_H": 0.02149125035743599,
+  "M2-3": {
+   "n_test": 60,
+   "n_H": 48,
+   "corr_ls_shift_test": 0.004113117164392666,
+   "corr_ls_shift_H": -0.0006050964162612749,
+   "corr_mean_logratio_test": 0.0033470611916974003,
+   "corr_mean_logratio_H": 0.000989449592312332,
+   "teacher_delta": 0.19941549958629493,
+   "implied_delta_after_test_correction": 0.19450237137966542
+  },
+  "M4-4": {
+   "n_test": 298,
+   "n_H": 205,
+   "corr_ls_shift_test": 0.0005942641620537703,
+   "corr_ls_shift_H": 0.000709107851302182,
+   "corr_mean_logratio_test": 0.00028562960899427425,
+   "corr_mean_logratio_H": 0.0005294300800897132,
+   "teacher_delta": 0.06202161983059695,
+   "implied_delta_after_test_correction": 0.06139087327268
+  }
+ },
+ "eui": {
+  "rms_correction_sigma_test": 0.04358832735981476,
+  "rms_correction_sigma_H": 0.04572027402519611,
+  "M2-3": {
+   "n_test": 60,
+   "n_H": 48,
+   "corr_ls_shift_test": 0.002501887143280923,
+   "corr_ls_shift_H": 0.0007731185347099601,
+   "corr_mean_logratio_test": 0.0033136246180022013,
+   "corr_mean_logratio_H": 0.0007514507140026052,
+   "teacher_delta": 0.18165525789786494,
+   "implied_delta_after_test_correction": 0.1787062678406497
+  },
+  "M4-4": {
+   "n_test": 298,
+   "n_H": 205,
+   "corr_ls_shift_test": 0.00016457876263276106,
+   "corr_ls_shift_H": 0.000559690181062722,
+   "corr_mean_logratio_test": 0.0006048553030491582,
+   "corr_mean_logratio_H": 0.0005602460149496315,
+   "teacher_delta": 0.030162800367065687,
+   "implied_delta_after_test_correction": 0.02999328534664336
+  }
+ },
+ "elec": {
+  "rms_correction_sigma_test": 0.012182757664953152,
+  "rms_correction_sigma_H": 0.01323239747166392,
+  "M2-3": {
+   "n_test": 60,
+   "n_H": 48,
+   "corr_ls_shift_test": 0.0022193755639825508,
+   "corr_ls_shift_H": 0.0014668304175178282,
+   "corr_mean_logratio_test": 0.00114209713026404,
+   "corr_mean_logratio_H": 0.0027499632072719876,
+   "teacher_delta": 0.18713694285196686,
+   "implied_delta_after_test_correction": 0.18450807457591312
+  },
+  "M4-4": {
+   "n_test": 298,
+   "n_H": 205,
+   "corr_ls_shift_test": 0.001009337232057872,
+   "corr_ls_shift_H": -0.00037986201084039273,
+   "corr_mean_logratio_test": 0.0005251857840370738,
+   "corr_mean_logratio_H": -0.00025868687837426725,
+   "teacher_delta": 0.07098422489831023,
+   "implied_delta_after_test_correction": 0.06990433062267276
+  }
+ }
+}

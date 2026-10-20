@@ -1,0 +1,36 @@
+BEST_CURRENT == sub_v19nca2pp (gas, eui): True True
+  sub_v19vce     gas max    1061409  rows > 1e6 7  rows > 0.95e6 30  eui*A max    1065514
+  sub_v19nca2    gas max    1061478  rows > 1e6 7  rows > 0.95e6 30  eui*A max    1064849
+  sub_v19nca2pp  gas max     990542  rows > 1e6 0  rows > 0.95e6 10  eui*A max     970018
+mean change of gas pp - pre (by pre level) vs what the claimed IMR k 0.08 would do to the pre file:
+   [0.80,0.85) n  269  D015 pp     -4818  IMR(pre)      -835  IMR on top of pp      -634
+   [0.85,0.90) n  152  D015 pp    -12075  IMR(pre)     -5743  IMR on top of pp     -3757
+   [0.90,0.93) n   58  D015 pp    -20278  IMR(pre)    -16096  IMR on top of pp     -9783
+   [0.93,0.96) n   28  D015 pp    -29345  IMR(pre)    -29795  IMR on top of pp    -16901
+   [0.96,0.98) n    9  D015 pp    -36470  IMR(pre)    -43141  IMR on top of pp    -23882
+   [0.98,1.00) n    5  D015 pp    -43731  IMR(pre)    -56851  IMR on top of pp    -30808
+   [1.00,1.02) n    3  D015 pp    -51840  IMR(pre)    -71068  IMR on top of pp    -37331
+   [1.02,9.00) n    4  D015 pp    -64974  IMR(pre)    -95282  IMR on top of pp    -48475
+IMR on top of BEST_CURRENT: gas rows changed by > 0.1 sigma 37, max |change| 57331, rms change/sigma 0.00309
+
+S3 noise model (r/p)^2 = a0 + b0/M on P: gas [0.00806 0.39297] eui [0.00839 0.38715]; upper bound (P max gas) 999305.2
+
+[gas] H corrected base 0.245144; kS3 P-fit 0.5715 all-H 0.5046; IMR k P-fit 0.0852; IMR k refit after S3 0.0493
+   S3 alone (P-fit k)            dTotal -0.00001600
+   S3 alone (5-fold H cross-fit)  dTotal -0.00001601
+   S3 alone (all-H k, in-sample)  dTotal -0.00001628
+   claimed IMR alone (P-fit k)    dTotal -0.00001952   (k 0.08: -0.00001969)
+   stack S3 -> IMR (refit k)      dTotal -0.00001585   increment over S3 +0.00000015
+   stack S3 -> IMR (k 0.08)       dTotal -0.00001156   increment over S3 +0.00000444
+   corr of the two adjustments on rows > 0.85e6 (gas units): 0.977
+
+[eui] H corrected base 0.648593; kS3 P-fit 0.6097 all-H 0.6574; IMR k P-fit 0.0852; IMR k refit after S3 0.0558
+   S3 alone (P-fit k)            dTotal -0.00000421
+   S3 alone (5-fold H cross-fit)  dTotal -0.00000358
+   S3 alone (all-H k, in-sample)  dTotal -0.00000423
+   claimed IMR alone (P-fit k)    dTotal -0.00000500   (k 0.08: -0.00000481)
+   stack S3 -> IMR (refit k)      dTotal -0.00000441   increment over S3 -0.00000021
+   stack S3 -> IMR (k 0.08)       dTotal -0.00000438   increment over S3 -0.00000017
+   corr of the two adjustments on rows > 0.85e6 (gas units): 0.972
+
+elapsed 3.3 s maxrss 304992 kB

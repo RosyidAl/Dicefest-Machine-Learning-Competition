@@ -1,0 +1,6 @@
+P-fit: IMR total -0.00002452  S3 total -0.00002020  difference IMR - S3 -0.00000431
+  paired bootstrap H      size 128791: IMR - S3 mean -0.00000432 sd 0.00000275 P(IMR better) 0.946
+  paired bootstrap public size 55196: IMR - S3 mean -0.00000440 sd 0.00000422 P(IMR better) 0.854
+5-fold x 20 cross-fit inside H: IMR -0.00002337  S3 -0.00001877  IMR - S3 mean -0.00000460 (sd over reps 0.00000045)
+importance-weighted (test mix): IMR -0.00001541  S3 -0.00001083  IMR - S3 -0.00000458
+elapsed 34.9 s maxrss 256528 kB

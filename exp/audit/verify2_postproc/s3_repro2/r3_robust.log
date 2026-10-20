@@ -1,0 +1,21 @@
+P->H rule (k gas 0.5715, eui 0.6097): total -0.00002021; bootstrap over H rows sd 0.00000911 frac<0 0.993 90% [-0.00003579, -0.00000596]
+sens T_P   s x0.5 : k gas 1.353 eui 1.545  total -0.00002408
+sens T_P   s x0.75: k gas 0.921 eui 1.021  total -0.00002510
+sens T_P   s x1.0 : k gas 0.571 eui 0.610  total -0.00002021
+sens T_P   s x1.25: k gas 0.350 eui 0.356  total -0.00001461
+sens T_P   s x1.5 : k gas 0.217 eui 0.208  total -0.00001038
+sens T_P   s x2.0 : k gas 0.092 eui 0.075  total -0.00000551
+sens T_all s x0.5 : k gas 1.359 eui 1.552  total -0.00002405
+sens T_all s x0.75: k gas 0.925 eui 1.026  total -0.00002512
+sens T_all s x1.0 : k gas 0.574 eui 0.613  total -0.00002025
+sens T_all s x1.25: k gas 0.351 eui 0.357  total -0.00001465
+sens T_all s x1.5 : k gas 0.218 eui 0.209  total -0.00001040
+sens T_all s x2.0 : k gas 0.092 eui 0.076  total -0.00000552
+sens 1e6   s x0.5 : k gas 1.362 eui 1.555  total -0.00002403
+sens 1e6   s x0.75: k gas 0.927 eui 1.028  total -0.00002513
+sens 1e6   s x1.0 : k gas 0.575 eui 0.614  total -0.00002027
+sens 1e6   s x1.25: k gas 0.352 eui 0.358  total -0.00001467
+sens 1e6   s x1.5 : k gas 0.219 eui 0.210  total -0.00001042
+sens 1e6   s x2.0 : k gas 0.092 eui 0.076  total -0.00000553
+decomp gas: over-cap rows 11 contribute -0.00000675, rest -0.00000924; hard clip only -0.00000315; drop best 0/3/5/10/20 rows: -0.00001600 -0.00000889 -0.00000518 +0.00000092 +0.00000876
+decomp eui: over-cap rows 11 contribute -0.00000075, rest -0.00000346; hard clip only -0.00000043; drop best 0/3/5/10/20 rows: -0.00000421 -0.00000155 -0.00000101 +0.00000005 +0.00000156

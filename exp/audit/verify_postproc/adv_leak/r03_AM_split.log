@@ -1,0 +1,8 @@
+M2-3: train A/M median 88.0; share of test rows above it 0.60
+   gas  A/M low n 68 d +0.272 (se 0.050) | A/M high n 68 d +0.171 (se 0.041)
+   eui  A/M low n 68 d +0.193 (se 0.042) | A/M high n 68 d +0.157 (se 0.042)
+   elec A/M low n 68 d +0.231 (se 0.042) | A/M high n 68 d +0.168 (se 0.054)
+M4: train A/M median 84.5; share of test rows above it 0.50
+   gas  A/M low n 371 d +0.064 (se 0.019) | A/M high n 370 d +0.061 (se 0.017)
+   eui  A/M low n 371 d +0.028 (se 0.019) | A/M high n 370 d +0.035 (se 0.016)
+   elec A/M low n 371 d +0.082 (se 0.022) | A/M high n 370 d +0.066 (se 0.036)

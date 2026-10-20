@@ -1,0 +1,4 @@
+train adoption constant within every subzone: True
+test seen rows 169008 max |sub - train value| 0.0
+unseen test rows 14979 unseen subzones 9677 with >=2 rows 3761 rows in them 9063 subzones with differing predictions 0
+clean identity train exact: True | submission max diff vs identity: 0.0

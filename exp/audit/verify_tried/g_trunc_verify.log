@@ -1,0 +1,11 @@
+max y_P gas 999305.155724838 max y_H gas 999764.8988254856 n y_P>=9.8e5 46
+beta_P -0.7274832632204717 n P rows pP>9e5 181
+G vs base: gas -0.0000936 eui -0.0000234 total -0.0000234
+bin 900000.0 950000.0 n 42 mean resid before -16558 after -409
+bin 950000.0 2000000.0 n 35 mean resid before -61392 after 100
+bootstrap total mean -0.0000238 sd 0.0000087 P(<0) 1.000
+gas S1 only -0.0000093  S1+S3+S4 -0.0000823 (vs base)
+eui S1 only -0.0002147  S1+S3+S4 -0.0002339 (vs base)
+deployed-analog total vs base -0.0000632
+G on top of S1+S3+S4: gas 0.0000023 eui -0.0000019 total 0.0000001
+S1+G+S4 minus S1+S3+S4: gas -0.0000206 eui -0.0000043 total -0.0000050

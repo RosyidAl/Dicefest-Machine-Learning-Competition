@@ -1,0 +1,13 @@
+keys ['A', 'H', 'M', 'P', 'elec_F', 'elec_corrected', 'elec_pP', 'elec_rP', 'elec_teacher', 'elec_y', 'eui_F', 'eui_corrected', 'eui_pP', 'eui_rP', 'eui_teacher', 'eui_y', 'gas_F', 'gas_corrected', 'gas_pP', 'gas_rP', 'gas_teacher', 'gas_y', 'subn']
+len P H 300512 128791 overlap 0
+s=0.5 gas f_P {'<=3': 1.1974, '4': 1.0785} dTOTAL -0.00000130
+s=0.5 eui f_P {'<=3': 1.2098, '4': 1.0334} dTOTAL -0.00003947
+s=0.5 elec f_P {'<=3': 1.1785, '4': 1.063} dTOTAL -0.00000068
+s=0.5 TOTAL -0.00004145 boot sd 0.00001681 P(<0) 1.000
+s=1.0 gas f_P {'<=3': 1.1974, '4': 1.0785} dTOTAL -0.00000185
+s=1.0 eui f_P {'<=3': 1.2098, '4': 1.0334} dTOTAL -0.00004295
+s=1.0 elec f_P {'<=3': 1.1785, '4': 1.063} dTOTAL -0.00000097
+s=1.0 TOTAL -0.00004577 boot sd 0.00003278 P(<0) 0.940
+gas min yP 4324.151505160407 H rel bias M<=3 corrected 1.2369136865298325
+eui min yP 5.12060441250641 H rel bias M<=3 corrected 1.169974972655065
+elec min yP 2967.8999999999996 H rel bias M<=3 corrected 1.2383785523568047

@@ -1,0 +1,19 @@
+elec 1-dec share 0.7563865148857567
+  3-dec rows: elec/M round at d0: 0.000   elec/E: 0.000  | 1-dec rows elec/M d0: 0.007
+  3-dec rows: elec/M round at d1: 0.000   elec/E: 0.000  | 1-dec rows elec/M d1: 0.074
+  3-dec rows: elec/M round at d2: 0.004   elec/E: 0.006  | 1-dec rows elec/M d2: 0.209
+  3-dec rows: elec/M round at d3: 0.047   elec/E: 0.077  | 1-dec rows elec/M d3: 0.279
+  3-dec rows: elec*k/10 integer share k= 2 0.0
+  3-dec rows: elec*k/10 integer share k= 3 0.0
+  3-dec rows: elec*k/10 integer share k= 4 0.0
+  3-dec rows: elec*k/10 integer share k= 5 0.0
+  3-dec rows: elec*k/10 integer share k= 6 0.0
+  3-dec rows: elec*k/10 integer share k= 8 0.001
+  3-dec rows: elec*k/10 integer share k= 10 0.0
+  3-dec rows: elec*k/10 integer share k= 20 0.0
+  3-dec rows: elec*k/10 integer share k= 40 0.002
+  3-dec rows: elec*k/10 integer share k= 1000 0.091
+3-dec share by M quantile: {Interval(1.999, 10.0, closed='right'): 0.099, Interval(10.0, 15.0, closed='right'): 0.16, Interval(15.0, 22.0, closed='right'): 0.227, Interval(22.0, 33.0, closed='right'): 0.313, Interval(33.0, 157.0, closed='right'): 0.438}
+3-dec share by zone: min/median/max {'min': 0.121, '50%': 0.232, 'max': 0.437}
+H elec log-res mean/std 3-dec -0.0392 0.1987  1-dec -0.0219 0.2335
+H gas log-res std 3-dec 0.1574  1-dec 0.1926

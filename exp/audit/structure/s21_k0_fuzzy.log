@@ -1,0 +1,5 @@
+['socio_demog_005', 'subzone_id', 'bld_dim_12', 'bld_dim_01', 'bld_dim_06']: train groups>1 92, all-target identical share 1.000, test rows matching 77
+['s10', 'subzone_id', 'bld_dim_12', 'bld_dim_01', 'A6']: train groups>1 92, all-target identical share 1.000, test rows matching 77
+['s6', 'subzone_id', 'A2']: train groups>1 92, all-target identical share 1.000, test rows matching 77
+['s6', 'subzone_id']: train groups>1 96, all-target identical share 0.958, test rows matching 81
+['subzone_id', 'bld_dim_12', 'bld_dim_01', 'A2']: train groups>1 171, all-target identical share 0.538, test rows matching 140

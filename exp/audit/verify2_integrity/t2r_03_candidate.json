@@ -1,0 +1,147 @@
+{
+ "ids_equal": true,
+ "untouched_identical": {
+  "target_macro_elec_kwh": true,
+  "target_clean_building_ratio": true,
+  "target_electric_heating_adoption": true
+ },
+ "n_dup": 77,
+ "dup_rows_untouched_in_candidate": true,
+ "dup_rows_equal_train_targets_in_base": true,
+ "gas": {
+  "rows_changed_gt_1pct": 160,
+  "max_increase": 0.0,
+  "min_change": -113440.49603927112,
+  "argmin_before": 1061409.095080163,
+  "argmin_after": 947968.599040892,
+  "max_before_gas_scale": 1061409.095080163,
+  "max_after_gas_scale": 947968.599040892,
+  "n_before_ge_1e6_gas_scale": 7,
+  "rms_change_over_sigma": 0.006096553582469948
+ },
+ "eui": {
+  "rows_changed_gt_1pct": 171,
+  "max_increase": 5.684341886080802e-14,
+  "min_change": -25.752816002771112,
+  "argmin_before": 215.1267531167821,
+  "argmin_after": 189.373937114011,
+  "max_before_gas_scale": 1065513.9247854876,
+  "max_after_gas_scale": 933732.0824299818,
+  "n_before_ge_1e6_gas_scale": 8,
+  "rms_change_over_sigma": 0.004353487634502778
+ },
+ "own_vs_candidate": {
+  "gas": {
+   "max_abs_diff": 0.0,
+   "max_rel_diff": 0.0,
+   "n_exact": 183987
+  },
+  "eui": {
+   "max_abs_diff": 0.0,
+   "max_rel_diff": 0.0,
+   "n_exact": 183987
+  }
+ },
+ "own_csv_sha256": "aca75294b6e76712c2c84e060149761f13a5e4c2fd3431a6c21798c3a8164093",
+ "candidate_sha256": "aca75294b6e76712c2c84e060149761f13a5e4c2fd3431a6c21798c3a8164093",
+ "top15_gas_moves": [
+  {
+   "v19vce": 1061409,
+   "trunc2": 947969,
+   "best_current": 990542,
+   "M": 73.0
+  },
+  {
+   "v19vce": 1042639,
+   "trunc2": 941519,
+   "best_current": 976897,
+   "M": 59.0
+  },
+  {
+   "v19vce": 1039876,
+   "trunc2": 941235,
+   "best_current": 975001,
+   "M": 60.0
+  },
+  {
+   "v19vce": 1023195,
+   "trunc2": 934941,
+   "best_current": 964515,
+   "M": 51.0
+  },
+  {
+   "v19vce": 1010786,
+   "trunc2": 931191,
+   "best_current": 954481,
+   "M": 49.0
+  },
+  {
+   "v19vce": 1016814,
+   "trunc2": 939276,
+   "best_current": 963997,
+   "M": 75.0
+  },
+  {
+   "v19vce": 1004355,
+   "trunc2": 936003,
+   "best_current": 956284,
+   "M": 75.0
+  },
+  {
+   "v19vce": 983080,
+   "trunc2": 918749,
+   "best_current": 936078,
+   "M": 39.0
+  },
+  {
+   "v19vce": 995142,
+   "trunc2": 932793,
+   "best_current": 950170,
+   "M": 72.0
+  },
+  {
+   "v19vce": 996073,
+   "trunc2": 934255,
+   "best_current": 951909,
+   "M": 79.0
+  },
+  {
+   "v19vce": 978714,
+   "trunc2": 926253,
+   "best_current": 940253,
+   "M": 66.0
+  },
+  {
+   "v19vce": 976573,
+   "trunc2": 925067,
+   "best_current": 936748,
+   "M": 64.0
+  },
+  {
+   "v19vce": 968683,
+   "trunc2": 917333,
+   "best_current": 931759,
+   "M": 47.0
+  },
+  {
+   "v19vce": 987167,
+   "trunc2": 936632,
+   "best_current": 951673,
+   "M": 134.0
+  },
+  {
+   "v19vce": 976564,
+   "trunc2": 929709,
+   "best_current": 941451,
+   "M": 94.0
+  }
+ ],
+ "best_current_high_rows": {
+  "n_v19vce_gt_900k": 105,
+  "mean_trunc2_minus_v19vce": -31239.770577707877,
+  "mean_best_minus_v19vce": -27535.639867038975,
+  "max_best_gas": 990541.6423150939,
+  "max_v19vce_gas": 1061409.095080163,
+  "max_trunc2_gas": 947968.599040892
+ }
+}
