@@ -1,0 +1,48 @@
+=== 1. truncation evidence
+train rows 429303, test rows 183987, ratio 2.3333
+gas max 999764.9, rows >= 1e6: 0, rows > 999765: 0
+identity eui*A == gas: max rel err 6.37e-16
+gas counts per 25k bin from 700k to 1e6: 1000 783 659 547 456 356 276 229 180 119 106 87
+exp tail fit: e-fold 110481 kWh; density at 1e6 31.06 rows/10k kWh; expected train rows above 1e6 without truncation ~343 (observed 0)
+
+=== 2. train-only-filter check (train/test count ratio in tails; null ratio 2.333)
+  A               >      5237.48: train   4242 test   1891 ratio  2.243  z(test excess) +1.42
+  A               >      5825.76: train   2130 test    937 ratio  2.273  z(test excess) +0.67
+  A               >      7219.76: train    450 test    164 ratio  2.744  z(test excess) -1.78
+  A               >      7807.41: train    222 test     85 ratio  2.612  z(test excess) -0.88
+  A               >      9433.35: train     40 test     22 ratio  1.818  z(test excess) +0.94
+  M               >           65: train   4320 test   1810 ratio  2.387  z(test excess) -0.81
+  M               >           71: train   2143 test    890 ratio  2.408  z(test excess) -0.79
+  M               >           86: train    411 test    196 ratio  2.097  z(test excess) +1.23
+  M               >           92: train    192 test     99 ratio  1.939  z(test excess) +1.50
+  M               >          105: train     45 test     15 ratio  3.000  z(test excess) -0.85
+  proxy_pred_gas  >       500000: train  25106 test  11022 ratio  2.278  z(test excess) +2.11
+  proxy_pred_gas  >       700000: train   3845 test   1652 ratio  2.327  z(test excess) +0.09
+  proxy_pred_gas  >       800000: train   1194 test    501 ratio  2.383  z(test excess) -0.40
+  proxy_pred_gas  >       900000: train    226 test     97 ratio  2.330  z(test excess) +0.01
+  proxy_pred_gas  >       950000: train     87 test     28 ratio  3.107  z(test excess) -1.32
+  proxy_pred_gas  >        1e+06: train     25 test      5 ratio  5.000  z(test excess) -1.59
+  proxy_pred_gas  >     1.05e+06: train      4 test      0 ratio  4.000  z(test excess) -1.31
+  alt hypothesis (train-only filter): test would hold ~147 rows with gas >= 1e6, nearly all with proxy pred > 7e5
+
+=== 3. holdout chain (H corrected = honest analog of the submission)
+  gas cap 1e6     : base 0.24514 rows  11 improved  11  dNRMSE -0.0000153  dTotal -0.00000306  (boot sd 0.00000147)
+  gas cap max_P   : base 0.24514 rows  11 improved  11  dNRMSE -0.0000158  dTotal -0.00000315  (boot sd 0.00000150)
+  eui cap 1e6/A   : base 0.64859 rows  10 improved  10  dNRMSE -0.0000021  dTotal -0.00000042  (boot sd 0.00000021)
+  eui cap max_P/A : base 0.64859 rows  11 improved  11  dNRMSE -0.0000022  dTotal -0.00000043  (boot sd 0.00000021)
+  H total (gas 1e6 + eui 1e6/A): -0.00000348
+  teacher gas: rows 9  dTotal -0.00000253
+  teacher eui: rows 11  dTotal -0.00000032
+  H rows with gas pred > 1e6: 11; truth gap (1e6 - y): mean 46313 median 23819 min 235
+  H rows with gas pred > 0.97e6: 23; mean gap 69422
+
+=== 4. test side (submitted file sub_v19vce.csv)
+  gas rows > 1e6: 7  values: 1061409 1042639 1039876 1023195 1016814 1010786 1004355
+  eui rows with eui*A > 1e6: 8  overlap with gas rows: 7
+  eui rows excess (EUI units): 11.436 8.979 6.947 3.018 1.729 1.710 1.337 0.046
+  test gas rows > max_train (999765): 7
+  lower bound (truth at cap)  : gas dTotal -0.00000078  eui dTotal -0.00000014  sum -0.00000092  (full test)
+  H median gap                : gas dTotal -0.00000170  eui dTotal -0.00000028  sum -0.00000198  (full test)
+  H mean gap                  : gas dTotal -0.00000256  eui dTotal -0.00000042  sum -0.00000298  (full test)
+
+wrote exp/audit/verify_segments/v1_clip_verify.json

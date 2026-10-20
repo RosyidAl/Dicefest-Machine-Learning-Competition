@@ -1,0 +1,25 @@
+P                shape (300512,) dtype int64 min 0 max 429302
+H                shape (128791,) dtype int64 min 1 max 429300
+A                shape (429303,) dtype float64 min 62.6872 max 11455.8
+M                shape (429303,) dtype float64 min 2 max 157
+subn             shape (429303,) dtype int64 min 1 max 163185
+gas_y            shape (128791,) dtype float64 min 10776.7 max 999765
+gas_teacher      shape (128791,) dtype float64 min 21708.1 max 1.06119e+06
+gas_corrected    shape (128791,) dtype float64 min 21783.9 max 1.04248e+06
+gas_F            shape (128791, 9) dtype float32 min -85315 max 110368
+gas_pP           shape (300512,) dtype float64 min 16885.9 max 1.12931e+06
+gas_rP           shape (300512,) dtype float64 min -354033 max 436885
+eui_y            shape (128791,) dtype float64 min 9.64103 max 641.155
+eui_teacher      shape (128791,) dtype float64 min 17.542 max 511.912
+eui_corrected    shape (128791,) dtype float64 min 17.6335 max 508.174
+eui_F            shape (128791, 16) dtype float32 min -30.1306 max 36.7516
+eui_pP           shape (300512,) dtype float64 min 15.7822 max 585.58
+eui_rP           shape (300512,) dtype float64 min -276.823 max 479.034
+elec_y           shape (128791,) dtype float64 min 3298.8 max 381575
+elec_teacher     shape (128791,) dtype float64 min 7028.19 max 294725
+elec_corrected   shape (128791,) dtype float64 min 7029.23 max 297444
+elec_F           shape (128791, 8) dtype float32 min -19756.5 max 29302.3
+elec_pP          shape (300512,) dtype float64 min 7341.1 max 339683
+elec_rP          shape (300512,) dtype float64 min -127704 max 217007
+SIGMAS {'target_macro_gas_kwh': 151750.04, 'target_macro_elec_kwh': 41725.37, 'target_eui_gas_kwh_per_sqm': 40.65, 'target_clean_building_ratio': 12.49, 'target_electric_heating_adoption': 7.18}
+len P 300512 len H 128791 overlap 0 union 429303

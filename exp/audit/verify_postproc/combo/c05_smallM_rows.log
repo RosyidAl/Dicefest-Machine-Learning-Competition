@@ -1,0 +1,11 @@
+gas  M2-3: rel bias by p tercile  P-OOF +0.275(n30) +0.269(n29) +0.143(n29) | H +0.237(n16) +0.237(n16) +0.237(n16) | full OOF +0.231(n46) +0.222(n45) +0.178(n45) || H rows improved 0.65 of 48, sum dSE/sigma^2 -0.368
+gas  M4: rel bias by p tercile  P-OOF +0.112(n179) +0.081(n178) +0.064(n179) | H +0.064(n69) +0.139(n68) +0.053(n68) | full OOF +0.063(n247) +0.068(n247) +0.059(n247) || H rows improved 0.50 of 205, sum dSE/sigma^2 -0.217
+eui  M2-3: rel bias by p tercile  P-OOF +0.090(n30) +0.160(n29) +0.263(n29) | H +0.130(n16) +0.249(n16) +0.136(n16) | full OOF +0.068(n46) +0.218(n45) +0.197(n45) || H rows improved 0.52 of 48, sum dSE/sigma^2 -27.072
+eui  M4: rel bias by p tercile  P-OOF +0.069(n179) +0.015(n178) +0.038(n179) | H +0.013(n69) +0.078(n68) +0.046(n68) | full OOF +0.051(n247) +0.029(n247) +0.027(n247) || H rows improved 0.47 of 205, sum dSE/sigma^2 -8.799
+elec M2-3: rel bias by p tercile  P-OOF +0.289(n30) +0.386(n29) +0.036(n29) | H +0.240(n16) +0.269(n16) +0.216(n16) | full OOF +0.276(n46) +0.307(n45) +0.109(n45) || H rows improved 0.67 of 48, sum dSE/sigma^2 -0.282
+elec M4: rel bias by p tercile  P-OOF +0.132(n179) +0.096(n178) +0.090(n179) | H -0.010(n69) +0.066(n68) +0.088(n68) | full OOF +0.091(n247) +0.087(n247) +0.077(n247) || H rows improved 0.46 of 205, sum dSE/sigma^2 -0.109
+(b) M2-3: A/M train [44.4, 88.0, 159.2] test [47.2, 107.9, 195.2] | gas/M pred train-OOF [10223.4, 15302.1, 25012.2] test [10009.5, 17483.1, 27846.6] | EUI pred train-OOF [126.8, 187.8, 285.5] test [122.4, 169.6, 259.0] | elec/M pred train-OOF [2971.4, 4207.4, 6146.6] test [3127.9, 4304.4, 6941.6]
+(b) M4: A/M train [44.9, 84.5, 157.7] test [49.3, 84.9, 161.1] | gas/M pred train-OOF [9450.4, 13954.1, 22771.4] test [9505.9, 14064.3, 23164.4] | EUI pred train-OOF [121.0, 179.0, 250.8] test [121.8, 174.4, 237.2] | elec/M pred train-OOF [2821.4, 3872.7, 5447.7] test [2746.6, 3873.5, 5869.3]
+(c) gas  M2-3 delta 0.1994; leave-one-out range [0.1889, 0.2116]; half-sample (200 random halves) sd 0.0337
+(c) eui  M2-3 delta 0.1817; leave-one-out range [0.1678, 0.1897]; half-sample (200 random halves) sd 0.0330
+(c) elec M2-3 delta 0.1871; leave-one-out range [0.1764, 0.1999]; half-sample (200 random halves) sd 0.0420

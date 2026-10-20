@@ -1,0 +1,14 @@
+rows train 429303 test 183987 total 613290 train share 0.7000000 0.7*total 429303.000 ceil(0.3*total) 183987
+gas max 999764.9  n>=1e6 0  n>=9.9e5 38  n>=9.8e5 71
+identity eui*A==gas: max rel diff 6.37e-16
+gas counts per 10k bin from 700k: [427, 385, 345, 318, 308, 264, 280, 230, 218, 214, 189, 200, 145, 136, 142, 119, 103, 120, 77, 86, 86, 67, 60, 37, 49, 42, 42, 38, 33, 38, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+log-linear tail fit: slope per 100k -0.868; expected counts in the 10 bins above 1e6 if untruncated: [32.0, 29.3, 26.9, 24.7, 22.6, 20.7, 19.0, 17.4, 16.0, 14.7] sum 223, observed 0, Poisson P(0 | mean) = 9.39e-98
+elec max 396491.97; counts per bin from 250000.0 step 10000.0: [152, 122, 86, 54, 38, 32, 17, 15, 5, 3, 5, 5, 3, 7, 2, 0]
+eui max 648.11; counts per bin from 400.0 step 20.0: [73, 56, 48, 30, 36, 16, 9, 11, 11, 9, 5, 2, 3, 0]
+M in [2,30): n=321528 max gas    995446  q99.9 gas    680385  max gas/M   64153  rows gas>=9.5e5 2
+M in [30,50): n= 86762 max gas    999765  q99.9 gas    922807  max gas/M   33255  rows gas>=9.5e5 49
+M in [50,70): n= 18332 max gas    999102  q99.9 gas    985185  max gas/M   19375  rows gas>=9.5e5 73
+M in [70,90): n=  2381 max gas    999729  q99.9 gas    996439  max gas/M   14226  rows gas>=9.5e5 53
+M in [90,200): n=   300 max gas    999305  q99.9 gas    998808  max gas/M   10847  rows gas>=9.5e5 16
+test A max 11461 (train 11456); test M max 134 (train 157); test rows with M>=80: 393 (train 862)
+maxrss 273740 kB, 1.42 s

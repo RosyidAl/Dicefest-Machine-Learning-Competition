@@ -1,0 +1,36 @@
+{
+ "dup_rows": 77,
+ "dup_rows_sub_equals_train_all_targets": 77,
+ "diff_vs_v19vc": {
+  "target_macro_gas_kwh": 0,
+  "target_macro_elec_kwh": 0,
+  "target_eui_gas_kwh_per_sqm": 183910,
+  "target_clean_building_ratio": 0,
+  "target_electric_heating_adoption": 0
+ },
+ "test_test_dup_rows_not_in_train": 48,
+ "test_test_avg_gain": {
+  "target_macro_gas_kwh": {
+   "sse_reduction": 15195605.903465174,
+   "approx_delta_nrmse": -7.319428656556687e-09,
+   "approx_delta_total": -1.4638857313113375e-09
+  },
+  "target_macro_elec_kwh": {
+   "sse_reduction": 1286620.8418138144,
+   "approx_delta_nrmse": -6.3756212085237955e-09,
+   "approx_delta_total": -1.2751242417047592e-09
+  },
+  "target_eui_gas_kwh_per_sqm": {
+   "sse_reduction": 11.551328657866462,
+   "approx_delta_nrmse": -2.927177243248962e-08,
+   "approx_delta_total": -5.854354486497924e-09
+  }
+ },
+ "test_rest_zero_rows": 9696,
+ "test_rest_zero_sub_adoption_max": 7.62939453125e-06,
+ "test_rest_zero_sub_adoption_nonzero": 23,
+ "test_rest_zero_unseen_rows": 539,
+ "test_rest_zero_unseen_sub_adoption_max": 7.62939453125e-06,
+ "test_unseen_excess_over_rest_max": 7.62939453125e-06,
+ "test_unseen_rows_excess_gt_0": 23
+}

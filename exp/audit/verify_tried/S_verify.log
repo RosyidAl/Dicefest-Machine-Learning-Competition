@@ -1,0 +1,18 @@
+counts: H M<=3 48 H M==4 205 | P M<=3 88 P M==4 536
+P factors: {'gas': {'<=3': 1.1974, '4': 1.0785}, 'eui': {'<=3': 1.2098, '4': 1.0334}, 'elec': {'<=3': 1.1785, '4': 1.063}}
+[1/2] s=0.5: gas -0.0000065; eui -0.0001974; elec -0.0000034 | TOTAL -0.00004145  H-boot sd 0.00001600 P(<0) 0.998 5-95% [-0.00006830, -0.00001782]
+[1/2] s=0.75: gas -0.0000084; eui -0.0002286; elec -0.0000044 | TOTAL -0.00004825  H-boot sd 0.00002358 P(<0) 0.990 5-95% [-0.00008895, -0.00001301]
+[1/2] s=1.0: gas -0.0000093; eui -0.0002147; elec -0.0000048 | TOTAL -0.00004577  H-boot sd 0.00003111 P(<0) 0.943 5-95% [-0.00009874, +0.00000208]
+[2] public-size subsets s=0.5: mean -0.00004244 sd 0.00001900 P(<0) 0.988 P(<= -0.00005) 0.360
+[2] public-size subsets s=1.0: mean -0.00004700 sd 0.00003702 P(<0) 0.895 P(<= -0.00005) 0.485
+[3] joint P+H bootstrap s=0.5: mean -0.00004000 sd 0.00001611 P(<0) 0.995 5% -0.00006826 95% -0.00001533
+[3] joint P+H bootstrap s=1.0: mean -0.00004084 sd 0.00003272 P(<0) 0.880 5% -0.00009356 95% +0.00001610
+[4] gas: <=3: teacher rel bias +0.2374, corrected +0.2369, mean corr/teacher +0.0004 | LS factor on H corrected 1.2403 || 4: teacher rel bias +0.0833, corrected +0.0825, mean corr/teacher +0.0007 | LS factor on H corrected 1.0780
+[4] eui: <=3: teacher rel bias +0.1708, corrected +0.1700, mean corr/teacher +0.0007 | LS factor on H corrected 1.1564 || 4: teacher rel bias +0.0489, corrected +0.0484, mean corr/teacher +0.0005 | LS factor on H corrected 1.0462
+[4] elec: <=3: teacher rel bias +0.2413, corrected +0.2384, mean corr/teacher +0.0023 | LS factor on H corrected 1.2228 || 4: teacher rel bias +0.0558, corrected +0.0561, mean corr/teacher -0.0003 | LS factor on H corrected 1.0584
+[5] gas: rows changed 253 helped 138 hurt 115; share of SSE gain in top-5 rows 0.36, top-10 0.57; total change -0.00000130, without top-5 -0.00000083, without top-10 -0.00000055
+[5] eui: rows changed 253 helped 126 hurt 127; share of SSE gain in top-5 rows 0.67, top-10 0.96; total change -0.00003947, without top-5 -0.00001294, without top-10 -0.00000174
+[5] elec: rows changed 253 helped 131 hurt 122; share of SSE gain in top-5 rows 0.46, top-10 0.75; total change -0.00000068, without top-5 -0.00000036, without top-10 -0.00000017
+[6] teacher-level H, s=0.5: TOTAL -0.00004158
+[7] H split-half (20 splits), s=0.5: mean -0.00002262 min -0.00003745 max +0.00003847
+elapsed 60.21 s maxrss 425044 kB

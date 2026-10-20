@@ -1,0 +1,34 @@
+H rows 128791  P rows 300512
+base NRMSE on H: gas corrected 0.245144  eui corrected 0.648593
+truth max on H gas 999764.9, on P gas 999305.2; H eui*A max 999764.9
+H gas corrected > 1e6: 11  > 0.9e6: 77  > 0.85e6: 171
+
+(a) k fitted on P teacher: gas 0.085  eui(via eui*A) 0.0925
+    H corrected: gas dTotal -0.00001953  eui dTotal -0.00000514 (eui own P-fit k)  sum -0.00002467
+    H corrected: gas dTotal -0.00001953  eui dTotal -0.00000499 (eui with gas P-fit k)  sum -0.00002452
+    H teacher (no correction): gas dTotal -0.00001823
+
+(b) k fitted on all H corrected: gas 0.08  eui 0.095;  scored on P teacher: gas -0.00002470  eui -0.00000398
+
+(c1) 2-fold random halves x200 (seeds 1000..1199): gas mean -0.00001837 sd 0.00000194 | eui mean -0.00000464 sd 0.00000054 | sum mean -0.00002301 worst -0.00000807  share<0 1.000
+(c2) 10-fold x10 (seeds 5000..5009): gas mean -0.00001853 sd 0.00000063 | eui mean -0.00000465 | sum mean -0.00002318 worst -0.00002217
+(c3) leave-one-region-out (10 contiguous sub_n blocks): gas -0.00001850  eui -0.00000469  sum -0.00002319
+     per-block k (gas, eui): [(0.075, 0.0825), (0.08, 0.095), (0.08, 0.095), (0.0825, 0.0975), (0.085, 0.095), (0.08, 0.095), (0.08, 0.095), (0.08, 0.095), (0.0775, 0.095), (0.085, 0.1)]
+     per-region SSE change (P-fit k, gas, in units of sigma^2): [-2.037, -0.353, -1.317, 0.183, 0.129, -0.579, -0.057, -0.375, -2.241, 0.482]
+(d) bootstrap H size 128791: mean -0.00002486 sd 0.00000902 P(<0) 0.9988 P(<=-1e-5) 0.9567
+(d) bootstrap public size 55196: mean -0.00002459 sd 0.00001368 P(<0) 0.9802 P(<=-1e-5) 0.8612
+    gas rows changed 3476; rows that got worse 1697 (sum 5.985 sig^2), better 1779 (sum -12.150); 10 best rows carry 0.94 of the net SSE gain; top 10 worst rows [0.139, 0.142, 0.144, 0.154, 0.171, 0.179, 0.184, 0.2, 0.2, 0.223]
+    gas gain robustness: drop 0 best rows: -0.00001953; drop 1 best rows: -0.00001606; drop 3 best rows: -0.00001183; drop 5 best rows: -0.00000791; drop 10 best rows: -0.00000122
+
+(e) gas / eui dTotal on H corrected for fixed k (and hard clip at 1e6):
+    k 0.040: gas -0.00001158  eui -0.00000219
+    k 0.060: gas -0.00001701  eui -0.00000363
+    k 0.070: gas -0.00001889  eui -0.00000429
+    k 0.080: gas -0.00001969  eui -0.00000481
+    k 0.085: gas -0.00001953  eui -0.00000499
+    k 0.090: gas -0.00001893  eui -0.00000511
+    k 0.100: gas -0.00001614  eui -0.00000509
+    k 0.120: gas -0.00000267  eui -0.00000375
+    k 0.150: gas +0.00004384  eui +0.00000284
+    hard clip: gas -0.00000306  eui -0.00000042
+elapsed 169.87 s maxrss 96980 kB

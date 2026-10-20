@@ -1,0 +1,158 @@
+H rows 128791, unseen-subzone (no P row) share 0.1679
+test rows 183987, unseen-subzone (no train row) share 0.0814
+  support 0-0: H 0.1679  test 0.0814
+  support 1-1: H 0.2825  test 0.1888
+  support 2-2: H 0.2604  test 0.2401
+  support 3-5: H 0.2734  test 0.4286
+  support 6-10: H 0.0157  test 0.0605
+  support 11-1000000000: H 0.0000  test 0.0005
+
+=== gas: NRMSE 0.24514  mean resid/sig -0.00029  t -0.43  min pred 2.18e+04  n<0 0
+  global shift  beta [-44.215357]  cf dTotal +0.0000005 (sd 0.0000004)
+  global slope0 beta [5.1e-05]  cf dTotal +0.0000011 (sd 0.0000007)
+  global a+bp   beta [-1.93872526e+02  6.49000000e-04]  cf dTotal +0.0000015 (sd 0.0000007)
+  [A_dec] groups 10  sum t^2 3.5 (df 10)  oracle dTotal -0.0000005  cf dTotal +0.0000044 (sd 0.0000008)  cf shrink30 +0.0000043 (sd 0.0000008)
+     g=  0  n  12880  mean/sig +0.00037  t  +0.36  rmse/sig 0.1164
+     g=  1  n  12879  mean/sig -0.00166  t  -1.32  rmse/sig 0.1433
+     g=  2  n  12879  mean/sig +0.00023  t  +0.16  rmse/sig 0.1645
+     g=  3  n  12879  mean/sig -0.00083  t  -0.51  rmse/sig 0.1853
+     g=  4  n  12879  mean/sig -0.00159  t  -0.87  rmse/sig 0.2067
+     g=  5  n  12879  mean/sig -0.00042  t  -0.21  rmse/sig 0.2310
+     g=  6  n  12879  mean/sig -0.00074  t  -0.33  rmse/sig 0.2546
+     g=  7  n  12879  mean/sig +0.00039  t  +0.16  rmse/sig 0.2810
+     g=  8  n  12879  mean/sig -0.00070  t  -0.25  rmse/sig 0.3191
+     g=  9  n  12879  mean/sig +0.00202  t  +0.56  rmse/sig 0.4047
+  [M_dec] groups 10  sum t^2 4.8 (df 10)  oracle dTotal -0.0000008  cf dTotal +0.0000037 (sd 0.0000009)  cf shrink30 +0.0000037 (sd 0.0000009)
+     g=  0  n  12880  mean/sig -0.00074  t  -0.62  rmse/sig 0.1347
+     g=  1  n  12879  mean/sig +0.00084  t  +0.61  rmse/sig 0.1547
+     g=  2  n  12879  mean/sig +0.00028  t  +0.18  rmse/sig 0.1732
+     g=  3  n  12879  mean/sig +0.00132  t  +0.77  rmse/sig 0.1956
+     g=  4  n  12879  mean/sig -0.00273  t  -1.46  rmse/sig 0.2122
+     g=  5  n  12879  mean/sig -0.00047  t  -0.23  rmse/sig 0.2366
+     g=  6  n  12879  mean/sig -0.00147  t  -0.65  rmse/sig 0.2576
+     g=  7  n  12879  mean/sig +0.00046  t  +0.18  rmse/sig 0.2810
+     g=  8  n  12879  mean/sig -0.00203  t  -0.74  rmse/sig 0.3096
+     g=  9  n  12879  mean/sig +0.00163  t  +0.48  rmse/sig 0.3851
+  [AM_dec] groups 10  sum t^2 10.7 (df 10)  oracle dTotal -0.0000019  cf dTotal +0.0000027 (sd 0.0000010)  cf shrink30 +0.0000027 (sd 0.0000010)
+     g=  0  n  12880  mean/sig -0.00289  t  -1.48  rmse/sig 0.2227
+     g=  1  n  12879  mean/sig -0.00374  t  -1.87  rmse/sig 0.2275
+     g=  2  n  12879  mean/sig +0.00149  t  +0.74  rmse/sig 0.2274
+     g=  3  n  12879  mean/sig -0.00116  t  -0.57  rmse/sig 0.2308
+     g=  4  n  12879  mean/sig -0.00131  t  -0.63  rmse/sig 0.2359
+     g=  5  n  12879  mean/sig -0.00105  t  -0.50  rmse/sig 0.2389
+     g=  6  n  12879  mean/sig +0.00379  t  +1.75  rmse/sig 0.2462
+     g=  7  n  12879  mean/sig +0.00076  t  +0.34  rmse/sig 0.2514
+     g=  8  n  12879  mean/sig -0.00029  t  -0.13  rmse/sig 0.2585
+     g=  9  n  12879  mean/sig +0.00148  t  +0.56  rmse/sig 0.3021
+  [unseen] groups 2  sum t^2 1.7 (df 2)  oracle dTotal -0.0000004  cf dTotal +0.0000008 (sd 0.0000004)  cf shrink30 +0.0000008 (sd 0.0000004)
+     g=  0  n 107163  mean/sig -0.00070  t  -0.96  rmse/sig 0.2379
+     g=  1  n  21628  mean/sig +0.00171  t  +0.90  rmse/sig 0.2782
+  [support] groups 6  sum t^2 4.6 (df 6)  oracle dTotal -0.0000009  cf dTotal +0.0000016 (sd 0.0000007)  cf shrink30 +0.0000014 (sd 0.0000007)
+     g=  0  n  21628  mean/sig +0.00171  t  +0.90  rmse/sig 0.2782
+     g=  1  n  36380  mean/sig -0.00217  t  -1.62  rmse/sig 0.2548
+     g=  2  n  33542  mean/sig +0.00057  t  +0.43  rmse/sig 0.2402
+     g=  3  n  35214  mean/sig -0.00018  t  -0.15  rmse/sig 0.2185
+     g=  4  n   2023  mean/sig -0.00412  t  -0.88  rmse/sig 0.2096
+     g=  5  n      4  mean/sig -0.02427  t  -0.39  rmse/sig 0.1114
+  [zone] groups 330  sum t^2 391.2 (df 330)  oracle dTotal -0.0000785  cf dTotal +0.0000676 (sd 0.0000040)  cf shrink30 +0.0000504 (sd 0.0000037)
+  [subn_win200] groups 816  sum t^2 1024.1 (df 816)  oracle dTotal -0.0001978  cf dTotal +0.0001613 (sd 0.0000086)  cf shrink30 +0.0000898 (sd 0.0000069)
+
+=== eui: NRMSE 0.64859  mean resid/sig -0.00116  t -0.64  min pred 17.6  n<0 0
+  global shift  beta [-0.047009]  cf dTotal +0.0000013 (sd 0.0000010)
+  global slope0 beta [-0.000115]  cf dTotal +0.0000017 (sd 0.0000014)
+  global a+bp   beta [-0.667701  0.004468]  cf dTotal +0.0000016 (sd 0.0000021)
+  [A_dec] groups 10  sum t^2 2.5 (df 10)  oracle dTotal -0.0000016  cf dTotal +0.0000101 (sd 0.0000031)  cf shrink30 +0.0000101 (sd 0.0000030)
+     g=  0  n  12880  mean/sig +0.00109  t  +0.11  rmse/sig 1.1138
+     g=  1  n  12879  mean/sig -0.00863  t  -1.21  rmse/sig 0.8094
+     g=  2  n  12879  mean/sig +0.00168  t  +0.27  rmse/sig 0.7083
+     g=  3  n  12879  mean/sig -0.00240  t  -0.43  rmse/sig 0.6381
+     g=  4  n  12879  mean/sig -0.00350  t  -0.68  rmse/sig 0.5846
+     g=  5  n  12879  mean/sig -0.00006  t  -0.01  rmse/sig 0.5408
+     g=  6  n  12879  mean/sig -0.00091  t  -0.21  rmse/sig 0.4962
+     g=  7  n  12879  mean/sig +0.00126  t  +0.31  rmse/sig 0.4556
+     g=  8  n  12879  mean/sig -0.00103  t  -0.28  rmse/sig 0.4191
+     g=  9  n  12879  mean/sig +0.00093  t  +0.28  rmse/sig 0.3723
+  [M_dec] groups 10  sum t^2 4.6 (df 10)  oracle dTotal -0.0000026  cf dTotal +0.0000104 (sd 0.0000029)  cf shrink30 +0.0000103 (sd 0.0000029)
+     g=  0  n  12880  mean/sig -0.00707  t  -0.84  rmse/sig 0.9573
+     g=  1  n  12879  mean/sig +0.00598  t  +0.81  rmse/sig 0.8329
+     g=  2  n  12879  mean/sig +0.00146  t  +0.22  rmse/sig 0.7393
+     g=  3  n  12879  mean/sig -0.00158  t  -0.27  rmse/sig 0.6531
+     g=  4  n  12879  mean/sig -0.00790  t  -1.46  rmse/sig 0.6144
+     g=  5  n  12879  mean/sig +0.00092  t  +0.18  rmse/sig 0.5782
+     g=  6  n  12879  mean/sig -0.00332  t  -0.73  rmse/sig 0.5180
+     g=  7  n  12879  mean/sig +0.00177  t  +0.40  rmse/sig 0.4957
+     g=  8  n  12879  mean/sig -0.00203  t  -0.50  rmse/sig 0.4584
+     g=  9  n  12879  mean/sig +0.00021  t  +0.06  rmse/sig 0.4330
+  [AM_dec] groups 10  sum t^2 13.7 (df 10)  oracle dTotal -0.0000073  cf dTotal +0.0000054 (sd 0.0000037)  cf shrink30 +0.0000053 (sd 0.0000037)
+     g=  0  n  12880  mean/sig -0.00759  t  -0.84  rmse/sig 1.0297
+     g=  1  n  12879  mean/sig -0.01437  t  -2.28  rmse/sig 0.7139
+     g=  2  n  12879  mean/sig +0.00834  t  +1.49  rmse/sig 0.6371
+     g=  3  n  12879  mean/sig -0.00660  t  -1.25  rmse/sig 0.6005
+     g=  4  n  12879  mean/sig +0.00040  t  +0.08  rmse/sig 0.5825
+     g=  5  n  12879  mean/sig -0.00615  t  -1.25  rmse/sig 0.5597
+     g=  6  n  12879  mean/sig +0.00566  t  +1.15  rmse/sig 0.5595
+     g=  7  n  12879  mean/sig +0.00182  t  +0.38  rmse/sig 0.5445
+     g=  8  n  12879  mean/sig +0.00308  t  +0.64  rmse/sig 0.5420
+     g=  9  n  12879  mean/sig +0.00384  t  +0.78  rmse/sig 0.5607
+  [unseen] groups 2  sum t^2 1.1 (df 2)  oracle dTotal -0.0000005  cf dTotal +0.0000025 (sd 0.0000010)  cf shrink30 +0.0000025 (sd 0.0000010)
+     g=  0  n 107163  mean/sig -0.00181  t  -0.92  rmse/sig 0.6458
+     g=  1  n  21628  mean/sig +0.00209  t  +0.46  rmse/sig 0.6621
+  [support] groups 6  sum t^2 7.4 (df 6)  oracle dTotal -0.0000037  cf dTotal +0.0000059 (sd 0.0000034)  cf shrink30 +0.0000028 (sd 0.0000019)
+     g=  0  n  21628  mean/sig +0.00209  t  +0.46  rmse/sig 0.6621
+     g=  1  n  36380  mean/sig -0.00784  t  -2.34  rmse/sig 0.6400
+     g=  2  n  33542  mean/sig +0.00323  t  +0.92  rmse/sig 0.6429
+     g=  3  n  35214  mean/sig +0.00033  t  +0.10  rmse/sig 0.6511
+     g=  4  n   2023  mean/sig -0.01417  t  -0.91  rmse/sig 0.7038
+     g=  5  n      4  mean/sig -0.02946  t  -0.07  rmse/sig 0.7412
+  [zone] groups 330  sum t^2 379.9 (df 330)  oracle dTotal -0.0002001  cf dTotal +0.0001873 (sd 0.0000126)  cf shrink30 +0.0001409 (sd 0.0000108)
+  [subn_win200] groups 816  sum t^2 1003.2 (df 816)  oracle dTotal -0.0004947  cf dTotal +0.0004508 (sd 0.0000289)  cf shrink30 +0.0002641 (sd 0.0000225)
+
+=== elec: NRMSE 0.31462  mean resid/sig -0.00112  t -1.28  min pred 7.03e+03  n<0 0
+  global shift  beta [-46.736649]  cf dTotal +0.0000001 (sd 0.0000005)
+  global slope0 beta [-0.000777]  cf dTotal +0.0000002 (sd 0.0000008)
+  global a+bp   beta [ 1.0209963e+01 -8.9300000e-04]  cf dTotal +0.0000006 (sd 0.0000008)
+  [A_dec] groups 10  sum t^2 7.2 (df 10)  oracle dTotal -0.0000021  cf dTotal +0.0000024 (sd 0.0000009)  cf shrink30 +0.0000024 (sd 0.0000009)
+     g=  0  n  12880  mean/sig -0.00024  t  -0.18  rmse/sig 0.1487
+     g=  1  n  12879  mean/sig -0.00077  t  -0.46  rmse/sig 0.1882
+     g=  2  n  12879  mean/sig +0.00241  t  +1.20  rmse/sig 0.2278
+     g=  3  n  12879  mean/sig +0.00024  t  +0.11  rmse/sig 0.2495
+     g=  4  n  12879  mean/sig -0.00327  t  -1.35  rmse/sig 0.2746
+     g=  5  n  12879  mean/sig +0.00198  t  +0.74  rmse/sig 0.3052
+     g=  6  n  12879  mean/sig -0.00277  t  -0.94  rmse/sig 0.3341
+     g=  7  n  12879  mean/sig -0.00051  t  -0.16  rmse/sig 0.3716
+     g=  8  n  12879  mean/sig -0.00302  t  -0.85  rmse/sig 0.4040
+     g=  9  n  12879  mean/sig -0.00525  t  -1.22  rmse/sig 0.4866
+  [M_dec] groups 10  sum t^2 12.4 (df 10)  oracle dTotal -0.0000031  cf dTotal +0.0000025 (sd 0.0000012)  cf shrink30 +0.0000025 (sd 0.0000012)
+     g=  0  n  12880  mean/sig +0.00126  t  +0.83  rmse/sig 0.1730
+     g=  1  n  12879  mean/sig +0.00077  t  +0.44  rmse/sig 0.1999
+     g=  2  n  12879  mean/sig -0.00098  t  -0.49  rmse/sig 0.2275
+     g=  3  n  12879  mean/sig -0.00289  t  -1.33  rmse/sig 0.2462
+     g=  4  n  12879  mean/sig +0.00224  t  +0.91  rmse/sig 0.2802
+     g=  5  n  12879  mean/sig -0.00393  t  -1.46  rmse/sig 0.3061
+     g=  6  n  12879  mean/sig +0.00040  t  +0.14  rmse/sig 0.3329
+     g=  7  n  12879  mean/sig -0.00791  t  -2.53  rmse/sig 0.3554
+     g=  8  n  12879  mean/sig -0.00098  t  -0.28  rmse/sig 0.3989
+     g=  9  n  12879  mean/sig +0.00082  t  +0.19  rmse/sig 0.4891
+  [AM_dec] groups 10  sum t^2 12.1 (df 10)  oracle dTotal -0.0000028  cf dTotal +0.0000029 (sd 0.0000013)  cf shrink30 +0.0000029 (sd 0.0000013)
+     g=  0  n  12880  mean/sig +0.00123  t  +0.46  rmse/sig 0.3024
+     g=  1  n  12879  mean/sig +0.00165  t  +0.61  rmse/sig 0.3088
+     g=  2  n  12879  mean/sig -0.00098  t  -0.36  rmse/sig 0.3107
+     g=  3  n  12879  mean/sig -0.00087  t  -0.31  rmse/sig 0.3217
+     g=  4  n  12879  mean/sig -0.00457  t  -1.67  rmse/sig 0.3109
+     g=  5  n  12879  mean/sig -0.00310  t  -1.15  rmse/sig 0.3053
+     g=  6  n  12879  mean/sig -0.00371  t  -1.37  rmse/sig 0.3066
+     g=  7  n  12879  mean/sig +0.00305  t  +1.13  rmse/sig 0.3056
+     g=  8  n  12879  mean/sig -0.00527  t  -1.96  rmse/sig 0.3054
+     g=  9  n  12879  mean/sig +0.00137  t  +0.43  rmse/sig 0.3640
+  [unseen] groups 2  sum t^2 1.6 (df 2)  oracle dTotal -0.0000004  cf dTotal +0.0000008 (sd 0.0000012)  cf shrink30 +0.0000008 (sd 0.0000012)
+     g=  0  n 107163  mean/sig -0.00110  t  -1.18  rmse/sig 0.3052
+     g=  1  n  21628  mean/sig -0.00120  t  -0.49  rmse/sig 0.3576
+  [support] groups 6  sum t^2 3.7 (df 6)  oracle dTotal -0.0000006  cf dTotal +0.0000022 (sd 0.0000016)  cf shrink30 +0.0000021 (sd 0.0000016)
+     g=  0  n  21628  mean/sig -0.00120  t  -0.49  rmse/sig 0.3576
+     g=  1  n  36380  mean/sig -0.00196  t  -1.15  rmse/sig 0.3254
+     g=  2  n  33542  mean/sig -0.00012  t  -0.07  rmse/sig 0.3093
+     g=  3  n  35214  mean/sig -0.00111  t  -0.74  rmse/sig 0.2812
+     g=  4  n   2023  mean/sig -0.00193  t  -0.33  rmse/sig 0.2596
+     g=  5  n      4  mean/sig -0.09047  t  -1.20  rmse/sig 0.1592
+  [zone] groups 330  sum t^2 489.1 (df 330)  oracle dTotal -0.0001163  cf dTotal +0.0000705 (sd 0.0000088)  cf shrink30 +0.0000488 (sd 0.0000076)
+  [subn_win200] groups 816  sum t^2 1187.0 (df 816)  oracle dTotal -0.0002712  cf dTotal +0.0001950 (sd 0.0000157)  cf shrink30 +0.0001026 (sd 0.0000121)

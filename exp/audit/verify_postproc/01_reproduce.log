@@ -1,0 +1,42 @@
+alignment OK: P/H = holdout_split, M/A identical, y on H and P match the raw target columns
+max |gas_y - GAS[H]| / GAS: 6.595503220019189e-16
+counts  P: {1: 0, 2: 0, 3: 88, 4: 536, 5: 6946}  H: {1: 0, 2: 1, 3: 47, 4: 205, 5: 2937}
+P-OOF LS deltas (M2-3, M4): {'gas': [0.19738, 0.07848], 'eui': [0.20978, 0.03337], 'elec': [0.17854, 0.06301]}
+gas  base corrected 0.245144: change -0.0000093 (M2-3 only -0.0000058, M4 only -0.0000034) | on teacher -0.0000093
+eui  base corrected 0.648593: change -0.0002147 (M2-3 only -0.0001621, M4 only -0.0000527) | on teacher -0.0002167
+elec base corrected 0.314623: change -0.0000048 (M2-3 only -0.0000035, M4 only -0.0000013) | on teacher -0.0000048
+TOTAL change (P-OOF deltas -> H corrected) -0.00004577 | on H teacher -0.00004616
+
+per-row decomposition of the change (total-score units, first order):
+  gas : rows changed 253, sum -0.00000185, helped 134, hurt 119; best 5 [-2.8e-07, -1.9e-07, -1.6e-07, -1.2e-07, -1.2e-07], worst 5 [7e-08, 7e-08, 7e-08, 7e-08, 1.5e-07]
+       without the  1 most helped rows: -0.00000157
+       without the  3 most helped rows: -0.00000123
+       without the  5 most helped rows: -0.00000098
+       without the 10 most helped rows: -0.00000046
+  eui : rows changed 253, sum -0.00004294, helped 122, hurt 131; best 5 [-1.508e-05, -1.491e-05, -6.48e-06, -6.44e-06, -5.2e-06], worst 5 [3.45e-06, 4.19e-06, 5.55e-06, 5.69e-06, 6.75e-06]
+       without the  1 most helped rows: -0.00002786
+       without the  3 most helped rows: -0.00000646
+       without the  5 most helped rows: +0.00000517
+       without the 10 most helped rows: +0.00002559
+       top EUI rows: M, A, y, p_corr, rel resid, contribution
+         M 3 A     178.0 y    478.81 p    261.75 rel +0.829 c -0.00001508
+         M 3 A     211.9 y    469.41 p    185.42 rel +1.532 c -0.00001491
+         M 3 A     354.2 y    362.50 p    251.27 rel +0.443 c -0.00000648
+         M 3 A     119.9 y    400.52 p    298.20 rel +0.343 c -0.00000644
+         M 3 A     207.3 y    333.89 p    236.83 rel +0.410 c -0.00000520
+         M 3 A     287.9 y    276.73 p    162.02 rel +0.708 c -0.00000481
+         M 4 A     121.0 y    607.56 p    286.09 rel +1.124 c -0.00000438
+         M 3 A     632.1 y    267.86 p    175.43 rel +0.527 c -0.00000395
+  elec: rows changed 253, sum -0.00000097, helped 126, hurt 127; best 5 [-1.6e-07, -1.3e-07, -1.3e-07, -9e-08, -9e-08], worst 5 [6e-08, 7e-08, 7e-08, 1e-07, 1.1e-07]
+       without the  1 most helped rows: -0.00000081
+       without the  3 most helped rows: -0.00000054
+       without the  5 most helped rows: -0.00000037
+       without the 10 most helped rows: +0.00000000
+
+bootstrap (B=2000) total change: scoring-only mean -0.00004497 sd 0.00003110 P(<0) 0.934 | scoring+delta mean -0.00004093 sd 0.00003291 P(<0) 0.899
+   quantiles scoring+delta 5/50/95%: [-9.566e-05, -4.067e-05, 1.23e-05]
+H-only 5-fold cross-fit gas  change -0.0000077
+H-only 5-fold cross-fit eui  change -0.0002060
+H-only 5-fold cross-fit elec change -0.0000036
+H-only 5-fold cross-fit TOTAL -0.00004347
+maxrss 312500 kB wall 54.96 s

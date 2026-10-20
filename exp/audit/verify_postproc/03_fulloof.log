@@ -1,0 +1,29 @@
+eui: refit vs pipeline test base (teacher_deploy): max rel diff 4.99e-10, rms rel 1.23e-11; in-sample NRMSE 0.64959
+gas: refit vs pipeline test base (teacher_deploy): max rel diff 1.46e-09, rms rel 1.97e-11; in-sample NRMSE 0.24470
+elec: refit vs pipeline test base (teacher_deploy): max rel diff 2.37e-09, rms rel 5.30e-11; in-sample NRMSE 0.31574
+
+robustness of the bias on the full-train OOF residuals (r = y - p, metric scale)
+== gas
+   M2-3  n    136 LS d +0.1994 (se HC0 0.0329, jackknife 0.0332) | rel median +0.1796 trim10 +0.1901 share r>0 0.699 | top5 share of sum(pr) 0.29; d w/o top1/3/5 [0.1894, 0.1758, 0.1628]
+   M4    n    741 LS d +0.0620 (se HC0 0.0137, jackknife 0.0138) | rel median +0.0191 trim10 +0.0362 share r>0 0.524 | top5 share of sum(pr) 0.23; d w/o top1/3/5 [0.0592, 0.0538, 0.0486]
+   M5    n   9883 LS d +0.0089 (se HC0 0.0032, jackknife 0.0032) | rel median -0.0190 trim10 -0.0102 share r>0 0.468 | top5 share of sum(pr) 0.13; d w/o top1/3/5 [0.0087, 0.0082, 0.0078]
+   M6-8  n  52124 LS d -0.0020 (se HC0 0.0014, jackknife nan) | rel median -0.0245 trim10 -0.0170 share r>0 0.456 | top5 share of sum(pr) -0.23; d w/o top1/3/5 [-0.0021, -0.0023, -0.0024]
+   M>=9  n 366419 LS d +0.0000 (se HC0 0.0003, jackknife nan) | rel median -0.0087 trim10 -0.0060 share r>0 0.476 | top5 share of sum(pr) 11.34; d w/o top1/3/5 [-0.0, -0.0, -0.0]
+== eui
+   M2-3  n    136 LS d +0.1817 (se HC0 0.0321, jackknife 0.0324) | rel median +0.1243 trim10 +0.1442 share r>0 0.669 | top5 share of sum(pr) 0.30; d w/o top1/3/5 [0.1678, 0.152, 0.1365]
+   M4    n    741 LS d +0.0302 (se HC0 0.0136, jackknife 0.0136) | rel median -0.0119 trim10 +0.0086 share r>0 0.482 | top5 share of sum(pr) 0.49; d w/o top1/3/5 [0.0268, 0.0208, 0.0154]
+   M5    n   9883 LS d +0.0033 (se HC0 0.0032, jackknife 0.0032) | rel median -0.0220 trim10 -0.0128 share r>0 0.462 | top5 share of sum(pr) 0.54; d w/o top1/3/5 [0.0029, 0.0021, 0.0015]
+   M6-8  n  52124 LS d -0.0028 (se HC0 0.0013, jackknife nan) | rel median -0.0243 trim10 -0.0167 share r>0 0.457 | top5 share of sum(pr) -0.15; d w/o top1/3/5 [-0.0029, -0.0031, -0.0032]
+   M>=9  n 366419 LS d +0.0001 (se HC0 0.0003, jackknife nan) | rel median -0.0085 trim10 -0.0060 share r>0 0.476 | top5 share of sum(pr) 0.99; d w/o top1/3/5 [0.0, 0.0, 0.0]
+== elec
+   M2-3  n    136 LS d +0.1871 (se HC0 0.0399, jackknife 0.0402) | rel median +0.1866 trim10 +0.2003 share r>0 0.684 | top5 share of sum(pr) 0.32; d w/o top1/3/5 [0.1855, 0.1624, 0.1406]
+   M4    n    741 LS d +0.0710 (se HC0 0.0254, jackknife 0.0257) | rel median -0.0070 trim10 +0.0275 share r>0 0.489 | top5 share of sum(pr) 0.39; d w/o top1/3/5 [0.0616, 0.0516, 0.044]
+   M5    n   9883 LS d +0.0033 (se HC0 0.0046, jackknife 0.0046) | rel median -0.0617 trim10 -0.0335 share r>0 0.421 | top5 share of sum(pr) 1.07; d w/o top1/3/5 [0.0024, 0.001, -0.0002]
+   M6-8  n  52124 LS d +0.0013 (se HC0 0.0019, jackknife nan) | rel median -0.0544 trim10 -0.0333 share r>0 0.424 | top5 share of sum(pr) 0.84; d w/o top1/3/5 [0.001, 0.0006, 0.0002]
+   M>=9  n 366419 LS d -0.0000 (se HC0 0.0004, jackknife nan) | rel median -0.0225 trim10 -0.0151 share r>0 0.448 | top5 share of sum(pr) -2.57; d w/o top1/3/5 [-0.0, -0.0001, -0.0001]
+
+realized test change, bootstrap B=20000 (deltas re-estimated each draw; test groups of {'M2-3': 60, 'M4': 298})
+   full     mean -0.00004741 sd 0.00002558 P(<0) 0.973 q05/50/95 [-9.053e-05, -4.649e-05, -7.08e-06]
+   private  mean -0.00004755 sd 0.00003061 P(<0) 0.948 q05/50/95 [-9.95e-05, -4.613e-05, 5.2e-07]
+   public   mean -0.00004707 sd 0.00004708 P(<0) 0.853 q05/50/95 [-0.00012986, -4.371e-05, 2.408e-05]
+maxrss 540560 kB wall 20.40 s

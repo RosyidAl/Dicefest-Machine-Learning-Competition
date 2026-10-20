@@ -1,0 +1,7 @@
+H all rows: gas dTotal -0.00001969  eui dTotal -0.00000481  sum -0.00002450
+public-like (55,196 rows): mean -0.00002432  sd 0.00001242  P(change < 0) 0.9863  P(change <= -0.00001) 0.8813
+private-like (128,791 rows): mean -0.00002428  sd 0.00000817  P(change < 0) 1.0000  P(change <= -0.00001) 0.9707
+random half 0: gas -0.00001814  eui -0.00000277
+random half 1: gas -0.00002124  eui -0.00000683
+row-parity half 0: gas -0.00001730  eui -0.00000548
+row-parity half 1: gas -0.00002207  eui -0.00000414

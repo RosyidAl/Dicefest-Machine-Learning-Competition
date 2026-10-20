@@ -1,0 +1,94 @@
+support bins (0,1,2,3-5,6+) H share [0.1679 0.2825 0.2604 0.2734 0.0157] test share [0.0814 0.1888 0.2401 0.4286 0.061 ]
+
+=== gas: NRMSE H 0.24514  test-support-weighted 0.23568
+  [teacher_dec] sum t^2 8.3 (df 10)  cf shift dTotal +0.0000028 (sd 0.0000012)
+     mean/sig: +0.0002 +0.0004 -0.0014 -0.0015 -0.0011 -0.0030 -0.0028 +0.0031 +0.0012 +0.0021  | t: +0.2 +0.3 -1.0 -0.9 -0.6 -1.5 -1.3 +1.2 +0.4 +0.6
+  [corrected_dec] sum t^2 9.6 (df 10)  cf shift dTotal +0.0000026 (sd 0.0000011)
+     mean/sig: +0.0002 +0.0005 -0.0014 -0.0011 -0.0017 -0.0034 -0.0029 +0.0032 +0.0021 +0.0016  | t: +0.2 +0.4 -1.0 -0.7 -0.9 -1.7 -1.3 +1.3 +0.7 +0.4
+  [corr_dec] sum t^2 8.6 (df 10)  cf shift dTotal +0.0000029 (sd 0.0000008)
+     mean/sig: +0.0008 +0.0019 +0.0010 -0.0004 -0.0006 -0.0032 -0.0004 -0.0037 -0.0001 +0.0019  | t: +0.3 +0.9 +0.5 -0.2 -0.4 -1.9 -0.2 -1.8 -0.1 +0.6
+  [corrected_pct] sum t^2 75.7 (df 100)  cf shift dTotal +0.0000294 (sd 0.0000026)
+     top 3 pct mean/sig: -0.0114 +0.0123 -0.0026 t: -0.9 +0.9 -0.2
+     bottom 3 pct mean/sig: +0.0038 +0.0022 -0.0023 t: +1.7 +0.8 -0.8
+  e~corr           cf dTotal +0.0000005 (sd 0.0000003)
+  e~corr|support   cf dTotal +0.0000043 (sd 0.0000018)
+  e~corr|Adec      cf dTotal -0.0000003 (sd 0.0000009)
+  slope calib [support] shift+slope cf dTotal +0.0000048 (sd 0.0000014)  slope-only +0.0000034 (sd 0.0000011)  shift+slope test-mix-weighted eval +0.0000076 (sd 0.0000034)
+     in-sample slopes: +0.0016 +0.0015 -0.0003 -0.0001 -0.0076
+  slope calib [A_q5] shift+slope cf dTotal +0.0000039 (sd 0.0000008)  slope-only +0.0000015 (sd 0.0000012)  shift+slope test-mix-weighted eval +0.0000036 (sd 0.0000007)
+     in-sample slopes: -0.0048 -0.0074 +0.0092 +0.0063 -0.0006
+  slope calib [M_q5] shift+slope cf dTotal +0.0000046 (sd 0.0000007)  slope-only +0.0000026 (sd 0.0000006)  shift+slope test-mix-weighted eval +0.0000048 (sd 0.0000007)
+     in-sample slopes: -0.0001 +0.0078 +0.0048 +0.0003 +0.0019
+  slope calib [pc_q5] shift+slope cf dTotal +0.0000030 (sd 0.0000008)  slope-only +0.0000014 (sd 0.0000006)  shift+slope test-mix-weighted eval +0.0000025 (sd 0.0000009)
+     in-sample slopes: +0.0005 -0.0029 +0.0047 +0.0137 -0.0029
+  slope calib [unseen] shift+slope cf dTotal +0.0000022 (sd 0.0000007)  slope-only +0.0000014 (sd 0.0000008)  shift+slope test-mix-weighted eval +0.0000019 (sd 0.0000006)
+     in-sample slopes: +0.0003 +0.0016
+  global lam                           H NRMSE 0.245135  test-mix NRMSE 0.235671  dTotal vs global: H +0.0000000 (sd 0.0000000)  test-mix +0.0000000 (sd 0.0000000)
+  global lam, test-mix weighted fit    H NRMSE 0.245136  test-mix NRMSE 0.235674  dTotal vs global: H +0.0000003 (sd 0.0000007)  test-mix +0.0000004 (sd 0.0000006)
+  lam per support bin                  H NRMSE 0.245229  test-mix NRMSE 0.235797  dTotal vs global: H +0.0000188 (sd 0.0000041)  test-mix +0.0000251 (sd 0.0000075)
+  lam per seen/unseen                  H NRMSE 0.245166  test-mix NRMSE 0.235687  dTotal vs global: H +0.0000061 (sd 0.0000017)  test-mix +0.0000032 (sd 0.0000010)
+  train y range [4324.15, 999765]  H pred range [21783.9, 1.04248e+06]  test pred range [22153.6, 1.06141e+06]  H pred>max 11  test pred>max 7  test pred<min 0  H pred<min 0
+    train y q0.999: 906551
+    train y q0.9999: 987363
+
+=== eui: NRMSE H 0.64859  test-support-weighted 0.65131
+  [teacher_dec] sum t^2 6.5 (df 10)  cf shift dTotal +0.0000062 (sd 0.0000046)
+     mean/sig: -0.0029 -0.0030 -0.0020 -0.0022 -0.0035 +0.0002 -0.0001 -0.0022 -0.0098 +0.0139  | t: -0.7 -0.7 -0.4 -0.4 -0.7 +0.0 -0.0 -0.4 -1.5 +1.5
+  [corrected_dec] sum t^2 9.8 (df 10)  cf shift dTotal +0.0000050 (sd 0.0000042)
+     mean/sig: -0.0029 -0.0009 -0.0047 +0.0020 +0.0014 -0.0100 +0.0025 -0.0038 -0.0085 +0.0133  | t: -0.7 -0.2 -1.0 +0.4 +0.3 -1.9 +0.5 -0.7 -1.3 +1.4
+  [corr_dec] sum t^2 7.8 (df 10)  cf shift dTotal +0.0000078 (sd 0.0000024)
+     mean/sig: +0.0033 +0.0064 +0.0044 -0.0084 -0.0060 -0.0001 -0.0024 -0.0064 -0.0038 +0.0013  | t: +0.6 +1.1 +0.8 -1.5 -1.1 -0.0 -0.4 -1.1 -0.7 +0.2
+  [corrected_pct] sum t^2 98.9 (df 100)  cf shift dTotal +0.0000600 (sd 0.0000066)
+     top 3 pct mean/sig: +0.0246 +0.0179 +0.0477 t: +0.8 +0.5 +1.0
+     bottom 3 pct mean/sig: +0.0091 +0.0035 +0.0023 t: +0.7 +0.2 +0.2
+  e~corr           cf dTotal +0.0000011 (sd 0.0000009)
+  e~corr|support   cf dTotal +0.0000050 (sd 0.0000013)
+  e~corr|Adec      cf dTotal +0.0000009 (sd 0.0000026)
+  slope calib [support] shift+slope cf dTotal +0.0000127 (sd 0.0000044)  slope-only +0.0000101 (sd 0.0000032)  shift+slope test-mix-weighted eval +0.0000208 (sd 0.0000104)
+     in-sample slopes: -0.0040 +0.0029 +0.0088 +0.0109 -0.0394
+  slope calib [A_q5] shift+slope cf dTotal +0.0000069 (sd 0.0000048)  slope-only +0.0000010 (sd 0.0000041)  shift+slope test-mix-weighted eval +0.0000084 (sd 0.0000064)
+     in-sample slopes: +0.0130 -0.0104 +0.0098 +0.0070 +0.0018
+  slope calib [M_q5] shift+slope cf dTotal +0.0000166 (sd 0.0000077)  slope-only +0.0000105 (sd 0.0000068)  shift+slope test-mix-weighted eval +0.0000167 (sd 0.0000085)
+     in-sample slopes: +0.0035 +0.0057 +0.0024 +0.0008 +0.0102
+  slope calib [pc_q5] shift+slope cf dTotal +0.0000070 (sd 0.0000047)  slope-only +0.0000022 (sd 0.0000036)  shift+slope test-mix-weighted eval +0.0000074 (sd 0.0000054)
+     in-sample slopes: -0.0050 +0.0392 -0.0279 -0.0177 +0.0221
+  slope calib [unseen] shift+slope cf dTotal +0.0000064 (sd 0.0000028)  slope-only +0.0000039 (sd 0.0000022)  shift+slope test-mix-weighted eval +0.0000057 (sd 0.0000026)
+     in-sample slopes: +0.0063 -0.0040
+  global lam                           H NRMSE 0.648593  test-mix NRMSE 0.651307  dTotal vs global: H +0.0000000 (sd 0.0000000)  test-mix +0.0000000 (sd 0.0000000)
+  global lam, test-mix weighted fit    H NRMSE 0.648609  test-mix NRMSE 0.651320  dTotal vs global: H +0.0000032 (sd 0.0000013)  test-mix +0.0000026 (sd 0.0000022)
+  lam per support bin                  H NRMSE 0.648809  test-mix NRMSE 0.651641  dTotal vs global: H +0.0000433 (sd 0.0000063)  test-mix +0.0000669 (sd 0.0000141)
+  lam per seen/unseen                  H NRMSE 0.648669  test-mix NRMSE 0.651344  dTotal vs global: H +0.0000153 (sd 0.0000041)  test-mix +0.0000074 (sd 0.0000024)
+  train y range [5.1206, 648.107]  H pred range [17.6335, 508.174]  test pred range [19.3467, 605.86]  H pred>max 0  test pred>max 0  test pred<min 0  H pred<min 0
+    train y q0.999: 380.993
+    train y q0.9999: 531.616
+
+=== elec: NRMSE H 0.31462  test-support-weighted 0.30230
+  [teacher_dec] sum t^2 8.0 (df 10)  cf shift dTotal +0.0000026 (sd 0.0000009)
+     mean/sig: +0.0009 +0.0002 +0.0005 +0.0007 -0.0012 -0.0032 -0.0057 +0.0024 -0.0029 -0.0028  | t: +0.7 +0.1 +0.2 +0.3 -0.5 -1.2 -2.0 +0.7 -0.8 -0.6
+  [corrected_dec] sum t^2 7.5 (df 10)  cf shift dTotal +0.0000026 (sd 0.0000008)
+     mean/sig: +0.0009 +0.0006 -0.0002 +0.0016 -0.0016 -0.0032 -0.0051 +0.0016 -0.0026 -0.0032  | t: +0.7 +0.3 -0.1 +0.8 -0.7 -1.2 -1.8 +0.5 -0.7 -0.7
+  [corr_dec] sum t^2 11.9 (df 10)  cf shift dTotal +0.0000032 (sd 0.0000013)
+     mean/sig: +0.0027 +0.0007 -0.0035 -0.0019 -0.0023 +0.0015 +0.0014 -0.0008 -0.0075 -0.0013  | t: +0.8 +0.3 -1.4 -0.8 -1.0 +0.7 +0.6 -0.3 -2.6 -0.4
+  [corrected_pct] sum t^2 79.3 (df 100)  cf shift dTotal +0.0000368 (sd 0.0000059)
+     top 3 pct mean/sig: +0.0074 -0.0220 +0.0113 t: +0.5 -1.4 +0.6
+     bottom 3 pct mean/sig: +0.0013 -0.0044 +0.0013 t: +0.4 -1.3 +0.4
+  e~corr           cf dTotal +0.0000008 (sd 0.0000014)
+  e~corr|support   cf dTotal +0.0000034 (sd 0.0000018)
+  e~corr|Adec      cf dTotal +0.0000029 (sd 0.0000014)
+  slope calib [support] shift+slope cf dTotal +0.0000043 (sd 0.0000028)  slope-only +0.0000022 (sd 0.0000016)  shift+slope test-mix-weighted eval +0.0000071 (sd 0.0000035)
+     in-sample slopes: +0.0030 -0.0004 -0.0023 -0.0043 -0.0002
+  slope calib [A_q5] shift+slope cf dTotal +0.0000029 (sd 0.0000012)  slope-only +0.0000020 (sd 0.0000011)  shift+slope test-mix-weighted eval +0.0000033 (sd 0.0000010)
+     in-sample slopes: -0.0092 +0.0009 +0.0064 +0.0085 +0.0003
+  slope calib [M_q5] shift+slope cf dTotal +0.0000050 (sd 0.0000018)  slope-only +0.0000039 (sd 0.0000012)  shift+slope test-mix-weighted eval +0.0000042 (sd 0.0000018)
+     in-sample slopes: +0.0005 -0.0106 -0.0032 -0.0036 -0.0018
+  slope calib [pc_q5] shift+slope cf dTotal +0.0000025 (sd 0.0000010)  slope-only +0.0000012 (sd 0.0000008)  shift+slope test-mix-weighted eval +0.0000014 (sd 0.0000011)
+     in-sample slopes: -0.0021 +0.0154 +0.0044 +0.0193 +0.0014
+  slope calib [unseen] shift+slope cf dTotal +0.0000011 (sd 0.0000021)  slope-only +0.0000003 (sd 0.0000011)  shift+slope test-mix-weighted eval +0.0000000 (sd 0.0000011)
+     in-sample slopes: -0.0020 +0.0030
+  global lam                           H NRMSE 0.314614  test-mix NRMSE 0.302292  dTotal vs global: H +0.0000000 (sd 0.0000000)  test-mix +0.0000000 (sd 0.0000000)
+  global lam, test-mix weighted fit    H NRMSE 0.314616  test-mix NRMSE 0.302291  dTotal vs global: H +0.0000003 (sd 0.0000007)  test-mix -0.0000001 (sd 0.0000006)
+  lam per support bin                  H NRMSE 0.314697  test-mix NRMSE 0.302403  dTotal vs global: H +0.0000165 (sd 0.0000038)  test-mix +0.0000221 (sd 0.0000061)
+  lam per seen/unseen                  H NRMSE 0.314622  test-mix NRMSE 0.302295  dTotal vs global: H +0.0000016 (sd 0.0000018)  test-mix +0.0000006 (sd 0.0000011)
+  train y range [2967.9, 396492]  H pred range [7029.23, 297444]  test pred range [7499.63, 311028]  H pred>max 0  test pred>max 0  test pred<min 0  H pred<min 0
+    train y q0.999: 256650
+    train y q0.9999: 321240

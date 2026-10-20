@@ -1,0 +1,80 @@
+P rows 300512  H rows 128791  max gas P 999305.2  max gas H 999764.9
+check gas == eui*A on P: 2.203921031147698e-15  on H: 8.439418188945566e-16
+gas: var model (r/p)^2 = 0.00806 + 0.39297/M ; log-resid^2 = 0.00938 + 0.37882/M
+eui: var model (r/p)^2 = 0.00839 + 0.38715/M ; log-resid^2 = 0.00943 + 0.37817/M
+  [H corrected] gas
+    dist [  -9,    0) n     11 mean resid   -64404.619 se  16954.934 t  -3.8  resid/s -0.491  tn-adj/s -0.895
+    dist [   0,  0.5) n     28 mean resid   -52554.133 se  13119.030 t  -4.0  resid/s -0.446  tn-adj/s -0.624
+    dist [ 0.5,    1) n     55 mean resid   -23765.368 se   8765.833 t  -2.7  resid/s -0.211  tn-adj/s -0.376
+    dist [   1,  1.5) n     99 mean resid    -1959.588 se   6965.182 t  -0.3  resid/s -0.019  tn-adj/s -0.199
+    dist [ 1.5,    2) n    177 mean resid    +9121.578 se   5951.046 t  +1.5  resid/s +0.090  tn-adj/s -0.091
+    dist [   2,    3) n    524 mean resid    +3614.530 se   3359.828 t  +1.1  resid/s +0.039  tn-adj/s -0.019
+    dist [   3,1000000000.0) n 127897 mean resid      -43.175 se    102.840 t  -0.4  resid/s -0.003  tn-adj/s -0.000
+  [H teacher] gas
+    dist [  -9,    0) n      9 mean resid   -62337.002 se  16271.727 t  -3.8  resid/s -0.485  tn-adj/s -0.921
+    dist [   0,  0.5) n     33 mean resid   -45447.244 se  12149.257 t  -3.7  resid/s -0.379  tn-adj/s -0.614
+    dist [ 0.5,    1) n     52 mean resid   -21488.057 se   9173.452 t  -2.3  resid/s -0.196  tn-adj/s -0.369
+    dist [   1,  1.5) n    104 mean resid    -6965.882 se   6611.326 t  -1.1  resid/s -0.065  tn-adj/s -0.198
+    dist [ 1.5,    2) n    179 mean resid   +10105.956 se   5919.025 t  +1.7  resid/s +0.098  tn-adj/s -0.088
+    dist [   2,    3) n    524 mean resid    +3040.703 se   3409.881 t  +0.9  resid/s +0.032  tn-adj/s -0.018
+    dist [   3,1000000000.0) n 127890 mean resid      -38.337 se    103.200 t  -0.4  resid/s -0.003  tn-adj/s -0.000
+  [P teacher OOF] gas
+    dist [  -9,    0) n     23 mean resid   -95759.142 se  13783.386 t  -6.9  resid/s -0.782  tn-adj/s -0.998
+    dist [   0,  0.5) n     52 mean resid   -50447.101 se   8450.220 t  -6.0  resid/s -0.424  tn-adj/s -0.625
+    dist [ 0.5,    1) n    135 mean resid   -28086.412 se   6032.820 t  -4.7  resid/s -0.248  tn-adj/s -0.379
+    dist [   1,  1.5) n    264 mean resid    -2630.443 se   4516.669 t  -0.6  resid/s -0.020  tn-adj/s -0.206
+    dist [ 1.5,    2) n    388 mean resid    +7408.875 se   3798.752 t  +2.0  resid/s +0.067  tn-adj/s -0.090
+    dist [   2,    3) n   1258 mean resid    +2679.613 se   2224.643 t  +1.2  resid/s +0.027  tn-adj/s -0.020
+    dist [   3,1000000000.0) n 298392 mean resid      +16.434 se     67.917 t  +0.2  resid/s +0.000  tn-adj/s -0.000
+  [H corrected] eui
+    dist [  -9,    0) n     11 mean resid       -9.299 se      2.152 t  -4.3  resid/s -0.495  tn-adj/s -0.909
+    dist [   0,  0.5) n     29 mean resid      -10.412 se      2.955 t  -3.5  resid/s -0.472  tn-adj/s -0.639
+    dist [ 0.5,    1) n     52 mean resid       -4.380 se      1.694 t  -2.6  resid/s -0.210  tn-adj/s -0.386
+    dist [   1,  1.5) n    113 mean resid       -0.822 se      1.113 t  -0.7  resid/s -0.043  tn-adj/s -0.203
+    dist [ 1.5,    2) n    174 mean resid       +2.321 se      1.216 t  +1.9  resid/s +0.125  tn-adj/s -0.090
+    dist [   2,    3) n    535 mean resid       +0.182 se      0.681 t  +0.3  resid/s +0.001  tn-adj/s -0.019
+    dist [   3,1000000000.0) n 127877 mean resid       -0.046 se      0.074 t  -0.6  resid/s -0.003  tn-adj/s -0.000
+  [H teacher] eui
+    dist [  -9,    0) n     11 mean resid      -11.153 se      2.246 t  -5.0  resid/s -0.593  tn-adj/s -0.909
+    dist [   0,  0.5) n     32 mean resid       -8.276 se      2.776 t  -3.0  resid/s -0.366  tn-adj/s -0.616
+    dist [ 0.5,    1) n     53 mean resid       -3.113 se      1.490 t  -2.1  resid/s -0.171  tn-adj/s -0.375
+    dist [   1,  1.5) n    106 mean resid       -2.570 se      1.195 t  -2.2  resid/s -0.122  tn-adj/s -0.202
+    dist [ 1.5,    2) n    179 mean resid       +2.535 se      1.191 t  +2.1  resid/s +0.136  tn-adj/s -0.090
+    dist [   2,    3) n    540 mean resid       +0.156 se      0.676 t  +0.2  resid/s +0.000  tn-adj/s -0.018
+    dist [   3,1000000000.0) n 127870 mean resid       -0.056 se      0.074 t  -0.8  resid/s -0.003  tn-adj/s -0.000
+  [P teacher OOF] eui
+    dist [  -9,    0) n     25 mean resid      -13.599 se      1.948 t  -7.0  resid/s -0.790  tn-adj/s -1.023
+    dist [   0,  0.5) n     54 mean resid       -9.504 se      1.543 t  -6.2  resid/s -0.480  tn-adj/s -0.630
+    dist [ 0.5,    1) n    144 mean resid       -3.707 se      1.002 t  -3.7  resid/s -0.203  tn-adj/s -0.380
+    dist [   1,  1.5) n    271 mean resid       -1.095 se      0.854 t  -1.3  resid/s -0.048  tn-adj/s -0.204
+    dist [ 1.5,    2) n    384 mean resid       +0.750 se      0.733 t  +1.0  resid/s +0.042  tn-adj/s -0.090
+    dist [   2,    3) n   1282 mean resid       +0.576 se      0.451 t  +1.3  resid/s +0.029  tn-adj/s -0.020
+    dist [   3,1000000000.0) n 298352 mean resid       -0.004 se      0.049 t  -0.1  resid/s -0.000  tn-adj/s -0.000
+  top-quantile calibration (mean residual of rows with the largest predictions)
+    gas  H corr   q[0.99,0.999] n  1159 mean p    756144.26 mean resid   +2419.948 t  +1.1
+    gas  H corr   q[0.999,1.0] n   129 mean p    923672.82 mean resid  -26420.013 t  -4.3
+    gas  P teach  q[0.99,0.999] n  2705 mean p    756922.01 mean resid   +4038.590 t  +2.8
+    gas  P teach  q[0.999,1.0] n   301 mean p    921788.72 mean resid  -29671.629 t  -7.0
+    eui  H corr   q[0.99,0.999] n  1159 mean p       251.36 mean resid      +2.054 t  +1.1
+    eui  H corr   q[0.999,1.0] n   129 mean p       346.84 mean resid      +0.756 t  +0.1
+    eui  P teach  q[0.99,0.999] n  2705 mean p       250.91 mean resid      +2.728 t  +2.2
+    eui  P teach  q[0.999,1.0] n   301 mean p       344.71 mean resid      -4.167 t  -0.8
+  T=1e6      gas  kP 0.5755 (H in-sample k 0.5084) base 0.245144 | kP -0.0000802 kP_clip -0.0000802 k1 -0.0000053 k05 -0.0000816 clip_only -0.0000153 kP_teacherH -0.0000750
+  T=1e6      eui  kP 0.6142 (H in-sample k 0.6623) base 0.648593 | kP -0.0000211 kP_clip -0.0000211 k1 -0.0000157 k05 -0.0000199 clip_only -0.0000021 kP_teacherH -0.0000201
+  T=1e6      TOTAL kP -0.00002026 kP_clip -0.00002026 k1 -0.00000420 k05 -0.00002031 clip_only -0.00000348 kP_teacherH -0.00001902
+  T=maxP     gas  kP 0.5715 (H in-sample k 0.5046) base 0.245144 | kP -0.0000800 kP_clip -0.0000800 k1 -0.0000029 k05 -0.0000814 clip_only -0.0000158 kP_teacherH -0.0000748
+  T=maxP     eui  kP 0.6097 (H in-sample k 0.6574) base 0.648593 | kP -0.0000210 kP_clip -0.0000210 k1 -0.0000154 k05 -0.0000199 clip_only -0.0000022 kP_teacherH -0.0000200
+  T=maxP     TOTAL kP -0.00002020 kP_clip -0.00002020 k1 -0.00000367 k05 -0.00002027 clip_only -0.00000359 kP_teacherH -0.00001896
+  T=claimed  gas  kP 0.5741 (H in-sample k 0.5071) base 0.245144 | kP -0.0000802 kP_clip -0.0000802 k1 -0.0000045 k05 -0.0000816 clip_only -0.0000154 kP_teacherH -0.0000750
+  T=claimed  eui  kP 0.6126 (H in-sample k 0.6607) base 0.648593 | kP -0.0000211 kP_clip -0.0000211 k1 -0.0000156 k05 -0.0000199 clip_only -0.0000021 kP_teacherH -0.0000200
+  T=claimed  TOTAL kP -0.00002024 kP_clip -0.00002024 k1 -0.00000402 k05 -0.00002030 clip_only -0.00000352 kP_teacherH -0.00001900
+  D3  2-fold x 200 seeds: total mean -0.00001789 sd 0.00000299 frac<0 1.00 | gas -0.0000722 eui -0.0000172
+  D3  5-fold x  50 seeds: total mean -0.00001874 sd 0.00000099 frac<0 1.00 | gas -0.0000755 eui -0.0000182
+  D3 10-fold x  20 seeds: total mean -0.00001890 sd 0.00000072 frac<0 1.00 | gas -0.0000759 eui -0.0000186
+  D3 fit-half/score-other-half x200: total mean -0.00001858 sd 0.00000752 frac<0 0.98
+  D4 bootstrap (k from P, T=maxP): total mean -0.00002026 sd 0.00000895 95% [-0.00003815, -0.00000347] frac<0 0.993
+  var-model log version gas: kP 0.5351 d -0.0000765
+  var-model log version eui: kP 0.5759 d -0.0000204
+  var-model log version TOTAL -0.00001939
+wrote exp/audit/verify2_postproc/softcap_s3/v1_reproduce.json
+elapsed 17.04 s maxrss 256852 kB

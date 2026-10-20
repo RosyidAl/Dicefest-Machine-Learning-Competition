@@ -1,0 +1,6 @@
+H corrected              mean (g-9e5)+^2 2.352e+06 (ratio to H corrected 1.000); per-183,987-rows count >9e5  110.0 >9.5e5  50.0 >1e6  15.7
+H teacher                mean (g-9e5)+^2 2.308e+06 (ratio to H corrected 0.981); per-183,987-rows count >9e5  112.9 >9.5e5  42.9 >1e6  12.9
+P teacher (OOF)          mean (g-9e5)+^2 2.485e+06 (ratio to H corrected 1.056); per-183,987-rows count >9e5  110.8 >9.5e5  39.8 >1e6  14.1
+full-train OOF teacher   mean (g-9e5)+^2 2.103e+06 (ratio to H corrected 0.894); per-183,987-rows count >9e5  101.6 >9.5e5  37.7 >1e6   9.9
+test teacher             mean (g-9e5)+^2 1.302e+06 (ratio to H corrected 0.554); per-183,987-rows count >9e5   99.0 >9.5e5  29.0 >1e6   6.0
+test corrected (sub)     mean (g-9e5)+^2 1.442e+06 (ratio to H corrected 0.613); per-183,987-rows count >9e5  105.0 >9.5e5  30.0 >1e6   7.0

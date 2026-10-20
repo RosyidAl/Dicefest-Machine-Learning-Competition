@@ -1,0 +1,22 @@
+GMAX 999305.155724838 SD {'gas': [0.00806, 0.39297], 'eui': [0.00839, 0.38715]}
+== (a) cross-fitted S3 gain on H (5-fold), per fold seed
+   S3 gas: base 0.245144 d(seed0) -0.0000779 d mean over 10 seeds -0.0000767 (min -0.0000807 max -0.0000725) total -0.00001534; k seed0 [0.564, 0.467, 0.507, 0.47, 0.512] full-H k 0.5046
+   S3 eui: base 0.648593 d(seed0) -0.0000182 d mean over 10 seeds -0.0000188 (min -0.0000195 max -0.0000176) total -0.00000376; k seed0 [0.729, 0.489, 0.69, 0.678, 0.669] full-H k 0.6574
+   S1->S3 gas: base 0.245135 d(seed0) -0.0000779 d mean over 10 seeds -0.0000767 (min -0.0000807 max -0.0000725) total -0.00001534; k seed0 [0.564, 0.467, 0.507, 0.47, 0.512] full-H k 0.5046
+   S1->S3 eui: base 0.648378 d(seed0) -0.0000182 d mean over 10 seeds -0.0000188 (min -0.0000195 max -0.0000176) total -0.00000376; k seed0 [0.729, 0.489, 0.69, 0.678, 0.669] full-H k 0.6574
+== (b) fully nested (correction lambda refit inside training folds), S1 -> S3
+   gas: rebuild max |diff|/sigma 6.08e-09
+   gas seed 0: base 0.245135 d -0.0000778 total -0.00001556 k [0.565, 0.466, 0.506, 0.47, 0.512]
+   gas seed 1: base 0.245120 d -0.0000734 total -0.00001469 k [0.584, 0.468, 0.484, 0.444, 0.541]
+   gas seed 2: base 0.245116 d -0.0000764 total -0.00001529 k [0.569, 0.515, 0.517, 0.474, 0.446]
+   eui: rebuild max |diff|/sigma 6.14e-09
+   eui seed 0: base 0.648378 d -0.0000181 total -0.00000363 k [0.729, 0.483, 0.69, 0.684, 0.663]
+   eui seed 1: base 0.648372 d -0.0000190 total -0.00000380 k [0.731, 0.665, 0.533, 0.637, 0.712]
+   eui seed 2: base 0.648340 d -0.0000188 total -0.00000377 k [0.756, 0.54, 0.697, 0.653, 0.634]
+== (c) split-half S1 -> S3 (40 = 20 splits x 2 directions)
+   total mean -0.00001822 sd 0.00000737 frac<0 0.975  (x2 for full-H scale is wrong; half-sample deltas are on half the rows, the mean is comparable to the full-H estimate)
+== (d) near-cap residual means on H: teacher vs corrected
+   gas  teacher   [-9,0) n   9 -0.411s(t-4.1) [0,0.5) n  33 -0.299s(t-3.8) [0.5,1) n  52 -0.142s(t-2.4) [1,1.5) n 104 -0.046s(t-1.1) [1.5,2) n 179 +0.067s(t+1.7) [2,3) n 524 +0.020s(t+0.9)
+   gas  corrected [-9,0) n  11 -0.424s(t-4.0) [0,0.5) n  28 -0.346s(t-4.1) [0.5,1) n  55 -0.157s(t-2.7) [1,1.5) n  99 -0.013s(t-0.3) [1.5,2) n 177 +0.060s(t+1.5) [2,3) n 524 +0.024s(t+1.1)
+   eui  teacher   [-9,0) n  11 -0.274s(t-5.2) [0,0.5) n  32 -0.204s(t-3.0) [0.5,1) n  53 -0.077s(t-2.1) [1,1.5) n 106 -0.063s(t-2.2) [1.5,2) n 179 +0.062s(t+2.1) [2,3) n 540 +0.004s(t+0.2)
+   eui  corrected [-9,0) n  11 -0.229s(t-4.5) [0,0.5) n  29 -0.256s(t-3.6) [0.5,1) n  52 -0.108s(t-2.6) [1,1.5) n 113 -0.020s(t-0.7) [1.5,2) n 174 +0.057s(t+1.9) [2,3) n 535 +0.004s(t+0.3)

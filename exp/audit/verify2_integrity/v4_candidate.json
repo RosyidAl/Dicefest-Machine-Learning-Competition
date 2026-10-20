@@ -1,0 +1,46 @@
+{
+ "n_dup": 77,
+ "sha_cand": "aca75294b6e76712c2c84e060149761f13a5e4c2fd3431a6c21798c3a8164093",
+ "max_abs_diff_gas_vs_cand": 0.0,
+ "max_abs_diff_eui_vs_cand": 0.0,
+ "dup_rows_unchanged_in_cand": true,
+ "dup_rows_equal_train_targets_in_cand": true,
+ "other_cols_identical": {
+  "target_macro_elec_kwh": true,
+  "target_clean_building_ratio": true,
+  "target_electric_heating_adoption": true
+ },
+ "dup_shift_if_applied_max": 307.70923201367447,
+ "dup_gas_max": 786602.094565555,
+ "test_gas": {
+  "n_rel_gt_1pct": 160,
+  "min": -113440.49603927112,
+  "max": 0.0,
+  "sum_sq_over_sigma2_per_row": 3.716796558392716e-05,
+  "n_pred_gt_9e5": 105,
+  "n_pred_gt_1e6": 7
+ },
+ "test_eui": {
+  "n_rel_gt_1pct": 171,
+  "min": -25.752816002771112,
+  "max": 5.684341886080802e-14
+ },
+ "test_gas_mean_shift_by_band": {
+  "800k-900k": {
+   "n": 423,
+   "mean_shift": -3837.85233756325
+  },
+  "900k-950k": {
+   "n": 75,
+   "mean_shift": -21437.545010237278
+  },
+  "950k-1000k": {
+   "n": 23,
+   "mean_shift": -45453.02419221174
+  },
+  "1000k-2000k": {
+   "n": 7,
+   "mean_shift": -89562.92549580871
+  }
+ }
+}

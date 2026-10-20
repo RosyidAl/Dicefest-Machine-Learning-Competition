@@ -1,0 +1,25 @@
+== gas: recomputed group features vs stored, max rel err 2.88e-08
+   base (K=30 x3, WIN=30) 0.245144
+   best on all H (10, 30, 100, 50): 0.245138 (-0.0000061)
+   top5: [((10, 30, 100, 50), np.float64(-6.1e-06)), ((30, 30, 100, 50), np.float64(-6e-06)), ((10, 30, 30, 50), np.float64(-5.6e-06)), ((30, 30, 30, 50), np.float64(-5.5e-06)), ((10, 30, 10, 50), np.float64(-5.4e-06))]
+   choose on half 0: (30, 10, 10, 50) -> other half -0.0000002
+   choose on half 1: (10, 30, 10, 20) -> other half -0.0000115
+   honest split-half mean -0.0000058  total -0.00000117
+   + windows 10 and 100 as extra columns: 0.245145 (+0.0000007); per half [5.4e-06 4.6e-06]
+== eui: recomputed group features vs stored, max rel err 4.08e-08
+   base (K=30 x3, WIN=30) 0.648593
+   best on all H (10, 30, 100, 50): 0.648582 (-0.0000106)
+   top5: [((10, 30, 100, 50), np.float64(-1.06e-05)), ((10, 30, 30, 50), np.float64(-1.06e-05)), ((10, 30, 10, 50), np.float64(-1.05e-05)), ((10, 10, 100, 50), np.float64(-1.01e-05)), ((10, 10, 30, 50), np.float64(-1e-05))]
+   choose on half 0: (10, 10, 10, 20) -> other half -0.0000098
+   choose on half 1: (10, 10, 10, 20) -> other half -0.0000253
+   honest split-half mean -0.0000176  total -0.00000352
+   + windows 10 and 100 as extra columns: 0.648596 (+0.0000037); per half [2.85e-05 8.50e-06]
+== elec: recomputed group features vs stored, max rel err 2.76e-08
+   base (K=30 x3, WIN=30) 0.314623
+   best on all H (30, 3, 100, 20): 0.314612 (-0.0000108)
+   top5: [((30, 3, 100, 20), np.float64(-1.08e-05)), ((30, 10, 100, 20), np.float64(-1.07e-05)), ((10, 3, 100, 20), np.float64(-1.06e-05)), ((30, 100, 100, 20), np.float64(-1.06e-05)), ((30, 30, 100, 20), np.float64(-1.06e-05))]
+   choose on half 0: (10, 3, 100, 20) -> other half +0.0000098
+   choose on half 1: (100, 10, 30, 30) -> other half +0.0000004
+   honest split-half mean +0.0000051  total +0.00000101
+   + windows 10 and 100 as extra columns: 0.314621 (-0.0000015); per half [2.2e-05 9.5e-06]
+TOTAL honest split-half change of re-tuned K/WIN: -0.00000367

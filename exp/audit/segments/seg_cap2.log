@@ -1,0 +1,8 @@
+gas V1 k           P-fit {'k': np.float64(0.08499999999999998)} -> H dTotal -0.00001953 | H cross-fit -0.00001898 (sd 0.00000050)
+/root/Dicefest/exp/audit/segments/seg_cap2.py:27: RuntimeWarning: overflow encountered in exp
+  return p - s * np.exp(norm.logpdf(a) - norm.logcdf(a))
+gas V2 k1,k2/M     P-fit {'k1': np.float64(0.06), 'k2': 0.2} -> H dTotal -0.00002061 | H cross-fit -0.00001977 (sd 0.00000056)
+gas V3 k cap=max   P-fit {'k': np.float64(0.08499999999999998)} -> H dTotal -0.00001952 | H cross-fit -0.00001898 (sd 0.00000050)
+eui via eui*A, gas k 0.085: H dTotal -0.00000499
+eui via eui*A, own P-fit {'k': np.float64(0.08999999999999997)}: H dTotal -0.00000511
+eui via eui*A, EUI-scale P-fit {'k': np.float64(0.08999999999999997)}: H dTotal -0.00000511

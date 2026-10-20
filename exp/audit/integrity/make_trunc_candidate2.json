@@ -1,0 +1,34 @@
+{
+ "params": {
+  "a0": 0.008064793880232542,
+  "b0": 0.3929692979589114,
+  "k": 0.7,
+  "c_gas": 1.0126184473794142,
+  "c_eui": 1.141696475118523
+ },
+ "H_gas": {
+  "delta_total": -2.044539989574199e-05,
+  "boot_sd": 7.4312803088462524e-06,
+  "boot_p_worse": 0.0033333333333333335
+ },
+ "H_eui": {
+  "delta_total": -5.116661790692461e-06,
+  "boot_sd": 2.2709841094888704e-06,
+  "boot_p_worse": 0.0
+ },
+ "H_total": {
+  "delta_total": -2.556206168643445e-05,
+  "boot_sd": 9.00796516877796e-06,
+  "boot_p_worse": 0.0033333333333333335
+ },
+ "test": {
+  "dup_rows_untouched": 77,
+  "gas_rows_changed_gt_1pct": 160,
+  "gas_rms_change_over_sigma": 0.006096553582469948,
+  "eui_rows_changed_gt_1pct": 171,
+  "eui_rms_change_over_sigma": 0.004353487634502778,
+  "gas_max_after": 947968.599040892,
+  "gas_min_change": -113440.49603927112,
+  "sha256": "aca75294b6e76712c2c84e060149761f13a5e4c2fd3431a6c21798c3a8164093"
+ }
+}

@@ -1,0 +1,34 @@
+H rows 128791; base NRMSE corrected gas 0.245144 eui 0.648593; teacher gas 0.246026 eui 0.650075
+identity check on H: max |eui_y*A - gas_y|/gas_y = 8.44e-16; max y gas on H 999764.9
+H rows with corrected gas > 9e5: 77, > 1e6: 11; implied gas eui*A > 9e5: 81; teacher gas > 9e5: 79
+mean residual y - pred by corrected-gas bin (H):
+  [   600000,   700000) n=2006 corrected resid      +394 (se   1556)  teacher resid on same rows      +573   max y    968075
+  [   700000,   800000) n= 794 corrected resid     +2338 (se   2693)  teacher resid on same rows     +2739   max y    990582
+  [   800000,   850000) n= 199 corrected resid     +7978 (se   5746)  teacher resid on same rows     +8795   max y    996173
+  [   850000,   900000) n=  94 corrected resid     -9652 (se   7623)  teacher resid on same rows     -9593   max y    995797
+  [   900000,   950000) n=  42 corrected resid    -16558 (se   8182)  teacher resid on same rows    -16287   max y    995312
+  [   950000,  1000000) n=  24 corrected resid    -60011 (se  14505)  teacher resid on same rows    -56216   max y    999729
+  [  1000000,  2000000) n=  11 corrected resid    -64405 (se  16955)  teacher resid on same rows    -63728   max y    999765
+  EUI implied-gas >= 9.5e5: n=33 mean resid (gas units) -68625
+S0 beta from P teacher -0.7275: d gas -0.0000936 d eui -0.0000234 TOTAL -0.00002341; rows changed gas 77, eui 81
+S0 bootstrap over H rows (n=128791, ~private size): mean -0.00002349 sd 0.00000842 P(<0) 0.999  5%-95% [-0.00003822, -0.00001063]
+S0 public-size subsets: mean -0.00002345 sd 0.00001008 P(<0) 0.995
+beta grid on H (in-sample reference):
+  beta -0.3000: d gas -0.0000653 d eui -0.0000136 TOTAL -0.00001578
+  beta -0.5000: d gas -0.0000880 d eui -0.0000196 TOTAL -0.00002152
+  beta -0.6000: d gas -0.0000931 d eui -0.0000217 TOTAL -0.00002296
+  beta -0.6930: d gas -0.0000942 d eui -0.0000231 TOTAL -0.00002344
+  beta -0.7275: d gas -0.0000936 d eui -0.0000234 TOTAL -0.00002341
+  beta -0.8000: d gas -0.0000909 d eui -0.0000240 TOTAL -0.00002298
+  beta -0.9000: d gas -0.0000835 d eui -0.0000243 TOTAL -0.00002155
+  beta -1.0000: d gas -0.0000719 d eui -0.0000240 TOTAL -0.00001917
+  H in-sample optimal beta (corrected residuals): -0.6726
+S1 split-half in H, beta fitted on corrected residuals, 200 halvings: TOTAL mean -0.00002171 sd 0.00000231 P(<0) 1.000 min -0.00002343 max -0.00001094; d gas -0.0000869 d eui -0.0000217; beta median -0.673 [-0.861, -0.504]
+S2 split-half in H, beta fitted on teacher residuals, 200 halvings: TOTAL mean -0.00002169 sd 0.00000219 P(<0) 1.000 min -0.00002340 max -0.00001295; d gas -0.0000871 d eui -0.0000213; beta median -0.649 [-0.831, -0.475]
+S3 5-fold cross-fit in H (seeds 101-120): TOTAL mean -0.00002221 sd over seeds 0.00000075 min -0.00002311 max -0.00002041
+hard cap only at 1e6: d gas -0.0000153 d eui -0.0000021 TOTAL -0.00000348
+knot 800000 (beta from P -0.233): d gas -0.0000746 d eui -0.0000219 TOTAL -0.00001929
+knot 850000 (beta from P -0.438): d gas -0.0000995 d eui -0.0000268 TOTAL -0.00002524
+knot 900000 (beta from P -0.727): d gas -0.0000936 d eui -0.0000234 TOTAL -0.00002341
+knot 950000 (beta from P -1.107): d gas -0.0000665 d eui -0.0000129 TOTAL -0.00001589
+maxrss 67488 kB, 15.87 s

@@ -1,0 +1,20 @@
+sha256 candidate 5d95cb7945e9d43938fe68bce81fc539f135ef5e764c540ce6ae72fece7bcc95
+sha256 base      38dd55b9e150bdd531455713984a3c172c32c5fd850d26795ddd517a0ac1a9e6
+dup rows 77; dup rows with gas > 600000: 4, with eui*A > 600000: 4
+gas: own recompute vs candidate max rel diff 0.00e+00; candidate cells changed 4326, all changed rows inside the mask: True; rows changed > 0.1 sigma 81; max |change| 111084; max before 1.06141e+06 after 950325; min after 22153.6; dup cells unchanged True
+eui: own recompute vs candidate max rel diff 0.00e+00; candidate cells changed 4338, all changed rows inside the mask: True; rows changed > 0.1 sigma 45; max |change| 21.7458; max before 605.86 after 605.86; min after 19.3467; dup cells unchanged True
+mapping monotone on [6e5, 1.2e6]: True  cal(1e6) = 936169.2  cal(1.2e6) = 965066.1  cal(9e5) = 888067.7
+text fields identical per column (header + rows): {'id': 183988, 'target_macro_gas_kwh': 179662, 'target_macro_elec_kwh': 183988, 'target_eui_gas_kwh_per_sqm': 179650, 'target_clean_building_ratio': 183988, 'target_electric_heating_adoption': 183988} of 183988
+
+share of rows per bin of gas pred / 1e6 (per 100k rows): test sub_v19vce | H corrected | full VC OOF
+   [0.60,0.80)   2169.7   2174.1   2157.0
+   [0.80,0.85)    145.7    154.5    148.8
+   [0.85,0.90)     84.2     73.0     86.0
+   [0.90,0.93)     31.0     22.5     24.2
+   [0.93,0.96)     15.2     14.8     14.9
+   [0.96,0.98)      4.9     10.1      7.2
+   [0.98,1.00)      2.2      3.9      3.5
+   [1.00,1.02)      1.6      4.7      2.8
+   [1.02,9.00)      2.2      3.9      2.6
+
+gas dTotal: on H -0.00001969; bin-transfer estimate for test -0.00001238

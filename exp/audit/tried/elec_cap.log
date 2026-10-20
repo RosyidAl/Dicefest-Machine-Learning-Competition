@@ -1,0 +1,5 @@
+gas pred in [6e+05,7e+05) H n=2006 elec resid -164 (se 489) rel -0.0014 | P n=4518 elec resid -161 rel -0.0004
+gas pred in [7e+05,8e+05) H n=794 elec resid +662 (se 890) rel +0.0035 | P n=1912 elec resid +1167 rel +0.0061
+gas pred in [8e+05,9e+05) H n=293 elec resid +423 (se 1464) rel +0.0026 | P n=682 elec resid +453 rel +0.0011
+gas pred in [9e+05,9.5e+05) H n=42 elec resid +3926 (se 4117) rel +0.0142 | P n=116 elec resid -778 rel -0.0028
+gas pred in [9.5e+05,1e+07) H n=35 elec resid -6073 (se 3799) rel -0.0273 | P n=65 elec resid -9556 rel -0.0390

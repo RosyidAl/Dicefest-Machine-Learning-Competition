@@ -1,0 +1,69 @@
+/root/Dicefest/exp/audit/segments/seg_scan.py:32: RuntimeWarning: invalid value encountered in cast
+  return np.minimum((r - 1) * 10 // len(x), 9).astype(int)
+/root/Dicefest/exp/audit/segments/seg_scan.py:32: RuntimeWarning: invalid value encountered in cast
+  return np.minimum((r - 1) * 10 // len(x), 9).astype(int)
+/root/Dicefest/.venv/lib/python3.12/site-packages/pyarrow/compute.py:231: FutureWarning: Specifying null_placement in RankOptions is deprecated as of 25.0.0. Specify null_placement per sort_key instead.
+  return options_class(*args, **kwargs)
+done 25 features
+done 50 features
+/root/Dicefest/.venv/lib/python3.12/site-packages/pyarrow/compute.py:231: FutureWarning: Specifying null_placement in RankOptions is deprecated as of 25.0.0. Specify null_placement per sort_key instead.
+  return options_class(*args, **kwargs)
+done 75 features
+done 100 features
+done 125 features
+done 150 features
+done 175 features
+done 200 features
+/root/Dicefest/.venv/lib/python3.12/site-packages/pyarrow/compute.py:231: FutureWarning: Specifying null_placement in RankOptions is deprecated as of 25.0.0. Specify null_placement per sort_key instead.
+  return options_class(*args, **kwargs)
+/root/Dicefest/.venv/lib/python3.12/site-packages/pyarrow/compute.py:231: FutureWarning: Specifying null_placement in RankOptions is deprecated as of 25.0.0. Specify null_placement per sort_key instead.
+  return options_class(*args, **kwargs)
+done 203 features
+
+=== gas: 203 features; chi-square p < 0.001: 0; p < 0.01: 2; cross-fitted shift gain < 0: 5; min cf -0.00000105
+   socio_demog_055    t2    26.7 df 10 p 2.89e-03 cf dTotal -0.00000105
+   env_climate_03     t2    24.2 df 10 p 7.20e-03 cf dTotal -0.00000100
+   socio_demog_073    t2    18.7 df 10 p 4.45e-02 cf dTotal -0.00000020
+   subzone_id         t2    19.7 df 10 p 3.27e-02 cf dTotal -0.00000016
+   socio_demog_037    t2    18.9 df 10 p 4.16e-02 cf dTotal -0.00000008
+   env_climate_01     t2    21.1 df 10 p 2.02e-02 cf dTotal +0.00000005
+   env_climate_02     t2    22.4 df 10 p 1.32e-02 cf dTotal +0.00000013
+   env_climate_04     t2    22.4 df 10 p 1.32e-02 cf dTotal +0.00000013
+   smallest chi-square p:
+   socio_demog_055    t2    26.7 df 10 p 2.89e-03 cf dTotal -0.00000105
+   env_climate_03     t2    24.2 df 10 p 7.20e-03 cf dTotal -0.00000100
+   env_climate_02     t2    22.4 df 10 p 1.32e-02 cf dTotal +0.00000013
+   env_climate_04     t2    22.4 df 10 p 1.32e-02 cf dTotal +0.00000013
+   env_climate_01     t2    21.1 df 10 p 2.02e-02 cf dTotal +0.00000005
+
+=== eui: 203 features; chi-square p < 0.001: 0; p < 0.01: 4; cross-fitted shift gain < 0: 10; min cf -0.00000262
+   socio_demog_055    t2    27.1 df 10 p 2.49e-03 cf dTotal -0.00000262
+   socio_demog_106    t2    26.4 df 10 p 3.19e-03 cf dTotal -0.00000134
+   env_climate_03     t2    20.4 df 10 p 2.60e-02 cf dTotal -0.00000085
+   hvac_dist_01       t2    25.4 df 10 p 4.70e-03 cf dTotal -0.00000078
+   socio_demog_027    t2    18.7 df 10 p 4.36e-02 cf dTotal -0.00000041
+   env_climate_02     t2    22.9 df 10 p 1.10e-02 cf dTotal -0.00000031
+   env_climate_04     t2    22.9 df 10 p 1.10e-02 cf dTotal -0.00000031
+   socio_demog_017    t2    21.1 df 10 p 2.04e-02 cf dTotal -0.00000030
+   smallest chi-square p:
+   socio_demog_055    t2    27.1 df 10 p 2.49e-03 cf dTotal -0.00000262
+   socio_demog_106    t2    26.4 df 10 p 3.19e-03 cf dTotal -0.00000134
+   hvac_dist_01       t2    25.4 df 10 p 4.70e-03 cf dTotal -0.00000078
+   bld_dim_16         t2    23.5 df 10 p 9.06e-03 cf dTotal +0.00000088
+   env_climate_04     t2    22.9 df 10 p 1.10e-02 cf dTotal -0.00000031
+
+=== elec: 203 features; chi-square p < 0.001: 1; p < 0.01: 4; cross-fitted shift gain < 0: 7; min cf -0.00000204
+   socio_demog_121    t2    31.0 df 10 p 5.94e-04 cf dTotal -0.00000204
+   socio_demog_111    t2    27.3 df 10 p 2.32e-03 cf dTotal -0.00000146
+   socio_demog_064    t2    26.2 df 10 p 3.47e-03 cf dTotal -0.00000080
+   socio_demog_115    t2    27.1 df 10 p 2.51e-03 cf dTotal -0.00000071
+   socio_demog_061    t2    22.4 df 10 p 1.31e-02 cf dTotal -0.00000038
+   socio_demog_027    t2    21.4 df 10 p 1.86e-02 cf dTotal -0.00000033
+   bld_dim_18         t2    10.1 df  4 p 3.89e-02 cf dTotal -0.00000022
+   socio_demog_017    t2    20.0 df 10 p 2.90e-02 cf dTotal +0.00000021
+   smallest chi-square p:
+   socio_demog_121    t2    31.0 df 10 p 5.94e-04 cf dTotal -0.00000204
+   socio_demog_111    t2    27.3 df 10 p 2.32e-03 cf dTotal -0.00000146
+   socio_demog_115    t2    27.1 df 10 p 2.51e-03 cf dTotal -0.00000071
+   socio_demog_064    t2    26.2 df 10 p 3.47e-03 cf dTotal -0.00000080
+   socio_demog_096    t2    22.5 df 10 p 1.26e-02 cf dTotal +0.00000057

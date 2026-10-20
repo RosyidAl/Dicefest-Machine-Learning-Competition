@@ -1,0 +1,51 @@
+base {'gas': 0.24514443281708553, 'eui': 0.648592771967224, 'elec': 0.31462276217495244} teacher {'gas': 0.24602575988566863, 'eui': 0.6500752791478267, 'elec': 0.3148396086652565}
+bounds P {'gmax': 999305.155724838, 'euimin': 5.12060441250641, 'eamin': 5.134860503888461, 'eamax': 149.99086755789654} | truth on H {'gmax': 999764.8988254856, 'euimin': 9.641030922936196, 'eamin': 5.120819632490372, 'eamax': 149.79211990756542}
+counts {'H_M<=3': 48, 'H_M=4': 205, 'P_M<=3': 88, 'P_M=4': 536, 'H_M_min': 2.0}
+S1 deltas from P teacher residuals {'gas': [0.19737849125438503, 0.07847939504508834], 'eui': [0.20977961721854824, 0.03337444809133366], 'elec': [0.1785395624386941, 0.06300563170233571]}
+H small-M LS relative bias teacher vs corrected {"gas": {"M2-3": {"n": 48, "teacher_ls": 0.23961692387537425, "corrected_ls": 0.24026939852519164}, "M4-4": {"n": 205, "teacher_ls": 0.07880488525345157, "corrected_ls": 0.07801401609363964}}, "eui": {"M2-3": {"n": 48, "teacher_ls": 0.15686739615335094, "corrected_ls": 0.15637331132823537}, "M4-4": {"n": 205, "teacher_ls": 0.046868658537728945, "corrected_ls": 0.0461759941357839}}, "elec": {"M2-3": {"n": 48, "teacher_ls": 0.22492133135217346, "corrected_ls": 0.2228420190829672}, "M4-4": {"n": 205, "teacher_ls": 0.05766363699545341, "corrected_ls": 0.05835373651514787}}}
+S1 [ls    ] on H: gas -0.0000093 eui -0.0002147 elec -0.0000048 total -0.00004577
+S1 [ros   ] on H: gas -0.0000094 eui -0.0002300 elec -0.0000042 total -0.00004871
+S1 [mean  ] on H: gas -0.0000094 eui -0.0002390 elec -0.0000039 total -0.00005046
+S1 [median] on H: gas -0.0000087 eui -0.0001466 elec -0.0000033 total -0.00003172
+S1 per group {'ls_only_M2-3_gas': -5.82e-06, 'ls_only_M2-3_eui': -0.00016206, 'ls_only_M2-3_elec': -3.48e-06, 'ls_only_M4-4_gas': -3.44e-06, 'ls_only_M4-4_eui': -5.267e-05, 'ls_only_M4-4_elec': -1.34e-06}
+S1 bootstrap |H|: {'mean': -4.576014812480396e-05, 'sd': 3.145429467626237e-05, 'frac_neg': 0.934, 'q05': -9.917437550942321e-05, 'q95': 4.523140431772202e-06} | public-size: {'mean': -4.600013434493244e-05, 'sd': 4.790241127914318e-05, 'frac_neg': 0.839}
+S1 reverse (H teacher deltas -> P teacher): {'gas': [0.23961692387537425, 0.07880488525345157], 'eui': [0.15686739615335094, 0.046868658537728945], 'elec': [0.22492133135217346, 0.05766363699545341]} {'gas': -6.41e-06, 'eui': -0.00026061, 'elec': -3.39e-06} total -5.408e-05
+S1 5-fold cross-fit inside P (teacher): {'per_mean': {'gas': -5.681056153762631e-06, 'eui': -0.00023493831931311048, 'elec': -4.55656068876209e-07}, 'total_mean': -4.821500630714986e-05, 'total_sd_over_seeds': 4.7740512222366034e-06}
+S4 on H: {'gas': -1.577e-05, 'eui': -2.17e-06, 'elec': -9.8e-07} total -3.78e-06 {'gas': 11, 'eui': 11, 'elec': 3}
+S1+S4 on H: {'gas': -2.503e-05, 'eui': -0.00021691, 'elec': -5.81e-06} total -4.955e-05 {'gas': 264, 'eui': 264, 'elec': 256}
+S3 with kP {'gas': 0.5714916171053265, 'eui': 0.6096869580393818}: {'gas': -7.999e-05, 'eui': -2.104e-05, 'elec': 0.0} total -2.02e-05
+S1+S3+S4 with kP {'gas': 0.5714916171053265, 'eui': 0.6096869580393818}: {'gas': -8.925e-05, 'eui': -0.00023578, 'elec': -5.81e-06} total -6.617e-05
+S3 with k1 {'gas': 1.0, 'eui': 1.0}: {'gas': -2.94e-06, 'eui': -1.541e-05, 'elec': 0.0} total -3.67e-06
+S1+S3+S4 with k1 {'gas': 1.0, 'eui': 1.0}: {'gas': -1.22e-05, 'eui': -0.00023015, 'elec': -5.81e-06} total -4.963e-05
+crossfit S3 seed0 {'per': {'gas': -7.789365255678193e-05, 'eui': -1.8226405087085062e-05, 'elec': 0.0}, 'total': -1.92240115287734e-05}
+crossfit S3 seeds1-60 {'total_mean': -1.8367278434473135e-05, 'total_sd': 1.351411530907766e-06, 'total_min': -2.0083140769372454e-05, 'total_max': -1.312066502996978e-05, 'per_mean': {'gas': -7.375628994615671e-05, 'eui': -1.8080102226208926e-05, 'elec': 0.0}, 'k_mean': {'gas': 0.504073000895628, 'eui': 0.6547863382794281}, 'k_sd': {'gas': 0.05185820515500652, 'eui': 0.08432035001203472}}
+crossfit S1+S3+S4 seed0 {'per': {'gas': -8.715990050942035e-05, 'eui': -0.00023297427913970825, 'elec': -5.807114541622749e-06}, 'total': -6.518825883815027e-05}
+crossfit S1+S3+S4 seeds1-60 {'total_mean': -6.433148476519723e-05, 'total_sd': 1.3515387056593993e-06, 'total_min': -6.604750845441987e-05, 'total_max': -5.9084366663719744e-05, 'per_mean': {'gas': -8.302238146187015e-05, 'eui': -0.00023282792782249316, 'elec': -5.807114541622749e-06}, 'k_mean': {'gas': 0.504073000895628, 'eui': 0.6547863382794281}, 'k_sd': {'gas': 0.05185820515500652, 'eui': 0.08432035001203472}}
+split-half S3: {'mean': -1.7990212498367104e-05, 'sd': 8.610458453646242e-06, 'frac_neg': 0.955}
+split-half S1+S3+S4: {'mean': -6.392101430902467e-05, 'sd': 3.3157008325466525e-05, 'frac_neg': 0.98}
+split-half S1: {'mean': -4.572146024113897e-05, 'sd': 3.230687635765706e-05, 'frac_neg': 0.905}
+chain bootstrap |H|: {'mean': -6.520078715723929e-05, 'sd': 3.2397336252167896e-05, 'frac_neg': 0.9835, 'q05': -0.00012018357117690225, 'q95': -1.314243855206954e-05} | public-size: {'mean': -6.516816712430709e-05, 'sd': 4.895100182569267e-05, 'frac_neg': 0.92, 'q05': -0.0001521209783017943, 'q95': 8.521838241193065e-06}
+wrote exp/audit/verify2_postproc/indep/r1_chainH.json
+	Command being timed: ".venv/bin/python exp/audit/verify2_postproc/indep/r1_chainH.py"
+	User time (seconds): 92.88
+	System time (seconds): 1.93
+	Percent of CPU this job got: 151%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:02.69
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 292128
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 2
+	Minor (reclaiming a frame) page faults: 813183
+	Voluntary context switches: 47
+	Involuntary context switches: 6847
+	Swaps: 0
+	File system inputs: 3064
+	File system outputs: 48
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

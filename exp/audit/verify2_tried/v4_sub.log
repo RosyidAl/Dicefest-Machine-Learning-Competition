@@ -1,0 +1,20 @@
+duplicate rows 77; dup rows with copied gas > 9e5: 0; max copied gas 786602
+sub gas > 9e5: 105 (non-dup 105), > 1e6: 7, max 1061409; implied eui*A > 9e5: 106, > 1e6: 8
+beta -0.6743 (full-OOF VC teacher): gas rows changed 105, rms change/sigma 0.005335, max |change| 108832 kWh, new max 952577; eui rows changed 106, rms change/sigma 0.003317
+    changed rows M quantiles [28.0, 68.0, 134.0]; all changes negative: gas True eui True
+beta -0.7275 (P side): gas rows changed 105, rms change/sigma 0.005756, max |change| 117422 kWh, new max 943987; eui rows changed 106, rms change/sigma 0.003579
+    changed rows M quantiles [28.0, 68.0, 134.0]; all changes negative: gas True eui True
+probe vs G(sub) on M>=5 rows, target_macro_gas_kwh: max abs diff 2.328e-10, rows differing (>1e-6 rel) 0
+probe vs G(sub) on M>=5 rows, target_eui_gas_kwh_per_sqm: max abs diff 2.842e-14, rows differing (>1e-6 rel) 0
+probe vs sub target_macro_elec_kwh: rows differing 359 (M>=5 rows differing 0)
+probe vs sub target_clean_building_ratio: rows differing 0 (M>=5 rows differing 0)
+probe vs sub target_electric_heating_adoption: rows differing 0 (M>=5 rows differing 0)
+pred >    700000: H count 1164 -> expected on test  1662.9 (Poisson sd  40.8); observed on test 1689
+pred >    800000: H count  370 -> expected on test   528.6 (Poisson sd  23.0); observed on test 528
+pred >    900000: H count   77 -> expected on test   110.0 (Poisson sd  10.5); observed on test 105
+pred >    950000: H count   35 -> expected on test    50.0 (Poisson sd   7.1); observed on test 30
+pred >   1000000: H count   11 -> expected on test    15.7 (Poisson sd   4.0); observed on test 7
+M >= 60: H 2383 -> expected test  3404.3; observed 3452
+M >= 80: H 251 -> expected test   358.6; observed 393
+M >= 100: H 26 -> expected test    37.1; observed 40
+maxrss 386156 kB, 9.42 s

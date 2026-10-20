@@ -1,0 +1,13 @@
+== (a) full-train OOF teacher, S3 with k_H
+   gas  P rows  d -0.0000809 total -0.00001619
+   gas  H rows  d -0.0000375 total -0.00000750
+   gas  all     d -0.0000679 total -0.00001359
+   eui  P rows  d -0.0000124 total -0.00000248
+   eui  H rows  d -0.0000108 total -0.00000215
+   eui  all     d -0.0000119 total -0.00000238
+== (b) bootstrap of the total gain on a 128.8k-row sample (private-LB size) and a 55.2k-row sample (public)
+   H chain cross-fitted   n 128791: mean -0.00001925 sd 0.00000802 P(gain>=0) 0.004 q05 -0.00003300 q95 -0.00000642
+   H chain cross-fitted   n  55196: mean -0.00001918 sd 0.00001218 P(gain>=0) 0.048 q05 -0.00004006 q95 -0.00000031
+   full OOF P rows, k_H   n 128791: mean -0.00001867 sd 0.00000867 P(gain>=0) 0.007 q05 -0.00003320 q95 -0.00000524
+   full OOF P rows, k_H   n  55196: mean -0.00001882 sd 0.00001346 P(gain>=0) 0.064 q05 -0.00004270 q95 +0.00000149
+maxrss_kb 266136 elapsed 47.24

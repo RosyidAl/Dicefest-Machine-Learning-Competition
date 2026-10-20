@@ -1,0 +1,16 @@
+subzones 163185 labelled 153508 unlabelled 9677
+N==0 (not found) 0 N quantiles [1.0, 49.840000000000146, 104.0, 128.0, 164.0, 224.0, 622.0]
+K_raw max dev from int 1.8118839761882555e-13
+cr_raw max dev from int (labelled) 0.5 n dev>1e-6 1439
+cr<0 0 cr>K 0
+mean ad (subzone) 6.338949398201741 mean rest 7.206197927898906 mean r 0.8672485296971645
+pooled q 0.11645718170127752
+hvac means (subzone-level): {'hvac_dist_01': 1.349, 'hvac_dist_02': 80.088, 'hvac_dist_03': 0.556, 'hvac_dist_04': 0.925, 'hvac_dist_05': 0.065, 'hvac_dist_06': 0.125, 'hvac_dist_07': 0.194, 'hvac_dist_08': 0.549, 'hvac_dist_09': 8.225, 'hvac_dist_10': 0.456}
+decimals<= 0 0.5848049759475442
+decimals<= 1 0.596663909060269
+decimals<= 2 0.5983730122253884
+decimals<= 3 0.6006544719183748
+decimals<= 4 0.6033795998406716
+decimals<= 5 0.6095836014339553
+decimals<= 6 0.6095885038453289
+decimals<= 7 0.6095885038453289

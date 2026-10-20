@@ -1,0 +1,87 @@
+vc spec in resid_knn.json: {'gas': 'A2xM2xp2', 'eui': 'A2xM2xp2', 'elec': 'A2xM2xp2'}
+eui members 27 basis 8 full-OOF rmse 26.405983598863997 nrmse 0.649593692468979
+gas members 27 basis 8 full-OOF rmse 37133.631705861284 nrmse 0.24470261560300927
+elec members 12 basis 8 full-OOF rmse 13174.375428136604 nrmse 0.31574017026419665
+full-OOF LS deltas [M2-3, M4]: {'gas': [0.19941549967777283, 0.06202161988273931], 'eui': [0.18165525792317003, 0.030162800389301088], 'elec': [0.1871369435440084, 0.07098422528812023]} {'M<=3': 136, 'M=4': 741, 'M_min': 2.0}
+seed 0 {'S1': -4.732e-05, 'S3': -1.581e-05, 'S4': -6.68e-06, 'S1+S3+S4': -6.376e-05}
+seed 1 {'S1': -4.647e-05, 'S3': -1.53e-05, 'S4': -6.69e-06, 'S1+S3+S4': -6.248e-05}
+seed 2 {'S1': -4.163e-05, 'S3': -1.558e-05, 'S4': -6.69e-06, 'S1+S3+S4': -5.779e-05}
+seed 3 {'S1': -4.646e-05, 'S3': -1.597e-05, 'S4': -6.69e-06, 'S1+S3+S4': -6.305e-05}
+seed 4 {'S1': -4.144e-05, 'S3': -1.496e-05, 'S4': -6.69e-06, 'S1+S3+S4': -5.7e-05}
+seed 5 {'S1': -4.231e-05, 'S3': -1.601e-05, 'S4': -6.69e-06, 'S1+S3+S4': -5.892e-05}
+seed 6 {'S1': -4.354e-05, 'S3': -1.608e-05, 'S4': -6.69e-06, 'S1+S3+S4': -6.026e-05}
+seed 7 {'S1': -4.622e-05, 'S3': -1.599e-05, 'S4': -6.69e-06, 'S1+S3+S4': -6.289e-05}
+seed 8 {'S1': -4.263e-05, 'S3': -1.549e-05, 'S4': -6.68e-06, 'S1+S3+S4': -5.874e-05}
+seed 9 {'S1': -4.511e-05, 'S3': -1.602e-05, 'S4': -6.69e-06, 'S1+S3+S4': -6.171e-05}
+seed 10 {'S1': -4.522e-05, 'S3': -1.572e-05, 'S4': -6.68e-06, 'S1+S3+S4': -6.155e-05}
+seed 11 {'S1': -4.351e-05, 'S3': -1.608e-05, 'S4': -6.69e-06, 'S1+S3+S4': -6.027e-05}
+seed 12 {'S1': -4.115e-05, 'S3': -1.54e-05, 'S4': -6.69e-06, 'S1+S3+S4': -5.73e-05}
+seed 13 {'S1': -4.174e-05, 'S3': -1.508e-05, 'S4': -6.7e-06, 'S1+S3+S4': -5.751e-05}
+seed 14 {'S1': -4.003e-05, 'S3': -1.606e-05, 'S4': -6.69e-06, 'S1+S3+S4': -5.674e-05}
+seed 15 {'S1': -4.578e-05, 'S3': -1.599e-05, 'S4': -6.69e-06, 'S1+S3+S4': -6.242e-05}
+seed 16 {'S1': -4.384e-05, 'S3': -1.612e-05, 'S4': -6.71e-06, 'S1+S3+S4': -6.056e-05}
+seed 17 {'S1': -4.201e-05, 'S3': -1.616e-05, 'S4': -6.68e-06, 'S1+S3+S4': -5.876e-05}
+seed 18 {'S1': -4.317e-05, 'S3': -1.613e-05, 'S4': -6.68e-06, 'S1+S3+S4': -5.99e-05}
+seed 19 {'S1': -4.239e-05, 'S3': -1.612e-05, 'S4': -6.69e-06, 'S1+S3+S4': -5.917e-05}
+{
+ "S1": {
+  "per_mean": {
+   "gas": -5.256852648025112e-06,
+   "eui": -0.00020915050324647467,
+   "elec": -3.58919412934422e-06
+  },
+  "total_mean": -4.3599310004768804e-05,
+  "total_sd_seeds": 2.052411548333996e-06
+ },
+ "S3": {
+  "per_mean": {
+   "gas": -6.680255673442992e-05,
+   "eui": -1.2218323528445652e-05,
+   "elec": 0.0
+  },
+  "total_mean": -1.5804176052575113e-05,
+  "total_sd_seeds": 3.6404503076828276e-07
+ },
+ "S4": {
+  "per_mean": {
+   "gas": -2.939982593007373e-05,
+   "eui": -3.3013466226305965e-06,
+   "elec": -7.386873512760239e-07
+  },
+  "total_mean": -6.687971980796071e-06,
+  "total_sd_seeds": 5.7687303436204716e-09
+ },
+ "S1+S3+S4": {
+  "per_mean": {
+   "gas": -7.440797620353879e-05,
+   "eui": -0.00022146096575980656,
+   "elec": -4.327889878341651e-06
+  },
+  "total_mean": -6.003936636833741e-05,
+  "total_sd_seeds": 2.1507100028937312e-06
+ }
+} {'gas': [0.4852700881193918, 0.025442232046984634], 'eui': [0.5493281249568048, 0.03221738093657628]}
+wrote exp/audit/verify2_postproc/indep/r2_fulloof.json
+	Command being timed: ".venv/bin/python exp/audit/verify2_postproc/indep/r2_fulloof.py"
+	User time (seconds): 78.39
+	System time (seconds): 1.31
+	Percent of CPU this job got: 163%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:48.78
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 520748
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 259031
+	Voluntary context switches: 155
+	Involuntary context switches: 4989
+	Swaps: 0
+	File system inputs: 55240
+	File system outputs: 35568
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

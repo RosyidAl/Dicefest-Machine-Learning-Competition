@@ -1,0 +1,20 @@
+GMAX over P 999305.2, over all train 999764.9, over H 999764.9
+k fitted on all H corrected (as claimed): {'gas': 0.5046, 'eui': 0.6574}
+== (a) P-OOF teacher (P rows only)
+   gas  P-OOF teacher          [-9,0) n  23 -0.631s(t-7.1) [0,0.5) n  52 -0.332s(t-6.0) [0.5,1) n 135 -0.185s(t-4.7) [1,1.5) n 264 -0.017s(t-0.6) [1.5,2) n 388 +0.049s(t+2.0) [2,3) n1258 +0.018s(t+1.2)
+   gas: P base 0.247392; S3 with k_H 0.505: d -0.0001051 (total -0.00002103); k=1 d -0.0000467; k fitted on P itself 0.571
+   eui  P-OOF teacher          [-9,0) n  25 -0.335s(t-7.1) [0,0.5) n  54 -0.234s(t-6.2) [0.5,1) n 144 -0.091s(t-3.7) [1,1.5) n 271 -0.027s(t-1.3) [1.5,2) n 384 +0.018s(t+1.0) [2,3) n1282 +0.014s(t+1.3)
+   eui: P base 0.655413; S3 with k_H 0.657: d -0.0000171 (total -0.00000342); k=1 d -0.0000101; k fitted on P itself 0.610
+== (b) k fitted on P-OOF teacher only, applied to H corrected (zero H labels in the fit)
+   gas: H base 0.245144; k_P 0.571: d -0.0000800 (total -0.00001600)
+   eui: H base 0.648593; k_P 0.610: d -0.0000210 (total -0.00000421)
+   TOTAL (gas+eui) -0.00002020
+== (c) full-train OOF of the v19vce VC blend (teacher, no correction)
+   gas  full OOF, P rows       [-9,0) n  16 -0.658s(t-5.9) [0,0.5) n  56 -0.316s(t-6.0) [0.5,1) n 127 -0.143s(t-3.5) [1,1.5) n 277 -0.000s(t-0.0) [1.5,2) n 390 +0.020s(t+0.8) [2,3) n1261 +0.034s(t+2.4)
+   gas  full OOF, H rows       [-9,0) n   7 -0.349s(t-6.5) [0,0.5) n  25 -0.281s(t-3.4) [0.5,1) n  49 -0.143s(t-2.3) [1,1.5) n 112 -0.040s(t-1.0) [1.5,2) n 172 +0.102s(t+2.7) [2,3) n 546 -0.006s(t-0.3)
+   gas  full OOF, all rows     [-9,0) n  23 -0.564s(t-6.6) [0,0.5) n  81 -0.305s(t-6.9) [0.5,1) n 176 -0.143s(t-4.1) [1,1.5) n 389 -0.012s(t-0.5) [1.5,2) n 562 +0.045s(t+2.1) [2,3) n1807 +0.022s(t+1.8)
+   gas: P rows S3 with k_H: d -0.0000809 (total -0.00001619); all rows cross-fitted k [0.484, 0.491, 0.519, 0.456, 0.456]: d -0.0000666 (total -0.00001332); full-OOF k all rows 0.482
+   eui  full OOF, P rows       [-9,0) n  22 -0.327s(t-6.1) [0,0.5) n  54 -0.222s(t-5.8) [0.5,1) n 136 -0.090s(t-3.8) [1,1.5) n 278 -0.000s(t-0.0) [1.5,2) n 408 -0.004s(t-0.2) [2,3) n1273 +0.023s(t+2.1)
+   eui  full OOF, H rows       [-9,0) n   8 -0.225s(t-4.9) [0,0.5) n  27 -0.145s(t-3.3) [0.5,1) n  49 -0.125s(t-2.5) [1,1.5) n 114 -0.038s(t-1.4) [1.5,2) n 170 +0.051s(t+1.8) [2,3) n 562 +0.002s(t+0.1)
+   eui  full OOF, all rows     [-9,0) n  30 -0.300s(t-7.2) [0,0.5) n  81 -0.196s(t-6.6) [0.5,1) n 185 -0.100s(t-4.6) [1,1.5) n 392 -0.011s(t-0.7) [1.5,2) n 578 +0.012s(t+0.8) [2,3) n1835 +0.017s(t+1.8)
+   eui: P rows S3 with k_H: d -0.0000124 (total -0.00000248); all rows cross-fitted k [0.59, 0.556, 0.568, 0.507, 0.484]: d -0.0000119 (total -0.00000238); full-OOF k all rows 0.541

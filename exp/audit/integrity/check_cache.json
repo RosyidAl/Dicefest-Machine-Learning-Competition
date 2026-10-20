@@ -1,0 +1,64 @@
+{
+ "test_raw_vs_cache_mismatches": {
+  "id": 0,
+  "subzone_id": 0,
+  "zone_region_id": 0,
+  "socio_demog_005": 0,
+  "bld_dim_01": 0,
+  "bld_dim_02": 0,
+  "bld_dim_06": 0,
+  "bld_dim_12": 0,
+  "hvac_dist_01": 0,
+  "hvac_dist_02": 0,
+  "hvac_dist_03": 0,
+  "hvac_dist_04": 0,
+  "hvac_dist_05": 0,
+  "hvac_dist_06": 0,
+  "hvac_dist_07": 0,
+  "hvac_dist_08": 0,
+  "hvac_dist_09": 0,
+  "hvac_dist_10": 0
+ },
+ "train_raw_vs_cache_mismatches": {
+  "id": 0,
+  "subzone_id": 0,
+  "zone_region_id": 0,
+  "socio_demog_005": 0,
+  "bld_dim_01": 0,
+  "bld_dim_02": 0,
+  "bld_dim_06": 0,
+  "bld_dim_12": 0,
+  "hvac_dist_01": 0,
+  "hvac_dist_02": 0,
+  "hvac_dist_03": 0,
+  "hvac_dist_04": 0,
+  "hvac_dist_05": 0,
+  "hvac_dist_06": 0,
+  "hvac_dist_07": 0,
+  "hvac_dist_08": 0,
+  "hvac_dist_09": 0,
+  "hvac_dist_10": 0,
+  "target_macro_gas_kwh": 0,
+  "target_macro_elec_kwh": 0,
+  "target_eui_gas_kwh_per_sqm": 0,
+  "target_clean_building_ratio": 0,
+  "target_electric_heating_adoption": 0
+ },
+ "subzone_id_unique_strings": 163185,
+ "subzone_id_unique_ints": 163185,
+ "subzone_id_prefixes": [
+  "SUB_"
+ ],
+ "subzone_id_len_values": [
+  9,
+  10
+ ],
+ "zone_region_id_unique_strings": 330,
+ "zone_region_id_unique_ints": 330,
+ "zone_region_id_prefixes": [
+  "REG_"
+ ],
+ "zone_region_id_len_values": [
+  7
+ ]
+}

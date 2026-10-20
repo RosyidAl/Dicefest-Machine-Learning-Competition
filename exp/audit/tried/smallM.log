@@ -1,0 +1,48 @@
+M value counts (train): {2: 1, 3: 135, 4: 741, 5: 9883, 6: 18074, 7: 13773, 8: 20277, 9: 14866, 10: 18353, 11: 13873}
+/root/Dicefest/exp/audit/tried/smallM.py:17: RuntimeWarning: divide by zero encountered in scalar divide
+  print(f"  M={v:2d} H n={s.sum():5d} mean resid {r.mean():+9.4g} (t {r.mean() / (r.std() / np.sqrt(s.sum())):+.1f}) "
+/root/Dicefest/exp/audit/tried/smallM.py:18: RuntimeWarning: Mean of empty slice
+  f"rel {np.mean(r) / np.mean(c[s]):+.4f} | P n={sp.sum():5d} mean resid {rP[sp].mean():+9.4g} "
+/root/Dicefest/.venv/lib/python3.12/site-packages/numpy/_core/_methods.py:142: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+/root/Dicefest/exp/audit/tried/smallM.py:19: RuntimeWarning: Mean of empty slice
+  f"(t {rP[sp].mean() / (rP[sp].std() / np.sqrt(sp.sum())):+.1f}) rel {rP[sp].mean() / pP[sp].mean():+.4f}", flush=True)
+/root/Dicefest/.venv/lib/python3.12/site-packages/numpy/_core/_methods.py:219: RuntimeWarning: Degrees of freedom <= 0 for slice
+  ret = _var(a, axis=axis, dtype=dtype, out=out, ddof=ddof,
+/root/Dicefest/.venv/lib/python3.12/site-packages/numpy/_core/_methods.py:178: RuntimeWarning: invalid value encountered in divide
+  arrmean = um.true_divide(arrmean, div, out=arrmean,
+/root/Dicefest/.venv/lib/python3.12/site-packages/numpy/_core/_methods.py:211: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+== gas
+  M= 2 H n=    1 mean resid +1.678e+04 (t +inf) rel +0.2619 | P n=    0 mean resid      +nan (t +nan) rel +nan
+  M= 3 H n=   47 mean resid +1.24e+04 (t +5.1) rel +0.2363 | P n=   88 mean resid +1.01e+04 (t +4.8) rel +0.2130
+  M= 4 H n=  205 mean resid     +4943 (t +3.5) rel +0.0825 | P n=  536 mean resid     +4808 (t +5.6) rel +0.0800
+  M= 5 H n= 2937 mean resid    +532.3 (t +1.6) rel +0.0078 | P n= 6946 mean resid    +763.2 (t +3.4) rel +0.0112
+  M= 6 H n= 5380 mean resid    -415.5 (t -1.6) rel -0.0058 | P n=12694 mean resid    -55.29 (t -0.3) rel -0.0008
+  M= 7 H n= 4077 mean resid    -630.4 (t -1.8) rel -0.0071 | P n= 9696 mean resid    -389.4 (t -1.7) rel -0.0044
+  M= 8 H n= 6078 mean resid    +111.9 (t +0.4) rel +0.0012 | P n=14199 mean resid    -274.6 (t -1.5) rel -0.0030
+  M= 9 H n= 4512 mean resid    +68.78 (t +0.2) rel +0.0007 | P n=10354 mean resid    +302.7 (t +1.2) rel +0.0028
+  M=10 H n= 5460 mean resid    +454.8 (t +1.4) rel +0.0040 | P n=12893 mean resid    +36.05 (t +0.2) rel +0.0003
+  M=11 H n= 4189 mean resid    -109.7 (t -0.3) rel -0.0008 | P n= 9684 mean resid    -307.1 (t -1.1) rel -0.0024
+== eui
+  M= 2 H n=    1 mean resid    +44.29 (t +inf) rel +0.2792 | P n=    0 mean resid      +nan (t +nan) rel +nan
+  M= 3 H n=   47 mean resid    +33.46 (t +3.6) rel +0.1681 | P n=   88 mean resid    +37.13 (t +4.6) rel +0.1905
+  M= 4 H n=  205 mean resid    +8.817 (t +2.0) rel +0.0484 | P n=  536 mean resid    +6.848 (t +2.7) rel +0.0379
+  M= 5 H n= 2937 mean resid   +0.3156 (t +0.4) rel +0.0022 | P n= 6946 mean resid   +0.8142 (t +1.6) rel +0.0056
+  M= 6 H n= 5380 mean resid   -0.8992 (t -1.7) rel -0.0064 | P n=12694 mean resid  -0.03969 (t -0.1) rel -0.0003
+  M= 7 H n= 4077 mean resid   -0.8423 (t -1.5) rel -0.0061 | P n= 9696 mean resid   -0.7802 (t -2.1) rel -0.0056
+  M= 8 H n= 6078 mean resid   +0.6842 (t +1.5) rel +0.0049 | P n=14199 mean resid   -0.5823 (t -2.0) rel -0.0042
+  M= 9 H n= 4512 mean resid   -0.1491 (t -0.3) rel -0.0011 | P n=10354 mean resid   +0.4211 (t +1.3) rel +0.0031
+  M=10 H n= 5460 mean resid   +0.5067 (t +1.2) rel +0.0036 | P n=12893 mean resid -0.006753 (t -0.0) rel -0.0000
+  M=11 H n= 4189 mean resid   -0.2235 (t -0.5) rel -0.0016 | P n= 9684 mean resid   -0.4169 (t -1.3) rel -0.0030
+== elec
+  M= 2 H n=    1 mean resid    -45.85 (t -inf) rel -0.0027 | P n=    0 mean resid      +nan (t +nan) rel +nan
+  M= 3 H n=   47 mean resid     +3399 (t +4.2) rel +0.2447 | P n=   88 mean resid     +2715 (t +4.3) rel +0.2103
+  M= 4 H n=  205 mean resid    +898.4 (t +1.9) rel +0.0561 | P n=  536 mean resid     +1660 (t +4.4) rel +0.1020
+  M= 5 H n= 2937 mean resid    +127.3 (t +1.0) rel +0.0073 | P n= 6946 mean resid    +56.01 (t +0.7) rel +0.0032
+  M= 6 H n= 5380 mean resid       +14 (t +0.1) rel +0.0007 | P n=12694 mean resid    +23.78 (t +0.4) rel +0.0013
+  M= 7 H n= 4077 mean resid    -21.17 (t -0.2) rel -0.0009 | P n= 9696 mean resid    +16.95 (t +0.2) rel +0.0007
+  M= 8 H n= 6078 mean resid    +34.55 (t +0.3) rel +0.0014 | P n=14199 mean resid     -36.9 (t -0.6) rel -0.0015
+  M= 9 H n= 4512 mean resid    -41.48 (t -0.3) rel -0.0015 | P n=10354 mean resid    -77.38 (t -0.9) rel -0.0027
+  M=10 H n= 5460 mean resid    +108.1 (t +0.9) rel +0.0035 | P n=12893 mean resid    +1.414 (t +0.0) rel +0.0000
+  M=11 H n= 4189 mean resid    -51.86 (t -0.3) rel -0.0015 | P n= 9684 mean resid    -63.96 (t -0.6) rel -0.0018

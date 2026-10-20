@@ -1,0 +1,6 @@
+duplicate rows (untouched): 77
+gas: rows changed 464, rms change / sigma 0.005839
+elec: rows changed 359, rms change / sigma 0.000779
+eui: rows changed 465, rms change / sigma 0.010057
+test rows with M<=3: 61 M==4: 298 gas>9e5: 105
+wrote exp/audit/tried/sub_v19vce_GS_audit.csv a52f1c890585ae11a2cb9dbba7ed7869b1df12823590291a711dddec5441c554

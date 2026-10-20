@@ -1,0 +1,27 @@
+test rows: M=1 1 M2-3 60 M=4 298 | duplicates 77 of which M<=4 0
+
+(1) correction's relative shift on small-M rows: test (full train pool) vs H (P-only pool)
+  gas  sum(corr)/sum(teacher) | M2-3: test +0.0038 (n 60) H +0.0004 (n 48) | M4: test +0.0005 (n 298) H +0.0007 (n 205) | M5: test -0.0002 (n 4218) H -0.0003 (n 2937) | M6-8: test +0.0001 (n 22280) H +0.0000 (n 15535) | M>=9: test -0.0000 (n 157053) H +0.0000 (n 110066)
+  eui  sum(corr)/sum(teacher) | M2-3: test +0.0030 (n 60) H +0.0007 (n 48) | M4: test +0.0004 (n 298) H +0.0005 (n 205) | M5: test -0.0004 (n 4218) H -0.0003 (n 2937) | M6-8: test +0.0000 (n 22280) H -0.0001 (n 15535) | M>=9: test -0.0000 (n 157053) H -0.0001 (n 110066)
+  elec sum(corr)/sum(teacher) | M2-3: test +0.0018 (n 60) H +0.0023 (n 48) | M4: test +0.0008 (n 298) H -0.0003 (n 205) | M5: test +0.0000 (n 4218) H +0.0000 (n 2937) | M6-8: test +0.0001 (n 22280) H -0.0001 (n 15535) | M>=9: test -0.0001 (n 157053) H -0.0001 (n 110066)
+
+(2) teacher level on small-M rows: test vs H (mean p, mean p/A, rms p)
+  gas  M2-3: test n  60 mean p   55255.46 rms p   58802.87 median A   323.6 | H n  48 mean p   52686.07 rms p   56218.85 median A   290.4
+  gas  M4: test n 298 mean p   62241.24 rms p   66449.68 median A   339.4 | H n 205 mean p   59861.77 rms p   63256.50 median A   345.2
+  eui  M2-3: test n  60 mean p     181.09 rms p     190.41 median A   323.6 | H n  48 mean p     198.03 rms p     207.54 median A   290.4
+  eui  M4: test n 298 mean p     177.21 rms p     182.81 median A   339.4 | H n 205 mean p     182.18 rms p     189.70 median A   345.2
+  elec M2-3: test n  60 mean p   14169.82 rms p   14835.42 median A   323.6 | H n  48 mean p   13924.58 rms p   14629.57 median A   290.4
+  elec M4: test n 298 mean p   16451.62 rms p   17186.20 median A   339.4 | H n 205 mean p   16006.31 rms p   16544.09 median A   345.2
+
+(3) analytic expected change (multiplicative-bias model, d_true = d)
+  submission deltas {'gas': [0.19942, 0.06202], 'eui': [0.18166, 0.03016], 'elec': [0.18714, 0.07098]}
+  gas : expected dNRMSE test -0.0000064 | same formula on H rows -0.0000063
+  eui : expected dNRMSE test -0.0002059 | same formula on H rows -0.0002719
+  elec: expected dNRMSE test -0.0000045 | same formula on H rows -0.0000046
+  TOTAL expected: test -0.00004338 | H (formula) -0.00005655
+
+(4) candidate file exp/audit/postproc/sub_v19vce_pp.csv vs sub_v19vce
+  sub_v19vce_pp: clean/adopt identical True; {"gas": {"changed": 14347, "changed_not_smallM": 13989, "dup_changed": 0, "M1_changed": 0, "r23": [0.19942, 0.19942], "r4": [0.06202, 0.06202]}, "eui": {"changed": 14519, "changed_not_smallM": 14161, "dup_changed": 0, "M1_changed": 0, "r23": [0.18166, 0.18166], "r4": [0.03016, 0.03016]}, "elec": {"changed": 361, "changed_not_smallM": 3, "dup_changed": 0, "M1_changed": 0, "r23": [0.18714, 0.18714], "r4": [0.07098, 0.07098]}}
+  sub_v19vce_pp_s4: clean/adopt identical True; {"gas": {"changed": 7, "changed_not_smallM": 7, "dup_changed": 0, "M1_changed": 0, "r23": [0.0, 0.0], "r4": [0.0, 0.0]}, "eui": {"changed": 8, "changed_not_smallM": 8, "dup_changed": 0, "M1_changed": 0, "r23": [0.0, 0.0], "r4": [0.0, 0.0]}, "elec": {"changed": 3, "changed_not_smallM": 3, "dup_changed": 0, "M1_changed": 0, "r23": [0.0, 0.0], "r4": [0.0, 0.0]}}
+  sub_v19vce_pp_s34: clean/adopt identical True; {"gas": {"changed": 13989, "changed_not_smallM": 13989, "dup_changed": 0, "M1_changed": 0, "r23": [0.0, 0.0], "r4": [0.0, 0.0]}, "eui": {"changed": 14161, "changed_not_smallM": 14161, "dup_changed": 0, "M1_changed": 0, "r23": [0.0, 0.0], "r4": [0.0, 0.0]}, "elec": {"changed": 3, "changed_not_smallM": 3, "dup_changed": 0, "M1_changed": 0, "r23": [0.0, 0.0], "r4": [0.0, 0.0]}}
+maxrss 405504 kB wall 3.76 s

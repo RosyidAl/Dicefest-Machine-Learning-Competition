@@ -1,0 +1,20 @@
+{
+ "changed_rows": {
+  "target_macro_gas_kwh": 358,
+  "target_macro_elec_kwh": 358,
+  "target_eui_gas_kwh_per_sqm": 358,
+  "target_clean_building_ratio": 0,
+  "target_electric_heating_adoption": 0
+ },
+ "sha256": "878a55ca61df8e7be0c3dc4f4cf10dcebd42ba9a590ddc8637ca527ef6b175e7",
+ "prior_pp_nonS1_rows_changed_rel_gt_1e-12": {
+  "gas": 9345,
+  "eui": 9585,
+  "elec": 3
+ },
+ "prior_pp_nonS1_rows_changed_rel_gt_1e-6": {
+  "gas": 3349,
+  "eui": 3514,
+  "elec": 3
+ }
+}

@@ -1,0 +1,5 @@
+G beta fitted on P teacher: -0.7275
+  IMR k=0.08 alone             gas -0.00001969  eui -0.00000481  total -0.00002450
+  G alone                      gas -0.00001872  eui -0.00000469  total -0.00002341
+  IMR then G (naive stack)     gas -0.00001742  eui -0.00000519  total -0.00002260
+  IMR then clip at train max   gas -0.00001969  eui -0.00000481  total -0.00002450

@@ -1,0 +1,8 @@
+H rows whose subzone has no P row: 0.1679
+== gas
+  pred q[9]        n=   129 mean resid -2.642e+04 t=-4.3 in-sample bound total -0.00001239 | P-fitted shift -2.967e+04 -> honest total -0.00001220
+  M q[0]           n=   253 mean resid +6374 t=+5.1 in-sample bound total -0.00000141 | P-fitted shift +5554 -> honest total -0.00000139
+== eui
+  M q[0]           n=   253 mean resid +13.54 t=+3.4 in-sample bound total -0.00003358 | P-fitted shift +11.12 -> honest total -0.00003251
+== elec
+  M q[0]           n=   253 mean resid +1359 t=+3.2 in-sample bound total -0.00000066 | P-fitted shift +1809 -> honest total -0.00000059

@@ -1,0 +1,23 @@
+P-side labels = pP + rP: gas max abs diff 3.492e-10  eui 5.684e-14
+
+E1 base NRMSE on H: gas 0.245144  eui 0.648593
+E1 H cap 1e6:     gas dNRMSE -0.00001528 (11 rows, 0 worse)  eui(1e6/A) dNRMSE -0.00000212 (10 rows, 0 worse)  dTotal gas -0.000003056 eui -0.000000424 both -0.000003480
+E1 H rows above cap: pred / truth: 1042479/999765 1040350/956734 1040300/976181 1028093/995788 1022851/831201 1017163/949096 1003794/960980 1001679/985321 1001177/977307 1001109/996832 1000012/861352
+E1 H eui rows with eui*A > 1e6: pred*A / truth*A: 1042801/999765 1039210/995788 1038967/976181 1038547/956734 1025522/831201 1018898/949096 1011895/960980 1009649/996832 1003541/985321 1000737/926452
+
+E2 split-half cross-fit (25 seeds): dTotal gas mean -0.000003171  eui mean -0.000000436  both mean -0.000003606 (min -0.000004253 max -0.000003517)
+E2 per-half gas dTotal: min -0.000005762  max -0.000000409  share of halves < 0: 1.00  (= 0 means the half had no row above the cap)
+
+E3 base NRMSE on P (P-side blend, uncorrected): gas 0.247392  eui 0.655413
+E3 P cap max_H 999764.9: gas dNRMSE -0.00004324 (23 rows, 0 worse)  eui dNRMSE -0.00000492 (25 rows, 0 worse)  dTotal both -0.000009633
+E3 P cap 1e6           : gas dNRMSE -0.00004306 (23 rows, 0 worse)  eui dNRMSE -0.00000490 (25 rows, 0 worse)  dTotal both -0.000009591
+E3 P rows above 1e6: rate 7.65e-05 per row (H corrected: 8.54e-05)
+
+E4 bootstrap dTotal (gas+eui, cap 1e6) on H: mean -0.000003511  sd 0.000001617  5%..95% -0.000006473..-0.000001216  share >= 0: 0.000
+
+E5 E[gas | pred > 1e6]: H 953687  P 940850  P_1.00-1.07e6 935892
+E5 test projection with E[y]=H             : gas rows 7 dTotal -0.000002559  eui rows 8 dTotal -0.000000417  both -0.000002975
+E5 test projection with E[y]=P             : gas rows 7 dTotal -0.000003051  eui rows 8 dTotal -0.000000493  both -0.000003544
+E5 test projection with E[y]=P_1.00-1.07e6 : gas rows 7 dTotal -0.000003241  eui rows 8 dTotal -0.000000523  both -0.000003764
+E5 test bound truth=cap (min gain)  : dTotal gas -0.000000783  eui -0.000000140  both -0.000000923
+E5 test bound truth=850k            : dTotal gas -0.000006534  eui -0.000001036  both -0.000007570

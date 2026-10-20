@@ -1,0 +1,45 @@
+train M min 2.0 test M min 1.0  train A min 62.68719956143302 test A min 69.42349407630026
+
+=== gas: train y min 4324.15 max 999765
+  y per meter: 360.35 1675.2 2723 10181 36815 44486 64153
+  y per area: 5.1206 19.706 38.257 134.85 380.99 531.62 648.11
+  top 10 y: 999765 999729 999305 999102 998998 998930 998393 998186 997643 997635
+  bottom 5 y: 4324.15 6799.81 7036.57 7531.01 7965.98
+
+=== eui: train y min 5.1206 max 648.107
+  y per meter: 0.1205 0.6639 1.1318 7.1134 62.95 103.53 210.63
+  y per area: 0.00095862 0.0039657 0.01069 0.091075 1.7279 3.7077 7.2146
+  top 10 y: 648.107 641.224 641.155 631.956 631.904 614.968 614.761 614.569 611.799 607.556
+  bottom 5 y: 5.1206 6.0335 7.35061 7.40793 7.58055
+
+=== elec: train y min 2967.9 max 396492
+  y per meter: 364.44 608.71 897.81 2828.2 10734 16558 24525
+  y per area: 5.1208 6.4186 10.283 37.227 123.68 146.22 149.99
+  top 10 y: 396492 392121 386490 384673 383850 383302 382728 382503 381575 379744
+  bottom 5 y: 2967.9 3084.6 3112.2 3112.7 3129.5
+  H gas  clip abs max_P         : rows changed   11  dNRMSE -0.0000158  dTotal -0.00000315
+  H gas  clip per-meter range_P : rows changed    0  dNRMSE +0.0000000  dTotal +0.00000000
+  H gas  clip per-area range_P  : rows changed    0  dNRMSE +0.0000000  dTotal +0.00000000
+  H gas  clip abs 1e6           : rows changed   11  dNRMSE -0.0000153  dTotal -0.00000306
+  test gas  clip abs max_train     : rows changed    7  mean |change|/sig 0.1890  max |change| 61644.2
+  test gas  clip per-meter range   : rows changed    0  mean |change|/sig 0.0000  max |change| 0
+  test gas  clip per-area range    : rows changed    0  mean |change|/sig 0.0000  max |change| 0
+  test gas  clip abs 1e6           : rows changed    7  mean |change|/sig 0.1874  max |change| 61409.1
+  test top gas preds: 1.06141e+06 1.04264e+06 1.03988e+06 1.0232e+06 1.01681e+06 1.01079e+06 1.00436e+06 996073 995142 987167 983080 978714
+  H top gas preds / truth: 1.04248e+06/999765 1.04035e+06/956734 1.0403e+06/976181 1.02809e+06/995788 1.02285e+06/831201 1.01716e+06/949096 1.00379e+06/960980 1.00168e+06/985321 1.00118e+06/977307 1.00111e+06/996832 1.00001e+06/861352 991184/926452 990729/858278 987025/948576 985296/959371
+  H eui  clip abs max_P         : rows changed    0  dNRMSE +0.0000000  dTotal +0.00000000
+  H eui  clip per-meter range_P : rows changed    0  dNRMSE +0.0000000  dTotal +0.00000000
+  H eui  clip per-area range_P  : rows changed    0  dNRMSE +0.0000000  dTotal +0.00000000
+  H eui  clip gas max_P / A     : rows changed   11  dNRMSE -0.0000022  dTotal -0.00000043
+  H eui  clip 1e6 / A           : rows changed   10  dNRMSE -0.0000021  dTotal -0.00000042
+  test eui  clip abs max_train     : rows changed    0  mean |change|/sig 0.0000  max |change| 0
+  test eui  clip per-meter range   : rows changed    0  mean |change|/sig 0.0000  max |change| 0
+  test eui  clip per-area range    : rows changed    0  mean |change|/sig 0.0000  max |change| 0
+  test eui  clip gas max / A       : rows changed    8  mean |change|/sig 0.1091  max |change| 11.4842
+  test eui  clip 1e6 / A           : rows changed    8  mean |change|/sig 0.1083  max |change| 11.4363
+  H elec clip abs max_P         : rows changed    0  dNRMSE +0.0000000  dTotal +0.00000000
+  H elec clip per-meter range_P : rows changed    0  dNRMSE +0.0000000  dTotal +0.00000000
+  H elec clip per-area range_P  : rows changed    3  dNRMSE -0.0000010  dTotal -0.00000020
+  test elec clip abs max_train     : rows changed    0  mean |change|/sig 0.0000  max |change| 0
+  test elec clip per-meter range   : rows changed    0  mean |change|/sig 0.0000  max |change| 0
+  test elec clip per-area range    : rows changed    3  mean |change|/sig 0.0107  max |change| 629.489

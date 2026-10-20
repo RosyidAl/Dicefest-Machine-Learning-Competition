@@ -1,0 +1,26 @@
+eui overall rmse 26.405983598863997 {'M<=3': {'n': 136, 'mean_rel': 0.1637, 't': 5.4101, 'ratio_of_sums': 0.1739, 'ls_delta': 0.1817}, 'M=4': {'n': 741, 'mean_rel': 0.0364, 't': 3.1218, 'ratio_of_sums': 0.0333, 'ls_delta': 0.0302}, 'M=5': {'n': 9883, 'mean_rel': 0.0047, 't': 1.7588, 'ratio_of_sums': 0.004, 'ls_delta': 0.0033}, 'M>=6': {'n': 418543, 'mean_rel': -0.0003, 't': -0.9604, 'ratio_of_sums': -0.0003, 'ls_delta': -0.0003}}
+gas overall rmse 37133.631705861284 {'M<=3': {'n': 136, 'mean_rel': 0.2091, 't': 6.6347, 'ratio_of_sums': 0.2034, 'ls_delta': 0.1994}, 'M=4': {'n': 741, 'mean_rel': 0.0644, 't': 5.3575, 'ratio_of_sums': 0.0623, 'ls_delta': 0.062}, 'M=5': {'n': 9883, 'mean_rel': 0.0074, 't': 2.7459, 'ratio_of_sums': 0.0082, 'ls_delta': 0.0089}, 'M>=6': {'n': 418543, 'mean_rel': -0.0004, 't': -1.3739, 'ratio_of_sums': -0.0001, 'ls_delta': -0.0}}
+elec overall rmse 13174.375428136604 {'M<=3': {'n': 136, 'mean_rel': 0.2349, 't': 6.2459, 'ratio_of_sums': 0.2121, 'ls_delta': 0.1871}, 'M=4': {'n': 741, 'mean_rel': 0.0874, 't': 5.2794, 'ratio_of_sums': 0.0835, 'ls_delta': 0.071}, 'M=5': {'n': 9883, 'mean_rel': 0.0044, 't': 1.2296, 'ratio_of_sums': 0.0039, 'ls_delta': 0.0033}, 'M>=6': {'n': 418543, 'mean_rel': -0.0003, 't': -0.9032, 'ratio_of_sums': -0.0001, 'ls_delta': -0.0}}
+	Command being timed: ".venv/bin/python exp/audit/postproc/12_fullvc_smallM.py"
+	User time (seconds): 11.61
+	System time (seconds): 1.07
+	Percent of CPU this job got: 165%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:07.65
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 485832
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 255322
+	Voluntary context switches: 58
+	Involuntary context switches: 408
+	Swaps: 0
+	File system inputs: 16
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

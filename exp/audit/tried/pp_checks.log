@@ -1,0 +1,60 @@
+== gas: teacher 0.246026 corrected(stored) 0.245144
+   corrected recomputed from float32 F: 0.245144
+   P bounds [4324, 999305]; H rows corrected > hi: 11, < lo: 0; y_H max 999765
+gas  clip to [min_P, max_P]                                  0.245129  delta -0.0000158 (sd 0.0000073)  total -0.00000315
+gas  linear recalibration a + b*corrected (5-fold on H)      0.245157  delta +0.0000124 (sd 0.0000040)  total +0.00000248
+gas  scale on cross-fitted correction (5-fold)               0.245148  delta +0.0000035 (sd 0.0000034)  total +0.00000069
+gas  ridge lambda alpha=0.0001 (5-fold)                      0.245144  delta -0.0000000 (sd 0.0000000)  total -0.00000000
+gas  ridge lambda alpha=0.001 (5-fold)                       0.245144  delta -0.0000001 (sd 0.0000002)  total -0.00000003
+gas  ridge lambda alpha=0.01 (5-fold)                        0.245144  delta -0.0000007 (sd 0.0000020)  total -0.00000014
+gas  ridge lambda alpha=0.1 (5-fold)                         0.245155  delta +0.0000106 (sd 0.0000120)  total +0.00000212
+   OLS lambda  2-fold cross-fit: 0.245205
+   OLS lambda 10-fold cross-fit: 0.245132
+   OLS lambda 20-fold cross-fit: 0.245133
+gas  correction with intercept (5-fold)                      0.245147  delta +0.0000026 (sd 0.0000014)  total +0.00000053
+== eui: teacher 0.650075 corrected(stored) 0.648593
+   corrected recomputed from float32 F: 0.648593
+   P bounds [5.121, 648.107]; H rows corrected > hi: 0, < lo: 0; y_H max 641.155
+eui  clip to [min_P, max_P]                                  0.648593  delta +0.0000000 (sd 0.0000000)  total +0.00000000
+   H rows eui corrected > gasmax_P/A: 11
+eui  clip eui at gasmax_P / A                                0.648591  delta -0.0000022 (sd 0.0000011)  total -0.00000043
+eui  clip eui at gasmax_P / A and [min_P,max_P]              0.648591  delta -0.0000022 (sd 0.0000011)  total -0.00000043
+eui  linear recalibration a + b*corrected (5-fold on H)      0.648589  delta -0.0000042 (sd 0.0000142)  total -0.00000083
+eui  scale on cross-fitted correction (5-fold)               0.648605  delta +0.0000127 (sd 0.0000074)  total +0.00000254
+eui  ridge lambda alpha=0.0001 (5-fold)                      0.648593  delta -0.0000000 (sd 0.0000001)  total -0.00000001
+eui  ridge lambda alpha=0.001 (5-fold)                       0.648592  delta -0.0000003 (sd 0.0000006)  total -0.00000007
+eui  ridge lambda alpha=0.01 (5-fold)                        0.648592  delta -0.0000003 (sd 0.0000056)  total -0.00000007
+eui  ridge lambda alpha=0.1 (5-fold)                         0.648639  delta +0.0000464 (sd 0.0000283)  total +0.00000928
+   OLS lambda  2-fold cross-fit: 0.648660
+   OLS lambda 10-fold cross-fit: 0.648593
+   OLS lambda 20-fold cross-fit: 0.648585
+eui  correction with intercept (5-fold)                      0.648596  delta +0.0000031 (sd 0.0000040)  total +0.00000063
+== elec: teacher 0.314840 corrected(stored) 0.314623
+   corrected recomputed from float32 F: 0.314623
+   P bounds [2968, 396492]; H rows corrected > hi: 0, < lo: 0; y_H max 381575
+elec clip to [min_P, max_P]                                  0.314623  delta +0.0000000 (sd 0.0000000)  total +0.00000000
+elec linear recalibration a + b*corrected (5-fold on H)      0.314622  delta -0.0000007 (sd 0.0000057)  total -0.00000013
+elec scale on cross-fitted correction (5-fold)               0.314645  delta +0.0000226 (sd 0.0000071)  total +0.00000452
+elec ridge lambda alpha=0.0001 (5-fold)                      0.314623  delta -0.0000000 (sd 0.0000000)  total -0.00000000
+elec ridge lambda alpha=0.001 (5-fold)                       0.314623  delta -0.0000001 (sd 0.0000002)  total -0.00000003
+elec ridge lambda alpha=0.01 (5-fold)                        0.314622  delta -0.0000010 (sd 0.0000018)  total -0.00000019
+elec ridge lambda alpha=0.1 (5-fold)                         0.314625  delta +0.0000022 (sd 0.0000102)  total +0.00000045
+   OLS lambda  2-fold cross-fit: 0.314653
+   OLS lambda 10-fold cross-fit: 0.314614
+   OLS lambda 20-fold cross-fit: 0.314606
+elec correction with intercept (5-fold)                      0.314621  delta -0.0000017 (sd 0.0000029)  total -0.00000035
+gas noise model on P: rel var = a + b/M: [0.00806479 0.3929693 ]
+   H corrected in [7e+05,8e+05): n=794, mean resid y-c +2338 (se 2692)
+   P fitted  in [7e+05,8e+05): n=1912, mean resid +3750
+   H corrected in [8e+05,9e+05): n=293, mean resid y-c +2322 (se 4616)
+   P fitted  in [8e+05,9e+05): n=682, mean resid -419
+   H corrected in [9e+05,9.5e+05): n=42, mean resid y-c -16558 (se 8084)
+   P fitted  in [9e+05,9.5e+05): n=116, mean resid -33639
+   H corrected in [9.5e+05,1e+07): n=35, mean resid y-c -61392 (se 10988)
+   P fitted  in [9.5e+05,1e+07): n=65, mean resid -62206
+gas  soft truncation E[y|y<max_P] (s x 0.5)                  0.245054  delta -0.0000900 (sd 0.0000261)  total -0.00001800
+gas  soft truncation E[y|y<max_P] (s x 1.0)                  0.245141  delta -0.0000029 (sd 0.0000587)  total -0.00000059
+gas  soft truncation E[y|y<max_P] (s x 1.5)                  0.245911  delta +0.0007669 (sd 0.0001363)  total +0.00015338
+eui  eui soft truncation at gasmax_P/A (s x 0.5)             0.648574  delta -0.0000187 (sd 0.0000066)  total -0.00000374
+eui  eui soft truncation at gasmax_P/A (s x 1.0)             0.648577  delta -0.0000154 (sd 0.0000156)  total -0.00000308
+eui  eui soft truncation at gasmax_P/A (s x 1.5)             0.648701  delta +0.0001086 (sd 0.0000302)  total +0.00002172

@@ -1,0 +1,15 @@
+segments with |tP|>3: 10; confirmed on H (same sign, |tH|>2): 5
+       col      bin metric    nP   nH  tP  tH  factorP  honest_total
+bld_dim_12  <=q0.1%    eui   624  253 4.4 3.4   1.0620 -3.339627e-05
+bld_dim_32 >=q99.9%   elec 11950 5197 3.1 2.2   1.0085 -2.732807e-06
+bld_dim_32 >=q99.9%    gas 11950 5197 3.1 2.9   1.0100 -2.117326e-06
+bld_dim_12  <=q0.1%    gas   624  253 7.0 5.1   1.0894 -1.401902e-06
+bld_dim_12  <=q0.1%   elec   624  253 5.4 3.2   1.0736 -6.521404e-07
+
+unconfirmed with largest |tP| (H disagrees):
+       col     bin metric    nP   nH  tP   tH  factorP  honest_total
+bld_dim_02 <=q0.1%   elec 11940 5017 3.5 -0.0   1.0139  3.270604e-06
+bld_dim_01 <=q0.1%   elec 10517 4388 3.4  0.4   1.0134  8.025795e-07
+bld_dim_12 q0.1-1%    gas  6946 2937 3.4  1.6   1.0122  5.323926e-08
+  E_over_M q0.1-1%   elec  2762 1206 3.3 -0.3   1.0162  3.697796e-06
+bld_dim_03 <=q0.1%    gas   302  124 3.2  1.9   1.0665 -4.891021e-08

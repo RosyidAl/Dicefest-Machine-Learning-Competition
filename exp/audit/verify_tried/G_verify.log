@@ -1,0 +1,67 @@
+== 1. identities / scales
+  |P|=300512 |H|=128791 overlap=0
+  max |gas_y - eui_y*A_H| / gas_y = 8.44e-16
+  max |gas_yP - eui_yP*A_P| / gas_yP = 2.20e-15
+  y max: P 999305.2  H 999764.9  (cap 1000000); rows >= cap P 0 H 0
+  baseline corrected H: gas 0.245144 eui 0.648593 (claimed 0.24514 / 0.64859)
+
+== 2. re-derivation of the claimed number
+  beta on P (teacher pP vs yP, knot 9e5): -0.7275  (claimed -0.7275); P rows above knot 181
+  gas -0.0000936  eui -0.0000234  TOTAL -0.00002341  (claimed gas -0.0000936, eui -0.0000234, total -0.0000234)
+  rows changed: gas 77  eui 81
+  same beta applied to the H TEACHER (no residual correction): gas -0.0000845 eui -0.0000220 TOTAL -0.00002132
+
+== 3. H-blind knot choice: 5-fold CV inside P over a knot grid, chosen knot + beta refit on all P, scored on H
+  knot    6e+05: P-CV dMSE -359374.2
+  knot    7e+05: P-CV dMSE -578872.7
+  knot  7.5e+05: P-CV dMSE -812953.9
+  knot    8e+05: P-CV dMSE -1112152.2
+  knot  8.5e+05: P-CV dMSE -1396934.7
+  knot 8.75e+05: P-CV dMSE -1437073.4
+  knot    9e+05: P-CV dMSE -1281640.9
+  knot 9.25e+05: P-CV dMSE -1110874.3
+  knot  9.5e+05: P-CV dMSE -918513.1
+  knot  hardcap: P-CV dMSE -490559.2
+  chosen on P: knot 8.75e+05 beta -0.5831 -> H gas -0.0000996 eui -0.0000261 TOTAL -0.00002513
+    (all knots, for shape) knot 6e+05 beta -0.0134: H TOTAL -0.00000343
+    (all knots, for shape) knot 7e+05 beta -0.0624: H TOTAL -0.00000414
+    (all knots, for shape) knot 7.5e+05 beta -0.1234: H TOTAL -0.00000867
+    (all knots, for shape) knot 8e+05 beta -0.2331: H TOTAL -0.00001929
+    (all knots, for shape) knot 8.5e+05 beta -0.4380: H TOTAL -0.00002524
+    (all knots, for shape) knot 8.75e+05 beta -0.5831: H TOTAL -0.00002513
+    (all knots, for shape) knot 9e+05 beta -0.7275: H TOTAL -0.00002341
+    (all knots, for shape) knot 9.25e+05 beta -0.9022: H TOTAL -0.00002073
+    (all knots, for shape) knot 9.5e+05 beta -1.1068: H TOTAL -0.00001589
+
+== 4. joint bootstrap: resample P (beta refit) and H (scoring), 1000 reps
+  TOTAL mean -0.00002323 sd 0.00000819  P(<0) 0.997  5%..95% [-0.00003729, -0.00001054]
+  beta bootstrap: mean -0.732 sd 0.065 5..95% [-0.841, -0.628]
+
+== 5. influence: per-row squared-error change on H (gas), share of the gain from the most-helped rows
+  top- 1 helped rows carry  19.3% of the gas SSE reduction
+  top- 3 helped rows carry  43.1% of the gas SSE reduction
+  top- 5 helped rows carry  65.0% of the gas SSE reduction
+  top-10 helped rows carry 102.2% of the gas SSE reduction
+  top-20 helped rows carry 131.2% of the gas SSE reduction
+  rows hurt: 32 of 77 changed; hurt SSE share 50.2% of the net gain
+  drop the  1 most-helped gas rows from H: gas -0.0000755 eui -0.0000217 TOTAL -0.00001945
+  drop the  3 most-helped gas rows from H: gas -0.0000533 eui -0.0000105 TOTAL -0.00001275
+  drop the  5 most-helped gas rows from H: gas -0.0000328 eui -0.0000086 TOTAL -0.00000828
+  drop the 10 most-helped gas rows from H: gas +0.0000020 eui -0.0000031 TOTAL -0.00000021
+  LOO over changed rows: max remaining SSE change -1.098e+11 (negative = still a gain)
+
+== 6. bias by prediction bin on H: teacher vs corrected, and on P (teacher)
+  [7e+05,8e+05): H teacher n= 812 mean r     +1697 | H corrected n= 794 mean r     +2338 | P n=1912 mean r     +3750
+  [8e+05,8.5e+05): H teacher n= 190 mean r     +8772 | H corrected n= 199 mean r     +7978 | P n= 426 mean r      +543
+  [8.5e+05,9e+05): H teacher n=  96 mean r     -5772 | H corrected n=  94 mean r     -9652 | P n= 256 mean r     -2019
+  [9e+05,9.5e+05): H teacher n=  49 mean r    -27532 | H corrected n=  42 mean r    -16558 | P n= 116 mean r    -33639
+  [9.5e+05,1e+06): H teacher n=  21 mean r    -52432 | H corrected n=  24 mean r    -60011 | P n=  42 mean r    -43831
+  [1e+06,1e+08): H teacher n=   9 mean r    -62337 | H corrected n=  11 mean r    -64405 | P n=  23 mean r    -95759
+  rows c>9e5: correction (c - t) mean +1428, mean resid teacher -35510 corrected -36937
+
+== 7. placebo on elec (no truncation): hinge at the elec P-prediction quantile with the same tail share
+  elec knot 246793 (tail share 0.00060), beta on P +0.1024, H elec change +0.0000031 total +0.00000063
+  elec knot q0.999 = 237348: beta +0.0689 H total -0.00000013
+  elec knot q0.9995 = 249430: beta +0.1089 H total +0.00000092
+  gas placebo tent [7e5, 8.75e5] slope on P +0.0481: H gas -0.0000134 total -0.00000268 (rows 1050)
+elapsed 8.88 s maxrss 256128 kB

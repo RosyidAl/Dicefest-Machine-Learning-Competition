@@ -1,0 +1,10 @@
+test M value counts (M<=5): {1: 1, 2: 1, 3: 59, 4: 298, 5: 4222}
+unseen share <=3: H 0.167 (all H 0.168) | test 0.049 (all test 0.081) | P singleton-subzone share 0.182 (all P 0.166)
+unseen share 4: H 0.146 (all H 0.168) | test 0.077 (all test 0.081) | P singleton-subzone share 0.151 (all P 0.166)
+[H] gas: seen <=3: n 40 rel bias +0.246 LS f 1.269 gain -0.00000076 | seen 4: n 175 rel bias +0.059 LS f 1.053 gain -0.00000025 | unseen <=3: n 8 rel bias +0.188 LS f 1.087 gain -0.00000002 | unseen 4: n 30 rel bias +0.212 LS f 1.205 gain -0.00000027
+[P] gas: multi <=3: n 72 rel bias +0.195 t +4.5 | multi 4: n 455 rel bias +0.075 t +4.9 | single <=3: n 16 rel bias +0.286 t +2.1 | single 4: n 81 rel bias +0.105 t +2.7
+[H] eui: seen <=3: n 40 rel bias +0.166 LS f 1.156 gain -0.00002466 | seen 4: n 175 rel bias +0.027 LS f 1.027 gain -0.00000294 | unseen <=3: n 8 rel bias +0.185 LS f 1.159 gain -0.00000805 | unseen 4: n 30 rel bias +0.183 LS f 1.174 gain -0.00000381
+[P] eui: multi <=3: n 72 rel bias +0.171 t +4.3 | multi 4: n 455 rel bias +0.036 t +2.3 | single <=3: n 16 rel bias +0.274 t +2.0 | single 4: n 81 rel bias +0.051 t +1.3
+[H] elec: seen <=3: n 40 rel bias +0.265 LS f 1.245 gain -0.00000045 | seen 4: n 175 rel bias +0.049 LS f 1.049 gain -0.00000014 | unseen <=3: n 8 rel bias +0.091 LS f 1.093 gain -0.00000002 | unseen 4: n 30 rel bias +0.093 LS f 1.105 gain -0.00000007
+[P] elec: multi <=3: n 72 rel bias +0.208 t +4.0 | multi 4: n 455 rel bias +0.100 t +4.4 | single <=3: n 16 rel bias +0.222 t +1.7 | single 4: n 81 rel bias +0.115 t +1.4
+elapsed 10.27 s maxrss 190152 kB

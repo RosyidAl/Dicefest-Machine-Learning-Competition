@@ -1,0 +1,22 @@
+duplicate test rows 77; base gas equals train value on all of them: True
+dup rows with base gas > 6e5: 4
+my calibration vs candidate: gas max |diff| 0.000e+00 kWh, eui max rel diff 2.164e-16
+  column target_macro_elec_kwh: identical to base True
+  column target_clean_building_ratio: identical to base True
+  column target_electric_heating_adoption: identical to base True
+  column id: identical to base True
+  dup rows identical to base (all targets): True
+  gas: rows changed by > 0.1 sigma 81, max change 111084, new max 950325 (base max 1061409, base rows > 1e6: 7)
+  eui*A: new max 951028; rows where the candidate is lower than base: gas 4326 higher 0
+pipeline-order rebuild sha256 5d95cb7945e9d43938fe68bce81fc539f135ef5e764c540ce6ae72fece7bcc95
+candidate sha256             5d95cb7945e9d43938fe68bce81fc539f135ef5e764c540ce6ae72fece7bcc95
+byte-identical: True
+base dup cells equal train values exactly: True
+  share gas pred > 8.50e+05: test 0.00141 (260)  H corrected 0.00133 (171)
+  share gas pred > 9.00e+05: test 0.00057 (105)  H corrected 0.00060 (77)
+  share gas pred > 9.50e+05: test 0.00016 (30)  H corrected 0.00027 (35)
+  share gas pred > 1.00e+06: test 0.00004 (7)  H corrected 0.00009 (11)
+  share eui*A > 8.50e+05: test 0.00145  H corrected 0.00140
+  share eui*A > 9.00e+05: test 0.00058  H corrected 0.00063
+  share eui*A > 1.00e+06: test 0.00004  H corrected 0.00008
+elapsed 19.21 s maxrss 483988 kB

@@ -1,0 +1,5 @@
+stratified bootstrap (full test): TOTAL mean -0.00001612 sd 0.00000445 P(<0) 1.000 5..95% [-0.00002380, -0.00000897]
+stratified bootstrap (private 70%): TOTAL mean -0.00001617 sd 0.00000546 P(<0) 0.999 5..95% [-0.00002547, -0.00000760]
+mean h^2: full OOF 2.2979e+06  H corrected 2.3517e+06  test 1.4416e+06
+  -> full-OOF 5-fold cross-fit total (G_transfer.log, -0.00002167) rescaled to the test tail: -0.00001359
+elapsed 82.35 s maxrss 343252 kB

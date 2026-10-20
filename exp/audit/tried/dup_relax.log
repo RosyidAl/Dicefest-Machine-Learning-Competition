@@ -1,0 +1,6 @@
+key ['socio_demog_005', 'subzone_id', 'bld_dim_12', 'bld_dim_01', 'bld_dim_06']: train groups >1 row 92, identical gas+elec 1.000; test rows matching train 77
+key ['subzone_id', 'bld_dim_12', 'bld_dim_01', 'bld_dim_06']: train groups >1 row 167, identical gas+elec 0.551; test rows matching train 136
+key ['bld_dim_12', 'bld_dim_01', 'bld_dim_06', 'bld_dim_03']: train groups >1 row 809, identical gas+elec 0.114; test rows matching train 698
+key ['socio_demog_005', 'subzone_id']: train groups >1 row 93, identical gas+elec 0.989; test rows matching train 77
+key ['socio_demog_005']: train groups >1 row 93, identical gas+elec 0.989; test rows matching train 106
+key ['bld_dim_06', 'bld_dim_03', 'bld_dim_17']: train groups >1 row 513, identical gas+elec 0.179; test rows matching train 431

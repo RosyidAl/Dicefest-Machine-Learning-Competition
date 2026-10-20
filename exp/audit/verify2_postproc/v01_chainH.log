@@ -1,0 +1,41 @@
+== gas
+  M=2 nH    1 nP     0 | H teacher ls +0.2788 corr ls +0.2619 meanrel +0.2619 (se 0.0000) | P ls   nan  meanrel +nan (se nan)
+  M=3 nH   47 nP    88 | H teacher ls +0.2386 corr ls +0.2397 meanrel +0.2381 (se 0.0474) | P ls +0.1974 meanrel +0.2259 (se 0.0427)
+  M=4 nH  205 nP   536 | H teacher ls +0.0788 corr ls +0.0780 meanrel +0.0867 (se 0.0235) | P ls +0.0785 meanrel +0.0848 (se 0.0146)
+  M=5 nH 2937 nP  6946 | H teacher ls +0.0045 corr ls +0.0051 meanrel +0.0086 (se 0.0048) | P ls +0.0122 meanrel +0.0104 (se 0.0033)
+  M=6 nH 5380 nP 12694 | H teacher ls -0.0095 corr ls -0.0095 meanrel -0.0047 (se 0.0036) | P ls -0.0026 meanrel +0.0008 (se 0.0024)
+  M=7 nH 4077 nP  9696 | H teacher ls -0.0072 corr ls -0.0073 meanrel -0.0070 (se 0.0040) | P ls -0.0046 meanrel -0.0046 (se 0.0026)
+  M=8 nH 6078 nP 14199 | H teacher ls -0.0011 corr ls -0.0013 meanrel +0.0032 (se 0.0032) | P ls -0.0007 meanrel -0.0047 (se 0.0020)
+== eui
+  M=2 nH    1 nP     0 | H teacher ls +0.2979 corr ls +0.2792 meanrel +0.2792 (se 0.0000) | P ls   nan  meanrel +nan (se nan)
+  M=3 nH   47 nP    88 | H teacher ls +0.1552 corr ls +0.1549 meanrel +0.1791 (se 0.0464) | P ls +0.2098 meanrel +0.1685 (se 0.0399)
+  M=4 nH  205 nP   536 | H teacher ls +0.0469 corr ls +0.0462 meanrel +0.0482 (se 0.0222) | P ls +0.0334 meanrel +0.0422 (se 0.0139)
+  M=5 nH 2937 nP  6946 | H teacher ls -0.0003 corr ls +0.0001 meanrel +0.0044 (se 0.0048) | P ls +0.0054 meanrel +0.0058 (se 0.0033)
+  M=6 nH 5380 nP 12694 | H teacher ls -0.0076 corr ls -0.0074 meanrel -0.0053 (se 0.0036) | P ls -0.0006 meanrel +0.0003 (se 0.0024)
+  M=7 nH 4077 nP  9696 | H teacher ls -0.0058 corr ls -0.0058 meanrel -0.0068 (se 0.0040) | P ls -0.0072 meanrel -0.0043 (se 0.0026)
+  M=8 nH 6078 nP 14199 | H teacher ls +0.0065 corr ls +0.0066 meanrel +0.0036 (se 0.0032) | P ls -0.0042 meanrel -0.0045 (se 0.0020)
+== elec
+  M=2 nH    1 nP     0 | H teacher ls +0.0076 corr ls -0.0027 meanrel -0.0027 (se 0.0000) | P ls   nan  meanrel +nan (se nan)
+  M=3 nH   47 nP    88 | H teacher ls +0.2311 corr ls +0.2294 meanrel +0.2503 (se 0.0556) | P ls +0.1785 meanrel +0.2376 (se 0.0493)
+  M=4 nH  205 nP   536 | H teacher ls +0.0577 corr ls +0.0584 meanrel +0.0544 (se 0.0288) | P ls +0.0630 meanrel +0.1107 (se 0.0203)
+  M=5 nH 2937 nP  6946 | H teacher ls +0.0105 corr ls +0.0103 meanrel +0.0056 (se 0.0067) | P ls +0.0009 meanrel +0.0047 (se 0.0043)
+  M=6 nH 5380 nP 12694 | H teacher ls +0.0017 corr ls +0.0016 meanrel +0.0001 (se 0.0047) | P ls +0.0047 meanrel -0.0003 (se 0.0031)
+  M=7 nH 4077 nP  9696 | H teacher ls -0.0011 corr ls -0.0009 meanrel -0.0010 (se 0.0052) | P ls +0.0038 meanrel -0.0000 (se 0.0034)
+  M=8 nH 6078 nP 14199 | H teacher ls -0.0004 corr ls -0.0005 meanrel +0.0017 (se 0.0040) | P ls +0.0002 meanrel -0.0027 (se 0.0027)
+[ls ] gas  dP +0.1974/+0.0785 dH +0.2403/+0.0780 | P->H dNRMSE -0.0000093 (G23 -0.0000058, G4 -0.0000034) | H->P dNRMSE -0.0000064
+[ls ] eui  dP +0.2098/+0.0334 dH +0.1564/+0.0462 | P->H dNRMSE -0.0002147 (G23 -0.0001621, G4 -0.0000527) | H->P dNRMSE -0.0002608
+[ls ] elec dP +0.1785/+0.0630 dH +0.2228/+0.0584 | P->H dNRMSE -0.0000048 (G23 -0.0000035, G4 -0.0000013) | H->P dNRMSE -0.0000034
+[ls ] TOTAL P->H -0.00004577  H->P -0.00005413
+[ros] gas  dP +0.2130/+0.0800 dH +0.2369/+0.0825 | P->H dNRMSE -0.0000094 (G23 -0.0000059, G4 -0.0000034) | H->P dNRMSE -0.0000064
+[ros] eui  dP +0.1905/+0.0379 dH +0.1700/+0.0484 | P->H dNRMSE -0.0002300 (G23 -0.0001747, G4 -0.0000552) | H->P dNRMSE -0.0002662
+[ros] elec dP +0.2103/+0.1020 dH +0.2384/+0.0561 | P->H dNRMSE -0.0000042 (G23 -0.0000036, G4 -0.0000006) | H->P dNRMSE -0.0000033
+[ros] TOTAL P->H -0.00004871  H->P -0.00005519
+[add] gas  dP +10100.1253/+4807.5217 dH +12486.6952/+4943.3165 | P->H dNRMSE -0.0000084 (G23 -0.0000050, G4 -0.0000034) | H->P dNRMSE -0.0000061
+[add] eui  dP +37.1274/+6.8484 dH +33.6845/+8.8174 | P->H dNRMSE -0.0002501 (G23 -0.0001953, G4 -0.0000549) | H->P dNRMSE -0.0002202
+[add] elec dP +2714.8170/+1660.2783 dH +3327.0408/+898.3660 | P->H dNRMSE -0.0000040 (G23 -0.0000036, G4 -0.0000003) | H->P dNRMSE -0.0000054
+[add] TOTAL P->H -0.00005250  H->P -0.00004633
+H_K2: total mean -0.00002634 sd(seeds) 0.00002082 frac<0 0.885 | gas -0.0000075 eui -0.0001214 elec -0.0000029
+H_K5: total mean -0.00003318 sd(seeds) 0.00000856 frac<0 1.000 | gas -0.0000080 eui -0.0001547 elec -0.0000032
+P_K2: total mean -0.00004675 sd(seeds) 0.00001008 frac<0 0.995 | gas -0.0000055 eui -0.0002286 elec +0.0000003
+P_K5: total mean -0.00004931 sd(seeds) 0.00000409 frac<0 1.000 | gas -0.0000058 eui -0.0002402 elec -0.0000006
+bootstrap P->H ls total: mean -0.00004509 sd 0.00003087 frac<0 0.940

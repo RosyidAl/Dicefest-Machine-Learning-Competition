@@ -1,0 +1,22 @@
+== a/b. holdout chain P -> H, shrink 0.5
+  groups {<=3,4}    base teacher  : total -0.00004158 | gas -0.0000065 eui -0.0001980 elec -0.0000034
+  groups {<=3,4}    base corrected: total -0.00004145 | gas -0.0000065 eui -0.0001974 elec -0.0000034
+  groups {<=3,4,5}  base teacher  : total -0.00004121 | gas -0.0000067 eui -0.0001959 elec -0.0000035
+  groups {<=3,4,5}  base corrected: total -0.00004120 | gas -0.0000068 eui -0.0001958 elec -0.0000035
+  full-train VC teacher gas NRMSE 0.244703
+  full-train VC teacher eui NRMSE 0.649594
+  full-train VC teacher elec NRMSE 0.315740
+
+== b2. full-train repeated 5-fold cross-fit: {<=3,4} vs {<=3,4,5}, shrink 0.5
+  groups {<=3,4}   : mean total -0.00003374 sd 0.00000173
+  groups {<=3,4,5} : mean total -0.00003357 sd 0.00000169
+
+== c. factor stability on the full-train VC teacher
+  gas  sub_n thirds: le3 1.183(n23)/1.187(n46)/1.215(n67) eq4 1.033(n186)/1.090(n231)/1.060(n324)
+  eui  sub_n thirds: le3 1.204(n23)/1.148(n46)/1.197(n67) eq4 1.024(n186)/1.033(n231)/1.032(n324)
+  elec sub_n thirds: le3 1.184(n23)/1.277(n46)/1.136(n67) eq4 1.095(n186)/1.083(n231)/1.050(n324)
+  fold files: ['data/folds/folds_primary_k10_s42.parquet', 'data/folds/folds_primary_k5_s42.parquet', 'data/folds/folds_secondary_k5_s42.parquet']
+  using fold file data/folds/folds_primary_k10_s42.parquet
+  gas  per OOF fold: le3 min 1.050 max 1.317 n>1 10/10 | eq4 min 0.987 max 1.133 n>1 8/10
+  eui  per OOF fold: le3 min 0.971 max 1.303 n>1 8/10 | eq4 min 0.958 max 1.148 n>1 7/10
+  elec per OOF fold: le3 min 0.948 max 1.431 n>1 9/10 | eq4 min 0.906 max 1.211 n>1 8/10

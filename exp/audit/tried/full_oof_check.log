@@ -1,0 +1,22 @@
+gas: global-blend OOF NRMSE 0.244940
+eui: global-blend OOF NRMSE 0.650226
+elec: global-blend OOF NRMSE 0.315859
+  gas  M=3: n=   135 rel bias +0.2328 t +7.1
+  gas  M=4: n=   741 rel bias +0.0841 t +6.7
+  gas  M=5: n=  9883 rel bias +0.0143 t +5.2
+  gas  M=6: n= 18074 rel bias +0.0024 t +1.2
+  eui  M=3: n=   135 rel bias +0.2213 t +6.7
+  eui  M=4: n=   741 rel bias +0.0651 t +5.2
+  eui  M=5: n=  9883 rel bias +0.0062 t +2.2
+  eui  M=6: n= 18074 rel bias -0.0016 t -0.8
+  elec M=3: n=   135 rel bias +0.3240 t +7.8
+  elec M=4: n=   741 rel bias +0.1697 t +8.7
+  elec M=5: n=  9883 rel bias +0.0210 t +5.5
+  elec M=6: n= 18074 rel bias +0.0134 t +4.8
+  gas pred in [8e+05,9e+05): n=1004 mean resid +59
+  gas pred in [9e+05,9.5e+05): n=156 mean resid -23969
+  gas pred in [9.5e+05,1e+07): n=88 mean resid -64220
+gas: 2-fold honest change of G+S on full OOF (teacher level) -0.0001005 total -0.00002010
+eui: 2-fold honest change of G+S on full OOF (teacher level) -0.0004378 total -0.00008757
+elec: 2-fold honest change of G+S on full OOF (teacher level) -0.0000117 total -0.00000234
+TOTAL -0.00011000

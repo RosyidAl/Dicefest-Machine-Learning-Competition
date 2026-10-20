@@ -1,0 +1,18 @@
+P bounds: gas_max 999305.16 eui_min 5.1206 elecA [5.1349, 149.9909]; H y max gas 999764.90
+S1 deltas (P-OOF) {'gas': [0.19738, 0.07848], 'eui': [0.20978, 0.03337], 'elec': [0.17854, 0.06301]}
+S3 variance model (P) {'gas': [0.00806, 0.39297], 'eui': [0.00839, 0.38715]}
+H group sizes {'2-3': 48, '4-4': 205} P group sizes {'2-3': 88, '4-4': 536}
+S0 (base) NRMSE {'gas': 0.245144, 'eui': 0.648593, 'elec': 0.314623}
+S1: step gas -0.0000093 eui -0.0002147 elec -0.0000048 | step total -0.00004577 | cum total -0.00004577
+S3: step gas -0.0000779 eui -0.0000182 elec +0.0000000 | step total -0.00001923 | cum total -0.00006499
+S4: step gas +0.0000000 eui +0.0000000 elec -0.0000010 | step total -0.00000020 | cum total -0.00006519
+k per fold (seed 0) {'gas': [0.5637, 0.4672, 0.5066, 0.4701, 0.5123], 'eui': [0.7291, 0.4888, 0.69, 0.6776, 0.6689]}
+COMBINED 5-fold (seed 0): gas -0.0000872 eui -0.0002330 elec -0.0000058 TOTAL -0.00006519
+TOTAL over fold seeds 1..10: mean -0.00006509 min -0.00006594 max -0.00006433
+bootstrap (H rows, 2000x): total mean -0.00006466 sd 0.00003202 2.5% -0.00013089 97.5% -0.00000397 frac>=0 0.0205
+public-size subsets (n=55196): mean -0.00006553 sd 0.00003742 frac>=0 0.034 frac<=-0.00011 (enough for 0.24912) 0.123
+concentration of the gain (linearised per-row contribution to the TOTAL):
+   sum -0.00006518; rows changed 9969; best 10 rows -0.00006972; worst 10 rows +0.00003985; without best 10 +0.00000455; without best 25 +0.00004028
+   M 2-3 : n     48 contribution -0.00003427
+   M 4   : n    205 contribution -0.00001149
+   M>=5  : n 128538 contribution -0.00001942

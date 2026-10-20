@@ -1,0 +1,21 @@
+P-OOF LS delta (t, HC0) by M group:
+   M 2-3: gas +0.1974 (t +4.1) eui +0.2098 (t +4.8) elec +0.1785 (t +3.6)  -> selected
+   M 4-4: gas +0.0785 (t +4.8) eui +0.0334 (t +2.1) elec +0.0630 (t +1.3)
+   M 5-5: gas +0.0122 (t +3.2) eui +0.0054 (t +1.4) elec +0.0009 (t +0.2)
+   M 6-6: gas -0.0026 (t -0.9) eui -0.0006 (t -0.2) elec +0.0047 (t +1.1)
+   M 7-7: gas -0.0046 (t -1.5) eui -0.0072 (t -2.4) elec +0.0038 (t +0.8)
+   M 8-8: gas -0.0007 (t -0.3) eui -0.0042 (t -1.8) elec +0.0002 (t +0.1)
+P-only rule picks [(2, 3)]: H total -0.00003427 {'gas': -5.8e-06, 'eui': -0.0001621, 'elec': -3.5e-06}
+   claimed (2,3),(4)   : H total -0.00004577 {'gas': -9.3e-06, 'eui': -0.0002147, 'elec': -4.8e-06}
+   M<=3 only           : H total -0.00003427 {'gas': -5.8e-06, 'eui': -0.0001621, 'elec': -3.5e-06}
+   (2..4) pooled       : H total -0.00003545 {'gas': -7e-06, 'eui': -0.000167, 'elec': -3.3e-06}
+   (2,3),(4),(5)       : H total -0.00004440 {'gas': -9e-06, 'eui': -0.0002081, 'elec': -4.9e-06}
+shrinkage c (q = p (1 + c d)), claimed groups:
+   c 0.50: H total -0.00004145
+   c 0.75: H total -0.00004825
+   c 1.00: H total -0.00004577
+   c 1.25: H total -0.00003399
+   c 1.50: H total -0.00001293
+expected test change from M2-3 rows only: -0.00003785
+expected test change from M4 rows only: -0.00000553
+maxrss 199344 kB wall 1.48 s

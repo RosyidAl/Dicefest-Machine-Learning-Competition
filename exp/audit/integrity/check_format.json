@@ -1,0 +1,76 @@
+{
+ "sha256": "38dd55b9e150bdd531455713984a3c172c32c5fd850d26795ddd517a0ac1a9e6",
+ "crlf": 0,
+ "bom": false,
+ "ends_with_newline": true,
+ "header_equal": true,
+ "rows": [
+  183987,
+  183987
+ ],
+ "id_equal_text": true,
+ "id_unique": true,
+ "empty_cells": 0,
+ "id_equal_test_parquet": true,
+ "id_equal_test_csv": true,
+ "dtypes": {
+  "id": "str",
+  "target_macro_gas_kwh": "float64",
+  "target_macro_elec_kwh": "float64",
+  "target_eui_gas_kwh_per_sqm": "float64",
+  "target_clean_building_ratio": "float64",
+  "target_electric_heating_adoption": "float64"
+ },
+ "all_finite": true,
+ "min": {
+  "target_macro_gas_kwh": 22153.56598866037,
+  "target_macro_elec_kwh": 7499.63149795871,
+  "target_eui_gas_kwh_per_sqm": 19.346748645533808,
+  "target_clean_building_ratio": 7.69,
+  "target_electric_heating_adoption": 0.0
+ },
+ "max": {
+  "target_macro_gas_kwh": 1061409.095080163,
+  "target_macro_elec_kwh": 311027.736840062,
+  "target_eui_gas_kwh_per_sqm": 605.8597660238299,
+  "target_clean_building_ratio": 100.0,
+  "target_electric_heating_adoption": 82.68745257918636
+ },
+ "precision": {
+  "target_macro_gas_kwh": {
+   "text_is_shortest_repr": 1.0,
+   "median_sig_digits": 16.0,
+   "min_sig_digits": 12,
+   "default_parser_max_rel_diff": 3.2094203136176495e-16,
+   "default_parser_max_abs_diff_over_sigma": 1.1641532182693481e-10
+  },
+  "target_macro_elec_kwh": {
+   "text_is_shortest_repr": 1.0,
+   "median_sig_digits": 16.0,
+   "min_sig_digits": 6,
+   "default_parser_max_rel_diff": 3.229903733016723e-16,
+   "default_parser_max_abs_diff_over_sigma": 5.820766091346741e-11
+  },
+  "target_eui_gas_kwh_per_sqm": {
+   "text_is_shortest_repr": 1.0,
+   "median_sig_digits": 17.0,
+   "min_sig_digits": 12,
+   "default_parser_max_rel_diff": 3.1539873804163854e-16,
+   "default_parser_max_abs_diff_over_sigma": 5.684341886080802e-14
+  },
+  "target_clean_building_ratio": {
+   "text_is_shortest_repr": 1.0,
+   "median_sig_digits": 4.0,
+   "min_sig_digits": 3,
+   "default_parser_max_rel_diff": 0.0,
+   "default_parser_max_abs_diff_over_sigma": 0.0
+  },
+  "target_electric_heating_adoption": {
+   "text_is_shortest_repr": 1.0,
+   "median_sig_digits": 15.0,
+   "min_sig_digits": 0,
+   "default_parser_max_rel_diff": 2.4619614472479965e-16,
+   "default_parser_max_abs_diff_over_sigma": 7.105427357601002e-15
+  }
+ }
+}

@@ -1,0 +1,39 @@
+{'gas': (429303, 27), 'elec': (429303, 12)}
+== 1. VC teacher reproduction (test side vs exp/pl/teacher_deploy.npz; train OOF NRMSE)
+  gas: OOF NRMSE 0.244703 | test rms diff vs teacher_deploy 4.44e-12 sigma, max rel diff 2.83e-10
+  eui: OOF NRMSE 0.649594 | test rms diff vs teacher_deploy 5.37e-13 sigma, max rel diff 1.30e-11
+  elec: OOF NRMSE 0.315740 | test rms diff vs teacher_deploy 4.14e-13 sigma, max rel diff 1.55e-11
+
+== 2. bias per M group on the full-train OOF VC teacher (deployment teacher)
+  gas  le3: n=   136 rel +0.2034 f 1.1994 t +6.5 frac y>p 0.70
+  gas  eq4: n=   741 rel +0.0623 f 1.0620 t +5.2 frac y>p 0.52
+  gas  eq5: n=  9883 rel +0.0082 f 1.0089 t +3.0 frac y>p 0.47
+  gas  eq6: n= 18074 rel -0.0015 f 0.9968 t -0.7 frac y>p 0.46
+  eui  le3: n=   136 rel +0.1739 f 1.1817 t +5.6 frac y>p 0.67
+  eui  eq4: n=   741 rel +0.0333 f 1.0302 t +2.7 frac y>p 0.48
+  eui  eq5: n=  9883 rel +0.0040 f 1.0033 t +1.4 frac y>p 0.46
+  eui  eq6: n= 18074 rel -0.0009 f 0.9984 t -0.4 frac y>p 0.46
+  elec le3: n=   136 rel +0.2121 f 1.1871 t +5.6 frac y>p 0.68
+  elec eq4: n=   741 rel +0.0835 f 1.0710 t +4.6 frac y>p 0.49
+  elec eq5: n=  9883 rel +0.0039 f 1.0033 t +1.0 frac y>p 0.42
+  elec eq6: n= 18074 rel +0.0005 f 1.0036 t +0.2 frac y>p 0.42
+  deployment factors (full train): {'gas': {'le3': 1.1994, 'eq4': 1.062}, 'eui': {'le3': 1.1817, 'eq4': 1.0302}, 'elec': {'le3': 1.1871, 'eq4': 1.071}}
+
+== 3. honest repeated K-fold cross-fitting on full-train rows (teacher level)
+  K=2 shrink 0.50: mean total -0.00003368 sd 0.00000279 frac<0 1.000 | gas -0.0000040 eui -0.0001617 elec -0.0000027
+  K=2 shrink 1.00: mean total -0.00004145 sd 0.00000620 frac<0 1.000 | gas -0.0000050 eui -0.0001991 elec -0.0000031
+  K=5 shrink 0.50: mean total -0.00003410 sd 0.00000114 frac<0 1.000 | gas -0.0000040 eui -0.0001636 elec -0.0000029
+  K=5 shrink 1.00: mean total -0.00004318 sd 0.00000244 frac<0 1.000 | gas -0.0000052 eui -0.0002071 elec -0.0000036
+
+== 4. test exposure
+  test rows per group: {'le3': 61, 'eq4': 298, 'eq5': 4222, 'eq6': 7734} | train: {'le3': 136, 'eq4': 741, 'eq5': 9883, 'eq6': 18074} | test M<=2: 2 min test M 1.0
+  duplicate test rows 77; of them M<=4: 0
+  gas: rule (shrink 0.5, full-train factors) changes 359 rows; rms change over all test rows 8.94e-04 sigma; multipliers le3 1.0997 eq4 1.0310
+  eui: rule (shrink 0.5, full-train factors) changes 359 rows; rms change over all test rows 8.18e-03 sigma; multipliers le3 1.0908 eq4 1.0151
+  elec: rule (shrink 0.5, full-train factors) changes 359 rows; rms change over all test rows 8.45e-04 sigma; multipliers le3 1.0936 eq4 1.0355
+  candidate ids identical: True | columns identical: True
+  target_macro_gas_kwh: changed rows 464 (M<=4: 359, M>4: 105) | le3 ratio min 1.0987 max 1.0987 | eq4 ratio min 1.0392 max 1.0392
+  target_macro_elec_kwh: changed rows 359 (M<=4: 359, M>4: 0) | le3 ratio min 1.0893 max 1.0893 | eq4 ratio min 1.0315 max 1.0315
+  target_eui_gas_kwh_per_sqm: changed rows 465 (M<=4: 359, M>4: 106) | le3 ratio min 1.1049 max 1.1049 | eq4 ratio min 1.0167 max 1.0167
+  target_clean_building_ratio: changed rows 0 (M<=4: 0, M>4: 0) | le3 ratio min 1.0000 max 1.0000 | eq4 ratio min 1.0000 max 1.0000
+  target_electric_heating_adoption: changed rows 0 (M<=4: 0, M>4: 0) | le3 ratio min 1.0000 max 1.0000 | eq4 ratio min 1.0000 max 1.0000

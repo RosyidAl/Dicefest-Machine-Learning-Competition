@@ -1,0 +1,21 @@
+
+== gas: test rows per bin {'0.60': 4256, '0.85': 155, '0.90': 57, '0.93': 28, '0.96': 9, '0.98': 4, '1.00': 3, '1.02': 4}
+  H corrected  own-rows dTotal -0.00001969 | test bin-transfer -0.00001236 (sd 0.00000410) | public-size mean -0.00001244 sd 0.00000772 P(<0) 0.952 | private-size mean -0.00001251 sd 0.00000471 P(<0) 0.999
+      per-bin mean dSSE (view): [1128643.9, -105358314.9, -386599050.4, -299742063.5, -3952256607.9, -4770524537.0, -2108576852.4, -6361883964.5]  n view [2999, 94, 29, 19, 13, 5, 6, 5]
+  P teacher    own-rows dTotal -0.00002493 | test bin-transfer -0.00001741 (sd 0.00000300) | public-size mean -0.00001738 sd 0.00000933 P(<0) 0.985 | private-size mean -0.00001743 sd 0.00000570 P(<0) 1.000
+      per-bin mean dSSE (view): [176950.5, -10621583.6, -650261107.1, -1693477225.0, -1072312273.5, -3455424991.3, -6828224441.6, -12857519346.6]  n view [6856, 256, 85, 44, 16, 13, 11, 12]
+  full VC OOF  own-rows dTotal -0.00001771 | test bin-transfer -0.00001559 (sd 0.00000281) | public-size mean -0.00001561 sd 0.00000909 P(<0) 0.977 | private-size mean -0.00001566 sd 0.00000564 P(<0) 0.998
+      per-bin mean dSSE (view): [924648.4, -29173243.8, -588585868.5, -1423427944.3, -1519171385.5, -2333225285.8, -3891601764.4, -13301017070.3]  n view [9899, 369, 104, 64, 31, 15, 12, 11]
+
+== eui: test rows per bin {'0.60': 4249, '0.85': 160, '0.90': 53, '0.93': 26, '0.96': 14, '0.98': 5, '1.00': 4, '1.02': 4}
+  H corrected  own-rows dTotal -0.00000481 | test bin-transfer -0.00000345 (sd 0.00000133) | public-size mean -0.00000342 sd 0.00000248 P(<0) 0.989 | private-size mean -0.00000332 sd 0.00000152 P(<0) 1.000
+      per-bin mean dSSE (view): [0.0, -4.2, -12.9, -26.8, -245.9, -122.0, -37.7, -152.4]  n view [2986, 99, 30, 19, 14, 8, 5, 5]
+  P teacher    own-rows dTotal -0.00000389 | test bin-transfer -0.00000277 (sd 0.00000050) | public-size mean -0.00000271 sd 0.00000146 P(<0) 0.989 | private-size mean -0.00000278 sd 0.00000090 P(<0) 0.999
+      per-bin mean dSSE (view): [0.0, -2.2, -15.2, -51.8, -33.6, -207.1, -151.0, -223.7]  n view [6876, 259, 85, 47, 18, 13, 8, 17]
+  full VC OOF  own-rows dTotal -0.00000306 | test bin-transfer -0.00000266 (sd 0.00000050) | public-size mean -0.00000267 sd 0.00000143 P(<0) 0.981 | private-size mean -0.00000267 sd 0.00000089 P(<0) 1.000
+      per-bin mean dSSE (view): [0.0, -2.4, -24.1, -29.5, -93.0, -47.6, -124.0, -215.2]  n view [9906, 370, 112, 62, 32, 16, 15, 15]
+
+== mean residual (y - p) for p / 1e6 in [0.6, 0.85): negative would mean tail over-shoot not due to the cap
+  H corrected  n 2999 mean +1412 (se 1318)
+  P teacher    n 6856 mean +1708 (se 872)
+  full VC OOF  n 9899 mean +1673 (se 721)

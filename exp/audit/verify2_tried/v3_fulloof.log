@@ -1,0 +1,21 @@
+27 gas-family members; vc spec A2xM2xp2 / A2xM2xp2
+blend gas done
+blend eui done
+test teacher vs teacher_deploy.npz[gas]: max abs diff 0.000e+00 (ref max 1047487.4)
+test teacher vs teacher_deploy.npz[eui]: max abs diff 0.000e+00 (ref max 611.2)
+full-OOF VC teacher NRMSE gas 0.244703 eui 0.649594
+train rows pf_gas > 9e5: 237, > 1e6: 23, max 1138879; implied eui*A > 9e5: 252
+test rows teacher gas > 9e5: 99, > 1e6: 6, max 1047487; implied eui*A > 9e5: 104
+full-OOF teacher mean residual by gas-prediction bin:
+  [   700000,   800000) n= 2719 resid     +3739 (se   1448)
+  [   800000,   850000) n=  639 resid     +5649 (se   3085)
+  [   850000,   900000) n=  369 resid     -3179 (se   3648)
+  [   900000,   950000) n=  149 resid    -27134 (se   5711)
+  [   950000,  1000000) n=   65 resid    -43676 (se   7267)
+  [  1000000,  3000000) n=   23 resid    -85554 (se  13210)
+beta as the pipeline action would fit it (all train rows, VC teacher pf): -0.6743
+(reference) beta fitted on the EUI teacher's implied gas: -0.7013
+full-OOF 5-fold cross-fit (20 seeds): d gas -0.0000836 d eui -0.0000138 TOTAL mean -0.00001948 sd 0.00000016 P(<0) 1.000; beta range [-0.722, -0.610]
+full-OOF split-half cross-fit (50 seeds): d gas -0.0000828 d eui -0.0000137 TOTAL mean -0.00001930 sd 0.00000058 P(<0) 1.000; beta range [-0.810, -0.523]
+private-size bootstrap of the full-OOF 5-fold result: mean -0.00001952 sd 0.00000748 P(<0) 0.998
+maxrss 2664692 kB, 88.34 s

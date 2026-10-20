@@ -1,0 +1,10 @@
+{
+ "kP": 0.08520474102291144,
+ "gas_dTotal_Pfit_Hcorr": -1.9517039303762474e-05,
+ "gas_dTotal_Pfit_Hteach": -1.821441946459057e-05,
+ "gas_dTotal_Hcross": -1.8677749425616566e-05,
+ "eui_dTotal_Pfit_Hcorr": -4.9983578891632515e-06,
+ "combined_Pfit_Hcorr": -2.4515397192925724e-05,
+ "frag_top5_share": 0.5968480283593912,
+ "fullvc_gas_cross": -1.735259821506796e-05
+}

@@ -1,0 +1,24 @@
+{
+ "household_cols": [
+  "socio_demog_001",
+  "socio_demog_004",
+  "bld_era_01",
+  "socio_demog_026",
+  "socio_demog_034",
+  "socio_demog_039",
+  "socio_demog_045",
+  "socio_demog_054",
+  "socio_demog_060",
+  "socio_demog_069",
+  "socio_demog_117",
+  "socio_demog_118",
+  "env_climate_06"
+ ],
+ "runs": [
+  [
+   "socio_demog_001",
+   "socio_demog_001",
+   1
+  ]
+ ]
+}

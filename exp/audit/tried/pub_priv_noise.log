@@ -1,0 +1,2 @@
+public - private total (3 metrics/5): mean -0.000012 sd 0.001533
+G+S(shrink .5) change: public mean -0.0000657 sd 0.0000272; private mean -0.0000645 sd 0.0000117; P(public<0) 0.994 P(private<0) 1.000; corr(pub, priv) -1.00

@@ -1,0 +1,18 @@
+candidate sha256 8859f0f453e9862df63062abad7c2c6ba985ac6e30bb7c6d81f515a68b47d9c2 matches claim: True
+live rows 183910 duplicates 77
+full-OOF deltas {'gas': [0.1994, 0.062], 'eui': [0.1817, 0.0302], 'elec': [0.1871, 0.071]}
+k (all H) {'gas': 0.5046, 'eui': 0.6574}
+target_macro_gas_kwh               |rebuild - candidate|/sigma max 3.33e-13 | candidate vs sub_v19vce: rows changed 14347, > 0.01 sigma 1026, rms 0.00577 sigma, max 0.4673 sigma, mean signed -0.000182 sigma
+target_macro_elec_kwh              |rebuild - candidate|/sigma max 8.65e-13 | candidate vs sub_v19vce: rows changed 361, > 0.01 sigma 359, rms 0.00169 sigma, max 0.1188 sigma, mean signed +0.000066 sigma
+target_eui_gas_kwh_per_sqm         |rebuild - candidate|/sigma max 2.11e-13 | candidate vs sub_v19vce: rows changed 14519, > 0.01 sigma 1025, rms 0.01700 sigma, max 1.5880 sigma, mean signed +0.000261 sigma
+target_clean_building_ratio        |rebuild - candidate|/sigma max 0.00e+00 | candidate vs sub_v19vce: rows changed 0, > 0.01 sigma 0, rms 0.00000 sigma, max 0.0000 sigma, mean signed +0.000000 sigma
+target_electric_heating_adoption   |rebuild - candidate|/sigma max 0.00e+00 | candidate vs sub_v19vce: rows changed 0, > 0.01 sigma 0, rms 0.00000 sigma, max 0.0000 sigma, mean signed +0.000000 sigma
+duplicate rows untouched: True
+clean / adoption byte-identical: True
+largest eui changes: M 3 A 94 355.4->419.9 (+1.588s); M 3 A 176 314.8->372 (+1.407s); M 3 A 116 311.2->367.7 (+1.391s); M 3 A 227 287.6->339.8 (+1.285s); M 3 A 112 286.1->338.1 (+1.279s)
+largest gas changes: M 73 A 9431 1.061e+06->9.905e+05 (-0.467s); M 59 A 4909 1.043e+06->9.772e+05 (-0.431s); M 60 A 5235 1.04e+06->9.757e+05 (-0.423s); M 51 A 10465 1.023e+06->9.637e+05 (-0.392s); M 49 A 4434 1.011e+06->9.556e+05 (-0.364s)
+largest elec changes: M 3 A 725 2.649e+04->3.145e+04 (+0.119s); M 3 A 519 2.559e+04->3.038e+04 (+0.115s); M 3 A 608 2.435e+04->2.891e+04 (+0.109s); M 3 A 557 2.237e+04->2.656e+04 (+0.100s); M 3 A 463 2.127e+04->2.525e+04 (+0.095s)
+test M2-3: n 60, gas mean rel change +0.1994, eui mean rel change +0.1817, elec mean rel change +0.1871
+test M4: n 298, gas mean rel change +0.0620, eui mean rel change +0.0302, elec mean rel change +0.0710
+test M>=5: n 183628, gas mean rel change -0.0000, eui mean rel change -0.0001, elec mean rel change -0.0000
+test M1: n 1, gas mean rel change +0.0000, eui mean rel change +0.0000, elec mean rel change +0.0000

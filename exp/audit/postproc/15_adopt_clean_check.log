@@ -1,0 +1,11 @@
+train: adoption > rest + 1e-9: 0 | rows rest<=1e-9: 23178 of which adoption==0: 23178
+train subzones with >1 adoption value: 0 of 153508
+test rows seen subzone: 169008 unseen: 14979
+seen: submitted == train subzone value: 169008 max abs diff 0.0
+seen: test rows whose hvac_dist differs from the train subzone (max abs > 1e-9): 0
+unseen: adoption > rest + 1e-6: 23 max excess 7.62939453125e-06
+unseen: rest<=1e-9 rows: 539 with adoption != 0: 23
+all: adoption > rest + 1e-9: 23 | min 0.0 max 82.68745257918636
+unseen: adoption / rest quantiles [0.00000000e+00 0.00000000e+00 8.60100000e-01 9.87900000e-01
+ 5.36870912e+08]
+clean: submitted == identity: 183987 of 183987

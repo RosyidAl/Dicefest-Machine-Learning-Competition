@@ -1,0 +1,78 @@
+/root/Dicefest/exp/audit/postproc/05_calib.py:84: RuntimeWarning: divide by zero encountered in scalar divide
+  print(f"   z_lo [{l},{h}) n {sel.sum():6d} mean resid {r.mean():+11.3f} t {r.mean() / (r.std() / np.sqrt(sel.sum())):+5.1f}"
+/root/Dicefest/exp/audit/postproc/05_calib.py:84: RuntimeWarning: divide by zero encountered in scalar divide
+  print(f"   z_lo [{l},{h}) n {sel.sum():6d} mean resid {r.mean():+11.3f} t {r.mean() / (r.std() / np.sqrt(sel.sum())):+5.1f}"
+== gas: base 0.245144, hard clip -0.0000158
+   p q[0,0.001] n    129 mean p     27773.26 mean resid    -344.414 se   691.337 t  -0.5
+   p q[0.001,0.01] n   1159 mean p     38209.25 mean resid    +683.438 se   376.446 t  +1.8
+   p q[0.01,0.05] n   5152 mean p     53908.42 mean resid    -173.538 se   214.110 t  -0.8
+   p q[0.05,0.2] n  19319 mean p     83352.45 mean resid     +82.937 se   144.970 t  +0.6
+   p q[0.2,0.5] n  38638 mean p    146447.29 mean resid    -209.963 se   141.941 t  -1.5
+   p q[0.5,0.8] n  38638 mean p    260756.78 mean resid    -161.583 se   196.919 t  -0.8
+   p q[0.8,0.95] n  19319 mean p    414230.77 mean resid    +356.624 se   371.341 t  +1.0
+   p q[0.95,0.99] n   5152 mean p    586175.70 mean resid    +185.833 se   914.321 t  +0.2
+   p q[0.99,0.999] n   1159 mean p    756144.26 mean resid   +2419.948 se  2220.396 t  +1.1
+   p q[0.999,1] n    129 mean p    923672.82 mean resid  -26420.013 se  6149.977 t  -4.3
+   z_lo [1.5,2.5) n      1 mean resid  +16782.870 t  +inf mean M 2.0
+   z_lo [2.5,3.5) n   3792 mean resid    +792.399 t  +2.6 mean M 5.1
+   z_lo [3.5,5) n  39603 mean resid     -67.994 t  -0.6 mean M 9.5
+   z_lo [5,8) n  83466 mean resid     -56.931 t  -0.4 mean M 27.6
+   hard           d -0.0000158 total -0.00000315
+   mult           d -0.0000059 total -0.00000118
+   affine         d -0.0000036 total -0.00000071
+   iso            d +0.0003271 total +0.00006541
+   tn_hi          d -0.0000779 total -0.00001558
+   tn2            d -0.0000801 total -0.00001603
+   hinge+tn_hi    d -0.0000818 total -0.00001636
+   hinge4+tn_hi   d -0.0000771 total -0.00001541
+   tn2 full-H coefficients (reference) k_lo 20.522 k_hi 0.505
+== eui: base 0.648593, hard clip -0.0000022
+   p q[0,0.001] n    129 mean p        43.03 mean resid      +1.493 se     1.327 t  +1.1
+   p q[0.001,0.01] n   1159 mean p        70.31 mean resid      +0.243 se     0.581 t  +0.4
+   p q[0.01,0.05] n   5152 mean p        87.63 mean resid      +0.059 se     0.277 t  +0.2
+   p q[0.05,0.2] n  19319 mean p       106.04 mean resid      -0.145 se     0.146 t  -1.0
+   p q[0.2,0.5] n  38638 mean p       126.02 mean resid      -0.017 se     0.112 t  -0.2
+   p q[0.5,0.8] n  38638 mean p       147.92 mean resid      -0.152 se     0.129 t  -1.2
+   p q[0.8,0.95] n  19319 mean p       172.44 mean resid      -0.209 se     0.228 t  -0.9
+   p q[0.95,0.99] n   5152 mean p       204.13 mean resid      +0.786 se     0.627 t  +1.3
+   p q[0.99,0.999] n   1159 mean p       251.36 mean resid      +2.054 se     1.885 t  +1.1
+   p q[0.999,1] n    129 mean p       346.84 mean resid      +0.756 se     7.937 t  +0.1
+   z_lo [1.5,2.5) n      1 mean resid     +44.294 t  +inf mean M 2.0
+   z_lo [2.5,3.5) n   3529 mean resid      +1.234 t  +1.8 mean M 5.0
+   z_lo [3.5,5) n  39767 mean resid      -0.134 t  -0.8 mean M 9.5
+   z_lo [5,8) n  83991 mean resid      -0.062 t  -0.8 mean M 27.8
+   hard           d -0.0000022 total -0.00000043
+   mult           d +0.0000013 total +0.00000026
+   affine         d -0.0000064 total -0.00000127
+   iso            d +0.0004301 total +0.00008602
+   tn_hi          d -0.0000182 total -0.00000365
+   tn2            d -0.0001639 total -0.00003277
+   hinge+tn_hi    d -0.0001874 total -0.00003747
+   hinge4+tn_hi   d -0.0000270 total -0.00000540
+   tn2 full-H coefficients (reference) k_lo 22.365 k_hi 0.657
+== elec: base 0.314623, hard clip -0.0000010
+   p q[0,0.001] n    129 mean p      9315.53 mean resid    +255.052 se   282.810 t  +0.9
+   p q[0.001,0.01] n   1159 mean p     12039.89 mean resid     +32.074 se   134.903 t  +0.2
+   p q[0.01,0.05] n   5152 mean p     15846.09 mean resid     -31.839 se    76.169 t  -0.4
+   p q[0.05,0.2] n  19319 mean p     23649.35 mean resid     +44.656 se    53.663 t  +0.8
+   p q[0.2,0.5] n  38638 mean p     41099.82 mean resid      -2.580 se    51.734 t  -0.0
+   p q[0.5,0.8] n  38638 mean p     72520.10 mean resid     -92.450 se    70.849 t  -1.3
+   p q[0.8,0.95] n  19319 mean p    113564.56 mean resid    -113.931 se   127.064 t  -0.9
+   p q[0.95,0.99] n   5152 mean p    157895.03 mean resid    -293.830 se   308.063 t  -1.0
+   p q[0.99,0.999] n   1159 mean p    201772.84 mean resid    +346.070 se   762.371 t  +0.5
+   p q[0.999,1] n    129 mean p    253720.90 mean resid   +1468.096 se  2737.294 t  +0.5
+   z_lo [0,1.5) n     12 mean resid   -5015.468 t  -1.8 mean M 10.5
+   z_lo [1.5,2.5) n   8430 mean resid    +149.491 t  +1.8 mean M 5.8
+   z_lo [2.5,3.5) n  36308 mean resid     -13.514 t  -0.3 mean M 10.2
+   z_lo [3.5,5) n  62421 mean resid    -105.225 t  -2.0 mean M 22.8
+   z_lo [5,8) n  21620 mean resid      -7.417 t  -0.1 mean M 45.9
+   hard           d -0.0000010 total -0.00000020
+   mult           d -0.0000031 total -0.00000063
+   affine         d -0.0000016 total -0.00000033
+   iso            d +0.0005511 total +0.00011022
+   tn_hi          d -0.0000003 total -0.00000007
+   tn2            d -0.0000004 total -0.00000008
+   hinge+tn_hi    d -0.0000023 total -0.00000046
+   hinge4+tn_hi   d +0.0000002 total +0.00000003
+   tn2 full-H coefficients (reference) k_lo 0.527 k_hi 1.200
+TOTAL {'hard': -3.78e-06, 'mult': -1.55e-06, 'affine': -2.31e-06, 'iso': 0.00026165, 'tn_hi': -1.929e-05, 'tn2': -4.889e-05, 'hinge+tn_hi': -5.429e-05, 'hinge4+tn_hi': -2.078e-05}

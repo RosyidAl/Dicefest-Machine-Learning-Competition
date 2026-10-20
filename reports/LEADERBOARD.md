@@ -1,4 +1,4 @@
-# LEADERBOARD (dibangun ulang 2026-10-19 23:42 WIB)
+# LEADERBOARD (dibangun ulang 2026-10-20 18:47 WIB)
 
 Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil lebih baik.
 
@@ -220,6 +220,13 @@ Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil l
 | E0130 | 0.32713 | log elec per meter | 94.7 | legacy run p1_lepm; log exp/v9_nn.log |
 
 
+### nn / t3 EUI
+
+| exp_id | nrmse_t3 | target_transform | runtime_min | notes |
+|---|---|---|---|---|
+| NCA0001 | 0.66735 |  |  | single model weaker than best members but nested VC gas+eui -0.000084; holdout chain gas 0.24514->0.24511, eui 0.64859->0.64846; sub_v19nca public LB 0.24920 (v19vce 0.24923); D014 |
+
+
 ### other / t3 EUI
 
 | exp_id | nrmse_t3 | target_transform | runtime_min | notes |
@@ -325,10 +332,6 @@ Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil l
 
 | exp_id | status | model_family | nrmse_mean | nrmse_t1 | nrmse_t2 | nrmse_t3 | hypothesis |
 |---|---|---|---|---|---|---|---|
-| ENS0018 | done | ensemble | 0.24960 | 0.24524 | 0.31608 | 0.65101 | NNLS blend v16 (34 anggota, FB07 kNN-target; exp/analysis/select_v16.py) = Final A (D006) |
-| EM0002 | done | xgb |  | 0.24899 |  | 0.65741 | XGB Poisson gas per meter (bobot M), input v16 + kNN-target, 10-fold |
-| EM0003 | done | xgb |  | 0.24873 |  | 0.66008 | XGB Poisson EUI (laju per luas, bobot A), input v16 + kNN-target, 10-fold |
-| EM0004 | done | xgb |  |  | 0.31977 |  | XGB Poisson listrik per meter (bobot M), input v16 + kNN-target, 10-fold |
 | EM0005 | done | xgb |  | 0.24911 |  | 0.65985 | XGB Poisson gas per luas selubung bld_dim_03, input v16 + kNN-target, 10-fold |
 | E0271 | done | lgb |  | 0.2572729456806092 |  | 0.6720985399324281 | CV_SECONDARY check: LGB gpm tanpa TE spasial, skema primary |
 | E0272 | done | lgb |  |  | 0.3262256196151608 |  | CV_SECONDARY check: LGB epm tanpa TE spasial, skema primary |
@@ -345,6 +348,10 @@ Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil l
 | PP0006 | done | postprocess |  | 0.24514 | 0.31462 | 0.64859 | re-select the similarity-kNN residual-correction configs for the VC blend (greedy over 39 configs on the holdout) |
 | PP0007 | done | postprocess |  |  |  |  | alternative estimators (relative shift, plain mean, per-area shift) for the kNN residual-correction features |
 | PP0008 | done | lgb |  |  |  |  | nonlinear residual correction: small LightGBM on top of the linear group+kNN correction (features + log A, log M, log blend prediction) |
+| PL0001 | done |  |  |  |  |  | pseudo-labelling: students (NN pk2_gpgea / pk2_lepm, LGB lp2_gpm) trained on P (true) + H (VC-blend teacher pseudo targets), out-of-fold H predictions as a correction regressor |
+| ENS0020 | done |  |  |  |  |  | gas <-> EUI blend consistency (other blend's estimate minus own) as a correction regressor |
+| PP0009 | done |  |  |  |  |  | kNN residual-correction features in prediction space (log blend prediction, full space + prediction) |
+| NCA0001 | done | nn |  | 0.25155 |  | 0.66735 | retrieval regressor (ModernNCA style): learned embedding, prediction = softmax(-distance)-weighted mean of training targets; inputs of the kNN NN members |
 
 
 ## Submisi dengan skor public LB
@@ -367,3 +374,5 @@ Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil l
 | 2026-10-18 11:42 | submissions/sub_v19dev.csv | 0.24937 (nested; holdout chain -0.00002 vs v18) | 0.24934 | submitted by user 18 Okt |
 | 2026-10-19 22:51 | submissions/sub_v19vce.csv | 0.64859 | 0.24923 | holdout chain EUI 0.64859 vs 0.64878 (honest split-half -0.000106); gas/elec/clean/adoption byte-identical to sub_v19vc |
 | 2026-10-19 22:53 | submissions/BEST_CURRENT.csv | 0.64859 | 0.24923 | BEST_CURRENT v19vce (LB 0.24923) |
+| 2026-10-20 18:46 | submissions/sub_v19nca.csv | 0.24511 | 0.24920 | holdout chain gas 0.24511 eui 0.64846 elec 0.31462 (v19vce 0.24514/0.64859/0.31462); elec/clean/adoption byte-identical to sub_v19vce |
+| 2026-10-20 18:47 | submissions/BEST_CURRENT.csv | 0.24511 | 0.24920 | BEST_CURRENT v19nca (LB 0.24920) |

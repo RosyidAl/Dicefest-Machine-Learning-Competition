@@ -1,0 +1,47 @@
+
+H chain corrected / gas: own-rows dTotal -0.00001969; re-weighted to test levels -0.00001302 (bootstrap sd 0.00000398)
+   [0.500,0.800) src n  7233 test n 10594 mean dSE/sig2 +0.0000
+   [0.800,0.850) src n   199 test n  268 mean dSE/sig2 +0.0007
+   [0.850,0.900) src n    94 test n  155 mean dSE/sig2 -0.0046
+   [0.900,0.925) src n    24 test n   50 mean dSE/sig2 -0.0093
+   [0.925,0.950) src n    18 test n   25 mean dSE/sig2 -0.0108
+   [0.950,0.975) src n    18 test n   16 mean dSE/sig2 -0.1220
+   [0.975,1.000) src n     6 test n    7 mean dSE/sig2 -0.2311
+   [1.000,1.050) src n    11 test n    6 mean dSE/sig2 -0.1755
+   [1.050,inf) src n     0 test n    1 mean dSE/sig2 +0.0000
+
+H chain corrected / eui: own-rows dTotal -0.00000481; re-weighted to test levels -0.00000412 (bootstrap sd 0.00000174)
+   [0.500,0.800) src n  7228 test n 10605 mean dSE/sig2 +0.0000
+   [0.800,0.850) src n   189 test n  266 mean dSE/sig2 +0.0001
+   [0.850,0.900) src n    99 test n  160 mean dSE/sig2 -0.0025
+   [0.900,0.925) src n    27 test n   49 mean dSE/sig2 -0.0074
+   [0.925,0.950) src n    21 test n   25 mean dSE/sig2 -0.0124
+   [0.950,0.975) src n    12 test n   17 mean dSE/sig2 -0.1890
+   [0.975,1.000) src n    11 test n    7 mean dSE/sig2 -0.0443
+   [1.000,1.050) src n    10 test n    6 mean dSE/sig2 -0.0575
+   [1.050,inf) src n     0 test n    2 mean dSE/sig2 +0.0000
+H chain corrected: gas+eui expected test dTotal -0.00001713  sd 0.00000427  P(<0) 1.000
+
+full-OOF VC / gas: own-rows dTotal -0.00001774; re-weighted to test levels -0.00001470 (bootstrap sd 0.00000261)
+   [0.500,0.800) src n 24178 test n 10594 mean dSE/sig2 +0.0000
+   [0.800,0.850) src n   639 test n  268 mean dSE/sig2 +0.0006
+   [0.850,0.900) src n   369 test n  155 mean dSE/sig2 -0.0013
+   [0.900,0.925) src n    91 test n   50 mean dSE/sig2 -0.0187
+   [0.925,0.950) src n    58 test n   25 mean dSE/sig2 -0.0563
+   [0.950,0.975) src n    43 test n   16 mean dSE/sig2 -0.0970
+   [0.975,1.000) src n    22 test n    7 mean dSE/sig2 -0.0472
+   [1.000,1.050) src n    19 test n    6 mean dSE/sig2 -0.2195
+   [1.050,inf) src n     4 test n    1 mean dSE/sig2 -1.0529
+
+full-OOF VC / eui: own-rows dTotal -0.00000305; re-weighted to test levels -0.00000254 (bootstrap sd 0.00000044)
+   [0.500,0.800) src n 24185 test n 10605 mean dSE/sig2 +0.0000
+   [0.800,0.850) src n   638 test n  266 mean dSE/sig2 +0.0001
+   [0.850,0.900) src n   370 test n  160 mean dSE/sig2 -0.0014
+   [0.900,0.925) src n    91 test n   49 mean dSE/sig2 -0.0043
+   [0.925,0.950) src n    65 test n   25 mean dSE/sig2 -0.0284
+   [0.950,0.975) src n    45 test n   17 mean dSE/sig2 -0.0466
+   [0.975,1.000) src n    21 test n    7 mean dSE/sig2 -0.0320
+   [1.000,1.050) src n    25 test n    6 mean dSE/sig2 -0.0805
+   [1.050,inf) src n     5 test n    2 mean dSE/sig2 -0.2134
+full-OOF VC: gas+eui expected test dTotal -0.00001724  sd 0.00000263  P(<0) 1.000
+elapsed 89.73 s maxrss 1178372 kB

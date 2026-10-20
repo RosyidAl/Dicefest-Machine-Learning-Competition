@@ -1,0 +1,7 @@
+bt_H -0.6726  bt_fullOOF -0.6743  beta of the fix -0.6743
+H: model-expected TOTAL -0.00002159 (gas -0.0000942, eui -0.0000137); measured on H with beta -0.6743: -0.00002341
+mean (g - 9e5)_+^2 per row: H 2.3517e+06, test 1.4416e+06, ratio test/H 0.613
+test, bt from H corrected: model-expected TOTAL -0.00001324 (gas -0.0000578, eui -0.0000084)
+test, bt from full-OOF teacher: model-expected TOTAL -0.00001331 (gas -0.0000581, eui -0.0000085)
+expected-gain spread from which rows land in public vs private (bias model, no noise term): public mean -0.00001319 sd 0.00000402; private mean -0.00001326 sd 0.00000172
+maxrss 172356 kB, 48.18 s

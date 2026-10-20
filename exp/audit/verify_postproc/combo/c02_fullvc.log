@@ -1,0 +1,33 @@
+eui: in-sample VC OOF NRMSE 0.649594
+gas: in-sample VC OOF NRMSE 0.244703
+elec: in-sample VC OOF NRMSE 0.315740
+gas: |mine - auditor 14_fullvc_oof| / sigma: max 9.77e-12 mean 2.06e-13
+eui: |mine - auditor 14_fullvc_oof| / sigma: max 1.85e-11 mean 3.35e-13
+elec: |mine - auditor 14_fullvc_oof| / sigma: max 1.12e-11 mean 2.52e-13
+test duplicate rows 77
+gas  relative correction sum(corrected - teacher) / sum(teacher): M2-3: test n 60 corr +0.0038 | H n 48 corr +0.0004 ; M4: test n 298 corr +0.0005 | H n 205 corr +0.0007 ; M5: test n 4218 corr -0.0002 | H n 2937 corr -0.0003 ; M>=6: test n 179333 corr -0.0000 | H n 125601 corr +0.0000
+eui  relative correction sum(corrected - teacher) / sum(teacher): M2-3: test n 60 corr +0.0030 | H n 48 corr +0.0007 ; M4: test n 298 corr +0.0004 | H n 205 corr +0.0005 ; M5: test n 4218 corr -0.0004 | H n 2937 corr -0.0003 ; M>=6: test n 179333 corr -0.0000 | H n 125601 corr -0.0001
+elec relative correction sum(corrected - teacher) / sum(teacher): M2-3: test n 60 corr +0.0018 | H n 48 corr +0.0023 ; M4: test n 298 corr +0.0008 | H n 205 corr -0.0003 ; M5: test n 4218 corr +0.0000 | H n 2937 corr +0.0000 ; M>=6: test n 179333 corr -0.0001 | H n 125601 corr -0.0001
+	Command being timed: "timeout 1500 .venv/bin/python exp/audit/verify_postproc/combo/c02_fullvc.py"
+	User time (seconds): 16.53
+	System time (seconds): 1.46
+	Percent of CPU this job got: 113%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:15.81
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 621148
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 1
+	Minor (reclaiming a frame) page faults: 285714
+	Voluntary context switches: 471
+	Involuntary context switches: 2369
+	Swaps: 0
+	File system inputs: 129224
+	File system outputs: 27240
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

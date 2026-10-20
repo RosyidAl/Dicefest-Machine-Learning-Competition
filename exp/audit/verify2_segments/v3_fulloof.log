@@ -1,0 +1,68 @@
+27 gas members, 429303 rows
+  gas: global NNLS direct vs Gram max |dw| 1.24e-10
+
+== gas global NNLS: NRMSE 0.244940
+   level [ -inf, 0.70) n 425352  mean resid (gas units)        +32  t  +0.57
+   level [ 0.70, 0.80) n   2703  mean resid (gas units)      +4796  t  +3.30
+   level [ 0.80, 0.85) n    629  mean resid (gas units)      +3133  t  +1.02
+   level [ 0.85, 0.90) n    375  mean resid (gas units)      -5097  t  -1.37
+   level [ 0.90, 0.93) n    105  mean resid (gas units)     -18596  t  -2.94
+   level [ 0.93, 0.96) n     67  mean resid (gas units)     -44225  t  -5.10
+   level [ 0.96, 0.98) n     26  mean resid (gas units)     -52065  t  -4.40
+   level [ 0.98, 1.00) n     17  mean resid (gas units)     -37578  t  -2.67
+   level [ 1.00, 1.02) n     16  mean resid (gas units)     -65381  t  -4.55
+   level [ 1.02,  inf) n     13  mean resid (gas units)    -110474  t  -7.01
+   P->H: k 0.085 dTotal on H -0.00001137 | H->P: k 0.075 dTotal on P -0.00002403
+   fixed k 0.08: all-row dTotal -0.00002070
+   fixed k 0.085: all-row dTotal -0.00002062
+   5-fold x5 cross-fit: mean -0.00002037 sd 0.00000017 | 2-fold x50: mean -0.00002022 sd 0.00000099 worst -0.00001569 | leave-region-out -0.00002055 (k 0.08..0.0825)
+
+== gas VC A2xM2xp2: NRMSE 0.244703
+   level [ -inf, 0.70) n 425339  mean resid (gas units)        -14  t  -0.25
+   level [ 0.70, 0.80) n   2719  mean resid (gas units)      +3739  t  +2.58
+   level [ 0.80, 0.85) n    639  mean resid (gas units)      +5649  t  +1.83
+   level [ 0.85, 0.90) n    369  mean resid (gas units)      -3179  t  -0.87
+   level [ 0.90, 0.93) n    104  mean resid (gas units)     -24149  t  -3.63
+   level [ 0.93, 0.96) n     64  mean resid (gas units)     -37351  t  -4.30
+   level [ 0.96, 0.98) n     31  mean resid (gas units)     -40559  t  -4.10
+   level [ 0.98, 1.00) n     15  mean resid (gas units)     -48178  t  -3.05
+   level [ 1.00, 1.02) n     12  mean resid (gas units)     -63095  t  -3.59
+   level [ 1.02,  inf) n     11  mean resid (gas units)    -110056  t  -6.87
+   P->H: k 0.0825 dTotal on H -0.00000987 | H->P: k 0.0725 dTotal on P -0.00002044
+   fixed k 0.08: all-row dTotal -0.00001774
+   fixed k 0.085: all-row dTotal -0.00001750
+   5-fold x5 cross-fit: mean -0.00001743 sd 0.00000015 | 2-fold x50: mean -0.00001724 sd 0.00000101 worst -0.00001231 | leave-region-out -0.00001763 (k 0.0775..0.08)
+  eui: global NNLS direct vs Gram max |dw| 1.06e-10
+
+== eui global NNLS: NRMSE 0.650226
+   level [ -inf, 0.70) n 425353  mean resid (gas units)       -290  t  -5.16
+   level [ 0.70, 0.80) n   2717  mean resid (gas units)      +4335  t  +2.98
+   level [ 0.80, 0.85) n    631  mean resid (gas units)      +3459  t  +1.11
+   level [ 0.85, 0.90) n    363  mean resid (gas units)      -4839  t  -1.31
+   level [ 0.90, 0.93) n    104  mean resid (gas units)     -20338  t  -3.19
+   level [ 0.93, 0.96) n     66  mean resid (gas units)     -42373  t  -5.07
+   level [ 0.96, 0.98) n     25  mean resid (gas units)     -48375  t  -4.46
+   level [ 0.98, 1.00) n     16  mean resid (gas units)     -32399  t  -2.56
+   level [ 1.00, 1.02) n     15  mean resid (gas units)     -76085  t  -4.44
+   level [ 1.02,  inf) n     13  mean resid (gas units)    -105118  t  -6.19
+   P->H: k 0.0875 dTotal on H -0.00000220 | H->P: k 0.085 dTotal on P -0.00000307
+   fixed k 0.08: all-row dTotal -0.00000277
+   fixed k 0.085: all-row dTotal -0.00000282
+   5-fold x5 cross-fit: mean -0.00000275 sd 0.00000003 | 2-fold x50: mean -0.00000271 sd 0.00000020 worst -0.00000154 | leave-region-out -0.00000279 (k 0.085..0.0875)
+
+== eui VC A2xM2xp2: NRMSE 0.649594
+   level [ -inf, 0.70) n 425325  mean resid (gas units)        -25  t  -0.44
+   level [ 0.70, 0.80) n   2718  mean resid (gas units)      +3391  t  +2.33
+   level [ 0.80, 0.85) n    638  mean resid (gas units)      +3535  t  +1.16
+   level [ 0.85, 0.90) n    370  mean resid (gas units)      -4795  t  -1.30
+   level [ 0.90, 0.93) n    112  mean resid (gas units)     -25111  t  -3.86
+   level [ 0.93, 0.96) n     62  mean resid (gas units)     -37851  t  -4.32
+   level [ 0.96, 0.98) n     32  mean resid (gas units)     -53397  t  -4.98
+   level [ 0.98, 1.00) n     16  mean resid (gas units)     -37867  t  -2.73
+   level [ 1.00, 1.02) n     15  mean resid (gas units)     -66593  t  -4.10
+   level [ 1.02,  inf) n     15  mean resid (gas units)    -106713  t  -7.27
+   P->H: k 0.0875 dTotal on H -0.00000283 | H->P: k 0.0875 dTotal on P -0.00000326
+   fixed k 0.08: all-row dTotal -0.00000305
+   fixed k 0.085: all-row dTotal -0.00000312
+   5-fold x5 cross-fit: mean -0.00000307 sd 0.00000003 | 2-fold x50: mean -0.00000302 sd 0.00000021 worst -0.00000178 | leave-region-out -0.00000311 (k 0.0875..0.09)
+elapsed 512.27 s maxrss 660352 kB

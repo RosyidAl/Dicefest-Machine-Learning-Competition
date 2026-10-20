@@ -1,0 +1,5 @@
+train clean identity exact: 1.0 min b01 train/test: 1.0 1.0
+test clean == identity: 1.0
+train subzones with >1 adoption value: 0 of 153508
+test rows in seen subzones: 0.9186 adoption == train value: 1.0
+unseen subzones with >1 predicted value: 0 of 9677

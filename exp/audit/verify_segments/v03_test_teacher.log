@@ -1,0 +1,28 @@
+members 27; OOF (429303, 27); test (183987, 27); dup rows 77
+gas: rebuilt test teacher; rms(sub - teacher)/sigma over non-dup rows 0.02056
+eui: rebuilt test teacher; rms(sub - teacher)/sigma over non-dup rows 0.04359
+
+rows per 100k by bin of gas / 1e6:   test teacher | test corrected || H teacher | H corrected
+   [0.80,0.85)    153.9    145.7  ||    147.5    154.5
+   [0.85,0.90)     79.9     84.3  ||     74.5     73.0
+   [0.90,0.93)     29.9     31.0  ||     21.0     22.5
+   [0.93,0.96)     13.6     15.2  ||     20.2     14.8
+   [0.96,0.98)      3.8      4.9  ||      7.8     10.1
+   [0.98,1.00)      3.3      2.2  ||      5.4      3.9
+   [1.00,1.02)      1.6      1.6  ||      3.1      4.7
+   [1.02,9.00)      1.6      2.2  ||      3.9      3.9
+
+mean correction (corrected - teacher) by bin of the TEACHER prediction: test | H   (n test, n H)
+   [0.80,0.85)       +171       -410   (283, 190)
+   [0.85,0.90)       +421       -670   (147, 96)
+   [0.90,0.93)       +979      -3292   (55, 27)
+   [0.93,0.96)      +1409      +1103   (25, 26)
+   [0.96,0.98)      +2742      +1707   (7, 10)
+   [0.98,1.00)       -578      -3052   (6, 7)
+   [1.00,1.02)      +1573      +5774   (3, 4)
+   [1.02,9.00)     +11161      -6140   (3, 5)
+
+teacher > 0.9e6: mean relative correction test +0.0015 (n 99) | H -0.0010 (n 79)
+teacher in (0.6e6, 0.9e6]: mean relative correction test -0.0001 (n 4404) | H -0.0003 (n 3098)
+test rows teacher > 0.9e6: mean (cal(corrected) - corrected) -29240; mean (cal(teacher) - teacher) -28289
+H rows teacher > 0.9e6:    mean (cal(corrected) - corrected) -34740; mean (cal(teacher) - teacher) -34814

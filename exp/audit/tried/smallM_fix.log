@@ -1,0 +1,12 @@
+P-fit per M (2-4 pooled as <=3 / 4)    gas  factors {(2, 3): 1.1974, (4,): 1.0785} delta -0.0000093 (sd 0.0000030, P<0 1.00) total -0.00000185 rows 253
+P-fit per M (2-4 pooled as <=3 / 4)    eui  factors {(2, 3): 1.2098, (4,): 1.0334} delta -0.0002147 (sd 0.0001483, P<0 0.92) total -0.00004295 rows 253
+P-fit per M (2-4 pooled as <=3 / 4)    elec factors {(2, 3): 1.1785, (4,): 1.063} delta -0.0000048 (sd 0.0000024, P<0 0.98) total -0.00000097 rows 253
+P-fit per M (2-4 pooled as <=3 / 4)    TOTAL -0.00004577
+P-fit pooled M<=4                      gas  factors 1.0894 delta -0.0000070 (sd 0.0000027, P<0 0.99) total -0.00000140 rows 253
+P-fit pooled M<=4                      eui  factors 1.062 delta -0.0001670 (sd 0.0000965, P<0 0.96) total -0.00003340 rows 253
+P-fit pooled M<=4                      elec factors 1.0736 delta -0.0000033 (sd 0.0000020, P<0 0.94) total -0.00000065 rows 253
+P-fit pooled M<=4                      TOTAL -0.00003545
+H cross-fit per M                      gas  factors [1.251, 1.08, 1.224, 1.051, 1.255, 1.098, 1.207, 1.07, 1.258, 1.09] delta -0.0000077 (sd 0.0000030, P<0 0.99) total -0.00000155 rows 253
+H cross-fit per M                      eui  factors [1.155, 1.052, 1.162, 1.03, 1.158, 1.041, 1.134, 1.051, 1.17, 1.059] delta -0.0002060 (sd 0.0001188, P<0 0.96) total -0.00004121 rows 253
+H cross-fit per M                      elec factors [1.203, 1.057, 1.171, 1.049, 1.226, 1.072, 1.301, 1.052, 1.218, 1.061] delta -0.0000036 (sd 0.0000027, P<0 0.89) total -0.00000072 rows 253
+H cross-fit per M                      TOTAL -0.00004347

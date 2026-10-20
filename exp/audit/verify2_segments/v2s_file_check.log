@@ -1,0 +1,34 @@
+train rows 429303  test rows 183987  sample rows 183987
+
+[train] gas max 999764.8988  rows >= 1e6: 0  rows >= 999,000: 4
+[train] identity eui*A == gas: max rel err 6.365e-16  max eui*A 999764.8988
+[train] counts per 25k bin from 700k to 1e6: 1000 783 659 547 456 356 276 229 180 119 106 87
+[train] log-linear tail extrapolation: expected rows in [1e6,1.1e6) without a cap ~ 204 (observed 0)
+[train] top 5 gas: 999764.9 999729.3 999305.2 999102.5 998998.0
+
+[submissions/sub_v19vce.csv] gas > 1e6: 7 rows; gas > train max: 7 rows; eui*A > 1e6: 8 rows; gas max 1061409.1; max eui*A 1065513.9
+   id  ID_584986  gas    1061409.1  eui   112.980  A   9431.0  eui*A    1065513.9  excess/sigma 0.4047
+   id  ID_509296  gas    1042639.2  eui   215.127  A   4909.4  eui*A    1056145.3  excess/sigma 0.2810
+   id  ID_501376  gas    1039875.6  eui   199.986  A   5235.4  eui*A    1047011.3  excess/sigma 0.2628
+   id  ID_490481  gas    1023195.0  eui    98.574  A  10465.1  eui*A    1031585.4  excess/sigma 0.1529
+   id  ID_432043  gas    1016814.0  eui   133.416  A   7593.8  eui*A    1013127.7  excess/sigma 0.1108
+   id  ID_562155  gas    1010786.3  eui   227.236  A   4434.1  eui*A    1007583.3  excess/sigma 0.0711
+   id  ID_444612  gas    1004355.4  eui   150.502  A   6704.0  eui*A    1008965.7  excess/sigma 0.0287
+   eui rows with eui*A > 1e6 (id, eui, cap 1e6/A, excess/sigma):
+   id  ID_584986  eui   112.980  cap   106.033  excess/sigma 0.1709  gas pred    1061409.1
+   id  ID_509296  eui   215.127  cap   203.690  excess/sigma 0.2813  gas pred    1042639.2
+   id  ID_501376  eui   199.986  cap   191.007  excess/sigma 0.2209  gas pred    1039875.6
+   id  ID_490481  eui    98.574  cap    95.556  excess/sigma 0.0742  gas pred    1023195.0
+   id  ID_432043  eui   133.416  cap   131.687  excess/sigma 0.0425  gas pred    1016814.0
+   id  ID_444612  eui   150.502  cap   149.165  excess/sigma 0.0329  gas pred    1004355.4
+   id  ID_562155  eui   227.236  cap   225.526  excess/sigma 0.0421  gas pred    1010786.3
+   id  ID_560825  eui   113.718  cap   113.672  excess/sigma 0.0011  gas pred     996073.2
+   any over-cap gas value equal to a train gas value: False
+
+[submissions/BEST_CURRENT.csv] gas > 1e6: 7 rows; gas > train max: 7 rows; eui*A > 1e6: 8 rows; gas max 1061409.1; max eui*A 1065513.9
+
+[submissions/sub_v19vc.csv] gas > 1e6: 7 rows; gas > train max: 7 rows; eui*A > 1e6: 7 rows; gas max 1061409.1; max eui*A 1064430.6
+
+[submissions/sub_v19a3.csv] gas > 1e6: 7 rows; gas > train max: 7 rows; eui*A > 1e6: 6 rows; gas max 1066202.6; max eui*A 1061529.7
+
+[exp/audit/segments/sub_v19vce_cap_k0.08.csv] gas > 1e6: 0 rows; gas > train max: 0 rows; eui*A > 1e6: 0 rows; gas max 950324.7; max eui*A 951027.9

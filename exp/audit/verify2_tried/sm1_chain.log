@@ -1,0 +1,47 @@
+== 1. bias per group (rel = sum(y-p)/sum(p); f = LS scale; t of mean residual; frac y>p; median y/p)
+gas  le3  H-corr n=   48 rel +0.2369 f 1.2403 t  +5.2 pos 0.73 med 1.197 | H-teach rel +0.2374 f 1.2396 t  +5.2 | P n=   88 rel +0.2130 f 1.1974 t  +4.8 pos 0.69 med 1.225
+gas  eq4  H-corr n=  205 rel +0.0825 f 1.0780 t  +3.5 pos 0.54 med 1.042 | H-teach rel +0.0833 f 1.0788 t  +3.5 | P n=  536 rel +0.0800 f 1.0785 t  +5.6 pos 0.55 med 1.041
+gas  eq5  H-corr n= 2937 rel +0.0078 f 1.0051 t  +1.6 pos 0.47 med 0.985 | H-teach rel +0.0075 f 1.0045 t  +1.5 | P n= 6946 rel +0.0112 f 1.0122 t  +3.4 pos 0.47 med 0.984
+gas  6to7 H-corr n= 9457 rel -0.0065 f 0.9917 t  -2.4 pos 0.45 med 0.972 | H-teach rel -0.0065 f 0.9917 t  -2.4 | P n=22390 rel -0.0025 f 0.9964 t  -1.4 pos 0.45 med 0.975
+eui  le3  H-corr n=   48 rel +0.1700 f 1.1564 t  +3.7 pos 0.73 med 1.152 | H-teach rel +0.1708 f 1.1569 t  +3.7 | P n=   88 rel +0.1905 f 1.2098 t  +4.5 pos 0.69 med 1.141
+eui  eq4  H-corr n=  205 rel +0.0484 f 1.0462 t  +2.0 pos 0.50 med 1.001 | H-teach rel +0.0489 f 1.0469 t  +2.0 | P n=  536 rel +0.0379 f 1.0334 t  +2.7 pos 0.49 med 0.988
+eui  eq5  H-corr n= 2937 rel +0.0022 f 1.0001 t  +0.4 pos 0.46 med 0.981 | H-teach rel +0.0019 f 0.9997 t  +0.4 | P n= 6946 rel +0.0056 f 1.0054 t  +1.6 pos 0.46 med 0.978
+eui  6to7 H-corr n= 9457 rel -0.0063 f 0.9933 t  -2.2 pos 0.45 med 0.972 | H-teach rel -0.0064 f 0.9932 t  -2.3 | P n=22390 rel -0.0026 f 0.9966 t  -1.4 pos 0.46 med 0.974
+elec le3  H-corr n=   48 rel +0.2384 f 1.2228 t  +4.1 pos 0.73 med 1.270 | H-teach rel +0.2413 f 1.2249 t  +4.2 | P n=   88 rel +0.2103 f 1.1785 t  +4.3 pos 0.65 med 1.163
+elec eq4  H-corr n=  205 rel +0.0561 f 1.0584 t  +1.9 pos 0.48 med 0.978 | H-teach rel +0.0558 f 1.0577 t  +1.8 | P n=  536 rel +0.1020 f 1.0630 t  +4.4 pos 0.50 med 0.999
+elec eq5  H-corr n= 2937 rel +0.0073 f 1.0103 t  +1.0 pos 0.43 med 0.938 | H-teach rel +0.0074 f 1.0105 t  +1.0 | P n= 6946 rel +0.0032 f 1.0009 t  +0.7 pos 0.43 med 0.937
+elec 6to7 H-corr n= 9457 rel -0.0001 f 1.0003 t  -0.0 pos 0.43 med 0.950 | H-teach rel -0.0002 f 1.0002 t  -0.0 | P n=22390 rel +0.0010 f 1.0042 t  +0.4 pos 0.42 med 0.941
+
+== 2. P -> H (fit on P teacher-level blend, apply to H corrected)
+  factors P gas: le3 1.1974, eq4 1.0785
+  factors P eui: le3 1.2098, eq4 1.0334
+  factors P elec: le3 1.1785, eq4 1.0630
+  H rows affected: 253 (le3 48, eq4 205)
+  shrink 0.25: total -0.00002537 | per-metric NRMSE gas -0.0000037 eui -0.0001212 elec -0.0000019 | boot sd 0.00000842 P(<0) 1.000 5-95% [-0.0000399, -0.0000126]
+  shrink 0.50: total -0.00004145 | per-metric NRMSE gas -0.0000065 eui -0.0001974 elec -0.0000034 | boot sd 0.00001647 P(<0) 0.999 5-95% [-0.0000700, -0.0000160]
+  shrink 0.75: total -0.00004825 | per-metric NRMSE gas -0.0000084 eui -0.0002286 elec -0.0000044 | boot sd 0.00002433 P(<0) 0.983 5-95% [-0.0000903, -0.0000107]
+  shrink 1.00: total -0.00004577 | per-metric NRMSE gas -0.0000093 eui -0.0002147 elec -0.0000048 | boot sd 0.00003218 P(<0) 0.933 5-95% [-0.0001020, +0.0000044]
+
+  P -> H with factor estimation noise (bootstrap P group rows for f, bootstrap H rows for evaluation), shrink 0.5
+  total mean -0.00004109 sd 0.00001696 P(<0) 0.998 5-95% [-0.00007154, -0.00001607]
+
+== 3. H internal repeated random 2-fold cross-fit (fit f on one half of H corrected, apply to other half)
+  shrink 0.50: mean total -0.00002839 sd over splits 0.00000880 frac<0 0.990 | gas -0.0000063 eui -0.0001329 elec -0.0000028
+  shrink 1.00: mean total -0.00002592 sd over splits 0.00002236 frac<0 0.877 | gas -0.0000075 eui -0.0001194 elec -0.0000026
+
+== 3b. H internal repeated 5-fold cross-fit, shrink 0.5
+  mean total -0.00003040 sd 0.00000382 frac<0 1.000
+
+== 4. H -> P (reverse): fit on H corrected (and on H teacher), apply to the P-side blend, scored on P
+  fit on H cH shrink 0.50: total on P -0.00003770 | gas -0.0000051 eui -0.0001806 elec -0.0000027 | factors gas 1.240/1.078; eui 1.156/1.046; elec 1.223/1.058
+  fit on H cH shrink 1.00: total on P -0.00005413 | gas -0.0000064 eui -0.0002608 elec -0.0000034 | factors gas 1.240/1.078; eui 1.156/1.046; elec 1.223/1.058
+  fit on H tH shrink 0.50: total on P -0.00003782 | gas -0.0000051 eui -0.0001812 elec -0.0000027 | factors gas 1.240/1.079; eui 1.157/1.047; elec 1.225/1.058
+  fit on H tH shrink 1.00: total on P -0.00005408 | gas -0.0000064 eui -0.0002606 elec -0.0000034 | factors gas 1.240/1.079; eui 1.157/1.047; elec 1.225/1.058
+
+== 5. public-size subsets of H (55,196 rows, without replacement), P-fit factors, shrink 0.5
+  public-size: mean -0.00004141 sd 0.00001885 P(<0) 0.989 P(<= -0.00001) 0.959 5-95% [-0.00007399, -0.00001143]
+
+== 6. leave-one-row-out influence on H (shrink 0.5, P factors): top contributing rows to the delta
+  gas: sum dSSE-> dNRMSE -0.0000065; best 5 rows [-7.9e-07, -4.8e-07, -4.4e-07, -3.3e-07, -3.2e-07]; worst 5 rows [1.4e-07, 1.6e-07, 1.6e-07, 1.7e-07, 3.5e-07]; share of rows improved 0.55; delta without best 5 -0.0000042
+  eui: sum dSSE-> dNRMSE -0.0001973; best 5 rows [-4.044e-05, -3.864e-05, -1.964e-05, -1.872e-05, -1.523e-05]; worst 5 rows [5.47e-06, 7e-06, 1.116e-05, 1.18e-05, 1.353e-05]; share of rows improved 0.50; delta without best 5 -0.0000647
+  elec: sum dSSE-> dNRMSE -0.0000034; best 5 rows [-4.2e-07, -3.5e-07, -3.2e-07, -2.4e-07, -2.4e-07]; worst 5 rows [1.4e-07, 1.6e-07, 1.7e-07, 1.9e-07, 2.5e-07]; share of rows improved 0.52; delta without best 5 -0.0000018

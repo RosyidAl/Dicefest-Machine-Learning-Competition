@@ -1,0 +1,14 @@
+gas counts per bin from 800000.0 step 20000.0 : [389, 281, 261, 223, 163, 153, 97, 91, 80, 71, 0]
+elec counts per bin from 260000.0 step 10000.0 : [122, 86, 54, 38, 32, 17, 15, 5, 3, 5, 5, 3, 7, 2]
+eui counts per bin from 450 step 25 : [43, 43, 17, 15, 10, 14, 5, 5, 0, 0]
+gas low counts per bin from 0.0 step 5000.0 : [1, 8, 42, 233, 609, 1219, 1980, 2785, 3750, 4614, 5310, 6036]
+elec low counts per bin from 0.0 step 2500.0 : [0, 75, 930, 3238, 6423, 9130, 11140, 12574, 13152, 13629, 13692, 13778]
+eui low counts per bin from 0.0 step 2.5 : [0, 0, 4, 6, 9, 4, 6, 15, 18, 12, 37, 47, 59, 71, 106, 119]
+gas/M [360.3, 1675.2, 2723.0, 3978.5, 26568.7, 36815.4, 44485.9, 64152.6]
+elec/M [364.4, 608.7, 897.8, 1274.3, 6666.2, 10733.5, 16558.0, 24525.3]
+M in [2,20): n=224413, mean gas/M 11524, share gas>9e5 0.0000, max gas 843904
+M in [20,40): n=154514, mean gas/M 10615, share gas>9e5 0.0005, max gas 998393
+M in [40,60): n=42275, mean gas/M 9665, share gas>9e5 0.0036, max gas 999765
+M in [60,80): n=7239, mean gas/M 8758, share gas>9e5 0.0261, max gas 999102
+M in [80,100): n=790, mean gas/M 7649, share gas>9e5 0.0823, max gas 999729
+M in [100,160): n=72, mean gas/M 6628, share gas>9e5 0.1528, max gas 991496

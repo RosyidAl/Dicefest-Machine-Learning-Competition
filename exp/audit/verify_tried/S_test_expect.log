@@ -1,0 +1,5 @@
+gas: P cells -0.00000106, H cells -0.00000130, P group -0.00000119
+eui: P cells -0.00003530, H cells -0.00002933, P group -0.00004086
+elec: P cells -0.00000069, H cells -0.00000066, P group -0.00000058
+expected test TOTAL: P cells -0.00003705, H cells -0.00003129, P group -0.00004263
+elapsed 3.81 s maxrss 230052 kB

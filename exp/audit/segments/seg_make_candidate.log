@@ -1,0 +1,9 @@
+k 0.08: gas rows changed 4326 (max |d| 111084, new max 950325); eui rows changed 4338 (max |d| 21.7458); dup rows 77 untouched
+  id: identical cells 183987 / 183987
+  target_macro_gas_kwh: identical cells 179661 / 183987
+  target_macro_elec_kwh: identical cells 183987 / 183987
+  target_eui_gas_kwh_per_sqm: identical cells 179649 / 183987
+  target_clean_building_ratio: identical cells 183987 / 183987
+  target_electric_heating_adoption: identical cells 183987 / 183987
+  rms change / sigma: gas 0.005561765146638987  eui 0.0034839453956536036
+  wrote exp/audit/segments/sub_v19vce_cap_k0.08.csv sha256 5d95cb7945e9d43938fe68bce81fc539f135ef5e764c540ce6ae72fece7bcc95

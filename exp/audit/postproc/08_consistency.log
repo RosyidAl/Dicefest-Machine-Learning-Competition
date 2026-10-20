@@ -1,0 +1,12 @@
+rms (gas_c - eui_c*A)/sigma_gas 0.010245547885749906 corr of the two gas errors 0.9991270129469524
+== gas base 0.245144; forced (w=1) d +0.0000884; w=0.5 d -0.0000093
+   global      cross-fitted d -0.0000149 total -0.00000299 weights fold0 [0.224]
+   rankA hat2  cross-fitted d -0.0000359 total -0.00000718 weights fold0 [1.269, -0.092]
+   rankA hat3  cross-fitted d -0.0000388 total -0.00000775 weights fold0 [0.82, 0.814, -0.171]
+   rankA hat5  cross-fitted d -0.0000339 total -0.00000679 weights fold0 [1.071, 0.654, 0.674, 0.512, -0.261]
+== eui base 0.648593; forced (w=1) d +0.0005822; w=0.5 d +0.0001349
+   global      cross-fitted d +0.0000365 total +0.00000730 weights fold0 [0.04]
+   rankA hat2  cross-fitted d -0.0000272 total -0.00000544 weights fold0 [-0.262, 1.069]
+   rankA hat3  cross-fitted d -0.0000246 total -0.00000492 weights fold0 [-0.284, 0.515, 0.927]
+   rankA hat5  cross-fitted d -0.0000349 total -0.00000697 weights fold0 [-0.371, 0.591, 0.191, 0.611, 1.117]
+TOTAL {'global': 4.31e-06, 'rankA hat2': -1.262e-05, 'rankA hat3': -1.267e-05, 'rankA hat5': -1.376e-05}

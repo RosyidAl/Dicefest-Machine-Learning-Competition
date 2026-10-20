@@ -1,0 +1,18 @@
+
+=== gas: H corrected NRMSE 0.245144
+  clip  fit on P teacher () -> H corrected dTotal -0.00000306 (H teacher -0.00000253) | cross-fit on H dTotal -0.00000306 (sd 0.00000000, worst rep -0.00000306)  all-H fit ()  rows changed 11
+        EUI via eui*A, P-teacher params -> dTotal -0.00000042
+  imr   fit on P teacher (np.float64(0.085),) -> H corrected dTotal -0.00001953 (H teacher -0.00001823) | cross-fit on H dTotal -0.00001883 (sd 0.00000062, worst rep -0.00001724)  all-H fit (np.float64(0.08),)  rows changed 947
+        EUI via eui*A, P-teacher params -> dTotal -0.00000499
+        bootstrap of the P-fit H gain: mean -0.00001947 sd 0.00000697  P(gain>=0) 0.0010
+  imrc  fit on P teacher (np.float64(0.085),) -> H corrected dTotal -0.00001953 (H teacher -0.00001823) | cross-fit on H dTotal -0.00001883 (sd 0.00000062, worst rep -0.00001724)  all-H fit (np.float64(0.08),)  rows changed 947
+        EUI via eui*A, P-teacher params -> dTotal -0.00000499
+        bootstrap of the P-fit H gain: mean -0.00001947 sd 0.00000697  P(gain>=0) 0.0010
+  ramp  fit on P teacher (np.float64(0.55), np.float64(0.87)) -> H corrected dTotal -0.00001998 (H teacher -0.00001836) | cross-fit on H dTotal -0.00001718 (sd 0.00000122, worst rep -0.00001451)  all-H fit (np.float64(0.5), np.float64(0.87))  rows changed 125
+        EUI via eui*A, P-teacher params -> dTotal -0.00000526
+
+=== elec: H corrected NRMSE 0.314623
+  clip  fit on P teacher () -> H corrected dTotal -0.00000020 (H teacher -0.00000022) | cross-fit on H dTotal -0.00000020 (sd 0.00000000, worst rep -0.00000020)  all-H fit ()  rows changed 3
+  imr   fit on P teacher (np.float64(0.195),) -> H corrected dTotal -0.00000199 (H teacher -0.00000147) | cross-fit on H dTotal -0.00000133 (sd 0.00000125, worst rep +0.00000235)  all-H fit (np.float64(0.255),)  rows changed 461
+  imrc  fit on P teacher (np.float64(0.195),) -> H corrected dTotal -0.00000199 (H teacher -0.00000147) | cross-fit on H dTotal -0.00000133 (sd 0.00000125, worst rep +0.00000235)  all-H fit (np.float64(0.255),)  rows changed 461
+  ramp  fit on P teacher (np.float64(0.6), np.float64(0.8)) -> H corrected dTotal -0.00000056 (H teacher -0.00000037) | cross-fit on H dTotal +0.00000036 (sd 0.00000032, worst rep +0.00000057)  all-H fit (np.float64(0.7), np.float64(0.8))  rows changed 10

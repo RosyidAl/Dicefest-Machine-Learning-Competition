@@ -1,0 +1,25 @@
+cap check: max y_P 999305.155724838 max y_H 999764.8988254856
+hard cap gas<=1e6, eui<=1e6/A                              gas -0.0000153 (sd 0.0000070, P<0 1.00) eui -0.0000021 (sd 0.0000010) TOTAL -0.00000348  rows changed 11
+hard cap at max y_P                                        gas -0.0000158 (sd 0.0000072, P<0 1.00) eui -0.0000022 (sd 0.0000011) TOTAL -0.00000359  rows changed 11
+(a) hinge (900000.0,) fit on P beta=[-0.727]               gas -0.0000936 (sd 0.0000358, P<0 1.00) eui -0.0000234 (sd 0.0000110) TOTAL -0.00002341  rows changed 77
+(a) hinge (850000.0,) fit on P beta=[-0.438]               gas -0.0000995 (sd 0.0000377, P<0 1.00) eui -0.0000268 (sd 0.0000116) TOTAL -0.00002524  rows changed 171
+(a) hinge (900000.0, 950000.0) fit on P beta=[-0.917  0.378] gas -0.0000939 (sd 0.0000383, P<0 1.00) eui -0.0000249 (sd 0.0000121) TOTAL -0.00002375  rows changed 77
+(a) hinge (850000.0, 925000.0) fit on P beta=[-0.35  -0.247] gas -0.0001013 (sd 0.0000373, P<0 1.00) eui -0.0000266 (sd 0.0000115) TOTAL -0.00002558  rows changed 171
+(a) hinge (800000.0, 900000.0, 950000.0) fit on P beta=[-0.081 -0.618  0.125] gas -0.0000957 (sd 0.0000375, P<0 1.00) eui -0.0000258 (sd 0.0000117) TOTAL -0.00002429  rows changed 370
+(b) hinge (900000.0,) cross-fitted on H                    gas -0.0000905 (sd 0.0000330, P<0 1.00) eui -0.0000224 (sd 0.0000103) TOTAL -0.00002258  rows changed 77
+(b) hinge (850000.0,) cross-fitted on H                    gas -0.0000957 (sd 0.0000338, P<0 1.00) eui -0.0000250 (sd 0.0000105) TOTAL -0.00002414  rows changed 171
+(b) hinge (900000.0, 950000.0) cross-fitted on H           gas -0.0000899 (sd 0.0000338, P<0 1.00) eui -0.0000230 (sd 0.0000106) TOTAL -0.00002259  rows changed 77
+(b) hinge (850000.0, 925000.0) cross-fitted on H           gas -0.0000937 (sd 0.0000337, P<0 1.00) eui -0.0000245 (sd 0.0000107) TOTAL -0.00002363  rows changed 171
+gamma chosen on P: 0.7 P mse rel to none: [-0.0004765 -0.0005935 -0.0007336 -0.0008742 -0.0009827 -0.001024
+ -0.0009634 -0.0007657 -0.0003937  0.0001924  0.0010346]
+(c) truncated-normal mean, gamma=0.7 chosen on P           gas -0.0001024 (sd 0.0000359, P<0 1.00) eui -0.0000247 (sd 0.0000103) TOTAL -0.00002542  rows changed 2726
+    truncated-normal gamma=0.3 (fixed, for shape)          gas -0.0000545 (sd 0.0000160, P<0 1.00) eui -0.0000096 (sd 0.0000032) TOTAL -0.00001282  rows changed 381
+    truncated-normal gamma=0.4 (fixed, for shape)          gas -0.0000729 (sd 0.0000206, P<0 1.00) eui -0.0000140 (sd 0.0000049) TOTAL -0.00001739  rows changed 724
+    truncated-normal gamma=0.5 (fixed, for shape)          gas -0.0000895 (sd 0.0000254, P<0 1.00) eui -0.0000184 (sd 0.0000067) TOTAL -0.00002158  rows changed 1215
+    truncated-normal gamma=0.6 (fixed, for shape)          gas -0.0001008 (sd 0.0000304, P<0 1.00) eui -0.0000222 (sd 0.0000085) TOTAL -0.00002459  rows changed 1853
+    truncated-normal gamma=0.7 (fixed, for shape)          gas -0.0001024 (sd 0.0000359, P<0 1.00) eui -0.0000247 (sd 0.0000103) TOTAL -0.00002542  rows changed 2726
+(d) isotonic (P, preds >= 7e5), only lowers                gas -0.0000939 (sd 0.0000369, P<0 1.00) eui -0.0000212 (sd 0.0000108) TOTAL -0.00002302  rows changed 429
+  H bin [7e+05,8e+05) n=794: resid before +2338, after +2410
+  H bin [8e+05,9e+05) n=293: resid before +2322, after +5966
+  H bin [9e+05,9.5e+05) n=42: resid before -16558, after +6727
+  H bin [9.5e+05,1e+07) n=35: resid before -61392, after -3329

@@ -1,0 +1,12 @@
+gas: unseen rows mean resid after correction +259.7, seen -105.6
+  F, F*unseen                    delta +0.0000376 (sd 0.0000145) total +0.00000751
+  F, unseen*teacher              delta +0.0000071 (sd 0.0000051) total +0.00000141
+  F, F*unseen, unseen*teacher    delta +0.0000440 (sd 0.0000154) total +0.00000880
+eui: unseen rows mean resid after correction +0.08483, seen -0.07362
+  F, F*unseen                    delta +0.0001043 (sd 0.0000315) total +0.00002086
+  F, unseen*teacher              delta +0.0000264 (sd 0.0000066) total +0.00000528
+  F, F*unseen, unseen*teacher    delta +0.0001303 (sd 0.0000324) total +0.00002606
+elec: unseen rows mean resid after correction -49.99, seen -46.08
+  F, F*unseen                    delta +0.0000202 (sd 0.0000222) total +0.00000405
+  F, unseen*teacher              delta +0.0000009 (sd 0.0000015) total +0.00000017
+  F, F*unseen, unseen*teacher    delta +0.0000209 (sd 0.0000221) total +0.00000418

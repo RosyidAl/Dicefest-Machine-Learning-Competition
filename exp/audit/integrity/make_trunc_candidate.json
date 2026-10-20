@@ -1,0 +1,28 @@
+{
+ "unseen_adoption_equals_adopt_v2": 14979,
+ "unseen_rows": 14979,
+ "dup_rows_untouched": 77,
+ "params": {
+  "a0": 0.008064793880232542,
+  "b0": 0.3929692979589114,
+  "c_gas": 0.5754962074368705,
+  "c_eui": 0.6231906070790006
+ },
+ "gas_rows_changed_gt_1kwh": 3210,
+ "gas_rows_changed_gt_1pct": 278,
+ "gas_change_min_max": [
+  -80772.72504118178,
+  0.0
+ ],
+ "gas_rms_change_over_sigma": 0.006252147529755498,
+ "eui_rows_changed_gt_0.01": 1838,
+ "eui_rms_change_over_sigma": 0.004353510881387277,
+ "gas_max_after": 980636.3700389813,
+ "eui_times_A_max_after": 975940.17787852,
+ "sha256": "cf2ee8a5f15b0c20fa16b2a2f5fa876e1f6facf643ad0eaf40e1898795ca9229",
+ "other_columns_identical": {
+  "target_macro_elec_kwh": true,
+  "target_clean_building_ratio": true,
+  "target_electric_heating_adoption": true
+ }
+}

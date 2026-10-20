@@ -1,0 +1,45 @@
+beta(P) -0.7275; test rows 183987, dup rows 77, dup rows with gas > 9e5: 0
+
+== 1. counts per prediction bin (H scaled to the test size)
+  gas [8e+05,8.5e+05): test  268 | H  199 -> scaled  284.3
+  gas [8.5e+05,9e+05): test  155 | H   94 -> scaled  134.3
+  gas [9e+05,9.25e+05): test   50 | H   24 -> scaled   34.3
+  gas [9.25e+05,9.5e+05): test   25 | H   18 -> scaled   25.7
+  gas [9.5e+05,9.75e+05): test   16 | H   18 -> scaled   25.7
+  gas [9.75e+05,1e+06): test    7 | H    6 -> scaled    8.6
+  gas [1e+06,1.03e+06): test    4 | H    8 -> scaled   11.4
+  gas [1.03e+06,1e+08): test    3 | H    3 -> scaled    4.3
+  implied EUI gas e*A:
+  e*A [8e+05,8.5e+05): test  266 | H  189 -> scaled  270.0
+  e*A [8.5e+05,9e+05): test  160 | H   99 -> scaled  141.4
+  e*A [9e+05,9.25e+05): test   49 | H   27 -> scaled   38.6
+  e*A [9.25e+05,9.5e+05): test   25 | H   21 -> scaled   30.0
+  e*A [9.5e+05,9.75e+05): test   17 | H   12 -> scaled   17.1
+  e*A [9.75e+05,1e+06): test    7 | H   11 -> scaled   15.7
+  e*A [1e+06,1.03e+06): test    4 | H    6 -> scaled    8.6
+  e*A [1.03e+06,1e+08): test    4 | H    4 -> scaled    5.7
+
+== 2a. parametric expected gain: mean(h^2) test vs H (h = max(c - 9e5, 0), capped shrink ignored)
+  gas  mean h^2: test 1.4416e+06  H 2.3517e+06  ratio test/H 0.613
+  eui  mean (h/A)^2: test 3.9999e-02  H 6.5024e-02  ratio test/H 0.615
+  model-expected TOTAL on H -0.00002526 (realised H -0.00002341); on test -0.00001549
+
+== 2b. realised H per-row SSE change, reweighted to the test bin counts
+  bin [9e+05,9.5e+05): H n= 42 mean dSSE -1.946e+08 | test n= 75 || eui H n= 48 mean dSSE -1.326e+01 | test n= 74
+  bin [9.5e+05,1e+06): H n= 24 mean dSSE -3.610e+09 | test n= 23 || eui H n= 23 mean dSSE -2.161e+02 | test n= 24
+  bin [1e+06,1e+08): H n= 11 mean dSSE -3.753e+09 | test n=  7 || eui H n= 10 mean dSSE -8.654e+01 | test n=  8
+  first-order TOTAL: H -0.00002341; test (bin-reweighted) -0.00001541
+
+== 3. full-train OOF, deployed v19 gas members, global NNLS weights (teacher level)
+  OOF gas NRMSE 0.244940  eui 0.650226
+  pred [8e+05,8.5e+05): n= 629 mean resid     +3133
+  pred [8.5e+05,9e+05): n= 375 mean resid     -5097
+  pred [9e+05,9.5e+05): n= 156 mean resid    -23969
+  pred [9.5e+05,1e+06): n=  59 mean resid    -53713
+  pred [1e+06,1e+08): n=  29 mean resid    -85596
+  beta on all train OOF -0.6930; rows > 9e5: 244 (per 1e5 rows 56.8; H corrected 59.8; test 57.1)
+  5-fold cross-fit (5 seeds): gas -0.0000959 eui -0.0000124 TOTAL -0.00002167 (seed range -0.00002205..-0.00002090)
+  2-fold cross-fit (5 seeds): gas -0.0000968 eui -0.0000125 TOTAL -0.00002186 (seed range -0.00002209..-0.00002144)
+  chain-P beta applied to full-OOF H rows: gas -0.0000497 (gas only, total -0.00000994)
+  chain-P beta applied to full-OOF P rows: gas -0.0001181 (gas only, total -0.00002362)
+elapsed 5.66 s maxrss 417920 kB

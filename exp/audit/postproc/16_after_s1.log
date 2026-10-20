@@ -1,0 +1,22 @@
+== gas after S1: 0.245135
+   tn_hi (S3)       d -0.0000779 (vs S3 alone +0.0000000, total +0.00000000)
+   S3 + tn_lo       d -0.0000766 (vs S3 alone +0.0000013, total +0.00000026)
+   S3 + hinge lo    d -0.0000764 (vs S3 alone +0.0000015, total +0.00000030)
+   S3 + affine      d -0.0000701 (vs S3 alone +0.0000078, total +0.00000156)
+   S3 + M=5 shift   d -0.0000760 (vs S3 alone +0.0000018, total +0.00000037)
+   S3 + M<=3 extra  d -0.0000777 (vs S3 alone +0.0000002, total +0.00000004)
+== eui after S1: 0.648378
+   tn_hi (S3)       d -0.0000182 (vs S3 alone +0.0000000, total +0.00000000)
+   S3 + tn_lo       d -0.0000178 (vs S3 alone +0.0000004, total +0.00000008)
+   S3 + hinge lo    d -0.0000103 (vs S3 alone +0.0000079, total +0.00000159)
+   S3 + affine      d -0.0000169 (vs S3 alone +0.0000014, total +0.00000027)
+   S3 + M=5 shift   d -0.0000089 (vs S3 alone +0.0000093, total +0.00000186)
+   S3 + M<=3 extra  d -0.0000305 (vs S3 alone -0.0000122, total -0.00000245)
+== elec after S1: 0.314618
+   tn_hi (S3)       d -0.0000010 (vs S3 alone +0.0000000, total +0.00000000)
+   S3 + tn_lo       d -0.0000003 (vs S3 alone +0.0000008, total +0.00000015)
+   S3 + hinge lo    d -0.0000016 (vs S3 alone -0.0000005, total -0.00000011)
+   S3 + affine      d -0.0000017 (vs S3 alone -0.0000007, total -0.00000014)
+   S3 + M=5 shift   d -0.0000009 (vs S3 alone +0.0000001, total +0.00000003)
+   S3 + M<=3 extra  d +0.0000000 (vs S3 alone +0.0000011, total +0.00000022)
+extra over S3, TOTAL: {'tn_hi (S3)': np.float64(0.0), 'S3 + tn_lo': np.float64(4.9e-07), 'S3 + hinge lo': np.float64(1.78e-06), 'S3 + affine': np.float64(1.7e-06), 'S3 + M=5 shift': np.float64(2.26e-06), 'S3 + M<=3 extra': np.float64(-2.19e-06)}

@@ -1,0 +1,30 @@
+sha256 {'sub_v19vce_pp': '8859f0f453e9862df63062abad7c2c6ba985ac6e30bb7c6d81f515a68b47d9c2', 'sub_v19vce_pp_s34': '0e2aaefc14aff5440d4db89ea059352e1b668222740d4fe445e6a2060ac959b3', 'sub_v19vce_pp_s4': 'a465044ea3cf0db03a38dbd6ae82d768e2a8d446a2918bb07de581233de0ec01', 'sub_v19vce': '38dd55b9e150bdd531455713984a3c172c32c5fd850d26795ddd517a0ac1a9e6'}
+{'n_dup': 77, 'test_M_counts': {'M=1': 1, 'M2-3': 60, 'M=4': 298}, 'dup_in_smallM': 0}
+deltas {'gas': [0.19941549967777283, 0.06202161988273931], 'eui': [0.18165525792317003, 0.030162800389301088], 'elec': [0.1871369435440084, 0.07098422528812023]} k {'gas': 0.5045909108119272, 'eui': 0.6574413038882845} var model {'gas': [0.008064793880232542, 0.3929692979589114], 'eui': [0.008394682310503282, 0.3871483474369394], 'elec': [0.010236687407865626, 0.6899775556211197]} bounds {'gmax': 999764.8988254856, 'euimin': 5.120604412506415, 'eamin': 5.120819632490372, 'eamax': 149.99086755789654}
+sub_v19vce_pp {"ids_equal_sample": true, "columns": true, "rows": 183987, "finite": true, "clean_adopt_identical_to_base": true, "dup_rows_identical_to_base": true, "dup_rows_equal_train_targets": true, "nonneg": true, "adopt_0_100": true, "gas_max_absdiff_vs_my_rebuild_over_sigma": 3.28340985886581e-13, "gas_rows_changed_vs_base": 14347, "gas_rows_changed_gt_1e-4sigma": 2511, "gas_rms_change_over_sigma": 0.0057745744958498674, "gas_max_change_over_sigma": 0.46726655494380465, "gas_changed_rows_outside_rules": 0, "eui_max_absdiff_vs_my_rebuild_over_sigma": 1.6640508842401364e-13, "eui_rows_changed_vs_base": 14519, "eui_rows_changed_gt_1e-4sigma": 2558, "eui_rms_change_over_sigma": 0.01699692919637625, "eui_max_change_over_sigma": 1.588034542728334, "eui_changed_rows_outside_rules": 0, "elec_max_absdiff_vs_my_rebuild_over_sigma": 8.747637557570168e-13, "elec_rows_changed_vs_base": 361, "elec_rows_changed_gt_1e-4sigma": 361, "elec_rms_change_over_sigma": 0.0016851476350347098, "elec_max_change_over_sigma": 0.11881423458222266, "elec_changed_rows_outside_rules": 0, "gas_rel_change_M2-3_median": 0.19941549967806638, "gas_rel_change_M4-4_median": 0.06202161988308652, "eui_rel_change_M2-3_median": 0.18165525792317472, "eui_rel_change_M4-4_median": 0.030162800389320177, "elec_rel_change_M2-3_median": 0.18713694354263066, "elec_rel_change_M4-4_median": 0.07098422528742399}
+sub_v19vce_pp_s34 {"ids_equal_sample": true, "columns": true, "rows": 183987, "finite": true, "clean_adopt_identical_to_base": true, "dup_rows_identical_to_base": true, "dup_rows_equal_train_targets": true, "nonneg": true, "adopt_0_100": true, "gas_max_absdiff_vs_my_rebuild_over_sigma": 7.671518361836004e-16, "gas_rows_changed_vs_base": 13989, "gas_rows_changed_gt_1e-4sigma": 2153, "gas_rms_change_over_sigma": 0.005494168341245327, "gas_max_change_over_sigma": 0.46726655494380465, "gas_changed_rows_outside_rules": 0, "eui_max_absdiff_vs_my_rebuild_over_sigma": 6.991810437983766e-16, "eui_rows_changed_vs_base": 14161, "eui_rows_changed_gt_1e-4sigma": 2200, "eui_rms_change_over_sigma": 0.004665384954458189, "eui_max_change_over_sigma": 0.46591347428738245, "eui_changed_rows_outside_rules": 0, "elec_max_absdiff_vs_my_rebuild_over_sigma": 0.0, "elec_rows_changed_vs_base": 3, "elec_rows_changed_gt_1e-4sigma": 3, "elec_rms_change_over_sigma": 4.5103924437147517e-05, "elec_max_change_over_sigma": 0.015086492860778513, "elec_changed_rows_outside_rules": 0, "gas_rel_change_M2-3_median": 0.0, "gas_rel_change_M4-4_median": 0.0, "eui_rel_change_M2-3_median": 0.0, "eui_rel_change_M4-4_median": 0.0, "elec_rel_change_M2-3_median": 0.0, "elec_rel_change_M4-4_median": 0.0}
+sub_v19vce_pp_s4 {"ids_equal_sample": true, "columns": true, "rows": 183987, "finite": true, "clean_adopt_identical_to_base": true, "dup_rows_identical_to_base": true, "dup_rows_equal_train_targets": true, "nonneg": true, "adopt_0_100": true, "gas_max_absdiff_vs_my_rebuild_over_sigma": 0.0, "gas_rows_changed_vs_base": 7, "gas_rows_changed_gt_1e-4sigma": 7, "gas_rms_change_over_sigma": 0.0013936639877887911, "gas_max_change_over_sigma": 0.40622194402503936, "gas_changed_rows_outside_rules": 0, "eui_max_absdiff_vs_my_rebuild_over_sigma": 0.0, "eui_rows_changed_vs_base": 8, "eui_rows_changed_gt_1e-4sigma": 8, "eui_rms_change_over_sigma": 0.0009584212806731426, "eui_max_change_over_sigma": 0.28251306468975806, "eui_changed_rows_outside_rules": 0, "elec_max_absdiff_vs_my_rebuild_over_sigma": 0.0, "elec_rows_changed_vs_base": 3, "elec_rows_changed_gt_1e-4sigma": 3, "elec_rms_change_over_sigma": 4.5103924437147517e-05, "elec_max_change_over_sigma": 0.015086492860778513, "elec_changed_rows_outside_rules": 0, "gas_rel_change_M2-3_median": 0.0, "gas_rel_change_M4-4_median": 0.0, "eui_rel_change_M2-3_median": 0.0, "eui_rel_change_M4-4_median": 0.0, "elec_rel_change_M2-3_median": 0.0, "elec_rel_change_M4-4_median": 0.0}
+wrote exp/audit/verify2_postproc/indep/r3_candidate_check.json
+	Command being timed: ".venv/bin/python exp/audit/verify2_postproc/indep/r3_candidate_check.py"
+	User time (seconds): 5.11
+	System time (seconds): 0.46
+	Percent of CPU this job got: 81%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:06.82
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 512188
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 177133
+	Voluntary context switches: 117
+	Involuntary context switches: 698
+	Swaps: 0
+	File system inputs: 62480
+	File system outputs: 32
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

@@ -1,0 +1,18 @@
+(i) full-train VC OOF: relative bias by p tercile within the group (n, sum r / sum p, mean r / sigma)
+   eui  M<=3  | p~134.4: n 46 rel +0.068 add +0.2248 | p~186.5: n 46 rel +0.204 add +0.9355 | p~271.5: n 46 rel +0.199 add +1.3291
+   eui  M=4   | p~128.1: n 247 rel +0.051 add +0.1616 | p~177.7: n 247 rel +0.029 add +0.1275 | p~241.8: n 247 rel +0.027 add +0.1595
+   gas  M<=3  | p~3.398e+04: n 46 rel +0.231 add +0.0518 | p~4.588e+04: n 46 rel +0.214 add +0.0648 | p~7.015e+04: n 46 rel +0.172 add +0.0796
+   gas  M=4   | p~4.064e+04: n 247 rel +0.063 add +0.0168 | p~5.632e+04: n 247 rel +0.068 add +0.0251 | p~8.633e+04: n 247 rel +0.059 add +0.0333
+   elec M<=3  | p~9608: n 46 rel +0.276 add +0.0637 | p~1.271e+04: n 46 rel +0.309 add +0.0941 | p~1.778e+04: n 46 rel +0.132 add +0.0562
+   elec M=4   | p~1.184e+04: n 247 rel +0.091 add +0.0258 | p~1.554e+04: n 247 rel +0.087 add +0.0322 | p~2.148e+04: n 247 rel +0.077 add +0.0397
+(ii) honest P-OOF -> H: multiplicative vs additive vs both, groups M<=3 (2..3) and M=4
+   gas  mult  d -0.0000093 total -0.00000185
+   gas  add   d -0.0000084 total -0.00000168
+   gas  both  d -0.0000089 total -0.00000179
+   eui  mult  d -0.0002147 total -0.00004295
+   eui  add   d -0.0002501 total -0.00005003
+   eui  both  d -0.0001486 total -0.00002972
+   elec mult  d -0.0000048 total -0.00000097
+   elec add   d -0.0000040 total -0.00000079
+   elec both  d -0.0000017 total -0.00000033
+TOTAL {'mult': np.float64(-4.577e-05), 'add': np.float64(-5.25e-05), 'both': np.float64(-3.184e-05)}

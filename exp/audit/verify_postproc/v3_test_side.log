@@ -1,0 +1,27 @@
+duplicates 77
+test M min 1.0 rows M<2: 1  train M min 2.0
+k (all H corrected): {'gas': 0.5046, 'eui': 0.6574} T_P 999305.2 T_all 999764.9
+== (a) predictions per 10k rows by standardized distance to the cap
+   gas  test final        [-99,-1)  0.00 [-1,0)  0.38 [0,0.5)  1.52 [0.5,1)  5.06 [1,1.5)  8.65 [1.5,2) 12.13 [2,3) 42.09
+   gas  H corrected       [-99,-1)  0.00 [-1,0)  0.85 [0,0.5)  2.17 [0.5,1)  4.27 [1,1.5)  7.69 [1.5,2) 13.74 [2,3) 40.69
+   gas  H teacher         [-99,-1)  0.00 [-1,0)  0.70 [0,0.5)  2.56 [0.5,1)  4.04 [1,1.5)  8.08 [1.5,2) 13.90 [2,3) 40.69
+   gas  full OOF teacher  [-99,-1)  0.02 [-1,0)  0.51 [0,0.5)  1.89 [0.5,1)  4.10 [1,1.5)  9.06 [1.5,2) 13.09 [2,3) 42.09
+   eui  test final        [-99,-1)  0.00 [-1,0)  0.43 [0,0.5)  1.63 [0.5,1)  5.11 [1,1.5)  8.75 [1.5,2) 12.56 [2,3) 42.58
+   eui  H corrected       [-99,-1)  0.00 [-1,0)  0.85 [0,0.5)  2.25 [0.5,1)  4.04 [1,1.5)  8.77 [1.5,2) 13.51 [2,3) 41.54
+   eui  H teacher         [-99,-1)  0.00 [-1,0)  0.85 [0,0.5)  2.48 [0.5,1)  4.12 [1,1.5)  8.23 [1.5,2) 13.90 [2,3) 41.93
+   eui  full OOF teacher  [-99,-1)  0.02 [-1,0)  0.68 [0,0.5)  1.89 [0.5,1)  4.31 [1,1.5)  9.13 [1.5,2) 13.46 [2,3) 42.74
+   raw gas level shares per 10k rows (p > 0.8M / 0.9M / 0.95M / 1.0M):
+   test final         28.71   5.71   1.63   0.38
+   H corrected        28.73   5.98   2.72   0.85
+   full OOF teacher   29.00   5.52   2.05   0.54
+   train truth        42.14  11.46   4.50   0.00
+== (b) S3 change, test vs H (claimed constants)
+   gas  test: per 10k |d|>0.01s  36.3  |d|>0.1s  7.28  rms 0.00549s  min -0.467s  max -0.00e+00s
+   gas  H   : per 10k |d|>0.01s  36.9  |d|>0.1s  7.76  rms 0.00632s  min -0.449s  max -0.00e+00s
+   gas largest test change: p 1061409.1 -> 990501.4 (M 73, A 9431)
+   eui  test: per 10k |d|>0.01s  36.3  |d|>0.1s  5.76  rms 0.00467s  min -0.466s  max -0.00e+00s
+   eui  H   : per 10k |d|>0.01s  36.6  |d|>0.1s  5.90  rms 0.00524s  min -0.515s  max -0.00e+00s
+   eui largest test change: p 215.1 -> 196.2 (M 59, A 4909)
+== (c) how many rows would lie above 1e6 if the tail continued (geometric extrapolation of 10k-kWh bins)
+   last-5-bin mean 38.6 per 10k kWh, per-bin decay 0.909 -> ~384 train rows (8.9 per 10k rows) would be above 1e6; test analogue ~165 rows
+maxrss_kb 464548

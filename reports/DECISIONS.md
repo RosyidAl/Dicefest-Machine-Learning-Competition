@@ -127,3 +127,7 @@
 - Rantai holdout dengan 7 konfigurasi EUI tambahan (exp/chain_vc_AMp_e.log): EUI 0,64878 -> 0,64859; gas dan elec identik (λ sama persis).
 - LB publik: sub_v19vce 0,24923 vs sub_v19vc 0,24925; kolom gas, elec, rasio bersih dan adopsi identik byte dengan sub_v19vc.
 - Keputusan: sub_v19vce = BEST_CURRENT dan kandidat Final A. Konfigurasi kNN kini dibaca dari resid_knn.json ("configs") di pipeline final; konfigurasi final = exp/resid_knn_vc_AMp_e.json.
+
+### D014 [2026-10-20 18:47 WIB] Anggota retrieval NCA (nc_lgpm) masuk blend gas/EUI
+- Bukti: nested blend VC gas+EUI 0,894656 -> 0,894572 (-0,000084); rantai holdout dengan hold nc_lgpm: gas 0,24514 -> 0,24511, EUI 0,64859 -> 0,64846, elec tetap (total -0,000032); LB publik sub_v19nca 0,24920 vs sub_v19vce 0,24923 (sesuai perkiraan rantai).
+- Keputusan: sub_v19nca = BEST_CURRENT dan kandidat Final A (config exp/v19nca: anggota v19vce + nc_lgpm, exp/resid_knn_vc_AMp_e2.json). Untuk pipeline final, nc_lgpm (src/nca.py, src/exp_nca.py) harus ditambahkan ke final/configs dan final/src.

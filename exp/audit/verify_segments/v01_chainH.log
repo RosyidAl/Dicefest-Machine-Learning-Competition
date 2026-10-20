@@ -1,0 +1,80 @@
+y_P from chain vs parquet: max |diff| 3.492e-10; H y vs parquet max |diff| 3.492e-10; train gas max 999764.9, n>=1e6 0
+n P 300512 n H 128791 overlap 0
+
+[gas] k fitted on P teacher only: 0.08520
+  H corrected base 0.245144 -> dTotal -0.00001952;  H teacher base 0.246026 -> dTotal -0.00001821
+  H 5-fold x 20 cross-fit: dTotal mean -0.00001868 sd 0.00000062 worst -0.00001718; k range 0.0687..0.0893
+
+[eui] via eui*A, k 0.08520: H corrected base 0.648593 -> dTotal -0.00000500
+  own k fitted on P EUI teacher 0.08784 -> dTotal -0.00000507
+
+[combined, P-fit k] gas + eui dTotal on H corrected: -0.00002452
+
+[fragility gas] rows with |change| > 1 kWh: 933; helped 330, hurt 354 (|dSSE| > 1e6)
+   best #0: p 1022851 -> 938144, y 831201, share of total dSSE 0.178
+   best #1: p 973960 -> 923385, y 794453, share of total dSSE 0.110
+   best #2: p 972519 -> 922848, y 794586, share of total dSSE 0.107
+   best #3: p 962605 -> 918966, y 776470, share of total dSSE 0.101
+   best #4: p 1000012 -> 932020, y 861352, share of total dSSE 0.100
+   best #5: p 960111 -> 917936, y 784414, share of total dSSE 0.092
+   best #6: p 990729 -> 929165, y 858278, share of total dSSE 0.088
+   best #7: p 977466 -> 924664, y 870254, share of total dSSE 0.060
+   worst #0: p 965722 -> 920223, y 999729, dSSE/|total| +0.036
+   worst #1: p 949435 -> 913271, y 995312, dSSE/|total| +0.033
+   worst #2: p 972899 -> 922990, y 994241, dSSE/|total| +0.033
+   worst #3: p 964861 -> 919879, y 989826, dSSE/|total| +0.030
+   worst #4: p 1001109 -> 932343, y 996832, dSSE/|total| +0.029
+   drop the  0 most-helped rows: gas dTotal -0.00001952
+   drop the  1 most-helped rows: gas dTotal -0.00001604
+   drop the  3 most-helped rows: gas dTotal -0.00001180
+   drop the  5 most-helped rows: gas dTotal -0.00000787
+   drop the 10 most-helped rows: gas dTotal -0.00000117
+
+[calibration] k fitted per view: full VC OOF 0.07934 (P teacher 0.08520)
+  P teacher (P-OOF VC): bin of p/1e6 | n | mean resid y-p | mean adjustment p'-p (k 0.0852) | t of resid
+     [0.85,0.90) n  256  resid     -2019  adj     -7428  t -0.46
+     [0.90,0.93) n   85  resid    -29576  adj    -19231  t -3.62
+     [0.93,0.96) n   44  resid    -42726  adj    -32938  t -4.47
+     [0.96,0.98) n   16  resid    -34731  adj    -47699  t -3.35
+     [0.98,1.00) n   13  resid    -61037  adj    -60201  t -3.30
+     [1.00,1.02) n   11  resid    -82429  adj    -74805  t -3.65
+     [1.02,9.00) n   12  resid   -107978  adj   -116250  t -6.51
+  H teacher: bin of p/1e6 | n | mean resid y-p | mean adjustment p'-p (k 0.0852) | t of resid
+     [0.85,0.90) n   96  resid     -5772  adj     -7434  t -0.78
+     [0.90,0.93) n   27  resid    -28479  adj    -18995  t -2.57
+     [0.93,0.96) n   26  resid    -20486  adj    -32476  t -1.79
+     [0.96,0.98) n   10  resid    -42575  adj    -48622  t -2.12
+     [0.98,1.00) n    7  resid   -103263  adj    -59583  t -4.56
+     [1.00,1.02) n    4  resid    -70928  adj    -71877  t -1.92
+     [1.02,9.00) n    5  resid    -55464  adj    -95476  t -5.41
+  H corrected: bin of p/1e6 | n | mean resid y-p | mean adjustment p'-p (k 0.0852) | t of resid
+     [0.85,0.90) n   94  resid     -9652  adj     -7664  t -1.27
+     [0.90,0.93) n   29  resid    -18189  adj    -19994  t -1.69
+     [0.93,0.96) n   19  resid    -19724  adj    -33189  t -2.14
+     [0.96,0.98) n   13  resid    -67862  adj    -47501  t -2.71
+     [0.98,1.00) n    5  resid    -70251  adj    -59481  t -3.69
+     [1.00,1.02) n    6  resid    -49008  adj    -70975  t -2.44
+     [1.02,9.00) n    5  resid    -82881  adj    -93967  t -2.90
+  full-train VC OOF: bin of p/1e6 | n | mean resid y-p | mean adjustment p'-p (k 0.0852) | t of resid
+     [0.85,0.90) n  369  resid     -3179  adj     -7358  t -0.87
+     [0.90,0.93) n  104  resid    -24149  adj    -19572  t -3.61
+     [0.93,0.96) n   64  resid    -37351  adj    -33240  t -4.27
+     [0.96,0.98) n   31  resid    -40559  adj    -47613  t -4.04
+     [0.98,1.00) n   15  resid    -48178  adj    -61309  t -2.95
+     [1.00,1.02) n   12  resid    -63095  adj    -75320  t -3.43
+     [1.02,9.00) n   11  resid   -110056  adj   -122208  t -6.55
+  full VC OOF (uncorrected VC blend, in-sample VC weights): base 0.244703; cross-fitted k gas dTotal -0.00001735 (sd 0.00000031); with P-fit k 0.0852: -0.00001749
+  full VC OOF eui via eui*A, P-fit k: dTotal -0.00000312
+
+[k curve on H corrected] k | gas dTotal | eui dTotal
+   0.02  -0.00000599  -0.00000093
+   0.04  -0.00001158  -0.00000219
+   0.06  -0.00001701  -0.00000363
+   0.07  -0.00001889  -0.00000429
+   0.08  -0.00001969  -0.00000481
+   0.09  -0.00001893  -0.00000511
+   0.10  -0.00001614  -0.00000509
+   0.12  -0.00000267  -0.00000375
+   0.15  +0.00004384  +0.00000284
+   0.20  +0.00022326  +0.00003244
+   0.30  +0.00122776  +0.00022461

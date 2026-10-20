@@ -1,0 +1,38 @@
+P-derived bounds {'gas_max': 999305.1557, 'eui_min': 5.1206, 'elecA_min': 5.1349, 'elecA_max': 149.9909, 'eui_max': 648.1073}
+gas teacher: base 0.246026  (clip0 changed 0 rows)
+   cap gas_max        rows     9  dNRMSE -0.0000130  total -0.00000260
+   floor eui_min*A    rows     0  dNRMSE +0.0000000  total +0.00000000
+   cap eui_max*A      rows     0  dNRMSE +0.0000000  total +0.00000000
+   both               rows     9  dNRMSE -0.0000130  total -0.00000260
+gas corrected: base 0.245144  (clip0 changed 0 rows)
+   cap gas_max        rows    11  dNRMSE -0.0000158  total -0.00000315
+   floor eui_min*A    rows     0  dNRMSE +0.0000000  total +0.00000000
+   cap eui_max*A      rows     0  dNRMSE +0.0000000  total +0.00000000
+   both               rows    11  dNRMSE -0.0000158  total -0.00000315
+eui teacher: base 0.650075  (clip0 changed 0 rows)
+   cap gas_max/A      rows    11  dNRMSE -0.0000017  total -0.00000033
+   floor eui_min      rows     0  dNRMSE +0.0000000  total +0.00000000
+   cap eui_max        rows     0  dNRMSE +0.0000000  total +0.00000000
+   both               rows    11  dNRMSE -0.0000017  total -0.00000033
+eui corrected: base 0.648593  (clip0 changed 0 rows)
+   cap gas_max/A      rows    11  dNRMSE -0.0000022  total -0.00000043
+   floor eui_min      rows     0  dNRMSE +0.0000000  total +0.00000000
+   cap eui_max        rows     0  dNRMSE +0.0000000  total +0.00000000
+   both               rows    11  dNRMSE -0.0000022  total -0.00000043
+elec teacher: base 0.314840  (clip0 changed 0 rows)
+   cap 150*A          rows     3  dNRMSE -0.0000011  total -0.00000022
+   floor 5*A          rows     0  dNRMSE +0.0000000  total +0.00000000
+   both               rows     3  dNRMSE -0.0000011  total -0.00000022
+elec corrected: base 0.314623  (clip0 changed 0 rows)
+   cap 150*A          rows     3  dNRMSE -0.0000010  total -0.00000020
+   floor 5*A          rows     0  dNRMSE +0.0000000  total +0.00000000
+   both               rows     3  dNRMSE -0.0000010  total -0.00000020
+TOTAL (corrected, 'both' rules) -0.00000378
+full-train bounds {'gas_max': 999764.8988, 'eui_min': 5.1206, 'eui_max': 648.1073, 'elecA_min': 5.1208, 'elecA_max': 149.9909}
+test gas > gas_max 7 sum excess/sigma 1.3227032565159
+test gas < eui_min*A 0
+test eui > gas_max/A 8 excess [ 0.07  1.37  1.76  1.76  3.04  6.97  9.02 11.48]
+test eui < eui_min 0
+test eui > eui_max 0
+test elec > elecA_max*A 3 excess [316. 395. 629.]
+test elec < elecA_min*A 0 deficit []

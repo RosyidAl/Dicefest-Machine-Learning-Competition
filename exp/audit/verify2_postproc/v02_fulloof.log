@@ -1,0 +1,61 @@
+gas: in-sample NRMSE VC 0.24470 global 0.24494
+eui: in-sample NRMSE VC 0.64959 global 0.65023
+elec: in-sample NRMSE VC 0.31574 global 0.31586
+== gas
+   G23   n    136 ls +0.19942 (se 0.0329, t +6.1) mean_rel +0.2091 trim +0.1969 med +0.1796 frac_pos 0.699 drop5 +0.1615
+   G4    n    741 ls +0.06202 (se 0.0137, t +4.5) mean_rel +0.0644 trim +0.0447 med +0.0191 frac_pos 0.524 drop5 +0.0496
+   M=5   n   9883 ls +0.00894 (se 0.0032, t +2.8) mean_rel +0.0074 trim -0.0052 med -0.0190 frac_pos 0.468 drop5 +0.0086
+   M=6   n  18074 ls -0.00324 (se 0.0024, t -1.3) mean_rel -0.0003 trim -0.0132 med -0.0254 frac_pos 0.456 drop5 -0.0038
+   M=7   n  13773 ls -0.00355 (se 0.0026, t -1.4) mean_rel -0.0044 trim -0.0149 med -0.0249 frac_pos 0.455 drop5 -0.0047
+   M=8   n  20277 ls -0.00027 (se 0.0021, t -0.1) mean_rel -0.0027 trim -0.0124 med -0.0232 frac_pos 0.458 drop5 -0.0007
+   M>=9  n 366419 ls +0.00000 (se 0.0003, t +0.0) mean_rel -0.0001 trim -0.0047 med -0.0087 frac_pos 0.476 drop5 -0.0000
+== eui
+   G23   n    136 ls +0.18166 (se 0.0321, t +5.7) mean_rel +0.1637 trim +0.1514 med +0.1243 frac_pos 0.669 drop5 +0.1361
+   G4    n    741 ls +0.03016 (se 0.0136, t +2.2) mean_rel +0.0364 trim +0.0172 med -0.0119 frac_pos 0.482 drop5 +0.0154
+   M=5   n   9883 ls +0.00328 (se 0.0032, t +1.0) mean_rel +0.0047 trim -0.0079 med -0.0220 frac_pos 0.462 drop5 +0.0018
+   M=6   n  18074 ls -0.00159 (se 0.0024, t -0.7) mean_rel -0.0000 trim -0.0128 med -0.0255 frac_pos 0.457 drop5 -0.0026
+   M=7   n  13773 ls -0.00585 (se 0.0025, t -2.3) mean_rel -0.0040 trim -0.0145 med -0.0241 frac_pos 0.456 drop5 -0.0071
+   M=8   n  20277 ls -0.00182 (se 0.0020, t -0.9) mean_rel -0.0023 trim -0.0120 med -0.0233 frac_pos 0.458 drop5 -0.0026
+   M>=9  n 366419 ls +0.00006 (se 0.0003, t +0.2) mean_rel -0.0000 trim -0.0046 med -0.0085 frac_pos 0.476 drop5 +0.0000
+== elec
+   G23   n    136 ls +0.18714 (se 0.0399, t +4.7) mean_rel +0.2349 trim +0.2082 med +0.1866 frac_pos 0.684 drop5 +0.1354
+   G4    n    741 ls +0.07098 (se 0.0254, t +2.8) mean_rel +0.0874 trim +0.0463 med -0.0070 frac_pos 0.489 drop5 +0.0457
+   M=5   n   9883 ls +0.00335 (se 0.0046, t +0.7) mean_rel +0.0044 trim -0.0222 med -0.0617 frac_pos 0.421 drop5 +0.0002
+   M=6   n  18074 ls +0.00355 (se 0.0035, t +1.0) mean_rel -0.0011 trim -0.0261 med -0.0609 frac_pos 0.420 drop5 +0.0014
+   M=7   n  13773 ls +0.00257 (se 0.0038, t +0.7) mean_rel -0.0007 trim -0.0235 med -0.0543 frac_pos 0.425 drop5 -0.0006
+   M=8   n  20277 ls -0.00064 (se 0.0027, t -0.2) mean_rel -0.0021 trim -0.0226 med -0.0503 frac_pos 0.428 drop5 -0.0020
+   M>=9  n 366419 ls -0.00003 (se 0.0004, t -0.1) mean_rel -0.0002 trim -0.0114 med -0.0225 frac_pos 0.448 drop5 -0.0001
+cross-fit K2_G23+G4 : total -0.00004112 (sd seeds 0.00000738, frac<0 1.000) | gas -0.0000050 eui -0.0001974 elec -0.0000032
+cross-fit K2_G23    : total -0.00003816 (sd seeds 0.00000595, frac<0 0.995) | gas -0.0000028 eui -0.0001863 elec -0.0000017
+cross-fit K2_G4     : total -0.00000202 (sd seeds 0.00000588, frac<0 0.785) | gas -0.0000021 eui -0.0000066 elec -0.0000014
+cross-fit K5_G23+G4 : total -0.00004308 (sd seeds 0.00000279, frac<0 1.000) | gas -0.0000052 eui -0.0002068 elec -0.0000034
+cross-fit K5_G23    : total -0.00003956 (sd seeds 0.00000219, frac<0 1.000) | gas -0.0000030 eui -0.0001931 elec -0.0000018
+cross-fit K5_G4     : total -0.00000354 (sd seeds 0.00000183, frac<0 0.940) | gas -0.0000022 eui -0.0000139 elec -0.0000016
+cross-fit K10_G23+G4: total -0.00004363 (sd seeds 0.00000166, frac<0 1.000) | gas -0.0000052 eui -0.0002095 elec -0.0000035
+cross-fit K10_G23   : total -0.00003993 (sd seeds 0.00000129, frac<0 1.000) | gas -0.0000030 eui -0.0001949 elec -0.0000018
+cross-fit K10_G4    : total -0.00000377 (sd seeds 0.00000117, frac<0 0.995) | gas -0.0000022 eui -0.0000149 elec -0.0000017
+deltas (all train rows): {"gas": {"G23": 0.19942, "G4": 0.06202}, "eui": {"G23": 0.18166, "G4": 0.03016}, "elec": {"G23": 0.18714, "G4": 0.07098}}
+in-sample total gain (optimistic) -0.00004919
+	Command being timed: ".venv/bin/python exp/audit/verify2_postproc/v02_fulloof.py"
+	User time (seconds): 39.55
+	System time (seconds): 2.92
+	Percent of CPU this job got: 146%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:28.98
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 766324
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 5
+	Minor (reclaiming a frame) page faults: 794510
+	Voluntary context switches: 177
+	Involuntary context switches: 849
+	Swaps: 0
+	File system inputs: 92464
+	File system outputs: 33584
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

@@ -1,0 +1,10 @@
+[1] reverse (fit H corrected -> score P teacher) s=0.5: gas f_H {'<=3': 1.2403, '4': 1.078} -0.0000051; eui f_H {'<=3': 1.1564, '4': 1.0462} -0.0001806; elec f_H {'<=3': 1.2228, '4': 1.0584} -0.0000027 | TOTAL -0.00003770 P-boot sd 0.00001006 P(<0) 1.000
+[1] reverse (fit H corrected -> score P teacher) s=1.0: gas f_H {'<=3': 1.2403, '4': 1.078} -0.0000064; eui f_H {'<=3': 1.1564, '4': 1.0462} -0.0002608; elec f_H {'<=3': 1.2228, '4': 1.0584} -0.0000034 | TOTAL -0.00005413 P-boot sd 0.00001937 P(<0) 1.000
+[2] inside-P 2-fold (50 splits) s=0.5: mean TOTAL -0.00003924 sd over splits 0.00000408 min -0.00004385 max -0.00002741 share<0 1.00 | per metric gas -0.00000089, eui -0.00003803, elec -0.00000032
+[2] inside-P 2-fold (50 splits) s=1.0: mean TOTAL -0.00004764 sd over splits 0.00000944 min -0.00005787 max -0.00001977 share<0 1.00 | per metric gas -0.00000109, eui -0.00004638, elec -0.00000017
+[3] H forward, s=0.5, dropping the 0 most helped and 0 most hurt rows per metric: TOTAL -0.00004145
+[3] H forward, s=0.5, dropping the 3 most helped and 3 most hurt rows per metric: TOTAL -0.00002872
+[3] H forward, s=0.5, dropping the 5 most helped and 5 most hurt rows per metric: TOTAL -0.00002432
+[3] H forward, s=0.5, dropping the 10 most helped and 10 most hurt rows per metric: TOTAL -0.00001782
+[3] H forward, s=0.5, dropping the 20 most helped and 20 most hurt rows per metric: TOTAL -0.00001018
+elapsed 38.60 s maxrss 1479800 kB

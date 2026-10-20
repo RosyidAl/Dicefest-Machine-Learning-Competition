@@ -1,0 +1,14 @@
+truth in [950k,1e6): 193 rows; share with OOF proxy > 7e+05: 0.990
+truth in [950k,1e6): 193 rows; share with OOF proxy > 8e+05: 0.891
+truth in [950k,1e6): 193 rows; share with OOF proxy > 9e+05: 0.430
+truth in [950k,1e6): 193 rows; share with OOF proxy > 1e+06: 0.088
+proxy > 7e+05: test observed 1652, null 1648, alternative >= 1793 (z of alt vs observed -3.3)
+proxy > 9e+05: test observed 97, null 97, alternative >= 160 (z of alt vs observed -5.0)
+
+full-train OOF proxy > 1e6: 25 rows; gap 1e6 - y: mean 47470 median 28113
+H gas_teacher   pred in (9.8e+05,1e+06]: n   7 mean gap   115530  mean (pred - y)   103263
+H gas_teacher   pred in (1e+06,1.02e+06]: n   4 mean gap    65473  mean (pred - y)    70928
+H gas_teacher   pred in (1.02e+06,1.1e+06]: n   5 mean gap    18845  mean (pred - y)    55464
+H gas_corrected pred in (9.8e+05,1e+06]: n   5 mean gap    82624  mean (pred - y)    70251
+H gas_corrected pred in (1e+06,1.02e+06]: n   6 mean gap    44852  mean (pred - y)    49008
+H gas_corrected pred in (1.02e+06,1.1e+06]: n   5 mean gap    48066  mean (pred - y)    82881

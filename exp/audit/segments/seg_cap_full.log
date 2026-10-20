@@ -1,0 +1,27 @@
+full OOF global NNLS (27 gas members): gas NRMSE 0.24494  eui 0.65023
+   p/1e6 in [ -inf,  0.7)  n 425352  mean resid     +32.06  t  +0.57
+   p/1e6 in [  0.7,  0.8)  n   2703  mean resid      +4796  t  +3.30
+   p/1e6 in [  0.8, 0.85)  n    629  mean resid      +3133  t  +1.02
+   p/1e6 in [ 0.85,  0.9)  n    375  mean resid      -5097  t  -1.37
+   p/1e6 in [  0.9, 0.93)  n    105  mean resid  -1.86e+04  t  -2.92
+   p/1e6 in [ 0.93, 0.96)  n     67  mean resid -4.423e+04  t  -5.06
+   p/1e6 in [ 0.96, 0.98)  n     26  mean resid -5.207e+04  t  -4.32
+   p/1e6 in [ 0.98,    1)  n     17  mean resid -3.758e+04  t  -2.59
+   p/1e6 in [    1, 1.02)  n     16  mean resid -6.538e+04  t  -4.41
+   p/1e6 in [ 1.02,  inf)  n     13  mean resid -1.105e+05  t  -6.73
+  k fitted on all full-OOF rows: 0.08  (P-side teacher fit 0.085, all-H fit 0.08)
+  k=0.085: full-OOF gas dTotal -0.00002062  eui (via eui*A) dTotal -0.00000282
+  k=0.08: full-OOF gas dTotal -0.00002070  eui (via eui*A) dTotal -0.00000277
+  5-fold cross-fitted k on full OOF: gas dTotal -0.00002033 (sd 0.00000025)
+
+test: duplicate rows 77; their gas equals the copied train value: True
+  gas: rows changed >1e-9 rel 2367, >0.1% sigma 615, >1% sigma 353, >10% sigma 98; rms change/sigma 0.006083; max change 115101; new max 946308
+  eui: rows changed >1e-9 rel 2366, >0.1% sigma 588, >1% sigma 312, >10% sigma 54; rms change/sigma 0.003814; max change 22.5659; new max 605.86
+  share of rows with gas pred > 0.85e6: H corrected 0.00133  test 0.00141;  > 0.9e6: H 0.00060  test 0.00057
+  column id: cells identical to sub_v19vce 183987 / 183987
+  column target_macro_gas_kwh: cells identical to sub_v19vce 179011 / 183987
+  column target_macro_elec_kwh: cells identical to sub_v19vce 183987 / 183987
+  column target_eui_gas_kwh_per_sqm: cells identical to sub_v19vce 162948 / 183987
+  column target_clean_building_ratio: cells identical to sub_v19vce 183987 / 183987
+  column target_electric_heating_adoption: cells identical to sub_v19vce 183987 / 183987
+  sha256 f3be48b7e1099a561bb0b4ab1e895a69ea3c08a5f2922db841b7dec0754eaaae

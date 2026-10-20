@@ -1,0 +1,51 @@
+[a] test rows: {'<=3': 61, '4': 298} dup rows: 77 dup in groups: 0
+[b] gas: <=3: test corr/teacher +0.0033 (rms rel 0.0117) vs H +0.0004 (rms rel 0.0104) || 4: test corr/teacher +0.0005 (rms rel 0.0112) vs H +0.0007 (rms rel 0.0104) || all rows rms rel corr test 0.0121 H 0.0126
+[b] eui: <=3: test corr/teacher +0.0029 (rms rel 0.0114) vs H +0.0007 (rms rel 0.0120) || 4: test corr/teacher +0.0004 (rms rel 0.0118) vs H +0.0005 (rms rel 0.0116) || all rows rms rel corr test 0.0134 H 0.0141
+[b] elec: <=3: test corr/teacher +0.0018 (rms rel 0.0080) vs H +0.0023 (rms rel 0.0099) || 4: test corr/teacher +0.0008 (rms rel 0.0081) vs H -0.0003 (rms rel 0.0078) || all rows rms rel corr test 0.0070 H 0.0076
+[c] gas: H group pred mean/q90/max <=3 5.271e+04/7.592e+04/1.112e+05, 4 5.99e+04/8.704e+04/1.337e+05 | test <=3 5.557e+04/8.224e+04/1.032e+05, 4 6.227e+04/9.266e+04/1.435e+05 | sum c^2 per row (H, test): <=3 1.177e+06, 1.158e+06, 4 6.379e+06, 7.161e+06
+[d] gas true bias = P {'<=3': 1.197, '4': 1.078}, g = P factor, s=0.5: expected total H -0.00000113, test -0.00000119
+[d] gas true bias = P {'<=3': 1.197, '4': 1.078}, g = P factor, s=1.0: expected total H -0.00000151, test -0.00000158
+[d] gas true bias = Hcorr {'<=3': 1.24, '4': 1.078}, g = P factor, s=0.5: expected total H -0.00000130, test -0.00000135
+[d] gas true bias = Hcorr {'<=3': 1.24, '4': 1.078}, g = P factor, s=1.0: expected total H -0.00000185, test -0.00000192
+[d] gas true bias = OOFglobal {'<=3': 1.226, '4': 1.073}, g = P factor, s=0.5: expected total H -0.00000120, test -0.00000125
+[d] gas true bias = OOFglobal {'<=3': 1.226, '4': 1.073}, g = P factor, s=1.0: expected total H -0.00000165, test -0.00000171
+[c] eui: H group pred mean/q90/max <=3 198.2/292.2/375.7, 4 182.3/247.4/344.9 | test <=3 179.4/258.5/355.4, 4 177.3/237.2/356.1 | sum c^2 per row (H, test): <=3 16.08, 11.9, 4 57.35, 54.16
+[d] eui true bias = P {'<=3': 1.21, '4': 1.033}, g = P factor, s=0.5: expected total H -0.00005400, test -0.00004086
+[d] eui true bias = P {'<=3': 1.21, '4': 1.033}, g = P factor, s=1.0: expected total H -0.00007201, test -0.00005449
+[d] eui true bias = Hcorr {'<=3': 1.156, '4': 1.046}, g = P factor, s=0.5: expected total H -0.00003947, test -0.00003058
+[d] eui true bias = Hcorr {'<=3': 1.156, '4': 1.046}, g = P factor, s=1.0: expected total H -0.00004295, test -0.00003393
+[d] eui true bias = OOFglobal {'<=3': 1.235, '4': 1.065}, g = P factor, s=0.5: expected total H -0.00006759, test -0.00005206
+[d] eui true bias = OOFglobal {'<=3': 1.235, '4': 1.065}, g = P factor, s=1.0: expected total H -0.00009919, test -0.00007689
+[c] elec: H group pred mean/q90/max <=3 1.396e+04/1.978e+04/2.976e+04, 4 1.6e+04/2.132e+04/3.617e+04 | test <=3 1.417e+04/2.04e+04/2.649e+04, 4 1.646e+04/2.348e+04/3.672e+04 | sum c^2 per row (H, test): <=3 8.001e+04, 7.3e+04, 4 4.354e+05, 4.794e+05
+[d] elec true bias = P {'<=3': 1.179, '4': 1.063}, g = P factor, s=0.5: expected total H -0.00000059, test -0.00000058
+[d] elec true bias = P {'<=3': 1.179, '4': 1.063}, g = P factor, s=1.0: expected total H -0.00000078, test -0.00000077
+[d] elec true bias = Hcorr {'<=3': 1.223, '4': 1.058}, g = P factor, s=0.5: expected total H -0.00000068, test -0.00000066
+[d] elec true bias = Hcorr {'<=3': 1.223, '4': 1.058}, g = P factor, s=1.0: expected total H -0.00000097, test -0.00000093
+[d] elec true bias = OOFglobal {'<=3': 1.283, '4': 1.153}, g = P factor, s=0.5: expected total H -0.00000131, test -0.00000132
+[d] elec true bias = OOFglobal {'<=3': 1.283, '4': 1.153}, g = P factor, s=1.0: expected total H -0.00000223, test -0.00000226
+[e] gas <=3: candidate/base ratio min 1.09869 max 1.09869 (intended 1.09869)
+[e] gas 4: candidate/base ratio min 1.03924 max 1.03924 (intended 1.03924)
+[e] gas: rows changed outside M<=4: 105 (G fix), dup rows changed: 0
+[e] eui <=3: candidate/base ratio min 1.10489 max 1.10489 (intended 1.10489)
+[e] eui 4: candidate/base ratio min 1.01669 max 1.01669 (intended 1.01669)
+[e] eui: rows changed outside M<=4: 106 (G fix), dup rows changed: 0
+[e] elec <=3: candidate/base ratio min 1.08927 max 1.08927 (intended 1.08927)
+[e] elec 4: candidate/base ratio min 1.03150 max 1.03150 (intended 1.03150)
+[e] elec: rows changed outside M<=4: 0 (G fix), dup rows changed: 0
+[f] top EUI rows: M, A, y, corrected, fixed, dSSE, resid/corrected
+    M=3 A=    178.0 y=  478.81 c=  261.75 c'=  289.21 dSSE= -11164.7 rel=+0.829
+    M=3 A=    211.9 y=  469.41 c=  185.42 c'=  204.86 dSSE= -10668.2 rel=+1.532
+    M=3 A=    119.9 y=  400.52 c=  298.20 c'=  329.48 dSSE=  -5422.7 rel=+0.343
+    M=3 A=    354.2 y=  362.50 c=  251.27 c'=  277.62 dSSE=  -5168.5 rel=+0.443
+    M=3 A=    207.3 y=  333.89 c=  236.83 c'=  261.67 dSSE=  -4205.1 rel=+0.410
+    M=3 A=    287.9 y=  276.73 c=  162.02 c'=  179.01 dSSE=  -3610.1 rel=+0.708
+    M=3 A=    632.1 y=  267.86 c=  175.43 c'=  193.83 dSSE=  -3063.0 rel=+0.527
+    M=4 A=    121.0 y=  607.56 c=  286.09 c'=  290.87 dSSE=  -3046.6 rel=+1.124
+    M=3 A=    325.2 y=  309.40 c=  235.42 c'=  260.11 dSSE=  -3043.8 rel=+0.314
+    M=3 A=    207.1 y=  273.56 c=  198.51 c'=  219.33 dSSE=  -2692.0 rel=+0.378
+    M=3 A=    426.1 y=  270.47 c=  196.50 c'=  217.11 dSSE=  -2624.4 rel=+0.376
+    M=4 A=    278.1 y=  587.83 c=  203.63 c'=  207.02 dSSE=  -2599.5 rel=+1.887
+[f] EUI group rows: mean y 198.82 mean c 185.29; median rel resid +0.0296; share of rows with y > c: 0.545; all H rows share y > c 0.472
+[f] EUI <=3: median y/c 1.1521, mean log(y/c) +0.1357 (t +3.88), sum(y)/sum(c) 1.1700
+[f] EUI 4: median y/c 1.0012, mean log(y/c) +0.0052 (t +0.26), sum(y)/sum(c) 1.0484
+elapsed 2.55 s maxrss 334228 kB

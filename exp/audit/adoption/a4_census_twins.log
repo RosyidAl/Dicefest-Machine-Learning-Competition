@@ -1,0 +1,7 @@
+[hvac only] subzones in a shared-vector group: 21395 (labelled 20548, unlabelled 847); groups 8480
+[census all const] subzones in a shared-vector group: 0 (labelled 0, unlabelled 0); groups 0
+   groups with labelled+unlabelled: 0; groups with >=2 labelled: 0, of which adoption agrees: 0
+   unlabelled subzones with a labelled twin: 0, their test rows: 0
+[socio only] subzones in a shared-vector group: 0 (labelled 0, unlabelled 0); groups 0
+   groups with labelled+unlabelled: 0; groups with >=2 labelled: 0, of which adoption agrees: 0
+   unlabelled subzones with a labelled twin: 0, their test rows: 0

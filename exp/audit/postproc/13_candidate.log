@@ -1,0 +1,53 @@
+deltas (full-train VC OOF) {'gas': {'M23': 0.1994, 'M4': 0.062}, 'eui': {'M23': 0.1817, 'M4': 0.0302}, 'elec': {'M23': 0.1871, 'M4': 0.071}}
+sd model {'gas': [0.00806, 0.39297], 'eui': [0.00839, 0.38715], 'elec': [0.01024, 0.68998]} k S3 {'gas': 0.5046, 'eui': 0.6574}
+bounds {'gas_max': 999764.8988, 'eui_min': 5.1206, 'elecA_min': 5.1208, 'elecA_max': 149.9909}
+{
+ "gas": {
+  "rows_S1": 358,
+  "rows_S3": 6204,
+  "rows_S3_over_0p001sigma": 1372,
+  "rows_S4": 0,
+  "rms_change_over_sigma": 0.0057745744958498674,
+  "max_abs_change_over_sigma": 0.46726655494380465
+ },
+ "eui": {
+  "rows_S1": 358,
+  "rows_S3": 6425,
+  "rows_S3_over_0p001sigma": 1409,
+  "rows_S4": 0,
+  "rms_change_over_sigma": 0.01699692919637625,
+  "max_abs_change_over_sigma": 1.588034542728334
+ },
+ "elec": {
+  "rows_S1": 358,
+  "rows_S3": 0,
+  "rows_S3_over_0p001sigma": 0,
+  "rows_S4": 3,
+  "rms_change_over_sigma": 0.0016851476350347098,
+  "max_abs_change_over_sigma": 0.11881423458222266
+ }
+}
+wrote exp/audit/postproc/sub_v19vce_pp.csv sha256 8859f0f453e9862df63062abad7c2c6ba985ac6e30bb7c6d81f515a68b47d9c2
+	Command being timed: ".venv/bin/python exp/audit/postproc/13_candidate.py"
+	User time (seconds): 4.72
+	System time (seconds): 0.37
+	Percent of CPU this job got: 103%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:04.95
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 456804
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 112469
+	Voluntary context switches: 116
+	Involuntary context switches: 1408
+	Swaps: 0
+	File system inputs: 19304
+	File system outputs: 31240
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

@@ -1,0 +1,24 @@
+######## small-M groups M<=3; P-OOF deltas {'gas': [0.19737849125438503], 'eui': [0.20977961721854824], 'elec': [0.1785395624386941]}
+   S0: gas 0.245144 eui 0.648593 elec 0.314623
+   S1: gas 0.245139 (-0.0000058) eui 0.648431 (-0.0001621) elec 0.314619 (-0.0000035) | step total -0.00003427 cum total -0.00003427
+   S2: gas 0.245104 (-0.0000343) eui 0.648428 (-0.0000027) elec 0.314619 (+0.0000000) | step total -0.00000740 cum total -0.00004167
+   S3: gas 0.245027 (-0.0000778) eui 0.648412 (-0.0000156) elec 0.314619 (+0.0000000) | step total -0.00001866 cum total -0.00006033
+   S4: gas 0.245027 (+0.0000000) eui 0.648412 (+0.0000000) elec 0.314618 (-0.0000010) | step total -0.00000020 cum total -0.00006053
+   split-half steps S1+S2+S3+S4 : total mean -0.00005572 sd 0.00003816 frac<0 0.93
+   split-half steps S1          : total mean -0.00003428 sd 0.00002833 frac<0 0.85
+   split-half steps S2          : total mean -0.00000509 sd 0.00002057 frac<0 0.72
+   split-half steps S3          : total mean -0.00001776 sd 0.00000866 frac<0 0.95
+   split-half steps S4          : total mean -0.00000378 sd 0.00000148 frac<0 1.00
+   split-half steps S1+S3+S4    : total mean -0.00005224 sd 0.00003323 frac<0 0.93
+######## small-M groups M<=3,M=4; P-OOF deltas {'gas': [0.19737849125438503, 0.07847939504508834], 'eui': [0.20977961721854824, 0.03337444809133366], 'elec': [0.1785395624386941, 0.06300563170233571]}
+   S0: gas 0.245144 eui 0.648593 elec 0.314623
+   S1: gas 0.245135 (-0.0000093) eui 0.648378 (-0.0002147) elec 0.314618 (-0.0000048) | step total -0.00004577 cum total -0.00004577
+   S2: gas 0.245104 (-0.0000316) eui 0.648369 (-0.0000089) elec 0.314618 (+0.0000000) | step total -0.00000809 cum total -0.00005386
+   S3: gas 0.245026 (-0.0000779) eui 0.648353 (-0.0000158) elec 0.314618 (+0.0000000) | step total -0.00001874 cum total -0.00007260
+   S4: gas 0.245026 (+0.0000000) eui 0.648353 (+0.0000000) elec 0.314617 (-0.0000010) | step total -0.00000020 cum total -0.00007279
+   split-half steps S1+S2+S3+S4 : total mean -0.00007548 sd 0.00003521 frac<0 0.97
+   split-half steps S1          : total mean -0.00004577 sd 0.00002953 frac<0 0.95
+   split-half steps S2          : total mean -0.00000509 sd 0.00002057 frac<0 0.72
+   split-half steps S3          : total mean -0.00001776 sd 0.00000866 frac<0 0.95
+   split-half steps S4          : total mean -0.00000378 sd 0.00000148 frac<0 1.00
+   split-half steps S1+S3+S4    : total mean -0.00006373 sd 0.00003357 frac<0 0.97

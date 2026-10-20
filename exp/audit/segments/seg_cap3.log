@@ -1,0 +1,7 @@
+pw6     start=raw: P-fit coefs [   3.8    4.   -11.3  -66.7 -152.9]k -> H dTotal -0.00002032 | H cross-fit -0.00001654 (sd 0.00000265)
+pw6     start=imr: P-fit coefs [ 3.9  3.6 -0.6 -2.3  6.5]k -> H dTotal -0.00002066 | H cross-fit -0.00001678 (sd 0.00000262)
+pw9     start=raw: P-fit coefs [   3.6    5.2    0.     5.3  -17.8  -45.2  -55.9 -112.5 -154.8]k -> H dTotal -0.00001876 | H cross-fit -0.00001264 (sd 0.00000115)
+pw9     start=imr: P-fit coefs [ 3.6  5.2  0.2  8.  -4.4 -9.8 11.5 -7.9  9.5]k -> H dTotal -0.00001870 | H cross-fit -0.00001259 (sd 0.00000114)
+pw-low  start=raw: P-fit coefs [ -1.4   4.3   4.  -15.3]k -> H dTotal -0.00000634 | H cross-fit -0.00000271 (sd 0.00000263)
+pw-low  start=imr: P-fit coefs [-1.5  4.6  2.6  1.3]k -> H dTotal -0.00001956 | H cross-fit -0.00001616 (sd 0.00000260)
+IMR alone (k 0.085): H dTotal -0.00001953
