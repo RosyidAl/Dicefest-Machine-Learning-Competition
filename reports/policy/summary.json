@@ -1,0 +1,58 @@
+{
+ "eui": {
+  "label": "log intensitas gas (EUI)",
+  "r2_holdout": 0.5481,
+  "families": {
+   "rasio fisik turunan": 0.279,
+   "sosio-demografi": 0.2693,
+   "era bangunan": 0.1196,
+   "dimensi bangunan": 0.1104,
+   "iklim": 0.1063,
+   "agregat kawasan": 0.0539,
+   "lokasi": 0.0343,
+   "bauran pemanas": 0.0273
+  }
+ },
+ "gpm": {
+  "label": "log gas per meter",
+  "r2_holdout": 0.7385,
+  "families": {
+   "rasio fisik turunan": 0.3342,
+   "sosio-demografi": 0.2477,
+   "dimensi bangunan": 0.1137,
+   "era bangunan": 0.1107,
+   "iklim": 0.0917,
+   "agregat kawasan": 0.0479,
+   "lokasi": 0.0302,
+   "bauran pemanas": 0.024
+  }
+ },
+ "epm": {
+  "label": "log listrik per meter",
+  "r2_holdout": 0.4853,
+  "families": {
+   "sosio-demografi": 0.3767,
+   "rasio fisik turunan": 0.3017,
+   "dimensi bangunan": 0.1113,
+   "agregat kawasan": 0.0571,
+   "era bangunan": 0.0469,
+   "bauran pemanas": 0.0466,
+   "iklim": 0.0377,
+   "lokasi": 0.022
+  }
+ },
+ "adopt": {
+  "label": "adopsi pemanas listrik (%)",
+  "r2_holdout": 0.987,
+  "families": {
+   "bauran pemanas": 0.845,
+   "sosio-demografi": 0.1281,
+   "agregat kawasan": 0.0099,
+   "lokasi": 0.009,
+   "iklim": 0.0053,
+   "era bangunan": 0.0015,
+   "dimensi bangunan": 0.0006,
+   "rasio fisik turunan": 0.0005
+  }
+ }
+}

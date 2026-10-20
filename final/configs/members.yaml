@@ -803,6 +803,39 @@ members:
     knn: true
     source: src/exp_v18_knn2.py
     knn_x: true
+  nc_lgpm:
+    backend: nca
+    kind: lgas_per:bld_dim_12
+    wmul: A
+    params:
+      epochs: 12
+    n_folds: 10
+    agg: true
+    use_te: true
+    windows: &id004
+    - 2
+    - 10
+    cells: true
+    knn: true
+    knn_x: true
+    seeds: &id005
+    - 42
+    source: src/exp_nca.py
+  nc_lepm:
+    backend: nca
+    kind: lepm
+    wmul: M
+    params:
+      epochs: 12
+    n_folds: 10
+    agg: true
+    use_te: true
+    windows: *id004
+    cells: true
+    knn: true
+    knn_x: true
+    seeds: *id005
+    source: src/exp_nca.py
 multi:
   mk1:
     tasks:
@@ -904,6 +937,7 @@ blend:
   - lp2_gpm
   - pk2_lgpm
   - xp2_eui
+  - nc_lgpm
   elec:
   - t1_lepm
   - l4_epa
@@ -917,3 +951,4 @@ blend:
   - xp_epa
   - lp2_epm
   - xp2_epa
+  - nc_lepm

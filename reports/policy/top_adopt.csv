@@ -1,0 +1,16 @@
+fitur,makna (dugaan),keluarga,mean |SHAP|
+hvac_rest,sisa pangsa (listrik + lain-lain),bauran pemanas,3.5109
+hvac_dist_02,gas jaringan (sentral),bauran pemanas,0.8951
+hvac_dist_09,dua jenis+ (non-terbarukan),bauran pemanas,0.2782
+socio_demog_035,,sosio-demografi,0.0951
+hvac_dist_01,tanpa pemanas sentral,bauran pemanas,0.09
+hvac_dist_08,jaringan panas distrik,bauran pemanas,0.089
+hvac_dist_04,minyak,bauran pemanas,0.0701
+hvac_dist_03,tangki/LPG,bauran pemanas,0.0665
+socio_demog_024,,sosio-demografi,0.0661
+socio_demog_082,,sosio-demografi,0.0628
+hvac_dist_10,dua jenis+ (terbarukan),bauran pemanas,0.0476
+socio_demog_019,,sosio-demografi,0.0372
+socio_demog_051,,sosio-demografi,0.0305
+sub_n,,lokasi,0.0301
+hvac_dist_07,energi terbarukan,bauran pemanas,0.0298

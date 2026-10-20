@@ -1,0 +1,16 @@
+fitur,makna (dugaan),keluarga,mean |SHAP|
+area_per_meter,luas lantai per meter (ukuran hunian),rasio fisik turunan,0.0874
+env_climate_05,,iklim,0.0315
+socio_demog_082,,sosio-demografi,0.0271
+s002_ratio,,rasio fisik turunan,0.0256
+area_per_epc,luas per sertifikat,rasio fisik turunan,0.0228
+bld_era_15,,era bangunan,0.0181
+socio_demog_005,,sosio-demografi,0.0171
+bld_dim_43,,dimensi bangunan,0.014
+bld_era_09,,era bangunan,0.0139
+socio_demog_038,,sosio-demografi,0.0136
+env_climate_02,,iklim,0.0131
+sub_n,,lokasi,0.0119
+env_climate_01,,iklim,0.0113
+bld_dim_32,,dimensi bangunan,0.0093
+socio_demog_023,,sosio-demografi,0.0092

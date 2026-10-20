@@ -22,6 +22,9 @@ JOBS = {  # name: kind, weight code, settings
     "ncp_lgpm": ("lgas_per:bld_dim_12", "A", dict(epochs=20, emb=dict(k=16, sigma=0.05, d=8))),
     "nc_leui": ("leui", "A", dict(epochs=12)),  # log EUI, weight A (xgb_leui_wA formulation)
     "nc_gpgea": ("gas_per:bld_dim_03", "iA", dict(epochs=12)),  # pk2_gpgea formulation
+    # CPU versions (shared GPU full): fewer epochs and candidates, run with NCA_DEVICE=cpu NCA_THREADS=12
+    "ncc_leui": ("leui", "A", dict(epochs=8, cand=0.05)),
+    "ncc_gpgea": ("gas_per:bld_dim_03", "iA", dict(epochs=8, cand=0.05)),
 }
 
 mode, names = sys.argv[1], sys.argv[2].split(",")

@@ -48,7 +48,7 @@ LANE_THREADS = {"xgb": "2", "nn": "2", "cpu": "12", "gpu": "4"}
 def lane_of(spec, lane):
     """does the member belong to `lane`? ('gpu' = xgb + nn, kept for a two-lane run)"""
     b = spec["backend"]
-    kind = "xgb" if b == "xgb" else ("nn" if b in ("nn", "nn_multi") else "cpu")
+    kind = "xgb" if b == "xgb" else ("nn" if b in ("nn", "nn_multi", "nca") else "cpu")
     return kind == lane or (lane == "gpu" and kind in ("xgb", "nn"))
 
 
@@ -104,7 +104,11 @@ def run_members(lane, work, only=None):
         agg = dict(extra=ex, extra_t=ext) if spec["agg"] else {}
         te = dict(use_te=spec.get("use_te", False), windows=tuple(spec.get("windows", ())),
                   cells=spec.get("cells", False), knn=spec.get("knn", False))
-        if spec["backend"] == "nn":
+        if spec["backend"] == "nca":  # retrieval regressor (NCA0001, nca.py)
+            from nca import run_nca
+            run_nca(d, name, spec["kind"], out_dir=work, wmul=_wmul(d, spec["wmul"]), seeds=tuple(spec["seeds"]),
+                    model_dir=f"{work}/models/{name}", **te, **agg, **dict(spec["params"]))
+        elif spec["backend"] == "nn":
             p = dict(spec["params"])
             p["hidden"] = tuple(p["hidden"])
             run_nn(d, name, spec["kind"], out_dir=work, wmul=_wmul(d, spec["wmul"]), epochs=spec["epochs"],
@@ -208,6 +212,29 @@ def _assemble(work, out_csv, log=print):
             sub[col] = np.clip(base[metric] + corr, 0, None)
             summary[f"correction_rms_over_sigma_{metric}"] = float(np.sqrt(np.mean(corr ** 2)) / SIGMAS[col])
             log(f"{metric} correction rms/sigma {summary[f'correction_rms_over_sigma_{metric}']:.5f}")
+    # 2b. post-processing (D015), parameters frozen in resid_knn.json "postproc": S1 multiplicative shift of the rows
+    # with very few meters (bld_dim_12 2-3 and 4, under-predicted by every member family); S3 truncated-normal shrink
+    # towards the hard truncation of gas at the train maximum (gas and EUI); S4 clip to the train-implied bounds
+    pp = lamcfg.get("postproc")
+    if pp:
+        from scipy.stats import norm
+        B = dict(gas_max=tr[GAS].max(), eui_min=tr[EUI].min(), elecA_min=(tr[EL] / A).min(),
+                 elecA_max=(tr[EL] / A).max())
+        for metric, col in (("gas", GAS), ("eui", EUI), ("elec", EL)):
+            p = sub[col].values.astype(float).copy()
+            for key, g in (("M23", (Mt >= 2) & (Mt <= 3)), ("M4", Mt == 4)):
+                p[g] *= 1 + pp["s1"][metric][key]
+            if metric in pp["s3"]:
+                c = pp["s3"][metric]
+                s = p * np.sqrt(np.clip(c["a0"] + c["b0"] / Mt, 1e-8, None))
+                b = ((B["gas_max"] if metric == "gas" else B["gas_max"] / At) - p) / s
+                p = p + c["k"] * (-s * norm.pdf(b) / np.clip(norm.cdf(b), 1e-300, None))
+            lo, hi = {"gas": (B["eui_min"] * At, np.full(len(At), B["gas_max"])),
+                      "eui": (np.full(len(At), B["eui_min"]), B["gas_max"] / At),
+                      "elec": (B["elecA_min"] * At, B["elecA_max"] * At)}[metric]
+            sub[col] = np.clip(p, lo, hi)
+        summary["postproc"] = pp
+        log("post-processing S1 (small meters), S3 (gas truncation), S4 (train bounds) applied")
     # 3. test rows identical to a train row get its targets
     dup = duplicate_targets(tr, te)
     hit = ~np.isnan(dup[:, 0])
