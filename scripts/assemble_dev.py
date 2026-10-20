@@ -4,6 +4,7 @@ assemble stage (blend + adoption + residual correction + duplicate copy), as don
 The config dir needs members.yaml (only the `blend` lists are read) and resid_knn.json (holdout-fitted weights).
 usage: python scripts/assemble_dev.py <config_dir> <work_dir> <out_csv>
 """
+import json
 import os
 import sys
 import time
@@ -24,6 +25,12 @@ for r in sorted(set(cfg["blend"]["gas"] + cfg["blend"]["elec"])):
             os.symlink(os.path.join(ROOT, "exp", part, f"{r}.npy"), dst)
 if not os.path.exists(f"{work}/pred/adopt_v2.npy"):
     os.symlink(os.path.join(ROOT, "exp", "pred", "adopt_v2.npy"), f"{work}/pred/adopt_v2.npy")
+lamcfg = json.load(open(os.path.join(cfgdir, "resid_knn.json")))
+for pl in sorted({p["name"] for v in lamcfg.get("pl", {}).values() for p in v}):  # pseudo-labelled students (PL0001)
+    src = os.path.join(ROOT, "exp", "pl", "deploy", f"test_{pl[3:]}.npy")
+    assert pl.startswith("pl_") and os.path.exists(src), src
+    if not os.path.exists(f"{work}/pred/{pl}.npy"):
+        os.symlink(src, f"{work}/pred/{pl}.npy")
 logf = open(f"{work}/assemble.log", "a")
 
 

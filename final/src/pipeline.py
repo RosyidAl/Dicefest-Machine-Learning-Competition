@@ -202,6 +202,9 @@ def _assemble(work, out_csv, log=print):
     with ProcessPoolExecutor(3) as ex:
         for metric, corr in ex.map(_correction, jobs):
             col = METRICS[metric]
+            for pl in lamcfg.get("pl", {}).get(metric, []):  # pseudo-labelled students (PL0001): beta * (student - base)
+                s = np.load(f"{work}/pred/{pl['name']}.npy")
+                corr = corr + pl["beta"] * ((s * At if metric == "gas" else s) - base[metric])
             sub[col] = np.clip(base[metric] + corr, 0, None)
             summary[f"correction_rms_over_sigma_{metric}"] = float(np.sqrt(np.mean(corr ** 2)) / SIGMAS[col])
             log(f"{metric} correction rms/sigma {summary[f'correction_rms_over_sigma_{metric}']:.5f}")
