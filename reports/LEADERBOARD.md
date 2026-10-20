@@ -1,4 +1,4 @@
-# LEADERBOARD (dibangun ulang 2026-10-20 18:47 WIB)
+# LEADERBOARD (dibangun ulang 2026-10-20 19:38 WIB)
 
 Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil lebih baik.
 
@@ -332,7 +332,6 @@ Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil l
 
 | exp_id | status | model_family | nrmse_mean | nrmse_t1 | nrmse_t2 | nrmse_t3 | hypothesis |
 |---|---|---|---|---|---|---|---|
-| EM0005 | done | xgb |  | 0.24911 |  | 0.65985 | XGB Poisson gas per luas selubung bld_dim_03, input v16 + kNN-target, 10-fold |
 | E0271 | done | lgb |  | 0.2572729456806092 |  | 0.6720985399324281 | CV_SECONDARY check: LGB gpm tanpa TE spasial, skema primary |
 | E0272 | done | lgb |  |  | 0.3262256196151608 |  | CV_SECONDARY check: LGB epm tanpa TE spasial, skema primary |
 | E0273 | done | lgb |  | 0.25617055067299915 |  | 0.6699013376971004 | CV_SECONDARY check: LGB gpm dengan TE spasial, skema primary |
@@ -352,6 +351,7 @@ Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil l
 | ENS0020 | done |  |  |  |  |  | gas <-> EUI blend consistency (other blend's estimate minus own) as a correction regressor |
 | PP0009 | done |  |  |  |  |  | kNN residual-correction features in prediction space (log blend prediction, full space + prediction) |
 | NCA0001 | done | nn |  | 0.25155 |  | 0.66735 | retrieval regressor (ModernNCA style): learned embedding, prediction = softmax(-distance)-weighted mean of training targets; inputs of the kNN NN members |
+| AUD0001 | done | postprocess |  |  |  |  | final audit post-processing: S1 small-meter multiplicative bias fix (M<=3 about +20%, M=4 +3..7%), S3 truncated-normal soft cap at the train gas maximum 1e6 (gas, EUI), S4 hard clips to train-implied bounds |
 
 
 ## Submisi dengan skor public LB
@@ -376,3 +376,5 @@ Semua angka NRMSE adalah OOF CV_PRIMARY (ensemble: nested/honest). Lebih kecil l
 | 2026-10-19 22:53 | submissions/BEST_CURRENT.csv | 0.64859 | 0.24923 | BEST_CURRENT v19vce (LB 0.24923) |
 | 2026-10-20 18:46 | submissions/sub_v19nca.csv | 0.24511 | 0.24920 | holdout chain gas 0.24511 eui 0.64846 elec 0.31462 (v19vce 0.24514/0.64859/0.31462); elec/clean/adoption byte-identical to sub_v19vce |
 | 2026-10-20 18:47 | submissions/BEST_CURRENT.csv | 0.24511 | 0.24920 | BEST_CURRENT v19nca (LB 0.24920) |
+| 2026-10-20 19:37 | submissions/sub_v19ncapp.csv | -0.000065 | 0.24913 | honest H 5-fold: S1+S3+S4 total -6.5e-05 (per-fold all negative), verified by 2 independent reproductions each |
+| 2026-10-20 19:38 | submissions/BEST_CURRENT.csv | -0.000065 | 0.24913 | BEST_CURRENT v19ncapp (LB 0.24913) |
