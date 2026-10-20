@@ -1,9 +1,9 @@
-# STATUS (diperbarui: 2026-10-19 22:58 WIB)
+# STATUS (diperbarui: 2026-10-20 07:24 WIB)
 STATUS: BERJALAN
 Fase aktif / gerbang berikutnya: arahan user 19 Okt 16:30: fokus submisi terbaik, notebook ditunda; boleh submit langsung (token Kaggle di file privat scratchpad, KAGGLE_API_TOKEN=<path>); submit hanya bila holdout/CV lebih baik dari v19
 Fase selesai: Fase 0, Fase 1; FREEZE v16 (D006, tag freeze-v16); v17 Poisson ditolak (D007)
 Insiden: 16 Okt ~20:40 WIB run #1 + E0260 kehabisan RAM (24 GB), container restart ~00:00. RAM sekarang 32 GB. 17 Okt 04:05 semua job nohup mati serentak.
-Job berjalan: dice-run1s (logs/run1_shared.sh, run final v19 resume di final/work/run1): jalur CPU dilanjutkan otomatis setelah lp2_epa full selesai (sekitar 23:45; watcher menghentikan rantai v21 sebelum hold lalu SIGCONT 653822); jalur XGB + NN menunggu VRAM bebas >= 10 GB (proses luar PID host 931477 masih 13,2 GB). Setelah ketiga jalur rc=0 assemble otomatis dengan final/configs v19 dan cek sha 62444504 (uji drift); SESUDAH itu baru final/configs/resid_knn.json diganti ke exp/resid_knn_vc_AMp_e.json dan assemble ulang harus = sub_v19vce (38dd55b9). | Dev: dice-correst (PP0007 estimator alternatif koreksi kNN, exp/analysis/corr_est.log).
+Job berjalan: dice-run1s (run final v19 di final/work/run1): jalur CPU selesai 04:26, NN 07:02 (6 anggota identik byte dengan dev), jalur XGB (xp82_gpm, xp2_gpgea, xp2_eui, xp2_epa) berjalan sejak 06:00, perkiraan selesai sore; lalu assemble otomatis + cek sha 62444504. | Dev v20: dice-v20g / dice-v20g2 (GPU, logs/v20_guard_g.log): pk2_gpm, lalu nk2_lgpm, nk2b_lepm, nk2_gpm, tk2_lepm; dice-v20c (CPU, logs/v20_guard_c.log): lk2_gas, lk2_leui_wA, lk2_epa.
 - Setelah run selesai: uji drift vs exp/oof|pred; make_artifacts + make_notebooks.py BISMILLAH + scripts/run_notebook.sh (full + inference). Notebook penuh butuh sekitar 23 GB disk lagi (bebas 11 GB) dan GPU kosong.
 - Batas: server harus kembali paling lambat Selasa 20 Okt malam (run final sekitar 8 jam + notebook sekitar 30 jam)
 Cek job: systemctl status dice-run1s. Selalu luncurkan job panjang dengan systemd-run (nohup setsid ikut terbunuh).
@@ -17,7 +17,7 @@ Figur Fase 12: reports/figures/fig1-fig5 (src/make_figures.py); outline presenta
 3. Lanjutkan jalur CPU run final (kill -CONT 653822) setelah job LGB dev selesai; jalur GPU menunggu VRAM; lalu tambahkan VC + konfigurasi baru ke final/configs (members.yaml, resid_knn.json)
 4. make_artifacts + notebook (butuh GPU kosong dan sekitar 23 GB disk); writeup/FINAL_REPORT/PRESENTATION: blend VC, LB 0,24925; D-FINAL
 5. Paket final + checklist NEEDS_USER paling lambat 23 Okt 12:00
-Risiko / blocker / NEEDS_USER: GPU dipakai proses luar container (PID host 931477, 13,2 GB) sejak 19 Okt siang: run final jalur GPU dan notebook penuh tertahan (perlu sekitar 30 jam server sebelum 23 Okt); disk bebas 9 GB (notebook butuh sekitar 23 GB); TEAM_NAME = BISMILLAH; format writeup di guidebook Drive tidak terbaca
+Risiko / blocker / NEEDS_USER: GPU kembali bebas 20 Okt 06:00 (proses luar selesai), tapi dipakai bersama job kaggle user; disk bebas 12 GB (notebook penuh butuh sekitar 23 GB: kemungkinan hanya notebook inference yang dieksekusi penuh); TEAM_NAME = BISMILLAH; format writeup di guidebook Drive tidak terbaca
 
 ## HANDOFF (18 Okt 18:35, sebelum migrasi akun Claude; konteks lengkap di HANDOVER.md)
 - Tidak ada job DICE FEST yang berjalan. Server dipakai user untuk proyek /root/kaggle; jangan jalankan apa pun sebelum user mengizinkan.

@@ -458,3 +458,10 @@
 - Hipotesis berikutnya (PP0008): model koreksi residual nonlinear (LightGBM kecil di H, fitur = fitur koreksi sekarang + A, M, prediksi blend) dibanding lstsq linear, keduanya cross-fitted 5-fold di H. Dulu dengan fitur grup saja gain -0,00006 total; kini fitur kNN lebih kaya.
 - 23:42: PP0008 ditolak. LightGBM di atas koreksi linear, cross-fitted 5-fold di H (exp/analysis/corr_lgb.log): gas +0,000002 (early stopping memilih 1-2 pohon), EUI -0,000029, elec +0,000014. Koreksi linear sudah menangkap hampir semua sinyal.
 - Ringkasan malam ini: blend (VC A2xM2xp2), koreksi (konfigurasi, estimator, nonlinear), anggota baru (lp2_*), variabel VC tambahan (spasial n) semuanya jenuh; perubahan sah yang tersisa di bawah 0,00002 total. BEST_CURRENT tetap sub_v19vce (LB 0,24923).
+
+### [2026-10-20 07:21 WIB] v20 dihidupkan lagi: versi kNN + FB07b dari anggota lama berbobot besar (GPU kembali bebas)
+- GPU bebas sejak 06:00 (proses luar PID host 931477 selesai). Run final: jalur CPU selesai 04:26, jalur NN (pk2_lgpm) 07:02, keenam anggota identik byte dengan exp/oof|pred; jalur XGB (xp82_gpm, xp2_gpgea, xp2_eui, xp2_epa) berjalan.
+- Cek kebocoran tambahan: tidak ada fitur konstan per subzona yang cocok dengan agregat target subzona (subzona yang seluruhnya di train, korelasi maksimum 0,59); fitur konstan per zona ternyata konstan global.
+- Bobot blend terbesar dipegang NN dengan fitur kNN (mk2, pk2) dan NN lama tanpa kNN (t1_lepm 0,125 elec, p1_gpm 0,09 gas, n6_lgpm 0,085 gas, n6b_lepm 0,071 elec). Hipotesis: versi kNN + FB07b dari anggota lama itu (rencana v20 18 Okt, dibatalkan karena server dipakai) menambah gain blend seperti xk_gpm dulu (-0,00017 sebelum koreksi).
+- Rantai GPU (logs/dev_chain.sh, guard logs/v20_guard_g.log): pk2_gpm, tk2_lepm, nk2_lgpm, nk2b_lepm, nk2_gpm (full 10-fold). Rantai CPU (logs/v20_guard_c.log): lk2_gas, lk2_leui_wA, lk2_epa. Tanpa smoke terpisah: definisi job sudah ada sejak 18 Okt dan semua komponennya (PLR/TabM + knn=True, LGB + FB07b) sudah jalan di anggota v18/v19; fold 0 dipantau.
+- Kriteria: seleksi nested blend VC (select_vc CANDS) lalu rantai holdout dengan run hold; submit hanya bila rantai lebih baik.
