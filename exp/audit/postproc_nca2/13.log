@@ -1,0 +1,30 @@
+deltas (full-train VC OOF) {'gas': {'M23': 0.201, 'M4': 0.0637}, 'eui': {'M23': 0.1837, 'M4': 0.0318}, 'elec': {'M23': 0.1873, 'M4': 0.0714}}
+sd model {'gas': [0.00806, 0.39297], 'eui': [0.00839, 0.38715], 'elec': [0.01024, 0.68998]} k S3 {'gas': 0.5046, 'eui': 0.6574}
+bounds {'gas_max': 999764.8988, 'eui_min': 5.1206, 'elecA_min': 5.1208, 'elecA_max': 149.9909}
+{
+ "gas": {
+  "rows_S1": 358,
+  "rows_S3": 6200,
+  "rows_S3_over_0p001sigma": 1378,
+  "rows_S4": 0,
+  "rms_change_over_sigma": 0.0058014594934638255,
+  "max_abs_change_over_sigma": 0.46745445541159414
+ },
+ "eui": {
+  "rows_S1": 358,
+  "rows_S3": 6426,
+  "rows_S3_over_0p001sigma": 1409,
+  "rows_S4": 0,
+  "rms_change_over_sigma": 0.01722329260353517,
+  "max_abs_change_over_sigma": 1.6053709494290211
+ },
+ "elec": {
+  "rows_S1": 358,
+  "rows_S3": 0,
+  "rows_S3_over_0p001sigma": 0,
+  "rows_S4": 3,
+  "rms_change_over_sigma": 0.0016905706661369643,
+  "max_abs_change_over_sigma": 0.11890515834364909
+ }
+}
+wrote exp/audit/postproc_nca2/sub_v19nca2_pp.csv sha256 9dc0974e84c778bd1b8e200d549416b30ec0d6dd6afb836470d423587bb29087

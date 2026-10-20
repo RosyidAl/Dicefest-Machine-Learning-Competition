@@ -16,3 +16,4 @@ date_wib,version,cv_blend_nested,post_est,public_lb,steps
 2026-10-19,v19vce,0.24923,,0.24923,v19vc + EUI kNN correction configs augmented on the holdout (PP0006); only the EUI column differs
 2026-10-20,v19nca,0.24920,,0.24920,v19vce + NCA retrieval member nc_lgpm (NCA0001); only gas and EUI columns differ
 2026-10-20,v19ncapp,0.24913,,0.24913,v19nca + audit post-processing (small-meter fix, soft cap at gas truncation, hard clips)
+2026-10-20,v19nca2pp,0.24913,,0.24913,v19ncapp + NCA elec member nc_lepm (chain elec 0.31462 -> 0.31458)

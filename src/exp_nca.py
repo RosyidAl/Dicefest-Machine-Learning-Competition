@@ -20,6 +20,8 @@ JOBS = {  # name: kind, weight code, settings
     "nc_lgpm": ("lgas_per:bld_dim_12", "A", dict(epochs=12)),
     "nc_lepm": ("lepm", "M", dict(epochs=12)),
     "ncp_lgpm": ("lgas_per:bld_dim_12", "A", dict(epochs=20, emb=dict(k=16, sigma=0.05, d=8))),
+    "nc_leui": ("leui", "A", dict(epochs=12)),  # log EUI, weight A (xgb_leui_wA formulation)
+    "nc_gpgea": ("gas_per:bld_dim_03", "iA", dict(epochs=12)),  # pk2_gpgea formulation
 }
 
 mode, names = sys.argv[1], sys.argv[2].split(",")
