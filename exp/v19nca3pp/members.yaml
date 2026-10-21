@@ -1,0 +1,45 @@
+blend:
+  gas:
+  - xa_gpm
+  - p1_gpm
+  - lgb_gas
+  - x8_gpn
+  - n6_lgpm
+  - xgb_eui_wsM
+  - la_gas
+  - xgb_leui_wA
+  - xgb_gpn_tew
+  - n4f_gpm
+  - x8_lgpm
+  - xgb_gas
+  - xk_gpgea
+  - mk2_gpm
+  - pk2_gpgea
+  - lp_gpm
+  - xk2_gpgea
+  - lk2_gpm
+  - xp_gpgea
+  - xp_eui
+  - xp8_gpm
+  - xp_gpm
+  - xp82_gpm
+  - xp2_gpgea
+  - lp2_gpm
+  - pk2_lgpm
+  - xp2_eui
+  - nc_lgpm
+  - nc_gpgea
+  elec:
+  - t1_lepm
+  - l4_epa
+  - la_lepa
+  - n6b_lepm
+  - xgb_elec
+  - mk1_epm
+  - lp_epm
+  - mk2_epm
+  - pk2_lepm
+  - xp_epa
+  - lp2_epm
+  - xp2_epa
+  - nc_lepm

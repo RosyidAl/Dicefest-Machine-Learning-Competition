@@ -102,6 +102,62 @@ def predict_nn(d, name, spec, model_dir, extra=None, extra_t=None, tasks=None):
     return oof, pt
 
 
+def predict_nca(d, name, spec, model_dir, extra=None, extra_t=None):
+    """NCA members (nca.run_nca / nca.fit_fold_nca): rebuild each fold's inputs, load the fold model, embed the fold's
+    training rows and predict validation and test rows with the same chunking as the training run"""
+    import pandas as pd
+    import torch
+    from nca import Embed, _dist
+    from nn import preprocess, te_block
+    from train_lib import is_log_kind, target_spec
+    p = dict(spec["params"])
+    hidden, d_out, drop = tuple(p.get("hidden", (512,))), p.get("d_out", 128), p.get("drop", 0.1)
+    emb, chunk = p.get("emb"), p.get("chunk", 128)
+    dev = "cuda" if torch.cuda.is_available() else "cpu"
+    if extra is None:
+        Z, Zt = preprocess(d.X, d.Xt)
+    else:
+        Z, Zt = preprocess(pd.concat([d.X.reset_index(drop=True), extra], axis=1),
+                           pd.concat([d.Xt.reset_index(drop=True), extra_t], axis=1))
+    kind = spec["kind"]
+    y, _, mult = target_spec(d, kind)
+    mult_t = target_spec(d, kind, test=True)[2]
+    seeds = tuple(spec["seeds"])
+    oof, pt = np.zeros(len(Z)), np.zeros(len(Zt))
+    for k, (a, b) in enumerate(d.folds):
+        Za, Zb, Ztk = Z[a], Z[b], Zt
+        if spec.get("use_te", True):
+            Ta, Tb, Tt = te_block(d, a, b, tuple(spec.get("windows", (2, 10))), spec.get("cells", True),
+                                  spec.get("knn", True))
+            Za, Zb, Ztk = np.hstack([Za, Ta]), np.hstack([Zb, Tb]), np.hstack([Zt, Tt])
+        ya = y[a]
+        mu, sd = ya.mean(), ya.std()
+        for s in seeds:
+            cont = None if emb is None else np.array([len(np.unique(Za[:, j])) > 2 for j in range(Za.shape[1])])
+            model = Embed(Za.shape[1], hidden, d_out, drop, emb, cont).to(dev)
+            model.load_state_dict(torch.load(f"{model_dir}/fold{k}_seed{s}.pt", map_location=dev))
+            model.eval()
+            with torch.no_grad():
+                Xa = torch.tensor(Za, device=dev)
+                Ya = torch.tensor((ya - mu) / sd, dtype=torch.float32, device=dev)
+                Ea = torch.cat([model(Xa[i:i + 65536]) for i in range(0, len(Za), 65536)])
+
+                def predict(Zx):
+                    X = torch.tensor(Zx, device=dev)
+                    out = []
+                    for i in range(0, len(X), chunk):
+                        logit = -_dist(model(X[i:i + chunk]), Ea)
+                        out.append((torch.softmax(logit, 1) * Ya[None]).sum(1))
+                    return torch.cat(out).cpu().numpy() * sd + mu
+
+                pb, ptk = predict(Zb), predict(Ztk)
+            if is_log_kind(kind):
+                pb, ptk = np.exp(pb), np.exp(ptk)
+            oof[b] += pb * (mult if np.isscalar(mult) else mult[b]) / len(seeds)
+            pt += ptk * mult_t / len(d.folds) / len(seeds)
+    return oof, pt
+
+
 def predict_all(work_models, out_dir, only=None):
     """writes <out_dir>/oof|pred/<member>.npy for every member (or `only`) from <work_models>/<member>/"""
     from pipeline import make_data
@@ -134,6 +190,8 @@ def predict_all(work_models, out_dir, only=None):
         if spec["backend"] == "nn":
             oof, pt = predict_nn(d, name, spec, f"{work_models}/{name}", *agg)
             oof, pt = oof[:, 0], pt[:, 0]
+        elif spec["backend"] == "nca":
+            oof, pt = predict_nca(d, name, spec, f"{work_models}/{name}", *agg)
         else:
             oof, pt = predict_gbm(d, name, spec, f"{work_models}/{name}", *agg)
         np.save(f"{out_dir}/oof/{name}.npy", oof)
