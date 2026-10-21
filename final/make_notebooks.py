@@ -87,117 +87,123 @@ def embed_cells():
     return cells
 
 
-INTRO = f"""# DICE FEST 2026: The Urban Energy Transition Trilemma
+INTRO = f"""# DICE FEST 2026: Trilema Transisi Energi Perkotaan
 ### Tim {TEAM}
 
-Notebook ini berisi solusi lengkap kami: dari data mentah sampai file submisi, lalu interpretasi model untuk
-rekomendasi kebijakan. Semua angka prediksi keluar dari kode di notebook ini, dengan seed terkunci dan tanpa data
-eksternal.
+Notebook ini berisi seluruh solusi kami, dari data mentah sampai file submisi, lalu dari model sampai rekomendasi
+kebijakan. Semua angka tebakan dihasilkan oleh kode di notebook ini, dengan seed terkunci dan tanpa data dari luar.
 
-**Ringkasan solusi**
+**Gambaran singkat.** Kami memperkirakan lima angka energi untuk setiap kawasan permukiman. Sebelum melatih model, kami
+membedah data dan menemukan bahwa porsi bangunan bersih bisa dihitung tepat, adopsi pemanas listrik sudah diketahui
+untuk 92% kawasan uji, dan gas total serta intensitas gas (EUI) terikat rumus luas lantai. Bagian yang benar-benar
+harus ditebak kami kerjakan dengan fitur yang meniru cara energi dipakai, 41 model yang digabung dengan bobot yang
+menyesuaikan, koreksi galat wilayah, dan penyesuaian akhir untuk batas data. Skor leaderboard publik: 0,24913.
 
-| Komponen | Isi |
+| Bagian | Isi |
 |---|---|
-| Validasi | KFold acak 10 lipat (test diambil acak per baris, 70/30) + holdout internal 70/30 untuk bobot pasca-blend |
-| Identitas eksak | gas = EUI x luas lantai; rasio bangunan bersih = bld_dim_02 / bld_dim_01; adopsi konstan per subzona |
-| Fitur domain | rasio fisik (luas per meter, per sertifikat), agregat kawasan, encoding spasial out-of-fold, kNN-target di ruang stok bangunan |
-| Model | {N_GAS} anggota untuk keluarga gas/EUI dan {N_EL} untuk listrik: XGBoost, LightGBM (termasuk Poisson), MLP (PLR, TabM-mini, multi-task), regresor retrieval NCA |
-| Ensemble | blend NNLS dengan bobot yang bervariasi menurut luas, jumlah meter, dan level prediksi; koreksi residual spasial |
-| Pasca-proses | koreksi bias baris bermeter sangat sedikit, batas truncation gas 1e6 kWh, salinan 77 baris duplikat |
-| Skor | LB publik 0,24913 (metrik: rata-rata RMSE/sigma lima target) |
+| 1. Data | rumus tersembunyi di data dan cara data uji dipilih |
+| 2. Fitur | ukuran rumah, rata-rata wilayah, kawasan paling mirip, gambaran kawasan |
+| 3. Arsitektur | tiga jalur untuk lima target, 41 model, cara menggabungkan |
+| 4-5. Pelatihan dan submisi | melatih semua model lalu menyusun file submisi |
+| 6. Evaluasi | skor dan perjalanannya |
+| 7. Kebijakan | model penjelas, SHAP, peta trilema 330 zona, rekomendasi |
+| Lampiran | seluruh kode modul (ditulis ke disk oleh notebook ini) |
 
-**Isi**: 0 Setup, 1 Data dan identitas fisik, 2 Rekayasa fitur domain, 3 Arsitektur multi-output, 4 Pelatihan,
-5 Perakitan submisi, 6 Evaluasi, 7 Interpretabilitas dan rekomendasi kebijakan, 8 Kesimpulan, Lampiran kode.
-
-**Menjalankan**: hardware referensi NVIDIA RTX A4000 16 GB, 16 vCPU, RAM 32 GB; pelatihan penuh sekitar 20 jam
-(tiga jalur paralel). Set `DICEFEST_TRAIN=0` untuk melewati pelatihan bila prediksi anggota sudah ada di `WORK`
-(semua bagian lain tetap dijalankan). Untuk verifikasi cepat dari model tersimpan tersedia
-`inference_from_artifacts.ipynb`."""
+**Cara menjalankan.** Pelatihan penuh butuh GPU 16 GB, 16 vCPU, RAM 32 GB, sekitar 20 jam (tiga jalur paralel).
+Kalau tebakan semua model sudah ada di folder `WORK`, set `DICEFEST_TRAIN=0` untuk melewati pelatihan; semua bagian lain
+tetap dijalankan. File submisi yang dihasilkan selalu dicetak sidik sha256-nya, dan pada run kami hasilnya
+`aec745ab...d66e`, sama persis dengan file yang kami kirim."""
 
 
 def full_notebook():
     nb = nbf.v4.new_notebook()
-    nb.cells = [md(INTRO), md("## 0. Setup"), code(SETUP)] + embed_cells() + [
-        md("""## 1. Data dan identitas fisik
-Sebelum memodelkan, kami memeriksa struktur data. Tiga temuan membentuk seluruh desain:
+    nb.cells = [md(INTRO), md("## 0. Persiapan\nLokasi data, folder kerja, dan versi pustaka yang dipakai."), code(SETUP)] + embed_cells() + [
+        md("""## 1. Data: apa yang kami temukan sebelum memodelkan
+Satu baris adalah satu kawasan kecil (kira-kira satu kode pos, rata-rata 22 meter). Sel di bawah memeriksa empat hal
+yang menentukan seluruh desain solusi:
 
-1. **EUI adalah gas dibagi luas lantai** (`bld_dim_06`) dengan presisi mesin. Jadi gas total dan EUI dimodelkan oleh
-   satu keluarga model; hanya bobot blend yang di-fit terpisah karena metriknya menekankan baris yang berbeda (gas oleh
-   kawasan besar, EUI oleh kawasan dengan luas kecil).
-2. **Rasio bangunan bersih adalah identitas eksak** dari dua kolom bangunan, sehingga tidak perlu model sama sekali.
-3. **Adopsi pemanas listrik konstan dalam satu subzona** dan 92% baris test berada di subzona yang ada di train.
-   Untuk sisanya, adopsi bisa diturunkan dari jumlah rumah tangga yang direkonstruksi dari pangsa jenis pemanas.
-
-Test diambil acak per baris (persis 30%), sehingga KFold acak per baris meniru kondisi test dan informasi tingkat
-wilayah (target encoding subzona, zona, sel iklim) sah dipakai asalkan dihitung out-of-fold."""),
+* **EUI x luas lantai = gas.** Kolom `bld_dim_06` ternyata luas lantai, dan EUI hanyalah gas dibagi luas itu. Jadi
+  gas dan EUI dilayani satu keluarga model.
+* **Porsi bangunan bersih = 100 x `bld_dim_02` / `bld_dim_01`**, dibulatkan dua desimal. Target ini dihitung, tidak
+  ditebak.
+* **Adopsi pemanas listrik sama untuk satu subzona**, dan 92% kawasan uji ada di subzona yang muncul di data latih.
+* **Data uji diambil acak per baris** (tepat 30%). Karena itu kami menguji model dengan membagi data latih secara acak
+  menjadi 10 bagian, dan rata-rata wilayah boleh dipakai sebagai fitur asalkan dihitung tanpa melihat bagian yang
+  sedang diuji."""),
         code('tr, te = load()\nprint("train", tr.shape, "| test", te.shape)\nreport.identity_checks(tr, te)'),
+        md("Sebaran target. Gas, listrik, dan EUI digambar dalam skala logaritma karena rentangnya sangat lebar."),
         code('''fig, axs = plt.subplots(1, 4, figsize=(15, 3))
 for ax, c in zip(axs, TARGET_COLS[:3] + [TARGET_COLS[4]]):
     v = tr[c].values
     ax.hist(np.log10(v) if c != TARGET_COLS[4] else v, bins=80, color="#3b6ea5")
     ax.set_title(c + (" (log10)" if c != TARGET_COLS[4] else ""), fontsize=9)
 plt.tight_layout(); plt.show()
-print("sigma beku metrik:", SIGMAS)'''),
-        md("""## 2. Rekayasa fitur domain
-Fitur kami dibangun dari logika fisik dan spasial konsumsi energi kawasan, bukan dari pencarian buta.
+print("galat tiap target dibagi sigma berikut sebelum dirata-rata:", SIGMAS)'''),
+        md("""## 2. Fitur: menerjemahkan fisika dan geografi ke dalam angka
+Pertanyaan yang memandu kami: apa yang membuat satu kawasan memakai energi lebih banyak dari kawasan lain?
 
-**2.1 Rasio fisik.** Konsumsi energi kawasan adalah jumlah dari banyak rumah tangga. Karena itu kami menormalkan ukuran:
-`area_per_meter` (luas lantai per meter = ukuran hunian rata-rata), `area_per_epc` (luas per sertifikat energi),
-`meters_per_epc` (cakupan sertifikat), `clean_ratio`, dan `hvac_rest` (100 dikurangi semua pangsa jenis pemanas, yaitu
-pangsa pemanas listrik + kategori yang hilang).
+**Ukuran rumah, bukan ukuran kawasan.** Gas total terutama mengikuti berapa banyak rumah di kawasan. Yang lebih
+informatif adalah perilaku per rumah, jadi kami membuat rasio seperti luas lantai per meter (ukuran rata-rata rumah),
+luas per sertifikat energi, dan sisa porsi jenis pemanas (sebagian besar pemanas listrik).
 
-**2.2 Target dalam bentuk intensitas.** Anggota tidak memprediksi gas total secara langsung, tetapi gas per meter,
-gas per luas, gas per sertifikat, atau log-nya, dengan bobot baris yang menyamakan loss dengan galat skala asli.
-Variansi residual mengikuti rata-rata rumah tangga (`a + b/M`, M = jumlah meter), sehingga bobot `M` atau `1/M`
-dipakai sesuai formulasi. Beberapa anggota memakai objektif Poisson untuk laju per meter.
+**Menebak per rumah.** Model menebak gas per meter, per meter persegi, per sertifikat, atau logaritmanya, lalu
+hasilnya dikalikan kembali. Bobot tiap baris diatur supaya kesalahan yang dihukum tetap kesalahan pada skala asli.
 
-**2.3 Encoding spasial out-of-fold.** Rata-rata target (dalam bentuk intensitas) di subzona, zona, sel grid iklim
-(gabungan `env_climate_01/03/05`) dan jendela tetangga sepanjang nomor subzona (`sub_n` berurutan secara spasial),
-semuanya dihitung hanya dari baris fit tiap lipatan dengan cross-fitting di dalamnya.
+**Rata-rata wilayah.** Kawasan yang berdekatan cenderung mirip. Kami memakai rata-rata target di subzona, zona, petak
+iklim (gabungan tiga kolom iklim yang membentuk grid berisi sekitar 15 kawasan), dan kawasan di sekitar nomor subzona
+yang berurutan secara geografis. Semuanya dihitung dari bagian data yang tidak sedang diuji, supaya model tidak
+mencontek.
 
-**2.4 kNN-target di ruang stok bangunan.** Untuk tiap baris, rata-rata target dari k kawasan paling mirip
-(ruang: log luas/meter, log sertifikat/meter, porsi era bangunan, porsi bersih, dan lainnya) di dalam jendela spasial.
-Versi lanjutan memakai ruang era, ruang bangunan + sensus (PCA), dan ruang ukuran. Fitur ini memberi perbaikan model
-tunggal terbesar (EUI -0,0022).
+**Kawasan paling mirip.** Untuk setiap kawasan, kami mencari kawasan di sekitarnya yang stok bangunannya paling mirip
+(ukuran rumah, cakupan sertifikat, campuran era bangunan) dan memakai rata-rata konsumsi mereka. Ini ide dengan efek
+terbesar di proyek kami: galat EUI satu model turun 0,0022.
 
-**2.5 Agregat kawasan transduktif.** Jumlah baris, total luas, meter, dan sertifikat per subzona dan zona dari baris
-train dan test (tanpa target), serta porsi baris terhadap kawasannya.
+**Gambaran kawasan.** Jumlah kawasan, total luas, meter, dan sertifikat per subzona dan zona dari data latih dan uji
+(tanpa target).
 
-**2.6 Rekonstruksi rumah tangga untuk adopsi.** Pangsa jenis pemanas adalah pecahan cacah/N. N terkecil yang membuat
-semua pangsa menjadi bilangan bulat adalah jumlah rumah tangga; dari situ adopsi = 100 (K - r) / N dengan K = sisa
-rumah tangga, sehingga adopsi subzona baru dimodelkan sebagai proporsi binomial."""),
+**Jumlah rumah tangga untuk adopsi.** Kolom campuran pemanas adalah pecahan cacah rumah tangga. Bilangan bulat terkecil
+yang membuat semua pecahan utuh adalah jumlah rumah tangga, sehingga adopsi subzona baru bisa dimodelkan sebagai
+peluang "berapa rumah dari K rumah memakai listrik".
+
+Sel di bawah membangun fitur dasar dan gambaran kawasan, lalu menunjukkan kelompok fiturnya dan beberapa korelasi."""),
         code('''from train_lib import Data
 d = Data()
 ex, ext = d.agg_features()
 fam = pd.Series([explain.family(c) for c in list(d.X.columns) + list(ex.columns)]).value_counts()
-print("fitur dasar + agregat per keluarga:"); print(fam.to_string())
+print("jumlah fitur per kelompok:"); print(fam.to_string())
 demo = pd.DataFrame({"log EUI": np.log(tr[TARGET_COLS[2]]), "log luas per meter": np.log(d.X["area_per_meter"]),
-                     "hvac_rest": d.X["hvac_rest"], "adopsi": tr[TARGET_COLS[4]]})
+                     "sisa porsi pemanas": d.X["hvac_rest"], "adopsi": tr[TARGET_COLS[4]]})
 print("\\nkorelasi beberapa fitur turunan dengan target:"); print(demo.corr().round(3).to_string())'''),
-        md("""## 3. Arsitektur multi-output
-Lima kolom target ditangani oleh tiga jalur yang memanfaatkan strukturnya:
+        md("""## 3. Arsitektur: tiga jalur untuk lima target
+* **Gas dan EUI** dilayani satu keluarga model. Saat menggabungkan model, bobot untuk kolom gas menekankan kawasan
+  besar (yang paling menentukan galat gas), sedangkan bobot untuk kolom EUI tidak.
+* **Listrik** punya keluarga model sendiri.
+* **Porsi bangunan bersih** dihitung dengan rumus; **adopsi** disalin per subzona dan sisanya ditebak dengan model
+  peluang.
 
-* **Keluarga gas/EUI**: satu set anggota memprediksi EUI (dalam berbagai formulasi intensitas); bobot blend untuk kolom
-  gas di-fit dengan bobot baris luas lantai sehingga loss-nya sama dengan galat gas, dan untuk kolom EUI tanpa bobot.
-* **Keluarga listrik**: anggota terpisah untuk listrik per meter / per luas.
-* **Identitas**: rasio bersih dihitung langsung; adopsi disalin per subzona dan dimodelkan binomial untuk subzona baru.
+Model yang dipakai sengaja beragam karena tiap jenis melihat data dengan cara berbeda: XGBoost dan LightGBM (pohon
+keputusan bertingkat), beberapa jaringan saraf, dan NCA, jaringan yang belajar sendiri kawasan mana yang mirip lalu
+menebak dari rata-rata kawasan mirip itu. Gabungannya memakai bobot tidak negatif yang berubah perlahan mengikuti luas
+kawasan, jumlah meter, dan besar tebakan, karena model yang unggul di kawasan kecil belum tentu unggul di kawasan besar.
 
-Blend memakai NNLS dengan bobot yang berubah mulus menurut peringkat luas, jumlah meter, dan level prediksi (basis
-hat multilinear), lalu koreksi residual spasial (grup + kNN) dengan bobot yang di-fit pada holdout internal agar
-tidak ada label validasi yang bocor."""),
+Setelah digabung, tebakan setiap kawasan digeser sedikit mengikuti rata-rata galat tetangga yang mirip (galat yang
+masih berkorelasi antar kawasan berdekatan). Terakhir ada penyesuaian untuk dua batas di data: kawasan dengan 2 sampai
+4 meter yang selalu ditebak terlalu rendah, dan gas yang di data latih tidak pernah melewati satu juta kWh. Semua
+besaran untuk langkah setelah penggabungan ditentukan pada 30% data latih yang disisihkan sebagai ujian internal."""),
         code('report.architecture_diagram()\nreport.member_table(cfg)'),
-        md("""## 4. Pelatihan semua anggota
-Tiga proses paralel: jalur `xgb` (XGBoost CUDA), `nn` (MLP dan NCA di PyTorch) dan `cpu` (LightGBM, 12 thread). Setiap
-anggota dilatih dengan KFold 10 lipat (seed 42) dan menyimpan prediksi OOF dan test di `WORK`. Semua library memakai
-mode deterministik, sehingga run ulang di hardware yang sama memberi array yang identik byte."""),
+        md("""## 4. Melatih semua model
+Tiga proses berjalan paralel: jalur `xgb` (XGBoost di GPU), `nn` (jaringan saraf dan NCA di GPU), dan `cpu` (LightGBM).
+Setiap model dilatih 10 kali (10 bagian data, seed 42) dan menyimpan tebakan untuk data latih (dari bagian yang tidak
+ia lihat) dan data uji (rata-rata 10 model). Semua pustaka dipaksa deterministik, sehingga run ulang di hardware yang
+sama memberi angka yang identik sampai byte terakhir."""),
         code('''import shutil
 if TRAIN:
     if os.path.exists(WORK):
-        shutil.rmtree(WORK)          # reproduce from a clean state
+        shutil.rmtree(WORK)          # mulai dari kondisi bersih
     os.makedirs(WORK)
     t0 = time.time()
     procs = {}
-    for lane in pipeline.LANES:   # XGBoost (GPU), MLP + NCA (GPU), LightGBM (CPU) in parallel
+    for lane in pipeline.LANES:   # XGBoost (GPU), jaringan saraf + NCA (GPU), LightGBM (CPU) paralel
         env = dict(os.environ, OMP_NUM_THREADS=pipeline.LANE_THREADS[lane])
         cmd = [sys.executable, "-u", "-c",
                f"import sys; sys.path.insert(0, {os.path.join(ROOT, 'src')!r}); import pipeline; "
@@ -206,36 +212,40 @@ if TRAIN:
                                        stderr=subprocess.STDOUT, env=env)
     for lane, p in procs.items():
         rc = p.wait()
-        print(f"lane {lane} rc={rc} after {(time.time() - t0) / 3600:.2f} h")
+        print(f"jalur {lane} selesai rc={rc} setelah {(time.time() - t0) / 3600:.2f} jam")
         assert rc == 0, open(os.path.join(WORK, f"lane_{lane}.log")).read()[-3000:]
 need = sorted(set(cfg["blend"]["gas"] + cfg["blend"]["elec"]))
 missing = [m for m in need if not os.path.exists(os.path.join(WORK, "pred", m + ".npy"))]
-print(len(need), "anggota blend;", "semua prediksi tersedia" if not missing else f"belum ada: {missing}")'''),
-        md("## 5. Perakitan submisi\nModel adopsi, blend, koreksi residual, pasca-proses, salinan baris duplikat, lalu file submisi dan sha256-nya."),
+print(len(need), "model di gabungan;", "semua tebakan tersedia" if not missing else f"belum ada: {missing}")'''),
+        md("## 5. Menyusun file submisi\nModel adopsi, penggabungan, koreksi galat wilayah, penyesuaian akhir, salinan 77 baris duplikat, lalu file submisi beserta sidik sha256-nya."),
         code('info = pipeline.run_adoption(WORK)\nprint(info)\nsha = pipeline.assemble(WORK, OUT_CSV)\n'
              'summary = json.load(open(os.path.join(WORK, "summary.json")))\nprint("sha256", sha)'),
         md("""## 6. Evaluasi
-Skor blend jujur (bobot di-fit di empat per lima baris, dinilai di sisanya) per kolom, lalu perkembangan skor selama
-kompetisi. Holdout internal memprediksi perubahan LB publik dengan baik di setiap langkah, sehingga kami memakainya
-sebagai satu-satunya dasar keputusan, bukan LB publik."""),
+Skor jujur hasil penggabungan per kolom (bobot dihitung di empat per lima data, diuji di sisanya), lalu perjalanan skor
+leaderboard. Setiap langkah dipilih dari ujian internal, dan leaderboard selalu membaik hampir persis sebesar
+perkiraannya."""),
         code('''cv = summary["cv_blend_honest"]
-print({k: round(v, 5) for k, v in cv.items()}, "(sebelum koreksi residual dan pasca-proses)")
-hist = pd.DataFrame([("v12", "agregat kawasan + MLP PLR", 0.25025), ("v15", "koreksi residual kNN", 0.24954),
-                     ("v16", "fitur kNN-target di model", 0.24943), ("v19", "objektif Poisson + kNN-target lanjutan", 0.24934),
-                     ("v19vc", "blend bobot bervariasi", 0.24925), ("v19nca", "anggota retrieval NCA", 0.24920),
-                     ("final", "pasca-proses meter kecil + batas truncation gas", 0.24913)],
+print({k: round(v, 5) for k, v in cv.items()}, "(sebelum koreksi wilayah dan penyesuaian akhir)")
+hist = pd.DataFrame([("v12", "gambaran kawasan + jaringan saraf PLR", 0.25025), ("v15", "koreksi galat wilayah", 0.24954),
+                     ("v16", "fitur kawasan paling mirip di dalam model", 0.24943),
+                     ("v19", "objektif Poisson + kawasan mirip lanjutan", 0.24934),
+                     ("v19vc", "bobot gabungan yang menyesuaikan", 0.24925), ("v19nca", "model NCA", 0.24920),
+                     ("final", "penyesuaian meter sedikit + batas gas", 0.24913)],
                     columns=["versi", "langkah", "LB publik"])
 hist'''),
         code('sub = pd.read_csv(OUT_CSV)\nprint(sub.shape)\nsub.describe().T.round(3)'),
-        md("""## 7. Interpretabilitas dan rekomendasi kebijakan
-Ensemble submisi terlalu besar untuk dibaca langsung. Untuk analisis kebijakan kami melatih satu **model penjelas**
-LightGBM per target yang hanya memakai karakteristik kawasan yang bisa diukur (bangunan, era, bauran pemanas,
-sosio-demografi, iklim, agregat kawasan) tanpa encoding target. Dengan begitu setiap kontribusi SHAP merujuk pada sesuatu
-yang bisa diubah atau ditargetkan oleh pembuat kebijakan. SHAP dihitung eksak (TreeSHAP bawaan LightGBM) pada 20 ribu
-baris acak; kesesuaian model penjelas dilaporkan sebagai R² pada lipatan holdout.
+        md("""## 7. Apa artinya bagi kebijakan
+Gabungan 41 model terlalu rumit untuk dibaca, dan sebagian fiturnya (rata-rata target wilayah) bukan sesuatu yang
+bisa diubah pembuat kebijakan. Karena itu kami melatih satu **model penjelas** per target yang hanya memakai
+karakteristik kawasan yang bisa diukur: bangunan, era pembangunan, campuran pemanas, sosio-demografi, iklim, dan
+gambaran kawasan.
 
-Nama kolom dianonimkan panitia; makna yang kami tulis (misalnya pangsa pemanas gas jaringan untuk `hvac_dist_02`)
-adalah dugaan dari struktur data dan kami tandai sebagai dugaan."""),
+Untuk membacanya kami memakai **SHAP**. Bayangkan tebakan model sebagai tumpukan sumbangan: dimulai dari rata-rata
+nasional, lalu setiap fitur menambah atau mengurangi. SHAP menghitung besar sumbangan setiap fitur untuk setiap
+kawasan secara adil. Kesetiaan model penjelas pada data ditunjukkan oleh R² pada data yang tidak ia lihat.
+
+Nama kolom disamarkan panitia; makna yang kami tulis (misalnya `hvac_dist_02` sebagai porsi pemanas gas jaringan)
+adalah dugaan dari pola datanya."""),
         code('''X, Xt = explain.feature_frame(d, ex, ext)
 models, shap_res, summ = {}, {}, {}
 for t, (label, fn) in explain.TARGETS.items():
@@ -244,67 +254,67 @@ for t, (label, fn) in explain.TARGETS.items():
     shap_res[t] = explain.shap_values(models[t], X)
     summ[t] = dict(label=label, r2_holdout=round(r2, 3),
                    families=explain.family_shares(shap_res[t][1], list(X.columns)).round(4).to_dict())
-pd.DataFrame({t: {"target": s["label"], "R2 holdout": s["r2_holdout"]} for t, s in summ.items()}).T'''),
+pd.DataFrame({t: {"target": s["label"], "R2 pada data tak terlihat": s["r2_holdout"]} for t, s in summ.items()}).T'''),
+        md("Porsi sumbangan tiap kelompok fitur. Konsumsi gas dan listrik digerakkan oleh rasio fisik dan sosio-demografi; adopsi hampir seluruhnya oleh campuran jenis pemanas yang sudah ada."),
         code('explain.plot_families(summ)'),
+        md("Sepuluh fitur dengan sumbangan terbesar untuk tiga target utama."),
         code('for t in ("eui", "epm", "adopt"):\n    print(explain.TARGETS[t][0]); display(explain.top_features(shap_res[t][1], list(X.columns), k=10))'),
+        md("Bagaimana sumbangan berubah mengikuti nilai fitur. Setiap titik adalah satu kawasan, garis merah adalah rata-ratanya."),
         code('''explain.plot_dependence(X, shap_res, [
     ("eui", "area_per_meter", "luas lantai per meter (m2)", True),
     ("epm", "area_per_meter", "luas lantai per meter (m2)", True),
-    ("adopt", "hvac_dist_02", "pangsa pemanas gas jaringan (%)", False),
+    ("adopt", "hvac_dist_02", "porsi pemanas gas jaringan (%)", False),
     ("eui", "env_climate_05", "env_climate_05 (iklim, anonim)", False),
     ("eui", "bld_era_15", "porsi bangunan periode bld_era_15 (%)", False),
     ("eui", "bld_era_09", "porsi bangunan periode bld_era_09 (%)", False)])'''),
-        md("""### 7.1 Membaca pendorong konsumsi
-* **Ukuran hunian adalah tuas fisik terbesar.** Intensitas gas per m² turun tajam seiring luas per meter, sedangkan
-  listrik per meter naik. Hunian kecil boros per m² (selubung relatif besar terhadap volume), hunian besar boros per rumah.
-* **Iklim dan stok bangunan** menggeser intensitas gas secara sistematis; porsi bangunan pada periode tertentu menaikkan
-  atau menurunkan EUI, yang menunjukkan kualitas selubung per era konstruksi.
-* **Adopsi pemanas listrik ditentukan infrastruktur yang sudah ada.** Pangsa pemanas gas jaringan yang tinggi menekan
-  adopsi; adopsi tinggi hanya muncul di kawasan yang memang kurang terhubung ke jaringan gas.
-* **Sosio-demografi** menjelaskan seperempat sampai sepertiga variasi intensitas: konsumsi bukan hanya soal bangunan,
-  tetapi juga siapa yang tinggal di dalamnya."""),
+        md("""### 7.1 Membaca grafik di atas
+* **Ukuran rumah bekerja ke arah berlawanan untuk gas dan listrik.** Rumah kecil memakai gas per meter persegi sekitar
+  65% lebih banyak daripada rumah besar, karena dinding dan atapnya relatif luas dibanding ruang yang dipanaskan.
+  Sebaliknya, rumah besar memakai listrik per rumah sekitar 75% lebih banyak.
+* **Bangunan dari periode tertentu lebih boros** (hingga sekitar 7% EUI), dan **iklim** menggeser EUI sekitar 15%.
+  Inilah bagian konsumsi yang bisa dipangkas lewat perbaikan dinding, atap, dan jendela.
+* **Adopsi pemanas listrik ditentukan infrastruktur yang ada.** Porsi pemanas gas jaringan yang tinggi menekan adopsi;
+  faktor sosio-demografi hanya menyumbang sekitar 15%.
+
+### 7.2 Peta trilema per zona
+Untuk menjadikan temuan ini daftar kerja, kami menggabungkan nilai sebenarnya (kawasan latih) dan tebakan akhir
+(kawasan uji), lalu meringkasnya ke 330 zona dengan dua ukuran: **potensi hemat dari perbaikan bangunan** (gas yang
+hilang bila sumbangan stok bangunan di atas rata-rata nasional dihapus) dan **kenaikan beban listrik bila pemanas gas
+diganti pompa panas listrik** (asumsi: 80% gas untuk pemanasan, 1 kWh listrik menghasilkan 3 kWh panas)."""),
         code('''sub_best = pd.read_csv(OUT_CSV)
 Z = explain.zone_indices(models["eui"], X, Xt, tr, te, sub_best)
 q = explain.quadrant_table(Z)
 explain.plot_trilemma(Z)
 q.round(3)'''),
-        code('''tot = dict(gas_TWh=Z.gas.sum() / 1e9, potensi_hemat_retrofit_TWh=Z.gas_saving.sum() / 1e9,
+        code('''tot = dict(gas_TWh=Z.gas.sum() / 1e9, potensi_hemat_bangunan_TWh=Z.gas_saving.sum() / 1e9,
            potensi_hemat_pct=100 * Z.gas_saving.sum() / Z.gas.sum(),
            kenaikan_beban_median_pct=Z.load_increase_pct.median())
 print({k: round(v, 2) for k, v in tot.items()})
 cols_show = ["gas", "eui", "adopt", "gas_network_share", "saving_pct", "load_increase_pct", "kuadran"]
-print("10 zona dengan potensi hemat retrofit terbesar (kWh):")
+print("10 zona dengan potensi hemat bangunan terbesar (kWh):")
 display(Z.sort_values("gas_saving", ascending=False).head(10)[cols_show].round(2))
 print("10 zona dengan kenaikan beban listrik terbesar bila pemanas dielektrifikasi:")
 display(Z.sort_values("load_increase_pct", ascending=False).head(10)[cols_show].round(2))'''),
-        md("""### 7.2 Rekomendasi kebijakan
-Trilema transisi energi (emisi, keterjangkauan, keandalan jaringan) tidak bisa diselesaikan dengan satu program
-seragam. Peta di atas membagi zona menjadi empat kelompok menurut intensitas gas dan kenaikan beban listrik bila pemanas
-gas beralih ke heat pump (asumsi: 80% gas rumah tangga untuk pemanasan, SCOP 3):
+        md("""### 7.3 Rekomendasi
+1. **Urutkan program per kelompok zona, jangan seragamkan.** Kelompok Q1 (boros dan jaringan rawan) memuat hampir
+   separuh konsumsi gas dan separuh potensi hemat bangunan. Di sini perbaikan bangunan harus datang sebelum pompa
+   panas: kebutuhan panas yang turun lebih dulu memangkas tagihan dan emisi, sekaligus mengecilkan lonjakan beban
+   listrik saat elektrifikasi masuk.
+2. **Jadikan Q2 kemenangan cepat untuk pompa panas.** Intensitas gasnya tinggi tetapi jaringan masih punya ruang.
+3. **Ajak operator jaringan sejak awal di Q1 dan Q3.** Zona dengan kenaikan beban lebih dari dua kali lipat butuh
+   penguatan gardu, tarif berdasarkan waktu pemakaian, atau pompa panas dengan penyimpan panas sebelum subsidi besar.
+4. **Beri insentif khusus untuk kawasan yang sudah tersambung gas**, karena tanpa dorongan adopsi di sana nyaris nol.
+5. **Pisahkan target efisiensi dan target emisi.** Rumah kecil boros per meter persegi, rumah besar boros per rumah.
 
-1. **Q1, intensitas tinggi dan beban jaringan rawan: retrofit selubung dulu, baru elektrifikasi.** Menurunkan kebutuhan
-   panas lebih dulu mengurangi tagihan dan emisi sekaligus memperkecil lonjakan beban saat heat pump masuk.
-2. **Q2, intensitas tinggi dan jaringan masih longgar: percepat heat pump sekarang.** Dampak emisi terbesar per rupiah
-   subsidi, tanpa menunggu penguatan gardu.
-3. **Q3, intensitas rendah tetapi beban jaringan rawan: perkuat gardu dan tarif fleksibel sebelum elektrifikasi.**
-   Prioritas operator jaringan, bukan program bangunan.
-4. **Q4: program standar berbasis pasar.**
-
-Lintas kuadran: (a) sasaran efisiensi per m² dan sasaran emisi absolut memilih kawasan yang berbeda (hunian kecil
-vs hunian besar), sehingga keduanya perlu daftar prioritas sendiri; (b) program elektrifikasi pemanas perlu menyasar
-kawasan dengan pangsa gas jaringan tinggi secara aktif, karena tanpa intervensi adopsi di sana nyaris nol; (c) indeks
-zona di atas dihitung dari prediksi model untuk setiap kawasan, sehingga bisa langsung dipakai sebagai daftar kerja.
-
-Catatan kehati-hatian: SHAP menjelaskan asosiasi dalam data, bukan efek kausal; skenario beban listrik adalah
-perhitungan fisik sederhana di atas prediksi model, dan makna kolom anonim adalah dugaan."""),
-        md("""## 8. Kesimpulan
-* Struktur data (identitas fisik, split acak per baris, adopsi per subzona) menentukan desain: satu keluarga model untuk
-  gas dan EUI, identitas eksak untuk rasio bersih, dan model binomial untuk adopsi subzona baru.
-* Perbaikan terbesar datang dari informasi tetangga yang dihitung jujur: encoding spasial, kNN-target di ruang stok
-  bangunan, dan koreksi residual spasial; lalu dari keragaman ensemble dan blend dengan bobot bervariasi.
-* Setiap keputusan model diambil dari validasi internal yang terbukti memprediksi LB publik, bukan dari LB itu sendiri.
-* Interpretasi model menghasilkan peta trilema per zona yang langsung bisa dipakai sebagai urutan prioritas program
-  retrofit, elektrifikasi, dan penguatan jaringan."""),
+**Batasan.** SHAP menunjukkan hubungan dalam data, bukan sebab-akibat yang pasti. Skenario beban listrik adalah
+perhitungan fisika sederhana di atas tebakan model; urutan antar zona lebih bisa dipegang daripada angka mutlaknya."""),
+        md("""## 8. Penutup
+* Memahami data lebih dulu menyelesaikan dua target tanpa model dan menentukan arah seluruh pekerjaan.
+* Perbaikan terbesar datang dari informasi tetangga yang dihitung dengan jujur: rata-rata wilayah, kawasan paling mirip,
+  dan koreksi galat wilayah. Sisanya dari keragaman model dan penggabungan yang menyesuaikan.
+* Setiap perubahan dipilih dari ujian internal yang terbukti memperkirakan leaderboard, bukan dari leaderboard itu sendiri.
+* Model yang sama bisa diubah menjadi peta prioritas yang langsung bisa dipakai: zona mana yang perlu dibenahi
+  bangunannya dulu, mana yang siap beralih ke listrik, dan mana yang jaringannya harus diperkuat lebih dulu."""),
     ]
     return nb
 

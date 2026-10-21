@@ -32,20 +32,41 @@ def member_table(cfg):
         fam = "listrik" if name in cfg["blend"]["elec"] else "gas / EUI"
         if s["backend"] == "nn_multi":
             m = cfg["multi"][s["group"]]
-            rows.append((name, "MLP PLR multi-task", fam, s["group"], "-", "TE + kNN" if m.get("knn") else "TE"))
+            rows.append((name, "MLP gas + listrik", fam, "gas dan listrik per meter", "-",
+                         "dasar + rata-rata wilayah" + (" + kawasan mirip" if m.get("knn") else "")))
             continue
-        feats = "TE" if s.get("use_te") else "-"
+        parts = ["dasar"]
+        if s.get("use_te"):
+            parts.append("rata-rata wilayah")
         if s.get("knn"):
-            feats += " + kNN" + (" + kNN-b" if s.get("knn_x") else "")
+            parts.append("kawasan mirip" + (" (beberapa sudut pandang)" if s.get("knn_x") else ""))
         if s.get("agg"):
-            feats += " + agregat"
+            parts.append("gambaran kawasan")
+        feats = " + ".join(parts)
         backend = {"xgb": "XGBoost", "lgb": "LightGBM", "nn": "MLP (PLR/TabM)" if s.get("params", {}).get("emb") else "MLP",
-                   "nca": "NCA (retrieval)", "cat": "CatBoost"}[s["backend"]]
+                   "nca": "NCA (cari tetangga)", "cat": "CatBoost"}[s["backend"]]
         obj = s.get("params", {}).get("objective", "")
         if "poisson" in str(obj):
             backend += " Poisson"
-        rows.append((name, backend, fam, s["kind"], s.get("wmul") or "-", feats))
-    return pd.DataFrame(rows, columns=["anggota", "model", "keluarga", "target dimodelkan", "bobot baris", "fitur"])
+        rows.append((name, backend, fam, readable_kind(s["kind"]), WEIGHTS.get(s.get("wmul"), "-"), feats))
+    return pd.DataFrame(rows, columns=["anggota", "model", "keluarga", "yang ditebak", "bobot baris", "fitur"])
+
+
+WEIGHTS = {"iA": "1 / luas", "A": "luas", "iM": "1 / meter", "M": "meter", "sqrtM": "akar meter", None: "-"}
+
+
+def readable_kind(kind):
+    """target formulation of a member in words"""
+    base = {"gpm": "gas per meter", "epm": "listrik per meter", "lepm": "log listrik per meter", "eui": "EUI",
+            "leui": "log EUI", "gas": "gas total", "elec": "listrik total", "epa": "listrik per luas"}
+    if kind in base:
+        return base[kind]
+    if ":" in kind:
+        fam, col = kind.split(":")
+        unit = {"bld_dim_12": "meter", "bld_dim_06": "luas", "bld_dim_03": "luas selubung", "bld_dim_01": "sertifikat"}.get(col, col)
+        what = "gas" if "gas" in fam else "listrik"
+        return ("log " if fam.startswith("l") else "") + f"{what} per {unit}"
+    return kind
 
 
 def architecture_diagram(path=None):
@@ -64,14 +85,14 @@ def architecture_diagram(path=None):
     def arrow(x1, y1, x2, y2):
         ax.annotate("", xy=(x2, y2), xytext=(x1, y1), arrowprops=dict(arrowstyle="->", color="#333", lw=0.9))
 
-    box(0.1, 2.2, 1.6, 0.8, "train.csv + test.csv\n(201 fitur)", "#eeeeee")
-    box(2.1, 3.5, 2.2, 1.2, "fitur domain\nrasio fisik, agregat kawasan,\nencoding spasial (zona, sel iklim,\njendela sub_n), kNN-target", "#dbe9f6")
-    box(2.1, 0.4, 2.2, 1.2, "identitas eksak\nrasio bersih = b02/b01\nadopsi: salin per subzona\n+ model binomial (N, K)", "#e2f0d9")
-    box(4.7, 3.5, 2.3, 1.2, "keluarga gas/EUI: 28 model\nkeluarga listrik: 13 model\nXGB, LGB, MLP/PLR/TabM, NCA\n10-fold, target per meter/luas", "#fde9d9")
-    box(7.4, 3.5, 1.7, 1.2, "blend NNLS\nbobot bervariasi\n(luas, meter,\nlevel prediksi)", "#fff2cc")
-    box(7.4, 1.8, 1.7, 1.2, "koreksi residual\ngrup + kNN\n(bobot dari holdout)", "#fff2cc")
-    box(9.4, 1.8, 1.5, 1.2, "post-processing\nmeter kecil, batas\ntruncation gas,\nsalin duplikat", "#fff2cc")
-    box(9.4, 0.3, 1.5, 0.9, "submisi\n5 kolom + sha256", "#eeeeee")
+    box(0.1, 2.2, 1.6, 0.8, "train.csv + test.csv\n(201 kolom)", "#eeeeee")
+    box(2.1, 3.5, 2.2, 1.2, "fitur domain\nukuran rumah, gambaran kawasan,\nrata-rata wilayah (zona, petak iklim,\ntetangga), kawasan paling mirip", "#dbe9f6")
+    box(2.1, 0.4, 2.2, 1.2, "rumus eksak\nporsi bangunan bersih = b02/b01\nadopsi: salin per subzona\n+ model peluang (N rumah)", "#e2f0d9")
+    box(4.7, 3.5, 2.3, 1.2, "41 model: 28 untuk gas/EUI,\n13 untuk listrik\nXGBoost, LightGBM, jaringan\nsaraf, NCA; tebakan per rumah", "#fde9d9")
+    box(7.4, 3.5, 1.7, 1.2, "gabungan model\nbobot menyesuaikan\n(luas, meter,\nbesar tebakan)", "#fff2cc")
+    box(7.4, 1.8, 1.7, 1.2, "koreksi galat\nwilayah dan\ntetangga mirip", "#fff2cc")
+    box(9.4, 1.8, 1.5, 1.2, "penyesuaian akhir\nmeter sedikit, batas\ngas 1 juta kWh,\nsalin duplikat", "#fff2cc")
+    box(9.4, 0.3, 1.5, 0.9, "file submisi\n5 kolom + sha256", "#eeeeee")
     arrow(1.7, 2.6, 2.1, 4.0)
     arrow(1.7, 2.6, 2.1, 1.0)
     arrow(4.3, 4.1, 4.7, 4.1)
@@ -80,7 +101,7 @@ def architecture_diagram(path=None):
     arrow(9.1, 2.4, 9.4, 2.4)
     arrow(10.15, 1.8, 10.15, 1.2)
     arrow(4.3, 1.0, 9.4, 0.75)
-    ax.text(5.5, 2.75, "gas = EUI x luas: satu keluarga model untuk dua kolom,\nbobot blend di-fit terpisah per kolom",
+    ax.text(5.5, 2.75, "gas = EUI x luas lantai: satu keluarga model\nmelayani dua kolom",
             fontsize=8, ha="center", style="italic", color="#555")
     plt.tight_layout()
     if path:
