@@ -1,16 +1,16 @@
 fitur,makna (dugaan),keluarga,mean |SHAP|
-area_per_meter,luas lantai per meter (ukuran hunian),rasio fisik turunan,0.0898
-meters_per_epc,meter per sertifikat,rasio fisik turunan,0.0264
-socio_demog_005,,sosio-demografi,0.021
-socio_demog_038,,sosio-demografi,0.0184
-socio_demog_061,,sosio-demografi,0.0162
-hvac_rest,sisa pangsa (listrik + lain-lain),bauran pemanas,0.0144
-socio_demog_090,,sosio-demografi,0.0122
-bld_dim_32,,dimensi bangunan,0.0121
-socio_demog_064,,sosio-demografi,0.0114
-env_climate_02,,iklim,0.0099
-s002_ratio,,rasio fisik turunan,0.0095
-socio_demog_065,,sosio-demografi,0.0091
-gea_ratio,rasio luas,rasio fisik turunan,0.0078
-bld_era_09,,era bangunan,0.0063
-socio_demog_027,,sosio-demografi,0.006
+area_per_meter,luas lantai per meter (ukuran hunian),rasio fisik turunan,0.0895
+meters_per_epc,meter per sertifikat,rasio fisik turunan,0.0294
+socio_demog_005,,sosio-demografi,0.0222
+socio_demog_038,,sosio-demografi,0.0196
+socio_demog_061,,sosio-demografi,0.0163
+hvac_rest,sisa pangsa (listrik + lain-lain),bauran pemanas,0.0157
+socio_demog_064,,sosio-demografi,0.0117
+bld_dim_32,,dimensi bangunan,0.0111
+env_climate_02,,iklim,0.0109
+socio_demog_090,,sosio-demografi,0.0108
+gea_ratio,rasio luas,rasio fisik turunan,0.0106
+s002_ratio,,rasio fisik turunan,0.0098
+socio_demog_065,,sosio-demografi,0.0093
+sub_lApM_mean,,agregat kawasan,0.0075
+bld_era_09,,era bangunan,0.0072

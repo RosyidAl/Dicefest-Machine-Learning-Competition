@@ -1,58 +1,58 @@
 {
  "eui": {
   "label": "log intensitas gas (EUI)",
-  "r2_holdout": 0.5481,
+  "r2_holdout": 0.563,
   "families": {
-   "rasio fisik turunan": 0.279,
-   "sosio-demografi": 0.2693,
-   "era bangunan": 0.1196,
-   "dimensi bangunan": 0.1104,
-   "iklim": 0.1063,
-   "agregat kawasan": 0.0539,
-   "lokasi": 0.0343,
-   "bauran pemanas": 0.0273
+   "sosio-demografi": 0.3037,
+   "rasio fisik turunan": 0.2479,
+   "era bangunan": 0.1121,
+   "dimensi bangunan": 0.1063,
+   "iklim": 0.0936,
+   "agregat kawasan": 0.0761,
+   "lokasi": 0.0304,
+   "bauran pemanas": 0.03
   }
  },
  "gpm": {
   "label": "log gas per meter",
-  "r2_holdout": 0.7385,
+  "r2_holdout": 0.747,
   "families": {
-   "rasio fisik turunan": 0.3342,
-   "sosio-demografi": 0.2477,
-   "dimensi bangunan": 0.1137,
-   "era bangunan": 0.1107,
-   "iklim": 0.0917,
-   "agregat kawasan": 0.0479,
-   "lokasi": 0.0302,
-   "bauran pemanas": 0.024
+   "rasio fisik turunan": 0.2987,
+   "sosio-demografi": 0.2843,
+   "dimensi bangunan": 0.1062,
+   "era bangunan": 0.1045,
+   "iklim": 0.0844,
+   "agregat kawasan": 0.0672,
+   "bauran pemanas": 0.0278,
+   "lokasi": 0.027
   }
  },
  "epm": {
   "label": "log listrik per meter",
-  "r2_holdout": 0.4853,
+  "r2_holdout": 0.491,
   "families": {
-   "sosio-demografi": 0.3767,
-   "rasio fisik turunan": 0.3017,
-   "dimensi bangunan": 0.1113,
-   "agregat kawasan": 0.0571,
-   "era bangunan": 0.0469,
-   "bauran pemanas": 0.0466,
-   "iklim": 0.0377,
-   "lokasi": 0.022
+   "sosio-demografi": 0.396,
+   "rasio fisik turunan": 0.2613,
+   "dimensi bangunan": 0.1066,
+   "agregat kawasan": 0.0815,
+   "era bangunan": 0.0488,
+   "bauran pemanas": 0.0469,
+   "iklim": 0.0385,
+   "lokasi": 0.0204
   }
  },
  "adopt": {
   "label": "adopsi pemanas listrik (%)",
-  "r2_holdout": 0.987,
+  "r2_holdout": 0.9907,
   "families": {
-   "bauran pemanas": 0.845,
-   "sosio-demografi": 0.1281,
-   "agregat kawasan": 0.0099,
-   "lokasi": 0.009,
-   "iklim": 0.0053,
-   "era bangunan": 0.0015,
-   "dimensi bangunan": 0.0006,
-   "rasio fisik turunan": 0.0005
+   "bauran pemanas": 0.8144,
+   "sosio-demografi": 0.1509,
+   "agregat kawasan": 0.014,
+   "lokasi": 0.0091,
+   "iklim": 0.0059,
+   "era bangunan": 0.0027,
+   "dimensi bangunan": 0.0018,
+   "rasio fisik turunan": 0.0012
   }
  }
 }
