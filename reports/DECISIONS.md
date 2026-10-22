@@ -141,3 +141,4 @@
 ### D-FINAL [2026-10-22 10:13 WIB] Submisi final
 - Final A: sub_final_pipeline.csv (sha aec745ab, LB publik 0,24913). Satu-satunya file yang direproduksi persis oleh notebook dan oleh run final dari nol (semua anggota identik byte).
 - Tidak memilih file kedua yang tidak direproduksi notebook (misalnya sub_v19nca3pp dengan skor publik sama): bila file itu yang menang di LB privat, notebook tidak bisa mereproduksinya saat audit. Rekomendasi: pilih hanya sub_final_pipeline.csv.
+- Pembaruan 2026-10-22 22:52 WIB: dua slot final diisi dua entri file yang sama (sub_final_pipeline.csv, sha aec745ab): entri 21 Okt 06:39 WIB dan salinan 22 Okt 22:52 WIB. Keduanya identik byte dengan output notebook.
