@@ -67,15 +67,19 @@ def code(t):
     return nbf.v4.new_code_cell(t)
 
 
+def hidden(cell):
+    """collapse the source of a long code cell (JupyterLab / Notebook 7 / VS Code honour this metadata)"""
+    cell.metadata["jupyter"] = {"source_hidden": True, "outputs_hidden": True}
+    cell.metadata["tags"] = ["hide-input"]
+    return cell
+
+
 def embed_cells():
-    cells = [md("## Lampiran kode: modul pipeline\nSel-sel berikut menulis modul ke `dicefest_nb/src/` dan konfigurasi ke "
-                "`dicefest_nb/configs/`, lalu meng-import-nya. Isinya identik dengan `final/src/` dan `final/configs/`. "
-                "Alur analisis di bagian selanjutnya hanya memanggil fungsi dari modul ini, sehingga setiap sel tetap "
-                "pendek dan mudah dibaca.\n\n" + MODULES)]
+    cells = [md('## Modul kode (diciutkan)\nNotebook ini harus bisa berjalan sendiri, jadi seluruh kode solusi ikut di dalamnya: sel-sel di bawah menulis 17 modul Python dan 2 file konfigurasi ke folder `dicefest_nb/`, lalu meng-import-nya. Supaya alur cerita mudah dibaca, isi sel-sel ini sengaja **diciutkan**; klik tanda di sisi kiri sel untuk membukanya. Bagian-bagian berikutnya hanya memanggil fungsi dari modul ini, sehingga setiap sel analisis tetap pendek.\n\n' + MODULES)]
     for f in SRC:
-        cells.append(code(f"%%writefile dicefest_nb/src/{f}\n" + open(os.path.join(HERE, "src", f)).read()))
+        cells.append(hidden(code(f"%%writefile dicefest_nb/src/{f}\n" + open(os.path.join(HERE, "src", f)).read())))
     for f in CONF:
-        cells.append(code(f"%%writefile dicefest_nb/configs/{f}\n" + open(os.path.join(HERE, "configs", f)).read()))
+        cells.append(hidden(code(f"%%writefile dicefest_nb/configs/{f}\n" + open(os.path.join(HERE, "configs", f)).read())))
     cells.append(code('sys.path.insert(0, os.path.join(ROOT, "src"))\n'
                       'import pipeline, report, explain\n'
                       'from common import load, TARGET_COLS, SIGMAS\n'
@@ -107,7 +111,7 @@ menyesuaikan, koreksi galat wilayah, dan penyesuaian akhir untuk batas data. Sko
 | 4-5. Pelatihan dan submisi | melatih semua model lalu menyusun file submisi |
 | 6. Evaluasi | skor dan perjalanannya |
 | 7. Kebijakan | model penjelas, SHAP, peta trilema 330 zona, rekomendasi |
-| Lampiran | seluruh kode modul (ditulis ke disk oleh notebook ini) |
+| Modul kode | seluruh kode solusi, ditulis ke disk oleh notebook ini (diciutkan, letaknya setelah bagian 0) |
 
 **Cara menjalankan.** Pelatihan penuh butuh GPU 16 GB, 16 vCPU, RAM 32 GB, sekitar 20 jam (tiga jalur paralel).
 Kalau tebakan semua model sudah ada di folder `WORK`, set `DICEFEST_TRAIN=0` untuk melewati pelatihan; semua bagian lain
