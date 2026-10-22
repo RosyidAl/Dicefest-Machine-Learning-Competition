@@ -14,3 +14,8 @@
 2. Website dicefest.web.id (paling lambat 23 Okt 23:59 WIB): unggah `final/DICEFEST2026_<TEAM>.ipynb` (versi tereksekusi) dan PDF writeup (`reports/WRITEUP.pdf`, dibangun dengan `scripts/build_writeup_pdf.py`).
 3. Cek ketentuan format writeup (batas halaman, template, nama file) di guidebook, lalu kabari bila perlu penyesuaian.
 4. Simpan `final/artifacts/` (model + SHA256SUMS) untuk audit 24 Okt; notebook cadangan `final/inference_from_artifacts.ipynb` memakai folder ini.
+
+## Langkah akhir untuk user (22 Okt)
+- [ ] Kaggle: pilih submisi final `sub_final_pipeline.csv` (LB publik 0,24913, sha aec745ab). Sebaiknya hanya file ini, karena hanya file ini yang direproduksi persis oleh notebook (D-FINAL).
+- [ ] Website dicefest.web.id (paling lambat 23 Okt 23:59 WIB): unggah `final/deliverables/DICEFEST2026_BISMILLAH.ipynb` (sudah tereksekusi, dengan output) dan `final/deliverables/WRITEUP_BISMILLAH.pdf` (10 halaman).
+- [ ] Cek guidebook: aturan nama file, batas halaman PDF, dan apakah folder model tersimpan (sekitar 27 GB, untuk notebook inference) boleh dilampirkan lewat tautan.

@@ -115,6 +115,9 @@ tetap dijalankan. File submisi yang dihasilkan selalu dicetak sidik sha256-nya, 
 `aec745ab...d66e`, sama persis dengan file yang kami kirim."""
 
 
+TRAIN_NOTE = '\n\n*Catatan untuk salinan notebook ini:* sel pelatihan di bawah dilewati (`DICEFEST_TRAIN=0`) karena butuh sekitar 20 jam. Kami menjalankan pelatihannya terpisah dengan kode yang sama persis (modul di lampiran): ke-41 model dilatih ulang dari nol dan setiap tebakannya identik sampai byte terakhir dengan versi pengembangan. Sel-sel berikutnya memakai tebakan dari run itu, dan file submisi yang dihasilkan (sha256 di bagian 5) sama persis dengan file yang kami kirim. Jalankan dengan `DICEFEST_TRAIN=1` untuk melatih ulang semuanya.'
+
+
 def full_notebook():
     nb = nbf.v4.new_notebook()
     nb.cells = [md(INTRO), md("## 0. Persiapan\nLokasi data, folder kerja, dan versi pustaka yang dipakai."), code(SETUP)] + embed_cells() + [
@@ -195,7 +198,7 @@ besaran untuk langkah setelah penggabungan ditentukan pada 30% data latih yang d
 Tiga proses berjalan paralel: jalur `xgb` (XGBoost di GPU), `nn` (jaringan saraf dan NCA di GPU), dan `cpu` (LightGBM).
 Setiap model dilatih 10 kali (10 bagian data, seed 42) dan menyimpan tebakan untuk data latih (dari bagian yang tidak
 ia lihat) dan data uji (rata-rata 10 model). Semua pustaka dipaksa deterministik, sehingga run ulang di hardware yang
-sama memberi angka yang identik sampai byte terakhir."""),
+sama memberi angka yang identik sampai byte terakhir.""" + TRAIN_NOTE),
         code('''import shutil
 if TRAIN:
     if os.path.exists(WORK):

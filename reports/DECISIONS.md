@@ -137,3 +137,7 @@
 - LB publik: sub_v19ncapp 0,24913 vs sub_v19nca 0,24920 (-0,00007, sesuai perkiraan).
 - Keputusan: sub_v19ncapp = BEST_CURRENT dan kandidat Final A. Aturan (exp/audit/postproc_nca/13_candidate_nca.py; delta dari OOF penuh blend v19nca, k S3 dari H, batas dari train) harus dipindahkan ke final/src/pipeline._assemble (setelah koreksi, sebelum salinan duplikat) untuk notebook.
 - Tidak bermasalah (terverifikasi): format/presisi CSV, identitas rasio bersih, salinan adopsi, duplikat, konstanta koreksi K/WIN/KSHR, bias segmen lain.
+
+### D-FINAL [2026-10-22 10:13 WIB] Submisi final
+- Final A: sub_final_pipeline.csv (sha aec745ab, LB publik 0,24913). Satu-satunya file yang direproduksi persis oleh notebook dan oleh run final dari nol (semua anggota identik byte).
+- Tidak memilih file kedua yang tidak direproduksi notebook (misalnya sub_v19nca3pp dengan skor publik sama): bila file itu yang menang di LB privat, notebook tidak bisa mereproduksinya saat audit. Rekomendasi: pilih hanya sub_final_pipeline.csv.
