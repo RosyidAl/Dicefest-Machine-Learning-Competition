@@ -1,4 +1,10 @@
-# STATUS (diperbarui: 2026-10-22 10:13 WIB)
+# STATUS (diperbarui: 2026-10-24 00:05 WIB)
+STATUS: KOMPETISI DITUTUP (23 Okt 23:59 WIB). Menunggu LB private dan pengumuman finalis.
+- Submisi final: dua entri sub_final_pipeline.csv (aec745ab...d66e), LB publik 0,24913, peringkat publik 9 pada 23:41 WIB. User melaporkan pemilihan submisi final sudah dilakukan.
+- Deliverable: final/deliverables/DICEFEST2026_BISMILLAH.ipynb (commit 27c8f2a: narasi sinkron writeup B, ringkasan galat per target, Lampiran A dieksekusi) dan final/deliverables/BISMILLAH_Writeups.pdf (identik WRITEUP_BISMILLAH.pdf, sha 75b44b37, commit 7faf31f).
+- Langkah berikutnya: (1) cek LB private setelah dibuka; (2) bila lolos final: sinkronkan reports/PRESENTATION_OUTLINE.md dengan writeup B (adopsi sebagai komposisi, "konsumsi listrik tahunan", gaya formal) lalu susun slide untuk 30 Okt; (3) persiapan tanya jawab.
+
+## Catatan lama (22 Okt 10:13 WIB, sebelum penutupan)
 STATUS: BERJALAN
 Fase aktif / gerbang berikutnya: arahan user 19 Okt 16:30: fokus submisi terbaik, notebook ditunda; boleh submit langsung (token Kaggle di file privat scratchpad, KAGGLE_API_TOKEN=<path>); submit hanya bila holdout/CV lebih baik dari v19
 Fase selesai: Fase 0, Fase 1; FREEZE v16 (D006, tag freeze-v16); v17 Poisson ditolak (D007)
