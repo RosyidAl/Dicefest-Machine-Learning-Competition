@@ -1,0 +1,311 @@
+"""Markdown narrative of the final notebook (Indonesian, formal register, synced with the writeup).
+
+Used by make_notebooks.py and by patch_notebook_text.py, which updates the markdown of an executed notebook in place
+without touching code cells or their outputs.
+"""
+
+INTRO = """# DICE FEST 2026: Trilema Transisi Energi Perkotaan
+### Tim BISMILLAH
+
+*Notebook* ini memuat seluruh solusi secara berurutan, mulai dari data mentah hingga berkas submisi dan dari model
+hingga rekomendasi kebijakan. Seluruh nilai prediksi dihasilkan oleh kode di dalam *notebook* ini dengan *seed* yang
+dikunci dan tanpa data eksternal.
+
+**Gambaran umum.** Tugas kompetisi adalah memprediksi lima besaran energi untuk setiap kawasan permukiman. Sebelum
+model dilatih, struktur data dianalisis terlebih dahulu. Hasilnya, porsi bangunan bersih ternyata dapat dihitung secara
+eksak, adopsi pemanas listrik sudah diketahui untuk 92% kawasan uji, serta gas total dan intensitas gas (EUI) terhubung
+melalui luas lantai. Target yang benar-benar perlu diprediksi ditangani dengan fitur yang merepresentasikan mekanisme
+konsumsi energi, *ensemble* (gabungan beberapa model) berisi 41 model dengan bobot adaptif, koreksi galat wilayah, dan
+penyesuaian akhir untuk batas nilai pada data.
+
+| Hasil utama | |
+|---|---|
+| Skor | 0,24913 pada *leaderboard* (papan peringkat) publik; *notebook* ini menghasilkan berkas submisi yang identik (sha256 `aec745ab...d66e`) |
+| Struktur data | 1 target dihitung eksak dengan rumus, 1 target sudah diketahui untuk 92% kawasan uji, gas dan EUI terhubung melalui luas lantai |
+| Pendorong konsumsi | ukuran rumah (berpengaruh berlawanan arah terhadap gas dan listrik), stok bangunan lama, dan iklim; adopsi pemanas listrik terkonsentrasi di kawasan yang belum tersambung ke jaringan gas |
+| Peta trilema | 118 zona (47% konsumsi gas) memerlukan *retrofit* (perbaikan selubung bangunan) sebelum elektrifikasi; potensi penghematan 7,4 TWh; elektrifikasi pemanas penuh menaikkan konsumsi listrik tahunan zona sekitar 95% |
+
+| Bagian | Isi |
+|---|---|
+| 0. Persiapan | lokasi data, versi pustaka, dan modul kode (diciutkan) |
+| 1. Data | identitas tersembunyi dalam data dan mekanisme pemisahan data uji |
+| 2. Fitur | ukuran rumah, rata-rata target wilayah, kawasan termirip, agregat kawasan |
+| 3. Arsitektur | tiga jalur untuk lima target, 41 model, dan cara penggabungannya |
+| 4-5. Pelatihan dan submisi | pelatihan seluruh model, lalu penyusunan berkas submisi |
+| 6. Evaluasi | galat per target dan perkembangan skor |
+| 7. Kebijakan | model penjelas, SHAP, peta trilema 330 zona, dan rekomendasi |
+
+**Cara menjalankan.** Pelatihan penuh memerlukan GPU 16 GB, 16 vCPU, RAM 32 GB, dan waktu sekitar 20 jam dengan tiga
+jalur paralel. Apabila prediksi seluruh model sudah tersedia di folder `WORK`, pelatihan dapat dilewati dengan
+`DICEFEST_TRAIN=0`. Pada mode ini *notebook* masih memerlukan sekitar 5 jam dengan 4 *thread* CPU: sekitar 37 menit
+untuk model adopsi dan perakitan submisi (bagian 5), 41 menit untuk model penjelas dan SHAP (bagian 7), dan 3,8 jam untuk
+menghitung kontribusi SHAP pada 613 ribu kawasan bagi peta zona (bagian 7.2). Sidik sha256 berkas submisi selalu
+dicetak; pada eksekusi ini nilainya `aec745ab...d66e`, identik dengan berkas submisi akhir."""
+
+SETUP = "## 0. Persiapan\nLokasi data, folder kerja, dan versi pustaka yang digunakan."
+
+MODULES = """## Modul kode (diciutkan)
+Agar *notebook* dapat dijalankan secara mandiri, seluruh kode solusi disertakan di dalamnya. Sel-sel berikut menulis
+17 modul Python dan 2 berkas konfigurasi ke folder `dicefest_nb/`, lalu mengimpornya. Isi sel-sel tersebut sengaja
+diciutkan agar alur analisis mudah diikuti; setiap sel dapat dibuka dengan mengeklik tanda di sisi kirinya. Bagian-bagian
+selanjutnya hanya memanggil fungsi dari modul ini sehingga setiap sel analisis tetap ringkas.
+
+| Modul | Isi |
+|---|---|
+| `common.py` | pemuatan data, metrik, fitur dasar, dan rasio fisik |
+| `te.py`, `features_knn.py`, `fb07b.py` | rata-rata target wilayah (subzona, zona, petak iklim, nomor subzona berdekatan) dan fitur kawasan termirip, seluruhnya dihitung tanpa melihat baris yang sedang dievaluasi |
+| `train_lib.py`, `nn.py`, `nca.py` | pelatihan anggota *ensemble*: XGBoost, LightGBM, MLP (PLR, TabM-mini), dan NCA |
+| `blend.py`, `postprocess.py` | penggabungan NNLS dengan bobot adaptif dan koreksi galat wilayah |
+| `adopt_v2.py`, `dup_fix.py` | model adopsi pemanas listrik untuk subzona baru dan penyalinan kawasan duplikat |
+| `pipeline.py` | orkestrasi: pelatihan anggota, model adopsi, dan perakitan submisi |
+| `explain.py`, `report.py` | model penjelas dan SHAP, indeks kebijakan per zona, serta tabel dan diagram *notebook* |
+| `inference.py`, `metric.py`, `seed.py` | prediksi dari model tersimpan, metrik kompetisi, dan penguncian *seed* |
+| `configs/members.yaml`, `configs/resid_knn.json` | daftar anggota beserta hiperparameternya; bobot koreksi dan parameter penyesuaian akhir yang dibekukan (lihat bagian 3) |
+
+Beberapa komentar di dalam modul menyebut nama eksperimen atau skrip dari repositori pengembangan. Rujukan tersebut
+hanya mencatat asal-usul kode; seluruh kode yang diperlukan untuk menjalankan *notebook* ini sudah termuat di sini."""
+
+DATA = """## 1. Data: Struktur yang Ditemukan sebelum Pemodelan
+Setiap baris data mewakili satu kawasan kecil, kurang lebih setara dengan satu wilayah kode pos, dengan rata-rata 22
+meter. Istilah meter berarti meteran gas atau listrik terpasang, kira-kira satu per rumah tangga, sehingga "per meter"
+dapat dibaca "per rumah tangga". Sel berikut memeriksa empat sifat data yang menentukan desain seluruh solusi.
+
+* **EUI × luas lantai = gas.** Hasil kali EUI dan kolom `bld_dim_06` selalu sama dengan gas total hingga presisi mesin.
+  Artinya, `bld_dim_06` adalah luas lantai dan EUI adalah gas dibagi luas lantai sehingga gas dan EUI dapat ditangani
+  oleh satu kelompok model.
+* **Porsi bangunan bersih = 100 × `bld_dim_02` / `bld_dim_01`**, dibulatkan hingga dua desimal. Target ini dihitung
+  dengan rumus dan tidak memerlukan model.
+* **Adopsi pemanas listrik seragam dalam satu subzona**, dan 92% kawasan uji berada di subzona yang juga terdapat pada
+  data latih.
+* **Data uji diambil secara acak per baris** (tepat 30% dari seluruh baris). Oleh karena itu, model dievaluasi dengan
+  validasi silang yang membagi data latih secara acak menjadi sepuluh *fold* (bagian data). Rata-rata target wilayah
+  boleh digunakan sebagai fitur selama dihitung tanpa melihat *fold* yang sedang dievaluasi."""
+
+TARGETS_PLOT = ("Sebaran kelima target. Gas, listrik, dan EUI ditampilkan dalam skala logaritmik karena rentang nilainya "
+                "sangat lebar.")
+
+FEATURES = """## 2. Rekayasa Fitur: Menerjemahkan Fisika dan Geografi ke dalam Angka
+Rekayasa fitur disusun berdasarkan satu pertanyaan pokok: faktor apa yang menyebabkan suatu kawasan mengonsumsi energi
+lebih banyak daripada kawasan lain?
+
+**Ukuran rumah, bukan ukuran kawasan.** Gas total suatu kawasan terutama ditentukan oleh jumlah rumah tangga di
+dalamnya, yang lebih mencerminkan skala kawasan daripada perilaku konsumsi. Oleh karena itu, dibentuk fitur rasio yang
+menormalisasi besaran kawasan, yaitu luas lantai per meter sebagai proksi ukuran rata-rata rumah, luas per sertifikat
+energi, meter per sertifikat, dan sisa porsi jenis pemanas (100 dikurangi jumlah kategori pemanas yang tercatat, yang
+sebagian besar berupa pemanas listrik).
+
+**Target per rumah tangga.** Model tidak memprediksi gas total secara langsung, tetapi salah satu bentuk
+ternormalisasinya, yaitu gas per meter, per meter persegi, per sertifikat, atau logaritmanya. Prediksi kemudian
+dikalikan kembali dengan penormalisasinya. Bobot setiap baris diatur agar fungsi kerugian tetap setara dengan galat
+kuadrat pada skala asli, yaitu skala yang digunakan oleh metrik.
+
+**Rata-rata target wilayah.** Kawasan yang berdekatan cenderung serupa. Oleh karena itu, dihitung rata-rata target pada
+tingkat subzona, zona, petak iklim (kombinasi tiga kolom iklim yang membentuk kisi dengan sekitar lima belas kawasan per
+petak), dan kawasan dengan nomor subzona berdekatan, yang ternyata berurutan secara geografis. Seluruh rata-rata
+dihitung secara *out-of-fold* (hanya dari *fold* yang tidak sedang dievaluasi) untuk mencegah *target leakage*
+(kebocoran informasi target).
+
+**Kawasan termirip.** Untuk setiap kawasan, dicari kawasan dalam radius geografis tertentu yang stok bangunannya paling
+mirip, yaitu dari segi ukuran rumah, cakupan sertifikat, dan komposisi periode bangunan, dengan metode *k-nearest
+neighbors* (kNN). Rata-rata konsumsi kawasan-kawasan tersebut, yang juga dihitung secara *out-of-fold*, digunakan
+sebagai fitur. Fitur ini menurunkan galat EUI model tunggal sebesar 0,0022, perbaikan terbesar yang diperoleh dari satu
+kelompok fitur.
+
+**Agregat kawasan.** Jumlah kawasan, total luas lantai, jumlah meter, dan jumlah sertifikat per subzona dan per zona,
+dihitung dari gabungan data latih dan data uji tanpa menggunakan target.
+
+**Jumlah rumah tangga untuk adopsi.** Kolom komposisi jenis pemanas merupakan pecahan dari jumlah rumah tangga.
+Bilangan bulat terkecil yang membuat seluruh pecahan tersebut bulat adalah jumlah rumah tangga subzona (N). Dengan N,
+adopsi pada subzona baru dapat dimodelkan sebagai peluang: dari K rumah tangga di luar kategori pemanas yang tercatat,
+berapa yang menggunakan pemanas listrik.
+
+Sel berikut membangun fitur dasar dan agregat kawasan, lalu menampilkan jumlah fitur per kelompok dan korelasi beberapa
+fitur turunan dengan target. Korelasi 0,988 antara sisa porsi pemanas dan adopsi menunjukkan bahwa adopsi pada dasarnya
+merupakan bagian dari sisa porsi tersebut. Sifat ini penting untuk membaca hasil SHAP pada bagian 7."""
+
+ARCH = """## 3. Arsitektur: Tiga Jalur untuk Lima Target
+Kelima target tidak diperlakukan secara seragam, tetapi ditangani melalui tiga jalur.
+* **Gas dan EUI** ditangani oleh satu kelompok model karena keduanya merupakan besaran yang sama. Pada tahap
+  penggabungan, bobot untuk kolom gas dihitung dengan penekanan pada kawasan besar yang paling menentukan galat gas pada
+  skala asli, sedangkan bobot untuk kolom EUI dihitung tanpa penekanan tersebut.
+* **Listrik** ditangani oleh kelompok model tersendiri.
+* **Porsi bangunan bersih** dihitung dengan rumus. **Adopsi** diisi dari nilai subzona, sedangkan kawasan di subzona
+  baru (8%) diprediksi dengan model probabilistik yang memanfaatkan N dan K.
+
+Jenis model sengaja dibuat beragam karena model dengan pola galat yang berbeda dapat saling mengoreksi ketika
+digabungkan: XGBoost dan LightGBM (*gradient boosting* pada pohon keputusan), beberapa varian MLP (*multilayer
+perceptron*), dan NCA, yaitu jaringan yang mempelajari ukuran kemiripan antarkawasan lalu memprediksi dari rata-rata
+kawasan yang mirip. Penggabungan menggunakan *non-negative least squares* (NNLS, kuadrat terkecil dengan bobot tak
+negatif). Bobotnya berubah secara halus menurut luas kawasan, jumlah meter, dan besar prediksi karena model yang unggul
+pada kawasan kecil tidak selalu unggul pada kawasan besar.
+
+Setelah penggabungan, galat yang tersisa masih berkorelasi antarkawasan yang berdekatan dan serupa. Oleh karena itu,
+prediksi setiap kawasan dikoreksi sebesar sebagian dari rata-rata galat tetangganya pada tingkat zona, petak iklim, nomor
+subzona berdekatan, dan kawasan termirip. Tahap terakhir adalah *post-processing* (penyesuaian pascaprediksi) untuk dua
+batas pada data: kawasan dengan 2 hingga 4 meter yang secara sistematis diprediksi terlalu rendah, dan gas pada data
+latih yang tidak pernah melebihi 999.765 kWh.
+
+**Asal konstanta yang dibekukan.** Besaran pada tahap setelah penggabungan, yaitu bentuk bobot adaptif (`A2xM2xp2`),
+konfigurasi tetangga untuk koreksi, bobot koreksi λ, faktor pengali untuk kawasan bermeter sedikit, dan parameter batas
+gas, ditentukan selama pengembangan pada *holdout set* (30% data latih yang disisihkan untuk evaluasi internal). Untuk
+keperluan itu, seluruh model dilatih ulang tanpa *holdout set*, dan setiap usulan hanya dinilai padanya. Nilai akhirnya
+disimpan di `configs/resid_knn.json`. *Notebook* ini menerapkan nilai beku tersebut tanpa mengulang pencariannya karena
+pencarian ulang memerlukan pelatihan seluruh model sekali lagi (sekitar 20 jam tambahan)."""
+
+TRAIN = """## 4. Pelatihan Seluruh Model
+Pelatihan dijalankan dalam tiga proses paralel: jalur `xgb` (XGBoost pada GPU), jalur `nn` (MLP dan NCA pada GPU), dan
+jalur `cpu` (LightGBM). Sebanyak 42 model dilatih: 36 model dengan validasi silang sepuluh *fold* dan 6 model XGBoost
+dan LightGBM dengan lima *fold*, seluruhnya dengan *seed* yang dikunci (sebagian model dirata-ratakan atas tiga *seed*).
+Setiap model menyimpan prediksi *out-of-fold* untuk data latih, yaitu prediksi dari model yang tidak melihat baris
+tersebut, serta rata-rata prediksi seluruh *fold* untuk data uji. Dari 42 model tersebut, 41 masuk ke *ensemble*. Model
+yang tidak terpilih, `mk1_gpm`, adalah keluaran gas dari MLP yang memprediksi gas dan listrik sekaligus; keluaran
+listriknya (`mk1_epm`) terpilih, sedangkan keluaran gasnya tetap ikut terhitung karena kedua keluaran dilatih bersamaan.
+Seluruh pustaka dijalankan dalam mode deterministik sehingga eksekusi ulang pada perangkat keras yang sama menghasilkan
+angka yang identik hingga tingkat *byte*."""
+
+TRAIN_NOTE = """
+
+*Catatan untuk salinan ini:* sel pelatihan di bawah dilewati (`DICEFEST_TRAIN=0`) karena memerlukan sekitar 20 jam.
+Pelatihan dijalankan secara terpisah dengan kode yang sama persis (modul di atas): seluruh model dilatih ulang dari awal,
+dan setiap prediksinya identik hingga tingkat *byte* dengan versi pengembangan. Sel-sel berikutnya menggunakan prediksi
+dari eksekusi tersebut, dan berkas submisi yang dihasilkan (sha256 pada bagian 5) identik dengan berkas submisi akhir.
+Untuk melatih ulang seluruh model, jalankan *notebook* dengan `DICEFEST_TRAIN=1`."""
+
+SUBMIT = """## 5. Penyusunan Berkas Submisi
+Sel berikut menjalankan model adopsi untuk subzona baru, penggabungan, koreksi galat wilayah, *post-processing*, dan
+penyalinan 77 kawasan uji yang identik dengan kawasan latih, lalu menulis berkas submisi beserta sidik sha256-nya. Model
+adopsi dievaluasi dengan validasi lima *fold* per subzona yang dibobot ulang menurut komposisi subzona baru pada data
+uji (keluaran `unseen-weighted`)."""
+
+EVAL = """## 6. Evaluasi
+Galat per kolom di bawah adalah galat jujur hasil penggabungan: bobot dihitung pada empat per lima data latih dan diuji
+pada seperlima sisanya, sebelum koreksi galat wilayah dan *post-processing*. Model XGBoost dan LightGBM menggunakan
+*early stopping* (penghentian pelatihan lebih awal) berdasarkan *fold* validasinya sendiri sehingga galat *out-of-fold*
+ini sedikit optimistis. Oleh karena itu, setiap keputusan pemodelan diambil dari *holdout set* yang terpisah, dan besar
+perbaikan yang diperkirakannya konsisten dengan perubahan skor pada *leaderboard* publik. Tabel di bawah mencatat
+perkembangan skor tersebut."""
+
+EVAL_SUMMARY = """**Ringkasan galat per target.** Angka diambil dari keluaran bagian 1, bagian 5, dan sel di atas.
+
+| Target | Penanganan | Galat (RMSE/σ) |
+|---|---|---|
+| gas total | 28 model gas/EUI, bobot menekankan kawasan besar | 0,2449 |
+| listrik total | 13 model listrik | 0,3159 |
+| EUI | 28 model gas/EUI, bobot tanpa penekanan kawasan besar | 0,6502 |
+| porsi bangunan bersih | rumus eksak | 0 (rumus tepat pada 100% baris latih) |
+| adopsi pemanas listrik | nilai subzona (92% kawasan uji) dan model peluang (8%) | 0 pada subzona yang dikenal; RMSE 1,03 poin persentase (0,143) pada subzona baru, sekitar 0,04 bila dirata-ratakan atas seluruh kawasan uji |
+
+Tiga angka pertama dihitung sebelum koreksi galat wilayah dan *post-processing*. Dampak kedua tahap tersebut tercatat
+pada tabel perkembangan skor di atas: koreksi galat wilayah menurunkan skor *leaderboard* publik sebesar 0,0007 (v12 ke
+v15), sedangkan *post-processing* menurunkannya sebesar 0,00007 (v19nca ke final). EUI menyumbang sekitar separuh
+total galat sehingga sebagian besar upaya pemodelan dicurahkan pada target ini."""
+
+POLICY = """## 7. Implikasi Kebijakan
+*Ensemble* 41 model terlalu kompleks untuk ditafsirkan secara langsung, dan sebagian fiturnya, seperti rata-rata target
+wilayah, bukan variabel yang dapat diintervensi oleh pembuat kebijakan. Oleh karena itu, dilatih satu **model penjelas**
+(LightGBM) untuk setiap target dengan hanya menggunakan karakteristik kawasan yang terukur, yaitu bangunan, periode
+pembangunan, komposisi pemanas, sosiodemografi, iklim, dan agregat kawasan.
+
+Model penjelas ditafsirkan dengan SHAP (*SHapley Additive exPlanations*). SHAP menguraikan setiap prediksi menjadi nilai
+dasar, yaitu rata-rata prediksi pada seluruh data, ditambah kontribusi aditif dari setiap fitur sehingga jumlah seluruh
+kontribusi selalu sama dengan selisih antara prediksi dan nilai dasar. Kecocokan model penjelas diukur dengan R² pada
+data yang tidak digunakan untuk melatihnya (tabel di bawah). Untuk adopsi, R² 0,99 tidak dapat dibaca sebagai daya jelas
+perilaku karena porsi jenis pemanas berjumlah 100% dan adopsi merupakan bagian dari sisa porsi tersebut.
+
+Nama kolom disamarkan oleh panitia sehingga makna kolom yang dituliskan pada bagian ini, misalnya `hvac_dist_02` sebagai
+porsi pemanas gas jaringan, merupakan dugaan berdasarkan pola data. Kelompok "era bangunan" dan "bauran pemanas" pada
+grafik dan tabel keluaran sama dengan periode bangunan dan komposisi pemanas pada teks."""
+
+FAMILIES = """Porsi kontribusi setiap kelompok fitur. Sosiodemografi dan rasio fisik merupakan dua kelompok dengan kontribusi
+terbesar untuk ketiga target konsumsi. Pada adopsi, kontribusi didominasi oleh komposisi pemanas (81%), tetapi angka ini
+sebagian besar merupakan identitas akuntansi: makin kecil porsi pemanas lain yang tercatat, makin besar ruang yang
+tersisa bagi pemanas listrik. Angka tersebut dibaca sebagai deskripsi komposisi pemanas kawasan, bukan sebagai faktor
+pendorong keputusan rumah tangga."""
+
+TOP = "Sepuluh fitur dengan rata-rata nilai mutlak kontribusi SHAP terbesar untuk tiga target utama."
+
+DEPENDENCE = ("Hubungan antara nilai fitur dan kontribusinya. Setiap titik mewakili satu kawasan dan garis merah "
+              "menunjukkan rata-ratanya.")
+
+DRIVERS_MAP = """### 7.1 Faktor Pendorong Konsumsi
+1. **Ukuran rumah berpengaruh berlawanan arah terhadap gas dan listrik.** Rumah kecil (sekitar 30 m² per meter)
+   mengonsumsi gas per meter persegi sekitar 65% lebih banyak daripada rumah besar (300 m²) karena luas dinding dan
+   atapnya relatif besar terhadap ruang yang dipanaskan. Sebaliknya, rumah besar mengonsumsi listrik per rumah sekitar
+   75% lebih banyak.
+2. **Bangunan dari periode tertentu memiliki intensitas energi yang lebih tinggi.** Kawasan yang seluruh bangunannya
+   berasal dari periode `bld_era_15` memiliki EUI sekitar 7% lebih tinggi daripada kawasan tanpa bangunan dari periode
+   tersebut, sedangkan untuk `bld_era_09` selisihnya sekitar 4%. Bagian konsumsi inilah yang dapat ditekan melalui
+   *retrofit* pada dinding, atap, dan jendela.
+3. **Iklim menggeser intensitas energi sekitar 15%** antara kawasan dengan iklim paling ringan dan paling berat
+   (`env_climate_05`). Dengan anggaran per rumah yang sama, *retrofit* di kawasan beriklim berat menghasilkan
+   penghematan yang lebih besar.
+4. **Adopsi pemanas listrik saat ini terkonsentrasi di kawasan yang belum tersambung ke jaringan gas.** Pada porsi
+   pemanas gas jaringan di bawah 40%, kontribusi faktor ini terhadap adopsi bernilai +4 hingga +12 poin persentase,
+   sedangkan pada porsi di atas 80% kontribusinya negatif. Pola ini bersifat deskriptif karena kedua porsi berasal dari
+   pembagian yang sama. Informasi yang lebih bermakna adalah bahwa sosiodemografi hanya menyumbang sekitar 15% sehingga
+   perbedaan adopsi antarkawasan tidak terutama dijelaskan oleh karakteristik warga.
+
+### 7.2 Peta Trilema per Zona
+Untuk menerjemahkan temuan tersebut menjadi prioritas program, nilai aktual pada kawasan latih dan prediksi akhir pada
+kawasan uji digabungkan, lalu diringkas ke 330 zona dengan dua ukuran.
+* **Potensi penghematan dari *retrofit***, yaitu konsumsi gas yang berkurang apabila kontribusi stok bangunan (periode
+  bangunan, dimensi bangunan, dan rasio fisik) yang berada di atas rata-rata nasional diturunkan ke rata-rata tersebut.
+  Ukuran ini konservatif karena hanya kelebihan di atas rata-rata yang dihapus.
+* **Kenaikan konsumsi listrik tahunan** apabila pemanas gas diganti dengan *heat pump* (pompa panas listrik), dengan
+  asumsi 80% konsumsi gas digunakan untuk pemanasan dan *heat pump* menghasilkan 3 kWh panas dari 1 kWh listrik
+  (COP 3). Ukuran ini adalah energi tahunan, bukan beban puncak. Kebutuhan pemanasan terkonsentrasi pada bulan-bulan
+  terdingin, ketika COP juga turun, sehingga kenaikan beban puncak di gardu dapat jauh lebih besar. Data kompetisi tidak
+  memuat profil beban maupun kapasitas jaringan.
+
+Garis median pada kedua sumbu membagi zona menjadi empat kuadran. Pada keluaran di bawah, kolom berawalan
+`kenaikan_beban` dan `load_increase` berarti kenaikan konsumsi listrik tahunan sebagaimana didefinisikan di atas. Label
+kebijakan Q2 pada tabel keluaran ("jaringan masih longgar") berasal dari versi sebelumnya. Karena kapasitas jaringan
+tidak tersedia dalam data, Q2 lebih tepat dibaca sebagai zona dengan kenaikan konsumsi listrik yang relatif lebih
+rendah."""
+
+RECS = """### 7.3 Rekomendasi
+Karena rumus kenaikan berbentuk gas × porsi pemanasan / COP / listrik, perubahan asumsi mengalikan semua zona dengan
+faktor yang sama. Dengan COP 2,5 hingga 3,5 dan porsi pemanasan 70% hingga 90%, nilai tengah kenaikan bergeser dari
+sekitar 95% ke rentang 71% hingga 128%, tetapi peringkat zona dan keanggotaan kuadran tidak berubah.
+
+1. **Program perlu diurutkan per kuadran, tidak diseragamkan.** Q1 (intensitas tinggi, kenaikan konsumsi listrik
+   tinggi) memuat hampir separuh konsumsi gas dan separuh potensi penghematan *retrofit*. Pada kuadran ini, *retrofit*
+   perlu didahulukan daripada *heat pump*. Kebutuhan panas yang turun lebih awal mengurangi tagihan dan emisi sekaligus
+   memperkecil kenaikan konsumsi listrik ketika elektrifikasi dimulai. REG_273, REG_270, dan REG_045 merupakan
+   kandidat pertama (tabel potensi penghematan di atas).
+2. **Q2 menjadi kandidat jangka pendek untuk *heat pump*.** Intensitas gas di kuadran ini tinggi, sedangkan kenaikan
+   konsumsi listriknya relatif lebih rendah daripada zona lain. Kesiapan gardu tetap perlu dikonfirmasi dengan operator
+   jaringan sebelum subsidi dibuka.
+3. **Operator jaringan perlu dilibatkan sejak awal pada zona Q1 dan Q3.** Zona seperti REG_290 (+121%), REG_259, dan
+   REG_275 akan mengalami kenaikan konsumsi listrik tahunan lebih dari dua kali lipat apabila pemanasnya dielektrifikasi
+   penuh. Penguatan gardu, *time-of-use tariff* (tarif berbasis waktu pemakaian), dan *heat pump* dengan penyimpan panas
+   perlu direncanakan sebelum subsidi berskala besar dibuka.
+4. **Insentif khusus diperlukan untuk kawasan yang sudah tersambung ke jaringan gas.** Adopsi saat ini hampir hanya
+   terjadi di kawasan yang kurang tersambung ke jaringan gas sehingga kawasan dengan porsi gas jaringan di atas 80%
+   memerlukan dorongan tambahan, misalnya bantuan biaya pemasangan dan pembongkaran *boiler* (ketel pemanas) lama.
+5. **Target efisiensi dan target emisi perlu dipisahkan.** Rumah kecil memiliki intensitas gas per meter persegi yang
+   tinggi, sedangkan rumah besar memiliki konsumsi per rumah yang tinggi. Program keterjangkauan sebaiknya menyasar
+   kawasan dengan rumah kecil dan bangunan lama, sedangkan program pengurangan emisi menyasar zona dengan volume
+   konsumsi gas terbesar.
+
+**Keterbatasan.** SHAP menunjukkan asosiasi dalam data dan belum membuktikan hubungan sebab-akibat. Skenario kenaikan
+konsumsi listrik merupakan perhitungan energi tahunan sederhana di atas prediksi model, dengan asumsi yang dinyatakan
+secara eksplisit, dan belum mencerminkan beban puncak. Ambang kuadran berupa median dipilih demi kesederhanaan, bukan
+berdasarkan batas fisis. Oleh karena itu, peringkat antarzona lebih layak dijadikan pegangan daripada nilai absolutnya."""
+
+CLOSING = """## 8. Penutup
+* Analisis struktur data sebelum pemodelan menyelesaikan dua target tanpa model prediksi dan menentukan arah seluruh
+  pekerjaan.
+* Perbaikan terbesar berasal dari informasi lingkungan sekitar yang dihitung secara *out-of-fold*, yaitu rata-rata
+  target wilayah, kawasan termirip, dan koreksi galat wilayah. Sisanya berasal dari keragaman model dan penggabungan
+  dengan bobot adaptif.
+* Setiap perubahan dipilih berdasarkan *holdout set* yang terbukti menduga *leaderboard* dengan baik, bukan berdasarkan
+  *leaderboard* itu sendiri.
+* Model yang sama dapat diterjemahkan menjadi peta prioritas yang menjawab tiga pertanyaan praktis: zona mana yang
+  memerlukan *retrofit* lebih dahulu, zona mana yang siap beralih ke pemanas listrik, dan zona mana yang jaringan
+  listriknya perlu diperkuat terlebih dahulu.
+
+**Cakupan *notebook* ini.** *Notebook* ini memuat seluruh langkah yang menghasilkan berkas submisi dan analisis
+kebijakan. Beberapa analisis pendukung dalam *writeup*, yaitu validasi adversarial, perbandingan skema validasi, kurva
+galat a + b/M, uji ablasi, dan uji kebocoran, dijalankan selama pengembangan dengan skrip terpisah dan tidak diulang di
+sini karena sebagian besar memerlukan pelatihan model tambahan."""
