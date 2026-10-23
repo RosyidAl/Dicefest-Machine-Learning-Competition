@@ -1,8 +1,8 @@
-# STATUS (diperbarui: 2026-10-24 00:05 WIB)
-STATUS: KOMPETISI DITUTUP (23 Okt 23:59 WIB). Menunggu LB private dan pengumuman finalis.
+# STATUS (diperbarui: 2026-10-24 00:08 WIB)
+STATUS: KOMPETISI DITUTUP (23 Okt 23:59 WIB). LB private (dari user, 24 Okt 00:08 WIB): BISMILLAH peringkat 8, 0,24844 (publik 9, 0,24913); peringkat 9 nga tau 0,24846, peringkat 10 meong s.kom 0,24847. Menunggu pengumuman finalis 25 Okt.
 - Submisi final: dua entri sub_final_pipeline.csv (aec745ab...d66e), LB publik 0,24913, peringkat publik 9 pada 23:41 WIB. User melaporkan pemilihan submisi final sudah dilakukan.
 - Deliverable: final/deliverables/DICEFEST2026_BISMILLAH.ipynb (commit 27c8f2a: narasi sinkron writeup B, ringkasan galat per target, Lampiran A dieksekusi) dan final/deliverables/BISMILLAH_Writeups.pdf (identik WRITEUP_BISMILLAH.pdf, sha 75b44b37, commit 7faf31f).
-- Langkah berikutnya: (1) cek LB private setelah dibuka; (2) bila lolos final: sinkronkan reports/PRESENTATION_OUTLINE.md dengan writeup B (adopsi sebagai komposisi, "konsumsi listrik tahunan", gaya formal) lalu susun slide untuk 30 Okt; (3) persiapan tanya jawab.
+- Langkah berikutnya: (1) tunggu pengumuman finalis 25 Okt; (2) bila lolos final: sinkronkan reports/PRESENTATION_OUTLINE.md dengan writeup B (adopsi sebagai komposisi, "konsumsi listrik tahunan", gaya formal) lalu susun slide untuk 30 Okt; (3) persiapan tanya jawab.
 
 ## Catatan lama (22 Okt 10:13 WIB, sebelum penutupan)
 STATUS: BERJALAN
