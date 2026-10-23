@@ -2,7 +2,8 @@
 
 Dokumen ini adalah bahan masukan untuk Claude Design. Bagian A berisi cara kerja yang disarankan, Bagian B berisi
 prompt utama yang tinggal ditempel, Bagian C berisi isi setiap slide, dan Bagian D berisi daftar periksa angka.
-Semua angka sudah disamakan dengan writeup final (`BISMILLAH_Writeups.pdf`, sha 75b44b37).
+Sumber angka: writeup final (`BISMILLAH_Writeups.pdf`, sha 75b44b37) dan `reports/deck_facts_extra.md` (skor
+*leaderboard* dan Lampiran A notebook). Brief ini lolos `check_deck.py` (0 galat, 0 peringatan).
 
 ## A. Cara kerja yang disarankan
 
@@ -17,7 +18,7 @@ Semua angka sudah disamakan dengan writeup final (`BISMILLAH_Writeups.pdf`, sha 
    berbeda." Claude Design bisa saja membulatkan atau mengubah angka saat merapikan teks.
 5. **Ekspor di akhir saja.** Untuk presentasi Zoom, PDF paling aman. Ekspor PPTX atau Canva hanya bila perlu disunting
    lagi, lalu periksa font dan posisi teks karena hasil ekspor PPTX bisa bergeser.
-6. **Latihan dengan pengatur waktu.** Total 10 menit; pembagian waktu per slide ada di Bagian C.
+6. **Latihan dengan pengatur waktu.** Total 10 menit; pembagian waktu per slide ada di judul setiap slide di Bagian C.
 
 Gambar yang perlu diunggah:
 
@@ -54,6 +55,7 @@ Gaya visual:
   angka atau temuan terpenting. Jangan memakai gradasi atau ikon dekoratif yang tidak membawa informasi.
 - Satu pesan per slide. Judul slide berupa kalimat pernyataan singkat, bukan sekadar topik.
 - Teks di layar maksimal sekitar 40 kata per slide. Angka kunci ditampilkan besar.
+- Huruf sans-serif; judul minimal 28 pt, isi minimal 18 pt, keterangan gambar minimal 12 pt.
 - Gambar yang diunggah dipakai apa adanya: jangan diubah, dipotong, atau digambar ulang. Gambar mengisi
   setidaknya separuh slide bila slide tersebut memakai gambar.
 - Kaki slide: "Tim BISMILLAH | DICE FEST 2026" dan nomor slide.
@@ -70,87 +72,94 @@ Sebelum membuat slide, usulkan dulu tata letak setiap slide secara singkat.
 
 ## C. Isi per slide
 
+Pembagian waktu mengikuti bobot rubrik: kebijakan (slide 8 sampai 10) 4 menit 20 detik, fitur dan pra-pemrosesan
+(slide 3 sampai 6) 3 menit 25 detik, arsitektur (slide 7) 1 menit 5 detik, pembuka (slide 1 dan 2) 1 menit 10 detik.
+
 ### Slide 1. Judul (30 detik)
 - **Judul:** Dari Struktur Data ke Peta Kebijakan: Prediksi Trilema Energi Perkotaan dan Prioritas per Zona
 - **Subjudul:** Tim BISMILLAH, DICE FEST 2026 Machine Learning
-- **Angka besar:** 0,24844 (*leaderboard* private, peringkat 8 dari seluruh peserta) dan 0,24913 (publik)
-- **Catatan pembicara:** Lima besaran energi diprediksi untuk sekitar 613 ribu kawasan permukiman, lalu model yang sama
-  diterjemahkan menjadi peta prioritas untuk 330 zona: di mana *retrofit* didahulukan, di mana *heat pump* dapat segera
-  dipasang, dan di mana jaringan listrik perlu diperkuat lebih dulu.
+- **Angka besar:** 0,24844 (*leaderboard* private, peringkat 8) dan 0,24913 (publik)
+- **Catatan pembicara:** Kami memprediksi lima besaran energi untuk 613 ribu kawasan permukiman, lalu menerjemahkan
+  model yang sama menjadi peta prioritas untuk 330 zona: di mana *retrofit* didahulukan, di mana *heat pump* dapat
+  segera dipasang, dan di mana jaringan listrik perlu diperkuat lebih dulu.
 
-### Slide 2. Lima target, satu trilema (45 detik)
+### Slide 2. Lima target, satu trilema (40 detik)
 - **Judul:** Lima target mencerminkan tiga tuntutan transisi energi
-- **Isi:** tabel kecil
+- **Isi:**
+
   | Target | Aspek trilema |
   |---|---|
   | gas total, EUI (gas per m² lantai) | emisi dan biaya |
   | listrik total | keandalan jaringan |
   | porsi bangunan bersih | kualitas stok bangunan |
   | adopsi pemanas listrik | kemajuan transisi |
-- **Pesan kecil:** metrik = rata-rata RMSE/σ per target; EUI menyumbang sekitar separuh total galat.
+
+- **Pesan kecil:** Metrik: rata-rata RMSE/σ per target. EUI menyumbang sekitar separuh total galat.
 - **Gambar:** `fig1_targets.png` (opsional, kecil di bawah tabel)
 - **Catatan pembicara:** Setiap target dinilai terpisah sehingga setiap target boleh ditangani dengan cara berbeda.
-  Karena EUI menyumbang separuh galat, sebagian besar upaya pemodelan dicurahkan ke sana.
+  Karena EUI menyumbang sekitar separuh galat, sebagian besar upaya pemodelan dicurahkan ke sana.
 
 ### Slide 3. Data dipahami sebelum model dilatih (1 menit)
-- **Judul:** Sebelum melatih model, dua target sudah terjawab oleh struktur data
-- **Isi (3 butir + 1 bukti):**
-  - Gas total = EUI × luas lantai (`bld_dim_06`), selisih terbesar 7 × 10⁻¹⁶: gas dan EUI ditangani satu kelompok model.
-  - Porsi bangunan bersih = 100 × `bld_dim_02` / `bld_dim_01`, tepat di seluruh 429 ribu baris latih: dihitung, tidak ditebak.
-  - Adopsi pemanas listrik seragam dalam satu subzona: 92% kawasan uji sudah diketahui nilainya.
-  - Data uji diambil acak per baris: kawasan uji di subzona baru 8,14% (harapan acak 8,17%), AUC validasi adversarial 0,4997.
-- **Visual:** tiga kotak "identitas" dengan ikon sederhana atau tanpa ikon; tidak perlu gambar.
-- **Catatan pembicara:** Temuan ini menentukan seluruh desain: satu target dihitung dengan rumus, satu target hampir
-  seluruhnya disalin, dan dua target lain dimodelkan bersama.
+- **Judul:** Dua target terjawab oleh struktur data sebelum model dilatih
+- **Isi:**
+  - Gas = EUI × luas lantai: satu kelompok model untuk keduanya.
+  - Porsi bangunan bersih dihitung eksak dengan rumus.
+  - Adopsi seragam per subzona: 92% kawasan uji sudah diketahui.
+  - Data uji diambil acak per baris: AUC adversarial 0,4997.
+- **Catatan pembicara:** Hasil kali EUI dan luas lantai (`bld_dim_06`) selalu sama dengan gas total, dengan selisih
+  relatif terbesar 7 × 10⁻¹⁶. Porsi bangunan bersih selalu sama dengan 100 × `bld_dim_02` / `bld_dim_01`. Adopsi seragam
+  dalam subzona karena subzona adalah unit sensus: 113 dari 132 kolom sensus juga seragam. Kawasan uji di subzona baru
+  8,14%, sesuai harapan pengacakan per baris 8,17%. Satu target dihitung dengan rumus, satu hampir seluruhnya disalin,
+  dan dua target lain dimodelkan bersama.
 
 ### Slide 4. Skema validasi yang meniru data uji (45 detik)
-- **Judul:** Skema validasi yang salah akan membuang fitur terbaik
-- **Isi:**
-  - Pembagian per zona membuat rata-rata target wilayah tampak merusak: galat EUI naik dari 0,6923 menjadi 0,8331.
-  - Pembagian acak per baris, yang sesuai dengan data uji, justru menurunkan galat: 0,6721 menjadi 0,6699.
-  - *Holdout set* 30% menduga perubahan skor *leaderboard* dengan akurat sehingga tidak ada keputusan yang diambil dari *leaderboard* publik.
+- **Judul:** Skema validasi yang keliru akan membuang fitur terbaik
+- **Angka besar:** galat EUI dengan rata-rata target wilayah: per zona 0,8331, acak per baris 0,6699
+- **Isi:** *Holdout set* 30% menduga perubahan skor *leaderboard* secara akurat.
 - **Gambar:** `fig3_progress.png`
 - **Catatan pembicara:** Untuk data spasial, pembagian per wilayah sering dianjurkan. Namun, 92% kawasan uji berada di
-  subzona yang juga ada di data latih, sehingga skema per zona justru menyesatkan.
+  subzona yang juga ada di data latih. Skema per zona membuat rata-rata target wilayah tampak merusak, padahal pada skema
+  acak per baris yang sesuai dengan data uji, fitur yang sama menurunkan galat EUI dari 0,6721 menjadi 0,6699. Tidak ada
+  keputusan yang diambil dari *leaderboard* publik.
 
-### Slide 5. Fitur domain (1 menit 15 detik)
-- **Judul:** Fitur dibangun dari cara energi dipakai, bukan dari ukuran kawasan
-- **Isi (4 butir):**
-  - Ukuran rumah: luas lantai per meter, luas per sertifikat, meter per sertifikat, sisa porsi jenis pemanas.
-  - Target per rumah tangga (gas per meter, per m², log, Poisson) dengan bobot yang menjaga galat pada skala asli.
-  - Rata-rata target wilayah *out-of-fold*: subzona, zona, petak iklim, nomor subzona berdekatan.
-  - Kawasan termirip (kNN pada stok bangunan): perbaikan terbesar dari satu kelompok fitur, galat EUI turun 0,0022.
+### Slide 5. Fitur domain (1 menit 10 detik)
+- **Judul:** Fitur dibangun dari cara energi dipakai, bukan ukuran kawasan
+- **Isi:**
+  - Ukuran rumah: luas lantai per meter, luas per sertifikat.
+  - Target per rumah tangga dengan bobot skala asli.
+  - Rata-rata target wilayah *out-of-fold*.
+  - Kawasan termirip (kNN): galat EUI turun 0,0022.
 - **Gambar:** `fig5_gains.png` (panel atas)
 - **Catatan pembicara:** Gas total suatu kawasan terutama ditentukan jumlah rumah di dalamnya. Yang informatif adalah
-  perilaku per rumah, jadi model memprediksi besaran per rumah tangga lalu dikalikan kembali. Semua fitur yang memakai
-  target dihitung tanpa melihat *fold* yang sedang dievaluasi.
+  perilaku per rumah, jadi model memprediksi gas per meter, per m², atau logaritmanya, lalu dikalikan kembali. Rata-rata
+  target dihitung pada subzona, zona, petak iklim, dan nomor subzona berdekatan, selalu tanpa melihat *fold* yang sedang
+  dievaluasi. Kawasan termirip adalah perbaikan terbesar dari satu kelompok fitur.
 
 ### Slide 6. Batas akurasi yang bisa dicapai (30 detik)
 - **Judul:** Tiga perempat galat berasal dari variasi antarrumah tangga
-- **Isi:** varians galat mengikuti a + b/M (M = jumlah meter); makin banyak rumah tangga, makin kecil galatnya.
-  Implikasinya: perbaikan datang dari mengurangi galat acak model (*ensemble*), bukan dari model yang lebih besar.
+- **Isi:** Varians galat mengikuti a + b/M. Perbaikan datang dari *ensemble*, bukan dari model yang lebih besar.
 - **Gambar:** `fig2_noise_floor.png`
-- **Catatan pembicara:** Faktor seperti jumlah penghuni dan kebiasaan tidak tercatat dalam data. Bagian ini tidak dapat
-  dijelaskan oleh model mana pun.
+- **Catatan pembicara:** M adalah jumlah meter. Makin banyak rumah tangga dalam satu kawasan, makin kecil galatnya.
+  Jumlah penghuni dan kebiasaan tidak tercatat dalam data, jadi bagian ini tidak dapat dijelaskan oleh model mana pun.
 
-### Slide 7. Arsitektur multi-output (1 menit 15 detik)
+### Slide 7. Arsitektur multi-output (1 menit 5 detik)
 - **Judul:** Tiga jalur untuk lima target, 41 model dengan pola galat berbeda
 - **Isi:**
-  - Jalur gas/EUI (28 model), jalur listrik (13 model), jalur rumus dan salinan (porsi bangunan bersih, adopsi).
-  - XGBoost, LightGBM, MLP (PLR, TabM-mini, gas + listrik), dan NCA.
-  - Penggabungan NNLS dengan bobot yang berubah menurut luas, jumlah meter, dan besar prediksi; lalu koreksi galat
-    wilayah dan penyesuaian akhir (kawasan 2 sampai 4 meter, batas gas 999.765 kWh).
-  - Reprodusibilitas: seluruh model dilatih ulang dari awal dan berkas submisi identik byte (sha256 aec745ab).
+  - Gas/EUI 28 model, listrik 13 model, dua target lain dengan rumus dan salinan.
+  - XGBoost, LightGBM, MLP, NCA; bobot NNLS adaptif, lalu koreksi galat wilayah.
+  - Dilatih ulang dari awal: berkas submisi identik byte (sha256 aec745ab).
 - **Gambar:** `fig_arch.png`
 - **Catatan pembicara:** Model yang unggul di kawasan kecil tidak selalu unggul di kawasan besar, sehingga bobot
-  penggabungan dibuat adaptif. Semua besaran setelah penggabungan ditentukan pada *holdout set*.
+  penggabungan berubah menurut luas, jumlah meter, dan besar prediksi. Setelah itu ada koreksi galat wilayah dan
+  penyesuaian akhir untuk kawasan 2 sampai 4 meter serta batas gas 999.765 kWh. Semua besaran setelah penggabungan
+  ditentukan pada *holdout set*.
 
 ### Slide 8. Apa yang mendorong konsumsi (1 menit 30 detik)
 - **Judul:** Ukuran rumah, periode bangunan, dan iklim menggerakkan konsumsi
-- **Isi (angka besar):**
-  - Rumah kecil: gas per m² sekitar **65%** lebih tinggi. Rumah besar: listrik per rumah sekitar **75%** lebih tinggi.
-  - Periode `bld_era_15`: EUI sekitar **7%** lebih tinggi. Iklim menggeser EUI sekitar **15%**.
-  - Adopsi pemanas listrik terkonsentrasi di kawasan yang belum tersambung jaringan gas; sosiodemografi hanya **15%**.
+- **Angka besar:**
+  - Rumah kecil: gas per m² +65%. Rumah besar: listrik per rumah +75%.
+  - Periode `bld_era_15`: EUI +7%. Iklim menggeser EUI 15%.
+  - Adopsi mengikuti sambungan jaringan gas; sosiodemografi hanya 15%.
 - **Gambar:** `pol_dependence.png` (utama) dan `pol_families.png` (kecil)
 - **Catatan pembicara:** Model penjelas hanya memakai karakteristik kawasan yang terukur dan menjelaskan 75% variasi gas
   per meter, 56% variasi EUI, dan 49% variasi listrik per meter. Porsi 81% komposisi pemanas pada adopsi sebagian besar
@@ -159,33 +168,36 @@ Sebelum membuat slide, usulkan dulu tata letak setiap slide secara singkat.
 
 ### Slide 9. Peta trilema 330 zona (1 menit 30 detik)
 - **Judul:** Setiap zona membutuhkan urutan program yang berbeda
-- **Angka besar:** potensi penghematan *retrofit* 7,4 TWh (5,2% konsumsi gas); elektrifikasi penuh menaikkan konsumsi
-  listrik tahunan zona rata-rata 95%
+- **Angka besar:** potensi *retrofit* 7,4 TWh (5,2% gas); elektrifikasi penuh menaikkan konsumsi listrik tahunan zona
+  rata-rata 95%
 - **Tabel kuadran:**
-  | Kuadran | Zona | Porsi gas | Potensi *retrofit* | Kenaikan listrik tahunan | Langkah |
-  |---|---|---|---|---|---|
-  | Q1 intensitas tinggi, kenaikan tinggi | 118 | 47% | 3,65 TWh | +102% | *retrofit* dulu, lalu elektrifikasi bertahap |
-  | Q2 intensitas tinggi, kenaikan relatif lebih rendah | 47 | 12% | 1,07 TWh | +90% | kandidat *heat pump* jangka pendek |
-  | Q3 intensitas rendah, kenaikan tinggi | 47 | 15% | 0,86 TWh | +99% | penguatan gardu dan tarif fleksibel dulu |
-  | Q4 intensitas rendah, kenaikan relatif lebih rendah | 118 | 27% | 1,81 TWh | +87% | program standar |
-- **Gambar:** `pol_trilemma.png`
-- **Catatan pembicara:** Angka kenaikan adalah energi tahunan dengan asumsi 80% gas untuk pemanasan dan COP 3, bukan
-  beban puncak. Dengan COP 2,5 sampai 3,5 dan porsi pemanasan 70% sampai 90%, rata-ratanya 71% sampai 128%, tetapi
-  peringkat zona dan keanggotaan kuadran tidak berubah.
 
-### Slide 10. Rekomendasi dan penutup (1 menit 30 detik)
-- **Judul:** Lima rekomendasi untuk pemerintah kota
+  | Kuadran | Zona (porsi gas) | Potensi *retrofit* | Kenaikan listrik | Langkah |
+  |---|---|---|---|---|
+  | Q1 intensitas tinggi, kenaikan tinggi | 118 (47%) | 3,65 TWh | +102% | *retrofit* dulu |
+  | Q2 intensitas tinggi, kenaikan lebih rendah | 47 (12%) | 1,07 TWh | +90% | kandidat *heat pump* |
+  | Q3 intensitas rendah, kenaikan tinggi | 47 (15%) | 0,86 TWh | +99% | perkuat gardu dulu |
+  | Q4 intensitas rendah, kenaikan lebih rendah | 118 (27%) | 1,81 TWh | +87% | program standar |
+
+- **Gambar:** `pol_trilemma.png`
+- **Catatan pembicara:** Kenaikan adalah energi tahunan dengan asumsi 80% gas untuk pemanasan dan COP 3, bukan beban
+  puncak. Dengan COP 2,5 sampai 3,5 dan porsi pemanasan 70% sampai 90%, rata-ratanya 71% sampai 128%, tetapi peringkat
+  zona dan keanggotaan kuadran tidak berubah. Q1 memuat hampir separuh konsumsi gas dan separuh potensi *retrofit*.
+
+### Slide 10. Rekomendasi (1 menit 20 detik)
+- **Judul:** Lima langkah untuk pemerintah kota
 - **Isi:**
-  1. Urutkan program per kuadran, jangan diseragamkan. Q1 (REG_273, REG_270, REG_045) mendahulukan *retrofit*.
-  2. Jadikan Q2 kandidat jangka pendek *heat pump*, setelah kesiapan gardu dikonfirmasi operator jaringan.
-  3. Libatkan operator jaringan sejak awal di Q1 dan Q3 (misalnya REG_290, +121%): penguatan gardu, tarif berbasis
-     waktu pemakaian, *heat pump* dengan penyimpan panas.
-  4. Beri insentif khusus untuk kawasan yang sudah tersambung jaringan gas (porsi di atas 80%).
-  5. Pisahkan target efisiensi (rumah kecil, bangunan lama) dari target emisi (zona dengan volume gas terbesar).
-- **Baris penutup:** struktur data sebelum model; validasi yang meniru data uji; interpretasi yang bisa dieksekusi.
-- **Catatan pembicara:** Tiga keterbatasan disebutkan singkat: SHAP adalah asosiasi, skenario listrik adalah energi
-  tahunan bukan beban puncak, dan ambang kuadran berupa median. Karena itu peringkat antarzona lebih layak dipegang
-  daripada nilai absolutnya.
+  1. Urutkan program per kuadran; Q1 mendahulukan *retrofit*.
+  2. Q2: kandidat *heat pump* jangka pendek.
+  3. Libatkan operator jaringan sejak awal di Q1 dan Q3.
+  4. Insentif khusus untuk kawasan berjaringan gas.
+  5. Pisahkan target efisiensi dan target emisi.
+- **Catatan pembicara:** Kandidat pertama *retrofit* adalah REG_273, REG_270, dan REG_045. Di Q2, kesiapan gardu tetap
+  dikonfirmasi dengan operator jaringan sebelum subsidi dibuka. Zona seperti REG_290 (+121%) perlu penguatan gardu,
+  tarif berbasis waktu pemakaian, dan *heat pump* dengan penyimpan panas. Kawasan dengan porsi gas jaringan di atas 80%
+  perlu bantuan biaya pemasangan. Program keterjangkauan menyasar rumah kecil dan bangunan lama, program emisi menyasar
+  zona dengan volume gas terbesar. Keterbatasan: SHAP adalah asosiasi, skenario listrik adalah energi tahunan, dan
+  ambang kuadran berupa median, sehingga peringkat antarzona lebih layak dipegang daripada nilai absolutnya.
 
 ### Slide cadangan (untuk tanya jawab)
 - **C1. Perbandingan skema validasi:** Tabel 1 writeup (acak per baris dan per zona, dengan dan tanpa rata-rata target
