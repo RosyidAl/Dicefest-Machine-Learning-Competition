@@ -25,3 +25,4 @@ exp/hold/
 exp/oof/
 exp/pred/
 *.log.gz
+pdfenv/

@@ -20,12 +20,18 @@ SRC = os.path.join(ROOT, "reports", "WRITEUP_DRAFT.md")
 OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ROOT, "reports", "WRITEUP.pdf")
 FONT = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
 FONT_B = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+# the system DejaVu package has no oblique faces; matplotlib ships them (italic marks foreign terms, EYD V)
+_MPL_TTF = os.path.join(ROOT, ".venv", "lib", "python3.12", "site-packages", "matplotlib", "mpl-data", "fonts", "ttf")
+FONT_I = os.path.join(_MPL_TTF, "DejaVuSans-Oblique.ttf")
+FONT_BI = os.path.join(_MPL_TTF, "DejaVuSans-BoldOblique.ttf")
 
 # DejaVu covers the non-ASCII characters of the text (superscripts, arrows, approx. signs)
 pdfmetrics.registerFont(TTFont("dv", FONT))
 pdfmetrics.registerFont(TTFont("dvb", FONT_B))
-for bold, italic in ((0, 0), (0, 1), (1, 0), (1, 1)):
-    addMapping("dv", bold, italic, "dvb" if bold else "dv")
+pdfmetrics.registerFont(TTFont("dvi", FONT_I))
+pdfmetrics.registerFont(TTFont("dvbi", FONT_BI))
+for bold, italic, face in ((0, 0, "dv"), (0, 1, "dvi"), (1, 0, "dvb"), (1, 1, "dvbi")):
+    addMapping("dv", bold, italic, face)
 DEFAULT_FONT["dv"] = "dv"
 
 CSS = f"""
