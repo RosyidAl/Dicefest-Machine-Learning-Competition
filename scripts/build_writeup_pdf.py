@@ -39,6 +39,8 @@ CSS = f"""
         @frame footer {{ -pdf-frame-content: foot; bottom: 1cm; margin-left: 2cm; margin-right: 2cm; height: 0.6cm; }} }}
 body {{ font-family: dv; font-size: 9.5pt; line-height: 1.35; }}
 h1 {{ font-size: 15pt; margin-bottom: 2pt; }}
+h2, h3 {{ -pdf-keep-with-next: true; }}
+.keep {{ -pdf-keep-with-next: true; }}
 h2 {{ font-size: 12pt; margin-top: 10pt; margin-bottom: 3pt; border-bottom: 0.5pt solid #888; }}
 p {{ margin: 3pt 0; text-align: justify; }}
 li {{ margin: 1pt 0; }}
@@ -63,6 +65,7 @@ assert "—" not in md, "em-dash in writeup"
 html_body = MarkdownIt("commonmark").enable("table").render(md)
 html_body = re.sub(r'<p><img src="([^"]+)" alt="([^"]*)" /></p>',
                    lambda m: figure(re.match(r"(.*)\|(.*)", f"{m.group(2)}|{m.group(1)}")), html_body)
+html_body = html_body.replace("<p><strong>Tabel", '<p class="keep"><strong>Tabel')  # table caption stays with its table
 html = (f"<html><head><meta charset='utf-8'><style>{CSS}</style></head><body>{html_body}"
         "<div id='foot' style='text-align:center; font-size:8pt;'><pdf:pagenumber/></div></body></html>")
 with open(OUT, "wb") as fh:

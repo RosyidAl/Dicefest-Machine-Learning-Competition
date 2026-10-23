@@ -523,3 +523,6 @@
 
 ## 2026-10-23 21:50 WIB: revisi writeup B dari review
 WRITEUP_BISMILLAH.pdf = versi B (14 halaman). Adopsi 81% dibingkai sebagai identitas komposisi; skenario beban = energi tahunan + tabel sensitivitas COP x porsi pemanasan (peringkat zona invarian); klaim kapasitas cadangan Q2 dihapus; catatan kuadran median, retrofit clip nol; definisi meter, N vs K, model adopsi q_xent; RMSE adopsi subzona baru 1,03 pp (0,143); glos dipangkas; daftar pustaka 7 entri. Tidak dikerjakan: fit ulang penjelas tanpa hvac, ambang kuartil, retrofit p25, lampiran.
+
+## 2026-10-23 22:00 WIB: revisi writeup B putaran kedua
+Perbaikan dari review lanjutan: tiga keterbatasan, rentang 71-128% di kotak hasil, kalimat Bab 6 dipindah, "beban" -> "konsumsi listrik tahunan", sitasi [1]-[7], glos *post-processing*, rincian model adopsi pindah ke 5.1, catatan retrofit p25 (kualitatif). Gambar 7 dibangun ulang (src/make_fig_trilemma.py, skala warna desil, cek 118/47/47/118 dan 141,35 TWh lolos). Layout: keep-with-next untuk judul dan keterangan tabel, Gambar 6 dan paragraf Gambar 7 dipindah. PDF 14 halaman.
