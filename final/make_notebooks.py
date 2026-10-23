@@ -103,6 +103,8 @@ untuk 92% kawasan uji, dan gas total serta intensitas gas (EUI) terikat rumus lu
 harus ditebak kami kerjakan dengan fitur yang meniru cara energi dipakai, 41 model yang digabung dengan bobot yang
 menyesuaikan, koreksi galat wilayah, dan penyesuaian akhir untuk batas data. Skor leaderboard publik: 0,24913.
 
+**Hasil utama.** Skor LB publik 0,24913 dari 41 model yang digabung. Pendorong konsumsi terbesar: ukuran rumah (arah berlawanan untuk gas dan listrik), stok bangunan lama, dan iklim; adopsi pemanas listrik 81% ditentukan infrastruktur pemanas yang ada. Peta trilema: 118 zona yang memuat 47% konsumsi gas perlu perbaikan bangunan sebelum elektrifikasi; potensi hemat 7,4 TWh; elektrifikasi pemanas penuh menaikkan beban listrik zona rata-rata 95%.
+
 | Bagian | Isi |
 |---|---|
 | 1. Data | rumus tersembunyi di data dan cara data uji dipilih |

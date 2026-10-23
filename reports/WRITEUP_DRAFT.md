@@ -11,6 +11,13 @@ Bagian sulit itu kami kerjakan dengan tiga hal: fitur yang meniru cara energi be
 
 Untuk sisi kebijakan, kami membuat model penjelas yang hanya memakai karakteristik kawasan yang bisa diukur, lalu menyusun peta prioritas untuk 330 zona: mana yang perlu perbaikan bangunan dulu, mana yang siap beralih ke pompa panas listrik (heat pump), dan mana yang jaringan listriknya harus diperkuat sebelum elektrifikasi.
 
+| Hasil utama | |
+|---|---|
+| Skor leaderboard publik | 0,24913, dari 41 model yang digabung; notebook menghasilkan ulang file submisi yang sama persis |
+| Struktur data | 1 target dihitung tepat dengan rumus, 1 target sudah diketahui untuk 92% kawasan uji, gas dan EUI terikat luas lantai |
+| Pendorong konsumsi | ukuran rumah (arah berlawanan untuk gas dan listrik), stok bangunan lama, iklim; adopsi pemanas listrik 81% ditentukan infrastruktur pemanas yang ada |
+| Peta trilema | 118 zona (47% konsumsi gas) perlu perbaikan bangunan sebelum elektrifikasi; potensi hemat 7,4 TWh; elektrifikasi pemanas penuh menaikkan beban listrik zona rata-rata 95% |
+
 ## 1. Masalahnya
 Kota yang ingin lepas dari pemanas berbahan gas menghadapi tiga tarikan sekaligus. Emisi harus turun, jaringan listrik harus tetap kuat ketika pemanas pindah ke listrik, dan biaya energi rumah tangga tidak boleh melonjak. Kelima target kompetisi memotret ketiga sisi itu:
 
