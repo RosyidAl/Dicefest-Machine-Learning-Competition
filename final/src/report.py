@@ -22,6 +22,47 @@ def identity_checks(tr, te):
     ], columns=["identitas / struktur", "hasil cek"])
 
 
+def split_checks(tr, te):
+    """how the test rows were drawn and what a subzone is, from features only"""
+    n = pd.concat([tr.subzone_id, te.subzone_id]).value_counts().values
+    expected = (n * 0.3 * 0.3 ** (n - 1)).sum() / (0.3 * n.sum())   # P(no train row in the subzone) under a 30% row split
+    observed = 1 - te.subzone_id.isin(set(tr.subzone_id)).mean()
+    rows = pd.concat([tr[["zone_region_id", "subzone_id"]], te[["zone_region_id", "subzone_id"]]])
+    order = np.argsort(rows.subzone_id.str[4:].astype(int).values)
+    zone = rows.zone_region_id.str[4:].astype(int).values[order]
+    census = [c for c in sorted(tr.columns) if c.startswith(("socio_demog_", "hvac_dist_", "env_climate_"))
+              and pd.api.types.is_numeric_dtype(tr[c]) and tr[c].astype(float).var() > 0]
+    def within(c):   # share of the variance left after removing the subzone mean
+        v = tr[c].astype(float)
+        return (v - v.groupby(tr.subzone_id).transform("mean")).var() / v.var()
+
+    return pd.DataFrame([
+        ("porsi kawasan uji di subzona baru", f"{observed:.2%} (harapan pengacakan per baris {expected:.2%})"),
+        ("baris berurutan menurut nomor subzona yang berada di zona sama", f"{np.mean(zone[1:] == zone[:-1]):.2%}"),
+        ("kolom sensus yang konstan di dalam subzona", f"{sum(within(c) < 1e-12 for c in census)} dari {len(census)}"),
+    ], columns=["pemeriksaan", "hasil"])
+
+
+def adversarial_auc(tr, te, threads=8):
+    """5-fold LightGBM that tries to tell train rows from test rows; AUC near 0.5 means a random split"""
+    import lightgbm as lgb
+    from sklearn.metrics import roc_auc_score
+    from sklearn.model_selection import StratifiedKFold
+    feat = sorted(c for c in tr.columns if c.startswith(("bld_dim_", "bld_era_", "hvac_dist_", "env_climate_", "socio_demog_")))
+    X = pd.concat([tr[feat], te[feat]], ignore_index=True)
+    for c in X.columns:
+        if not pd.api.types.is_numeric_dtype(X[c]):
+            X[c] = X[c].astype("category").cat.codes
+    y = np.r_[np.zeros(len(tr)), np.ones(len(te))]
+    oof = np.zeros(len(y))
+    for a, b in StratifiedKFold(5, shuffle=True, random_state=42).split(X, y):
+        m = lgb.LGBMClassifier(n_estimators=300, learning_rate=0.1, num_leaves=63, subsample=0.5, subsample_freq=1,
+                               colsample_bytree=0.5, num_threads=threads, seed=42, deterministic=True,
+                               force_row_wise=True, verbose=-1).fit(X.iloc[a], y[a])
+        oof[b] = m.predict_proba(X.iloc[b])[:, 1]
+    return roc_auc_score(y, oof)
+
+
 def member_table(cfg):
     """one row per blend member: backend, target formulation, weights, feature blocks"""
     rows = []

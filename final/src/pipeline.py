@@ -1,14 +1,16 @@
-"""Final DICE FEST 2026 pipeline: data -> 50 cross-validated models -> NNLS blend -> adoption model -> residual
-correction -> train-duplicate copy -> submission.
+"""Final DICE FEST 2026 pipeline: data -> 42 cross-validated models (41 in the blend) -> varying-coefficient NNLS
+blend -> adoption model -> residual correction -> post-processing -> train-duplicate copy -> submission.
 
 Stages (all deterministic, seeds fixed in the configs):
 1. members  : every model of configs/members.yaml, 5- or 10-fold KFold(shuffle, random_state=42) over train rows,
-              saving OOF and fold-averaged test predictions to <work>/oof|pred/<name>.npy. Two lanes run in parallel:
-              'gpu' (XGBoost CUDA, PyTorch MLPs) and 'cpu' (LightGBM).
+              saving OOF and fold-averaged test predictions to <work>/oof|pred/<name>.npy. Three lanes run in
+              parallel: 'xgb' (XGBoost CUDA), 'nn' (PyTorch MLPs and NCA) and 'cpu' (LightGBM).
 2. adoption : electric-heating adoption (exact household counts, LightGBM for unseen subzones), adopt_v2.py.
-3. assemble : non-negative least-squares blend per scored column on the OOF predictions, clean-building ratio from
-              its exact identity, residual correction with frozen weights (configs/resid_knn.json), copy of the train
-              targets for the 77 test rows that duplicate a train row, clip, write CSV + sha256.
+3. assemble : non-negative least-squares blend per scored column on the OOF predictions, with member weights that vary
+              with floor area, meter count and prediction level; clean-building ratio from its exact identity;
+              residual correction and post-processing (small-meter shift, gas truncation, train bounds) with the
+              parameters fitted on the internal holdout and frozen in configs/resid_knn.json; copy of the train
+              targets for the 77 test rows that duplicate a train row; write CSV + sha256.
 """
 import hashlib
 import json

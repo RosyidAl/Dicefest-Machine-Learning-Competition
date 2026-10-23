@@ -79,7 +79,10 @@ dapat dibaca "per rumah tangga". Sel berikut memeriksa empat sifat data yang men
   data latih.
 * **Data uji diambil secara acak per baris** (tepat 30% dari seluruh baris). Oleh karena itu, model dievaluasi dengan
   validasi silang yang membagi data latih secara acak menjadi sepuluh *fold* (bagian data). Rata-rata target wilayah
-  boleh digunakan sebagai fitur selama dihitung tanpa melihat *fold* yang sedang dievaluasi."""
+  boleh digunakan sebagai fitur selama dihitung tanpa melihat *fold* yang sedang dievaluasi.
+
+Pemeriksaan pendukung, yaitu porsi kawasan uji di subzona baru dibandingkan dengan nilai harapannya, validasi
+adversarial, urutan nomor subzona, dan sifat sensus subzona, disajikan pada Lampiran A di akhir *notebook*."""
 
 TARGETS_PLOT = ("Sebaran kelima target. Gas, listrik, dan EUI ditampilkan dalam skala logaritmik karena rentang nilainya "
                 "sangat lebar.")
@@ -306,6 +309,29 @@ CLOSING = """## 8. Penutup
   listriknya perlu diperkuat terlebih dahulu.
 
 **Cakupan *notebook* ini.** *Notebook* ini memuat seluruh langkah yang menghasilkan berkas submisi dan analisis
-kebijakan. Beberapa analisis pendukung dalam *writeup*, yaitu validasi adversarial, perbandingan skema validasi, kurva
-galat a + b/M, uji ablasi, dan uji kebocoran, dijalankan selama pengembangan dengan skrip terpisah dan tidak diulang di
-sini karena sebagian besar memerlukan pelatihan model tambahan."""
+kebijakan, ditambah pemeriksaan mekanisme pemisahan data pada Lampiran A. Beberapa analisis pendukung lain dalam
+*writeup*, yaitu perbandingan skema validasi, kurva galat a + b/M, uji ablasi, dan uji kebocoran, dijalankan selama
+pengembangan dengan skrip terpisah dan tidak diulang di sini karena memerlukan pelatihan model tambahan atau prediksi
+dari tahap pengembangan."""
+
+
+APPENDIX = """## Lampiran A. Pemeriksaan Mekanisme Pemisahan Data dan Sifat Subzona
+Lampiran ini memuat pemeriksaan yang mendasari skema validasi pada bagian 1 dan fitur wilayah pada bagian 2. Seluruh
+pemeriksaan hanya menggunakan fitur dan tidak menggunakan target.
+
+* Apabila data uji diambil secara acak per baris dengan porsi 30%, peluang sebuah kawasan uji berada di subzona tanpa
+  baris latih dapat dihitung dari ukuran setiap subzona. Porsi yang teramati dibandingkan dengan nilai harapan tersebut.
+* Seluruh baris diurutkan menurut nomor subzona, lalu diperiksa apakah baris yang berurutan berada di zona yang sama.
+  Porsi yang tinggi menunjukkan bahwa penomoran subzona mengikuti letak geografis sehingga kawasan dengan nomor subzona
+  berdekatan dapat digunakan sebagai tetangga (bagian 2).
+* Kolom sensus (sosiodemografi, komposisi pemanas, dan iklim) diperiksa keseragamannya di dalam setiap subzona. Kolom
+  yang seragam menunjukkan bahwa subzona merupakan unit sensus, sejalan dengan adopsi yang juga seragam per subzona.
+* Validasi adversarial melatih LightGBM untuk membedakan baris latih dari baris uji dengan validasi silang lima *fold*.
+  AUC (*area under the ROC curve*) yang mendekati 0,5 berarti kedua kelompok tidak dapat dibedakan, sesuai dengan
+  pengambilan data uji secara acak per baris. Sel kedua memerlukan beberapa menit."""
+
+APPX_SPLIT = """tr0, te0 = load()   # salinan bersih dari data mentah, tidak terpengaruh sel-sel sebelumnya
+report.split_checks(tr0, te0)"""
+
+APPX_ADV = """auc = report.adversarial_auc(tr0, te0)
+print(f"AUC validasi adversarial (5 fold, tanpa kolom ID): {auc:.4f}")"""

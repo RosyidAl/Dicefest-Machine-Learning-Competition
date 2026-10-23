@@ -184,6 +184,9 @@ print("10 zona dengan kenaikan beban listrik terbesar bila pemanas dielektrifika
 display(Z.sort_values("load_increase_pct", ascending=False).head(10)[cols_show].round(2))'''),
         md(T.RECS),
         md(T.CLOSING),
+        md(T.APPENDIX),
+        code(T.APPX_SPLIT),
+        code(T.APPX_ADV),
     ]
     return nb
 
