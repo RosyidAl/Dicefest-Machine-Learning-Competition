@@ -2,7 +2,7 @@
 
 Needs markdown-it-py and xhtml2pdf, which are NOT part of the modelling environment. Run it from a separate venv:
     python3 -m venv pdfenv && pdfenv/bin/pip install xhtml2pdf markdown-it-py
-    pdfenv/bin/python scripts/build_writeup_pdf.py [out.pdf]
+    pdfenv/bin/python scripts/build_writeup_pdf.py [out.pdf] [source.md]
 """
 import os
 import re
@@ -16,8 +16,8 @@ from xhtml2pdf import pisa
 from xhtml2pdf.default import DEFAULT_FONT
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-SRC = os.path.join(ROOT, "reports", "WRITEUP_DRAFT.md")
 OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ROOT, "reports", "WRITEUP.pdf")
+SRC = sys.argv[2] if len(sys.argv) > 2 else os.path.join(ROOT, "reports", "WRITEUP_DRAFT.md")
 FONT = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
 FONT_B = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 # the system DejaVu package has no oblique faces; matplotlib ships them (italic marks foreign terms, EYD V)
