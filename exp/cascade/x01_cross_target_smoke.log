@@ -1,0 +1,10 @@
+== gas (1s): none 0.245024, own_lin 0.244861, cross_lin 0.244899, own_gbm 0.245454, cross_gbm 0.245065
+   delta vs pipeline correction: none +0.000163, own_lin +0.000000, cross_lin +0.000038, own_gbm +0.000592, cross_gbm +0.000204
+   per-fold delta: none [0.000548, -0.000219]; cross_lin [7.2e-05, 4e-06]; own_gbm [0.000987, 0.000202]; cross_gbm [0.00023, 0.000178]
+== eui (2s): none 0.647414, own_lin 0.646512, cross_lin 0.646525, own_gbm 0.647382, cross_gbm 0.647408
+   delta vs pipeline correction: none +0.000903, own_lin +0.000000, cross_lin +0.000013, own_gbm +0.000870, cross_gbm +0.000897
+   per-fold delta: none [0.001194, 0.000615]; cross_lin [4.6e-05, -1.9e-05]; own_gbm [0.001034, 0.000708]; cross_gbm [0.001122, 0.000674]
+== elec (4s): none 0.315943, own_lin 0.315747, cross_lin 0.316245, own_gbm 0.316056, cross_gbm 0.316093
+   delta vs pipeline correction: none +0.000195, own_lin +0.000000, cross_lin +0.000497, own_gbm +0.000309, cross_gbm +0.000345
+   per-fold delta: none [0.000183, 0.000208]; cross_lin [0.000533, 0.000462]; own_gbm [0.000426, 0.000192]; cross_gbm [0.000361, 0.00033]
+TOTAL change of the competition score (mean of 5 targets) vs pipeline correction: cross_lin +0.0001096, own_gbm +0.0003543, cross_gbm +0.0002891

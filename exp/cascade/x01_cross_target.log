@@ -1,0 +1,10 @@
+== gas (7s): none 0.246026, own_lin 0.245144, cross_lin 0.245149, own_gbm 0.245354, cross_gbm 0.245294
+   delta vs pipeline correction: none +0.000881, own_lin +0.000000, cross_lin +0.000004, own_gbm +0.000209, cross_gbm +0.000149
+   per-fold delta: none [0.000642, 0.000867, 0.00087, 0.001001, 0.001027]; cross_lin [9e-06, 4e-06, -3.6e-05, 3.2e-05, 1.1e-05]; own_gbm [0.000111, 0.000135, 0.000189, 0.000169, 0.000446]; cross_gbm [0.00014, 2e-06, 0.000119, 0.00015, 0.000339]
+== eui (15s): none 0.650075, own_lin 0.648593, cross_lin 0.648598, own_gbm 0.648999, cross_gbm 0.649122
+   delta vs pipeline correction: none +0.001483, own_lin +0.000000, cross_lin +0.000005, own_gbm +0.000406, cross_gbm +0.000530
+   per-fold delta: none [0.001629, 0.001965, 0.001104, 0.001056, 0.001662]; cross_lin [-1.1e-05, 4.3e-05, -6e-06, 6e-06, -6e-06]; own_gbm [0.000495, 0.000176, 0.000265, 0.000415, 0.00068]; cross_gbm [0.000104, 0.000631, 0.000653, 0.000537, 0.000724]
+== elec (22s): none 0.314840, own_lin 0.314623, cross_lin 0.314586, own_gbm 0.314795, cross_gbm 0.314732
+   delta vs pipeline correction: none +0.000217, own_lin +0.000000, cross_lin -0.000037, own_gbm +0.000172, cross_gbm +0.000109
+   per-fold delta: none [-5.2e-05, 0.000359, 2.6e-05, 0.00037, 0.000385]; cross_lin [-5.9e-05, 7.1e-05, -0.000114, -3.7e-05, -4.7e-05]; own_gbm [0.000277, 0.0001, 1.7e-05, 0.000262, 0.000209]; cross_gbm [0.000102, 0.000137, -0.000111, 0.000246, 0.000175]
+TOTAL change of the competition score (mean of 5 targets) vs pipeline correction: cross_lin -0.0000055, own_gbm +0.0001575, cross_gbm +0.0001576
