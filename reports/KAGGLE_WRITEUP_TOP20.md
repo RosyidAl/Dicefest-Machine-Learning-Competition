@@ -75,7 +75,7 @@ Tahap setelah penggabungan (koreksi galat dan penyesuaian akhir) dinilai pada *h
 | MLP gas + listrik | 1 | 2 | 0,6585 (0,2488) | 0,3186 | 6% / 11% / 26% |
 | NCA (retrieval) | 1 | 1 | 0,6673 (0,2515) | 0,3217 | 8% / 7% / 8% |
 
-NCA lebih lemah sebagai model tunggal, tetapi pola galatnya paling berbeda sehingga berguna dalam *ensemble*. Penggabungan memperbaiki galat dibandingkan model tunggal terbaik sebesar 0,0083 untuk EUI, 0,0036 untuk gas, dan 0,0027 untuk listrik (diukur pada *holdout set*).
+Seluruh anggota dilatih per fold dan sebagian dengan tiga seed, sehingga *ensemble* ini dibangun dari 550 model yang dilatih. NCA lebih lemah sebagai model tunggal, tetapi pola galatnya paling berbeda sehingga berguna dalam *ensemble*. Penggabungan memperbaiki galat dibandingkan model tunggal terbaik sebesar 0,0083 untuk EUI, 0,0036 untuk gas, dan 0,0027 untuk listrik (diukur pada *holdout set*).
 
 ### 3.4 Penggabungan, koreksi, dan penyesuaian akhir
 1. **NNLS dengan bobot adaptif.** Bobot tak negatif yang berubah secara halus menurut luas kawasan, jumlah meter, dan besar prediksi, karena model yang unggul di kawasan kecil tidak selalu unggul di kawasan besar (LB −0,00009).
