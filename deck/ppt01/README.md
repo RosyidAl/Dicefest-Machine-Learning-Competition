@@ -12,14 +12,14 @@ arsip, kecuali yang ditandai "rujukan" di tabel kedua.
 | `05_struktur_deck_v2.md` | struktur dan narasi per slide, perubahan dari deck 04, pembagian waktu sesuai rubrik, dan daftar periksa arahan. Menggantikan `../04_struktur_deck.md` |
 | `06_qna_juri_v2.md` | status lima bagian RISIKO dari `../03_qna_juri.md` beserta bukti baru, bank 18 pertanyaan dengan jawaban singkat, dan pembagian penjawab untuk tiga orang |
 | `07_kartu_latihan.md` | kartu latihan tiga orang: peran, urutan dan kalimat serah terima, naskah lengkap per orang, alur tanya jawab, daftar periksa Zoom, alternatif dua pembicara |
-| `pdf_hp/` | versi PDF untuk dibaca di HP (100 × 178 mm) dari 05, 07, 06, `../03_qna_juri.md`, `../02_naskah_kebijakan.md`, dan `fakta_tambahan.md` |
+| `pdf_hp/` | bahan belajar berbentuk slide PDF 4:3 (10 × 7,5 inci, teks 18 pt) dari 05, 07, 06, `../03_qna_juri.md`, `../02_naskah_kebijakan.md`, dan `fakta_tambahan.md`. Setiap PDF punya sampul, daftar isi yang bisa diketuk, dan satu bagian per slide. Bagian naskah di 05 dan 07 memuat pratinjau slide deck yang dibahas |
 | `fakta_tambahan.md` | lembar fakta untuk angka di luar keluaran notebook (skor privat, hasil uji baru, angka turunan) |
 | `bukti/uji_kebocoran_notebook.py`, `.json`, `.log` | uji label acak untuk baris validasi dan uji pada modul notebook: 0 baris fitur berubah, kontrol bocor berubah di 42.931 baris (lulus) |
 | `bukti/uji_kebocoran_oof_dalam.py`, `.json`, `.log` | uji label acak untuk baris latih: label satu bagian dalam (77.275 baris) diacak, fitur baris itu identik bit, 309.097 baris lain berubah (lulus) |
 | `bukti/skor_jujur_bobot_adaptif.py`, `.json`, `.log` | skor jujur bobot adaptif A2xM2xp2 dengan fungsi notebook; skor global mereproduksi sel 35 persis |
 | `bukti/cek_kebijakan.py`, `.json`, `.log` | pemeriksaan setelah audit: adopsi per porsi gas jaringan, uji ketahanan urutan zona (galat prediksi dan COP per iklim), komposisi potensi *retrofit*, kontras ukuran rumah, tambahan listrik absolut |
 | `make_visuals_v2.py`, `img/` | grafik slide. Setiap grafik diperiksa dengan *assertion* terhadap keluaran notebook (sel 45, 49, 50) sebelum disimpan |
-| `build_pdf_hp.py` | pembangun `pdf_hp/` (pdfenv: markdown-it-py dan xhtml2pdf) |
+| `build_pdf_hp.py` | pembangun `pdf_hp/` (pdfenv: markdown-it-py, reportlab, dan Pillow). Memakai `pratinjau/`, jadi jalankan setelah `build_deck_v2.py`. Hasilnya identik byte setiap dibangun ulang |
 | `build_deck_v2.py`, `deckkit.py`, `brief_kepala.md`, `brief_ekor.md`, `fonts/` | generator deck: satu sumber isi untuk PPTX, pratinjau, `05`, dan `07`. Folder `fonts/` berisi Carlito, huruf terbuka yang ukurannya identik dengan Calibri (lisensi SIL OFL 1.1, `fonts/OFL.txt`) |
 
 ## Status berkas lama di `deck/`
@@ -49,7 +49,7 @@ python ~/.claude/skills/pitch-deck-kompetisi/scripts/check_deck.py deck/ppt01/05
     --facts deck/fakta_notebook.txt --facts deck/fakta_turunan.md --facts deck/ppt01/fakta_tambahan.md --minutes 10
 python ~/.claude/skills/pitch-deck-kompetisi/scripts/check_deck.py deck/ppt01/BISMILLAH_Final_v2.pptx \
     --facts deck/fakta_notebook.txt --facts deck/fakta_turunan.md --facts deck/ppt01/fakta_tambahan.md
-# 4. PDF untuk HP
+# 4. slide PDF 4:3 bahan belajar (setelah langkah 2, karena memakai pratinjau/)
 pdfenv/bin/python deck/ppt01/build_pdf_hp.py
 ```
 
@@ -86,8 +86,8 @@ RAM yang dipakai di bawah 6 GB.
    - simbol "≈" dan "±".
 
    Setelah itu ekspor PDF dari PowerPoint (File, Export, PDF) sebagai cadangan presentasi Zoom.
-2. **Latihan dua kali penuh dengan pengatur waktu,** memakai `07_kartu_latihan.md`. Target 9 menit 20 detik; batas keras
-   10 menit.
+2. **Latihan dua kali penuh dengan pengatur waktu,** memakai `pdf_hp/07_kartu_latihan.pdf`. Target 9 menit 20 detik;
+   batas keras 10 menit.
 3. **Pembagian peran tiga orang** (07 bagian A):
    - Orang 1 (jangkar): slide 1, 2, dan 14, operator slide, dan pengarah tanya jawab;
    - Orang 2 (teknis): slide 3 sampai 7;

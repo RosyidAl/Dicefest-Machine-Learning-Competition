@@ -556,3 +556,9 @@ Atas catatan sesi dicefest-63, dicek ulang: 99,07% dihitung per baris yang diuru
   - slide 8: pita 5% ekstrem 36,6 vs 173,1 m², kuartil +33,7% dan +34,6%.
 - 21:50: Uji baris latih (bukti/uji_kebocoran_oof_dalam.py): label 77.275 baris bagian dalam 0 diacak, kNN-target (39 kolom) dan te_features (42 kolom) baris itu identik bit; 309.097 baris lain berubah. Lulus.
 - 21:50: PDF HP (deck/ppt01/pdf_hp, 100 x 178 mm, build_pdf_hp.py) untuk 05, 07, 06, 03, 02, fakta_tambahan atas permintaan user. Kartu 07 kini untuk tim tiga orang: jangkar (slide 1, 2, 14, operator, pengarah tanya jawab), teknis (3 sampai 7), kebijakan (8 sampai 13). Deck 9 menit 20 detik; check_deck 0 galat, validate.py lulus.
+- 23:16 (27 Okt): Atas permintaan user, deck/ppt01/pdf_hp diubah dari halaman sempit HP (100 x 178 mm) menjadi slide PDF 4:3 (10 x 7,5 inci). build_pdf_hp.py kini memakai reportlab langsung:
+  - judul bagian di setiap slide, "(lanjutan)" di slide sambungan, sampul, daftar isi bertautan, outline PDF;
+  - teks Carlito 18 pt; bila 17 atau 16 pt menghemat slide, bagian itu memakai ukuran tersebut (15 pt hanya bila muat satu slide), dihitung dengan tata letak percobaan;
+  - bagian "Slide N" (05, 07) dan "C1." sampai "C8." (05) memuat pratinjau slide deck;
+  - tabel lebar menjadi kartu yang tidak terpotong antarslide.
+  Hasil: 05 53 slide, 07 23, 06 15, 03 24, 02 21, fakta_tambahan 13. Semua angka dan kata di sumber markdown ditemukan di teks PDF; dua kali dibangun, hasilnya identik byte.

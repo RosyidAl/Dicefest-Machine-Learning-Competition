@@ -1,5 +1,5 @@
-# STATUS (diperbarui: 2026-10-27 21:50 WIB)
-STATUS: PERSIAPAN PRESENTASI FINAL (Zoom 30 Okt). Deck aktif: deck/ppt01 (BISMILLAH_Final_v2.pptx, 14 slide utama + 8 cadangan, 9 menit 20 detik, sudah dikoreksi setelah audit independen). Bahan baca HP: deck/ppt01/pdf_hp. Berkas deck/01, 02, 04, dan BISMILLAH_Pitch_Deck_v1.pdf berstatus arsip (deck/ppt01/README.md).
+# STATUS (diperbarui: 2026-10-27 23:16 WIB)
+STATUS: PERSIAPAN PRESENTASI FINAL (Zoom 30 Okt). Deck aktif: deck/ppt01 (BISMILLAH_Final_v2.pptx, 14 slide utama + 8 cadangan, 9 menit 20 detik, sudah dikoreksi setelah audit independen). Bahan belajar: deck/ppt01/pdf_hp (slide PDF 4:3 dengan daftar isi). Berkas deck/01, 02, 04, dan BISMILLAH_Pitch_Deck_v1.pdf berstatus arsip (deck/ppt01/README.md).
 - Bukti untuk tanya jawab: uji label acak lulus untuk baris validasi dan latih; skor jujur bobot adaptif -0,000125; urutan zona tahan galat prediksi tetapi peka terhadap COP per iklim (bukti/cek_kebijakan.json).
 - Langkah berikutnya: (1) buka PPTX di PowerPoint, periksa render, ekspor PDF; (2) latihan dua kali penuh dengan 07_kartu_latihan; (3) tetapkan peran Orang 1 jangkar, Orang 2 teknis, Orang 3 kebijakan.
 
