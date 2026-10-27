@@ -89,38 +89,54 @@ TARGETS_PLOT = ("Sebaran kelima target. Gas, listrik, dan EUI ditampilkan dalam 
 
 FEATURES = """## 2. Rekayasa Fitur: Menerjemahkan Fisika dan Geografi ke dalam Angka
 Rekayasa fitur disusun berdasarkan satu pertanyaan pokok: faktor apa yang menyebabkan suatu kawasan mengonsumsi energi
-lebih banyak daripada kawasan lain?
+lebih banyak daripada kawasan lain? Fitur dibagi menjadi tiga kelompok menurut hubungannya dengan target.
 
-**Ukuran rumah, bukan ukuran kawasan.** Gas total suatu kawasan terutama ditentukan oleh jumlah rumah tangga di
-dalamnya, yang lebih mencerminkan skala kawasan daripada perilaku konsumsi. Oleh karena itu, dibentuk fitur rasio yang
-menormalisasi besaran kawasan, yaitu luas lantai per meter sebagai proksi ukuran rata-rata rumah, luas per sertifikat
-energi, meter per sertifikat, dan sisa porsi jenis pemanas (100 dikurangi jumlah kategori pemanas yang tercatat, yang
-sebagian besar berupa pemanas listrik).
+### 2.1 Fitur turunan tanpa target (`common.base_features`)
+Setiap fitur di tabel berikut dihitung baris demi baris dari kolom input kawasan itu sendiri. Tidak ada target dan tidak
+ada statistik lintas baris yang dipakai, dan rumus yang sama diterapkan pada data latih dan data uji, sehingga fitur ini
+tidak dapat membocorkan target. Fitur terpenting di kelompok ini adalah `area_per_meter` (lihat bagian 7).
 
-**Target per rumah tangga.** Model tidak memprediksi gas total secara langsung, tetapi salah satu bentuk
-ternormalisasinya, yaitu gas per meter, per meter persegi, per sertifikat, atau logaritmanya. Prediksi kemudian
-dikalikan kembali dengan penormalisasinya. Bobot setiap baris diatur agar fungsi kerugian tetap setara dengan galat
-kuadrat pada skala asli, yaitu skala yang digunakan oleh metrik.
+| Fitur | Rumus | Makna (dugaan, karena nama kolom disamarkan) |
+|---|---|---|
+| `area_per_meter` | `bld_dim_06` / `bld_dim_12` | luas lantai per meter, proksi ukuran rata-rata rumah |
+| `area_per_epc` | `bld_dim_06` / `bld_dim_01` | luas lantai per sertifikat energi |
+| `meters_per_epc` | `bld_dim_12` / `bld_dim_01` | meter per sertifikat energi |
+| `clean_ratio` | `bld_dim_02` / `bld_dim_01` | porsi bangunan bersih (dasar rumus target keempat) |
+| `gea_ratio` | `bld_dim_06` / `bld_dim_03` | luas lantai terhadap `bld_dim_03` (diduga luas selubung) |
+| `a04_ratio`, `a05_ratio` | `bld_dim_04` / `bld_dim_03`, `bld_dim_05` / `bld_dim_03` | dimensi bangunan relatif terhadap `bld_dim_03` |
+| `a07_ratio`, `a08_ratio` | `bld_dim_07` / `bld_dim_06`, `bld_dim_08` / `bld_dim_06` | dimensi bangunan relatif terhadap luas lantai |
+| `s002_ratio` | `socio_demog_002` / `bld_dim_06` | kolom sensus 002 per luas lantai |
+| `hvac_rest` | 100 − jumlah `hvac_dist_01` sampai `hvac_dist_10` | sisa porsi jenis pemanas (listrik dan lainnya) |
 
-**Rata-rata target wilayah.** Kawasan yang berdekatan cenderung serupa. Oleh karena itu, dihitung rata-rata target pada
-tingkat subzona, zona, petak iklim (kombinasi tiga kolom iklim yang membentuk kisi dengan sekitar lima belas kawasan per
-petak), dan kawasan dengan nomor subzona berdekatan, yang ternyata berurutan secara geografis. Seluruh rata-rata
-dihitung secara *out-of-fold* (hanya dari *fold* yang tidak sedang dievaluasi) untuk mencegah *target leakage*
-(kebocoran informasi target).
+Selain itu, `bld_dim_18` diubah menjadi kode ordinal, `socio_demog_016` menjadi 1 untuk perkotaan, kode zona dan subzona
+menjadi nomor (`zone_n`, `sub_n`), kolom yang nilainya konstan dibuang, dan kolom `id` tidak dipakai. Agregat kawasan,
+yaitu jumlah kawasan, total luas lantai, jumlah meter, dan jumlah sertifikat per subzona dan per zona, juga termasuk
+kelompok ini karena dihitung dari gabungan data latih dan data uji tanpa target.
 
-**Kawasan termirip.** Untuk setiap kawasan, dicari kawasan dalam radius geografis tertentu yang stok bangunannya paling
-mirip, yaitu dari segi ukuran rumah, cakupan sertifikat, dan komposisi periode bangunan, dengan metode *k-nearest
-neighbors* (kNN). Rata-rata konsumsi kawasan-kawasan tersebut, yang juga dihitung secara *out-of-fold*, digunakan
-sebagai fitur. Fitur ini menurunkan galat EUI model tunggal sebesar 0,0022, perbaikan terbesar yang diperoleh dari satu
-kelompok fitur.
+### 2.2 Fitur yang memakai target kawasan lain, selalu *out-of-fold*
+- **Rata-rata target wilayah.** Kawasan yang berdekatan cenderung serupa. Oleh karena itu, dihitung rata-rata target
+  pada tingkat subzona, zona, petak iklim (kombinasi tiga kolom iklim yang membentuk kisi dengan sekitar lima belas
+  kawasan per petak), dan kawasan dengan nomor subzona berdekatan, yang ternyata berurutan secara geografis.
+- **Kawasan termirip.** Untuk setiap kawasan, dicari k kawasan yang stok bangunannya paling mirip (ukuran rumah,
+  cakupan sertifikat, jumlah meter, komposisi periode bangunan) di dalam jendela nomor subzona, misalnya ±30, ±100,
+  atau ±300 nomor, dengan metode *k-nearest neighbors* (kNN). Rata-rata log intensitas gas, log listrik per meter, dan
+  log gas per meter dari tetangga tersebut dipakai sebagai fitur. Fitur ini menurunkan galat EUI model tunggal sebesar
+  0,0022, perbaikan terbesar yang diperoleh dari satu kelompok fitur.
 
-**Agregat kawasan.** Jumlah kawasan, total luas lantai, jumlah meter, dan jumlah sertifikat per subzona dan per zona,
-dihitung dari gabungan data latih dan data uji tanpa menggunakan target.
+Kedua fitur ini dihitung secara *out-of-fold* untuk mencegah *target leakage* (kebocoran informasi target). Untuk baris
+validasi dan data uji, tetangga hanya diambil dari bagian latih *fold* yang sedang dipakai. Untuk baris latih, bagian
+latih itu dibagi lagi menjadi lima bagian dalam, dan tetangga setiap baris diambil dari empat bagian yang lain. Dengan
+demikian, tidak ada baris yang memakai targetnya sendiri.
 
-**Jumlah rumah tangga untuk adopsi.** Kolom komposisi jenis pemanas merupakan pecahan dari jumlah rumah tangga.
-Bilangan bulat terkecil yang membuat seluruh pecahan tersebut bulat adalah jumlah rumah tangga subzona (N). Dengan N,
-adopsi pada subzona baru dapat dimodelkan sebagai peluang: dari K rumah tangga di luar kategori pemanas yang tercatat,
-berapa yang menggunakan pemanas listrik.
+### 2.3 Bentuk target dan jumlah rumah tangga
+- **Target per rumah tangga.** Model tidak memprediksi gas total secara langsung, tetapi salah satu bentuk
+  ternormalisasinya, yaitu gas per meter, per meter persegi, per sertifikat, atau logaritmanya. Prediksi kemudian
+  dikalikan kembali dengan penormalisasinya. Bobot setiap baris diatur agar fungsi kerugian tetap setara dengan galat
+  kuadrat pada skala asli, yaitu skala yang digunakan oleh metrik.
+- **Jumlah rumah tangga untuk adopsi.** Kolom komposisi jenis pemanas merupakan pecahan dari jumlah rumah tangga.
+  Bilangan bulat terkecil yang membuat seluruh pecahan tersebut bulat adalah jumlah rumah tangga subzona (N). Dengan N,
+  adopsi pada subzona baru dapat dimodelkan sebagai peluang: dari K rumah tangga di luar kategori pemanas yang tercatat,
+  berapa yang menggunakan pemanas listrik.
 
 Sel berikut membangun fitur dasar dan agregat kawasan, lalu menampilkan jumlah fitur per kelompok dan korelasi beberapa
 fitur turunan dengan target. Korelasi 0,988 antara sisa porsi pemanas dan adopsi menunjukkan bahwa adopsi pada dasarnya
@@ -153,7 +169,17 @@ konfigurasi tetangga untuk koreksi, bobot koreksi λ, faktor pengali untuk kawas
 gas, ditentukan selama pengembangan pada *holdout set* (30% data latih yang disisihkan untuk evaluasi internal). Untuk
 keperluan itu, seluruh model dilatih ulang tanpa *holdout set*, dan setiap usulan hanya dinilai padanya. Nilai akhirnya
 disimpan di `configs/resid_knn.json`. *Notebook* ini menerapkan nilai beku tersebut tanpa mengulang pencariannya karena
-pencarian ulang memerlukan pelatihan seluruh model sekali lagi (sekitar 20 jam tambahan)."""
+pencarian ulang memerlukan pelatihan seluruh model sekali lagi (sekitar 20 jam tambahan).
+
+**Cara membaca diagram di bawah.**
+1. Kotak abu-abu di kiri adalah data mentah (`train.csv` dan `test.csv`, 201 kolom fitur).
+2. Jalur atas: fitur domain (biru), lalu 41 model, yaitu 28 untuk gas/EUI dan 13 untuk listrik (oranye), lalu tiga
+   tahap berwarna kuning: gabungan dengan bobot yang menyesuaikan, koreksi galat wilayah, dan penyesuaian akhir.
+3. Jalur bawah (hijau) tidak memakai model besar: porsi bangunan bersih dihitung dengan rumus dan adopsi disalin per
+   subzona, ditambah model peluang untuk subzona baru. Hasilnya langsung masuk ke berkas submisi.
+4. Teks miring di tengah mengingatkan bahwa gas = EUI × luas lantai, sehingga satu keluarga model melayani dua kolom.
+5. Tabel di bawah diagram berisi satu baris per anggota gabungan: nama, jenis model, keluarga, besaran yang ditebak,
+   bobot baris saat pelatihan, dan kelompok fitur yang dipakai."""
 
 TRAIN = """## 4. Pelatihan Seluruh Model
 Pelatihan dijalankan dalam tiga proses paralel: jalur `xgb` (XGBoost pada GPU), jalur `nn` (MLP dan NCA pada GPU), dan

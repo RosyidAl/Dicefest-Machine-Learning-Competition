@@ -6,8 +6,9 @@ count outside tables and table size per slide (warning), "kami"/"saya" on screen
 (warning), total spoken time against --minutes (warning).
 
 Brief format: one heading per slide, "### Slide <n>. <title> (<x> menit <y> detik)"; speaker notes in a bullet that
-starts with "- **Catatan pembicara:**"; bullets that start with "- **Gambar:**" or "- **Visual:**" describe visuals and
-are not counted as on-screen text. Any other heading ends the current slide.
+starts with "- **Catatan pembicara:**" or "- **Narasi pembicara (...):**"; bullets that start with "- **Gambar:**" or
+"- **Visual...:**" describe visuals and are not counted as on-screen text; "- **Istilah:**", "- **Bagian rubrik:**",
+"- **Sumber:**" and "- **Pedoman jawaban:**" are metadata (not counted). Any other heading ends the current slide.
 
 usage: python check_deck.py BRIEF.md|deck.pptx [--facts FILE ...] [--minutes 10] [--max-words 45]
 """
@@ -22,7 +23,8 @@ SLIDE_RE = re.compile(r"^#{2,4}\s*Slide\s+(\d+)\b[.:]?\s*(.*)$", re.I)
 HEADING_RE = re.compile(r"^#{1,6}\s")
 DUR_RE = re.compile(r"\((?:\s*(\d+)\s*menit)?(?:\s*(\d+)\s*detik)?\s*\)\s*$")
 BULLET_RE = re.compile(r"^\s*(?:-|\d+\.)\s+")
-NOTES_RE = re.compile(r"^\s*-\s*\*\*Catatan pembicara:?\*\*", re.I)
+NOTES_RE = re.compile(r"^\s*-\s*\*\*(Catatan|Narasi) pembicara[^*]*\*\*", re.I)
+META_RE = re.compile(r"^\s*-\s*\*\*(Istilah|Bagian rubrik|Sumber|Pedoman jawaban)\b", re.I)
 VISUAL_RE = re.compile(r"^\s*-\s*\*\*(Gambar|Visual)\b", re.I)
 LABEL_RE = re.compile(r"\*\*[^*]{1,40}:\*\*")
 NUM_RE = re.compile(r"(?<![\w.,/])[+-]?\d+(?:[.,]\d+)*")
@@ -33,16 +35,22 @@ BUZZ_RE = re.compile(r"\b(di era digital|revolusioner|holistik|sinergi\w*|inovat
 
 
 def candidates(token):
-    """all plain readings of a number token: Indonesian (1.234,5) and English (1,234.5 or 0.5) conventions"""
+    """all plain readings of a number token: Indonesian (1.234,5) and English (1,234.5 or 0.5) conventions; a
+    separator is read as a thousands separator only when every group after it has exactly three digits"""
     t = token.lstrip("+-")
     out = {t}
+
+    def thousands(sep):
+        return all(len(g) == 3 for g in t.split(sep)[1:])
+
     if "," in t and "." in t:
         out.add(t.replace(".", "").replace(",", "."))
         out.add(t.replace(",", ""))
     elif "," in t:
         out.add(t.replace(",", "."))
-        out.add(t.replace(",", ""))
-    elif "." in t:
+        if thousands(","):
+            out.add(t.replace(",", ""))
+    elif "." in t and thousands("."):
         out.add(t.replace(".", ""))
     return out
 
@@ -87,6 +95,9 @@ def md_slides(text):
             continue
         if VISUAL_RE.match(line):
             mode = "visual"
+            continue
+        if META_RE.match(line):   # glossary / rubric tags / answer guides: shown small or not at all
+            mode = "meta"
             continue
         if BULLET_RE.match(line) and not line.startswith((" ", "\t")):
             mode = "screen"
