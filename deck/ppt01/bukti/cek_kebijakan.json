@@ -1,0 +1,91 @@
+{
+ "adopsi_per_pita_gas_jaringan": {
+  "<=40": {
+   "porsi_kawasan_pct": 0.55,
+   "tingkat_adopsi_pct": 40.24,
+   "porsi_rumah_tangga_pemanas_listrik_pct": 3.42
+  },
+  "40-60": {
+   "porsi_kawasan_pct": 3.04,
+   "tingkat_adopsi_pct": 26.92,
+   "porsi_rumah_tangga_pemanas_listrik_pct": 13.66
+  },
+  "60-80": {
+   "porsi_kawasan_pct": 26.32,
+   "tingkat_adopsi_pct": 9.46,
+   "porsi_rumah_tangga_pemanas_listrik_pct": 47.04
+  },
+  ">80": {
+   "porsi_kawasan_pct": 70.08,
+   "tingkat_adopsi_pct": 2.73,
+   "porsi_rumah_tangga_pemanas_listrik_pct": 35.88
+  }
+ },
+ "zona_gas_jaringan": {
+  "zona_di_atas_80_pct": 254,
+  "zona_total": 330,
+  "median_zona_pct": 82.42,
+  "kawasan_di_atas_80_pct": 70.06
+ },
+ "cop_per_iklim": {
+  "spearman": 0.8147,
+  "zona_pindah_kuadran": 68,
+  "irisan_5_teratas": 1,
+  "cop_min": 2.5,
+  "cop_max": 3.5
+ },
+ "derau_prediksi": {
+  "galat_relatif_gas": 0.161,
+  "galat_relatif_listrik": 0.206,
+  "spearman_median": 0.9981,
+  "spearman_min": 0.9974,
+  "pindah_kuadran_median": 8.0,
+  "pindah_kuadran_maks": 14,
+  "irisan_5_teratas_median": 5.0
+ },
+ "derau_prediksi_dan_cop": {
+  "galat_relatif_gas": 0.161,
+  "galat_relatif_listrik": 0.206,
+  "spearman_median": 0.8147,
+  "spearman_min": 0.8115,
+  "pindah_kuadran_median": 72.0,
+  "pindah_kuadran_maks": 77,
+  "irisan_5_teratas_median": 1.0
+ },
+ "tambahan_absolut": {
+  "5_teratas_TWh": {
+   "REG_263": 0.757,
+   "REG_273": 0.616,
+   "REG_045": 0.442,
+   "REG_270": 0.434,
+   "REG_056": 0.391
+  },
+  "peringkat_REG_290": 46,
+  "spearman_persen_vs_absolut": 0.36
+ },
+ "komposisi_potensi_retrofit": {
+  "porsi_jika_hanya_periode_bangunan": 0.513,
+  "porsi_tanpa_fitur_ukuran_dan_jumlah": 0.643,
+  "sampel": 20000
+ },
+ "kontras_ukuran_gas_per_m2": {
+  "pita_5pct_terkecil_rata2_m2": 36.6,
+  "pita_5pct_terbesar_rata2_m2": 173.1,
+  "selisih_pita_ekstrem_pct": 66.5,
+  "kuartil_bawah_atas_m2": [
+   61.1,
+   94.8
+  ],
+  "selisih_kuartil_pct": 33.7
+ },
+ "kontras_ukuran_listrik_per_rumah": {
+  "pita_5pct_terkecil_rata2_m2": 36.6,
+  "pita_5pct_terbesar_rata2_m2": 173.1,
+  "selisih_pita_ekstrem_pct": 74.6,
+  "kuartil_bawah_atas_m2": [
+   61.1,
+   94.8
+  ],
+  "selisih_kuartil_pct": 34.6
+ }
+}

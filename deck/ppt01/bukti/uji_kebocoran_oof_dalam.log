@@ -1,0 +1,9 @@
+[      9 s] fit rows 386372, inner part 0: 77275 rows, other inner parts: 309097 rows
+[    343 s] knn inner OOF done
+[    347 s] target encodings inner OOF done
+[    347 s] labels of inner part 0 shuffled
+[    680 s] knn inner OOF done
+[    683 s] target encodings inner OOF done
+[    683 s] knn_latih_oof: {'kolom': 39, 'baris_bagian_0': 77275, 'berubah_bagian_0': 0, 'baris_bagian_lain': 309097, 'berubah_bagian_lain': 309097}
+[    683 s] te_latih_oof: {'kolom': 42, 'baris_bagian_0': 77275, 'berubah_bagian_0': 0, 'baris_bagian_lain': 309097, 'berubah_bagian_lain': 309097}
+[    683 s] PASS=True; wrote /root/Dicefest/deck/ppt01/bukti/uji_kebocoran_oof_dalam.json

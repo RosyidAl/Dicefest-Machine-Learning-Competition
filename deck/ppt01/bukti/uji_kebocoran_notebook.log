@@ -1,0 +1,20 @@
+[     12 s] train rows 429303, fit rows 386372, validation rows 42931, test rows 183987
+[     64 s] knn validation done
+[    265 s] knn test done
+[    598 s] knn fit-row (inner OOF) done
+[    602 s] target encodings done
+[    623 s] leaky control done
+[    623 s] validation labels shuffled
+[    670 s] knn validation done
+[    850 s] knn test done
+[   1182 s] knn fit-row (inner OOF) done
+[   1186 s] target encodings done
+[   1207 s] leaky control done
+[   1207 s] knn_validasi: identical=True changed rows=0 of 42931 (39 columns)
+[   1207 s] knn_uji: identical=True changed rows=0 of 183987 (39 columns)
+[   1207 s] knn_latih_oof: identical=True changed rows=0 of 386372 (39 columns)
+[   1207 s] te_validasi: identical=True changed rows=0 of 42931 (42 columns)
+[   1207 s] te_uji: identical=True changed rows=0 of 183987 (42 columns)
+[   1207 s] te_latih_oof: identical=True changed rows=0 of 386372 (42 columns)
+[   1207 s] kontrol_bocor_knn_validasi: identical=False changed rows=42931 of 42931 (15 columns)
+[   1207 s] PASS=True; wrote /root/Dicefest/deck/ppt01/bukti/uji_kebocoran_notebook.json

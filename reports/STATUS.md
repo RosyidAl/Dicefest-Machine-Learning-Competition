@@ -1,4 +1,9 @@
-# STATUS (diperbarui: 2026-10-24 00:08 WIB)
+# STATUS (diperbarui: 2026-10-27 21:50 WIB)
+STATUS: PERSIAPAN PRESENTASI FINAL (Zoom 30 Okt). Deck aktif: deck/ppt01 (BISMILLAH_Final_v2.pptx, 14 slide utama + 8 cadangan, 9 menit 20 detik, sudah dikoreksi setelah audit independen). Bahan baca HP: deck/ppt01/pdf_hp. Berkas deck/01, 02, 04, dan BISMILLAH_Pitch_Deck_v1.pdf berstatus arsip (deck/ppt01/README.md).
+- Bukti untuk tanya jawab: uji label acak lulus untuk baris validasi dan latih; skor jujur bobot adaptif -0,000125; urutan zona tahan galat prediksi tetapi peka terhadap COP per iklim (bukti/cek_kebijakan.json).
+- Langkah berikutnya: (1) buka PPTX di PowerPoint, periksa render, ekspor PDF; (2) latihan dua kali penuh dengan 07_kartu_latihan; (3) tetapkan peran Orang 1 jangkar, Orang 2 teknis, Orang 3 kebijakan.
+
+## Catatan 24 Okt 00:08 WIB
 STATUS: KOMPETISI DITUTUP (23 Okt 23:59 WIB). LB private (dari user, 24 Okt 00:08 WIB): BISMILLAH peringkat 8, 0,24844 (publik 9, 0,24913); peringkat 9 nga tau 0,24846, peringkat 10 meong s.kom 0,24847. Menunggu pengumuman finalis 25 Okt.
 - Submisi final: dua entri sub_final_pipeline.csv (aec745ab...d66e), LB publik 0,24913, peringkat publik 9 pada 23:41 WIB. User melaporkan pemilihan submisi final sudah dilakukan.
 - Deliverable: final/deliverables/DICEFEST2026_BISMILLAH.ipynb (commit 27c8f2a: narasi sinkron writeup B, ringkasan galat per target, Lampiran A dieksekusi) dan final/deliverables/BISMILLAH_Writeups.pdf (identik WRITEUP_BISMILLAH.pdf, sha 75b44b37, commit 7faf31f).

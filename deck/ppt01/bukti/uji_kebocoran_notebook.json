@@ -1,0 +1,53 @@
+{
+ "lulus": true,
+ "fold": "0 dari KFold(10, shuffle=True, random_state=42)",
+ "baris_latih": 386372,
+ "baris_validasi": 42931,
+ "baris_uji": 183987,
+ "blok": {
+  "knn_validasi": {
+   "identik_bit": true,
+   "kolom": 39,
+   "baris": 42931,
+   "baris_berubah": 0
+  },
+  "knn_uji": {
+   "identik_bit": true,
+   "kolom": 39,
+   "baris": 183987,
+   "baris_berubah": 0
+  },
+  "knn_latih_oof": {
+   "identik_bit": true,
+   "kolom": 39,
+   "baris": 386372,
+   "baris_berubah": 0
+  },
+  "te_validasi": {
+   "identik_bit": true,
+   "kolom": 42,
+   "baris": 42931,
+   "baris_berubah": 0
+  },
+  "te_uji": {
+   "identik_bit": true,
+   "kolom": 42,
+   "baris": 183987,
+   "baris_berubah": 0
+  },
+  "te_latih_oof": {
+   "identik_bit": true,
+   "kolom": 42,
+   "baris": 386372,
+   "baris_berubah": 0
+  },
+  "kontrol_bocor_knn_validasi": {
+   "identik_bit": false,
+   "kolom": 15,
+   "baris": 42931,
+   "baris_berubah": 42931
+  }
+ },
+ "kode": "final/nbrun_final/dicefest_nb/src (modul yang tertanam di notebook final)",
+ "detik": 1207
+}

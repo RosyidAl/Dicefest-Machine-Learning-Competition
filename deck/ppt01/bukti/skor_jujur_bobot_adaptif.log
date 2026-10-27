@@ -1,0 +1,8 @@
+[      4 s] members gas/EUI 28, elec 13, rows 429303; vc {'gas': 'A2xM2xp2', 'eui': 'A2xM2xp2', 'elec': 'A2xM2xp2'}
+[      7 s] gas: global honest 0.244942 (cell 35: 0.244942)
+[     99 s] gas: A2xM2xp2 honest 0.244796 (delta -0.000146)
+[    102 s] eui: global honest 0.650229 (cell 35: 0.650229)
+[    201 s] eui: A2xM2xp2 honest 0.649776 (delta -0.000453)
+[    203 s] elec: global honest 0.315875 (cell 35: 0.315875)
+[    238 s] elec: A2xM2xp2 honest 0.315848 (delta -0.000027)
+[    238 s] global matches cell 35: {'gas': True, 'eui': True, 'elec': True}; wrote /root/Dicefest/deck/ppt01/bukti/skor_jujur_bobot_adaptif.json
