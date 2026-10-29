@@ -562,3 +562,54 @@ Atas catatan sesi dicefest-63, dicek ulang: 99,07% dihitung per baris yang diuru
   - bagian "Slide N" (05, 07) dan "C1." sampai "C8." (05) memuat pratinjau slide deck;
   - tabel lebar menjadi kartu yang tidak terpotong antarslide.
   Hasil: 05 53 slide, 07 23, 06 15, 03 24, 02 21, fakta_tambahan 13. Semua angka dan kata di sumber markdown ditemukan di teks PDF; dua kali dibangun, hasilnya identik byte.
+
+## 2026-10-28 00:15 WIB: struktur deck v3 top-down (deck/ppt02)
+- Permintaan user: rombak deck menjadi alur top-down Prinsip Piramida Minto (arahan di deck/ppt02/00_arahan_minto.md), 9 menit 30 detik dengan alokasi 60/150/90/210/60 detik, 43 = 41 di-blend + 2 LightGBM, frasa wajib "temuan model mendukung rekomendasi ini", slide cadangan, daftar verifikasi; simpan ke deck/ppt02.
+- Hasil: deck/ppt02/01_struktur_deck_minto.md (13 slide utama + 11 cadangan C1 sampai C11) dan PDF slide 4:3 (pdf_hp/, build_pdf.py salinan builder ppt01). Pemeriksa baru cek_struktur.py menghitung kata lisan (angka diucapkan, misalnya 0,24844 = 7 kata): semua slide 122 sampai 136 kata per menit; 0 angka di luar lima lembar fakta; diuji dengan 7 kesalahan sisipan. check_deck.py: 0 galat.
+- Audit independen (subagent berkonteks bersih): 25 temuan, semuanya diverifikasi ulang ke sumber lalu diperbaiki. Yang penting:
+  - uji baris latih: 309.097 baris bagian lain memang berubah (syarat lulus), bukan "0 baris berubah";
+  - potensi retrofit 7,39 TWh kini "indikator" (bias dua arah), bukan batas atas;
+  - REG_290 turun dari peringkat 1 ke 47 dan REG_249 pindah Q2 ke Q1 pada COP per iklim, jadi R2 dimulai dari REG_263/REG_270/REG_045 dan contoh pilot R3 diganti REG_033 (tetap Q2); bukti deck/ppt02/bukti/cek_zona_contoh.py + .json (assert mereproduksi Spearman 0,8147, 68 zona, sel 49 dan 50);
+  - 99,07% (per baris; 73,39% pasangan baris di subzona yang sama) diganti 96,5% per pasangan subzona (163.185 subzona);
+  - sosiodemografi 15% pada adopsi diukur terhadap total yang 81%-nya identitas komposisi, jadi tidak dipakai sebagai bukti;
+  - C9: q_xent/r_reg menebak kategori lain (bukan pemanas listrik); C2: 0,0007 di sel 39 menggabungkan beberapa langkah, bagian kNN sekitar 0,0004.
+- Catatan untuk deck v2: fakta_tambahan.md bagian A menulis label "kelima target" diacak, padahal yang diacak kolom turunan tiga target konsumsi. Berkas ppt01 tidak diubah (bagian E butir 15 di dokumen v3).
+
+## 2026-10-28 09:25 WIB: PPTX deck v3 (deck/ppt02)
+- Permintaan user: lanjut membangun PPTX dari struktur v3 dengan skill Claude agar hasilnya maksimal.
+- Alat: skill pptx (pptxgenjs 4.0.1; deck terstruktur dengan tema dan apply_theme.js, layout GELAP, PENUTUP, ISI, CADANGAN berisi placeholder bernama, enam section, catatan pembicara), skill pitch-deck-kompetisi (check_deck.py), ikon react-icons lewat sharp. Node dan python-pptx dipasang di scratchpad, bukan di .venv.
+- Satu sumber isi: build_deck_v3.js membaca build/isi_v3.json (isi_deck.py dari 01_struktur_deck_minto.md, termasuk judul dua baris seimbang dengan metrik Carlito) dan img/ (make_visuals_v3.py: peta kuadran, plot dependensi SHAP, data grafik dengan assertion terhadap sel 45, 49, 50, cek_kebijakan.json, cek_zona_contoh.json, dan writeup Tabel 3). Grafik batang asli PowerPoint tanpa teks sumbu; label ditulis sebagai kotak teks dari area plot tetap agar koma desimal aman di semua locale.
+- Temuan saat membangun:
+  - "Yang tetap tinggi di kedua skenario adalah REG_270 dan REG_045" tidak eksklusif: enam zona tetap sepuluh besar kenaikan relatif pada kedua skenario COP, dan hanya REG_270 dan REG_045 yang juga sepuluh besar tambahan absolut. A3, slide 10, C10, G3, dan fakta_ppt02 diperbarui; cek_struktur tetap lulus (slide 10: 136 kata lisan per menit).
+  - Plot dependensi SHAP mencetak tick 0,25 sebagai "0,2" (format satu desimal). v3 memakai tick tetap -0,4 sampai 0,4. Cacat yang sama ada di deck/ppt01/img/s08_dep_size.png; berkas ppt01 tidak diubah.
+- QA: LibreOffice tidak tersedia, jadi pratinjau dibuat perender sendiri (render_pptx.py, Carlito) dan ditinjau pemeriksa visual berkonteks bersih (10 cacat wajib, semuanya diperbaiki). Hasil akhir: cek_pptx 0 galat, validate.py lulus, check_deck 0 galat untuk PPTX dan dokumen (9 menit 30 detik), cek_struktur 10/10, render --strict tanpa masalah.
+- Belum: periksa render di PowerPoint asli, isi nama pembicara, jawab butir PERLU KONFIRMASI, commit (menunggu user).
+
+## 2026-10-28 15:15 WIB: Deck v4 (deck/ppt03)
+- Permintaan user: terapkan perbaikan ke v3 (deck/ppt02) dengan elemen dari v2 (deck/ppt01), dikelompokkan per kriteria (arsitektur, pra-pemrosesan, kerapihan, kebijakan); keluaran satu berkas BISMILLAH_Final_v4.pptx di deck/ppt03. Kedua PPTX dibaca lebih dulu (slide_text dan pratinjau).
+- Cara: pipeline v3 disalin ke deck/ppt03 (01_struktur_deck_v4.md, isi_deck.py, build_deck_v4.js, make_visuals_v4.py, cek_struktur.py, cek_pptx.py, render_pptx.py). Isi diubah di dokumen, tata letak di pembangun; renderer kini menggambar grafik garis.
+- Temuan saat memeriksa v3:
+  - label "Jalur 3 · Adopsi" mengabaikan porsi bersih;
+  - slide 2 menulis gardu sebagai "gerbang untuk pompa panas di Q1 dan Q2", sedangkan tabel slide 8 memberi R2 ke Q1 dan Q3. Sel 51 butir 3 mendukung Q1 dan Q3, dan ketiga zona awal R2 berada di Q1 pada kedua skenario COP (assertion di make_visuals_v4.py);
+  - slide 13: langkah "data beban dan gardu" berada di bawah kartu retrofit dan "audit energi" di bawah kartu gardu;
+  - C10 (slide 23): rujukan "contoh deck v2", kuadran REG_263 kosong, REG_273 tidak ditebalkan, sel "peringkat 1 dan 4" tanpa ukuran;
+  - catatan pembicara: penanda "[nama Orang N]" dan jalur bukti tanpa folder. Rujukan modul dan sel (train_lib.Data.KNN_CONFIGS sel 8, adopt_v2 sel 12, explain.zone_indices sel 19, mk1_gpm sel 21/32, A2xM2xp2) dicek ke notebook dan benar.
+- Angka baru diperiksa dengan assertion:
+  - porsi SHAP rasio fisik turunan 25%/30%/26% (explain.family_shares dari reports/policy/shap_*.npz = writeup B Tabel 3);
+  - fitur turunan di grafik slide 3 menurut explain.family (kolom keluarga sel 45);
+  - LB publik per langkah diparse dari keluaran sel 37; privat 0,24844 dari STATUS;
+  - SHAP listrik per rumah +74,6% (pita 5%), sesuai teks sel 48 "sekitar 75%";
+  - anotasi adopsi "+4 sampai +12 poin di bawah 40%, negatif di atas 80%" (sel 48 butir 4) dicek pada nilai SHAP.
+- Hasil:
+  - cek_struktur: 10/10 butir, narasi 125 sampai 137 kata lisan per menit, 0 angka di luar lembar fakta;
+  - cek_pptx: 0 galat, rata-rata 97,3 kata per slide (v3 118), tidak ada teks di bawah 14 pt selain baris kaki 12 pt;
+  - validate.py lulus; check_deck 0 galat; render --strict tanpa masalah.
+- Belum: cek render PowerPoint asli (grafik garis slide 7, superskrip slide 6), commit (deck/ppt02 juga belum di-commit, menunggu user).
+- 15:55: Tinjauan independen (subagent berkonteks bersih): kesepuluh permintaan dikerjakan, semua angka cocok dengan lembar fakta; 18 temuan, diverifikasi lalu diperbaiki (dokumen v4 bagian G5). Terpenting:
+  - baris kaki memakai indeks sel dari 0, padahal juri melihat In [n] (sel 35 = In [27], sel 50 = In [35]); kini nomor bagian dan In [n], dengan tabel padanan di B4;
+  - kolom galat slide 6 diberi label "sebelum koreksi";
+  - C9 "N rumah tangga di satu subzona" (sel 28);
+  - C8: LB 0,24920 menjadi 0,24913 berasal dari S1, S3, S4 (sel 37), bukan salinan duplikat;
+  - label langkah v15 di grafik slide 7 menjadi "koreksi dan lainnya" (E13);
+  - tabel C10 disusun ulang "COP 3 → COP per iklim"; peringkat relatif REG_273 47 dan 32 dicatat di fakta_ppt03.md.
+  Hasil akhir: cek_struktur 10/10 (125 sampai 139 kata lisan per menit), cek_pptx 0 galat (rata-rata 97,3 kata, utama 95,2, cadangan 99,8), validate.py lulus, check_deck 0 galat, render --strict tanpa masalah.

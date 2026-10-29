@@ -1,0 +1,190 @@
+{
+ "s9_retrofit": [
+  {
+   "zona": "REG_273",
+   "gwh": 170.1,
+   "pct": 7.36
+  },
+  {
+   "zona": "REG_270",
+   "gwh": 139.9,
+   "pct": 8.6
+  },
+  {
+   "zona": "REG_045",
+   "gwh": 110.8,
+   "pct": 6.69
+  }
+ ],
+ "s10_kenaikan": {
+  "lima": [
+   {
+    "zona": "REG_290",
+    "pct": 121.41,
+    "peringkat_cop_iklim": 47
+   },
+   {
+    "zona": "REG_259",
+    "pct": 115.1,
+    "peringkat_cop_iklim": 6
+   },
+   {
+    "zona": "REG_275",
+    "pct": 114.29,
+    "peringkat_cop_iklim": 7
+   },
+   {
+    "zona": "REG_260",
+    "pct": 113.91,
+    "peringkat_cop_iklim": 8
+   },
+   {
+    "zona": "REG_270",
+    "pct": 113.46,
+    "peringkat_cop_iklim": 1
+   }
+  ],
+  "median": 94.85,
+  "sepuluh_besar_dua_ukuran_dua_skenario": [
+   "REG_045",
+   "REG_270"
+  ],
+  "tambahan_absolut_terbesar": {
+   "zona": "REG_263",
+   "TWh": 0.757,
+   "peringkat_cop_iklim": 1
+  },
+  "sepuluh_besar_persen_dua_skenario": [
+   "REG_045",
+   "REG_259",
+   "REG_260",
+   "REG_270",
+   "REG_275",
+   "REG_330"
+  ]
+ },
+ "s11_adopsi": [
+  {
+   "pita": "≤40%",
+   "adopsi": 40.24,
+   "kawasan": 0.55
+  },
+  {
+   "pita": "40–60%",
+   "adopsi": 26.92,
+   "kawasan": 3.04
+  },
+  {
+   "pita": "60–80%",
+   "adopsi": 9.46,
+   "kawasan": 26.32
+  },
+  {
+   "pita": ">80%",
+   "adopsi": 2.73,
+   "kawasan": 70.08
+  }
+ ],
+ "c5_kelompok": {
+  "kelompok": [
+   "Sosiodemografi",
+   "Rasio fisik",
+   "Periode bangunan",
+   "Dimensi bangunan",
+   "Iklim",
+   "Komposisi pemanas"
+  ],
+  "target": [
+   {
+    "nama": "EUI (intensitas gas)",
+    "porsi": [
+     30,
+     25,
+     11,
+     11,
+     9,
+     3
+    ]
+   },
+   {
+    "nama": "Gas per meter",
+    "porsi": [
+     28,
+     30,
+     11,
+     11,
+     8,
+     3
+    ]
+   },
+   {
+    "nama": "Listrik per meter",
+    "porsi": [
+     40,
+     26,
+     5,
+     11,
+     4,
+     5
+    ]
+   },
+   {
+    "nama": "Adopsi pemanas listrik",
+    "porsi": [
+     15,
+     0,
+     0,
+     0,
+     1,
+     81
+    ]
+   }
+  ]
+ },
+ "s3_shap_top": {
+  "gas": [
+   {
+    "fitur": "area_per_meter",
+    "nilai": 0.0895
+   },
+   {
+    "fitur": "env_climate_05",
+    "nilai": 0.0321
+   },
+   {
+    "fitur": "socio_demog_082",
+    "nilai": 0.0276
+   },
+   {
+    "fitur": "area_per_epc",
+    "nilai": 0.026
+   },
+   {
+    "fitur": "s002_ratio",
+    "nilai": 0.025
+   }
+  ],
+  "listrik": [
+   {
+    "fitur": "area_per_meter",
+    "nilai": 0.0895
+   },
+   {
+    "fitur": "meters_per_epc",
+    "nilai": 0.0294
+   },
+   {
+    "fitur": "socio_demog_005",
+    "nilai": 0.0222
+   },
+   {
+    "fitur": "socio_demog_038",
+    "nilai": 0.0196
+   },
+   {
+    "fitur": "socio_demog_061",
+    "nilai": 0.0163
+   }
+  ]
+ }
+}

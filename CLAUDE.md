@@ -52,3 +52,14 @@ Saat compaction, pertahankan: fase aktif, exp_id dan skor terbaik per target, jo
 ## Gaya
 - Laporan dalam Bahasa Indonesia. Kode, nama variabel, dan komentar dalam bahasa Inggris.
 - Draf writeup dan bahan presentasi: Bahasa Indonesia yang natural, tidak kaku, tidak terdengar seperti teks mesin, tanpa karakter em-dash (U+2014).
+
+### Gaya bahasa: lugas, spesifik, terukur
+Berlaku di semua output: kode, komentar, commit, dokumentasi, laporan, chat.
+- **Dilarang:** kata/frasa gembar-gembor, promosi, atau melebih-lebihkan. Contoh: "standar industri/emas", "best practice" tanpa praktik konkret, "state-of-the-art/canggih/revolusioner", "robust/powerful/seamless/elegan", "komprehensif/holistik/end-to-end" yang tidak teknis, "enterprise-grade/production-ready/scalable" tanpa angka, "optimal/sempurna/super cepat" tanpa data, "cutting-edge/game changer", penguat berlebihan ("sangat/luar biasa/dahsyat").
+- **Sebutkan fakta, bukan penilaian.** Tulis apa yang dilakukan, bukan seberapa bagus. ("Autentikasi memakai JWT, masa berlaku 15 menit" bukan "standar industri untuk autentikasi".)
+- **Kelebihan harus disertai alasan atau angka.** ("Query memakai indeks pada user_id, tidak perlu full scan" bukan "query ini sangat efisien".)
+- **Standar/praktik disebut nama spesifiknya** (OWASP ASVS, RFC 7519, PEP 8), bukan label umum.
+- **Akui keterbatasan dan trade-off apa adanya.** Jangan membesar-besarkan hasil.
+- **Commit dan deskripsi perubahan:** singkat, deskriptif, apa dan mengapa.
+- **Nada chat:** tenang, netral, seperti rekan kerja menjelaskan, bukan iklan.
+- Jika ragu apakah kata terlalu berlebihan, pilih versi yang lebih polos dan spesifik.

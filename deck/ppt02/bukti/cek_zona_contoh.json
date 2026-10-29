@@ -1,0 +1,226 @@
+{
+ "median_kenaikan_dasar_pct": 94.85,
+ "median_kenaikan_cop_iklim_pct": 94.6,
+ "spearman_cop_iklim": 0.8147,
+ "zona_pindah_kuadran": 68,
+ "lima_teratas_kenaikan_dasar": [
+  "REG_290",
+  "REG_259",
+  "REG_275",
+  "REG_260",
+  "REG_270"
+ ],
+ "lima_teratas_kenaikan_cop_iklim": [
+  "REG_270",
+  "REG_325",
+  "REG_045",
+  "REG_330",
+  "REG_143"
+ ],
+ "zona_contoh": {
+  "REG_273": {
+   "kuadran_dasar": "Q1",
+   "kuadran_cop_iklim": "Q1",
+   "kenaikan_dasar_pct": 103.18,
+   "kenaikan_cop_iklim_pct": 118.35,
+   "peringkat_kenaikan_dasar": 47,
+   "peringkat_kenaikan_cop_iklim": 32,
+   "peringkat_tambahan_absolut_dasar": 2,
+   "peringkat_tambahan_absolut_cop_iklim": 2,
+   "porsi_gas_jaringan_pct": 82.09,
+   "adopsi_pct": 5.8
+  },
+  "REG_270": {
+   "kuadran_dasar": "Q1",
+   "kuadran_cop_iklim": "Q1",
+   "kenaikan_dasar_pct": 113.46,
+   "kenaikan_cop_iklim_pct": 134.35,
+   "peringkat_kenaikan_dasar": 5,
+   "peringkat_kenaikan_cop_iklim": 1,
+   "peringkat_tambahan_absolut_dasar": 4,
+   "peringkat_tambahan_absolut_cop_iklim": 4,
+   "porsi_gas_jaringan_pct": 82.03,
+   "adopsi_pct": 4.46
+  },
+  "REG_045": {
+   "kuadran_dasar": "Q1",
+   "kuadran_cop_iklim": "Q1",
+   "kenaikan_dasar_pct": 111.05,
+   "kenaikan_cop_iklim_pct": 131.97,
+   "peringkat_kenaikan_dasar": 9,
+   "peringkat_kenaikan_cop_iklim": 3,
+   "peringkat_tambahan_absolut_dasar": 3,
+   "peringkat_tambahan_absolut_cop_iklim": 3,
+   "porsi_gas_jaringan_pct": 83.58,
+   "adopsi_pct": 2.6
+  },
+  "REG_290": {
+   "kuadran_dasar": "Q1",
+   "kuadran_cop_iklim": "Q1",
+   "kenaikan_dasar_pct": 121.41,
+   "kenaikan_cop_iklim_pct": 114.29,
+   "peringkat_kenaikan_dasar": 1,
+   "peringkat_kenaikan_cop_iklim": 47,
+   "peringkat_tambahan_absolut_dasar": 46,
+   "peringkat_tambahan_absolut_cop_iklim": 60,
+   "porsi_gas_jaringan_pct": 82.28,
+   "adopsi_pct": 6.08
+  },
+  "REG_263": {
+   "kuadran_dasar": "Q1",
+   "kuadran_cop_iklim": "Q1",
+   "kenaikan_dasar_pct": 106.54,
+   "kenaikan_cop_iklim_pct": 113.38,
+   "peringkat_kenaikan_dasar": 25,
+   "peringkat_kenaikan_cop_iklim": 51,
+   "peringkat_tambahan_absolut_dasar": 1,
+   "peringkat_tambahan_absolut_cop_iklim": 1,
+   "porsi_gas_jaringan_pct": 79.81,
+   "adopsi_pct": 6.4
+  },
+  "REG_249": {
+   "kuadran_dasar": "Q2",
+   "kuadran_cop_iklim": "Q1",
+   "kenaikan_dasar_pct": 90.07,
+   "kenaikan_cop_iklim_pct": 95.64,
+   "peringkat_kenaikan_dasar": 225,
+   "peringkat_kenaikan_cop_iklim": 152,
+   "peringkat_tambahan_absolut_dasar": 23,
+   "peringkat_tambahan_absolut_cop_iklim": 22,
+   "porsi_gas_jaringan_pct": 85.54,
+   "adopsi_pct": 3.75
+  },
+  "REG_242": {
+   "kuadran_dasar": "Q2",
+   "kuadran_cop_iklim": "Q2",
+   "kenaikan_dasar_pct": 94.57,
+   "kenaikan_cop_iklim_pct": 89.62,
+   "peringkat_kenaikan_dasar": 168,
+   "peringkat_kenaikan_cop_iklim": 209,
+   "peringkat_tambahan_absolut_dasar": 7,
+   "peringkat_tambahan_absolut_cop_iklim": 8,
+   "porsi_gas_jaringan_pct": 77.11,
+   "adopsi_pct": 7.99
+  },
+  "REG_259": {
+   "kuadran_dasar": "Q1",
+   "kuadran_cop_iklim": "Q1",
+   "kenaikan_dasar_pct": 115.1,
+   "kenaikan_cop_iklim_pct": 130.66,
+   "peringkat_kenaikan_dasar": 2,
+   "peringkat_kenaikan_cop_iklim": 6,
+   "peringkat_tambahan_absolut_dasar": 25,
+   "peringkat_tambahan_absolut_cop_iklim": 17,
+   "porsi_gas_jaringan_pct": 80.7,
+   "adopsi_pct": 5.88
+  },
+  "REG_275": {
+   "kuadran_dasar": "Q1",
+   "kuadran_cop_iklim": "Q1",
+   "kenaikan_dasar_pct": 114.29,
+   "kenaikan_cop_iklim_pct": 129.89,
+   "peringkat_kenaikan_dasar": 3,
+   "peringkat_kenaikan_cop_iklim": 7,
+   "peringkat_tambahan_absolut_dasar": 53,
+   "peringkat_tambahan_absolut_cop_iklim": 41,
+   "porsi_gas_jaringan_pct": 83.26,
+   "adopsi_pct": 4.02
+  }
+ },
+ "q2_tetap_q2": {
+  "jumlah": 33,
+  "dari": 47,
+  "zona": [
+   {
+    "zona": "REG_242",
+    "gas_TWh": 1.379,
+    "porsi_gas_jaringan_pct": 77.11,
+    "adopsi_pct": 7.99,
+    "kenaikan_dasar_pct": 94.57,
+    "kenaikan_cop_iklim_pct": 89.62
+   },
+   {
+    "zona": "REG_245",
+    "gas_TWh": 0.704,
+    "porsi_gas_jaringan_pct": 80.41,
+    "adopsi_pct": 7.22,
+    "kenaikan_dasar_pct": 93.63,
+    "kenaikan_cop_iklim_pct": 90.74
+   },
+   {
+    "zona": "REG_033",
+    "gas_TWh": 0.695,
+    "porsi_gas_jaringan_pct": 83.21,
+    "adopsi_pct": 4.99,
+    "kenaikan_dasar_pct": 84.92,
+    "kenaikan_cop_iklim_pct": 78.37
+   },
+   {
+    "zona": "REG_028",
+    "gas_TWh": 0.548,
+    "porsi_gas_jaringan_pct": 82.81,
+    "adopsi_pct": 6.1,
+    "kenaikan_dasar_pct": 87.88,
+    "kenaikan_cop_iklim_pct": 85.75
+   },
+   {
+    "zona": "REG_029",
+    "gas_TWh": 0.521,
+    "porsi_gas_jaringan_pct": 81.47,
+    "adopsi_pct": 5.6,
+    "kenaikan_dasar_pct": 91.89,
+    "kenaikan_cop_iklim_pct": 93.36
+   },
+   {
+    "zona": "REG_303",
+    "gas_TWh": 0.433,
+    "porsi_gas_jaringan_pct": 69.56,
+    "adopsi_pct": 10.53,
+    "kenaikan_dasar_pct": 93.56,
+    "kenaikan_cop_iklim_pct": 80.75
+   },
+   {
+    "zona": "REG_287",
+    "gas_TWh": 0.416,
+    "porsi_gas_jaringan_pct": 73.67,
+    "adopsi_pct": 9.14,
+    "kenaikan_dasar_pct": 94.04,
+    "kenaikan_cop_iklim_pct": 81.75
+   },
+   {
+    "zona": "REG_225",
+    "gas_TWh": 0.415,
+    "porsi_gas_jaringan_pct": 83.65,
+    "adopsi_pct": 5.62,
+    "kenaikan_dasar_pct": 94.59,
+    "kenaikan_cop_iklim_pct": 90.86
+   },
+   {
+    "zona": "REG_131",
+    "gas_TWh": 0.402,
+    "porsi_gas_jaringan_pct": 82.96,
+    "adopsi_pct": 5.04,
+    "kenaikan_dasar_pct": 89.95,
+    "kenaikan_cop_iklim_pct": 86.49
+   },
+   {
+    "zona": "REG_277",
+    "gas_TWh": 0.384,
+    "porsi_gas_jaringan_pct": 77.81,
+    "adopsi_pct": 7.18,
+    "kenaikan_dasar_pct": 92.79,
+    "kenaikan_cop_iklim_pct": 81.95
+   }
+  ]
+ },
+ "q1_tetap_q1": {
+  "jumlah": 98,
+  "dari": 118
+ },
+ "urutan_subzona": {
+  "baris_berurutan_zona_sama_pct": 99.07,
+  "baris_berurutan_subzona_sama_pct": 73.39,
+  "pasangan_subzona_berurutan_zona_sama_pct": 96.5,
+  "jumlah_subzona": 163185
+ }
+}

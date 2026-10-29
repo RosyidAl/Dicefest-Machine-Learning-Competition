@@ -1,0 +1,1182 @@
+{
+ "utama": [
+  {
+   "n": 1,
+   "mulai": "00:00",
+   "selesai": "00:25",
+   "detik": 25,
+   "bagian": "I. Pembukaan dan ringkasan eksekutif",
+   "pembicara": "Orang 1 (jangkar)",
+   "judul": "Trilema energi kota: elektrifikasi penuh hampir menggandakan konsumsi listrik zona",
+   "judul_baris": [
+    "Trilema energi kota: elektrifikasi penuh",
+    "hampir menggandakan konsumsi listrik zona"
+   ],
+   "visual": "Latar gelap. Segitiga trilema di kiri dengan tiga sudut: emisi turun, jaringan listrik andal, dan biaya terjangkau. Di kanan, satu angka besar berwarna jingga, +94,85%, dengan label ASUMSI kecil di bawahnya. Tidak ada grafik model atau istilah teknis. Pesan yang harus ditangkap: ketiga tujuan saling tarik, dan tekanannya besar.",
+   "isi": [
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "Emisi turun · Jaringan listrik andal · Biaya terjangkau"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "+94,85%: median kenaikan konsumsi listrik tahunan zona bila semua pemanas gas diganti pompa panas"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "ASUMSI · 80% gas untuk pemanasan, COP 3 (3 kWh panas per 1 kWh listrik); energi tahunan, bukan beban puncak"
+    }
+   ],
+   "narasi": "Bapak dan Ibu juri, kami tim BISMILLAH. Kota yang beralih dari pemanas gas ke pemanas listrik menghadapi trilema: emisi harus turun, jaringan listrik tetap andal, dan biaya energi tetap terjangkau. Dalam skenario kami, bila semua pemanas gas diganti pompa panas, konsumsi listrik tahunan zona naik dengan median hampir 95 persen.",
+   "sumber": "*writeup* bab 1 (definisi trilema); sel 48 (asumsi skenario); sel 50 (median 94,85%). Baris kaki setiap *slide* memakai penanda yang terlihat di *notebook*: nomor bagian (judul markdown) dan nomor eksekusi In [n] sel kode; baris Sumber memakai indeks sel dari 0 (sel 50 = In [35]; peta lengkapnya di bagian B4 dokumen struktur)",
+   "sel": "bagian 7.2, In [35]"
+  },
+  {
+   "n": 2,
+   "mulai": "00:25",
+   "selesai": "01:00",
+   "detik": 35,
+   "bagian": "I. Pembukaan dan ringkasan eksekutif",
+   "pembicara": "Orang 1 (jangkar)",
+   "judul": "Transisi 330 zona perlu diurutkan per kuadran, bukan diseragamkan",
+   "judul_baris": [
+    "Transisi 330 zona perlu diurutkan per kuadran, bukan diseragamkan"
+   ],
+   "visual": "Tiga kartu bernomor sejajar, satu per rekomendasi, tanpa panah waktu yang menyiratkan satu urutan untuk semua zona. Setiap kartu memuat label tuntutan trilema yang dijawabnya (warna sudut segitiga *slide* 1) dan ikon peta kuadran 2 × 2 dengan kuadran sasarannya diwarnai, sama dengan kolom Program di tabel *slide* 8: R1 di Q1, R2 di Q1 dan Q3 (kenaikan listrik di atas median), R3 di Q2 (kenaikan listrik di bawah median). Kartu 2 berlatar gelap karena penilaian gardu menjadi syarat sebelum subsidi pompa panas dibuka. Kartu 1 memuat angka 118 zona dan 47% gas dalam warna aksen. Satu baris kecil di bawah kartu menjadi penunjuk arah presentasi.",
+   "isi": [
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "1 · *Retrofit* selubung dulu di 118 zona Q1 (47% konsumsi gas) · biaya dan emisi · Q1"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "2 · Gardu dinilai sebelum subsidi pompa panas dibuka · keandalan jaringan · Q1 dan Q3: kenaikan listrik di atas median"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "3 · Pilot pompa panas di kawasan bergas zona Q2 · transisi yang terukur · Q2: kenaikan listrik di bawah median"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "Berikutnya: fitur → model → kebijakan → batas"
+    }
+   ],
+   "narasi": "Tesis kami: transisi 330 zona perlu diurutkan per kuadran, bukan diseragamkan. Pertama, untuk biaya dan emisi: *retrofit* selubung bangunan lebih dulu di 118 zona yang intensitas gas dan kenaikan listriknya sama-sama tinggi, yang memuat 47 persen konsumsi gas. Kedua, untuk keandalan: gardu dinilai sebelum subsidi pompa panas dibuka, terutama di zona yang kenaikan listriknya tinggi. Ketiga, agar transisi terukur: kawasan bergas dimulai dengan pilot pompa panas. Setelah ini, rekan kami menunjukkan dasar analisisnya.",
+   "sumber": "sel 49 (118 zona, porsi gas 0,468); sel 51 (rekomendasi; butir 3: zona Q1 dan Q3 untuk gardu); *writeup* bab 1 (aspek trilema per target)",
+   "sel": "In [34], bagian 7.3"
+  },
+  {
+   "n": 3,
+   "mulai": "01:00",
+   "selesai": "01:55",
+   "detik": 55,
+   "bagian": "II. Rekayasa fitur (25)",
+   "pembicara": "Orang 2 (teknis)",
+   "judul": "Luas lantai per meter: fitur teratas model penjelas konsumsi, dihitung tanpa menyentuh target",
+   "judul_baris": [
+    "Luas lantai per meter: fitur teratas model penjelas konsumsi,",
+    "dihitung tanpa menyentuh target"
+   ],
+   "visual": "Tiga kolom berlabel DIBANGUN, RISIKO DIKENDALIKAN, dan KONTRIBUSI. Kolom kiri: ilustrasi dua rumah, rumah kecil \"±37 m² per meter\" dan rumah besar \"±173 m² per meter\" (rata-rata 5% kawasan terkecil dan terbesar), dengan kartu rumus satu baris di atasnya: luas lantai (`bld_dim_06`) ÷ jumlah meter (`bld_dim_12`). Kolom tengah: empat tanda centang pengaman. Kolom kanan: angka besar 25–30%, yaitu porsi kontribusi SHAP kelompok rasio fisik turunan pada model penjelas EUI, gas per meter, dan listrik per meter (*writeup* B Tabel 3; grafik sel 43; dihitung ulang dari nilai SHAP oleh `make_visuals_v4.py`). Di bawahnya dua diagram batang lima fitur teratas model penjelas untuk intensitas gas dan listrik per meter (grafik asli PowerPoint dari `img/data_grafik.json`, nilai sel 45). Fitur turunan buatan tim (`area_per_meter`, `area_per_epc`, `s002_ratio`, `meters_per_epc`; kolom \"keluarga\" di sel 45) berbatang biru tua dengan `area_per_meter` jingga, sedangkan kolom asli data berbatang abu-abu. Legenda warna dan keterangan \"rata-rata |SHAP|, sampel 20.000 baris latih\" ada di bawah grafik.",
+   "isi": [
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "DIBANGUN · `area_per_meter` = luas lantai ÷ jumlah meter ≈ luas satu rumah"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "RISIKO DIKENDALIKAN · dua kolom input baris yang sama · tanpa target · tanpa statistik lintas baris · rumus sama di data latih dan uji"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "KONTRIBUSI · 25–30%: porsi SHAP rasio fisik turunan · peringkat 1: 2,8× fitur kedua (EUI) dan 3,0× (listrik)"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "fitur turunan buatan tim · kolom asli data · rata-rata |SHAP|"
+    }
+   ],
+   "narasi": "Dasar pertama adalah fitur. Fitur fisik utama kami sederhana: luas lantai kawasan dibagi jumlah meteran. Satu meteran kira-kira satu rumah tangga, jadi angka ini kira-kira luas rata-rata satu rumah. Fitur yang diam-diam membawa jawaban membuat skor tampak bagus, tetapi gagal di data baru. Risiko itu kami kendalikan sejak desain: fitur ini hanya membagi dua kolom input pada baris yang sama, tanpa target, dengan rumus yang sama untuk data latih dan data uji. Kontribusinya terlihat di model penjelas, yaitu model terpisah yang hanya memakai karakteristik terukur dan dibaca dengan SHAP. Kelompok rasio fisik turunan menyumbang 25 sampai 30 persen, dan fitur ini peringkat pertama untuk intensitas gas dan listrik per rumah, sekitar tiga kali fitur kedua. Inilah dasar rekomendasi *retrofit* nanti.",
+   "sumber": "sel 28 (rumus dan alasan bebas target); sel 40 (model penjelas); sel 43 dan *writeup* B Tabel 3 (porsi rasio fisik 25%, 30%, 26%); sel 45 (mean |SHAP| 0,0895; 0,0321; 0,0294; keluarga \"rasio fisik turunan\"); `deck/ppt01/bukti/cek_kebijakan.json` (±37 dan ±173 m²)",
+   "sel": "bagian 2.1, In [31], [32]"
+  },
+  {
+   "n": 4,
+   "mulai": "01:55",
+   "selesai": "02:45",
+   "detik": 50,
+   "bagian": "II. Rekayasa fitur (25)",
+   "pembicara": "Orang 2 (teknis)",
+   "judul": "Fitur kawasan termirip memakai target tetangga, tetapi dihitung *out-of-fold* dua lapis",
+   "judul_baris": [
+    "Fitur kawasan termirip memakai target tetangga,",
+    "tetapi dihitung *out-of-fold* dua lapis"
+   ],
+   "visual": "Bagian atas: pita nomor subzona dengan satu kawasan di tengah dan tiga jendela bertingkat (±30, ±100, ±300), diberi catatan \"96,5% pasangan subzona bernomor berurutan berada di zona yang sama\". Bagian bawah: skema *cross-fit* dua lapis, bentuknya sama dengan *slide* 5 *deck* v2. Baris pertama berisi sepuluh kotak *fold*: satu disorot \"dinilai\", sembilan lainnya diberi satu kurung berlabel \"9 *fold* lain: sumber tetangga\". Baris kedua memecah bagian latih menjadi lima: satu disorot \"dihitung\", empat lainnya diberi kurung \"4 bagian lain: sumber tetangga\". Panah ketiga menunjukkan data uji mengambil tetangga dari bagian latih model yang sama.",
+   "isi": [
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "DIBANGUN · rata-rata konsumsi k kawasan paling mirip, dalam jendela nomor subzona"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "96,5% pasangan subzona bernomor berurutan berada di zona yang sama → nomor berdekatan = pendekatan lokasi"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "RISIKO DIKENDALIKAN · lapis luar 10 *fold*, lapis dalam 5 bagian: tidak ada baris memakai targetnya sendiri"
+    }
+   ],
+   "narasi": "Fitur kedua bersifat spasial. Untuk setiap kawasan, kami mencari kawasan dengan stok bangunan paling mirip di sekitarnya, lalu memakai rata-rata konsumsinya. Sekitar berarti nomor subzona yang berdekatan: 96,5 persen pasangan subzona bernomor berurutan berada di zona yang sama, jadi penomorannya kami pakai sebagai pendekatan kedekatan lokasi. Karena fitur ini memakai target tetangga, risikonya adalah kebocoran target. Maka fitur ini dihitung *out-of-fold* dua lapis. Lapis luar: baris yang sedang dinilai hanya melihat tetangga dari sembilan *fold* lain. Lapis dalam: baris latih pun hanya melihat tetangga dari empat bagian lain, supaya model tidak belajar dari fitur yang memuat targetnya sendiri.",
+   "sumber": "sel 28 (definisi dan skema dua lapis); `train_lib.Data.KNN_CONFIGS` (sel 8: jendela 30, 100, 300); `deck/ppt02/bukti/cek_zona_contoh.json` (96,5%)",
+   "sel": "bagian 2.2, In [6]"
+  },
+  {
+   "n": 5,
+   "mulai": "02:45",
+   "selesai": "03:30",
+   "detik": 45,
+   "bagian": "II. Rekayasa fitur (25)",
+   "pembicara": "Orang 2 (teknis)",
+   "judul": "Uji label acak lulus: label baris yang dinilai tidak terbaca, versi bocor tertangkap",
+   "judul_baris": [
+    "Uji label acak lulus: label baris yang dinilai tidak terbaca,",
+    "versi bocor tertangkap"
+   ],
+   "visual": "Panel uji tiga baris dengan ikon hasil. Baris 1 (hijau): label validasi diacak, fitur validasi dan uji tidak berubah. Baris 2 (hijau): label satu bagian dalam baris latih diacak, fitur bagian itu identik, sedangkan bagian lain berubah sesuai rancangan. Baris 3 (merah): kontrol yang sengaja bocor berubah. Di bawahnya, strip KONTRIBUSI dengan panah kecil ke ikon peta kuadran. Label cakupan di bawah panel uji.",
+   "isi": [
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "Label 42.931 baris validasi diacak → fitur validasi dan 183.987 kawasan uji: 0 baris berubah"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "Label 77.275 baris latih bagian dalam diacak → fitur bagian itu identik; 309.097 baris lain berubah, sesuai rancangan"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "KONTROL · versi bocor berubah di 42.931 baris"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "KONTRIBUSI · galat EUI model tunggal −0,0022; prediksi untuk 30% nilai peta zona memakai fitur ini"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "Cakupan: dua blok fitur, satu *fold*"
+    }
+   ],
+   "narasi": "Desain itu kami uji, bukan kami asumsikan. Label target konsumsi pada lebih dari 42 ribu baris validasi kami acak, lalu fitur dihitung ulang. Fitur validasi dan kawasan uji tetap identik sampai bit terakhir. Untuk baris latih, label satu bagian dalam diacak: fitur bagian itu tetap identik, sedangkan bagian lain berubah karena memakainya sebagai tetangga, sesuai rancangan. Versi yang sengaja dibuat bocor langsung berubah, jadi uji ini mampu menangkap kebocoran. Cakupannya dua blok fitur pada satu *fold*. Fitur ini memberi perbaikan galat EUI terbesar dari satu kelompok fitur, dan prediksi kawasan uji, sekitar 30 persen nilai peta zona, memakainya.",
+   "sumber": "`deck/ppt01/bukti/uji_kebocoran_notebook.json` dan `uji_kebocoran_oof_dalam.json`; sel 28 (−0,0022); sel 24 (data uji tepat 30% dari seluruh baris)",
+   "sel": "bagian 1, 2.2 · uji label acak: skrip terpisah"
+  },
+  {
+   "n": 6,
+   "mulai": "03:30",
+   "selesai": "04:30",
+   "detik": 60,
+   "bagian": "III. Arsitektur model (15)",
+   "pembicara": "Orang 2 (teknis)",
+   "judul": "Lima target, tiga jalur: model besar hanya untuk gas, EUI, dan listrik",
+   "judul_baris": [
+    "Lima target, tiga jalur: model besar hanya untuk gas, EUI, dan listrik"
+   ],
+   "visual": "Judul diambil dari *slide* 6 *deck* v2 karena menonjolkan dekomposisi bersih: tiga fakta struktur data menentukan siapa yang butuh model besar. Diagram alur tiga jalur mendatar yang dibedakan warna. Kotak kiri \"Data latih + uji, 201 kolom\" bercabang ke tiga jalur: - Jalur 1 (jingga): Gas dan EUI, 28 model (XGBoost, LightGBM, MLP, NCA). - Jalur 2 (hijau kebiruan): Listrik, 13 model. - Kurung kurawal membungkus kotak model jalur 1 dan 2 dengan label \"41 model di-*blend*\". Dari kedua jalur ini, panah menuju tiga tahap berwarna biru tua: gabungan bobot adaptif per jalur, koreksi galat tetangga, dan penyesuaian akhir. - Jalur 3 (abu-abu) berlabel \"Porsi bersih dan adopsi: tanpa model besar\", karena jalur ini memuat dua target: porsi bangunan bersih dari rumus eksak, adopsi disalin dari nilai subzona (91,86% kawasan uji), dan 2 LightGBM khusus untuk 8,14% kawasan uji di subzona baru. Garis jalur 3 sengaja tidak melewati kotak gabungan, kotak 2 LightGBM bergaris putus-putus merah dengan label \"terpisah\", dan penjumlahan \"43 model = 41 di-*blend* + 2 terpisah\" ditulis di bawah kolom keluaran. - Kolom kanan memuat galat jujur gabungan sebelum koreksi galat tetangga dan penyesuaian akhir (keluaran sel 37), sejajar dengan lima keluaran (gas, EUI, listrik, porsi bersih, adopsi), dengan skala \"menebak rata-rata ≈ 1\". - Pita bawah: tiga fakta struktur data dari *slide* 3 *deck* v2 (sel 25), masing-masing di bawah jalur yang ditentukannya: gas = EUI × luas lantai (jalur 1), porsi bersih = rumus, dan adopsi seragam per subzona (jalur 3).",
+   "isi": [
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "Jalur 1 · Gas dan EUI: 28 model"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "Jalur 2 · Listrik: 13 model"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "Jalur 1 dan 2: gabungan bobot adaptif → koreksi galat tetangga → penyesuaian akhir"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "Jalur 3 · Porsi bersih dan adopsi: tanpa model besar · porsi bersih: rumus · adopsi: salin subzona (91,86%) · 2 LightGBM terpisah (8,14% kawasan uji di subzona baru)"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "43 model = 41 di-*blend* + 2 terpisah"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "Galat jujur sebelum koreksi (RMSE/σ; menebak rata-rata ≈ 1): 0,2449 · 0,6502 · 0,3159 · 0 · ≈ 0,04"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "FAKTA DATA · Gas = EUI × luas lantai: galat relatif maks 6,7 × 10^−16^ · Porsi bersih = rumus: tepat di 100% baris latih · Adopsi seragam per subzona: 100% subzona latih"
+    }
+   ],
+   "narasi": "Arsitekturnya mengikuti struktur data. Tiga fakta di bawah kami temukan sebelum model dilatih: gas selalu sama dengan EUI dikali luas lantai, porsi bangunan bersih tepat sama dengan satu rumus, dan adopsi seragam dalam satu subzona. Karena metrik menilai setiap kolom terpisah, setiap target boleh punya jalur sendiri. Jalur pertama untuk gas dan EUI dengan 28 model, karena keduanya satu besaran. Jalur kedua untuk listrik dengan 13 model. Di dua jalur ini, model digabung dengan bobot adaptif, lalu dikoreksi dengan galat tetangga dan disesuaikan dengan batas data; angka di kanan adalah galat jujur sebelum koreksi. Jalur ketiga tanpa model besar: porsi bersih dihitung dengan rumus, dan adopsi disalin dari subzonanya, kecuali 8,14 persen kawasan uji di subzona baru. Jadi totalnya 43 model: 41 di-*blend*, 2 LightGBM berdiri sendiri.",
+   "sumber": "sel 23 (28 dan 13); sel 24 dan 25 (identitas: galat relatif maksimum 6,7e-16, 100,00% baris latih, 100,00% subzona, 91,86%); sel 30 (tiga jalur); sel 35 (dua LightGBM adopsi, porsi 0,0814; galat jujur); sel 39 (ringkasan galat); *writeup* bab 1 (skala metrik); `deck/ppt01/pratinjau/slide-03.png` dan `slide-06.png` (asal pita fakta dan judul)",
+   "sel": "bagian 1 dan 3, In [21], [22], [27]"
+  },
+  {
+   "n": 7,
+   "mulai": "04:30",
+   "selesai": "05:00",
+   "detik": 30,
+   "bagian": "III. Arsitektur model (15)",
+   "pembicara": "Orang 2 (teknis)",
+   "judul": "Skor publik turun di setiap langkah, dan skor privat dari data tersembunyi tidak memburuk",
+   "judul_baris": [
+    "Skor publik turun di setiap langkah,",
+    "dan skor privat dari data tersembunyi tidak memburuk"
+   ],
+   "visual": "Kiri, dua pertiga lebar: grafik garis asli PowerPoint skor *leaderboard* publik per langkah pengembangan, sama dengan grafik *slide* 7 *deck* v2 (tujuh titik dari 0,25025 ke 0,24913, keluaran sel 37), dengan titik jingga skor privat 0,24844 di langkah terakhir. Label langkah memakai nama pendek tanpa istilah teknis, dan nilai setiap titik ditulis sebagai kotak teks agar koma desimal tetap. Kanan: dua ubin angka, 0,24844 (skor privat, peringkat 8, publik 0,24913) dan 0,4997 (AUC adversarial). Kartu sidik sha256 *deck* v3 diganti grafik ini; sidiknya pindah ke baris kaki bersama nomor sel.",
+   "isi": [
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "Skor *leaderboard* publik per langkah (makin kecil makin baik) · privat 0,24844 · peringkat 8"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "0,24844 · skor privat, peringkat 8 · publik 0,24913: tidak memburuk"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "0,4997 · AUC adversarial: latih dan uji tak dapat dibedakan, jadi validasi meniru data uji"
+    }
+   ],
+   "narasi": "Apakah arsitektur ini bekerja di data baru? Skor publik turun di setiap langkah pengembangan. Skor privat dari data yang tidak pernah kami lihat adalah 0,24844, peringkat 8, tidak memburuk. Validasi kami meniru kondisi uji, karena data latih dan uji tidak dapat dibedakan: AUC 0,4997. Berkas submisinya identik setiap diulang di perangkat yang sama. Rekan kami melanjutkan ke kebijakan.",
+   "sumber": "Kaggle LB privat (24 Okt 2026; `reports/STATUS.md`); sel 35 (sha256); sel 37 (LB publik per langkah: 0,25025; 0,24954; 0,24943; 0,24934; 0,24925; 0,24920; 0,24913); sel 55 (AUC); `deck/ppt01/pratinjau/slide-07.png` (asal grafik)",
+   "sel": "In [27] sha256 aec745ab…d66e, [28], [37]"
+  },
+  {
+   "n": 8,
+   "mulai": "05:00",
+   "selesai": "05:55",
+   "detik": 55,
+   "bagian": "IV. Rekomendasi kebijakan publik (35)",
+   "pembicara": "Orang 3 (kebijakan)",
+   "judul": "Peta 330 zona: 118 zona Q1 memuat 47% konsumsi gas, jadi program diurutkan per kuadran",
+   "judul_baris": [
+    "Peta 330 zona: 118 zona Q1 memuat 47% konsumsi gas,",
+    "jadi program diurutkan per kuadran"
+   ],
+   "visual": "Peta kuadran 330 zona (`img/peta_kuadran.png`, digambar dari data zona sel 49). Sumbu mendatar menunjukkan intensitas gas zona (kWh/m²), sumbu tegak menunjukkan kenaikan konsumsi listrik tahunan (%), garis putus-putus menandai median kedua sumbu, dan ukuran titik menunjukkan konsumsi gas zona. Q1 berwarna jingga dan setiap kuadran diberi label programnya. Di kanan: tabel kuadran empat baris, kotak ASUMSI, dan kotak UJI KETAHANAN. Kolom Program sama dengan kartu *slide* 2: R2 (gardu) di Q1 dan Q3. Catatan kecil di bawah peta: bukan peta geografis karena data tanpa koordinat, dan 30% nilai zona berasal dari prediksi kawasan uji (*writeup* 7.3).",
+   "isi": [
+    {
+     "jenis": "tabel",
+     "baris": [
+      [
+       "Kuadran",
+       "Zona",
+       "Porsi gas",
+       "Indikator *retrofit*",
+       "Kenaikan listrik",
+       "Program"
+      ],
+      [
+       "Q1",
+       "118",
+       "47%",
+       "3,65 TWh",
+       "+102%",
+       "R1 + R2"
+      ],
+      [
+       "Q2",
+       "47",
+       "12%",
+       "1,07 TWh",
+       "+90%",
+       "R3"
+      ],
+      [
+       "Q3",
+       "47",
+       "15%",
+       "0,86 TWh",
+       "+99%",
+       "R2"
+      ],
+      [
+       "Q4",
+       "118",
+       "27%",
+       "1,81 TWh",
+       "+87%",
+       "standar"
+      ]
+     ]
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "Bukan peta geografis (tanpa koordinat); 30% nilai zona dari prediksi kawasan uji"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "ASUMSI · 80% gas untuk pemanasan, COP 3, energi tahunan · *retrofit* 7,39 TWh = indikator, bukan janji"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "UJI KETAHANAN · tahan derau acak per kawasan (Spearman 0,998); peka COP per iklim (Spearman 0,81) → daftar kandidat"
+    }
+   ],
+   "narasi": "Sekarang kebijakan. Nilai aktual kawasan latih dan prediksi kawasan uji, total 613 ribu kawasan, kami ringkas menjadi 330 zona. Ini peta kuadran, bukan peta geografis. Sumbu mendatar adalah intensitas gas zona; sumbu tegak adalah kenaikan konsumsi listrik tahunan bila pemanas gas diganti pompa panas. Garis median membagi empat kuadran. Kuadran satu berisi 118 zona yang berada di atas median pada kedua sumbu, dan memuat 47 persen konsumsi gas. Penilaian gardu menyasar kuadran satu dan tiga, yang kenaikan listriknya di atas median. Uji ketahanan menunjukkan urutan zona tahan terhadap derau prediksi acak, tetapi berubah bila efisiensi pompa panas berbeda per iklim. Karena itu peta ini adalah daftar kandidat.",
+   "sumber": "sel 48 (definisi), 49 (tabel kuadran), 50 (141,35 TWh; 7,39 TWh), 51 butir 3 (gardu di Q1 dan Q3); `deck/ppt01/bukti/cek_kebijakan.json` (Spearman); `explain.zone_indices` (sel 19, ambang median)",
+   "sel": "bagian 7.2 dan 7.3, In [34], [35]"
+  },
+  {
+   "n": 9,
+   "mulai": "05:55",
+   "selesai": "06:45",
+   "detik": 50,
+   "bagian": "IV. Rekomendasi kebijakan publik (35)",
+   "pembicara": "Orang 3 (kebijakan)",
+   "judul": "Rekomendasi 1: *retrofit* selubung lebih dulu di zona Q1, mulai dari audit energi",
+   "judul_baris": [
+    "Rekomendasi 1: *retrofit* selubung lebih dulu di zona Q1,",
+    "mulai dari audit energi"
+   ],
+   "visual": "Kiri: panel dependensi SHAP luas per meter terhadap gas per m² (`img/dep_gas_ukuran.png`), kedua ujungnya ditandai \"±37 m²\" dan \"±173 m²\", dengan sketsa kecil rumah kecil dan rumah besar. Di bawahnya: batang indikator potensi tiga zona kandidat (grafik asli PowerPoint dari `img/data_grafik.json`). Kanan: rantai empat kotak TEMUAN → INTERPRETASI → REKOMENDASI → LANGKAH, ditutup baris PELAKSANA dengan ikon orang.",
+   "isi": [
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "TEMUAN · rumah terkecil: sumbangan gas per m² sekitar +65% vs terbesar (antarkuartil +34%); periode bld_era_15: +7% EUI"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "INTERPRETASI · dinding dan atap relatif luas; asosiasi, bukan sebab-akibat"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "REKOMENDASI · dinding, atap, jendela dulu, pompa panas kemudian; Q1 = 47% gas, indikator potensi 3,65 TWh"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "LANGKAH · audit energi REG_273, REG_270, REG_045 → pilot dengan pembanding → ukur gas per m²"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "PELAKSANA · pemerintah kota dan penyedia jasa *retrofit*"
+    }
+   ],
+   "narasi": "Rekomendasi pertama menyangkut *retrofit*. Temuan SHAP, yaitu sumbangan tiap variabel pada prediksi model penjelas: kawasan rumah terkecil punya sumbangan gas per meter persegi sekitar 65 persen lebih tinggi daripada rumah terbesar, dan satu periode bangunan sekitar 7 persen. Ini asosiasi, bukan sebab-akibat; kemungkinan karena dinding dan atap rumah kecil relatif luas, bagian yang disasar perbaikan selubung. Temuan model mendukung rekomendasi ini: *retrofit* selubung lebih dulu di zona kuadran satu. Karena potensinya baru indikator, langkah pertamanya audit energi di REG_273, REG_270, dan REG_045, lalu pilot dengan pembanding. Pelaksananya pemerintah kota bersama penyedia jasa *retrofit*.",
+   "sumber": "sel 47 dan 48 (dependensi SHAP, bld_era_15, penjelasan selubung); sel 49 dan 50 (Q1, kandidat); `deck/ppt01/bukti/cek_kebijakan.json` (kontras 5% dan kuartil); `deck/ppt02/bukti/cek_zona_contoh.json` (kandidat tetap Q1); *slide* cadangan C6 (pelaksana)",
+   "sel": "bagian 7.1, In [33], [34], [35]"
+  },
+  {
+   "n": 10,
+   "mulai": "06:45",
+   "selesai": "07:35",
+   "detik": 50,
+   "bagian": "IV. Rekomendasi kebijakan publik (35)",
+   "pembicara": "Orang 3 (kebijakan)",
+   "judul": "Rekomendasi 2: kapasitas gardu di zona Q1 dan Q3 dinilai sebelum subsidi pompa panas dibuka",
+   "judul_baris": [
+    "Rekomendasi 2: kapasitas gardu di zona Q1 dan Q3",
+    "dinilai sebelum subsidi pompa panas dibuka"
+   ],
+   "visual": "Kiri atas: dasar SHAP rekomendasi ini, yaitu dependensi SHAP luas lantai per meter terhadap listrik per meter pada model penjelas (`img/dep_listrik_ukuran.png`, panel \"listrik per rumah\" dari *slide* 8 *deck* v2 yang digambar ulang dengan sumbu yang benar), dengan label \"rumah besar vs kecil: sumbangan SHAP +75%\" dan titik rata-rata pita 5% terkecil (±37 m²) dan terbesar (±173 m²). Kiri bawah: batang lima zona dengan kenaikan konsumsi listrik tahunan tertinggi dan batang median 330 zona (grafik asli PowerPoint dari `img/data_grafik.json`), dengan peringkat setiap zona pada skenario COP per iklim di kanan: REG_290 turun ke peringkat 47, sedangkan REG_270 naik ke peringkat 1 dan diberi warna aksen sebagai titik awal penilaian. Kanan: rantai TEMUAN → INTERPRETASI → REKOMENDASI → LANGKAH, ditutup baris PELAKSANA.",
+   "isi": [
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "TEMUAN · SHAP: sumbangan listrik per rumah +75% di rumah besar vs kecil; lima zona tertinggi +113% sampai +121%"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "INTERPRETASI · konsumsi dasar dan tambahannya berbeda antarzona; energi tahunan, bukan beban puncak"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "REKOMENDASI · gardu dinilai per zona sebelum subsidi; daftar ini skrining, bukan bukti kapasitas"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "LANGKAH · operator menilai mulai REG_263, REG_270, REG_045 → penguatan bila perlu → subsidi bertahap"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "PELAKSANA · operator jaringan distribusi dan pemerintah kota"
+    }
+   ],
+   "narasi": "Rekomendasi kedua menyangkut keandalan jaringan. Temuan SHAP: ukuran rumah adalah fitur teratas untuk listrik per rumah, dan sumbangannya di kawasan rumah besar sekitar 75 persen lebih tinggi. Jadi konsumsi listrik dasar sudah berbeda jauh antarkawasan. Skenario elektrifikasi menambah 113 sampai 121 persen di lima zona tertinggi. Ini energi tahunan; beban puncak dan kapasitas gardu tidak ada di data. Temuan model mendukung rekomendasi ini sebagai daftar skrining: gardu dinilai per zona sebelum subsidi, mulai REG_270 dan REG_045, yang tetap sepuluh besar pada kedua skenario COP, serta REG_263 dengan tambahan terbesar. Pelaksananya operator jaringan dan pemerintah kota.",
+   "sumber": "sel 45 (`area_per_meter` peringkat 1 listrik per meter); sel 47 dan 48 butir 1 (rumah besar sekitar 75% lebih banyak listrik per rumah); sel 48 (energi tahunan, data tanpa profil beban); sel 50 (sepuluh zona kenaikan tertinggi); sel 51 butir 3 (Q1 dan Q3); `deck/ppt01/bukti/cek_kebijakan.json` (74,6%; tambahan absolut); `deck/ppt02/bukti/cek_zona_contoh.json` (peringkat pada kedua skenario)",
+   "sel": "bagian 7.1 dan 7.3, In [32], [33], [35]"
+  },
+  {
+   "n": 11,
+   "mulai": "07:35",
+   "selesai": "08:30",
+   "detik": 55,
+   "bagian": "IV. Rekomendasi kebijakan publik (35)",
+   "pembicara": "Orang 3 (kebijakan)",
+   "judul": "Rekomendasi 3: elektrifikasi kawasan bergas dimulai sebagai pilot pompa panas di zona Q2",
+   "judul_baris": [
+    "Rekomendasi 3: elektrifikasi kawasan bergas",
+    "dimulai sebagai pilot pompa panas di zona Q2"
+   ],
+   "visual": "Kiri, visual utama selebar setengah *slide*: dependensi SHAP adopsi terhadap porsi pemanas gas jaringan di kawasan dari model penjelas (`img/dep_adopsi_besar.png`, versi besar grafik *slide* 12 *deck* v2 yang digambar ulang), dengan anotasi \"di bawah 40%: +4 sampai +12 poin\" dan \"di atas 80%: sumbangan negatif\" (sel 48 butir 4) serta pita jingga di atas 80%. Diagram batang tingkat adopsi *deck* v3 tidak lagi ditampilkan; angkanya tetap di kotak TEMUAN. Kanan: rantai TEMUAN → INTERPRETASI → REKOMENDASI → LANGKAH, ditutup baris PELAKSANA. Kotak REKOMENDASI memuat anotasi zona contoh yang tetap Q2 pada kedua skenario COP, REG_033: gas jaringan 83,21%, adopsi 4,99%. Kotak LANGKAH memuat alur pilot: cek gardu lokal, pilot dan audit energi dengan zona pembanding, ukur adopsi, lalu perluas bila terukur.",
+   "isi": [
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "TEMUAN · sumbangan SHAP adopsi turun saat gas jaringan naik; tingkat adopsi 40,24% (gas jaringan ≤40%) vs 2,73% (>80%, 70% kawasan)"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "INTERPRETASI · elektrifikasi kawasan bergas tertinggal; pola komposisi, bukan sebab-akibat"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "REKOMENDASI · pilot pompa panas + bantuan bongkar ketel lama di zona Q2, misalnya REG_033"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "LANGKAH · cek gardu lokal → pilot dan audit energi dengan pembanding → ukur adopsi → perluas bila terukur"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "PELAKSANA · pemerintah kota dan penyedia pompa panas"
+    }
+   ],
+   "narasi": "Rekomendasi ketiga menyangkut adopsi. Temuan SHAP: sumbangan porsi gas jaringan pada adopsi turun dari positif menjadi negatif di atas 80 persen. Tingkat adopsi sekitar 40 persen di kawasan yang sedikit tersambung gas, tetapi hanya 2,73 persen di kawasan bergas di atas 80 persen, padahal kawasan seperti itu 70 persen dari seluruh kawasan. Karena porsi jenis pemanas berjumlah 100 persen, ini pola komposisi, bukan sebab-akibat. Temuan model mendukung rekomendasi ini: kawasan bergas perlu dorongan, dimulai dengan pilot pompa panas di zona kuadran dua seperti REG_033, yang kenaikan listriknya di bawah median. Pilot didahului cek gardu, disertai audit energi, memakai zona pembanding, dan diperluas hanya bila terukur. Pelaksananya pemerintah kota dan penyedia pompa panas. Rekan kami akan menutup.",
+   "sumber": "`deck/ppt01/bukti/cek_kebijakan.json` (tingkat adopsi per porsi gas jaringan); sel 47 dan 48 butir 4 (pola SHAP, +4 sampai +12 poin di bawah 40%, negatif di atas 80%); sel 51 butir 2 dan 4; `deck/ppt02/bukti/cek_zona_contoh.json` (REG_033 tetap Q2); `deck/ppt01/pratinjau/slide-12.png` (asal grafik)",
+   "sel": "bagian 7.1 dan 7.3, In [33]"
+  },
+  {
+   "n": 12,
+   "mulai": "08:30",
+   "selesai": "09:05",
+   "detik": 35,
+   "bagian": "V. Keterbatasan dan penutup",
+   "pembicara": "Orang 1 (jangkar)",
+   "judul": "Rekomendasi ini dasar prioritas, bukan pengganti audit teknis atau validasi lapangan",
+   "judul_baris": [
+    "Rekomendasi ini dasar prioritas,",
+    "bukan pengganti audit teknis atau validasi lapangan"
+   ],
+   "visual": "Tiga kartu berjajar dengan pola \"BELUM DIKETAHUI → PENANGANAN\". Kartu 1: beban puncak dan kapasitas gardu terukur → penilaian operator. Kartu 2: COP lokal, ambang median, dan makna kolom yang disamarkan → daftar zona sebagai kandidat. Kartu 3: sebab-akibat dan potensi *retrofit* nyata → audit energi dan pilot dengan zona pembanding. *Slide* ini tidak memuat angka.",
+   "isi": [
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "Beban puncak dan kapasitas gardu terukur: tidak ada di data → penilaian operator jaringan"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "COP lokal, ambang median, dan makna kolom: belum pasti → daftar zona = kandidat"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "Efek sebab-akibat dan penghematan nyata: belum terukur → audit energi dan pilot dengan zona pembanding"
+    }
+   ],
+   "narasi": "Ada tiga batas yang kami akui. Pertama, data hanya memuat energi tahunan; beban puncak dan kapasitas gardu yang terukur tidak tersedia, jadi penilaian gardu tetap pekerjaan operator. Kedua, efisiensi pompa panas lokal belum diketahui, ambang kuadran hanya median, dan makna kolom yang disamarkan masih dugaan, jadi daftar zona adalah kandidat. Ketiga, SHAP bukan sebab-akibat, dan potensi *retrofit* baru indikator. Karena itu rekomendasi ini adalah dasar prioritas dan evaluasi lanjutan, bukan pengganti audit teknis atau validasi lapangan.",
+   "sumber": "sel 28, 40, 48, dan 51 (keterbatasan); `deck/ppt01/bukti/cek_kebijakan.json` (kepekaan COP, komposisi potensi)",
+   "sel": "bagian 2, 7, 7.2, dan 7.3"
+  },
+  {
+   "n": 13,
+   "mulai": "09:05",
+   "selesai": "09:30",
+   "detik": 25,
+   "bagian": "V. Keterbatasan dan penutup",
+   "pembicara": "Orang 1 (jangkar)",
+   "judul": "Diurutkan per kuadran: *retrofit* dulu di Q1, gardu dinilai di Q1 dan Q3, pilot pompa panas di Q2",
+   "judul_baris": [
+    "Diurutkan per kuadran: *retrofit* dulu di Q1,",
+    "gardu dinilai di Q1 dan Q3,",
+    "pilot pompa panas di Q2"
+   ],
+   "visual": "Latar gelap. Tiga kartu yang sama dengan *slide* 2, masing-masing dengan kuadran sasaran dan tuntutan trilema yang dijawabnya, untuk menutup lingkaran argumen. Di bawah setiap kartu, tepat satu kolom dengannya, langkah berikutnya untuk rekomendasi itu: audit energi untuk R1, data beban dan gardu untuk R2, satu pilot untuk R3. *Slide* ini tidak memuat angka baru.",
+   "isi": [
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "1 *Retrofit* di Q1: biaya dan emisi · 2 Gardu di Q1 dan Q3: keandalan jaringan · 3 Pilot di Q2: transisi terukur"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "Langkah berikutnya: audit energi di zona kandidat Q1 · data beban puncak dan gardu dari operator · satu pilot Q2 dengan zona pembanding"
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "Terima kasih"
+    }
+   ],
+   "narasi": "Dengan kenaikan listrik hampir dua kali lipat, trilema ini tidak selesai dengan satu program untuk semua zona. *Retrofit* di kuadran satu menjawab biaya dan emisi, penilaian gardu di kuadran satu dan tiga menjaga keandalan, dan pilot di kuadran dua menguji transisinya. Langkah pertamanya: audit energi, data gardu dari operator, dan satu pilot dengan pembanding. Terima kasih.",
+   "sumber": "rangkuman *slide* 1, 2, 8 sampai 12; sel 51 butir 1 (kebutuhan panas turun mengurangi tagihan dan emisi) dan butir 3 (gardu di Q1 dan Q3)",
+   "sel": "bagian 7.3"
+  }
+ ],
+ "cadangan": [
+  {
+   "id": "C1",
+   "judul": "Bobot adaptif A2xM2xp2 tidak memburukkan kolom mana pun pada skor jujur",
+   "judul_baris": [
+    "Bobot adaptif A2xM2xp2 tidak memburukkan",
+    "kolom mana pun pada skor jujur"
+   ],
+   "bukti": [
+    {
+     "jenis": "paragraf",
+     "teks": "Diagram basis pojok (`img/basis_pojok.png`). Bobot setiap model berubah halus menurut peringkat luas (A), jumlah meter (M), dan prediksi gabungan global (p) di data latih, dengan 2 × 2 × 2 = 8 bobot pojok per model. Digabung dengan NNLS (*non-negative least squares*, kuadrat terkecil dengan bobot tak negatif) menjadi 224 bobot gas, 224 bobot EUI, dan 104 bobot listrik untuk 429.303 baris. Tabel skor jujur (bobot di-*fit* ulang di setiap *fold* luar):"
+    },
+    {
+     "jenis": "tabel",
+     "baris": [
+      [
+       "Kolom",
+       "Global",
+       "Adaptif",
+       "Selisih"
+      ],
+      [
+       "Gas",
+       "0,24494",
+       "0,24480",
+       "−0,000146"
+      ],
+      [
+       "EUI",
+       "0,65023",
+       "0,64978",
+       "−0,000453"
+      ],
+      [
+       "Listrik",
+       "0,31587",
+       "0,31585",
+       "−0,000027"
+      ]
+     ]
+    }
+   ],
+   "pertanyaan": [
+    "Apa yang dimaksud bobot adaptif?",
+    "Apakah bobot sebanyak itu tidak *overfit*?",
+    "Berapa sumbangannya terhadap skor?"
+   ],
+   "pedoman": "Model yang paling akurat di kawasan kecil belum tentu paling akurat di kawasan besar, sehingga bobotnya dibiarkan berubah halus menurut luas, jumlah meter, dan besar prediksi. Semua bobot tidak negatif dan jumlahnya kecil dibandingkan dengan 429.303 baris. Pada skor jujur, tidak ada kolom yang memburuk; perbaikan terbesar ada di EUI dan rata-rata lima target −0,000125. Catatan jujur: bentuk ini dipilih pada data yang sama, sehingga bukti independennya adalah *leaderboard* publik, yaitu 0,24934 menjadi 0,24925 (−0,00009). Tiga simpul tidak lebih baik daripada dua.",
+   "sumber": "sel 23, 35, 37; `deck/ppt01/bukti/skor_jujur_bobot_adaptif.json`; `reports/DECISIONS.md` D012",
+   "penjawab": "Orang 2"
+  },
+  {
+   "id": "C2",
+   "judul": "Koreksi galat tetangga menggeser prediksi sebagian kecil mengikuti galat tetangga",
+   "judul_baris": [
+    "Koreksi galat tetangga menggeser prediksi",
+    "sebagian kecil mengikuti galat tetangga"
+   ],
+   "bukti": [
+    {
+     "jenis": "paragraf",
+     "teks": "Di *notebook*, tahap ini bernama koreksi galat wilayah. Diagram alir: galat *out-of-fold* gabungan → rata-rata galat per zona, petak iklim, ±30 nomor subzona, dan k kawasan termirip → dikecilkan n/(n + 30) atau n/(n + 5) bila tetangganya sedikit → dikali bobot λ yang dipilih di *holdout set* (30% data latih yang disisihkan untuk evaluasi internal) lalu dibekukan di `configs/resid_knn.json`. Tabel λ untuk gas (W = jendela nomor subzona, k = jumlah tetangga):"
+    },
+    {
+     "jenis": "tabel",
+     "baris": [
+      [
+       "Fitur koreksi (gas)",
+       "λ"
+      ],
+      [
+       "galat zona",
+       "0,453"
+      ],
+      [
+       "galat petak iklim",
+       "0,346"
+      ],
+      [
+       "galat ±30 subzona",
+       "−0,020"
+      ],
+      [
+       "kNN full W100 k20",
+       "0,037"
+      ],
+      [
+       "kNN era W30 k20",
+       "0,126"
+      ],
+      [
+       "kNN fc W300 k50",
+       "0,079"
+      ],
+      [
+       "kNN full W10 k10",
+       "0,072"
+      ],
+      [
+       "kNN era W300 k50",
+       "0,124"
+      ],
+      [
+       "kNN full W3000 k200",
+       "0,156"
+      ]
+     ]
+    },
+    {
+     "jenis": "paragraf",
+     "teks": "Besar koreksi rms/σ: gas 0,02047; EUI 0,04344; listrik 0,01195 (sel 35). Koreksi tingkat grup sudah ada sejak v9; bagian kNN menurunkan *leaderboard* publik sekitar 0,0004 (0,2499 menjadi 0,24954). Angka 0,0007 di sel 39 (v12 ke v15) menggabungkan beberapa perubahan sekaligus (bagian E butir 13)."
+    }
+   ],
+   "pertanyaan": [
+    "Apakah koreksi ini memakai target data uji?",
+    "Bagaimana λ dipilih, dan mengapa ada yang negatif?",
+    "Berapa besar pengaruhnya?"
+   ],
+   "pedoman": "Setelah digabung, galat masih berkelompok: bila tetangga yang mirip sama-sama ditebak terlalu rendah, kawasan ini kemungkinan juga terlalu rendah. Untuk baris uji, yang dirata-rata hanya galat baris latih; target data uji tidak pernah dipakai. λ dipilih di *holdout set* yang tidak ikut menyusun tetangga, lalu dibekukan. λ negatif kecil muncul karena fitur tetangga saling berkorelasi; yang divalidasi adalah efek totalnya. Langkah \"koreksi dan lainnya\" di grafik *slide* 7 (0,25025 menjadi 0,24954) juga memuat model adopsi, MLP dua keluaran, salinan duplikat, dan pencabutan CatBoost; bagian kNN sendiri sekitar 0,0004.",
+   "sumber": "sel 22, 35, 37, 39; `reports/DECISIONS.md` D015; `deck/fakta_turunan.md`; `reports/cv_lb_history.csv`",
+   "penjawab": "Orang 2"
+  },
+  {
+   "id": "C3",
+   "judul": "Dua blok fitur bertarget utama diuji dengan label acak pada satu *fold*",
+   "judul_baris": [
+    "Dua blok fitur bertarget utama diuji dengan label acak pada satu *fold*"
+   ],
+   "bukti": [
+    {
+     "jenis": "paragraf",
+     "teks": "Tabel uji label acak (modul *notebook* yang sama, *fold* 0 dari 10). Yang diacak adalah kolom turunan tiga target konsumsi (gas, listrik, EUI) yang dipakai kedua blok fitur:"
+    },
+    {
+     "jenis": "tabel",
+     "baris": [
+      [
+       "Blok fitur",
+       "Kolom",
+       "Baris yang diuji",
+       "Berubah"
+      ],
+      [
+       "kNN-target, validasi",
+       "39",
+       "42.931",
+       "0"
+      ],
+      [
+       "kNN-target, data uji",
+       "39",
+       "183.987",
+       "0"
+      ],
+      [
+       "rata-rata wilayah, validasi",
+       "42",
+       "42.931",
+       "0"
+      ],
+      [
+       "rata-rata wilayah, data uji",
+       "42",
+       "183.987",
+       "0"
+      ],
+      [
+       "kNN-target, latih bagian 0",
+       "39",
+       "77.275",
+       "0; 309.097 baris lain berubah"
+      ],
+      [
+       "rata-rata wilayah, latih bagian 0",
+       "42",
+       "77.275",
+       "0; 309.097 baris lain berubah"
+      ],
+      [
+       "KONTROL: tetangga termasuk baris validasi",
+       "15",
+       "42.931",
+       "42.931"
+      ]
+     ]
+    },
+    {
+     "jenis": "paragraf",
+     "teks": "Pengendalian per kelompok fitur: rasio fisik seperti `area_per_meter` dihitung per baris tanpa target; agregat kawasan (jumlah kawasan, total luas, jumlah meter) dihitung dari fitur data latih dan uji tanpa target; rata-rata target wilayah dan kawasan termirip dihitung *out-of-fold* dua lapis. Di luar cakupan uji label acak: fitur tetangga model adopsi, koreksi galat tetangga, bobot gabungan, dan faktor penyesuaian akhir. Semuanya dirancang memakai prediksi *out-of-fold* atau *holdout set*, tetapi belum diuji dengan label acak."
+    }
+   ],
+   "pertanyaan": [
+    "Bagaimana Anda tahu tidak ada kebocoran?",
+    "Mengapa baris latih bagian lain berubah?",
+    "Apakah agregat yang memakai data uji termasuk kebocoran?",
+    "Apakah *early stopping* membuat galat *out-of-fold* bias?"
+   ],
+   "pedoman": "Baris validasi dan uji tidak membaca label validasi, dan baris latih tidak membaca label bagian dalamnya sendiri. Bagian lain berubah karena memakai bagian yang diacak sebagai tetangga; itu justru syarat lulus. Kontrol bocor membuktikan uji ini peka. Klaimnya terbatas pada dua blok fitur dan satu *fold*. Agregat kawasan hanya memakai kolom fitur, bukan target. XGBoost dan LightGBM memakai *early stopping* (penghentian pelatihan lebih awal) pada *fold* validasinya sendiri, sehingga galat *out-of-fold* sedikit optimistis; karena itu keputusan diambil dari *holdout set*. Bobot dari prediksi *out-of-fold* setara dengan bobot yang di-*fit* di *holdout set* (0,25096 vs 0,25095, D002). Yang diacak adalah kolom turunan tiga target konsumsi (gas, listrik, EUI), dengan modul *notebook* yang sama pada *fold* 0 dari 10.",
+   "sumber": "`deck/ppt01/bukti/uji_kebocoran_notebook.py` dan `.json`, `uji_kebocoran_oof_dalam.json`; sel 28, 36; `reports/DECISIONS.md` D002; `adopt_v2.neighbour_feats` (sel 12)",
+   "penjawab": "Orang 2"
+  },
+  {
+   "id": "C4",
+   "judul": "Rincian 43 model: 28 jalur gas/EUI, 13 jalur listrik, dan 2 LightGBM adopsi",
+   "judul_baris": [
+    "Rincian 43 model: 28 jalur gas/EUI, 13 jalur listrik, dan 2 LightGBM adopsi"
+   ],
+   "bukti": [
+    {
+     "jenis": "paragraf",
+     "teks": "Tabel keluarga model per jalur (dihitung dari tabel anggota sel 31):"
+    },
+    {
+     "jenis": "tabel",
+     "baris": [
+      [
+       "Keluarga",
+       "Gas/EUI",
+       "Listrik"
+      ],
+      [
+       "XGBoost, termasuk varian Poisson",
+       "16",
+       "3"
+      ],
+      [
+       "LightGBM, termasuk varian Poisson",
+       "5",
+       "4"
+      ],
+      [
+       "MLP standar",
+       "2",
+       "1"
+      ],
+      [
+       "MLP PLR dan TabM-mini",
+       "3",
+       "2"
+      ],
+      [
+       "MLP gas + listrik",
+       "1",
+       "2"
+      ],
+      [
+       "NCA",
+       "1",
+       "1"
+      ],
+      [
+       "Jumlah",
+       "28",
+       "13"
+      ]
+     ]
+    },
+    {
+     "jenis": "paragraf",
+     "teks": "Jalur 3 memuat 2 LightGBM adopsi (`q_xent` dan `r_reg`) yang dirata-rata dan hanya dipakai untuk 8,14% kawasan uji; keduanya tidak ikut *blending*. Pita bawah: 43 = 41 + 2."
+    }
+   ],
+   "pertanyaan": [
+    "Mengapa 41 model, bukan satu model terbaik?",
+    "*Notebook* menulis 42 model; mana yang benar?",
+    "Apakah dua LightGBM adopsi ikut digabung?",
+    "Berapa model yang sebenarnya dilatih?"
+   ],
+   "pedoman": "Angka 43 adalah jumlah model yang keluarannya masuk berkas submisi: 41 di dua kelompok gabungan berbobot adaptif, ditambah 2 LightGBM adopsi yang berdiri sendiri. Angka 41 dihitung per keluaran: MLP dua keluaran `mk2` adalah satu jaringan yang menyumbang satu anggota ke jalur gas/EUI dan satu ke jalur listrik. *Notebook* melatih 42 model di jalur 1 dan 2, yaitu 36 model dengan sepuluh *fold* dan 6 model dengan lima *fold*. Satu keluaran tidak terpilih, yaitu `mk1_gpm` (keluaran gas dari MLP dua keluaran yang keluaran listriknya terpilih). Setiap anggota dilatih per *fold*, sebagian dengan tiga *seed*, sehingga di balik 41 anggota terdapat 550 model terlatih. Gabungan memperbaiki model tunggal terbaik sebesar 0,0083 untuk EUI, 0,0036 untuk gas, dan 0,0027 untuk listrik; angka ini diukur pada *holdout set* versi v16, bukan pada gabungan final.",
+   "sumber": "sel 23, 31, 32, 33, 35; *writeup* B bab 6; `reports/KAGGLE_WRITEUP_TOP20.md` bagian 3.3; `configs/members.yaml` (sel 21)",
+   "penjawab": "Orang 2"
+  },
+  {
+   "id": "C5",
+   "judul": "SHAP dibaca dari model penjelas terpisah dan hanya menunjukkan sumbangan pada prediksi",
+   "judul_baris": [
+    "SHAP dibaca dari model penjelas terpisah",
+    "dan hanya menunjukkan sumbangan pada prediksi"
+   ],
+   "bukti": [
+    {
+     "jenis": "paragraf",
+     "teks": "Tabel kecocokan empat model penjelas (R² pada data yang tidak dipakai untuk melatihnya): log EUI 0,563; log gas per meter 0,747; log listrik per meter 0,491; adopsi 0,991. Tabel porsi kontribusi per kelompok fitur (*writeup* B Tabel 3). Satu baris penegas: SHAP adalah sumbangan pada prediksi model penjelas, bukan efek sebab-akibat. Tabel \"kalimat aman\" *deck* v3 dipindah ke pedoman jawaban karena ditujukan bagi pembicara, bukan bagi juri."
+    }
+   ],
+   "pertanyaan": [
+    "Apakah SHAP membuktikan sebab-akibat?",
+    "Mengapa tidak membaca SHAP dari gabungan 41 model?",
+    "Mengapa R² adopsi 0,991?",
+    "Mengapa nilai 0,0895 muncul dua kali di sel 45?"
+   ],
+   "pedoman": "Tidak; SHAP (*SHapley Additive exPlanations*) menguraikan prediksi model menjadi sumbangan aditif tiap fitur, bukan efek intervensi. Karena itu setiap program diusulkan sebagai pilot dengan zona pembanding. Gabungan 41 model memakai rata-rata target wilayah, yang bukan tuas kebijakan, sehingga dilatih satu LightGBM penjelas per target (800 putaran) yang hanya memakai karakteristik terukur. TreeSHAP eksak dihitung pada sampel 20.000 baris latih untuk tabel dan grafik, sedangkan peta zona memakai kontribusi di seluruh 613 ribu kawasan. R² adopsi tinggi karena porsi jenis pemanas berjumlah 100%, bukan karena perilaku terjelaskan. Untuk alasan yang sama, porsi sosiodemografi 15% pada adopsi diukur terhadap total yang 81%-nya identitas komposisi, sehingga tidak dipakai sebagai bukti di *slide* utama. Peringkat `area_per_meter` adalah peringkat pada model penjelas, bukan ukuran sumbangannya pada akurasi prediksi. Nilai 0,0895 pada dua target adalah kebetulan pembulatan: nilai lengkapnya 0,08953 dan 0,08948. Nama kolom disamarkan panitia, sehingga maknanya berupa dugaan, kecuali `bld_dim_06` sebagai luas lantai yang terbukti dari identitas EUI × luas lantai = gas. Kalimat aman: hindari \"rumah kecil menyebabkan konsumsi gas tinggi\", pakai \"ukuran rumah yang kecil berkontribusi menaikkan prediksi gas per m² pada model penjelas\"; hindari \"sambungan gas menghambat adopsi\", pakai \"porsi gas jaringan yang tinggi berasosiasi dengan adopsi rendah, dan pola ini bersifat komposisi\"; hindari \"*retrofit* di Q1 menghemat 3,65 TWh\", pakai \"indikator potensi *retrofit* Q1 sebesar 3,65 TWh perlu diverifikasi dengan audit energi\".",
+   "sumber": "sel 40, 41, 42, 45; *writeup* B Tabel 3; `reports/policy/shap_eui.npz`, `shap_epm.npz`; `deck/ppt01/fakta_tambahan.md` bagian C dan E",
+   "penjawab": "Orang 3"
+  },
+  {
+   "id": "C6",
+   "judul": "Celah data dan rencana validasi lapangan",
+   "judul_baris": [
+    "Celah data dan rencana validasi lapangan"
+   ],
+   "bukti": [
+    {
+     "jenis": "paragraf",
+     "teks": "Dua blok."
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "Celah data: beban puncak (kW), kapasitas gardu, COP lokal, koordinat geografis, biaya *retrofit*, tarif, dan intensitas karbon listrik tidak tersedia. Makna kolom yang disamarkan berupa dugaan, dan ambang kuadran berupa median."
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "Rencana validasi:"
+    },
+    {
+     "jenis": "tabel",
+     "baris": [
+      [
+       "Rekomendasi",
+       "Pelaksana",
+       "Validasi sebelum perluasan",
+       "Ukuran keberhasilan"
+      ],
+      [
+       "R1 *retrofit* Q1",
+       "pemerintah kota, penyedia jasa *retrofit*",
+       "audit energi REG_273, REG_270, REG_045",
+       "gas per m² turun vs pembanding"
+      ],
+      [
+       "R2 gardu Q1 dan Q3",
+       "operator jaringan, pemerintah kota",
+       "beban puncak dan kapasitas gardu REG_263, REG_270, REG_045",
+       "tidak ada gardu melampaui kapasitas"
+      ],
+      [
+       "R3 pilot Q2",
+       "pemerintah kota, penyedia pompa panas",
+       "cek gardu lokal, pilot bergiliran dan audit energi (REG_033)",
+       "adopsi naik vs pembanding"
+      ]
+     ]
+    }
+   ],
+   "pertanyaan": [
+    "Data apa yang masih dibutuhkan sebelum eksekusi?",
+    "Siapa yang menjalankan setiap rekomendasi?",
+    "Bagaimana memvalidasinya di lapangan?"
+   ],
+   "pedoman": "Sebelum eksekusi dibutuhkan beban puncak dan kapasitas gardu dari operator, COP lokal per zona, dan hasil audit energi. Kenaikan yang dihitung adalah energi tahunan; beban puncak dapat jauh lebih besar karena pemanasan menumpuk di bulan terdingin dan COP turun saat dingin. Setiap program dijalankan sebagai pilot dengan zona pembanding sehingga dampaknya terukur sebelum diperluas. Subsidi R2 dibuka bertahap dengan tarif berbasis waktu pemakaian. Makna kolom yang disamarkan berupa dugaan, dan ambang kuadran berupa median.",
+   "sumber": "sel 48, 51; `deck/ppt01/06_qna_juri_v2.md` P11",
+   "penjawab": "Orang 3"
+  },
+  {
+   "id": "C7",
+   "judul": "Validasi acak per baris meniru data uji, sedangkan validasi per zona akan membuang fitur yang berguna",
+   "judul_baris": [
+    "Validasi acak per baris meniru data uji,",
+    "sedangkan validasi per zona akan membuang fitur yang berguna"
+   ],
+   "bukti": [
+    {
+     "jenis": "paragraf",
+     "teks": "Tabel *writeup* B Tabel 1 (LightGBM, RMSE/σ):"
+    },
+    {
+     "jenis": "tabel",
+     "baris": [
+      [
+       "Skema",
+       "Rata-rata wilayah",
+       "Gas",
+       "EUI",
+       "Listrik"
+      ],
+      [
+       "acak per baris",
+       "tanpa",
+       "0,2573",
+       "0,6721",
+       "0,3262"
+      ],
+      [
+       "acak per baris",
+       "dengan",
+       "0,2562",
+       "0,6699",
+       "0,3255"
+      ],
+      [
+       "per zona",
+       "tanpa",
+       "0,2708",
+       "0,6923",
+       "0,3302"
+      ],
+      [
+       "per zona",
+       "dengan",
+       "0,3637",
+       "0,8331",
+       "0,3474"
+      ]
+     ]
+    },
+    {
+     "jenis": "paragraf",
+     "teks": "Bukti mekanisme pemisahan data: AUC adversarial 0,4997; kawasan uji di subzona baru 8,14% vs harapan 8,17%. Bukti tidak *overfit* ke *leaderboard*: skor privat 0,24844 vs publik 0,24913; satu perubahan ditolak karena tidak dikonfirmasi *leaderboard* (0,24938 vs 0,24934, D011)."
+    }
+   ],
+   "pertanyaan": [
+    "Mengapa tidak memakai validasi per wilayah (*GroupKFold*)?",
+    "Apakah model *overfit* ke *leaderboard* publik?"
+   ],
+   "pedoman": "Data uji diambil acak per baris, sehingga 92% kawasan uji berada di subzona yang juga ada di data latih. Skema per zona menguji situasi yang tidak terjadi di data uji dan membuat rata-rata wilayah tampak merusak (EUI 0,6923 menjadi 0,8331). Komponen diterima berdasarkan *holdout set*; *leaderboard* hanya mengonfirmasi arah. Selisih privat dan publik yang kecil konsisten dengan tidak *overfit*, tetapi bukan bukti mutlak.",
+   "sumber": "*writeup* B Tabel 1; sel 54, 55; Kaggle LB privat; `reports/DECISIONS.md` D011",
+   "penjawab": "Orang 2"
+  },
+  {
+   "id": "C8",
+   "judul": "Penyesuaian akhir menangani dua batas data, dan hasilnya identik setiap diulang di perangkat yang sama",
+   "judul_baris": [
+    "Penyesuaian akhir menangani dua batas data,",
+    "dan hasilnya identik setiap diulang di perangkat yang sama"
+   ],
+   "bukti": [
+    {
+     "jenis": "paragraf",
+     "teks": "Tabel penyesuaian:"
+    },
+    {
+     "jenis": "tabel",
+     "baris": [
+      [
+       "Langkah",
+       "Gas",
+       "EUI",
+       "Listrik"
+      ],
+      [
+       "S1: kawasan 2 sampai 3 meter",
+       "+20,1%",
+       "+18,4%",
+       "+18,7%"
+      ],
+      [
+       "S1: kawasan 4 meter",
+       "+6,4%",
+       "+3,2%",
+       "+7,1%"
+      ],
+      [
+       "S3: faktor k",
+       "0,505",
+       "0,657",
+       "tidak dipakai"
+      ],
+      [
+       "S4: batas",
+       "batas latih",
+       "batas latih",
+       "batas latih"
+      ]
+     ]
+    },
+    {
+     "jenis": "paragraf",
+     "teks": "S3 menarik turun tebakan gas di dekat batas 999.765 kWh; S4 memotong prediksi ke batas data latih; 77 kawasan uji yang identik dengan kawasan latih disalin. *Leaderboard* publik 0,24920 menjadi 0,24913. Reprodusibilitas: *seed* dikunci, mode deterministik, sidik sha256 aec745ab…d66e tercetak di sel 35. Pelatihan penuh sekitar 20 jam; tanpa pelatihan sekitar 5 jam."
+    }
+   ],
+   "pertanyaan": [
+    "Apa saja langkah setelah penggabungan?",
+    "Bisakah hasilnya direproduksi?"
+   ],
+   "pedoman": "Perakitan berjalan dengan urutan tetap: gabung, koreksi, sesuaikan batas, salin duplikat, periksa, lalu tulis. S1 berasal dari prediksi *out-of-fold* penuh, k pada S3 dari *holdout set*, dan batas S4 dari data latih; semuanya dibekukan di satu berkas konfigurasi (D015).",
+   "sumber": "sel 0, 22, 30, 35, 37; `deck/fakta_turunan.md`; `reports/DECISIONS.md` D015",
+   "penjawab": "Orang 2"
+  },
+  {
+   "id": "C9",
+   "judul": "Adopsi di subzona baru dimodelkan sebagai peluang dari jumlah rumah tangga",
+   "judul_baris": [
+    "Adopsi di subzona baru dimodelkan sebagai",
+    "peluang dari jumlah rumah tangga"
+   ],
+   "bukti": [
+    {
+     "jenis": "paragraf",
+     "teks": "Diagram N dan K: kolom komposisi pemanas adalah pecahan jumlah rumah tangga N, dan bilangan bulat terkecil yang membuat semua pecahan bulat adalah N; K adalah rumah tangga di luar kategori pemanas yang tercatat, yaitu pengguna pemanas listrik ditambah satu kategori lain yang tidak tercatat. Tabel skor validasi lima *fold* per subzona yang dibobot ulang ke komposisi subzona baru: `q_xent` 1,0329; `r_reg` 1,0351; rata-rata keduanya 1,0303 poin (0,143 setelah dibagi σ adopsi)."
+    }
+   ],
+   "pertanyaan": [
+    "Bagaimana memprediksi adopsi di subzona yang belum pernah terlihat?",
+    "Mengapa dua LightGBM?",
+    "Mengapa 8,14%?"
+   ],
+   "pedoman": "Adopsi seragam dalam satu subzona, sehingga 91,86% kawasan uji cukup disalin dari subzonanya. Untuk 8,14% sisanya, `q_xent` menebak peluang rumah tangga K berada di kategori lain yang bukan pemanas listrik (*cross-entropy* dengan bobot K), sedangkan `r_reg` menebak porsi kategori itu secara langsung. Adopsi adalah sisa porsi dikurangi tebakan tersebut, dan rata-rata kedua model lebih baik daripada masing-masing. Angka 8,14% adalah porsi kawasan uji, bukan porsi subzona, dan sesuai harapan pengacakan per baris (8,17%).",
+   "sumber": "sel 28, 35, 39, 54; `final/nbrun_final/dicefest_nb/src/adopt_v2.py` (docstring dan `fit_predict`); *writeup* B 5.1",
+   "penjawab": "Orang 2"
+  },
+  {
+   "id": "C10",
+   "judul": "Urutan zona tahan derau acak; zona contoh tetap pada kedua skenario COP",
+   "judul_baris": [
+    "Urutan zona tahan derau acak; zona contoh tetap pada kedua skenario COP"
+   ],
+   "bukti": [
+    {
+     "jenis": "paragraf",
+     "teks": "Tiga blok."
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "Uji ketahanan: derau prediksi acak per kawasan uji (200 simulasi) memberi Spearman 0,998, median 8 zona pindah kuadran, dan 5 zona teratas tetap. COP 2,5 sampai 3,5 menurut iklim zona memberi Spearman 0,81, 68 zona pindah kuadran, dan hanya 1 dari 5 zona teratas tetap. Galat yang berkelompok antartetangga belum diuji. Asumsi seragam hanya menskalakan angka (median +71,1% sampai +128,0%), tidak mengubah urutan."
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "Posisi zona contoh pada dua skenario. Setiap sel ditulis \"COP 3 seragam → COP per iklim\". Peringkat dihitung dari 330 zona, untuk kenaikan konsumsi listrik dalam persen dan untuk tambahan konsumsi dalam TWh. Kolom Peran memakai kode rekomendasi (\"awal R1\" berarti titik awal R1). Baris tebal adalah zona yang dipakai sebagai titik awal atau contoh di *slide* utama:"
+    },
+    {
+     "jenis": "tabel",
+     "baris": [
+      [
+       "Zona",
+       "Peran",
+       "Kuadran (COP 3 → per iklim)",
+       "Peringkat kenaikan %",
+       "Peringkat tambahan TWh"
+      ],
+      [
+       "REG_273",
+       "awal R1",
+       "Q1 → Q1",
+       "47 → 32",
+       "2 → 2"
+      ],
+      [
+       "REG_270",
+       "awal R1, R2",
+       "Q1 → Q1",
+       "5 → 1",
+       "4 → 4"
+      ],
+      [
+       "REG_045",
+       "awal R1, R2",
+       "Q1 → Q1",
+       "9 → 3",
+       "3 → 3"
+      ],
+      [
+       "REG_263",
+       "awal R2",
+       "Q1 → Q1",
+       "25 → 51",
+       "1 → 1"
+      ],
+      [
+       "REG_290",
+       "skrining R2",
+       "Q1 → Q1",
+       "1 → 47",
+       "46 → 60"
+      ],
+      [
+       "REG_259, REG_275",
+       "skrining R2",
+       "Q1 → Q1",
+       "2, 3 → 6, 7",
+       "25, 53 → 17, 41"
+      ],
+      [
+       "REG_033",
+       "contoh R3",
+       "Q2 → Q2",
+       "kenaikan +84,92% → +78,37%",
+       ""
+      ]
+     ]
+    },
+    {
+     "jenis": "butir",
+     "tingkat": 0,
+     "teks": "Sebanyak 33 dari 47 zona Q2 dan 98 dari 118 zona Q1 tetap di kuadrannya. Indikator potensi *retrofit* relatif terhadap konsumsi gas: Q2 6,6%, Q1 5,5%. Kedua butir ini dan REG_249 ada di pedoman jawaban, tidak di layar."
+    }
+   ],
+   "pertanyaan": [
+    "Seberapa yakin dengan urutan zona?",
+    "Mengapa bukan REG_290, zona dengan kenaikan tertinggi, atau REG_259 dan REG_275?",
+    "Mengapa pompa panas dulu di Q2, padahal potensi *retrofit* relatifnya lebih tinggi?",
+    "Apakah 7,39 TWh realistis?"
+   ],
+   "pedoman": "Urutan zona hampir tidak terpengaruh derau acak karena setiap zona merata-ratakan banyak kawasan, tetapi sangat terpengaruh COP yang berbeda per iklim. Karena itu titik awal dipilih dari zona yang tetap sepuluh besar dalam persen dan tambahan absolut pada kedua skenario, yaitu REG_270 dan REG_045, ditambah REG_263 sebagai tambahan absolut terbesar. Enam zona tetap sepuluh besar dalam persen, tetapi REG_259 dan REG_275 menambah konsumsi listrik yang relatif kecil; keduanya, juga REG_290, tetap dinilai sebagai bagian daftar skrining. Urutan program di Q2 mengikuti tekanan jaringan: kenaikan listriknya di bawah median, sehingga elektrifikasi di sana menambah tekanan lebih sedikit daripada di Q1 dan Q3, sedangkan audit energi tetap berjalan di zona pilot. Angka 7,39 TWh adalah indikator dengan bias dua arah: definisinya ikut memuat ukuran rumah yang tidak dapat diubah *retrofit* (bila hanya periode bangunan dihitung, tersisa 0,513 bagian), tetapi acuannya rata-rata nasional, sehingga acuan praktik yang lebih baik akan membuatnya lebih besar. Audit energi yang menentukan angka nyatanya. Asumsi seragam hanya menskalakan angka (median +71,1% sampai +128,0%) tanpa mengubah urutan, dan galat yang berkelompok antartetangga belum diuji. Sebanyak 33 dari 47 zona Q2 dan 98 dari 118 zona Q1 tetap di kuadrannya. REG_249, zona Q2 di tabel sel 50, pindah ke Q1 pada COP per iklim (+90,07% menjadi +95,64%, median 94,60%), sehingga tidak dipakai sebagai contoh pilot.",
+   "sumber": "`deck/ppt02/bukti/cek_zona_contoh.json` (kuadran dan peringkat zona contoh, 33 dari 47, 98 dari 118); `deck/ppt01/bukti/cek_kebijakan.json` (200 simulasi derau, Spearman, 68 zona); sel 49 sampai 51 (REG_249 di tabel sel 50); *writeup* 7.3 dan Tabel 4",
+   "penjawab": "Orang 3"
+  },
+  {
+   "id": "C11",
+   "judul": "Target efisiensi dan target emisi perlu dipisahkan",
+   "judul_baris": [
+    "Target efisiensi dan target emisi perlu dipisahkan"
+   ],
+   "bukti": [
+    {
+     "jenis": "paragraf",
+     "teks": "Dua panel dependensi SHAP ukuran rumah (`img/dep_ukuran_dua.png`): sumbangan gas per m² sekitar +65% di kawasan rumah terkecil, sedangkan sumbangan listrik per rumah sekitar +75% di kawasan rumah terbesar (pita 5% ekstrem; antarkuartil +34% dan +35%). Tabel pemetaan target ke trilema dari *writeup* bab 1: gas total ke emisi, listrik total ke beban jaringan, EUI ke emisi dan biaya, porsi bangunan bersih ke emisi, adopsi ke transisi."
+    }
+   ],
+   "pertanyaan": [
+    "Apakah satu program bisa sekaligus menurunkan tagihan dan emisi?",
+    "Bagaimana lima target lomba berhubungan dengan trilema?"
+   ],
+   "pedoman": "Ini rekomendasi kelima *notebook*. Rumah kecil boros gas per meter persegi, sedangkan rumah besar boros listrik per rumah, sehingga program keterjangkauan sebaiknya menyasar kawasan rumah kecil dan bangunan lama, sedangkan program pengurangan emisi menyasar zona dengan volume gas terbesar, seperti REG_263 dan REG_273. Pola ini berupa sumbangan pada prediksi model penjelas, bukan efek kausal.",
+   "sumber": "sel 47, 48, 51 butir 5; *writeup* bab 1 dan 7.4 butir 5; `deck/ppt01/bukti/cek_kebijakan.json`; `deck/ppt02/bukti/cek_zona_contoh.json`",
+   "penjawab": "Orang 3"
+  }
+ ]
+}
