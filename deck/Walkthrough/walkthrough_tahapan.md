@@ -236,7 +236,7 @@ Perubahan yang di bawah sekitar 0,1% relatif dianggap noise, kecuali ada arahan 
 **Keputusan.**
 - SHAP dihitung pada model penjelas terpisah, yaitu satu LightGBM per target yang hanya memakai fitur kawasan terukur, bukan pada gabungan 41 model.
 - R² model penjelas: gas per meter 0,75, EUI 0,56, listrik per meter 0,49, adopsi 0,99.
-- Zona dipetakan dengan dua ukuran, yaitu potensi *retrofit* (TWh) dan kenaikan listrik bila elektrifikasi penuh (%), lalu dibagi empat kuadran berdasarkan median.
+- Zona dipetakan dengan dua ukuran, yaitu intensitas gas zona (EUI, kWh per m²) dan kenaikan listrik tahunan bila elektrifikasi penuh (%), lalu dibagi empat kuadran berdasarkan median (`explain.zone_indices`). Potensi *retrofit* (TWh) dihitung terpisah dan tidak menjadi sumbu peta.
 - Uji sensitivitas memakai porsi pemanasan 70/80/90% dan COP 2,5/3/3,5.
 
 **Alasan.**
@@ -245,3 +245,85 @@ Perubahan yang di bawah sekitar 0,1% relatif dianggap noise, kecuali ada arahan 
 - SHAP menunjukkan asosiasi, bukan sebab-akibat. Karena itu rekomendasi disertai keterbatasan:
   - skenario listrik memakai energi tahunan, bukan beban puncak;
   - ambang kuadran berupa median.
+
+## Tahap 9a. Membaca kuadran (Q) dan rekomendasi (R)
+
+**Pertanyaan.** Apa arti Q1 sampai Q4 dan R1 sampai R3, dan bagaimana keduanya terhubung?
+
+### Kuadran (Q): kelompok zona
+
+Setiap zona dinilai dengan dua pertanyaan:
+1. Seberapa boros gasnya? Ukurannya intensitas gas zona (EUI): total gas zona dibagi total luas lantai zona.
+2. Bila semua pemanas gas diganti pompa panas, berapa persen konsumsi listrik tahunan zona naik? Rumusnya: tambahan listrik = gas × 0,8 ÷ 3, lalu dibagi listrik zona saat ini.
+
+Setiap ukuran dibelah di median 330 zona: EUI 133,5 kWh/m² dan kenaikan listrik 94,85%. Angka 94,85% ini sama dengan angka besar di *slide* 1.
+
+| | Kenaikan listrik ≥ median | Kenaikan listrik < median |
+|---|---|---|
+| **EUI ≥ median** | **Q1**: 118 zona, 46,8% gas | **Q2**: 47 zona, 11,5% gas |
+| **EUI < median** | **Q3**: 47 zona, 14,6% gas | **Q4**: 118 zona, 27,1% gas |
+
+Median per kuadran (dihitung dari `reports/policy/zones.csv`):
+
+| Kuadran | EUI (kWh/m²) | Kenaikan listrik |
+|---|---|---|
+| Q1 | 144,4 | 102,0% |
+| Q2 | 139,1 | 90,1% |
+| Q3 | 128,4 | 97,3% |
+| Q4 | 119,9 | 88,5% |
+
+Catatan penting:
+- **"Di bawah median" tidak sama dengan "kecil".** Kenaikan listrik di Q2 masih sekitar +90%. Di depan juri, ucapkan "di bawah median" atau "relatif lebih rendah", jangan "kecil".
+- **Kenaikan dihitung dalam persen dari listrik saat ini.** Zona yang sudah memakai banyak listrik mendapat persentase kenaikan yang lebih rendah untuk tambahan yang sama.
+- **Q1 dan Q4 masing-masing 118 zona, Q2 dan Q3 masing-masing 47.** Artinya zona yang boros gas cenderung juga mengalami kenaikan listrik tinggi.
+
+### Rekomendasi (R): program untuk kuadran tertentu
+
+| | Kuadran | Isi | Alasan | Zona contoh |
+|---|---|---|---|---|
+| R1 | Q1 | *Retrofit* selubung (dinding, atap, jendela) dulu, pompa panas kemudian | Gas boros dan kenaikan listrik tinggi; kebutuhan panas dikurangi dulu supaya tambahan listrik nanti lebih kecil | REG_273, REG_270, REG_045 (audit energi) |
+| R2 | Q1 dan Q3 | Kapasitas gardu dinilai sebelum subsidi pompa panas dibuka | Kenaikan listrik di atas median | REG_263, REG_045, REG_270 |
+| R3 | Q2 | Pilot pompa panas | Gas boros (penurunan emisi besar), kenaikan listrik di bawah median | REG_033 (gas jaringan 83,21%, adopsi 4,99%) |
+
+Q4 tidak mendapat program khusus karena kedua ukurannya di bawah median, sehingga bukan prioritas awal. Kalimat ini tidak ada di *deck*; siapkan sebagai jawaban lisan.
+
+## Tahap 9b. Hal terkait yang perlu dipahami sebelum presentasi
+
+1. **Dari mana nilai zona berasal.** Nilai zona adalah jumlah dari semua kawasannya. Untuk kawasan latih dipakai nilai aktual, untuk kawasan uji dipakai prediksi model. Sekitar 30% nilai zona berasal dari prediksi. Peta ini juga bukan peta geografis karena data tidak memuat koordinat; letak titik ditentukan oleh dua ukuran di atas.
+
+2. **Asumsi 80% dan COP 3.** Diasumsikan 80% gas dipakai untuk pemanasan, dan pompa panas menghasilkan 3 kWh panas dari 1 kWh listrik (COP 3). Contohnya, zona dengan gas 300 GWh mendapat tambahan listrik 300 × 0,8 ÷ 3 = 80 GWh. Kedua angka ini asumsi, bukan hasil dari data.
+
+3. **Energi tahunan vs beban puncak.** Semua angka listrik adalah total setahun. Gardu yang kewalahan ditentukan oleh beban puncak, yaitu pemakaian tertinggi pada jam tertentu, misalnya pagi hari di musim dingin. Data tidak memuat beban puncak maupun kapasitas gardu. Karena itu R2 hanya menyusun daftar zona yang perlu dinilai, sedangkan penilaian kapasitasnya tetap tugas operator jaringan.
+
+4. **Persen vs absolut di R2.** Ada dua cara mengurutkan zona: kenaikan dalam persen atau tambahan dalam GWh. Saat COP dibuat berbeda per iklim (2,5 sampai 3,5), urutan persen berubah besar; REG_290 turun dari peringkat 1 ke 47. Urutan absolut stabil (REG_263 tetap 1, REG_045 tetap 3, REG_270 tetap 4). Karena itu titik awal R2 dipilih dari tambahan absolut.
+
+5. **Uji ketahanan dan Spearman.** Spearman mengukur seberapa mirip dua urutan (1 = identik).
+   - Saat prediksi diberi derau acak, urutan zona hampir tidak berubah (Spearman 0,998, median 8 zona pindah kuadran).
+   - Saat COP dibuat berbeda per iklim, urutannya cukup berubah (Spearman 0,81, 68 zona pindah kuadran).
+   Kesimpulannya, peta ini tahan terhadap galat model tetapi peka terhadap asumsi COP. Karena itu daftar zona disebut kandidat.
+
+6. **Model penjelas.** SHAP tidak dihitung pada gabungan 41 model, tetapi pada satu LightGBM per target yang hanya memakai karakteristik kawasan terukur. Fitur seperti rata-rata target wilayah membantu skor tetapi tidak bisa diubah lewat kebijakan, jadi tidak dipakai di model penjelas. Konsekuensinya, akurasi model penjelas lebih rendah (R² gas per meter 0,75, EUI 0,56, listrik per meter 0,49).
+
+7. **Arti "+65%" dan "+75%".** Keduanya selisih sumbangan SHAP antara kawasan rumah terkecil dan terbesar pada model penjelas.
+   - R1: sumbangan pada gas per m² di rumah terkecil sekitar 65% lebih tinggi daripada di rumah terbesar (antarkuartil +34%). Dugaannya, rumah kecil punya dinding dan atap yang relatif luas dibanding lantainya.
+   - R2: sumbangan pada listrik per rumah di rumah terbesar sekitar 75% lebih tinggi daripada di rumah terkecil.
+   Keduanya asosiasi, bukan sebab-akibat.
+
+8. **Indikator *retrofit* 7,39 TWh.** Ini adalah jumlah gas yang berkurang bila sumbangan SHAP stok bangunan yang di atas rata-rata diturunkan ke rata-rata. Sebagai pembanding, total gas 141,35 TWh, dan bagian Q1 3,65 TWh. Angka ini indikator, bukan janji penghematan, karena acuannya rata-rata nasional dan biasnya bisa ke dua arah.
+
+9. **Adopsi dan gas jaringan (R3).** Porsi jenis pemanas di satu kawasan selalu berjumlah 100%. Kalau porsi gas jaringan tinggi, sisa porsi untuk pemanas listrik otomatis kecil.
+   - Adopsi pemanas listrik 9,46% di kawasan dengan gas jaringan 60–80%.
+   - Adopsi hanya 2,73% di kawasan dengan gas jaringan di atas 80%, padahal kelompok ini 70% kawasan.
+   Karena itu pola ini disebut pola komposisi, bukan sebab-akibat.
+
+### Cek diri (jawab tanpa melihat)
+1. Mengapa R3 dimulai di Q2, bukan di Q1?
+   Jawaban: gas Q2 boros, jadi penurunan emisinya besar, sedangkan kenaikan listriknya di bawah median, jadi risiko ke gardu lebih rendah. Q1 kenaikan listriknya di atas median, sehingga kebutuhan panasnya dikurangi dulu lewat *retrofit*.
+2. Mengapa R2 mencakup Q3 padahal gas Q3 tidak boros?
+   Jawaban: R2 hanya melihat kenaikan listrik, dan Q3 berada di atas median pada ukuran itu.
+3. Mengapa titik awal R2 dipilih dari GWh, bukan dari persen?
+   Jawaban: urutan GWh tetap stabil saat COP diubah per iklim, sedangkan urutan persen tidak.
+4. Apakah SHAP membuktikan rumah kecil menyebabkan boros gas?
+   Jawaban: tidak. SHAP menunjukkan asosiasi pada prediksi model, jadi langkah R1 dimulai dengan audit energi dan pilot dengan pembanding.
+5. Apakah daftar zona bisa langsung dipakai untuk membangun gardu?
+   Jawaban: tidak. Angkanya energi tahunan dan peka terhadap COP, jadi daftar ini adalah kandidat untuk dinilai operator.
