@@ -27,7 +27,7 @@ Sumber angka: `reports/eda/EDA_REPORT.md`, `reports/DECISIONS.md`, `reports/COVE
 - [Tahap 9b. Hal terkait yang perlu dipahami sebelum presentasi](#tahap-9b-hal-terkait-yang-perlu-dipahami-sebelum-presentasi)
   - [Cek diri (jawab tanpa melihat)](#cek-diri-jawab-tanpa-melihat)
 
-Dokumen lain di folder ini: `naskah_presentasi_awal.md` (skema waktu dan naskah awal 13 *slide*), `skala_prioritas.md` (urutan belajar menurut bobot juri), `glosarium_istilah.md` (arti istilah dan
+Dokumen lain di folder ini: `naskah_presentasi_awal.md` (skema waktu dan naskah awal 13 *slide*), `skala_prioritas.md` (urutan belajar menurut bobot juri), `../Draft/interpretasi_angka_temuan.md` (arti tiap angka di *slide* 8 sampai 11), `glosarium_istilah.md` (arti istilah dan
 letaknya di *slide*), `kondisi_dataset.md`, `problem_statement.md`, dan `solusi_walkthrough.md`.
 
 ## Ringkasan tahapan
