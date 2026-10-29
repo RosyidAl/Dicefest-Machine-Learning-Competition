@@ -26,3 +26,6 @@ exp/oof/
 exp/pred/
 *.log.gz
 pdfenv/
+.claude/settings.local.json
+.claude/dist/
+.claude/skills/first-principles-skill/

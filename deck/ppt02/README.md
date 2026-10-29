@@ -41,7 +41,7 @@ Alat yang dibutuhkan di luar `.venv` proyek:
 NODE_PATH=/tmp/pptx-node/node_modules PPTX_SKILL_DIR=<skill pptx> node deck/ppt02/build_deck_v3.js
 /tmp/pptx-py/bin/python deck/ppt02/cek_pptx.py
 /tmp/pptx-py/bin/python <skill pptx>/scripts/office/validate.py deck/ppt02/BISMILLAH_Final_v3.pptx
-/tmp/pptx-py/bin/python skills/pitch-deck-kompetisi/scripts/check_deck.py deck/ppt02/BISMILLAH_Final_v3.pptx \
+/tmp/pptx-py/bin/python .claude/skills/pitch-deck-kompetisi/scripts/check_deck.py deck/ppt02/BISMILLAH_Final_v3.pptx \
     --facts deck/fakta_notebook.txt --facts deck/fakta_turunan.md --facts deck/ppt01/fakta_tambahan.md \
     --facts reports/WRITEUP_DRAFT_vB.md --facts deck/ppt02/fakta_ppt02.md --minutes 9.5
 /tmp/pptx-py/bin/python deck/ppt02/render_pptx.py deck/ppt02/BISMILLAH_Final_v3.pptx --out deck/ppt02/pratinjau \

@@ -1,6 +1,6 @@
 # CLAUDE.md: DICE FEST 2026 ML (Urban Energy Transition Trilemma)
 
-Aturan inti proyek. Rencana kerja lengkap per fase ada di `MASTER_PROMPT.md`. Baca file itu seluruhnya sekali di awal proyek; setelahnya cukup baca bagian fase yang aktif.
+Aturan inti proyek. Rencana kerja lengkap per fase ada di `.claude/MASTER_PROMPT.md`. Baca file itu seluruhnya sekali di awal proyek; setelahnya cukup baca bagian fase yang aktif.
 
 ## Misi
 Submisi dengan Column-Wise NRMSE serendah mungkin di Private Leaderboard Kaggle `dicefest-2026-machine-learning`, dari pipeline yang reproducible bit-per-bit, bebas kebocoran, dan setiap langkahnya tercatat.
@@ -8,7 +8,7 @@ Submisi dengan Column-Wise NRMSE serendah mungkin di Private Leaderboard Kaggle 
 ## Setiap sesi dimulai, di-resume, atau setelah compaction
 1. Baca `reports/STATUS.md`, lalu `reports/LEADERBOARD.md`, lalu 40 baris terakhir `reports/JOURNAL.md`.
 2. Cek proses yang masih jalan: `ps aux | grep -E "python|queue_worker" | grep -v grep`, `nvidia-smi`, isi `queue/*/running/`.
-3. Baca bagian fase aktif di `MASTER_PROMPT.md`.
+3. Baca bagian fase aktif di `.claude/MASTER_PROMPT.md`.
 4. `experiments/registry.csv` adalah sumber kebenaran. Jangan mengulang eksperimen yang sudah tercatat kecuali ada alasan tertulis.
 
 Saat compaction, pertahankan: fase aktif, exp_id dan skor terbaik per target, job yang sedang jalan (PID, log), keputusan terbaru, dan 5 langkah berikutnya.

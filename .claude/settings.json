@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(nvidia-smi *)",
+      "Bash(free *)",
+      "Bash(TZ=Asia/Jakarta date)",
+      "Bash(git status *)",
+      "Bash(git log *)",
+      "Bash(git diff *)",
+      "Bash(python scripts/validate_submission.py *)",
+      "Bash(python scripts/update_reports.py *)"
+    ],
+    "deny": [
+      "Bash(git reset --hard *)",
+      "Bash(git clean *)",
+      "Bash(rm -rf data/raw*)",
+      "Bash(rm -rf experiments*)",
+      "Edit(data/raw/**)"
+    ]
+  }
+}
