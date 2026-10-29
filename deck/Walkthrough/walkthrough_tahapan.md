@@ -8,6 +8,28 @@ Dokumen ini mencatat tahapan proyek DICE FEST 2026 secara berurutan. Setiap taha
 
 Sumber angka: `reports/eda/EDA_REPORT.md`, `reports/DECISIONS.md`, `reports/COVERAGE.md`, dan `experiments/registry.csv`.
 
+## Daftar isi
+
+- [Ringkasan tahapan](#ringkasan-tahapan)
+- [Tahap 1. Kerangka masalah](#tahap-1-kerangka-masalah)
+- [Tahap 2. Memahami target](#tahap-2-memahami-target)
+- [Tahap 3. Kualitas dan struktur data](#tahap-3-kualitas-dan-struktur-data)
+- [Tahap 4. Desain validasi](#tahap-4-desain-validasi)
+- [Tahap 5. Baseline dan batas akurasi](#tahap-5-baseline-dan-batas-akurasi)
+- [Tahap 6. Formulasi target dan fitur](#tahap-6-formulasi-target-dan-fitur)
+- [Tahap 7. Pemilihan keluarga model](#tahap-7-pemilihan-keluarga-model)
+- [Tahap 8. Ensemble, koreksi, dan pemilihan final](#tahap-8-ensemble-koreksi-dan-pemilihan-final)
+- [Tahap 9. Dari model ke kebijakan](#tahap-9-dari-model-ke-kebijakan)
+- [Tahap 9a. Membaca kuadran (Q) dan rekomendasi (R)](#tahap-9a-membaca-kuadran-q-dan-rekomendasi-r)
+  - [Kuadran (Q): kelompok zona](#kuadran-q-kelompok-zona)
+  - [Rekomendasi (R): program untuk kuadran tertentu](#rekomendasi-r-program-untuk-kuadran-tertentu)
+  - [Penjelasan R1, R2, dan R3](#penjelasan-r1-r2-dan-r3)
+- [Tahap 9b. Hal terkait yang perlu dipahami sebelum presentasi](#tahap-9b-hal-terkait-yang-perlu-dipahami-sebelum-presentasi)
+  - [Cek diri (jawab tanpa melihat)](#cek-diri-jawab-tanpa-melihat)
+
+Dokumen lain di folder ini: `skala_prioritas.md` (urutan belajar menurut bobot juri), `glosarium_istilah.md` (arti istilah dan
+letaknya di *slide*), `kondisi_dataset.md`, `problem_statement.md`, dan `solusi_walkthrough.md`.
+
 ## Ringkasan tahapan
 
 | Tahap | Pertanyaan | Keputusan utama |
@@ -286,6 +308,70 @@ Catatan penting:
 | R3 | Q2 | Pilot pompa panas | Gas boros (penurunan emisi besar), kenaikan listrik di bawah median | REG_033 (gas jaringan 83,21%, adopsi 4,99%) |
 
 Q4 tidak mendapat program khusus karena kedua ukurannya di bawah median, sehingga bukan prioritas awal. Kalimat ini tidak ada di *deck*; siapkan sebagai jawaban lisan.
+
+### Penjelasan R1, R2, dan R3
+
+R adalah singkatan dari rekomendasi. *Deck* memakai tiga rekomendasi, masing-masing satu *slide* (9, 10, 11), dan
+masing-masing menjawab satu tuntutan trilema pada kuadran tertentu. *Notebook* memuat lima rekomendasi. *Deck*
+merangkum butir 1 sampai 4 menjadi tiga, dan butir 5 (pisahkan target efisiensi dan target emisi) ada di *slide*
+cadangan C11.
+
+| | Satu kalimat | Tuntutan trilema | Kuadran | *Slide* | Pelaksana |
+|---|---|---|---|---|---|
+| R1 | Perbaiki dinding, atap, dan jendela lebih dulu, pompa panas kemudian | biaya dan emisi | Q1 | 9 | pemerintah kota dan penyedia jasa *retrofit* |
+| R2 | Nilai kapasitas gardu sebelum subsidi pompa panas dibuka | keandalan jaringan | Q1 dan Q3 | 10 | operator jaringan distribusi dan pemerintah kota |
+| R3 | Mulai dengan pilot pompa panas di zona yang kenaikan listriknya relatif rendah | transisi yang terukur | Q2 | 11 | pemerintah kota dan penyedia pompa panas |
+
+Setiap *slide* rekomendasi dibaca dengan rantai yang sama:
+1. **TEMUAN**: angka dari SHAP atau data.
+2. **INTERPRETASI**: arti angka itu dan batasnya (asosiasi, bukan sebab-akibat).
+3. **REKOMENDASI**: apa yang dilakukan.
+4. **LANGKAH**: urutan kerjanya.
+5. **PELAKSANA**: siapa yang mengerjakan.
+
+Kalimat penghubung yang diucapkan di tiga *slide* itu: "temuan model mendukung rekomendasi ini".
+
+**R1. *Retrofit* selubung lebih dulu di zona Q1 (*slide* 9).**
+- *Retrofit* selubung artinya memperbaiki dinding, atap, dan jendela supaya rumah butuh panas lebih sedikit.
+- Alasan di Q1: gasnya boros dan kenaikan listriknya di atas median (median Q1 sekitar +102%). Bila kebutuhan panas
+  turun lebih dulu, tambahan listrik saat pompa panas dipasang lebih kecil.
+- Temuan: pada model penjelas, sumbangan SHAP ke gas per m² di kawasan rumah terkecil sekitar +65% dibanding rumah
+  terbesar (antarkuartil +34%). Dugaannya, dinding dan atap rumah kecil relatif luas dibanding lantainya.
+- Besaran: Q1 memuat sekitar 47% gas dan 3,65 dari 7,39 TWh indikator potensi *retrofit*.
+- Langkah: audit energi di REG_273, REG_270, dan REG_045, lalu pilot dengan pembanding, lalu ukur gas per m².
+- Yang tidak boleh diucapkan: "rumah kecil menyebabkan boros gas" dan "7,39 TWh pasti hemat". Angka itu indikator
+  dengan bias dua arah.
+
+**R2. Kapasitas gardu dinilai sebelum subsidi pompa panas dibuka (*slide* 10).**
+- Gardu adalah tempat tegangan listrik jaringan distribusi diturunkan untuk rumah. Pompa panas memindahkan beban
+  pemanasan dari gas ke listrik, jadi gardu di zona dengan kenaikan tinggi perlu dicek sebelum subsidi membuat
+  pemasangan melonjak.
+- Daftar ini hanya skrining zona yang perlu dinilai. Penilaian kapasitas tetap tugas operator jaringan.
+- Temuan: sumbangan SHAP ke listrik per rumah di kawasan rumah besar sekitar +75% dibanding rumah kecil. Median
+  kenaikan listrik zona +94,85%, dan lima zona tertinggi +113% sampai +121%.
+- Titik awal: REG_263 (757 GWh), REG_045 (442 GWh), dan REG_270 (434 GWh) pada COP 3, dipilih menurut tambahan
+  absolut karena urutannya stabil saat COP dibuat berbeda per iklim. Urutan persen tidak stabil: REG_290 turun dari
+  peringkat 1 ke 47.
+- Batas: angka listrik adalah energi tahunan. Data tidak memuat beban puncak dan kapasitas gardu.
+- Pertanyaan terbuka: REG_273 berada di peringkat 2 tambahan absolut tetapi bukan titik awal R2, dan alasannya belum
+  tertulis. Tim perlu memutuskan jawabannya sebelum presentasi.
+
+**R3. Pilot pompa panas di zona Q2 (*slide* 11).**
+- Pilot berarti elektrifikasi dimulai kecil, dengan bantuan pemasangan pompa panas dan pembongkaran ketel gas lama.
+- Alasan di Q2: gasnya boros sehingga penurunan emisi besar, dan kenaikan listriknya di bawah median. Ingat bahwa
+  "di bawah median" bukan "kecil" (Q2 masih sekitar +90%).
+- Temuan: adopsi pemanas listrik 9,46% di kawasan dengan gas jaringan 60 sampai 80%, dan hanya 2,73% di kawasan di
+  atas 80% yang mencakup 70% kawasan. Sumbangan SHAP adopsi menjadi negatif di atas 80%. Porsi jenis pemanas
+  berjumlah 100%, jadi ini pola komposisi, bukan sebab-akibat.
+- Zona contoh: REG_033 (gas jaringan 83,21%, adopsi 4,99%), yang tetap Q2 pada kedua skenario COP. Tambahan listrik
+  absolutnya 185 GWh (peringkat 52 dari 330), jadi "di bawah median" berlaku untuk persen, bukan untuk GWh.
+- Langkah: cek gardu lokal, lalu pilot dan audit energi dengan zona pembanding, lalu ukur adopsi, lalu perluas bila
+  terukur.
+
+**Hubungan ketiganya.** Rekomendasi tidak berurutan, karena masing-masing menyasar kuadran yang berbeda. R1 menurunkan
+kebutuhan panas di zona boros gas, R2 memeriksa kesiapan jaringan di zona yang kenaikan listriknya tinggi, dan R3 membuka
+pompa panas di zona yang kenaikan listriknya lebih rendah. R2 dan R3 bertemu di langkah awal R3 (cek gardu lokal) dan di
+zona awal R2 yang beririsan dengan Q1 milik R1 (REG_270 dan REG_045 ada di daftar R1 dan R2).
 
 ## Tahap 9b. Hal terkait yang perlu dipahami sebelum presentasi
 
